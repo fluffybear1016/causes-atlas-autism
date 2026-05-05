@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Pochakom A; Mu C; Rho JM; Tompkins TA; Mayengbam S; Shearer J",
+  "doi": "doi: 10.3390/brainsci12060781",
+  "first_author": "Pochakom A",
+  "journal": "Brain Sci",
+  "matched_queries": [
+    "autism[tiab] AND (mitochondrial[tiab] OR \"oxidative stress\"[tiab]) AND (\"clinical trial\"[pt] OR \"randomized\"[tiab])"
+  ],
+  "pmid": "35741667",
+  "pubdate": "2022 Jun 14",
+  "title": "Selective Probiotic Treatment Positively Modulates the Microbiota-Gut-Brain Axis in the BTBR Mouse Model of Autism.",
+  "verified_at": "2026-05-05T14:46:21+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Wu J; de Theije CGM; da Silva SL; Abbring S; van der Horst H; Broersen LM; Willemsen L; Kas M",
+  "doi": "doi: 10.1016/j.bbi.2016.09.016",
+  "first_author": "Wu J",
+  "journal": "Brain Behav Immun",
+  "matched_queries": [
+    "autism[tiab] AND (\"mast cell\"[tiab] OR MCAS[tiab])"
+  ],
+  "pmid": "27640900",
+  "pubdate": "2017 Jan",
+  "title": "Dietary interventions that reduce mTOR activity rescue autistic-like behavioral deficits in mice.",
+  "verified_at": "2026-05-05T14:46:19+00:00"
+}

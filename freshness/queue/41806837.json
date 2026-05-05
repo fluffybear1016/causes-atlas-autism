@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Mi K; Cao M; Zhang L; Zhang Q; Zhou W; Deng C; Zhang Y; Zhao Q",
+  "doi": "doi: 10.1016/j.xcrm.2026.102655",
+  "first_author": "Mi K",
+  "journal": "Cell Rep Med",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "41806837",
+  "pubdate": "2026 Mar 17",
+  "title": "An integrative multi-omics approach identifies microbiome alterations linked to pathological and behavioral features in autism spectrum disorder.",
+  "verified_at": "2026-05-05T14:46:24+00:00"
+}

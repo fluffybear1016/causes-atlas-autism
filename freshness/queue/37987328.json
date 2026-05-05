@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Radwan K; Wu G; Banks-Word K; Rosenberger R",
+  "doi": "doi: 10.3390/medsci11040073",
+  "first_author": "Radwan K",
+  "journal": "Med Sci (Basel)",
+  "matched_queries": [
+    "autism[tiab] AND (mitochondrial[tiab] OR \"oxidative stress\"[tiab]) AND (\"clinical trial\"[pt] OR \"randomized\"[tiab])"
+  ],
+  "pmid": "37987328",
+  "pubdate": "2023 Nov 15",
+  "title": "An Open-Label Case Series of Glutathione Use for Symptomatic Management in Children with Autism Spectrum Disorder.",
+  "verified_at": "2026-05-05T14:46:21+00:00"
+}

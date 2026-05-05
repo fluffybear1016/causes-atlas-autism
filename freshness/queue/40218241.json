@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Akgun A; Tas I",
+  "doi": "doi: 10.3390/diagnostics15070892",
+  "first_author": "Akgun A",
+  "journal": "Diagnostics (Basel)",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "40218241",
+  "pubdate": "2025 Apr 1",
+  "title": "A Clinical and Genetic Evaluation of Cases with Folate Receptor \u03b1 Gene Mutation: A Case Series from T\u00fcrkiye.",
+  "verified_at": "2026-05-05T14:46:23+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Gao H; Ni Y; Mo X; Li D; Teng S; Huang Q; Huang S; Liu G",
+  "doi": "doi: 10.1016/j.csbj.2021.06.046",
+  "first_author": "Gao H",
+  "journal": "Comput Struct Biotechnol J",
+  "matched_queries": [
+    "\"knowledge graph\"[tiab] AND (autism[tiab] OR \"neurodevelopmental\"[tiab])"
+  ],
+  "pmid": "34306572",
+  "pubdate": "2021",
+  "title": "Drug repositioning based on network-specific core genes identifies potential drugs for the treatment of autism spectrum disorder in children.",
+  "verified_at": "2026-05-05T14:46:20+00:00"
+}

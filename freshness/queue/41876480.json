@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Evenepoel M; Daniels N; Moerkerke M; Prinsen J; Steyaert J; Boets B; Joossens M; Alaerts K",
+  "doi": "doi: 10.1038/s41398-026-03964-0",
+  "first_author": "Evenepoel M",
+  "journal": "Transl Psychiatry",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "41876480",
+  "pubdate": "2026 Mar 24",
+  "title": "The role of the oxytocinergic system in oral microbiome composition in children with autism: evidence from a randomized controlled trial of intranasal oxytocin.",
+  "verified_at": "2026-05-05T14:46:25+00:00"
+}

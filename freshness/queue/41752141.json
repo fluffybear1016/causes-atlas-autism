@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Wu Y; Wong OWH; Chen S; Wang Y; Zhang G; Gao Y; Chan FKL; Ng SC",
+  "doi": "doi: 10.3390/ijms27042006",
+  "first_author": "Wu Y",
+  "journal": "Int J Mol Sci",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "41752141",
+  "pubdate": "2026 Feb 20",
+  "title": "Gut Microbiome Mediates the Causal Link Between Autism Spectrum Disorder and Dietary Preferences: A Mendelian Randomization Study.",
+  "verified_at": "2026-05-05T14:46:24+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Hough D; Mao AR; Aman M; Lozano R; Smith-Hicks C; Martinez-Cerdeno V; Derby M; Rome Z",
+  "doi": "doi: 10.1186/s12991-023-00477-8",
+  "first_author": "Hough D",
+  "journal": "Ann Gen Psychiatry",
+  "matched_queries": [
+    "autism[tiab] AND (mitochondrial[tiab] OR \"oxidative stress\"[tiab]) AND (\"clinical trial\"[pt] OR \"randomized\"[tiab])"
+  ],
+  "pmid": "37932739",
+  "pubdate": "2023 Nov 6",
+  "title": "Randomized clinical trial of low dose suramin intravenous infusions for treatment of autism spectrum disorder.",
+  "verified_at": "2026-05-05T14:46:21+00:00"
+}

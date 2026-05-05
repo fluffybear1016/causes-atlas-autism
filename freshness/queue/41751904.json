@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Katiraei P; Frye RE; Theoharides TC",
+  "doi": "doi: 10.3390/ijms27041768",
+  "first_author": "Katiraei P",
+  "journal": "Int J Mol Sci",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "41751904",
+  "pubdate": "2026 Feb 12",
+  "title": "Gut-Brain Inflammation and Disrupted Homeostasis Due to Activation of Mast Cells and Microglia.",
+  "verified_at": "2026-05-05T14:46:24+00:00"
+}

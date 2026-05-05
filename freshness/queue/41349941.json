@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Long J; Liao X; Chen J; Han K; Tang Z; Dong L; Wang X; Liu J",
+  "doi": "doi: 10.1016/j.fct.2025.115882",
+  "first_author": "Long J",
+  "journal": "Food Chem Toxicol",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "41349941",
+  "pubdate": "2026 Feb",
+  "title": "New insights into mechanisms of valproic acid-induced neurodevelopmental toxicity in autism spectrum disorder: An integrative network toxicology approach combined with in vivo validation.",
+  "verified_at": "2026-05-05T14:46:24+00:00"
+}
