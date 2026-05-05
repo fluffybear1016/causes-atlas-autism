@@ -415,8 +415,9 @@
   // Cloud deploy: replace the placeholder with the actual *.streamlit.app URL.
   // Same for GitHub repo.
   (function() {
-    const CALC_URL = "https://causes-atlas-autism.streamlit.app";   // ← replace post-deploy
-    const REPO_URL = "https://github.com/your-username/causes-atlas-autism"; // ← replace post-deploy
+    // Live deploy: https://causes-atlas.streamlit.app  (Streamlit Community Cloud, deployed 2026-05-05)
+    const CALC_URL = "https://causes-atlas.streamlit.app";
+    const REPO_URL = "https://github.com/fluffybear1016/causes-atlas-autism";
     const calc = document.getElementById('calculator-btn');
     const repo = document.getElementById('github-btn');
     if (calc) calc.href = CALC_URL;
