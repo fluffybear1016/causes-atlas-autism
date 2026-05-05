@@ -320,15 +320,15 @@ def go_to(step: str):
 # Step 0 — HERO
 # ---------------------------------------------------------------------------
 def _hero_constellation_svg() -> str:
-    """Decorative miniaturized constellation for the hero. Quiet, subtle —
-    establishes visual identity without competing with the type. All 11
-    nodes drawn faintly; the word AUTISM at center."""
+    """Decorative constellation for the hero — quiet supporting role, not
+    competing with the type. 11 nodes, AUTISM at center, low opacity so the
+    title carries the visual hierarchy."""
     POSITIONS = [
         (600, 90), (870, 175), (980, 380), (940, 600), (770, 740),
         (530, 790), (290, 740), (130, 600), (90, 380), (200, 175), (470, 90)
     ]
     cx, cy = 535, 420
-    parts = ['<svg viewBox="0 0 1070 880" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto; opacity:0.78;">']
+    parts = ['<svg viewBox="0 0 1070 880" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto; opacity:0.5;">']
     # ring connections
     for i, (x, y) in enumerate(POSITIONS):
         x2, y2 = POSITIONS[(i + 1) % len(POSITIONS)]
@@ -351,17 +351,18 @@ def render_hero():
     st.markdown(
         f"""
         <div style='text-align:center;'>
-            <div class='eyebrow'>The Causes Atlas</div>
+            <div class='eyebrow'>The Causes Atlas · Autism</div>
             <h1 style='margin-top:1.2rem;'>
-                Autism isn't one thing.<br>
-                <em style='color: var(--ink-mute);'>We mapped every thing it is.</em>
+                Treat the child,<br>
+                <em style='color: var(--ink-mute);'>not the diagnosis.</em>
             </h1>
-            <p style='margin-top:2.4rem; font-size: clamp(1.1rem, 1.6vw, 1.35rem); color: var(--ink-soft); max-width:36ch; margin-left:auto; margin-right:auto; line-height:1.5;'>
-                Your child isn't a phenotype.<br>
-                They're a shape on the map.
+            <p style='margin-top:2.4rem; font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--ink-soft); max-width:42ch; margin-left:auto; margin-right:auto; line-height:1.55;'>
+                Eleven biological patterns.<br>
+                One profile per child.<br>
+                The interventions the evidence links to each.
             </p>
         </div>
-        <div style='height:3vh'></div>
+        <div style='height:2vh'></div>
         {_hero_constellation_svg()}
         """,
         unsafe_allow_html=True,
@@ -369,13 +370,16 @@ def render_hero():
     st.markdown("<div style='height:3vh'></div>", unsafe_allow_html=True)
     c = st.columns([1, 1.4, 1])
     with c[1]:
-        if st.button("See a profile", use_container_width=True):
+        if st.button("Map a profile", use_container_width=True):
             go_to("pick")
-    st.markdown("<div style='height:6vh'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:5vh'></div>", unsafe_allow_html=True)
     st.markdown(
         """
         <div style='text-align:center; color: var(--ink-mute); font-size:0.74rem; letter-spacing:0.22em; text-transform:uppercase;'>
             Open · deterministic · evidence-balanced · continuously ingested
+        </div>
+        <div style='text-align:center; color: var(--ink-mute); font-size:0.78rem; margin-top:1rem; max-width:54ch; margin-left:auto; margin-right:auto; font-style:italic;'>
+            Research prototype. Decision support, not a diagnostic device.
         </div>
         """,
         unsafe_allow_html=True,
