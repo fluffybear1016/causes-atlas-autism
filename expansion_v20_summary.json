@@ -1,0 +1,11 @@
+{
+  "expansion_version": "v2.0_dag_dual_scoring",
+  "run_timestamp": "2026-04-27T22:28:44+00:00",
+  "added": {
+    "hypothesis_hypothesis_edges": 33,
+    "intervention_dual_scoring_cols": 4,
+    "combination_dual_scoring_cols": 4
+  },
+  "skipped_pairs": 0,
+  "dag_acyclic": true
+}

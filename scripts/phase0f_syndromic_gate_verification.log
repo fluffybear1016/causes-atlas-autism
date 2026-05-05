@@ -1,0 +1,154 @@
+# Verification run: 2026-04-30T19:13:41.758058Z
+# candidates: scripts/phase0f_syndromic_gate_candidates.yaml
+# output: v2.0_scored/rare_syndrome_screening_gate.csv
+# Total candidates: 36
+
+## Row RSG-0001
+  primary PMID 1710175: PASS claimed=(Verkerk 1991) fetched=(verkerk aj 1991) title='identification of a gene (fmr-1) containing a cgg repeat coincident with a breakpoint cluster region exhibiting length v'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0002
+  primary PMID 10508514: PASS claimed=(Amir 1999) fetched=(amir re 1999) title='rett syndrome is caused by mutations in x-linked mecp2, encoding methyl-cpg-binding protein 2.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0003
+  primary PMID 8269512: PASS claimed=(European 1993) fetched=(european chromosome 16 tuberous sclerosis consortium 1993) title='identification and characterization of the tuberous sclerosis gene on chromosome 16.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0004
+  primary PMID 9242607: PASS claimed=(van Slegtenhorst 1997) fetched=(van slegtenhorst m 1997) title='identification of the tuberous sclerosis gene tsc1 on chromosome 9q34.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0005
+  primary PMID 15805158: PASS claimed=(Butler 2005) fetched=(butler mg 2005) title='subset of individuals with autism spectrum disorders and extreme macrocephaly associated with germline pten tumour suppr'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0006
+  primary PMID 32546186: PASS claimed=(Goodspeed 2020) fetched=(goodspeed k 2020) title='bringing everyone to the table - findings from the 2018 phelan-mcdermid syndrome foundation international conference.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0007
+  primary PMID 16470747: PASS claimed=(Williams 2006) fetched=(williams ca 2006) title='angelman syndrome 2005: updated consensus for diagnostic criteria.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0008
+  primary PMID 1746552: PASS claimed=(Greenberg 1991) fetched=(greenberg f 1991) title='molecular analysis of the smith-magenis syndrome: a possible contiguous-gene syndrome associated with del(17)(p11.2).'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0009
+  primary PMID 7693128: PASS claimed=(Ewart 1993) fetched=(ewart ak 1993) title='hemizygosity at the elastin locus in a developmental disorder, williams syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0010
+  primary PMID 31174463: PASS claimed=(Motahari 2019) fetched=(motahari z 2019) title='in the line-up: deleted genes associated with digeorge/22q11.2 deletion syndrome: are they all suspects?'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0011
+  primary PMID 18184952: PASS claimed=(Weiss 2008) fetched=(weiss la 2008) title='association between microdeletion and microduplication at 16p11.2 and autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0012
+  primary PMID 18784092: PASS claimed=(Mefford 2008) fetched=(mefford hc 2008) title='recurrent rearrangements of chromosome 1q21.1 and variable pediatric phenotypes.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0013
+  primary PMID 15146185: PASS claimed=(Tonkin 2004) fetched=(tonkin et 2004) title='nipbl, encoding a homolog of fungal scc2-type sister chromatid cohesion proteins and fly nipped-b, is mutated in corneli'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0014
+  primary PMID 15300250: PASS claimed=(Vissers 2004) fetched=(vissers le 2004) title='mutations in a new member of the chromodomain gene family cause charge syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0015
+  primary PMID 16826528: PASS claimed=(Kleefstra 2006) fetched=(kleefstra t 2006) title='loss-of-function mutations in euchromatin histone methyl transferase 1 (ehmt1) cause the 9q34 subtelomeric deletion synd'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0016
+  primary PMID 21782149: PASS claimed=(Sirmaci 2011) fetched=(sirmaci a 2011) title='mutations in ankrd11 cause kbg syndrome, characterized by intellectual disability, skeletal malformations, and macrodont'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0017
+  primary PMID 22426308: PASS claimed=(Tsurusaki 2012) fetched=(tsurusaki y 2012) title='mutations affecting components of the swi/snf complex cause coffin-siris syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0018
+  primary PMID 15499549: PASS claimed=(Tao 2004) fetched=(tao j 2004) title='mutations in the x-linked cyclin-dependent kinase-like 5 (cdkl5/stk9) gene are associated with severe neurodevelopmental'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0019
+  primary PMID 18571142: PASS claimed=(Ariani 2008) fetched=(ariani f 2008) title='foxg1 is responsible for the congenital variant of rett syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0020
+  primary PMID 20436468: PASS claimed=(Hoischen 2010) fetched=(hoischen a 2010) title='de novo mutations of setbp1 cause schinzel-giedion syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0021
+  primary PMID 19592390: PASS claimed=(Le Meur 2010) fetched=(le meur n 2010) title='mef2c haploinsufficiency caused by either microdeletion of the 5q14.3 region or mutation is responsible for severe menta'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0022
+  primary PMID 20890276: PASS claimed=(Endele 2010) fetched=(endele s 2010) title='mutations in grin2a and grin2b encoding regulatory subunits of nmda receptors cause variable neurodevelopmental phenotyp'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0023
+  primary PMID 17173049: PASS claimed=(Durand 2007) fetched=(durand cm 2007) title='mutations in the gene encoding the synaptic scaffolding protein shank3 are associated with autism spectrum disorders.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0024
+  primary PMID 18179900: PASS claimed=(Kim 2008) fetched=(kim hg 2008) title='disruption of neurexin 1 associated with autism spectrum disorder.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0025
+  primary PMID 16571880: PASS claimed=(Strauss 2006) fetched=(strauss ka 2006) title='recessive symptomatic focal epilepsy and mutant contactin-associated protein-like 2.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0026
+  primary PMID 23160955: PASS claimed=(O'Roak 2012) fetched=(o'roak bj 2012) title='multiplex targeted sequencing identifies recurrently mutated genes in autism spectrum disorders.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0027
+  primary PMID 24531329: PASS claimed=(Helsmoortel 2014) fetched=(helsmoortel c 2014) title='a swi/snf-related autism syndrome caused by de novo mutations in adnp.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0028
+  primary PMID 22495306: PASS claimed=(Sanders 2012) fetched=(sanders sj 2012) title='de novo mutations revealed by whole-exome sequencing are strongly associated with autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0029
+  primary PMID 19196676: PASS claimed=(Hamdan 2009) fetched=(hamdan ff 2009) title='mutations in syngap1 in autosomal nonsyndromic mental retardation.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0030
+  primary PMID 11592033: PASS claimed=(Yamada 2001) fetched=(yamada k 2001) title='nonsense and frameshift mutations in zfhx1b, encoding smad-interacting protein 1, cause a complex developmental disorder'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0031
+  primary PMID 12757360: PASS claimed=(Baieli 2003) fetched=(baieli s 2003) title='autism and phenylketonuria.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0032
+  primary PMID 11223857: PASS claimed=(Tierney 2001) fetched=(tierney e 2001) title='behavior phenotype in the rsh/smith-lemli-opitz syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0033
+  primary PMID 2102678: PASS claimed=(Goto 1990) fetched=(goto y 1990) title='a mutation in the trna(leu)(uur) gene associated with the melas subgroup of mitochondrial encephalomyopathies.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0034
+  primary PMID 2137962: PASS claimed=(Holt 1990) fetched=(holt ij 1990) title='a new mitochondrial disease associated with mitochondrial dna heteroplasmy.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0035
+  primary PMID 2112427: PASS claimed=(Shoffner 1990) fetched=(shoffner jm 1990) title='myoclonic epilepsy and ragged-red fiber disease (merrf) is associated with a mitochondrial dna trna(lys) mutation.'
+  VERDICT: VERIFIED — row will be written
+
+## Row RSG-0036
+  primary PMID 15141358: PASS claimed=(Kolehmainen 2004) fetched=(kolehmainen j 2004) title='delineation of cohen syndrome following a large-scale genotype-phenotype screen.'
+  VERDICT: VERIFIED — row will be written
+
+
+## Summary
+Total candidates: 36
+Verified (will write): 36
+Rejected: 0

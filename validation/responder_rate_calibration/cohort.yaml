@@ -1,0 +1,457 @@
+# Responder-rate calibration cohort manifest
+# Move 2 of the post-mortem fix plan
+#
+# Each entry MUST cite a PubMed-verified PMID for an RCT or stratified
+# observational study. Responder rates are extracted from the published
+# paper (abstract + figures + tables); fields tagged `<extract from paper>`
+# are placeholders pending the full-text extraction pass.
+
+cohort_version: v0.1_scaffold
+engine_version_required: session4_v0.2.0_profile_vector
+verification_protocol: BioMysteryBench-aligned (CLAUDE.md §Verification protocol)
+
+entries:
+  - entry_id: rrc_001_frye_2018_leucovorin_fraa
+    rct_pmid: 27752075
+    rct_first_author: Frye RE
+    rct_year: 2018
+    rct_journal: Mol Psychiatry
+    rct_title: |
+      Folinic acid improves verbal communication in children with autism
+      and language impairment: a randomized double-blind placebo-controlled
+      trial.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+
+    intervention_id: INT-0001
+    intervention_name: Leucovorin (folinic acid)
+    target_phenotype_id: PHE-0001  # cerebral folate deficiency
+
+    stratification_criterion: FRAA-positive (folate receptor alpha autoantibody)
+    stratifier_biomarker: serum_folate_receptor_alpha_autoantibody
+    stratifier_threshold: positive (binding-type ≥ baseline as defined in paper)
+
+    # Responder rate fields — extract from paper full-text
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    response_minus_placebo: <derived>
+
+    responder_definition: |
+      Improvement on Communication Domain of Vineland Adaptive Behavior
+      Scales-II + clinical global impression scale; FRAA-stratified analysis.
+
+    representative_input_profile_path: representative_inputs/rrc_001.json
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      intervention_rank_max: 1
+      primary_target_dimension: PHE-0001
+      profile_dominant_dimensions_must_include: [PHE-0001]
+
+    status: scaffold
+    notes: |
+      The atlas's case_015_frye_fraa_responder calibration case already maps
+      to this PMID; the responder-rate validation is the natural extension.
+      Engine currently ranks INT-0001 #1 for representative FRAA-positive
+      profile (verified in v0.2 cohort).
+
+  - entry_id: rrc_002_lemonnier_2017_bumetanide
+    rct_pmid: 28291262
+    rct_first_author: Lemonnier E
+    rct_year: 2017
+    rct_journal: Transl Psychiatry
+    rct_title: |
+      Effects of bumetanide on neurobehavioral function in children and
+      adolescents with autism spectrum disorders.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+
+    intervention_id: INT-0023  # placeholder — confirm bumetanide INT id
+    intervention_name: Bumetanide
+    target_phenotype_id: PHE-0007  # GABA / Cl⁻ imbalance
+
+    stratification_criterion: |
+      Phase 2/3 cohort — atlas-tagged subgroup of high-baseline-intracellular-
+      Cl⁻ neonates / children. Lemonnier's later analyses show responder-
+      enriched effects in this subgroup; population-average response in
+      Phase 3 was modest. Engine should encode this stratification.
+    stratifier_biomarker: csf_or_neuronal_intracellular_chloride_proxy
+    stratifier_threshold: <to be defined; placeholder>
+
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+
+    responder_definition: |
+      CGI-I-rated improvement at end-of-trial; SRS reduction ≥ minimum
+      clinically important difference. Definition per paper.
+
+    representative_input_profile_path: representative_inputs/rrc_002.json
+    expected_engine_behavior:
+      # KNOWN ENGINE GAP (v0.2): PHE-0007 (GABA / Cl⁻ imbalance) has no
+      # hardcoded biomarker→phenotype shift in collect_biomarker_shifts()
+      # because the published-CSF-Cl-proxy biomarker workflow is not yet
+      # standardized. The structural assertions below are therefore
+      # currently unsatisfiable; engine refactor required first. v0.3
+      # roadmap: add a CSF-Cl-proxy + KCC2-dysfunction biomarker→PHE-0007
+      # shift, and migrate biomarker shifts from hardcoded to atlas-driven
+      # via biomarker_phenotype_edges.csv.
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0007
+      profile_dominant_dimensions_must_include: [PHE-0007]
+      _expected_to_fail_until_engine_v03: true
+
+    status: scaffold_engine_gap
+    notes: |
+      Lemonnier 2017 Translational Psychiatry is the well-known phase 2/3
+      bumetanide trial. Subsequent stratification work (e.g., Hadjikhani 2018
+      eye-contact subset) supports a responder-enriched subgroup. Engine
+      should match high-Cl⁻ profiles to bumetanide preferentially.
+
+  # ===========================================================================
+  # Verified-PMID scaffold entries (2026-05-05 batch verification)
+  # Every PMID below passed PubMed esummary verification before being added.
+  # Responder-rate fields remain `<extract from paper>` pending full-text
+  # extraction in subsequent sessions.
+  # ===========================================================================
+
+  - entry_id: rrc_003_zimmerman_singh_2021_sulforaphane
+    rct_pmid: 34034808
+    rct_first_author: Zimmerman AW
+    rct_year: 2021
+    rct_journal: Mol Autism
+    rct_title: |
+      Randomized controlled trial of sulforaphane and metabolite discovery in
+      children with Autism Spectrum Disorder.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0002
+    intervention_name: Sulforaphane (broccoli sprout extract)
+    target_phenotype_id: PHE-0002
+    stratification_criterion: |
+      Mito-vulnerable / oxidative-stress subset (Singh 2014 PNAS earlier work
+      showed responder enrichment in elevated-oxidative-stress profiles).
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    responder_definition: ABC + SRS improvement; per-paper definition
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0002
+      profile_dominant_dimensions_must_include: [PHE-0002]
+      _representative_input_pending: true
+    status: scaffold
+
+  - entry_id: rrc_004_hardan_2012_nac
+    rct_pmid: 22342106
+    rct_first_author: Hardan AY
+    rct_year: 2012
+    rct_journal: Biol Psychiatry
+    rct_title: |
+      A randomized controlled pilot trial of oral N-acetylcysteine in children
+      with autism.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0029
+    intervention_name: N-acetylcysteine (NAC)
+    target_phenotype_id: PHE-0002
+    stratification_criterion: Oxidative-stress / GSH:GSSG-low subset (mechanistic)
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    responder_definition: ABC-Irritability subscale reduction; per-paper definition
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0002
+      _representative_input_pending: true
+    status: scaffold
+
+  - entry_id: rrc_005_chez_2002_carnosine
+    rct_pmid: 12585724
+    rct_first_author: Chez MG
+    rct_year: 2002
+    rct_journal: J Child Neurol
+    rct_title: |
+      Double-blind, placebo-controlled study of L-carnosine supplementation in
+      children with autistic spectrum disorders.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0036
+    intervention_name: L-carnosine
+    target_phenotype_id: PHE-0007
+    stratification_criterion: GABA-modulation framework (Chez hypothesis)
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    responder_definition: GARS receptive language + behavior; per-paper
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0007
+      _representative_input_pending: true
+    status: scaffold
+
+  - entry_id: rrc_006_hendren_2016_methyl_b12
+    rct_pmid: 26889605
+    rct_first_author: Hendren RL
+    rct_year: 2016
+    rct_journal: J Child Adolesc Psychopharmacol
+    rct_title: |
+      Randomized, Placebo-Controlled Trial of Methyl B12 for Children with
+      Autism.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0003
+    intervention_name: Methyl-B12 (subcutaneous methylcobalamin)
+    target_phenotype_id: PHE-0008  # undermethylator
+    stratification_criterion: |
+      Methylation-deficiency subset (low SAM/SAH, elevated homocysteine);
+      Hendren stratified by methionine cycle markers.
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    responder_definition: CGI-I improvement + biomarker normalization
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0008
+      _representative_input_pending: true
+    status: scaffold
+
+  - entry_id: rrc_007_wright_2011_melatonin
+    rct_pmid: 20535539
+    rct_first_author: Wright B
+    rct_year: 2011
+    rct_journal: J Autism Dev Disord
+    rct_title: |
+      Melatonin versus placebo in children with autism spectrum conditions and
+      severe sleep problems.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0042
+    intervention_name: Melatonin
+    target_phenotype_id: PHE-0007  # GABA / sleep architecture proxy
+    stratification_criterion: Severe sleep disorder subset
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    responder_definition: Sleep latency reduction ≥30min + total sleep time gain
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      _representative_input_pending: true
+    status: scaffold
+
+  - entry_id: rrc_008_owen_2009_aripiprazole
+    rct_pmid: 19948625
+    rct_first_author: Owen R
+    rct_year: 2009
+    rct_journal: Pediatrics
+    rct_title: |
+      Aripiprazole in the treatment of irritability in children and
+      adolescents with autistic disorder.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0029  # placeholder if exact INT id unclear
+    intervention_name: Aripiprazole
+    target_phenotype_id: PHE-0003  # behavioral/irritability proxy
+    stratification_criterion: Irritability subset (ABC-I baseline ≥18)
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    responder_definition: CGI-I score 1 or 2 (much/very much improved)
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      _representative_input_pending: true
+    status: scaffold
+    notes: |
+      Mainstream pharmacology RCT. Population-average response; not a
+      stratified-FM-protocol entry. Useful as a comparator baseline for the
+      cohort to anchor at a "high-evidence non-stratified" point.
+
+  - entry_id: rrc_009_kang_2017_microbiota_transfer
+    rct_pmid: 28122648
+    rct_first_author: Kang DW
+    rct_year: 2017
+    rct_journal: Microbiome
+    rct_title: |
+      Microbiota Transfer Therapy alters gut ecosystem and improves
+      gastrointestinal and autism symptoms: an open-label study.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0025
+    intervention_name: Microbiota Transfer Therapy (MTT)
+    target_phenotype_id: PHE-0004
+    stratification_criterion: GI-symptomatic + dysbiotic-microbiome subset
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: null  # open-label; no placebo comparator
+    responder_definition: GI severity index + ATEC autism-symptom reduction
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0004
+      _representative_input_pending: true
+    status: scaffold
+    notes: |
+      Companion follow-up: PMID 30967657 Kang 2019 Sci Rep showed 2-year
+      benefit retention. Both papers verified 2026-05-05.
+
+  - entry_id: rrc_010_rossignol_2012_hbot
+    rct_pmid: 22703610
+    rct_first_author: Rossignol DA
+    rct_year: 2012
+    rct_journal: Med Gas Res
+    rct_title: |
+      Hyperbaric oxygen treatment in autism spectrum disorders.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0017
+    intervention_name: Hyperbaric Oxygen Therapy (HBOT)
+    target_phenotype_id: PHE-0002
+    stratification_criterion: |
+      Mito-vulnerable + neuroinflammatory subset; Rossignol earlier work
+      stratified by pre-treatment GSH/GSSG and inflammatory markers.
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    responder_definition: Per-paper composite behavioral + biomarker
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0002
+      _representative_input_pending: true
+    status: scaffold
+    notes: |
+      Review of multiple HBOT trials including the Rossignol 2009 RCT.
+      Mixed published evidence; per principle §9 mixed = effect heterogeneity,
+      not absence — engine should reflect responder-subset behavior.
+
+  - entry_id: rrc_011_adams_2011_vitamin_mineral
+    rct_pmid: 22151477
+    rct_first_author: Adams JB
+    rct_year: 2011
+    rct_journal: BMC Pediatr
+    rct_title: |
+      Effect of a vitamin/mineral supplement on children and adults with
+      autism.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0018
+    intervention_name: Vitamin/mineral multinutrient supplement (Adams formulation)
+    target_phenotype_id: PHE-0002  # broad metabolic; OAT/methylation responders
+    stratification_criterion: |
+      Broad metabolic deficiency subset; Adams's later work stratified by
+      pre-treatment biomarker abnormalities.
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: <extract from paper>
+    responder_definition: ATEC + PDD-BI + biomarker normalization
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      _representative_input_pending: true
+    status: scaffold
+
+  - entry_id: rrc_012_tsilioni_2015_luteolin
+    rct_pmid: 26418275
+    rct_first_author: Tsilioni I
+    rct_year: 2015
+    rct_journal: Transl Psychiatry
+    rct_title: |
+      Children with autism spectrum disorders, who improved with a luteolin-
+      containing dietary formulation, show reduced serum levels of TNF and
+      IL-6.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0006
+    intervention_name: Luteolin formulation
+    target_phenotype_id: PHE-0003  # MCAS / inflammatory subset
+    stratification_criterion: |
+      Elevated TNF / IL-6 / mast-cell-marker subset; Theoharides framework.
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: null  # open-label cohort
+    responder_definition: ABC improvement + cytokine reduction
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0003
+      _representative_input_pending: true
+    status: scaffold
+
+  - entry_id: rrc_013_frankovich_2017_pans_treatment
+    rct_pmid: 36358107
+    rct_first_author: Frankovich J
+    rct_year: 2017
+    rct_journal: J Child Adolesc Psychopharmacol
+    rct_title: |
+      Clinical Management of Pediatric Acute-Onset Neuropsychiatric Syndrome:
+      Part II — Use of Immunomodulatory Therapies.
+    pmid_verified: true
+    pmid_verified_at: 2026-05-05
+    intervention_id: INT-0027
+    intervention_name: IVIG / immunomodulatory therapy (PANS subset)
+    target_phenotype_id: PHE-0003  # autoimmune subset
+    stratification_criterion: |
+      PANS-positive subset (Cunningham panel composite + acute onset). Not
+      generic autism — PANS overlapping subset.
+    n_total_in_stratum: <extract from paper>
+    n_responder_in_stratum: <extract from paper>
+    published_responder_rate: <extract from paper>
+    placebo_responder_rate: null  # treatment-guidance paper
+    responder_definition: PANS Severity Scale reduction
+    representative_input_profile_path: <pending>
+    expected_engine_behavior:
+      intervention_in_top_5: true
+      primary_target_dimension: PHE-0003
+      _representative_input_pending: true
+    status: scaffold
+    notes: |
+      Treatment-guidance paper rather than a single RCT. Used as cohort
+      anchor for PANS-stratified responder analysis. Cunningham panel
+      composite is the engine's proxy biomarker (collect_biomarker_shifts
+      v0.3 reads autoabs.cunningham_panel.composite_elevated).
+
+  # ===========================================================================
+  # PubMed-search-needed candidates (NOT YET PMID-verified — do NOT add
+  # without running scripts/seed_with_verification.py first)
+  # ===========================================================================
+  # The following are still on the expansion roadmap to reach ~30 entries:
+  #   - GFCF diet (Whiteley, GI-symptomatic subset)
+  #   - Methyl-B12 sub-cu (Frye 2014 / 2017) — separate from Hendren 2016
+  #   - Cromolyn / mast cell stabilization (MCAS subset)
+  #   - Ketogenic diet (mito-vulnerable subset; Lee 2018)
+  #   - Pioglitazone (Boris)
+  #   - Memantine (Owley)
+  #   - Risperidone (Aman / RUPP — responder analysis vs unstratified)
+  #   - Bumetanide Phase 3 update (Crutel 2021)
+  #   - L-acetyl-carnitine (Geier — needs careful provenance check)
+  #   - Carnitine in mito-confirmed subset (Filipek)
+  #   - OSR / chelation studies (heavy methodological caveats; not adding
+  #     without separate provenance audit)
+
+deliverables:
+  v0.1: |
+    Scaffold + 2 worked entries with verified PMIDs (current state).
+  v0.2_target_month_3: |
+    30 entries with full-text-extracted responder rates. compute_responder_mae.py
+    produces a single-number cohort MAE and per-entry abs error.
+  v1.0_target_month_5: |
+    Preprint draft submitted to Patterns / npj Digital Medicine / Cell Reports
+    Medicine. Blinded re-extraction of 5 entries by a sub-agent for
+    methodology audit.

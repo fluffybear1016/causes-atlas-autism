@@ -1,0 +1,5 @@
+id,gene_id,phenotype_id,relation_type,polarity,evidence_for_count,evidence_against_count,evidence_strength_aggregate,context_scope,status,created_at,last_updated,rationale
+PGPE-00001,GEN-1309,PHE-0002,syndromic_cause_of,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,POLG → mitochondrial DNA depletion → mito dysfunction phenotype
+PGPE-00002,GEN-0418,PHE-0007,syndromic_cause_of,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,GABRB3 → GABA-A receptor → Cl- imbalance subset
+PGPE-00003,GEN-0415,PHE-0007,syndromic_cause_of,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,GABRA3 → GABA-A receptor → Cl- imbalance subset
+PGPE-00004,GEN-1007,PHE-0007,syndromic_cause_of,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,KCC2 → developmental Cl- gradient inversion

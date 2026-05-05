@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Kaur M; Costello J; Willis E; Kelm K; Reformat MZ; Bolduc FV",
+  "doi": "doi: 10.2196/39888",
+  "first_author": "Kaur M",
+  "journal": "J Med Internet Res",
+  "matched_queries": [
+    "\"knowledge graph\"[tiab] AND (autism[tiab] OR \"neurodevelopmental\"[tiab])"
+  ],
+  "pmid": "35930346",
+  "pubdate": "2022 Aug 5",
+  "title": "Deciphering the Diversity of Mental Models in Neurodevelopmental Disorders: Knowledge Graph Representation of Public Data Using Natural Language Processing.",
+  "verified_at": "2026-05-05T13:07:59+00:00"
+}

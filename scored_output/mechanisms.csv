@@ -1,0 +1,11 @@
+id,name,category,description,status,evidence_strength,kegg_ids,reactome_ids,opentargets_ids,created_at,last_updated,notes
+MEC-0001,Oxidative stress,oxidative,,active,0.8895,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0002,Neuroinflammation,immune_inflammatory,,active,0.8545,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0003,Impaired methylation,metabolic,,active,0.8854,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0004,BBB dysfunction,vascular,,active,0.8232,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0005,Microglial activation,immune_inflammatory,,active,0.4590,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0006,Synaptic pruning abnormalities,neural,,active,0.4000,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0007,GABA/glutamate imbalance,neural,,active,0.5918,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0008,Gut-brain axis disruption,microbial,,active,0.8607,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0009,mTOR pathway dysregulation,metabolic,,active,0.4557,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples
+MEC-0010,Mitochondrial dysfunction,metabolic,,active,0.9008,,,,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00,seeded from spec §4.2 examples

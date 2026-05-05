@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Long J; Liao X; Han K; Chen J; Tang Z; Wang W; Wang X; Chi Q",
+  "doi": "doi: 10.1007/s00018-026-06096-2",
+  "first_author": "Long J",
+  "journal": "Cell Mol Life Sci",
+  "matched_queries": [
+    "autism[tiab] AND (mitochondrial[tiab] OR \"oxidative stress\"[tiab]) AND (\"clinical trial\"[pt] OR \"randomized\"[tiab])"
+  ],
+  "pmid": "41615476",
+  "pubdate": "2026 Jan 30",
+  "title": "Microbiota-gut-brain axis\u00a0and neuroendocrine pathways underlie divergent mechanisms of intermittent and continuous theta-burst stimulation in autism spectrum disorder.",
+  "verified_at": "2026-05-05T13:08:00+00:00"
+}

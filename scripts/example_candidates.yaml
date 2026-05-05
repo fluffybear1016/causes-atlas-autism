@@ -1,0 +1,42 @@
+# Test candidates for seed_with_verification.py
+# Tests both PASS and FAIL cases.
+
+- row_id: TEST-PASS-1
+  claimed_pmid: 23613074
+  claimed_first_author: Christensen
+  claimed_year: 2013
+  claimed_key_terms: [valproate, autism]
+  claimed_journal_substring: JAMA
+  row_data:
+    test_id: TEST-PASS-1
+    note: "Christensen 2013 JAMA valproate"
+
+- row_id: TEST-PASS-2
+  claimed_pmid: 38592388
+  claimed_first_author: Ahlqvist
+  claimed_year: 2024
+  claimed_key_terms: [acetaminophen, autism]
+  claimed_journal_substring: JAMA
+  row_data:
+    test_id: TEST-PASS-2
+    note: "Ahlqvist 2024 JAMA acetaminophen sibling-control"
+
+- row_id: TEST-FAIL-FABRICATED
+  claimed_pmid: 21727249  # was in v2.2 fabricated set — actually Hallmayer twin study
+  claimed_first_author: Croen
+  claimed_year: 2011
+  claimed_key_terms: [antidepressant, autism]
+  claimed_journal_substring: Arch Gen Psychiatry
+  row_data:
+    test_id: TEST-FAIL-FABRICATED
+    note: "This row should be REJECTED: PMID 21727249 is Hallmayer 2011 twin study, not Croen SSRI paper"
+
+- row_id: TEST-PASS-CORRECTED
+  claimed_pmid: 21727247  # the actual Croen 2011 PMID
+  claimed_first_author: Croen
+  claimed_year: 2011
+  claimed_key_terms: [antidepressant, autism]
+  claimed_journal_substring: Arch Gen Psychiatry
+  row_data:
+    test_id: TEST-PASS-CORRECTED
+    note: "Croen 2011 Arch Gen Psychiatry antidepressant + autism — corrected PMID"

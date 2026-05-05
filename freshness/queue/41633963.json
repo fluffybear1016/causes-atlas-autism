@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Rabiei H; Begnis M; Lemonnier E; Ben-Ari Y",
+  "doi": "doi: 10.1038/s41398-026-03848-3",
+  "first_author": "Rabiei H",
+  "journal": "Transl Psychiatry",
+  "matched_queries": [
+    "autism[tiab] AND (bumetanide[tiab] OR \"GABA polarity\"[tiab])"
+  ],
+  "pmid": "41633963",
+  "pubdate": "2026 Feb 3",
+  "title": "Treating autism with Bumetanide: Identification of responders using Q-Finder machine learning algorithm.",
+  "verified_at": "2026-05-05T13:08:00+00:00"
+}

@@ -1,0 +1,834 @@
+# Phase 0F: Rare-syndrome screening gate candidates
+# Per spec §4 — engine first step. If any row matches, generic phenotype
+# assignment is bypassed and syndrome-specific output is produced.
+#
+# Each row references a PMID-verified foundational or atlas-relevant paper
+# for the syndrome. Verified via PubMed esummary on 2026-04-30.
+
+- row_id: RSG-0001
+  claimed_pmid: 1710175
+  claimed_first_author: Verkerk
+  claimed_year: 1991
+  claimed_key_terms: [FMR-1, fragile, CGG]
+  claimed_journal_substring: Cell
+  row_data:
+    id: RSG-0001
+    syndrome_name: Fragile X syndrome (FXS)
+    gene_or_locus: FMR1
+    inheritance_pattern: X-linked
+    defining_genetic_criterion: FMR1 CGG repeat ≥200 (full mutation); 55-200 = premutation also flagged
+    defining_phenotypic_features: long face, large prominent ears, macroorchidism postpuberty, intellectual disability, autism features in ~50%
+    typical_age_of_recognition: toddler to early childhood
+    target_phenotype_routing: PHE-0006
+    autism_prevalence_in_syndrome: ~50% of FXS males meet autism criteria
+    intervention_contraindications: avoid stimulants paradoxical worsening common
+    specialist_referral_recommended: medical geneticist + developmental pediatrician + FXS specialty clinic
+    primary_pmid: 1710175
+    status: active
+    created_at: 2026-04-30
+    notes: Verkerk 1991 Cell — original FMR1 gene identification with CGG repeat. PHE-0006 directly maps.
+
+- row_id: RSG-0002
+  claimed_pmid: 10508514
+  claimed_first_author: Amir
+  claimed_year: 1999
+  claimed_key_terms: [Rett, MECP2]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0002
+    syndrome_name: Rett syndrome
+    gene_or_locus: MECP2
+    inheritance_pattern: X-linked dominant (typically de novo; lethal in most males)
+    defining_genetic_criterion: MECP2 pathogenic variant (predominantly female; rare male phenotypes)
+    defining_phenotypic_features: female with normal early development then regression at 6-18mo, hand stereotypies, gait apraxia, autism-spectrum features, microcephaly acquired, breathing irregularities
+    typical_age_of_recognition: 6-30 months at regression
+    target_phenotype_routing: rett_specific
+    autism_prevalence_in_syndrome: distinct from idiopathic autism but often initially diagnosed as autism before Rett features emerge
+    intervention_contraindications: serotonergic medications often poorly tolerated; mainstream behavioral interventions less effective than Rett-specific approaches
+    specialist_referral_recommended: Rett specialty clinic (e.g., Rett Syndrome Research Trust network) + neurology + medical geneticist
+    primary_pmid: 10508514
+    status: active
+    created_at: 2026-04-30
+    notes: Amir 1999 Nat Genet — original MECP2 → Rett identification. Distinct trajectory from idiopathic autism.
+
+- row_id: RSG-0003
+  claimed_pmid: 8269512
+  claimed_first_author: European
+  claimed_year: 1993
+  claimed_key_terms: [tuberous, sclerosis]
+  claimed_journal_substring: Cell
+  row_data:
+    id: RSG-0003
+    syndrome_name: Tuberous Sclerosis Complex (TSC) — TSC2 form
+    gene_or_locus: TSC2 16p13.3
+    inheritance_pattern: autosomal_dominant (often de novo)
+    defining_genetic_criterion: pathogenic variant in TSC2
+    defining_phenotypic_features: hypopigmented macules ash-leaf spots, facial angiofibroma, cortical tubers on imaging, cardiac rhabdomyomas, infantile spasms, epilepsy ~80%, autism ~40-50%, intellectual disability ~50%
+    typical_age_of_recognition: infancy via cardiac rhabdomyoma fetal/neonatal or skin features
+    target_phenotype_routing: PHE-0005
+    autism_prevalence_in_syndrome: ~40-50% of TSC have autism features
+    intervention_contraindications: standard mTOR inhibitors (rapamycin/sirolimus) FDA-approved for TSC manifestations — DO consider
+    specialist_referral_recommended: TSC specialty clinic + neurology + dermatology + cardiology + medical geneticist
+    primary_pmid: 8269512
+    status: active
+    created_at: 2026-04-30
+    notes: European Chromosome 16 Tuberous Sclerosis Consortium 1993 Cell — original TSC2 gene identification. PHE-0005 mTOR-pathway syndromic phenotype.
+
+- row_id: RSG-0004
+  claimed_pmid: 9242607
+  claimed_first_author: van Slegtenhorst
+  claimed_year: 1997
+  claimed_key_terms: [tuberous, sclerosis, TSC1]
+  claimed_journal_substring: Science
+  row_data:
+    id: RSG-0004
+    syndrome_name: Tuberous Sclerosis Complex (TSC) — TSC1 form
+    gene_or_locus: TSC1 9q34
+    inheritance_pattern: autosomal_dominant (often de novo)
+    defining_genetic_criterion: pathogenic variant in TSC1
+    defining_phenotypic_features: similar to TSC2 but often milder; cortical tubers, skin features, epilepsy and autism prevalence somewhat lower than TSC2
+    typical_age_of_recognition: infancy to early childhood
+    target_phenotype_routing: PHE-0005
+    autism_prevalence_in_syndrome: ~30-40% of TSC1 cases (lower than TSC2)
+    intervention_contraindications: mTOR inhibitors as for TSC2
+    specialist_referral_recommended: TSC specialty clinic
+    primary_pmid: 9242607
+    status: active
+    created_at: 2026-04-30
+    notes: van Slegtenhorst 1997 Science — TSC1 gene identification at chromosome 9q34. Distinct allelic form of TSC; somewhat milder phenotype than TSC2.
+
+- row_id: RSG-0005
+  claimed_pmid: 15805158
+  claimed_first_author: Butler
+  claimed_year: 2005
+  claimed_key_terms: [PTEN, autism, macrocephaly]
+  claimed_journal_substring: J Med Genet
+  row_data:
+    id: RSG-0005
+    syndrome_name: PTEN hamartoma tumor syndrome (PHTS) with autism + macrocephaly
+    gene_or_locus: PTEN 10q23.31
+    inheritance_pattern: autosomal_dominant
+    defining_genetic_criterion: PTEN pathogenic variant (germline) + autism + macrocephaly (head circumference Z >+2)
+    defining_phenotypic_features: macrocephaly OFC Z>+2 often >+3, autism features, intellectual disability variable, hamartomas, lifetime cancer risk (breast, thyroid, endometrial, skin)
+    typical_age_of_recognition: infancy via macrocephaly; cancer surveillance starting adolescence
+    target_phenotype_routing: PHE-0005
+    autism_prevalence_in_syndrome: substantial subset of PTEN+macrocephaly cases meet autism criteria
+    intervention_contraindications: standard cancer surveillance from adolescence onward — Cleveland Clinic PHTS protocol
+    specialist_referral_recommended: medical geneticist + oncology cancer surveillance + developmental pediatrician
+    primary_pmid: 15805158
+    status: active
+    created_at: 2026-04-30
+    notes: Butler 2005 J Med Genet — PTEN germline mutations in autism + extreme macrocephaly subset. PHE-0005 mTOR-pathway syndromic.
+
+- row_id: RSG-0006
+  claimed_pmid: 32546186
+  claimed_first_author: Goodspeed
+  claimed_year: 2020
+  claimed_key_terms: [Phelan-McDermid, SHANK3]
+  claimed_journal_substring: Orphanet
+  row_data:
+    id: RSG-0006
+    syndrome_name: Phelan-McDermid syndrome (22q13.3 deletion)
+    gene_or_locus: SHANK3 / 22q13.3 deletion or pathogenic SHANK3 variant
+    inheritance_pattern: typically de novo (deletion or point mutation)
+    defining_genetic_criterion: 22q13.3 deletion encompassing SHANK3 OR isolated pathogenic SHANK3 variant
+    defining_phenotypic_features: severe intellectual disability, absent or severely delayed speech, autism features ~84%, neonatal hypotonia, dysmorphic features, increased pain tolerance, sleep disturbance
+    typical_age_of_recognition: infancy via hypotonia and developmental delay
+    target_phenotype_routing: phelan_mcdermid_specific
+    autism_prevalence_in_syndrome: ~84% meet autism criteria
+    intervention_contraindications: severe phenotype; standard autism behavioral interventions calibrated for higher-functioning autism may be poorly matched
+    specialist_referral_recommended: Phelan-McDermid Syndrome Foundation network + medical geneticist + developmental pediatrician
+    primary_pmid: 32546186
+    status: active
+    created_at: 2026-04-30
+    notes: Goodspeed 2020 Orphanet J Rare Dis — Phelan-McDermid Syndrome Foundation 2018 international conference findings. Distinct severe-phenotype trajectory.
+
+- row_id: RSG-0007
+  claimed_pmid: 16470747
+  claimed_first_author: Williams
+  claimed_year: 2006
+  claimed_key_terms: [Angelman, syndrome]
+  claimed_journal_substring: Am J Med Genet
+  row_data:
+    id: RSG-0007
+    syndrome_name: Angelman syndrome
+    gene_or_locus: UBE3A / 15q11-q13 maternal deletion or imprinting defect or paternal UPD
+    inheritance_pattern: imprinted (maternal expression of UBE3A required)
+    defining_genetic_criterion: maternal 15q11-q13 deletion OR maternal UBE3A pathogenic variant OR imprinting defect OR paternal UPD15
+    defining_phenotypic_features: severe intellectual disability, virtually absent speech, ataxic gait, characteristic happy demeanor with frequent laughter, microcephaly, epilepsy ~80%, sleep disturbance
+    typical_age_of_recognition: 6-12 months via developmental delay; characteristic features by 1-3 years
+    target_phenotype_routing: angelman_specific
+    autism_prevalence_in_syndrome: substantial overlap with autism criteria but distinct trajectory
+    intervention_contraindications: anti-epileptic regimen requires specialist guidance (some agents worsen Angelman seizures); behavioral interventions calibrated for severe ID
+    specialist_referral_recommended: Angelman Syndrome Foundation network + neurology + medical geneticist
+    primary_pmid: 16470747
+    status: active
+    created_at: 2026-04-30
+    notes: Williams 2006 Am J Med Genet A — updated consensus diagnostic criteria for Angelman syndrome 2005.
+
+- row_id: RSG-0008
+  claimed_pmid: 1746552
+  claimed_first_author: Greenberg
+  claimed_year: 1991
+  claimed_key_terms: [Smith-Magenis, 17p11.2]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0008
+    syndrome_name: Smith-Magenis syndrome
+    gene_or_locus: RAI1 17p11.2
+    inheritance_pattern: typically de novo deletion or RAI1 variant
+    defining_genetic_criterion: 17p11.2 deletion encompassing RAI1 OR pathogenic RAI1 variant
+    defining_phenotypic_features: intellectual disability, characteristic behavioral phenotype (self-injury especially nail-yanking and head-banging, hyperactivity, sleep disturbance with inverted melatonin rhythm), distinctive facial features
+    typical_age_of_recognition: toddler to early childhood via behavioral phenotype
+    target_phenotype_routing: smith_magenis_specific
+    autism_prevalence_in_syndrome: behavioral phenotype overlaps with autism but inverted melatonin rhythm is distinctive
+    intervention_contraindications: melatonin therapy (counterintuitive in Smith-Magenis given inverted rhythm) requires specialist supervision
+    specialist_referral_recommended: medical geneticist + sleep specialist + behavioral pediatrician
+    primary_pmid: 1746552
+    status: active
+    created_at: 2026-04-30
+    notes: Greenberg 1991 Am J Hum Genet — original molecular characterization of Smith-Magenis 17p11.2 deletion.
+
+- row_id: RSG-0009
+  claimed_pmid: 7693128
+  claimed_first_author: Ewart
+  claimed_year: 1993
+  claimed_key_terms: [Williams, elastin]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0009
+    syndrome_name: Williams syndrome
+    gene_or_locus: 7q11.23 deletion (incl. ELN)
+    inheritance_pattern: typically de novo
+    defining_genetic_criterion: 7q11.23 microdeletion ~1.55-1.84 Mb encompassing ELN
+    defining_phenotypic_features: characteristic elfin facial features, supravalvular aortic stenosis, hypercalcemia infancy, intellectual disability mild-moderate, hypersociable phenotype with strangers, anxiety, hyperacusis
+    typical_age_of_recognition: infancy via cardiac findings or facial features
+    target_phenotype_routing: williams_specific
+    autism_prevalence_in_syndrome: paradoxically autism features can co-occur despite hypersociable phenotype; ~7-15% meet autism criteria
+    intervention_contraindications: cardiac surveillance for SVAS; calcium monitoring; standard hypersociability does NOT mean absence of social-communication difficulties
+    specialist_referral_recommended: Williams Syndrome Association network + cardiology + medical geneticist
+    primary_pmid: 7693128
+    status: active
+    created_at: 2026-04-30
+    notes: Ewart 1993 Nat Genet — ELN hemizygosity in Williams syndrome 7q11.23.
+
+- row_id: RSG-0010
+  claimed_pmid: 31174463
+  claimed_first_author: Motahari
+  claimed_year: 2019
+  claimed_key_terms: [22q11.2, deletion]
+  claimed_journal_substring: J Neurodev Disord
+  row_data:
+    id: RSG-0010
+    syndrome_name: 22q11.2 deletion syndrome (DiGeorge / velocardiofacial)
+    gene_or_locus: 22q11.2 typically 3 Mb deletion; nested 1.5 Mb in subset
+    inheritance_pattern: typically de novo; ~10% inherited
+    defining_genetic_criterion: 22q11.2 deletion (3 Mb typical or 1.5 Mb nested)
+    defining_phenotypic_features: cardiac defects (conotruncal especially TOF, IAA), palatal abnormalities, immune deficiency thymic hypoplasia, hypocalcemia, intellectual disability variable, autism features ~10-20%, schizophrenia risk ~25% lifetime
+    typical_age_of_recognition: infancy via cardiac findings or hypocalcemia or palatal cleft
+    target_phenotype_routing: 22q11_specific
+    autism_prevalence_in_syndrome: ~10-20% meet autism criteria; substantial schizophrenia risk in adolescence/adulthood
+    intervention_contraindications: live-virus vaccine caution if T-cell deficiency; calcium monitoring; psychiatric surveillance for emerging psychosis from adolescence
+    specialist_referral_recommended: 22q11.2 Society network + cardiology + immunology + endocrinology + psychiatry
+    primary_pmid: 31174463
+    status: active
+    created_at: 2026-04-30
+    notes: Motahari 2019 J Neurodev Disord — comprehensive review of genes deleted in 22q11.2 deletion and their neurodevelopmental contributions. Multi-system phenotype distinct from idiopathic autism.
+
+- row_id: RSG-0011
+  claimed_pmid: 18184952
+  claimed_first_author: Weiss
+  claimed_year: 2008
+  claimed_key_terms: [16p11.2, autism]
+  claimed_journal_substring: N Engl J Med
+  row_data:
+    id: RSG-0011
+    syndrome_name: 16p11.2 deletion syndrome
+    gene_or_locus: 16p11.2 ~600 kb deletion (BP4-BP5)
+    inheritance_pattern: ~75% de novo, ~25% inherited
+    defining_genetic_criterion: 16p11.2 BP4-BP5 deletion ~600 kb
+    defining_phenotypic_features: developmental delay, intellectual disability mild-moderate, autism features ~20%, obesity and macrocephaly tendency, speech-language disorder, scoliosis subset
+    typical_age_of_recognition: toddler via developmental delay
+    target_phenotype_routing: 16p11_specific
+    autism_prevalence_in_syndrome: ~20% meet autism criteria; one of the strongest single CNV-autism associations
+    intervention_contraindications: weight monitoring (obesity tendency); standard early-intervention applies
+    specialist_referral_recommended: medical geneticist + developmental pediatrician
+    primary_pmid: 18184952
+    status: active
+    created_at: 2026-04-30
+    notes: Weiss 2008 N Engl J Med — landmark paper showing 16p11.2 deletion AND duplication associated with autism. Foundational 16p11.2-autism link.
+
+- row_id: RSG-0012
+  claimed_pmid: 18784092
+  claimed_first_author: Mefford
+  claimed_year: 2008
+  claimed_key_terms: [1q21.1, rearrangements]
+  claimed_journal_substring: N Engl J Med
+  row_data:
+    id: RSG-0012
+    syndrome_name: 1q21.1 deletion / duplication syndrome
+    gene_or_locus: 1q21.1 ~1.35 Mb deletion or duplication
+    inheritance_pattern: variable inheritance with reduced penetrance
+    defining_genetic_criterion: 1q21.1 deletion or duplication ~1.35 Mb
+    defining_phenotypic_features: variable phenotype — microcephaly (deletion) or macrocephaly (duplication), intellectual disability variable, autism features subset, congenital heart defects subset, schizophrenia risk in adulthood
+    typical_age_of_recognition: variable; often early childhood via developmental delay
+    target_phenotype_routing: 1q21_specific
+    autism_prevalence_in_syndrome: variable, autism features in subset
+    intervention_contraindications: cardiac evaluation; psychiatric surveillance
+    specialist_referral_recommended: medical geneticist + cardiology
+    primary_pmid: 18784092
+    status: active
+    created_at: 2026-04-30
+    notes: Mefford 2008 N Engl J Med — recurrent 1q21.1 rearrangements with variable pediatric phenotypes including autism. Reduced-penetrance CNV.
+
+- row_id: RSG-0013
+  claimed_pmid: 15146185
+  claimed_first_author: Tonkin
+  claimed_year: 2004
+  claimed_key_terms: [NIPBL, Cornelia]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0013
+    syndrome_name: Cornelia de Lange syndrome (CdLS)
+    gene_or_locus: NIPBL (most common); SMC1A, SMC3, RAD21, HDAC8 (cohesinopathy)
+    inheritance_pattern: autosomal dominant typically de novo (NIPBL); X-linked (SMC1A, HDAC8)
+    defining_genetic_criterion: pathogenic variant in NIPBL, SMC1A, SMC3, RAD21, or HDAC8
+    defining_phenotypic_features: distinctive facial features (synophrys, long eyelashes, anteverted nares, thin upper lip), pre/postnatal growth retardation, limb anomalies (severe limb reduction in NIPBL), intellectual disability, autism features
+    typical_age_of_recognition: prenatal or birth via facial features and limb anomalies
+    target_phenotype_routing: cdls_specific
+    autism_prevalence_in_syndrome: substantial overlap with autism behavioral profile
+    intervention_contraindications: GERD common requires aggressive management; growth and feeding specialist
+    specialist_referral_recommended: CdLS Foundation + medical geneticist + GI + ortho
+    primary_pmid: 15146185
+    status: active
+    created_at: 2026-04-30
+    notes: Tonkin 2004 Nat Genet — NIPBL homolog of fungal Scc2 cohesin loader as cause of Cornelia de Lange syndrome.
+
+- row_id: RSG-0014
+  claimed_pmid: 15300250
+  claimed_first_author: Vissers
+  claimed_year: 2004
+  claimed_key_terms: [CHARGE, chromodomain]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0014
+    syndrome_name: CHARGE syndrome
+    gene_or_locus: CHD7 8q12.2
+    inheritance_pattern: autosomal dominant typically de novo
+    defining_genetic_criterion: pathogenic CHD7 variant
+    defining_phenotypic_features: Coloboma, Heart defects, Atresia choanae, Retardation of growth/development, Genital hypoplasia, Ear anomalies; autism features ~50% in subset
+    typical_age_of_recognition: birth via coloboma, choanal atresia, cardiac anomalies
+    target_phenotype_routing: charge_specific
+    autism_prevalence_in_syndrome: ~50% in some cohorts
+    intervention_contraindications: airway management, sensory deficits (vision/hearing) require accommodation; standard autism behavioral interventions adapted for sensory issues
+    specialist_referral_recommended: CHARGE Syndrome Foundation + ENT + ophthalmology + cardiology
+    primary_pmid: 15300250
+    status: active
+    created_at: 2026-04-30
+    notes: Vissers 2004 Nat Genet — CHD7 chromodomain helicase as CHARGE cause.
+
+- row_id: RSG-0015
+  claimed_pmid: 16826528
+  claimed_first_author: Kleefstra
+  claimed_year: 2006
+  claimed_key_terms: [EHMT1, 9q]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0015
+    syndrome_name: Kleefstra syndrome
+    gene_or_locus: EHMT1 9q34.3
+    inheritance_pattern: autosomal dominant typically de novo
+    defining_genetic_criterion: 9q34.3 deletion or pathogenic EHMT1 variant
+    defining_phenotypic_features: intellectual disability, distinctive facial features (brachycephaly, synophrys, anteverted nares), hypotonia, autism features, congenital heart defects subset, severe speech delay
+    typical_age_of_recognition: infancy via hypotonia and developmental delay
+    target_phenotype_routing: kleefstra_specific
+    autism_prevalence_in_syndrome: substantial autism feature overlap
+    intervention_contraindications: cardiac evaluation; standard developmental support
+    specialist_referral_recommended: medical geneticist + cardiology + developmental pediatrician
+    primary_pmid: 16826528
+    status: active
+    created_at: 2026-04-30
+    notes: Kleefstra 2006 Am J Hum Genet — EHMT1 loss-of-function as cause of 9q34.3 microdeletion / Kleefstra syndrome.
+
+- row_id: RSG-0016
+  claimed_pmid: 21782149
+  claimed_first_author: Sirmaci
+  claimed_year: 2011
+  claimed_key_terms: [ANKRD11, KBG]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0016
+    syndrome_name: KBG syndrome
+    gene_or_locus: ANKRD11 16q24.3
+    inheritance_pattern: autosomal dominant
+    defining_genetic_criterion: pathogenic ANKRD11 variant or 16q24.3 deletion
+    defining_phenotypic_features: intellectual disability mild-moderate, macrodontia of upper central incisors, distinctive facial features, short stature, skeletal anomalies, autism features subset
+    typical_age_of_recognition: childhood via dental and facial features
+    target_phenotype_routing: kbg_specific
+    autism_prevalence_in_syndrome: subset meet autism criteria
+    intervention_contraindications: dental specialist due to macrodontia; orthopedic surveillance
+    specialist_referral_recommended: medical geneticist + dentistry + orthopedics
+    primary_pmid: 21782149
+    status: active
+    created_at: 2026-04-30
+    notes: Sirmaci 2011 Am J Hum Genet — ANKRD11 mutations as cause of KBG syndrome.
+
+- row_id: RSG-0017
+  claimed_pmid: 22426308
+  claimed_first_author: Tsurusaki
+  claimed_year: 2012
+  claimed_key_terms: [Coffin-Siris, SWI/SNF]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0017
+    syndrome_name: Coffin-Siris syndrome
+    gene_or_locus: ARID1B (most common); ARID1A, SMARCB1, SMARCA4, SMARCE1 (BAF complex)
+    inheritance_pattern: autosomal dominant typically de novo
+    defining_genetic_criterion: pathogenic variant in ARID1B or other SWI/SNF / BAF complex gene
+    defining_phenotypic_features: intellectual disability variable, hypoplastic / absent fifth fingernails or toenails, coarse facial features, feeding difficulties, growth delay, autism features
+    typical_age_of_recognition: infancy via hypoplastic distal nails and feeding issues
+    target_phenotype_routing: coffin_siris_specific
+    autism_prevalence_in_syndrome: subset meet autism criteria
+    intervention_contraindications: feeding specialist for early infancy
+    specialist_referral_recommended: medical geneticist + GI + feeding therapy
+    primary_pmid: 22426308
+    status: active
+    created_at: 2026-04-30
+    notes: Tsurusaki 2012 Nat Genet — SWI/SNF complex mutations in Coffin-Siris syndrome. ARID1B is most common.
+
+- row_id: RSG-0018
+  claimed_pmid: 15499549
+  claimed_first_author: Tao
+  claimed_year: 2004
+  claimed_key_terms: [CDKL5, X-linked]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0018
+    syndrome_name: CDKL5 deficiency disorder (atypical Rett-like)
+    gene_or_locus: CDKL5 Xp22.13
+    inheritance_pattern: X-linked dominant typically de novo
+    defining_genetic_criterion: pathogenic CDKL5 variant
+    defining_phenotypic_features: early-onset refractory epilepsy (often in first months), severe intellectual disability, hand stereotypies, Rett-like phenotype but earlier seizure onset, autism features
+    typical_age_of_recognition: infancy via early seizures
+    target_phenotype_routing: cdkl5_specific
+    autism_prevalence_in_syndrome: severe ID overlaps with autism features but distinct trajectory
+    intervention_contraindications: refractory epilepsy management challenging; ketogenic diet sometimes effective
+    specialist_referral_recommended: International Foundation for CDKL5 Research + epilepsy specialist + medical geneticist
+    primary_pmid: 15499549
+    status: active
+    created_at: 2026-04-30
+    notes: Tao 2004 Am J Hum Genet — CDKL5/STK9 mutations as cause of X-linked infantile spasms with atypical Rett features.
+
+- row_id: RSG-0019
+  claimed_pmid: 18571142
+  claimed_first_author: Ariani
+  claimed_year: 2008
+  claimed_key_terms: [FOXG1, Rett]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0019
+    syndrome_name: FOXG1 syndrome (congenital Rett variant)
+    gene_or_locus: FOXG1 14q12
+    inheritance_pattern: autosomal dominant typically de novo
+    defining_genetic_criterion: pathogenic FOXG1 variant or 14q12 deletion
+    defining_phenotypic_features: postnatal microcephaly, severe intellectual disability, congenital onset (no normal development period unlike classical Rett), corpus callosum agenesis subset, dyskinetic movements, epilepsy
+    typical_age_of_recognition: infancy via microcephaly and severe delay
+    target_phenotype_routing: foxg1_specific
+    autism_prevalence_in_syndrome: severe ID; autism features overlap but distinct trajectory
+    intervention_contraindications: distinct management from classical Rett; epilepsy specialist
+    specialist_referral_recommended: FOXG1 Research Foundation + neurology + medical geneticist
+    primary_pmid: 18571142
+    status: active
+    created_at: 2026-04-30
+    notes: Ariani 2008 Am J Hum Genet — FOXG1 mutations as cause of congenital Rett-variant. Distinct from classical Rett (no period of normal development).
+
+- row_id: RSG-0020
+  claimed_pmid: 20436468
+  claimed_first_author: Hoischen
+  claimed_year: 2010
+  claimed_key_terms: [SETBP1, Schinzel-Giedion]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0020
+    syndrome_name: Schinzel-Giedion syndrome
+    gene_or_locus: SETBP1 18q12.3
+    inheritance_pattern: autosomal dominant de novo
+    defining_genetic_criterion: pathogenic SETBP1 variant (recurrent residues)
+    defining_phenotypic_features: severe intellectual disability, distinctive facial features (midface retraction, prominent forehead), refractory seizures, multiple skeletal anomalies, hydronephrosis, neuroepithelial tumors risk, often early lethality
+    typical_age_of_recognition: birth via distinctive facial features
+    target_phenotype_routing: schinzel_giedion_specific
+    autism_prevalence_in_syndrome: severe ID; autism features overlap
+    intervention_contraindications: tumor surveillance; goals-of-care discussions given short life expectancy
+    specialist_referral_recommended: palliative care + neurology + nephrology + medical geneticist
+    primary_pmid: 20436468
+    status: active
+    created_at: 2026-04-30
+    notes: Hoischen 2010 Nat Genet — de novo SETBP1 mutations as cause of Schinzel-Giedion syndrome.
+
+- row_id: RSG-0021
+  claimed_pmid: 19592390
+  claimed_first_author: Le Meur
+  claimed_year: 2010
+  claimed_key_terms: [MEF2C, 5q14.3]
+  claimed_journal_substring: J Med Genet
+  row_data:
+    id: RSG-0021
+    syndrome_name: MEF2C haploinsufficiency syndrome
+    gene_or_locus: MEF2C 5q14.3
+    inheritance_pattern: autosomal dominant de novo
+    defining_genetic_criterion: pathogenic MEF2C variant or 5q14.3 microdeletion
+    defining_phenotypic_features: severe intellectual disability, absent speech, epilepsy, autism features, stereotypic movements, hypotonia
+    typical_age_of_recognition: infancy via developmental delay
+    target_phenotype_routing: mef2c_specific
+    autism_prevalence_in_syndrome: substantial autism feature overlap
+    intervention_contraindications: epilepsy management; AAC for absent speech
+    specialist_referral_recommended: neurology + speech therapy + medical geneticist
+    primary_pmid: 19592390
+    status: active
+    created_at: 2026-04-30
+    notes: Le Meur 2010 J Med Genet — MEF2C haploinsufficiency from 5q14.3 microdeletion or point mutation as severe ID + autism cause.
+
+- row_id: RSG-0022
+  claimed_pmid: 20890276
+  claimed_first_author: Endele
+  claimed_year: 2010
+  claimed_key_terms: [GRIN2B, NMDA]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0022
+    syndrome_name: GRIN2B-related neurodevelopmental disorder
+    gene_or_locus: GRIN2B 12p13.1
+    inheritance_pattern: autosomal dominant de novo
+    defining_genetic_criterion: pathogenic GRIN2B variant
+    defining_phenotypic_features: intellectual disability variable, autism features, epilepsy subset, movement disorders, NMDA receptor dysfunction
+    typical_age_of_recognition: childhood via developmental delay
+    target_phenotype_routing: grin2b_specific
+    autism_prevalence_in_syndrome: subset meet autism criteria; overlaps with PHE-0007 GABA/Cl⁻ E:I imbalance phenotype mechanistically
+    intervention_contraindications: NMDA receptor pharmacology may be relevant; epilepsy management
+    specialist_referral_recommended: neurology + medical geneticist
+    primary_pmid: 20890276
+    status: active
+    created_at: 2026-04-30
+    notes: Endele 2010 Nat Genet — GRIN2A and GRIN2B NMDA receptor subunit mutations as ID cause. Mechanistically relevant to E:I imbalance phenotype.
+
+- row_id: RSG-0023
+  claimed_pmid: 17173049
+  claimed_first_author: Durand
+  claimed_year: 2007
+  claimed_key_terms: [SHANK3, autism]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0023
+    syndrome_name: SHANK3-related autism (isolated SHANK3 variant without 22q13 deletion)
+    gene_or_locus: SHANK3 22q13.3
+    inheritance_pattern: typically de novo
+    defining_genetic_criterion: pathogenic SHANK3 variant (without larger 22q13 deletion = distinguishes from full Phelan-McDermid)
+    defining_phenotypic_features: intellectual disability, autism features, speech delay, motor delay, less severe than full Phelan-McDermid deletion
+    typical_age_of_recognition: childhood via developmental delay
+    target_phenotype_routing: shank3_isolated_specific
+    autism_prevalence_in_syndrome: substantial autism feature overlap
+    intervention_contraindications: standard early intervention
+    specialist_referral_recommended: medical geneticist + developmental pediatrician
+    primary_pmid: 17173049
+    status: active
+    created_at: 2026-04-30
+    notes: Durand 2007 Nat Genet — SHANK3 mutations directly causing autism without full 22q13 deletion. Foundational synaptic-scaffold autism gene.
+
+- row_id: RSG-0024
+  claimed_pmid: 18179900
+  claimed_first_author: Kim
+  claimed_year: 2008
+  claimed_key_terms: [neurexin, autism]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0024
+    syndrome_name: NRXN1-related neurodevelopmental disorder
+    gene_or_locus: NRXN1 2p16.3
+    inheritance_pattern: typically de novo deletion or pathogenic variant; some inherited
+    defining_genetic_criterion: NRXN1 deletion or pathogenic variant
+    defining_phenotypic_features: intellectual disability variable, autism features, schizophrenia risk, epilepsy subset, language delay
+    typical_age_of_recognition: childhood
+    target_phenotype_routing: nrxn1_specific
+    autism_prevalence_in_syndrome: substantial overlap; NRXN1 is high-confidence SFARI gene
+    intervention_contraindications: psychiatric surveillance for emerging psychosis in adolescence/adulthood
+    specialist_referral_recommended: medical geneticist + psychiatry surveillance
+    primary_pmid: 18179900
+    status: active
+    created_at: 2026-04-30
+    notes: Kim 2008 Am J Hum Genet — NRXN1 disruption in autism. Synaptic adhesion molecule.
+
+- row_id: RSG-0025
+  claimed_pmid: 16571880
+  claimed_first_author: Strauss
+  claimed_year: 2006
+  claimed_key_terms: [contactin, epilepsy]
+  claimed_journal_substring: N Engl J Med
+  row_data:
+    id: RSG-0025
+    syndrome_name: CNTNAP2-related cortical dysplasia-focal epilepsy syndrome (CDFE)
+    gene_or_locus: CNTNAP2 7q35-q36.1
+    inheritance_pattern: autosomal recessive (homozygous founder mutation in Old Order Amish)
+    defining_genetic_criterion: biallelic pathogenic CNTNAP2 variants
+    defining_phenotypic_features: cortical dysplasia, focal epilepsy, language regression, intellectual disability, autism features in ~70% in original Amish cohort
+    typical_age_of_recognition: early childhood via seizures and regression
+    target_phenotype_routing: cntnap2_specific
+    autism_prevalence_in_syndrome: ~70% in original cohort; lower in heterozygous variants
+    intervention_contraindications: epilepsy specialist; some surgical options for refractory cases
+    specialist_referral_recommended: neurology + medical geneticist
+    primary_pmid: 16571880
+    status: active
+    created_at: 2026-04-30
+    notes: Strauss 2006 N Engl J Med — recessive CNTNAP2 mutation in Old Order Amish cortical dysplasia-focal epilepsy syndrome with autism. Foundational autism-language gene paper.
+
+- row_id: RSG-0026
+  claimed_pmid: 23160955
+  claimed_first_author: O'Roak
+  claimed_year: 2012
+  claimed_key_terms: [CHD8, autism]
+  claimed_journal_substring: Science
+  row_data:
+    id: RSG-0026
+    syndrome_name: CHD8-related neurodevelopmental disorder
+    gene_or_locus: CHD8 14q11.2
+    inheritance_pattern: autosomal dominant de novo
+    defining_genetic_criterion: pathogenic CHD8 variant
+    defining_phenotypic_features: macrocephaly, autism features, intellectual disability variable, distinctive facial features, GI symptoms (constipation), sleep disturbance
+    typical_age_of_recognition: childhood via macrocephaly and autism features
+    target_phenotype_routing: chd8_specific
+    autism_prevalence_in_syndrome: ~85% meet autism criteria — one of highest-penetrance autism genes
+    intervention_contraindications: GI evaluation for chronic constipation; sleep specialist
+    specialist_referral_recommended: medical geneticist + GI + developmental pediatrician
+    primary_pmid: 23160955
+    status: active
+    created_at: 2026-04-30
+    notes: O'Roak 2012 Science — multiplex targeted sequencing identified CHD8 as recurrently mutated autism gene. Highest-confidence SFARI autism gene category.
+
+- row_id: RSG-0027
+  claimed_pmid: 24531329
+  claimed_first_author: Helsmoortel
+  claimed_year: 2014
+  claimed_key_terms: [ADNP, autism]
+  claimed_journal_substring: Nat Genet
+  row_data:
+    id: RSG-0027
+    syndrome_name: ADNP syndrome (Helsmoortel-Van der Aa syndrome)
+    gene_or_locus: ADNP 20q13.13
+    inheritance_pattern: autosomal dominant de novo
+    defining_genetic_criterion: pathogenic ADNP variant
+    defining_phenotypic_features: intellectual disability, autism features, distinctive facial features, hypotonia, primary tooth eruption early, short stature, cardiac defects subset
+    typical_age_of_recognition: childhood via developmental delay and facial features
+    target_phenotype_routing: adnp_specific
+    autism_prevalence_in_syndrome: substantial autism feature overlap
+    intervention_contraindications: dental specialist for early eruption; cardiac evaluation
+    specialist_referral_recommended: ADNP Kids Research Foundation + medical geneticist + developmental pediatrician
+    primary_pmid: 24531329
+    status: active
+    created_at: 2026-04-30
+    notes: Helsmoortel 2014 Nat Genet — ADNP de novo mutations as SWI/SNF-related autism syndrome.
+
+- row_id: RSG-0028
+  claimed_pmid: 22495306
+  claimed_first_author: Sanders
+  claimed_year: 2012
+  claimed_key_terms: [SCN2A, autism]
+  claimed_journal_substring: Nature
+  row_data:
+    id: RSG-0028
+    syndrome_name: SCN2A-related neurodevelopmental disorder
+    gene_or_locus: SCN2A 2q24.3
+    inheritance_pattern: autosomal dominant de novo
+    defining_genetic_criterion: pathogenic SCN2A variant
+    defining_phenotypic_features: spectrum from benign familial neonatal-infantile seizures to severe early-infantile epileptic encephalopathy with autism + intellectual disability; specific variant determines severity
+    typical_age_of_recognition: infancy via seizures or developmental delay
+    target_phenotype_routing: scn2a_specific
+    autism_prevalence_in_syndrome: variable; subset with severe phenotype meet autism criteria
+    intervention_contraindications: sodium channel blockers (carbamazepine, phenytoin) may help loss-of-function variants but worsen gain-of-function; genotype-guided AED selection critical
+    specialist_referral_recommended: epilepsy genetics specialist + medical geneticist
+    primary_pmid: 22495306
+    status: active
+    created_at: 2026-04-30
+    notes: Sanders 2012 Nature — de novo SCN2A mutations strongly associated with autism. Genotype-guided AED selection makes this clinically actionable.
+
+- row_id: RSG-0029
+  claimed_pmid: 19196676
+  claimed_first_author: Hamdan
+  claimed_year: 2009
+  claimed_key_terms: [SYNGAP1, mental]
+  claimed_journal_substring: N Engl J Med
+  row_data:
+    id: RSG-0029
+    syndrome_name: SYNGAP1-related intellectual disability (MRD5)
+    gene_or_locus: SYNGAP1 6p21.32
+    inheritance_pattern: autosomal dominant de novo
+    defining_genetic_criterion: pathogenic SYNGAP1 variant
+    defining_phenotypic_features: intellectual disability, epilepsy ~85%, autism features ~50%, language delay, GI issues
+    typical_age_of_recognition: childhood via seizures or developmental delay
+    target_phenotype_routing: syngap1_specific
+    autism_prevalence_in_syndrome: ~50% meet autism criteria
+    intervention_contraindications: epilepsy management; emerging targeted therapies in trials
+    specialist_referral_recommended: SYNGAP Research Fund + epilepsy specialist + medical geneticist
+    primary_pmid: 19196676
+    status: active
+    created_at: 2026-04-30
+    notes: Hamdan 2009 N Engl J Med — SYNGAP1 mutations as nonsyndromic ID cause. Excitatory synaptic GTPase activator.
+
+- row_id: RSG-0030
+  claimed_pmid: 11592033
+  claimed_first_author: Yamada
+  claimed_year: 2001
+  claimed_key_terms: [ZFHX1B, Hirschsprung]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0030
+    syndrome_name: Mowat-Wilson syndrome
+    gene_or_locus: ZEB2 (formerly ZFHX1B / SIP1) 2q22.3
+    inheritance_pattern: autosomal dominant de novo
+    defining_genetic_criterion: pathogenic ZEB2 variant
+    defining_phenotypic_features: distinctive facial features, intellectual disability, Hirschsprung disease ~50%, microcephaly, epilepsy, congenital heart defects, autism features
+    typical_age_of_recognition: infancy via Hirschsprung and dysmorphic features
+    target_phenotype_routing: mowat_wilson_specific
+    autism_prevalence_in_syndrome: substantial autism feature overlap
+    intervention_contraindications: GI surgical management for Hirschsprung; cardiac evaluation
+    specialist_referral_recommended: medical geneticist + GI surgery + cardiology
+    primary_pmid: 11592033
+    status: active
+    created_at: 2026-04-30
+    notes: Yamada 2001 Am J Hum Genet — ZFHX1B / ZEB2 nonsense and frameshift mutations as Mowat-Wilson cause.
+
+- row_id: RSG-0031
+  claimed_pmid: 12757360
+  claimed_first_author: Baieli
+  claimed_year: 2003
+  claimed_key_terms: [phenylketonuria, autism]
+  claimed_journal_substring: Autism Dev Disord
+  row_data:
+    id: RSG-0031
+    syndrome_name: Phenylketonuria (PKU) — untreated or poorly-controlled
+    gene_or_locus: PAH 12q23.2
+    inheritance_pattern: autosomal recessive
+    defining_genetic_criterion: biallelic pathogenic PAH variants AND inadequate Phe-restricted diet adherence
+    defining_phenotypic_features: in untreated cases — severe intellectual disability, autism features, seizures, eczema, musty body odor, hypopigmentation; treated cases nearly normal cognition with strict diet
+    typical_age_of_recognition: newborn screening should catch all cases in developed-world settings
+    target_phenotype_routing: pku_specific
+    autism_prevalence_in_syndrome: substantial in untreated cases; very low in well-treated cases
+    intervention_contraindications: strict Phe-restricted diet for life is the intervention; aspartame contraindicated
+    specialist_referral_recommended: metabolic specialist + dietician
+    primary_pmid: 12757360
+    status: active
+    created_at: 2026-04-30
+    notes: Baieli 2003 J Autism Dev Disord — autism and phenylketonuria. Untreated PKU mimics autism; primary intervention is diet. Newborn screening usually catches.
+
+- row_id: RSG-0032
+  claimed_pmid: 11223857
+  claimed_first_author: Tierney
+  claimed_year: 2001
+  claimed_key_terms: [Smith-Lemli-Opitz, behavior]
+  claimed_journal_substring: Am J Med Genet
+  row_data:
+    id: RSG-0032
+    syndrome_name: Smith-Lemli-Opitz syndrome (SLOS)
+    gene_or_locus: DHCR7 11q13.4
+    inheritance_pattern: autosomal recessive
+    defining_genetic_criterion: biallelic pathogenic DHCR7 variants AND elevated 7-dehydrocholesterol on metabolic panel
+    defining_phenotypic_features: intellectual disability, distinctive facial features, syndactyly of 2-3 toes, autism features ~50-75%, growth retardation, photosensitivity, low cholesterol
+    typical_age_of_recognition: infancy via dysmorphic features and biochemical screening
+    target_phenotype_routing: slos_specific
+    autism_prevalence_in_syndrome: ~50-75% meet autism criteria
+    intervention_contraindications: cholesterol supplementation is the disease-specific intervention; photoprotection
+    specialist_referral_recommended: metabolic specialist + medical geneticist + dermatology
+    primary_pmid: 11223857
+    status: active
+    created_at: 2026-04-30
+    notes: Tierney 2001 Am J Med Genet — behavioral phenotype of Smith-Lemli-Opitz including autism features. DHCR7 deficiency in cholesterol biosynthesis.
+
+- row_id: RSG-0033
+  claimed_pmid: 2102678
+  claimed_first_author: Goto
+  claimed_year: 1990
+  claimed_key_terms: [tRNA, MELAS]
+  claimed_journal_substring: Nature
+  row_data:
+    id: RSG-0033
+    syndrome_name: MELAS / mtDNA m.3243A>G mitochondrial syndrome
+    gene_or_locus: MT-TL1 m.3243A>G (tRNA-Leu)
+    inheritance_pattern: maternal mitochondrial
+    defining_genetic_criterion: m.3243A>G heteroplasmy ≥10-15% in blood (higher in muscle/CSF)
+    defining_phenotypic_features: variable phenotype with heteroplasmy load — mitochondrial encephalomyopathy, lactic acidosis, stroke-like episodes (MELAS), diabetes, hearing loss, autism features in subset
+    typical_age_of_recognition: variable — childhood through adulthood
+    target_phenotype_routing: PHE-0002
+    autism_prevalence_in_syndrome: subset of high-heteroplasmy childhood-onset cases
+    intervention_contraindications: mitochondrial cocktail (CoQ10, L-carnitine, B-vitamins, riboflavin); avoid mito-toxic drugs (valproate, statins, fluoroquinolones, halogenated anesthetics)
+    specialist_referral_recommended: mitochondrial specialist + medical geneticist + neurology
+    primary_pmid: 2102678
+    status: active
+    created_at: 2026-04-30
+    notes: Goto 1990 Nature — original m.3243A>G tRNA-Leu mutation in MELAS. Hannah-Poling-relevant mitochondrial-vulnerability subset.
+
+- row_id: RSG-0034
+  claimed_pmid: 2137962
+  claimed_first_author: Holt
+  claimed_year: 1990
+  claimed_key_terms: [mitochondrial, heteroplasmy]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0034
+    syndrome_name: NARP / Leigh syndrome (mtDNA m.8993T>G)
+    gene_or_locus: MT-ATP6 m.8993T>G or m.8993T>C
+    inheritance_pattern: maternal mitochondrial
+    defining_genetic_criterion: m.8993 heteroplasmy — high (>70%) → Leigh syndrome; intermediate (30-70%) → NARP
+    defining_phenotypic_features: NARP — neurogenic muscle weakness, ataxia, retinitis pigmentosa; Leigh — subacute necrotizing encephalomyelopathy, dystonia, brainstem involvement; both can include autism features in childhood-onset cases
+    typical_age_of_recognition: variable — infancy (Leigh) to adulthood (NARP)
+    target_phenotype_routing: PHE-0002
+    autism_prevalence_in_syndrome: subset of intermediate-heteroplasmy childhood cases
+    intervention_contraindications: mitochondrial cocktail; avoid mito-toxic drugs as for MELAS
+    specialist_referral_recommended: mitochondrial specialist + medical geneticist + neurology
+    primary_pmid: 2137962
+    status: active
+    created_at: 2026-04-30
+    notes: Holt 1990 Am J Hum Genet — original m.8993 mtDNA mutation as NARP/Leigh cause. Heteroplasmy-dose-dependent phenotype.
+
+- row_id: RSG-0035
+  claimed_pmid: 2112427
+  claimed_first_author: Shoffner
+  claimed_year: 1990
+  claimed_key_terms: [MERRF, mitochondrial]
+  claimed_journal_substring: Cell
+  row_data:
+    id: RSG-0035
+    syndrome_name: MERRF (myoclonic epilepsy with ragged-red fibers)
+    gene_or_locus: MT-TK m.8344A>G (tRNA-Lys)
+    inheritance_pattern: maternal mitochondrial
+    defining_genetic_criterion: m.8344A>G heteroplasmy ≥5-10% in blood
+    defining_phenotypic_features: myoclonic epilepsy, cerebellar ataxia, ragged-red fibers on muscle biopsy, hearing loss, dementia, autism features in subset
+    typical_age_of_recognition: childhood to adulthood
+    target_phenotype_routing: PHE-0002
+    autism_prevalence_in_syndrome: subset of childhood-onset cases
+    intervention_contraindications: mitochondrial cocktail; avoid mito-toxic drugs
+    specialist_referral_recommended: mitochondrial specialist + medical geneticist + neurology
+    primary_pmid: 2112427
+    status: active
+    created_at: 2026-04-30
+    notes: Shoffner 1990 Cell — m.8344A>G tRNA-Lys as MERRF cause.
+
+- row_id: RSG-0036
+  claimed_pmid: 15141358
+  claimed_first_author: Kolehmainen
+  claimed_year: 2004
+  claimed_key_terms: [Cohen, syndrome]
+  claimed_journal_substring: Am J Hum Genet
+  row_data:
+    id: RSG-0036
+    syndrome_name: Cohen syndrome
+    gene_or_locus: VPS13B (formerly COH1) 8q22.2
+    inheritance_pattern: autosomal recessive
+    defining_genetic_criterion: biallelic pathogenic VPS13B variants
+    defining_phenotypic_features: developmental delay, intellectual disability, microcephaly, distinctive facial features (high-arched palate, prominent central incisors), retinal dystrophy, neutropenia (truncal obesity in older), joint hypermobility
+    typical_age_of_recognition: childhood via developmental delay and facial features
+    target_phenotype_routing: cohen_specific
+    autism_prevalence_in_syndrome: substantial autism feature overlap
+    intervention_contraindications: ophthalmology surveillance for retinal dystrophy; CBC monitoring for neutropenia
+    specialist_referral_recommended: medical geneticist + ophthalmology + hematology
+    primary_pmid: 15141358
+    status: active
+    created_at: 2026-04-30
+    notes: Kolehmainen 2004 Am J Hum Genet — large-scale genotype-phenotype delineation of Cohen syndrome.

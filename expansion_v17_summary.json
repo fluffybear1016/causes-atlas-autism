@@ -1,0 +1,17 @@
+{
+  "expansion_version": "v1.7_hepb_aluminum",
+  "run_timestamp": "2026-04-27T22:06:26+00:00",
+  "added": {
+    "mechanisms": 1,
+    "hypotheses": 2,
+    "sources": 5,
+    "evidence_fragments": 5,
+    "evidence_links": 12,
+    "hypothesis_mechanism_edges": 6
+  },
+  "skipped_targets": 0,
+  "commentary": {
+    "evidence_balance": "Hep B vaccine and aluminum adjuvant hypotheses are recorded as contested with explicit evidence on both sides: 1 positive (Gallagher & Goodman 2010 NHIS, n=0 reported, cross-sectional, hypothesis-generating) and 4 negative (IOM 2011 review, Verstraeten 2003 VSD n=124,170, Andersson 2025 Denmark n=1,224,176, and an Hep-B mechanism review). The scoring engine computes confidence from the actual evidence mix; the system does not pre-judge.",
+    "structural_relationship": "HYP-0066 (Hep B birth-dose) and HYP-0067 (cumulative Al adjuvant) are child hypotheses of the broader HYP-0044 (childhood vaccine exposure, contested). Splitting them apart lets evidence be evaluated at the right granularity \u2014 Andersson 2025 specifically addresses cumulative Al, not 'all vaccines.'"
+  }
+}

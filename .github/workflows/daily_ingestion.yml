@@ -1,0 +1,61 @@
+name: Daily PubMed ingestion (continuous knowledge-graph freshness)
+
+# Move 4 of post-mortem fix plan. Runs continuous_ingestion.py daily so the
+# atlas never goes stale. Every new candidate passes through the verify-
+# before-write protocol (PMID esummary verification) before being queued
+# for human curation. Output is committed back to the repo so the public
+# /freshness page always reflects today's runs.
+#
+# This is the "your atlas is stale" defense — falsifiable in real time.
+
+on:
+  schedule:
+    # 06:00 UTC daily (offset slightly from PubMed's update window).
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}  # allow manual trigger
+
+permissions:
+  contents: write       # for committing freshness/queue + freshness/log
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Run continuous ingestion
+        run: |
+          python scripts/continuous_ingestion.py --commit \
+            --lookback-days 2 \
+            --max-per-query 30
+
+      - name: Build freshness page
+        run: python scripts/build_freshness_page.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "causes-atlas-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add freshness/
+          if git diff --staged --quiet; then
+            echo "No new freshness data to commit."
+          else
+            git commit -m "freshness: daily ingestion run $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Smoke-test engine still passes calibration
+        run: python scripts/validate_v02_calibration.py

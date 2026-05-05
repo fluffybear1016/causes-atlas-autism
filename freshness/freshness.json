@@ -1,0 +1,325 @@
+{
+  "atlas_pmid_count": 901,
+  "generated_at_utc": "2026-05-05T13:08:02+00:00",
+  "last_30_daily_logs": [
+    {
+      "atlas_pmid_count": 1068,
+      "candidates_found": 35,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-05T13:08:01+00:00",
+      "since": "2026-04-21T13:07:52.503624+00:00",
+      "verified_added_to_queue": 34,
+      "verified_pmids": [
+        "27310602",
+        "28417440",
+        "32032765",
+        "32947579",
+        "33965398",
+        "35930346",
+        "36129785",
+        "37067865",
+        "38200989",
+        "38846959",
+        "38888947",
+        "39958733",
+        "40523550",
+        "40623670",
+        "40802390",
+        "40863715",
+        "41120047",
+        "41130438",
+        "41387911",
+        "41415879",
+        "41603371",
+        "41615476",
+        "41633963",
+        "41646353",
+        "41687927",
+        "41762172",
+        "41833597",
+        "41897070",
+        "41968733",
+        "41990651",
+        "42008631",
+        "42052832",
+        "42064796",
+        "42072651"
+      ]
+    }
+  ],
+  "queue_preview": [
+    {
+      "first_author": "Kong AX",
+      "journal": "J Hazard Mater",
+      "matched_queries_count": 1,
+      "pmid": "41990651",
+      "pubdate": "2026 May 15",
+      "title": "Proteome-wide reverse molecular docking reveals folate receptor as a mediator of PFAS-induced neurodevelopmental toxicity."
+    },
+    {
+      "first_author": "Ghahari AA",
+      "journal": "Exp Physiol",
+      "matched_queries_count": 1,
+      "pmid": "41762172",
+      "pubdate": "2026 May",
+      "title": "Psychobiotics and the microbiota-gut-brain axis: Emerging paradigms in mental health modulation."
+    },
+    {
+      "first_author": "McAbee GN",
+      "journal": "J Child Neurol",
+      "matched_queries_count": 1,
+      "pmid": "41603371",
+      "pubdate": "2026 May",
+      "title": "Symptomatic Vitamin and Nutrient Deficiencies of Autism Spectrum Disorder and the Potential for Treatment."
+    },
+    {
+      "first_author": "Kostenko RTD",
+      "journal": "J Pediatr (Rio J)",
+      "matched_queries_count": 1,
+      "pmid": "41120047",
+      "pubdate": "2026 Mar-Apr",
+      "title": "Dietary and nutritional interventions in the treatment of childhood neuropsychiatric disorders: evidence and myths."
+    },
+    {
+      "first_author": "Ibarra C",
+      "journal": "Am J Obstet Gynecol",
+      "matched_queries_count": 1,
+      "pmid": "41130438",
+      "pubdate": "2026 Mar",
+      "title": "Can maternal metformin protect the developing fetal brain?"
+    },
+    {
+      "first_author": "Jeejo M",
+      "journal": "Mitochondrion",
+      "matched_queries_count": 1,
+      "pmid": "41833597",
+      "pubdate": "2026 Jul",
+      "title": "Mitochondrial dysfunction and mitochondrial unfolded protein response (UPR(mt)): unravelling their roles in autism spectrum disorder pathogenesis."
+    },
+    {
+      "first_author": "Wilson FC",
+      "journal": "Res Sq",
+      "matched_queries_count": 1,
+      "pmid": "41646353",
+      "pubdate": "2026 Jan 30",
+      "title": "Sex differences in self-reported symptoms and comorbidities associated with hypermobile Ehlers-Danlos syndrome and hypermobility spectrum disorders: A retrospec"
+    },
+    {
+      "first_author": "Long J",
+      "journal": "Cell Mol Life Sci",
+      "matched_queries_count": 1,
+      "pmid": "41615476",
+      "pubdate": "2026 Jan 30",
+      "title": "Microbiota-gut-brain axis\u00a0and neuroendocrine pathways underlie divergent mechanisms of intermittent and continuous theta-burst stimulation in autism spectrum di"
+    },
+    {
+      "first_author": "Rabiei H",
+      "journal": "Transl Psychiatry",
+      "matched_queries_count": 1,
+      "pmid": "41633963",
+      "pubdate": "2026 Feb 3",
+      "title": "Treating autism with Bumetanide: Identification of responders using Q-Finder machine learning algorithm."
+    },
+    {
+      "first_author": "Vatr\u00e1l M",
+      "journal": "Children (Basel)",
+      "matched_queries_count": 1,
+      "pmid": "41897070",
+      "pubdate": "2026 Feb 28",
+      "title": "Biological Risk Factors for Suicidal Behavior in Children and Adolescents: A Narrative Review."
+    },
+    {
+      "first_author": "Rehman AU",
+      "journal": "Rev Recent Clin Trials",
+      "matched_queries_count": 1,
+      "pmid": "41968733",
+      "pubdate": "2026 Apr 7",
+      "title": "Efficacy and Safety of Bumetanide in Children with Autism Spectrum Disorder: A Systematic Review and Meta-Analysis."
+    },
+    {
+      "first_author": "Wadhwani D",
+      "journal": "Behav Brain Res",
+      "matched_queries_count": 1,
+      "pmid": "41687927",
+      "pubdate": "2026 Apr 27",
+      "title": "Gestational hyperglycemia and autism spectrum disorder: Mechanistic pathways and emerging preventive strategies."
+    },
+    {
+      "first_author": "Byun AS",
+      "journal": "Front Biosci (Landmark Ed)",
+      "matched_queries_count": 1,
+      "pmid": "42052832",
+      "pubdate": "2026 Apr 22",
+      "title": "The Gut-Lung Axis, Epigenetics and Respiratory Disease."
+    },
+    {
+      "first_author": "Aitella E",
+      "journal": "Biomolecules",
+      "matched_queries_count": 1,
+      "pmid": "42072651",
+      "pubdate": "2026 Apr 2",
+      "title": "Role of Mast Cells and Neuroinflammation in Neuropsychiatric Disorders of the Developmental Period."
+    },
+    {
+      "first_author": "Scenna MS",
+      "journal": "Front Pharmacol",
+      "matched_queries_count": 1,
+      "pmid": "42064796",
+      "pubdate": "2026",
+      "title": "Mitochondrial dysfunction and oxidative stress in autism spectrum disorder: pharmacological insights into natural antioxidants."
+    },
+    {
+      "first_author": "Priego-Gonz\u00e1lez L",
+      "journal": "Neurosci Biobehav Rev",
+      "matched_queries_count": 1,
+      "pmid": "40523550",
+      "pubdate": "2025 Sep",
+      "title": "The role of mast cells in Autism Spectrum Disorder."
+    },
+    {
+      "first_author": "Giniatullin R",
+      "journal": "Brain Behav Immun",
+      "matched_queries_count": 1,
+      "pmid": "40623670",
+      "pubdate": "2025 Oct",
+      "title": "Gabaergic signalling in Autism Spectrum disorders (ASD): Role of glial cells and therapeutic perspectives."
+    },
+    {
+      "first_author": "Krajewska A",
+      "journal": "",
+      "matched_queries_count": 1,
+      "pmid": "42008631",
+      "pubdate": "2025 Nov 20",
+      "title": "Of powers and safeguards."
+    },
+    {
+      "first_author": "Vyshedskiy A",
+      "journal": "Pediatr Rep",
+      "matched_queries_count": 1,
+      "pmid": "40863715",
+      "pubdate": "2025 Jul 28",
+      "title": "Validation of Pediatric Acute-Onset Neuropsychiatric Syndrome (PANS)-Related Pediatric Treatment Evaluation Checklist (PTEC)."
+    },
+    {
+      "first_author": "Kalb LG",
+      "journal": "J Clin Child Adolesc Psychol",
+      "matched_queries_count": 1,
+      "pmid": "36129785",
+      "pubdate": "2025 Jan-Feb",
+      "title": "Mental Health Crisis Screening in Youth with Autism Spectrum Disorder."
+    },
+    {
+      "first_author": "Zhang A",
+      "journal": "Heliyon",
+      "matched_queries_count": 1,
+      "pmid": "39958733",
+      "pubdate": "2025 Jan 15",
+      "title": "Collaborative arts therapies as a supportive intervention for autism spectrum disorders: Bibliometric analysis, insights, and directions."
+    },
+    {
+      "first_author": "Wu C",
+      "journal": "Stem Cell Res Ther",
+      "matched_queries_count": 1,
+      "pmid": "41387911",
+      "pubdate": "2025 Dec 12",
+      "title": "\u200cDual-target hUCMSCs/EVs therapy for autism spectrum disorder: remodeling gut microbiota and modulating neuroimmune crosstalk in a valproic acid-induced C57BL/6"
+    },
+    {
+      "first_author": "Eldawansy M",
+      "journal": "JMIR Form Res",
+      "matched_queries_count": 1,
+      "pmid": "40802390",
+      "pubdate": "2025 Aug 13",
+      "title": "Data Mining-Based Model for Computer-Aided Diagnosis of Autism and Gelotophobia: Mixed Methods Deep Learning Approach."
+    },
+    {
+      "first_author": "Ismail M",
+      "journal": "J Biol Methods",
+      "matched_queries_count": 1,
+      "pmid": "41415879",
+      "pubdate": "2025",
+      "title": "A systematic computational analysis of pharmacological options in neuroinflammatory-induced autism spectrum disorder in children: A potential for drug repositio"
+    },
+    {
+      "first_author": "Singla A",
+      "journal": "J Med Internet Res",
+      "matched_queries_count": 1,
+      "pmid": "38888947",
+      "pubdate": "2024 Jun 18",
+      "title": "Developing a Chatbot to Support Individuals With Neurodevelopmental Disorders: Tutorial."
+    },
+    {
+      "first_author": "Dreikorn EN",
+      "journal": "Front Genet",
+      "matched_queries_count": 1,
+      "pmid": "38846959",
+      "pubdate": "2024",
+      "title": "Case report: Early use of whole exome sequencing unveils HNRNPU-related neurodevelopmental disorder and answers additional clinical questions through reanalysis"
+    },
+    {
+      "first_author": "Bransfield RC",
+      "journal": "Healthcare (Basel)",
+      "matched_queries_count": 1,
+      "pmid": "38200989",
+      "pubdate": "2023 Dec 29",
+      "title": "Microbes and Mental Illness: Past, Present, and Future."
+    },
+    {
+      "first_author": "Costello J",
+      "journal": "J Med Internet Res",
+      "matched_queries_count": 1,
+      "pmid": "37067865",
+      "pubdate": "2023 Apr 17",
+      "title": "Leveraging Knowledge Graphs and Natural Language Processing for Automated Web Resource Labeling and Knowledge Mobilization in Neurodevelopmental Disorders: Deve"
+    },
+    {
+      "first_author": "Kaur M",
+      "journal": "J Med Internet Res",
+      "matched_queries_count": 1,
+      "pmid": "35930346",
+      "pubdate": "2022 Aug 5",
+      "title": "Deciphering the Diversity of Mental Models in Neurodevelopmental Disorders: Knowledge Graph Representation of Public Data Using Natural Language Processing."
+    },
+    {
+      "first_author": "Lucerne KE",
+      "journal": "Neuropharmacology",
+      "matched_queries_count": 1,
+      "pmid": "33965398",
+      "pubdate": "2021 Jul 1",
+      "title": "Contributions of neuroimmune and gut-brain signaling to vulnerability of developing substance use disorders."
+    },
+    {
+      "first_author": "Saldarriaga W",
+      "journal": "J Dev Behav Pediatr",
+      "matched_queries_count": 1,
+      "pmid": "32947579",
+      "pubdate": "2020 Dec",
+      "title": "Double Genetic Hit: Fragile X Syndrome and Partial Deletion of Protein Patched Homolog 1 Antisense as Cause of Severe Autism Spectrum Disorder."
+    },
+    {
+      "first_author": "Bj\u00f8rklund G",
+      "journal": "Clin Immunol",
+      "matched_queries_count": 1,
+      "pmid": "32032765",
+      "pubdate": "2020 Apr",
+      "title": "Mercury-induced autoimmunity: Drifting from micro to macro concerns on autoimmune disorders."
+    },
+    {
+      "first_author": "Costa LG",
+      "journal": "Curr Environ Health Rep",
+      "matched_queries_count": 1,
+      "pmid": "28417440",
+      "pubdate": "2017 Jun",
+      "title": "Developmental Neurotoxicity of Traffic-Related Air Pollution: Focus on Autism."
+    },
+    {
+      "first_author": "Mussap M",
+      "journal": "Expert Rev Mol Diagn",
+      "matched_queries_count": 1,
+      "pmid": "27310602",
+      "pubdate": "2016 Aug",
+      "title": "Metabolomics of autism spectrum disorders: early insights regarding mammalian-microbial cometabolites."
+    }
+  ],
+  "queue_size": 34
+}

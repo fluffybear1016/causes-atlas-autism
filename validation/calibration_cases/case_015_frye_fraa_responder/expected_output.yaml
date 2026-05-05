@@ -1,0 +1,72 @@
+case_id: case_015_frye_fraa_responder
+description: |
+  Frye 2018 RCT FRAA-positive leucovorin-responder profile.
+  Synthesized cohort-level case profile representing the responder
+  subset of Frye 2018 Mol Psychiatry (PMID 27752075).
+
+provenance_pmids: [27752075]
+operating_mode: older_child
+input_completeness_min: 0.55
+
+expected_top_phenotype: PHE-0001
+expected_phenotype_p_floor: 0.55
+expected_phenotype_p_ceiling: 0.95
+
+# v0.2 profile-vector expectations (post-mortem Move 1).
+expected_dominant_dimensions: ["PHE-0001"]
+expected_dominant_dimensions_match_exact: true
+expected_undifferentiated_flag: false
+expected_multi_pattern_flag: false
+expected_profile_concentration_min: 0.40
+expected_top_intervention_primary_target_in: ["PHE-0001"]
+expected_calibration_anchor_int_0001_in_top_5: true   # FRAA-positive — leucovorin must lead
+expected_calibration_anchor_int_0001_rank_max: 1       # leucovorin rank 1
+
+expected_top_3_intervention_ids:
+  - INT-0001  # Leucovorin (folinic acid) — calibration anchor; primary intervention
+  - INT-0008  # Methylated folate (5-MTHF)
+  - INT-0003  # Methyl-B12
+  - INT-0017  # Pyridoxal-5-phosphate (B6)
+  - INT-0019  # SAMe
+
+expected_top_3_intervention_match_min: 2
+
+expected_recommendation_types:
+  INT-0001: START
+
+expected_avoidance_bundle_must_include:
+  - high_dose_synthetic_folic_acid_in_folate_pathway_impaired
+
+expected_avoidance_bundle_must_NOT_include:
+  - leucovorin_caution
+  - chelation_first_line
+
+expected_syndromic_flag: false
+expected_syndromic_flag_match_exact: true
+
+expected_cdr_state_qualitative: not_applicable
+
+expected_open_questions_includes:
+  - homocysteine_panel
+  - rbc_folate_or_csf_5mthf
+
+expected_responder_predictions_include:
+  INT-0001:
+    p_response_min: 0.55
+    p_response_max: 0.95
+    must_have_credal_interval: true
+
+expected_pgx_flags_min_count: 0
+
+calibration_anchor_stability:
+  baseline_phe_0001_point: null
+  drift_tolerance: 0.10
+  required_for_all_release_versions: true
+  layer2_csrs_anchor_must_remain_above: 80
+
+notes: |
+  This case is the Layer 2 CSRS anchor profile. INT-0001 must score
+  ≥ 80 in the global CSRS engine; the per-case bundle ranks INT-0001
+  as the top intervention with HIGH confidence and START recommendation.
+  Per spec §13.5, the per-case calibration is independent from but
+  supportive of the global Layer 2 calibration anchor.

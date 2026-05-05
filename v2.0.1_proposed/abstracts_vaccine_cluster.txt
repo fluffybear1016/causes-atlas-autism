@@ -1,0 +1,716 @@
+1. J Toxicol Environ Health A. 2011;74(14):903-16. doi: 
+10.1080/15287394.2011.573736.
+
+A positive association found between autism prevalence and childhood vaccination 
+uptake across the U.S. population.
+
+Delong G(1).
+
+Author information:
+(1)Department of Economics and Finance, Baruch College/City University of New 
+York, New York, New York, USA. gayle.delong@baruch.cuny.edu
+
+The reason for the rapid rise of autism in the United States that began in the 
+1990s is a mystery. Although individuals probably have a genetic predisposition 
+to develop autism, researchers suspect that one or more environmental triggers 
+are also needed. One of those triggers might be the battery of vaccinations that 
+young children receive. Using regression analysis and controlling for family 
+income and ethnicity, the relationship between the proportion of children who 
+received the recommended vaccines by age 2 years and the prevalence of autism 
+(AUT) or speech or language impairment (SLI) in each U.S. state from 2001 and 
+2007 was determined. A positive and statistically significant relationship was 
+found: The higher the proportion of children receiving recommended vaccinations, 
+the higher was the prevalence of AUT or SLI. A 1% increase in vaccination was 
+associated with an additional 680 children having AUT or SLI. Neither parental 
+behavior nor access to care affected the results, since vaccination proportions 
+were not significantly related (statistically) to any other disability or to the 
+number of pediatricians in a U.S. state. The results suggest that although 
+mercury has been removed from many vaccines, other culprits may link vaccines to 
+autism. Further study into the relationship between vaccines and autism is 
+warranted.
+
+DOI: 10.1080/15287394.2011.573736
+PMID: 21623535 [Indexed for MEDLINE]
+
+
+2. Indian J Med Ethics. 2014 Oct-Dec;11(4):218-22. doi: 10.20529/IJME.2014.055.
+
+Commentary--Controversies surrounding mercury in vaccines: autism denial as 
+impediment to universal immunisation.
+
+Chhawchharia R(1), Puliyel JM(2).
+
+Author information:
+(1)Senior Registrar, Department of Paediatrics, St Stephens Hospital, Tis 
+Hazari, Delhi 110 054 India.
+(2)Consultant Paediatrician and Head of Department of Paediatrics, St Stephens 
+Hospital, Tis Hazari, Delhi 110 054 India.
+
+Comment on
+    Indian J Med Ethics. 2014 Oct-Dec;11(4):206-18. doi: 10.20529/IJME.2014.054.
+
+In 2004, the US Center for Disease Control (CDC) published a paper showing that 
+there is no link between the age at which a child is vaccinated with MMR and the 
+vaccinated children's risk of a subsequent diagnosis of autism. One of the 
+authors, William Thompson, has now revealed that statistically significant 
+information was deliberately omitted from the paper. Thompson first told Dr S 
+Hooker, a researcher on autism, about the manipulation of the data. Hooker 
+analysed the raw data from the CDC study afresh. He confirmed that the risk of 
+autism among African American children vaccinated before the age of 2 years was 
+340% that of those vaccinated later.
+
+DOI: 10.20529/IJME.2014.055
+PMID: 25377033 [Indexed for MEDLINE]
+
+
+3. Biomed Res Int. 2014;2014:247218. doi: 10.1155/2014/247218. Epub 2014 Jun 4.
+
+Methodological issues and evidence of malfeasance in research purporting to show 
+thimerosal in vaccines is safe.
+
+Hooker B(1), Kern J(2), Geier D(3), Haley B(4), Sykes L(5), King P(5), Geier 
+M(3).
+
+Author information:
+(1)Simpson University, 2211 College View Drive, Redding, CA 96001, USA.
+(2)Institute of Chronic Illness, Inc., 14 Redgate Court, Silver Spring, MD 
+20905, USA ; University of Texas Southwestern Medical Center at Dallas, Dallas, 
+TX 75235, USA.
+(3)Institute of Chronic Illness, Inc., 14 Redgate Court, Silver Spring, MD 
+20905, USA.
+(4)University of Kentucky, Lexington, KY 40506, USA.
+(5)CoMeD, Inc., Silver Spring, MD, USA.
+
+There are over 165 studies that have focused on Thimerosal, an organic-mercury 
+(Hg) based compound, used as a preservative in many childhood vaccines, and 
+found it to be harmful. Of these, 16 were conducted to specifically examine the 
+effects of Thimerosal on human infants or children with reported outcomes of 
+death; acrodynia; poisoning; allergic reaction; malformations; auto-immune 
+reaction; Well's syndrome; developmental delay; and neurodevelopmental 
+disorders, including tics, speech delay, language delay, attention deficit 
+disorder, and autism. In contrast, the United States Centers for Disease Control 
+and Prevention states that Thimerosal is safe and there is "no relationship 
+between [T]himerosal[-]containing vaccines and autism rates in children." This 
+is puzzling because, in a study conducted directly by CDC epidemiologists, a 
+7.6-fold increased risk of autism from exposure to Thimerosal during infancy was 
+found. The CDC's current stance that Thimerosal is safe and that there is no 
+relationship between Thimerosal and autism is based on six specific published 
+epidemiological studies coauthored and sponsored by the CDC. The purpose of this 
+review is to examine these six publications and analyze possible reasons why 
+their published outcomes are so different from the results of investigations by 
+multiple independent research groups over the past 75+ years.
+
+DOI: 10.1155/2014/247218
+PMCID: PMC4065774
+PMID: 24995277 [Indexed for MEDLINE]
+
+
+4. J Biomed Sci. 2002 Jul-Aug;9(4):359-64. doi: 10.1007/BF02256592.
+
+Abnormal measles-mumps-rubella antibodies and CNS autoimmunity in children with 
+autism.
+
+Singh VK(1), Lin SX, Newell E, Nelson C.
+
+Author information:
+(1)Department of Biology and Biotechnology Center, Utah State University, Logan, 
+Utah 84322, USA. singhvk@cc.usu.edu
+
+Autoimmunity to the central nervous system (CNS), especially to myelin basic 
+protein (MBP), may play a causal role in autism, a neurodevelopmental disorder. 
+Because many autistic children harbor elevated levels of measles antibodies, we 
+conducted a serological study of measles-mumps-rubella (MMR) and MBP 
+autoantibodies. Using serum samples of 125 autistic children and 92 control 
+children, antibodies were assayed by ELISA or immunoblotting methods. ELISA 
+analysis showed a significant increase in the level of MMR antibodies in 
+autistic children. Immunoblotting analysis revealed the presence of an unusual 
+MMR antibody in 75 of 125 (60%) autistic sera but not in control sera. This 
+antibody specifically detected a protein of 73-75 kD of MMR. This protein band, 
+as analyzed with monoclonal antibodies, was immunopositive for measles 
+hemagglutinin (HA) protein but not for measles nucleoprotein and rubella or 
+mumps viral proteins. Thus the MMR antibody in autistic sera detected measles HA 
+protein, which is unique to the measles subunit of the vaccine. Furthermore, 
+over 90% of MMR antibody-positive autistic sera were also positive for MBP 
+autoantibodies, suggesting a strong association between MMR and CNS autoimmunity 
+in autism. Stemming from this evidence, we suggest that an inappropriate 
+antibody response to MMR, specifically the measles component thereof, might be 
+related to pathogenesis of autism.
+
+Copyright 2002 National Science Council, ROC and S. Karger AG, Basel
+
+DOI: 10.1007/BF02256592
+PMID: 12145534 [Indexed for MEDLINE]
+
+
+5. J Toxicol Environ Health A. 2010;73(24):1665-77. doi: 
+10.1080/15287394.2010.519317.
+
+Hepatitis B vaccination of male neonates and autism diagnosis, NHIS 1997-2002.
+
+Gallagher CM(1), Goodman MS.
+
+Author information:
+(1)PhD Program in Population Health and Clinical Outcomes Research, Stony Brook 
+University Medical Center, State University of New York at Stony Brook, Stony 
+Brook, New York, USA. cmgallagher@notes.cc.sunysb.edu
+
+Universal hepatitis B vaccination was recommended for U.S. newborns in 1991; 
+however, safety findings are mixed. The association between hepatitis B 
+vaccination of male neonates and parental report of autism diagnosis was 
+determined. This cross-sectional study used weighted probability samples 
+obtained from National Health Interview Survey 1997-2002 data sets. Vaccination 
+status was determined from the vaccination record. Logistic regression was used 
+to estimate the odds for autism diagnosis associated with neonatal hepatitis B 
+vaccination among boys age 3-17 years, born before 1999, adjusted for race, 
+maternal education, and two-parent household. Boys vaccinated as neonates had 
+threefold greater odds for autism diagnosis compared to boys never vaccinated or 
+vaccinated after the first month of life. Non-Hispanic white boys were 64% less 
+likely to have autism diagnosis relative to nonwhite boys. Findings suggest that 
+U.S. male neonates vaccinated with the hepatitis B vaccine prior to 1999 (from 
+vaccination record) had a threefold higher risk for parental report of autism 
+diagnosis compared to boys not vaccinated as neonates during that same time 
+period. Nonwhite boys bore a greater risk.
+
+DOI: 10.1080/15287394.2010.519317
+PMID: 21058170 [Indexed for MEDLINE]
+
+
+6. J Inorg Biochem. 2011 Nov;105(11):1489-99. doi:
+10.1016/j.jinorgbio.2011.08.008.  Epub 2011 Aug 23.
+
+Do aluminum vaccine adjuvants contribute to the rising prevalence of autism?
+
+Tomljenovic L(1), Shaw CA.
+
+Author information:
+(1)Neural Dynamics Research Group, Department of Ophthalmology and Visual 
+Sciences, University of British Columbia, 828 W. 10th Ave, Vancouver, BC, Canada 
+V5Z 1L8. lucijat77@gmail.com
+
+Autism spectrum disorders (ASD) are serious multisystem developmental disorders 
+and an urgent global public health concern. Dysfunctional immunity and impaired 
+brain function are core deficits in ASD. Aluminum (Al), the most commonly used 
+vaccine adjuvant, is a demonstrated neurotoxin and a strong immune stimulator. 
+Hence, adjuvant Al has the potential to induce neuroimmune disorders. When 
+assessing adjuvant toxicity in children, two key points ought to be considered: 
+(i) children should not be viewed as "small adults" as their unique physiology 
+makes them much more vulnerable to toxic insults; and (ii) if exposure to Al 
+from only few vaccines can lead to cognitive impairment and autoimmunity in 
+adults, is it unreasonable to question whether the current pediatric schedules, 
+often containing 18 Al adjuvanted vaccines, are safe for children? By applying 
+Hill's criteria for establishing causality between exposure and outcome we 
+investigated whether exposure to Al from vaccines could be contributing to the 
+rise in ASD prevalence in the Western world. Our results show that: (i) children 
+from countries with the highest ASD prevalence appear to have the highest 
+exposure to Al from vaccines; (ii) the increase in exposure to Al adjuvants 
+significantly correlates with the increase in ASD prevalence in the United 
+States observed over the last two decades (Pearson r=0.92, p<0.0001); and (iii) 
+a significant correlation exists between the amounts of Al administered to 
+preschool children and the current prevalence of ASD in seven Western countries, 
+particularly at 3-4 months of age (Pearson r=0.89-0.94, p=0.0018-0.0248). The 
+application of the Hill's criteria to these data indicates that the correlation 
+between Al in vaccines and ASD may be causal. Because children represent a 
+fraction of the population most at risk for complications following exposure to 
+Al, a more rigorous evaluation of Al adjuvant safety seems warranted.
+
+Crown Copyright © 2011. Published by Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.jinorgbio.2011.08.008
+PMID: 22099159 [Indexed for MEDLINE]
+
+
+7. J Toxicol Environ Health A. 2007 May 15;70(10):837-51. doi: 
+10.1080/15287390701212141.
+
+A case series of children with apparent mercury toxic encephalopathies 
+manifesting with clinical symptoms of regressive autistic disorders.
+
+Geier DA(1), Geier MR.
+
+Author information:
+(1)Institute of Chronic Illnesses, Inc., Silver Spring, Maryland, USA.
+
+Impairments in social relatedness and communication, repetitive behaviors, and 
+stereotypic abnormal movement patterns characterize autism spectrum disorders 
+(ASDs). It is clear that while genetic factors are important to the pathogenesis 
+of ASDs, mercury exposure can induce immune, sensory, neurological, motor, and 
+behavioral dysfunctions similar to traits defining or associated with ASDs. The 
+Institutional Review Board of the Institute for Chronic Illnesses (Office for 
+Human Research Protections, U.S. Department of Health and Human Services, IRB 
+number IRB00005375) approved the present study. A case series of nine patients 
+who presented to the Genetic Centers of America for a genetic/developmental 
+evaluation are discussed. Eight of nine patients (one patient was found to have 
+an ASD due to Rett's syndrome) (a) had regressive ASDs; (b) had elevated levels 
+of androgens; (c) excreted significant amounts of mercury post chelation 
+challenge; (d) had biochemical evidence of decreased function in their 
+glutathione pathways; (e) had no known significant mercury exposure except from 
+Thimerosal-containing vaccines/Rho(D)-immune globulin preparations; and (f) had 
+alternate causes for their regressive ASDs ruled out. There was a significant 
+dose-response relationship between the severity of the regressive ASDs observed 
+and the total mercury dose children received from Thimerosal-containing 
+vaccines/Rho (D)-immune globulin preparations. Based upon differential 
+diagnoses, 8 of 9 patients examined were exposed to significant mercury from 
+Thimerosal-containing biologic/vaccine preparations during their fetal/infant 
+developmental periods, and subsequently, between 12 and 24 mo of age, these 
+previously normally developing children suffered mercury toxic encephalopathies 
+that manifested with clinical symptoms consistent with regressive ASDs. Evidence 
+for mercury intoxication should be considered in the differential diagnosis as 
+contributing to some regressive ASDs.
+
+DOI: 10.1080/15287390701212141
+PMID: 17454560 [Indexed for MEDLINE]
+
+
+8. Indian J Med Res. 2008 Oct;128(4):383-411.
+
+A comprehensive review of mercury provoked autism.
+
+Geier DA(1), King PG, Sykes LK, Geier MR.
+
+Author information:
+(1)The Institute of Chronic Illnesses, Silver Spring, MD, USA. 
+mgeier@comcast.net
+
+Emerging evidence supports the theory that some autism spectrum disorders (ASDs) 
+may result from a combination of genetic/biochemical susceptibility, 
+specifically a reduced ability to excrete mercury (Hg), and exposure to Hg at 
+critical developmental periods. Elemental/inorganic Hg is released into the 
+air/water where it becomes methylated and accumulates in animal tissues. The US 
+population is primarily exposed to methyl-Hg by fish consumption. In addition, 
+many pharmaceuticals have been, and some continue to be, a ubiquitous source of 
+danger because they contain mercurials. Mercurials may be found in drugs for the 
+eye, ear, nose, throat, and skin; in bleaching creams; as preservatives in 
+cosmetics, tooth pastes, lens solutions, vaccines, allergy test and 
+immunotherapy solutions; in antiseptics, disinfectants, and contraceptives; in 
+fungicides and herbicides; in dental fillings and thermometers; and many other 
+products. Hg has been found to cause immune, sensory, neurological, motor, and 
+behavioural dysfunctions similar to traits defining/associated with ASDs, and 
+that these similarities extend to neuroanatomy, neurotransmitters, and 
+biochemistry. Furthermore, a review of molecular mechanisms indicates that Hg 
+exposure can induce death, disorganization and/or damage to selected neurons in 
+the brain similar to that seen in recent ASD brain pathology studies, and this 
+alteration may likely produce the symptoms by which ASDs are diagnosed. Finally, 
+a review of treatments suggests that ASD patients who undergo protocols to 
+reduce Hg and/or its effects show significant clinical improvements in some 
+cases. In conclusion, the overwhelming preponderance of the evidence favours 
+acceptance that Hg exposure is capable of causing some ASDs.
+
+PMID: 19106436 [Indexed for MEDLINE]
+
+
+9. J Immunotoxicol. 2011 Jan-Mar;8(1):68-79. doi: 10.3109/1547691X.2010.545086.
+
+Theoretical aspects of autism: causes--a review.
+
+Ratajczak HV(1).
+
+Author information:
+(1)hratajcz@comcast.net
+
+Comment in
+    J Immunotoxicol. 2011 Jul-Sep;8(3):195-7. doi: 10.3109/1547691X.2011.580794.
+    J Immunotoxicol. 2011 Jul-Sep;8(3):198-203. doi: 
+10.3109/1547691X.2011.584920.
+
+Autism, a member of the pervasive developmental disorders (PDDs), has been 
+increasing dramatically since its description by Leo Kanner in 1943. First 
+estimated to occur in 4 to 5 per 10,000 children, the incidence of autism is now 
+1 per 110 in the United States, and 1 per 64 in the United Kingdom, with similar 
+incidences throughout the world. Searching information from 1943 to the present 
+in PubMed and Ovid Medline databases, this review summarizes results that 
+correlate the timing of changes in incidence with environmental changes. Autism 
+could result from more than one cause, with different manifestations in 
+different individuals that share common symptoms. Documented causes of autism 
+include genetic mutations and/or deletions, viral infections, and encephalitis 
+following vaccination. Therefore, autism is the result of genetic defects and/or 
+inflammation of the brain. The inflammation could be caused by a defective 
+placenta, immature blood-brain barrier, the immune response of the mother to 
+infection while pregnant, a premature birth, encephalitis in the child after 
+birth, or a toxic environment.
+
+DOI: 10.3109/1547691X.2010.545086
+PMID: 21299355 [Indexed for MEDLINE]
+
+
+10. Med Hypotheses. 2011 Dec;77(6):937-9. doi: 10.1016/j.mehy.2011.08.033. Epub
+2011  Sep 9.
+
+Conjugate vaccines and autism.
+
+Rose NR.
+
+Comment on
+    Med Hypotheses. 2011 Dec;77(6):940-7. doi: 10.1016/j.mehy.2011.08.019.
+
+DOI: 10.1016/j.mehy.2011.08.033
+PMID: 21907498 [Indexed for MEDLINE]
+
+
+11. Med Hypotheses. 2001 Apr;56(4):462-71. doi: 10.1054/mehy.2000.1281.
+
+Autism: a novel form of mercury poisoning.
+
+Bernard S(1), Enayati A, Redwood L, Roger H, Binstock T.
+
+Author information:
+(1)ARC Research, Cranford, New Jersey 07901, USA.
+
+Autism is a syndrome characterized by impairments in social relatedness and 
+communication, repetitive behaviors, abnormal movements, and sensory 
+dysfunction. Recent epidemiological studies suggest that autism may affect 1 in 
+150 US children. Exposure to mercury can cause immune, sensory, neurological, 
+motor, and behavioral dysfunctions similar to traits defining or associated with 
+autism, and the similarities extend to neuroanatomy, neurotransmitters, and 
+biochemistry. Thimerosal, a preservative added to many vaccines, has become a 
+major source of mercury in children who, within their first two years, may have 
+received a quantity of mercury that exceeds safety guidelines. A review of 
+medical literature and US government data suggests that: (i) many cases of 
+idiopathic autism are induced by early mercury exposure from thimerosal; (ii) 
+this type of autism represents an unrecognized mercurial syndrome; and (iii) 
+genetic and non-genetic factors establish a predisposition whereby thimerosal's 
+adverse effects occur only in some children.
+
+Copyright 2001 Harcourt Publishers Ltd.
+
+DOI: 10.1054/mehy.2000.1281
+PMID: 11339848 [Indexed for MEDLINE]
+
+
+12. J Matern Fetal Neonatal Med. 2007 May;20(5):385-90. doi: 
+10.1080/14767050701228057.
+
+A prospective study of thimerosal-containing Rho(D)-immune globulin 
+administration as a risk factor for autistic disorders.
+
+Geier DA(1), Geier MR.
+
+Author information:
+(1)The Institute of Chronic Illnesses, Silver Spring, MD, USA.
+
+BACKGROUND: This study evaluated the relationship between prenatal mercury 
+exposure from thimerosal (49.55% mercury by weight)-containing Rho(D)-immune 
+globulins (TCRs) and autism spectrum disorders (ASDs).
+METHODS: The Institutional Review Board of the Institute for Chronic Illnesses 
+approved the present study. A total of 53 consecutive non-Jewish Caucasian 
+patients with ASDs (Diagnostic and statistical manual of mental disorders, 
+fourth ed. - DSM IV) born between 1987 and 2001 who presented to the Genetic 
+Centers of America for outpatient genetic/developmental evaluations were 
+prospectively collected from June 1, 2005 through March 31, 2006. Imaging and 
+laboratory testing were conducted on each patient to rule out other causal 
+factors for their ASDs. As race-matched controls, the frequency of Rh negativity 
+was determined from 926 non-Jewish Caucasian pregnant women who had presented 
+for outpatient prenatal genetics care to the Genetic Centers of America between 
+1980 and 1989.
+RESULTS: Children with ASDs (28.30%) were significantly more likely (odds ratio 
+2.35, 95% confidence interval 1.17-4.52, p < 0.01) to have Rh-negative mothers 
+than controls (14.36%). Each ASD patient's mother was determined to have been 
+administered a TCR during her pregnancy.
+CONCLUSION: The results provide insights into the potential role prenatal 
+mercury exposure may play in some children with ASDs.
+
+DOI: 10.1080/14767050701228057
+PMID: 17674242 [Indexed for MEDLINE]
+
+
+13. Med Hypotheses. 2011 Dec;77(6):940-7. doi: 10.1016/j.mehy.2011.08.019. Epub
+2011  Oct 10.
+
+Hypothesis: conjugate vaccines may predispose children to autism spectrum 
+disorders.
+
+Richmand BJ(1).
+
+Author information:
+(1)brichmand@gmail.com
+
+Comment in
+    Med Hypotheses. 2011 Dec;77(6):937-9. doi: 10.1016/j.mehy.2011.08.033.
+
+The first conjugate vaccine was approved for use in the US in 1988 to protect 
+infants and young children against the capsular bacteria Haemophilus influenzae 
+type b (Hib). Since its introduction in the US, this vaccine has been approved 
+in most developed countries, including Denmark and Israel where the vaccine was 
+added to their national vaccine programs in 1993 and 1994, respectively. There 
+have been marked increases in the reported prevalence of autism spectrum 
+disorders (ASDs) among children in the US beginning with birth cohorts in the 
+late 1980s and in Denmark and Israel starting approximately 4-5 years later. 
+Although these increases may partly reflect ascertainment biases, an exogenous 
+trigger could explain a significant portion of the reported increases in ASDs. 
+It is hypothesized here that the introduction of the Hib conjugate vaccine in 
+the US in 1988 and its subsequent introduction in Denmark and Israel could 
+explain a substantial portion of the initial increases in ASDs in those 
+countries. The continuation of the trend toward increased rates of ASDs could be 
+further explained by increased usage of the vaccine, a change in 1990 in the 
+recommended age of vaccination in the US from 15 to 2 months, increased 
+immunogenicity of the vaccine through changes in its carrier protein, and the 
+subsequent introduction of the conjugate vaccine for Streptococcus pneumoniae. 
+Although conjugate vaccines have been highly effective in protecting infants and 
+young children from the significant morbidity and mortality caused by Hib and S. 
+pneumoniae, the potential effects of conjugate vaccines on neural development 
+merit close examination. Conjugate vaccines fundamentally change the manner in 
+which the immune systems of infants and young children function by deviating 
+their immune responses to the targeted carbohydrate antigens from a state of 
+hypo-responsiveness to a robust B2 B cell mediated response. This period of 
+hypo-responsiveness to carbohydrate antigens coincides with the intense 
+myelination process in infants and young children, and conjugate vaccines may 
+have disrupted evolutionary forces that favored early brain development over the 
+need to protect infants and young children from capsular bacteria.
+
+Copyright © 2011 Elsevier Ltd. All rights reserved.
+
+DOI: 10.1016/j.mehy.2011.08.019
+PMID: 21993250 [Indexed for MEDLINE]
+
+
+14. Med Hypotheses. 2005;64(5):946-54. doi: 10.1016/j.mehy.2004.11.018.
+
+The potential importance of steroids in the treatment of autistic spectrum 
+disorders and other disorders involving mercury toxicity.
+
+Geier MR(1), Geier DA.
+
+Author information:
+(1)The Genetic Centers of America, 14 Redgate Ct., Silver Spring, MD 20905, USA. 
+mgeier@comcast.net
+
+Autism is a neurodevelopmental disorder that according to the Centers for 
+Disease Control and Prevention (CDC) affects 1 in 150 children in the United 
+States. Autism is characterized by impairments in social relatedness and 
+communication, repetitive behaviors, abnormal movements, and sensory 
+dysfunction. Recently emerging evidence suggests that mercury, especially from 
+childhood vaccines, appears to be a factor in the development of the autistic 
+disorders, and that autistic children have higher than normal body-burdens of 
+mercury. In considering mercury toxicity, it has previously been shown that 
+testosterone significantly potentates mercury toxicity, whereas estrogen is 
+protective. Examination of autistic children has shown that the severity of 
+autistic disorders correlates with the amount of testosterone present in the 
+amniotic fluid, and an examination of a case-series of autistic children has 
+shown that some have plasma testosterone levels that were significantly elevated 
+in comparison neurotypical control children. A review of some of the current 
+biomedical therapies for autistics, such as glutathione and cysteine, chelation, 
+secretin, and growth hormone, suggests that they may in fact lower testosterone 
+levels. We put forward the medical hypothesis that autistic disorders, in fact, 
+represents a form of testosterone mercury toxicity, and based upon this 
+observation, one can design novel treatments for autistics directed towards 
+higher testosterone levels in autistic children. We suggest a series of 
+experiments that need to be conducted in order to evaluate the exact mechanisms 
+for mercury-testosterone toxicity, and various types of clinical manipulations 
+that may be employed to control testosterone levels. It is hoped by devising 
+therapies that address the steroid hormone pathways, in addition to the current 
+treatments that successful lower heavy metal body-burdens of mercury, will work 
+synergistically to improve clinical outcomes. In light of the fact that there 
+are a number of other diseases that may have a chronic mercury toxicity 
+component, such as Alzheimer's disease, heart disease, obesity, ALS, asthma, and 
+other various forms of autoimmune disorders, it is imperative that further 
+research should be conducted to understand mercury-testosterone toxicity.
+
+DOI: 10.1016/j.mehy.2004.11.018
+PMID: 15780490 [Indexed for MEDLINE]
+
+
+15. Int J Toxicol. 2003 Jul-Aug;22(4):277-85. doi: 10.1080/10915810305120.
+
+Reduced levels of mercury in first baby haircuts of autistic children.
+
+Holmes AS(1), Blaxill MF, Haley BE.
+
+Author information:
+(1)SafeMinds, Cambridge, Massachusetts, USA.
+
+Reported rates of autism have increased sharply in the United States and the 
+United Kingdom. One possible factor underlying these increases is increased 
+exposure to mercury through thimerosal-containing vaccines, but vaccine 
+exposures need to be evaluated in the context of cumulative exposures during 
+gestation and early infancy. Differential rates of postnatal mercury elimination 
+may explain why similar gestational and infant exposures produce variable 
+neurological effects. First baby haircut samples were obtained from 94 children 
+diagnosed with autism using Diagnostic and Statistical Manual of Mental 
+Disorders, 4th edition (DSM IV) criteria and 45 age- and gender-matched 
+controls. Information on diet, dental amalgam fillings, vaccine history, Rho D 
+immunoglobulin administration, and autism symptom severity was collected through 
+a maternal survey questionnaire and clinical observation. Hair mercury levels in 
+the autistic group were 0.47 ppm versus 3.63 ppm in controls, a significant 
+difference. The mothers in the autistic group had significantly higher levels of 
+mercury exposure through Rho D immunoglobulin injections and amalgam fillings 
+than control mothers. Within the autistic group, hair mercury levels varied 
+significantly across mildly, moderately, and severely autistic children, with 
+mean group levels of 0.79, 0.46, and 0.21 ppm, respectively. Hair mercury levels 
+among controls were significantly correlated with the number of the mothers' 
+amalgam fillings and their fish consumption as well as exposure to mercury 
+through childhood vaccines, correlations that were absent in the autistic group. 
+Hair excretion patterns among autistic infants were significantly reduced 
+relative to control. These data cast doubt on the efficacy of traditional hair 
+analysis as a measure of total mercury exposure in a subset of the population. 
+In light of the biological plausibility of mercury's role in neurodevelopmental 
+disorders, the present study provides further insight into one possible 
+mechanism by which early mercury exposures could increase the risk of autism.
+
+DOI: 10.1080/10915810305120
+PMID: 12933322 [Indexed for MEDLINE]
+
+
+16. Neurotoxicology. 2006 Sep;27(5):685-92. doi: 10.1016/j.neuro.2006.06.003.
+Epub  2006 Jun 16.
+
+Cultured lymphocytes from autistic children and non-autistic siblings 
+up-regulate heat shock protein RNA in response to thimerosal challenge.
+
+Walker SJ(1), Segal J, Aschner M.
+
+Author information:
+(1)Department of Physiology and Pharmacology, Wake Forest University School of 
+Medicine, Winston-Salem, NC 27156, USA. swalker@wfubmc.edu
+
+There are reports suggesting that some autistic children are unable to mount an 
+adequate response following exposure to environmental toxins. This potential 
+deficit, coupled with the similarity in clinical presentations of autism and 
+some heavy metal toxicities, has led to the suggestion that heavy metal 
+poisoning might play a role in the etiology of autism in uniquely susceptible 
+individuals. Thimerosal, an anti-microbial preservative previously added 
+routinely to childhood multi-dose vaccines, is composed of 49.6% ethyl mercury. 
+Based on the levels of this toxin that children receive through routine 
+immunization schedules in the first years of life, it has been postulated that 
+thimerosal may be a potential triggering mechanism contributing to autism in 
+susceptible individuals. One potential risk factor in these individuals may be 
+an inability to adequately up-regulate metallothionein (MT) biosynthesis in 
+response to presentation of a heavy metal challenge. To investigate this 
+hypothesis, cultured lymphocytes (obtained from the Autism Genetic Resource 
+Exchange, AGRE) from autistic children and non-autistic siblings were challenged 
+with either 10 microM ethyl mercury, 150 microM zinc, or fresh media (control). 
+Following the challenge, total RNA was extracted and used to query "whole 
+genome" DNA microarrays. Cultured lymphocytes challenged with zinc responded 
+with an impressive up-regulation of MT transcripts (at least nine different MTs 
+were over-expressed) while cells challenged with thimerosal responded by 
+up-regulating numerous heat shock protein transcripts, but not MTs. Although 
+there were no apparent differences between autistic and non-autistic sibling 
+responses in this very small sampling group, the differences in expression 
+profiles between those cells treated with zinc versus thimerosal were dramatic. 
+Determining cellular response, at the level of gene expression, has important 
+implications for the understanding and treatment of conditions that result from 
+exposure to neurotoxic compounds.
+
+DOI: 10.1016/j.neuro.2006.06.003
+PMID: 16870260 [Indexed for MEDLINE]
+
+
+17. Altern Ther Health Med. 2008 Nov-Dec;14(6):46-53.
+
+A possible central mechanism in autism spectrum disorders, part 1.
+
+Blaylock RL(1).
+
+Author information:
+(1)Belhaven College, Jackson, Mississippi, USA.
+
+The autism spectrum disorders (ASD) are a group of related neurodevelopmental 
+disorders that have been increasing in incidence since the 1980s. Despite a 
+considerable amount of data being collected from cases, a central mechanism has 
+not been offered. A careful review of ASD cases discloses a number of events 
+that adhere to an immunoexcitotoxic mechanism. This mechanism explains the link 
+between excessive vaccination, use of aluminum and ethylmercury as vaccine 
+adjuvants, food allergies, gut dysbiosis, and abnormal formation of the 
+developing brain. It has now been shown that chronic microglial activation is 
+present in autistic brains from age 5 years to age 44 years. A considerable 
+amount of evidence, both experimental and clinical, indicates that repeated 
+microglial activation can initiate priming of the microglia and that subsequent 
+stimulation can produce an exaggerated microglial response that can be 
+prolonged. It is also known that one phenotypic form of microglia activation can 
+result in an outpouring of neurotoxic levels of the excitotoxins, glutamate and 
+quinolinic acid. Studies have shown that careful control of brain glutamate 
+levels is essential to brain pathway development and that excesses can result in 
+arrest of neural migration, as well as dendritic and synaptic loss. It has also 
+been shown that certain cytokines, such as TNF-alpha, can, via its receptor, 
+interact with glutamate receptors to enhance the neurotoxic reaction. To 
+describe this interaction I have coined the term immunoexcitotoxicity, which is 
+described in this article.
+
+PMID: 19043938 [Indexed for MEDLINE]
+
+
+18. Mol Psychiatry. 2002;7 Suppl 2:S42-3. doi: 10.1038/sj.mp.4001177.
+
+The role of mercury in the pathogenesis of autism.
+
+Bernard S(1), Enayati A, Roger H, Binstock T, Redwood L.
+
+Author information:
+(1)Safe Minds, 14 Commerce Drive, Cranford, NJ 07901, USA. sbernard@nac.net
+
+DOI: 10.1038/sj.mp.4001177
+PMID: 12142947 [Indexed for MEDLINE]
+
+
+19. Toxicol Sci. 2014 Jun;139(2):452-65. doi: 10.1093/toxsci/kfu049. Epub 2014
+Mar  27.
+
+Transcriptomic analyses of neurotoxic effects in mouse brain after intermittent 
+neonatal administration of thimerosal.
+
+Li X(1), Qu F, Xie W, Wang F, Liu H, Song S, Chen T, Zhang Y, Zhu S, Wang Y, Guo 
+C, Tang TS.
+
+Author information:
+(1)State Key Laboratory of Biomembrane and Membrane Biotechnology, Institute of 
+Zoology, Chinese Academy of Sciences, Beijing 100101, China.
+
+Thimerosal is a vaccine antimicrobial preservative which has long been suspected 
+an iatrogenic factor possibly contributing to neurodevelopmental disorders 
+including autism. The association between infant vaccine thimerosal exposure and 
+autism remains an open question. Although thimerosal has been removed from 
+mandatory childhood vaccines in the United States, thimerosal-preserved vaccines 
+are still widely used outside of the United States especially in developing 
+countries. Notably, thimerosal-containing vaccines are being given to the 
+newborns within the first 12-24 h after birth in some countries. To examine the 
+possible neurotoxic effects of early neonatal exposure to a higher level of 
+thimerosal, FVB mice were subcutaneously injected with thimerosal-mercury at a 
+dose which is 20× higher than that used for regular Chinese infant immunization 
+during the first 4 months of life. Thimerosal-treated mice exhibited neural 
+development delay, social interaction deficiency, and inclination of depression. 
+Apparent neuropathological changes were also observed in adult mice neonatally 
+treated with thimerosal. High-throughput RNA sequencing of autistic-behaved mice 
+brains revealed the alternation of a number of canonical pathways involving 
+neuronal development, neuronal synaptic function, and the dysregulation of 
+endocrine system. Intriguingly, the elevation of anterior pituitary secreting 
+hormones occurred exclusively in male but not in female thimerosal-treated mice, 
+demonstrating for the first time the gender bias of thimerosal-mercury toxicity 
+with regard to endocrine system. Our results indicate that higher dose of 
+neonatal thimerosal-mercury (20× higher than that used in human) is capable of 
+inducing long-lasting substantial dysregulation of neurodevelopment, synaptic 
+function, and endocrine system, which could be the causal involvements of 
+autistic-like behavior in mice.
+
+DOI: 10.1093/toxsci/kfu049
+PMID: 24675092 [Indexed for MEDLINE]
+
+
+20. Pediatr Neurol. 2003 Apr;28(4):292-4. doi: 10.1016/s0887-8994(02)00627-6.
+
+Elevated levels of measles antibodies in children with autism.
+
+Singh VK(1), Jensen RL.
+
+Author information:
+(1)Department of Biology and Biotechnology Center, Utah State University, Logan, 
+Utah, USA.
+
+Comment in
+    Pediatr Neurol. 2004 Jan;30(1):78; author reply 78. doi: 
+10.1016/j.pediatrneurol.2003.10.006.
+
+Virus-induced autoimmunity may play a causal role in autism. To examine the 
+etiologic link of viruses in this brain disorder, we conducted a serologic study 
+of measles virus, mumps virus, and rubella virus. Viral antibodies were measured 
+by enzyme-linked immunosorbent assay in the serum of autistic children, normal 
+children, and siblings of autistic children. The level of measles antibody, but 
+not mumps or rubella antibodies, was significantly higher in autistic children 
+as compared with normal children (P = 0.003) or siblings of autistic children (P 
+<or= 0.0001). Furthermore, immunoblotting of measles vaccine virus revealed that 
+the antibody was directed against a protein of approximately 74 kd molecular 
+weight. The antibody to this antigen was found in 83% of autistic children but 
+not in normal children or siblings of autistic children. Thus autistic children 
+have a hyperimmune response to measles virus, which in the absence of a wild 
+type of measles infection might be a sign of an abnormal immune reaction to the 
+vaccine strain or virus reactivation.
+
+DOI: 10.1016/s0887-8994(02)00627-6
+PMID: 12849883 [Indexed for MEDLINE]

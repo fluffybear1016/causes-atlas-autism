@@ -1,0 +1,68 @@
+case_id: case_020_walsh_undermethylator
+description: Walsh framework undermethylator biotype (PHE-0008). Tests engine handling of LOW-confidence framework-derived phenotype with appropriate evidence-tier flagging per audit C-5.
+provenance_pmids: []
+operating_mode: older_child
+input_completeness_min: 0.50
+
+expected_top_phenotype: PHE-0008
+expected_phenotype_p_floor: 0.30
+expected_phenotype_p_ceiling: 0.85
+
+expected_phenotype_secondary_min_posterior:
+  PHE-0001: 0.10
+
+# v0.2 profile-vector expectations (post-mortem Move 1).
+# Walsh undermethylator with current biomarker stub log-odds produces a
+# loading near baseline (~0.50). Honest behavior: undifferentiated profile,
+# empty intervention bundle. The v0.1 engine's confident "top phenotype =
+# PHE-0008" was the failure mode the post-mortem identified — that
+# semantics has been intentionally retired.
+expected_dominant_dimensions: []
+expected_dominant_dimensions_match_exact: true
+expected_undifferentiated_flag: true
+expected_multi_pattern_flag: false
+expected_intervention_bundle_empty: true
+expected_top_intervention_primary_target_in: []
+expected_calibration_anchor_int_0001_in_top_5: false
+
+expected_top_3_intervention_ids:
+  # v0.1-era expectations — engine no longer produces ranked interventions
+  # for undifferentiated profiles. Listed for back-compat / future re-enable
+  # when Walsh-phenotype-specific intervention edges + stronger biomarker
+  # priors are added.
+  - INT-0019  # SAMe
+  - INT-0003  # Methyl-B12
+  - INT-0017  # P5P (B6)
+  - INT-0018  # TMG/betaine
+  - INT-0008  # 5-MTHF (cautious in Walsh framework)
+
+expected_top_3_intervention_match_min: 0  # v0.2: undifferentiated → empty bundle is correct
+
+expected_recommendation_types:
+  INT-0019: CONSIDER
+
+expected_avoidance_bundle_must_include:
+  - high_dose_synthetic_folic_acid_in_methylation_impaired
+
+expected_syndromic_flag: false
+expected_syndromic_flag_match_exact: true
+
+expected_phenotype_evidence_tier_for_top:
+  PHE-0008: framework_derived_LOW
+
+expected_open_questions_includes:
+  - urinary_kryptopyrroles
+  - copper_zinc_ratio
+  - homocysteine_panel
+
+expected_pgx_flags_min_count: 0
+
+calibration_anchor_stability: null
+
+notes: |
+  Tests audit C-5 fix: Walsh phenotypes (PHE-0008/0009/0010/0011) must
+  be emitted with phenotype_evidence_tier flag indicating framework-
+  derived LOW confidence to avoid false-equivalence with high-evidence
+  phenotypes (PHE-0001 CFD, PHE-0002 mito, PHE-0006 FXS) in clinician
+  display. Recommendation type CONSIDER (not START) for top Walsh-
+  derived intervention reflects LOW evidence quality.

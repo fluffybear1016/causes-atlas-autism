@@ -1,0 +1,142 @@
+# Long COVID / ME-CFS atlas v0.1 — seed manifest
+# Per PLATFORM_PIVOT_v0.1.md — second condition on the multi-atlas substrate.
+
+condition: Long COVID / ME-CFS
+condition_id: long_covid
+version: v0.1_seed
+date_created: 2026-05-05
+status: seed  # progression: seed → v1.0_calibrated → continuously_ingested
+
+description: |
+  Long COVID (post-acute sequelae of SARS-CoV-2) and overlapping ME/CFS
+  (myalgic encephalomyelitis / chronic fatigue syndrome) atlas. Captures
+  the heterogeneity of post-viral chronic illness across nine biological
+  phenotype dimensions, with the same individual-level susceptibility-
+  trigger-mechanism-phenotype framework as the autism atlas. Mainstream
+  medicine has no accepted protocol; functional medicine practitioners
+  are defining clinical workflow in real time. This atlas aims to be the
+  canonical evidence-graph layer for that workflow.
+
+upstream_atlases:
+  # Mechanistic overlap with autism atlas — phenotypes that reuse the same
+  # underlying mechanisms (mito, immune, GI, MCAS) inherit primary sources
+  # from the autism atlas where appropriate.
+  - autism
+
+phenotype_taxonomy:
+  - id: LC-PHE-0001
+    name: Mitochondrial dysfunction (post-viral)
+    short: post-viral mito
+    mechanism_summary: |
+      OXPHOS deficit, lactate elevation, post-exertional malaise (PEM),
+      exercise intolerance. Skeletal muscle and CNS mitochondrial pathology
+      documented in PEM cohorts.
+    overlaps_autism_dimension: PHE-0002
+    primary_pmid_seed: ["39240417"]  # Haunhorst 2025 Infection — PEM mito review
+
+  - id: LC-PHE-0002
+    name: Autonomic dysfunction (POTS / dysautonomia)
+    short: POTS
+    mechanism_summary: |
+      Sympathetic overdrive, vagal tone deficit, orthostatic intolerance,
+      sinus tachycardia. Cardinal feature in a large Long COVID subset.
+    overlaps_autism_dimension: null  # NEW dimension not in autism atlas
+    primary_pmid_seed: ["39523946", "36339677"]  # Johansson 2024 Hypertension; Amekran 2022
+
+  - id: LC-PHE-0003
+    name: Mast cell activation (LC-MCAS)
+    short: LC-MCAS
+    mechanism_summary: |
+      Tryptase, methylhistamine elevation, histamine intolerance.
+      Spike-protein-driven mast cell hyperactivation hypothesized.
+    overlaps_autism_dimension: PHE-0003  # autism MCAS subset (Theoharides)
+    primary_pmid_seed: ["37389095", "34563706"]  # Sumantri 2023 Asia Pac Allergy; Weinstock 2021
+
+  - id: LC-PHE-0004
+    name: Neuroinflammation / brain fog
+    short: neuroinflammation
+    mechanism_summary: |
+      Elevated TNFα, IL-6, neopterin; BBB disruption proxies; cognitive
+      impairment, brain fog. Imaging shows hypometabolism in subset.
+    overlaps_autism_dimension: PHE-0003
+    primary_pmid_seed: []  # to-be-populated month 2
+
+  - id: LC-PHE-0005
+    name: Microbiome dysbiosis (post-viral)
+    short: gut dysbiosis
+    mechanism_summary: |
+      Akkermansia muciniphila depletion, Faecalibacterium prausnitzii
+      depletion, dysbiosis index elevation. Liu 2022 Gut documented in
+      Hong Kong cohort.
+    overlaps_autism_dimension: PHE-0004
+    primary_pmid_seed: []  # to-be-populated month 2
+
+  - id: LC-PHE-0006
+    name: Microvascular / coagulopathy (fibrinaloid microclots)
+    short: microclots
+    mechanism_summary: |
+      Fibrinaloid microclots (Pretorius/Kell) — anomalous fibrin polymerization
+      resistant to plasmin; elevated d-dimer, von Willebrand factor;
+      microvascular ischemia.
+    overlaps_autism_dimension: null  # NEW
+    primary_pmid_seed: ["37584410", "39434957", "38392604"]  # Kell-Pretorius series
+
+  - id: LC-PHE-0007
+    name: Post-viral autoimmune
+    short: post-viral autoimmunity
+    mechanism_summary: |
+      New-onset autoantibodies, GPCR autoabs (β-adrenergic, muscarinic),
+      ANA conversion. Molecular-mimicry mechanism with SARS-CoV-2 spike.
+    overlaps_autism_dimension: PHE-0003  # partial — regressive immune-inflammatory
+    primary_pmid_seed: []
+
+  - id: LC-PHE-0008
+    name: Persistent SARS-CoV-2 reservoir
+    short: viral persistence
+    mechanism_summary: |
+      Spike protein in tissue/blood, viral RNA persistence in gut/lymph,
+      ongoing antigenic stimulation hypothesized as driver.
+    overlaps_autism_dimension: null
+    primary_pmid_seed: []  # to-be-populated month 2
+
+  - id: LC-PHE-0009
+    name: HPA-axis / hormonal dysregulation
+    short: HPA dysfunction
+    mechanism_summary: |
+      Low cortisol (Klein 2023), low DHEA, suppressed thyroid conversion;
+      drives fatigue and stress intolerance.
+    overlaps_autism_dimension: null
+    primary_pmid_seed: []
+
+calibration_anchor_candidate:
+  intervention_id: LC-INT-0001  # placeholder — populate when interventions.csv seeded
+  intervention_name: Low-dose naltrexone (LDN)
+  rationale: |
+    LDN has the most published Long COVID intervention literature with
+    responder-rate stratification. PMID 35814187 (O'Kelly 2022) reports
+    interventional pre-post data; PMID 38740499 (Naik 2024) is an active
+    RCT protocol. Calibration anchor will be locked once full-text
+    responder rates are extracted (target month 2).
+  required_csrs_min: 70.0  # provisional; tune once anchor is locked
+  current_csrs: null
+
+contributors:
+  - role: founding_curator
+    name: project_founder
+  - role: scientific_advisory_board
+    note: |
+      v1.0 requires ≥1 Long COVID clinician + ≥1 ME/CFS researcher on the
+      curation board. Recommended candidates: Putrino (Mt Sinai), Klein
+      (Yale), Pretorius (Stellenbosch). Contact deferred to month 5 per
+      PLATFORM_PIVOT roadmap.
+
+verification_protocol: BioMysteryBench-aligned  # CLAUDE.md §Verification protocol
+freshness_query_patterns:
+  # Used by scripts/continuous_ingestion.py for daily PubMed crawl over
+  # this atlas. Tunable per condition.
+  - 'long COVID[tiab] OR PASC[tiab] OR "post-acute sequelae"[tiab]'
+  - '"myalgic encephalomyelitis"[tiab] OR "chronic fatigue syndrome"[tiab]'
+  - '("post-viral"[tiab] OR PEM[tiab]) AND (mitochondrial[tiab] OR autonomic[tiab])'
+  - '"low-dose naltrexone"[tiab] AND (long COVID[tiab] OR ME/CFS[tiab])'
+  - 'fibrinaloid OR microclot AND COVID'
+  - 'spike protein persistence OR reservoir AND COVID'

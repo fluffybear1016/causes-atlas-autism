@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Ibarra C; Fekry B; Ugartemendia L; Boggess K; Suchting R; Goetzl L",
+  "doi": "doi: 10.1016/j.ajog.2025.10.025",
+  "first_author": "Ibarra C",
+  "journal": "Am J Obstet Gynecol",
+  "matched_queries": [
+    "autism[tiab] AND (mitochondrial[tiab] OR \"oxidative stress\"[tiab]) AND (\"clinical trial\"[pt] OR \"randomized\"[tiab])"
+  ],
+  "pmid": "41130438",
+  "pubdate": "2026 Mar",
+  "title": "Can maternal metformin protect the developing fetal brain?",
+  "verified_at": "2026-05-05T13:08:00+00:00"
+}

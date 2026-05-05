@@ -1,0 +1,91 @@
+case_id: case_011_hannah_poling
+description: |
+  Hannah Poling federal Vaccine Court ruling 2008 — calibration anchor case.
+  Mitochondrial-vulnerability profile + simultaneous multi-vaccine immune
+  challenge → regressive encephalopathy with autism features. Federally-
+  adjudicated as susceptibility-trigger-mechanism-phenotype causation.
+
+provenance_pmids: []  # federal court record; not a PMID. Atlas SRC-001418.
+operating_mode: young_child
+input_completeness_min: 0.45  # input is sparse (lots of nulls); engine should reflect this
+
+expected_top_phenotype: PHE-0002
+expected_phenotype_p_floor: 0.50
+expected_phenotype_p_ceiling: 0.90
+
+expected_phenotype_secondary_min_posterior:
+  PHE-0003: 0.20  # regressive immune-inflammatory phenotype as secondary
+
+# v0.2 profile-vector expectations (post-mortem Move 1).
+# Profile-vector semantics — engine emits a loading vector across all 11
+# phenotypes; a child has a "shape," not a single classification. v0.1
+# top-phenotype expectations above are kept for back-compat.
+expected_dominant_dimensions: ["PHE-0002"]
+expected_dominant_dimensions_match_exact: true
+expected_undifferentiated_flag: false
+expected_multi_pattern_flag: false
+expected_profile_concentration_min: 0.30
+expected_top_intervention_primary_target_in: ["PHE-0002"]
+expected_calibration_anchor_int_0001_in_top_5: false  # mito profile; INT-0001 not expected to lead
+
+expected_top_3_intervention_ids:
+  # Mitochondrial cocktail components — top intervention bundle should
+  # contain at least 2 of these 5
+  - INT-0011  # CoQ10
+  - INT-0012  # L-carnitine
+  - INT-0017  # B-vitamin combination relevant to mito support
+  - INT-0019  # additional mito-support intervention
+  - INT-0020  # additional mito-support intervention
+
+expected_top_3_intervention_match_min: 2  # ≥2 of the 5 must appear in bundle top-3
+
+expected_recommendation_types:
+  # Explicit recommendation type assertions
+  INT-0011: START  # CoQ10 in mito-vulnerable subset
+  INT-0001: DONT_START  # leucovorin not indicated absent FRAA evidence
+
+expected_avoidance_bundle_must_include:
+  # Avoidance bundle must contain at least one of these flags
+  - simultaneous_multi_vaccine_administration_in_mito_vulnerable
+  - fluoroquinolones_in_mito_vulnerable
+  - chronic_acetaminophen_in_mito_vulnerable
+
+expected_avoidance_bundle_must_NOT_include:
+  # These should NOT appear in this case
+  - chelation_first_line  # not indicated absent measured metals burden
+
+expected_syndromic_flag: false
+expected_syndromic_flag_match_exact: true
+
+expected_cdr_state_qualitative: chronic
+# Per §7.6 v2.3 — CDR is experimental output; qualitative match acceptable
+# Hannah Poling case captured ~6 years post-trigger in court record
+# = chronic / sub-acute window; calculator on this snapshot input is
+# also chronic-window post-event
+
+expected_open_questions_includes:
+  # High-EIG biomarkers calculator should flag as missing-but-impactful
+  - mtdna_heteroplasmy_quantitative
+  - cytokine_panel
+  - cunningham_panel_consideration
+  - muscle_biopsy_acylcarnitine_quantitative
+
+expected_responder_predictions_include:
+  # Within-phenotype responder model output should make a prediction for INT-0011
+  INT-0011:
+    p_response_min: 0.40
+    p_response_max: 1.00
+    must_have_credal_interval: true
+
+expected_pgx_flags_min_count: 0  # no specific contraindications expected from sparse input
+
+# Calibration-anchor-stability rule (per spec §13.5)
+calibration_anchor_stability:
+  baseline_phe_0002_point: null  # to be locked at v1.0 release
+  drift_tolerance: 0.10
+  required_for_all_release_versions: true
+
+notes: |
+  This case is the namesake calibration anchor. PHE-0002 posterior must
+  remain within ±0.10 of the locked v1.0 baseline across version revisions.
+  If it drifts outside this band, the version is flagged for review.

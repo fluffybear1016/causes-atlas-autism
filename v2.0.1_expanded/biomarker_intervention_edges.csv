@@ -1,0 +1,44 @@
+id,biomarker_id,intervention_id,relationship_type,direction,evidence_strength,created_at,notes
+BIE-00001,BIO-0001,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,S-adenosylmethionine (SAM) predicts response to INT-0001
+BIE-00002,BIO-0001,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,S-adenosylmethionine (SAM) predicts response to INT-0008
+BIE-00003,BIO-0002,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,S-adenosylhomocysteine (SAH) predicts response to INT-0001
+BIE-00004,BIO-0002,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,S-adenosylhomocysteine (SAH) predicts response to INT-0008
+BIE-00005,BIO-0003,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,SAM/SAH ratio predicts response to INT-0001
+BIE-00006,BIO-0003,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,SAM/SAH ratio predicts response to INT-0008
+BIE-00007,BIO-0004,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Plasma methionine predicts response to INT-0001
+BIE-00008,BIO-0005,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Homocysteine predicts response to INT-0001
+BIE-00009,BIO-0005,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Homocysteine predicts response to INT-0008
+BIE-00010,BIO-0006,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Cysteine predicts response to INT-0001
+BIE-00011,BIO-0008,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Methylmalonic acid (MMA) predicts response to INT-0001
+BIE-00012,BIO-0009,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Plasma B12 (cobalamin) predicts response to INT-0001
+BIE-00013,BIO-0010,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Holotranscobalamin (active B12) predicts response to INT-0001
+BIE-00014,BIO-0011,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Plasma folate predicts response to INT-0001
+BIE-00015,BIO-0011,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Plasma folate predicts response to INT-0008
+BIE-00016,BIO-0012,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,RBC folate predicts response to INT-0001
+BIE-00017,BIO-0012,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,RBC folate predicts response to INT-0008
+BIE-00018,BIO-0014,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Whole-blood histamine predicts response to INT-0001
+BIE-00019,BIO-0015,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — blocking predicts response to INT-0001
+BIE-00020,BIO-0016,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — binding predicts response to INT-0001
+BIE-00021,BIO-0017,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,CSF 5-MTHF predicts response to INT-0001
+BIE-00022,BIO-0028,INT-0001,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Reduced glutathione (GSH) predicts response to INT-0001
+BIE-00023,BIO-0036,INT-0025,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Arabinose predicts response to INT-0025
+BIE-00024,BIO-0036,INT-0076,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Arabinose predicts response to INT-0076
+BIE-00025,BIO-0037,INT-0076,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) predicts response to INT-0076
+BIE-00026,BIO-0037,INT-0025,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) predicts response to INT-0025
+BIE-00027,BIO-0038,INT-0076,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,4-cresol (p-cresol) predicts response to INT-0076
+BIE-00028,BIO-0038,INT-0025,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,4-cresol (p-cresol) predicts response to INT-0025
+BIE-00029,BIO-0039,INT-0025,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Tartaric acid predicts response to INT-0025
+BIE-00030,BIO-0044,INT-0076,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,"3,4-dihydroxyphenylpropionic acid (DHPPA) predicts response to INT-0076"
+BIE-00031,BIO-0054,INT-0102,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,IL-6 (interleukin-6) predicts response to INT-0102
+BIE-00032,BIO-0054,INT-0006,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,IL-6 (interleukin-6) predicts response to INT-0006
+BIE-00033,BIO-0055,INT-0102,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,TNF-α (tumor necrosis factor alpha) predicts response to INT-0102
+BIE-00034,BIO-0055,INT-0006,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,TNF-α (tumor necrosis factor alpha) predicts response to INT-0006
+BIE-00035,BIO-0067,INT-0006,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Anti-tubulin antibody (Cunningham Panel) predicts response to INT-0006
+BIE-00036,BIO-0089,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Maternal MTHFR genotype predicts response to INT-0008
+BIE-00037,BIO-0119,INT-0061,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Oxytocin predicts response to INT-0061
+BIE-00038,BIO-0121,INT-0037,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Insulin / HOMA-IR predicts response to INT-0037
+BIE-00039,BIO-0131,INT-0076,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,C. difficile toxin (stool) predicts response to INT-0076
+BIE-00040,BIO-0161,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,MTHFR C677T genotype predicts response to INT-0008
+BIE-00041,BIO-0170,INT-0036,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,CYP3A4 / CYP3A5 genotype predicts response to INT-0036
+BIE-00042,BIO-0178,INT-0076,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) predicts response to INT-0076
+BIE-00043,BIO-0178,INT-0025,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) predicts response to INT-0025

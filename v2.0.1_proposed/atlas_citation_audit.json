@@ -1,0 +1,212 @@
+{
+  "total_pubmed_sources": 924,
+  "unique_pmids": 901,
+  "verified_count": 896,
+  "not_found_count": 5,
+  "mismatch_count": 3,
+  "duplicate_pmid_count": 20,
+  "not_found": [
+    {
+      "src_id": "SRC-001325",
+      "pmid": "22043834",
+      "atlas_title": "Perinatal and neonatal risk factors for autism: a comprehensive meta-analysis"
+    },
+    {
+      "src_id": "SRC-001351",
+      "pmid": "23708411",
+      "atlas_title": "Effects of exercise on behavioral evaluation, anxiety, and depressive symptoms in adolescents with autism"
+    },
+    {
+      "src_id": "SRC-001368",
+      "pmid": "10888984",
+      "atlas_title": "Short-term benefit from oral vancomycin treatment of regressive-onset autism"
+    },
+    {
+      "src_id": "SRC-001374",
+      "pmid": "21664337",
+      "atlas_title": "DHA from phospholipid is more bioavailable than DHA from triglyceride"
+    },
+    {
+      "src_id": "SRC-001380",
+      "pmid": "17970949",
+      "atlas_title": "The effects of hyperbaric oxygen therapy on oxidative stress, inflammation, and symptoms in children with autism: an open-label pilot study"
+    }
+  ],
+  "mismatches": [
+    {
+      "src_id": "SRC-000391",
+      "pmid": "28377535",
+      "atlas_title": "",
+      "pubmed_title": "GRIN2B encephalopathy: novel findings on phenotype, variant clustering, functional consequences and treatment aspects.",
+      "overlap": 0.0,
+      "pubmed_authors": "Platzer K, Yuan H, Sch\u00fctz H",
+      "pubmed_year": "2017",
+      "pubmed_journal": "J Med Genet"
+    },
+    {
+      "src_id": "SRC-000519",
+      "pmid": "36362721",
+      "atlas_title": "",
+      "pubmed_title": "(1)H-NMR-Based Metabolomics in Autism Spectrum Disorder and Pediatric Acute-Onset Neuropsychiatric Syndrome.",
+      "overlap": 0.0,
+      "pubmed_authors": "Gagliano A, Murgia F, Capodiferro AM",
+      "pubmed_year": "2022",
+      "pubmed_journal": "J Clin Med"
+    },
+    {
+      "src_id": "SRC-001315",
+      "pmid": "28867141",
+      "atlas_title": "Heart rate variability in children with autism: decreased vagal tone",
+      "pubmed_title": "Spatial Clustering of de Novo Missense Mutations Identifies Candidate Neurodevelopmental Disorder-Associated Genes.",
+      "overlap": 0.0,
+      "pubmed_authors": "Lelieveld SH, Wiel L, Venselaar H",
+      "pubmed_year": "2017",
+      "pubmed_journal": "Am J Hum Genet"
+    }
+  ],
+  "duplicates": [
+    {
+      "pmid": "27752075",
+      "src_ids": [
+        "SRC-000001",
+        "SRC-000012"
+      ]
+    },
+    {
+      "pmid": "41272990",
+      "src_ids": [
+        "SRC-000002",
+        "SRC-000187"
+      ]
+    },
+    {
+      "pmid": "25313065",
+      "src_ids": [
+        "SRC-000003",
+        "SRC-001375"
+      ]
+    },
+    {
+      "pmid": "26889605",
+      "src_ids": [
+        "SRC-000004",
+        "SRC-000099"
+      ]
+    },
+    {
+      "pmid": "30967657",
+      "src_ids": [
+        "SRC-000008",
+        "SRC-000712",
+        "SRC-001357"
+      ]
+    },
+    {
+      "pmid": "38592388",
+      "src_ids": [
+        "SRC-000009",
+        "SRC-000681"
+      ]
+    },
+    {
+      "pmid": "35629273",
+      "src_ids": [
+        "SRC-000015",
+        "SRC-001350"
+      ]
+    },
+    {
+      "pmid": "15585776",
+      "src_ids": [
+        "SRC-000037",
+        "SRC-001378"
+      ]
+    },
+    {
+      "pmid": "28331572",
+      "src_ids": [
+        "SRC-000157",
+        "SRC-001326"
+      ]
+    },
+    {
+      "pmid": "38703861",
+      "src_ids": [
+        "SRC-000190",
+        "SRC-001382",
+        "SRC-001385",
+        "SRC-001411"
+      ]
+    },
+    {
+      "pmid": "28217829",
+      "src_ids": [
+        "SRC-000219",
+        "SRC-001354"
+      ]
+    },
+    {
+      "pmid": "23823984",
+      "src_ids": [
+        "SRC-000258",
+        "SRC-001413"
+      ]
+    },
+    {
+      "pmid": "28122648",
+      "src_ids": [
+        "SRC-000308",
+        "SRC-001356"
+      ]
+    },
+    {
+      "pmid": "27351598",
+      "src_ids": [
+        "SRC-000485",
+        "SRC-001333"
+      ]
+    },
+    {
+      "pmid": "35217385",
+      "src_ids": [
+        "SRC-000511",
+        "SRC-001347"
+      ]
+    },
+    {
+      "pmid": "28223908",
+      "src_ids": [
+        "SRC-000679",
+        "SRC-001408"
+      ]
+    },
+    {
+      "pmid": "31664451",
+      "src_ids": [
+        "SRC-000682",
+        "SRC-001340"
+      ]
+    },
+    {
+      "pmid": "33087514",
+      "src_ids": [
+        "SRC-000709",
+        "SRC-001361"
+      ]
+    },
+    {
+      "pmid": "24814559",
+      "src_ids": [
+        "SRC-001301",
+        "SRC-001402"
+      ]
+    },
+    {
+      "pmid": "22099159",
+      "src_ids": [
+        "SRC-001391",
+        "SRC-001431"
+      ]
+    }
+  ]
+}

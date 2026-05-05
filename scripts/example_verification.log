@@ -1,0 +1,28 @@
+# Verification run: 2026-04-30T17:51:23.630534Z
+# candidates: scripts/test_candidates.yaml
+# output: scripts/test_output.csv
+# Total candidates: 4
+
+## Row TEST-PASS-1
+  primary PMID 23613074: PASS claimed=(Christensen 2013) fetched=(christensen j 2013) title='prenatal valproate exposure and risk of autism spectrum disorders and childhood autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row TEST-PASS-2
+  primary PMID 38592388: PASS claimed=(Ahlqvist 2024) fetched=(ahlqvist vh 2024) title='acetaminophen use during pregnancy and children's risk of autism, adhd, and intellectual disability.'
+  VERDICT: VERIFIED — row will be written
+
+## Row TEST-FAIL-FABRICATED
+  primary PMID 21727249: FAIL claimed=(Croen 2011) fetched=(hallmayer j 2011) title='genetic heritability and shared environmental factors among twin pairs with autism.'
+    REASON: author mismatch: claimed='Croen' fetched_author='hallmayer j' title='genetic heritability and shared environmental factors among '
+  VERDICT: REJECTED — row will NOT be written
+
+## Row TEST-PASS-CORRECTED
+  primary PMID 21727247: PASS claimed=(Croen 2011) fetched=(croen la 2011) title='antidepressant use during pregnancy and childhood autism spectrum disorders.'
+  VERDICT: VERIFIED — row will be written
+
+
+## Summary
+Total candidates: 4
+Verified (will write): 3
+Rejected: 1
+Rejected row IDs: ['TEST-FAIL-FABRICATED']

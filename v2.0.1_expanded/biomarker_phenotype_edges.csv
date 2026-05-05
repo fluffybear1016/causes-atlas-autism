@@ -1,0 +1,13 @@
+id,biomarker_id,phenotype_id,relationship_type,evidence_strength,created_at,notes
+BPE-00001,BIO-0001,PHE-0001,stratifies,0.55,2026-04-30T02:06:58+00:00,S-adenosylmethionine (SAM) stratifies PHE-0001
+BPE-00002,BIO-0003,PHE-0001,stratifies,0.55,2026-04-30T02:06:58+00:00,SAM/SAH ratio stratifies PHE-0001
+BPE-00003,BIO-0015,PHE-0001,stratifies,0.55,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — blocking stratifies PHE-0001
+BPE-00004,BIO-0016,PHE-0001,stratifies,0.55,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — binding stratifies PHE-0001
+BPE-00005,BIO-0017,PHE-0001,stratifies,0.55,2026-04-30T02:06:58+00:00,CSF 5-MTHF stratifies PHE-0001
+BPE-00006,BIO-0018,PHE-0002,stratifies,0.55,2026-04-30T02:06:58+00:00,Lactate stratifies PHE-0002
+BPE-00007,BIO-0020,PHE-0002,stratifies,0.55,2026-04-30T02:06:58+00:00,Lactate-to-pyruvate ratio (L:P) stratifies PHE-0002
+BPE-00008,BIO-0021,PHE-0002,stratifies,0.55,2026-04-30T02:06:58+00:00,Acylcarnitine profile stratifies PHE-0002
+BPE-00009,BIO-0036,PHE-0004,stratifies,0.55,2026-04-30T02:06:58+00:00,Arabinose stratifies PHE-0004
+BPE-00010,BIO-0037,PHE-0004,stratifies,0.55,2026-04-30T02:06:58+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) stratifies PHE-0004
+BPE-00011,BIO-0038,PHE-0004,stratifies,0.55,2026-04-30T02:06:58+00:00,4-cresol (p-cresol) stratifies PHE-0004
+BPE-00012,BIO-0178,PHE-0004,stratifies,0.55,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) stratifies PHE-0004

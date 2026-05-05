@@ -1,0 +1,20 @@
+{
+  "expansion_version": "v1.8_vaccine_evidence_deep",
+  "run_timestamp": "2026-04-27T22:12:16+00:00",
+  "added": {
+    "hypotheses": 2,
+    "sources": 12,
+    "evidence_fragments": 12,
+    "evidence_links": 27,
+    "hypothesis_mechanism_edges": 4
+  },
+  "directional_balance_within_v18": {
+    "positive_evidence_papers": 4,
+    "negative_evidence_papers": 8
+  },
+  "skipped_targets": 0,
+  "commentary": {
+    "spec_alignment": "Per spec \u00a71.1 (no pre-judging) and \u00a79.1 (contested is permanent), v1.8 deliberately balances both directions. The system records the fullest possible evidence map and lets the scoring engine compute confidence honestly from the actual mix. The consistency_index column on each contested hypothesis exposes the genuine disagreement: it drops toward 0.0 when evidence is split.",
+    "x_post_handling": "Direct WebFetch of x.com URLs returns HTTP 402 (authenticated browsing required). The underlying claims of the X posts the user surfaced were researched through search and added as peer-reviewed sources where they exist (Tomljenovic-Shaw 2011, Mawson 2017, Hooker 2014/2018, DeLong 2011 \u2014 all positive direction). The fullest set of negative-direction sources is added in parallel (Madsen 2002, Hviid 2019, Jain 2015, DeStefano 2004 + 2013, Fombonne 2006, IOM 2004) so the evidence picture is balanced and honest."
+  }
+}

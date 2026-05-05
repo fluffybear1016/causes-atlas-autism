@@ -1,0 +1,371 @@
+1. Front Hum Neurosci. 2017 Jul 11;11:354. doi: 10.3389/fnhum.2017.00354. 
+eCollection 2017.
+
+Neurodevelopmental Hypothesis about the Etiology of Autism Spectrum Disorders.
+
+Inui T(1), Kumagaya S(2), Myowa-Yamakoshi M(3).
+
+Author information:
+(1)Department of Psychology, Otemon Gakuin UniversityOsaka, Japan.
+(2)Research Center for Advanced Science and Technology, The University of 
+TokyoTokyo, Japan.
+(3)Graduate School of Education, Kyoto UniversityKyoto, Japan.
+
+Previous models or hypotheses of autism spectral disorder (ASD) failed to take 
+into full consideration the chronological and causal developmental trajectory, 
+leading to the emergence of diverse phenotypes through a complex interaction 
+between individual etiologies and environmental factors. Those phenotypes 
+include persistent deficits in social communication and social interaction 
+(criteria A in DSM-5), and restricted, repetitive patterns of behavior, 
+interests, or activities (criteria B in DSM-5). In this article, we proposed a 
+domain-general model that can explain criteria in DSM-5 based on the assumption 
+that the same etiological mechanism would trigger the various phenotypes 
+observed in different individuals with ASD. In the model, we assumed the 
+following joint causes as the etiology of autism: (1) Hypoplasia of the pons in 
+the brainstem, occurring immediately following neural tube closure; and (2) 
+Deficiency in the GABA (γ-aminobutyric acid) developmental switch during the 
+perinatal period. Microstructural abnormalities of the pons directly affect both 
+the structural and functional development of the brain areas strongly connected 
+to it, especially amygdala. The impairment of GABA switch could not only lead to 
+the deterioration of inhibitory processing in the neural network, but could also 
+cause abnormal cytoarchitecture. We introduced a perspective that atypical 
+development in both brain structure and function can give full explanation of 
+diverse phenotypes and pathogenetic mechanism of ASD. Finally, we discussed 
+about neural mechanisms underlying the phenotypic characteristics of ASD that 
+are not described in DSM-5 but should be considered as important foundation: 
+sleep, global precedence, categorical perception, intelligence, interoception 
+and motor control.
+
+DOI: 10.3389/fnhum.2017.00354
+PMCID: PMC5504094
+PMID: 28744208
+
+
+2. Neuroscience. 2014 Oct 24;279:187-219. doi:
+10.1016/j.neuroscience.2014.08.001.  Epub 2014 Aug 26.
+
+The GABA excitatory/inhibitory developmental sequence: a personal journey.
+
+Ben-Ari Y(1).
+
+Author information:
+(1)The Autism Group and Neurochlore at INMED Inserm U901, campus scientifique de 
+luminy, 163 route de luminy, 13273 Marseilles Cedex 09, France.
+
+The developing brain is talkative but its language is not that of the adult. 
+Most if not all voltage and transmitter-gated ionic currents follow a 
+developmental sequence and network-driven patterns differ in immature and adult 
+brains. This is best illustrated in studies engaged almost three decades ago in 
+which we observed elevated intracellular chloride (Cl(-))i levels and excitatory 
+GABA early during development and a perinatal excitatory/inhibitory shift. This 
+sequence is observed in a wide range of brain structures and animal species 
+suggesting that it has been conserved throughout evolution. It is mediated 
+primarily by a developmentally regulated expression of the NKCC1 and KCC2 
+chloride importer and exporter respectively. The GABAergic depolarization acts 
+in synergy with N-methyl-d-aspartate (NMDA) receptor-mediated and voltage-gated 
+calcium currents to enhance intracellular calcium exerting trophic effects on 
+neuritic growth, migration and synapse formation. These sequences can be 
+deviated in utero by genetic or environmental insults leading to a persistence 
+of immature features in the adult brain. This "neuroarcheology" concept paves 
+the way to novel therapeutic perspectives based on the use of drugs that block 
+immature but not adult currents. This is illustrated notably with the return to 
+immature high levels of chloride and excitatory actions of GABA observed in many 
+pathological conditions. This is due to the fact that in the immature brain a 
+down regulation of KCC2 and an up regulation of NKCC1 are seen. Here, I present 
+a personal history of how an unexpected observation led to novel concepts in 
+developmental neurobiology and putative treatments of autism and other 
+developmental disorders. Being a personal account, this review is neither 
+exhaustive nor provides an update of this topic with all the studies that have 
+contributed to this evolution. We all rely on previous inventors to allow 
+science to advance. Here, I present a personal summary of this topic primarily 
+to illustrate why we often fail to comprehend the implications of our own 
+observations. They remind us - and policy deciders - why Science cannot be 
+programed, requiring time, and risky investigations that raise interesting 
+questions before being translated from bench to bed. Discoveries are always on 
+sideways, never on highways.
+
+Copyright © 2014 The Author. Published by Elsevier Ltd.. All rights reserved.
+
+DOI: 10.1016/j.neuroscience.2014.08.001
+PMID: 25168736 [Indexed for MEDLINE]
+
+
+3. Neuroscientist. 2012 Oct;18(5):467-86. doi: 10.1177/1073858412438697. Epub
+2012  Apr 30.
+
+The GABA excitatory/inhibitory shift in brain maturation and neurological 
+disorders.
+
+Ben-Ari Y(1), Khalilov I, Kahle KT, Cherubini E.
+
+Author information:
+(1)INMED, INSERM unit 901 and Neurochlore, Marseille, France. 
+ben-ari@inmed.univ-mrs.fr
+
+Ionic currents and the network-driven patterns they generate differ in immature 
+and adult neurons: The developing brain is not a "small adult brain." One of the 
+most investigated examples is the developmentally regulated shift of actions of 
+the transmitter GABA that inhibit adult neurons but excite immature ones because 
+of an initially higher intracellular chloride concentration [Cl(-)](i), leading 
+to depolarizing and often excitatory actions of GABA instead of hyperpolarizing 
+and inhibitory actions. The levels of [Cl(-)](i) are also highly labile, being 
+readily altered transiently or persistently by enhanced episodes of activity in 
+relation to synaptic plasticity or a variety of pathological conditions, 
+including seizures and brain insults. Among the plethora of channels, 
+transporters, and other devices involved in controlling [Cl(-)](i), two have 
+emerged as playing a particularly important role: the chloride importer NKCC1 
+and the chloride exporter KCC2. Here, the authors stress the importance of 
+determining how [Cl(-)](i) is dynamically regulated and how this affects brain 
+operation in health and disease. In a clinical perspective, agents that control 
+[Cl(-)](i) and reinstate inhibitory actions of GABA open novel therapeutic 
+perspectives in many neurological disorders, including infantile epilepsies, 
+autism spectrum disorders, and other developmental disorders.
+
+DOI: 10.1177/1073858412438697
+PMID: 22547529 [Indexed for MEDLINE]
+
+
+4. Commun Biol. 2026 Jan 24;9(1):283. doi: 10.1038/s42003-026-09563-5.
+
+Differential GABA dynamics across brain functional networks in autism.
+
+Huang Q(#)(1)(2)(3)(4), Chen D(#)(5), Pereira AC(6)(7)(8), Leonard A(6)(7)(9), 
+Ellis CL(6)(7), Velthuis H(6)(7), Dimitrov M(6)(7), Ponteduro FM(6)(7), Wong 
+NML(6)(7)(10), Kowalewski L(6)(7), Pretzsch CM(6)(7), Daly E(6)(7), Murphy 
+DGM(6)(7)(11), McAlonan GM(12)(13)(14).
+
+Author information:
+(1)School of Future Technology, South China University of Technology, Guangzhou, 
+China. qiyun.huang@kcl.ac.uk.
+(2)Department of Forensic and Neurodevelopmental Sciences, Institute of 
+Psychiatry, Psychology & Neuroscience, King's College London, London, UK. 
+qiyun.huang@kcl.ac.uk.
+(3)Institute for Translational Neurodevelopment, Institute of Psychiatry, 
+Psychology & Neuroscience, King's College London, London, UK. 
+qiyun.huang@kcl.ac.uk.
+(4)Research Center for Brain-Computer Interface, Pazhou Lab, Guangzhou, China. 
+qiyun.huang@kcl.ac.uk.
+(5)School of Information Engineering, Guangdong University of Technology, 
+Guangzhou, China.
+(6)Department of Forensic and Neurodevelopmental Sciences, Institute of 
+Psychiatry, Psychology & Neuroscience, King's College London, London, UK.
+(7)Institute for Translational Neurodevelopment, Institute of Psychiatry, 
+Psychology & Neuroscience, King's College London, London, UK.
+(8)Institute for Nuclear Sciences Applied to Health (ICNAS), Coimbra Institute 
+for Biomedical Imaging and Translational Research (CIBIT), University of 
+Coimbra, Coimbra, Portugal.
+(9)Royal College of Surgeons in Ireland, Dublin, Ireland.
+(10)Department of Psychology, The Education University of Hong Kong, Hong Kong, 
+China.
+(11)NIHR-Maudsley Biomedical Research Centre (BRC), London, UK.
+(12)Department of Forensic and Neurodevelopmental Sciences, Institute of 
+Psychiatry, Psychology & Neuroscience, King's College London, London, UK. 
+grainne.mcalonan@kcl.ac.uk.
+(13)Institute for Translational Neurodevelopment, Institute of Psychiatry, 
+Psychology & Neuroscience, King's College London, London, UK. 
+grainne.mcalonan@kcl.ac.uk.
+(14)NIHR-Maudsley Biomedical Research Centre (BRC), London, UK. 
+grainne.mcalonan@kcl.ac.uk.
+(#)Contributed equally
+
+Differences in the ϒ-aminobutyric acid (GABA) system contribute to an 
+excitatory-inhibitory imbalance in autism, particularly affecting sensory 
+processing. However, the brain's broader response to interventions targeting 
+GABA pathways in individuals with autism remains poorly understood. This study 
+tested the hypothesis that GABAergic control of information transfer across 
+large-scale brain functional networks is altered in autism. We conducted a 
+phase-amplitude coupling (PAC) analysis of resting-state EEG signals within and 
+between these networks. Responses were compared after double-blind, randomized 
+oral administration of either a placebo or 15/30 mg of arbaclofen, a GABAB 
+receptor agonist. Twenty-four non-autistic (9 males; 19-53 years) and 15 
+autistic participants (9 males; 20-51 years) completed 93 study visits. Autistic 
+participants exhibited significantly higher theta-beta PAC, especially within 
+the limbic network. High-dose arbaclofen shifted PAC metrics in visual and 
+somatomotor networks towards non-autistic levels, but had minimal effects on 
+networks related to higher cognitive functions. Interestingly, altered PAC 
+within and between networks in the limbic system of autistic participants was 
+normalized by low-dose arbaclofen, yet reemerged after high-dose administration. 
+These findings provide compelling evidence for altered GABAergic responsivity in 
+autism, helping explain some of the challenges in prescribing medications for 
+autistic individuals, such as paradoxical reactions and dose sensitivity.
+
+© 2026. The Author(s).
+
+DOI: 10.1038/s42003-026-09563-5
+PMCID: PMC12920753
+PMID: 41580462 [Indexed for MEDLINE]
+
+Conflict of interest statement: Competing interests: The authors acknowledge 
+that this investigator-initiated study was part-funded by Clinical Research 
+Associates, a subsidiary of the Simons Foundation. This included the donation of 
+arbaclofen. The funders did not influence the study design, its conduct or 
+decision to publish outcomes. No other competing interests are declared.
+
+
+5. Mol Psychiatry. 2014 Apr;19(4):495-503. doi: 10.1038/mp.2013.41. Epub 2013 Apr
+ 23.
+
+Methylomic analysis of monozygotic twins discordant for autism spectrum disorder 
+and related behavioural traits.
+
+Wong CC(1), Meaburn EL(2), Ronald A(2), Price TS(3), Jeffries AR(1), Schalkwyk 
+LC(1), Plomin R(1), Mill J(4).
+
+Author information:
+(1)King's College London, MRC Social, Genetic and Developmental Psychiatry 
+Centre, Institute of Psychiatry, De Crespigny Park, London, UK.
+(2)1] King's College London, MRC Social, Genetic and Developmental Psychiatry 
+Centre, Institute of Psychiatry, De Crespigny Park, London, UK [2] Department of 
+Psychological Sciences, Birkbeck, University of London, London, UK.
+(3)1] King's College London, MRC Social, Genetic and Developmental Psychiatry 
+Centre, Institute of Psychiatry, De Crespigny Park, London, UK [2] Institute of 
+Translational Medicine and Therapeutics, School of Medicine, University of 
+Pennsylvania, PA, USA.
+(4)1] King's College London, MRC Social, Genetic and Developmental Psychiatry 
+Centre, Institute of Psychiatry, De Crespigny Park, London, UK [2] University of 
+Exeter Medical School, Exeter University, St Luke's Campus, Exeter, UK.
+
+Autism spectrum disorder (ASD) defines a group of common, complex 
+neurodevelopmental disorders. Although the aetiology of ASD has a strong genetic 
+component, there is considerable monozygotic (MZ) twin discordance indicating a 
+role for non-genetic factors. Because MZ twins share an identical DNA sequence, 
+disease-discordant MZ twin pairs provide an ideal model for examining the 
+contribution of environmentally driven epigenetic factors in disease. We 
+performed a genome-wide analysis of DNA methylation in a sample of 50 MZ twin 
+pairs (100 individuals) sampled from a representative population cohort that 
+included twins discordant and concordant for ASD, ASD-associated traits and no 
+autistic phenotype. Within-twin and between-group analyses identified numerous 
+differentially methylated regions associated with ASD. In addition, we report 
+significant correlations between DNA methylation and quantitatively measured 
+autistic trait scores across our sample cohort. This study represents the first 
+systematic epigenomic analyses of MZ twins discordant for ASD and implicates a 
+role for altered DNA methylation in autism.
+
+DOI: 10.1038/mp.2013.41
+PMCID: PMC3906213
+PMID: 23608919 [Indexed for MEDLINE]
+
+
+6. N Engl J Med. 2014 Mar 27;370(13):1209-1219. doi: 10.1056/NEJMoa1307491.
+
+Patches of disorganization in the neocortex of children with autism.
+
+Stoner R(#)(1), Chow ML(#)(1), Boyle MP(#)(1), Sunkin SM(1), Mouton PR(1), Roy 
+S(1), Wynshaw-Boris A(1), Colamarino SA(1), Lein ES(#)(1), Courchesne E(#)(1).
+
+Author information:
+(1)University of California, San Diego, Autism Center of Excellence (R.S., 
+M.L.C., M.P.B., E.C.), and the Departments of Neuroscience (R.S., M.L.C., 
+M.P.B., S.R., E.C.) and Pathology (S.R.), University of California, San Diego, 
+School of Medicine, La Jolla; Allen Institute for Brain Science, Seattle 
+(M.P.B., S.M.S., E.S.L.); the Department of Pathology and Cell Biology, 
+University of South Florida School of Medicine and Alzheimer's Institute and 
+Research Center, Tampa (P.R.M.); the Department of Genetics and Genome Sciences, 
+Case Western Reserve University School of Medicine, Cleveland (A.W.-B.); and the 
+Department of Psychiatry and Behavioral Sciences, Stanford University School of 
+Medicine, Palo Alto, CA (S.A.C.).
+(#)Contributed equally
+
+BACKGROUND: Autism involves early brain overgrowth and dysfunction, which is 
+most strongly evident in the prefrontal cortex. As assessed on pathological 
+analysis, an excess of neurons in the prefrontal cortex among children with 
+autism signals a disturbance in prenatal development and may be concomitant with 
+abnormal cell type and laminar development.
+METHODS: To systematically examine neocortical architecture during the early 
+years after the onset of autism, we used RNA in situ hybridization with a panel 
+of layer- and cell-type-specific molecular markers to phenotype cortical 
+microstructure. We assayed markers for neurons and glia, along with genes that 
+have been implicated in the risk of autism, in prefrontal, temporal, and 
+occipital neocortical tissue from postmortem samples obtained from children with 
+autism and unaffected children between the ages of 2 and 15 years.
+RESULTS: We observed focal patches of abnormal laminar cytoarchitecture and 
+cortical disorganization of neurons, but not glia, in prefrontal and temporal 
+cortical tissue from 10 of 11 children with autism and from 1 of 11 unaffected 
+children. We observed heterogeneity between cases with respect to cell types 
+that were most abnormal in the patches and the layers that were most affected by 
+the pathological features. No cortical layer was uniformly spared, with the 
+clearest signs of abnormal expression in layers 4 and 5. Three-dimensional 
+reconstruction of layer markers confirmed the focal geometry and size of 
+patches.
+CONCLUSIONS: In this small, explorative study, we found focal disruption of 
+cortical laminar architecture in the cortexes of a majority of young children 
+with autism. Our data support a probable dysregulation of layer formation and 
+layer-specific neuronal differentiation at prenatal developmental stages. 
+(Funded by the Simons Foundation and others.).
+
+DOI: 10.1056/NEJMoa1307491
+PMCID: PMC4499461
+PMID: 24670167 [Indexed for MEDLINE]
+
+
+7. bioRxiv [Preprint]. 2025 Mar 5:2025.03.04.641400. doi: 
+10.1101/2025.03.04.641400.
+
+Biological subtyping of autism via cross-species fMRI.
+
+Pagani M(1)(2)(3), Zerbi V(4)(5), Gini S(1)(6), Alvino F(1), Banerjee A(7), 
+Barberis A(8), Basson MA(9)(10), Bozzi Y(6), Galbusera A(1), Ellegood J(11), 
+Fagiolini M(12), Lerch J(13), Matteoli M(14)(15), Montani C(1), Pozzi D(15), 
+Provenzano G(16), Scattoni ML(17), Wenderoth N(18), Xu T(19), Lombardo M(20), 
+Milham MP(21), Martino AD(2), Gozzi A(1).
+
+Author information:
+(1)Functional Neuroimaging Laboratory, Istituto Italiano di Tecnologia, Center 
+for Neuroscience and Cognitive Systems, CNCS@UNITN, Rovereto, Italy.
+(2)Autism Center, Child Mind Institute, New York, NY, USA.
+(3)IMT School for Advanced Studies, Lucca, Italy.
+(4)Department of Psychiatry, University of Geneva, Switzerland.
+(5)Department of Basic Neurosciences, University of Geneva, Switzerland.
+(6)Center for Mind and Brain Sciences (CIMeC), University of Trento, Rovereto, 
+Italy.
+(7)Brain Research Institute, University of Zurich, Zurich, Switzerland.
+(8)Synaptic Plasticity of Inhibitory Networks, Istituto Italiano di Tecnologia, 
+Genova, Italy.
+(9)Centre for Craniofacial and Regenerative Biology, King's College London, 
+London, UK.
+(10)Department of Clinical and Biomedical Sciences, University of Exeter, 
+Exeter, UK.
+(11)Bloorview Research Institute, Holland Bloorview Kids Rehabilitation 
+Hospital, Toronto, ON, Canada.
+(12)Boston Children's Hospital, Harvard Medical School, Boston, MA, USA.
+(13)Wellcome Centre for Integrative Neuroimaging, FMRIB, Nuffield Department of 
+Clinical Neurosciences, University of Oxford, Oxford, UK.
+(14)Humanitas University, Milan, Italy.
+(15)CNR Institute of Neuroscience c/o Humanitas Clinical and Research Center - 
+IRCCS, Rozzano, Milan, Italy.
+(16)Department of Cellular, Computational and Integrative Biology. University of 
+Trento, Trento, Italy.
+(17)Research Coordination and Support Service, Istituto Superiore di Sanità, 
+Rome, Italy.
+(18)Neural Control of Movement Lab, ETH Zürich, Switzerland.
+(19)Center for Integrative Developing Brain, Child Mind Institute, New York, NY, 
+USA.
+(20)Laboratory for Autism and Neurodevelopmental Disorders, Istituto Italiano di 
+Tecnologia, Center for Neuroscience and Cognitive Systems, Rovereto, Italy.
+(21)Center for the Integrative Developmental Neuroscience, Child Mind Institute, 
+New York, NY, USA.
+
+It is frequently assumed that the phenotypic heterogeneity in autism spectrum 
+disorder reflects underlying pathobiological variation. However, direct evidence 
+in support of this hypothesis is lacking. Here, we leverage cross-species 
+functional neuroimaging to examine whether variability in brain functional 
+connectivity reflects distinct biological mechanisms. We find that fMRI 
+connectivity alterations in 20 distinct mouse models of autism (n=549 individual 
+mice) can be clustered into two prominent hypo- and hyperconnectivity subtypes. 
+We show that these connectivity profiles are linked to distinct signaling 
+pathways, with hypoconnectivity being associated with synaptic dysfunction, and 
+hyperconnectivity reflecting transcriptional and immune-related alterations. 
+Extending these findings to humans, we identify analogous hypo- and 
+hyperconnectivity subtypes in a large, multicenter resting state fMRI dataset of 
+n=940 autistic and n=1036 neurotypical individuals. Remarkably, hypo- and 
+hyperconnectivity autism subtypes are replicable across independent cohorts 
+(accounting for 25.1% of all autism data), exhibit distinct functional network 
+architecture, are behaviorally dissociable, and recapitulate synaptic and immune 
+mechanisms identified in corresponding mouse subtypes. Our cross-species 
+investigation, thus, decodes the heterogeneity of fMRI connectivity in autism 
+into distinct pathway-specific etiologies, offering a new empirical framework 
+for targeted subtyping of autism.
+
+DOI: 10.1101/2025.03.04.641400
+PMCID: PMC11908180
+PMID: 40093106

@@ -1,0 +1,6 @@
+source_sheet,source_row,source_column,token,expected_target_type
+studies,456,cause_id,CAU-0006;CAU-0007,hypothesis
+studies,458,cause_id,CAU-0006;CAU-0008,hypothesis
+studies,473,cause_id,CAU-0007;CAU-0008,hypothesis
+studies,479,cause_id,CAU-0006;CAU-0008,hypothesis
+studies,484,cause_id,CAU-0006;CAU-0008,hypothesis

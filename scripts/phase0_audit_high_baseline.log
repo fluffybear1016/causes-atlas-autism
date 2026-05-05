@@ -1,0 +1,18 @@
+# Verification run: 2026-04-30T21:15:32.907056Z
+# candidates: scripts/phase0_audit_high_baseline_additions.yaml
+# output: v2.0_scored/baseline_phenotype_prevalence.csv
+# Total candidates: 2
+
+## Row BPP-0028
+  primary PMID 21116277: PASS claimed=(Hultman 2011) fetched=(hultman cm 2011) title='advancing paternal age and risk of autism: new evidence from a population-based study and a meta-analysis of epidemiolog'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0029
+  primary PMID 26055426: PASS claimed=(Sandin 2016) fetched=(sandin s 2016) title='autism risk associated with parental age and with increasing difference in age between the parents.'
+  VERDICT: VERIFIED — row will be written
+
+
+## Summary
+Total candidates: 2
+Verified (will write): 2
+Rejected: 0

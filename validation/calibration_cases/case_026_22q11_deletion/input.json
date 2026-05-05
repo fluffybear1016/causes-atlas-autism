@@ -1,0 +1,104 @@
+{
+  "case_id": "case_026_22q11_deletion",
+  "case_date": "2026-04-30",
+  "input_version": "2.3",
+  "operating_mode": "young_child",
+  "engine_version_requested": "session4_v2.3",
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 33, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {"infections": [], "medications": [], "diet_quality_index": null, "bmi_pre_pregnancy": null, "weight_gain_kg": null, "gestational_diabetes": false, "preeclampsia": false, "iugr_diagnosed": false, "autoimmune_dx": [], "previous_pregnancies": 0, "previous_autism_children": 0, "miscarriage_count": 0, "fertility_treatment": null},
+    "current_medications": [], "current_supplements": []
+  },
+  "paternal": {"age_at_conception": 35, "phenotypic_features": [], "current_medications": []},
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [],
+    "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [],
+    "second_degree_autism": {"count": 0},
+    "second_degree_psychiatric": ["paternal_aunt_schizophrenia"],
+    "consanguinity": false,
+    "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 48,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 14.5, "weight_z_for_age_sex": -0.8,
+      "height_cm": 96, "height_z_for_age_sex": -0.5,
+      "bmi": 15.7, "bmi_z_for_age_sex": -0.5,
+      "head_circumference_cm": 49, "head_circumference_z_for_age_sex": -0.3,
+      "body_surface_area_m2": 0.62,
+      "growth_trajectory_summary": "below average growth"
+    },
+    "developmental_milestones_status": {
+      "motor": "moderate_delay", "social": "moderate_delay", "language": "severe_delay",
+      "cognitive": "moderate_delay", "adaptive": "moderate_delay",
+      "regression_history": []
+    },
+    "pubertal_stage_tanner": null,
+    "current_diagnoses": ["autism spectrum disorder", "22q11.2 deletion syndrome", "tetralogy of Fallot s/p surgical repair", "cleft palate s/p repair", "history of neonatal hypocalcemia"],
+    "current_medications": [],
+    "current_supplements": ["calcium", "vitamin D"]
+  },
+
+  "genomics": {
+    "data_sources": [{"actor": "child", "type": "clinical_microarray_FISH", "date": "2024", "lab": "clinical genetics"}],
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": [
+      {"region": "22q11.2", "type": "deletion", "size_kb": 3000, "inheritance": "de_novo",
+       "classification": "pathogenic", "evidence_pmid": 31174463,
+       "notes": "typical 3 Mb LCR22A-LCR22D 22q11.2 deletion confirmed by FISH"}
+    ]},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null},
+    "ancestry_genetic_panel": {"actor": "child", "global_ancestry_proportions": {"EUR": 1.0}, "method": "self_reported_only"}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+
+  "immunology": {
+    "complement": null,
+    "lymphocyte_subsets": {"cd3_pct": 55, "cd4_pct": 30, "cd8_pct": 22, "cd19_pct": 12, "notes": "mildly reduced T-cell counts consistent with thymic hypoplasia"},
+    "immunoglobulins": null
+  },
+
+  "metabolomics_proteomics_epigenetics": {"metabolomics": null, "proteomics": null, "epigenetics": null},
+  "neuroimaging_eeg": null,
+
+  "comorbidities": {
+    "epilepsy": {"present": false, "type": null, "age_onset_months": null, "controlled_on_medication": false, "medication": null},
+    "adhd": {"present": false, "presentation": null, "subtype": null},
+    "ocd_anxiety": {"ocd": false, "anxiety": false, "panic": false},
+    "mood_disorders": {"depression": false, "bipolar": false},
+    "tic_disorder": false,
+    "feeding_disorder": {"present": true, "type": "post_cleft_palate_feeding_difficulties", "current_diet_diversity_score": null},
+    "sleep_disorder": {"insomnia": false, "parasomnia": false, "sleep_apnea": false, "polysomnography_summary": null},
+    "gi_clusters": {"chronic_constipation": false, "chronic_diarrhea": false, "reflux": true, "abdominal_pain_chronic": false, "feeding_intolerance": false},
+    "atopic_cluster": {"eczema": false, "asthma": false, "food_allergies": [], "ar": false},
+    "mcas_features": null, "eds_features": null, "pots_features": null, "vagal_tone_proxy": null
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 38, "birth_weight_kg": 2.9, "birth_length_cm": 48, "head_circumference_cm": 33,
+    "apgar_1min": 7, "apgar_5min": 9, "delivery_mode": "csection_emergency",
+    "intrapartum_antibiotics": true, "intrapartum_fever": false, "meconium_aspiration": false,
+    "cord_blood_data": null, "placental_pathology_summary": null,
+    "neonatal_period": {"nicu_days": 14, "phototherapy_required": false, "neonatal_antibiotics": ["ampicillin", "gentamicin"], "neonatal_jaundice_max_bilirubin": null, "feeding_method_first_6mo": "formula", "formula_type_if_used": "standard", "first_solid_introduction_month": 7},
+    "vaccinations_administered": []
+  },
+
+  "aces_trauma": {"ace_score": 0, "ace_category_flags": [], "current_psychosocial_stressors": ["family stress secondary to chronic medical care"], "stable_attachment_figure_present": true},
+  "longitudinal_biomarkers": {},
+  "planned_exposures": {"vaccine_schedule": [], "medications_planned": [], "environmental_concerns": [], "delivery_plan": null},
+  "intervention_response_history": [],
+  "user_constraints": {"max_monthly_cost_usd": null, "insurance_coverage_constraints": [], "geographic_access": null, "preference_against_pharmaceuticals": false, "preference_against_invasive_testing": false},
+  "consent_flags": {"research_use_anonymized": false, "share_with_clinician_email": null, "preconception_ethics_acknowledged": false}
+}

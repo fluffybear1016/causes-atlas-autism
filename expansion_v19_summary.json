@@ -1,0 +1,45 @@
+{
+  "expansion_version": "v1.9_x_extracted_claims",
+  "run_timestamp": "2026-04-27T22:16:07+00:00",
+  "added": {
+    "mechanisms": 1,
+    "hypotheses": 1,
+    "interventions": 3,
+    "sources": 12,
+    "evidence_fragments": 12,
+    "evidence_links": 31,
+    "hypothesis_mechanism_edges": 3,
+    "mechanism_phenotype_edges": 1,
+    "intervention_hypothesis_edges": 5,
+    "intervention_mechanism_edges": 5
+  },
+  "skipped_targets": 0,
+  "claim_disposition_from_grok_extraction": {
+    "already_in_atlas_v1_to_v1.8": [
+      "CDC Simpsonwood / hep B (HYP-0066, IOM 2004/2011)",
+      "Glyphosate / Clostridia (HYP-0005, HYP-0057)",
+      "CoQ10 ubiquinol (INT-0012)",
+      "Mitochondrial dysfunction (HYP-0006, MEC-0010)",
+      "HBOT (INT-0092)",
+      "Heavy metals / lead (HYP-0015)",
+      "SSRI in pregnancy (HYP-0024) \u2014 Boukhris 2016 added in v1.9 as supporting source",
+      "Zinc / Cu:Zn (HYP-0046) \u2014 Bjorklund 2013 added",
+      "Oxytocin (HYP-0034, INT-0061) \u2014 LoParo 2015 added",
+      "Multifactorial causation (entire Layer 1 model)",
+      "Mitochondrial cocktail (INT-0055)",
+      "Glycine (INT-0024)"
+    ],
+    "newly_added_in_v1.9": [
+      "Red light / photobiomodulation (Leisman 2018) \u2014 completely new mechanism + intervention",
+      "Vitamin A megadose (Guo 2018) \u2014 new intervention",
+      "Chelation DMSA/EDTA (James 2015 Cochrane) \u2014 new intervention with NEGATIVE evidence",
+      "Lactate/pyruvate ratio bioenergetic biomarker (Oh 2020) \u2014 new hypothesis with specific cutoffs",
+      "Photobiomodulation/cytochrome c oxidase \u2014 new mechanism distinct from heat shock and mitochondrial",
+      "Arora 2017 baby teeth twin study \u2014 new source for heavy metal hypothesis",
+      "Shaw 2017 OAT urinary metabolites \u2014 new source for Clostridia hypothesis",
+      "Frye 2020 mitochondrial review",
+      "Gvozdjakova 2014 ubiquinol RCT"
+    ],
+    "deliberately_balanced_by_atlas_design": "Per spec \u00a71.1 (no pre-judging), \u00a79.1 (contested permanent), \u00a77.2 (social signals lowest weight): claims like 'CDC secret meetings' and 'chelation cures autism' enter as either (a) peer-reviewed sources with proper effect_direction, or (b) social-signal evidence at the lowest tier. The scoring engine resolves them honestly. Chelation specifically lands as an intervention with NEGATIVE evidence (James 2015 Cochrane null + harm) \u2014 the system thus correctly tells you 'this exists, and the evidence weight is against it.'"
+  }
+}

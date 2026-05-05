@@ -1,0 +1,10 @@
+id,gene_id,phenotype_id,relation_type,polarity,evidence_for_count,evidence_against_count,evidence_strength_aggregate,context_scope,status,created_at,last_updated
+GPE-00001,GEN-0001,PHE-0001,syndromic_cause_of,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00
+GPE-00002,GEN-0002,PHE-0001,associated_with,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00
+GPE-00003,GEN-0002,PHE-0002,associated_with,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00
+GPE-00004,GEN-0003,PHE-0005,associated_with,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00
+GPE-00005,GEN-0005,PHE-0006,syndromic_cause_of,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00
+GPE-00006,GEN-0006,PHE-0005,syndromic_cause_of,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00
+GPE-00007,GEN-0007,PHE-0005,syndromic_cause_of,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00
+GPE-00008,GEN-0008,PHE-0005,associated_with,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00
+GPE-00009,GEN-0010,PHE-0002,associated_with,supporting,,,0.0000,,active,2026-04-24T17:07:31+00:00,2026-04-28T03:19:15+00:00

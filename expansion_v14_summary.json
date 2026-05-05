@@ -1,0 +1,17 @@
+{
+  "expansion_version": "v1.4_microbiome",
+  "run_timestamp": "2026-04-27T21:33:28+00:00",
+  "added": {
+    "mechanisms": 6,
+    "hypotheses": 6,
+    "interventions": 10,
+    "sources": 15,
+    "evidence_fragments": 15,
+    "evidence_links": 40,
+    "hypothesis_mechanism_edges": 19,
+    "mechanism_phenotype_edges": 8,
+    "intervention_mechanism_edges": 13,
+    "intervention_hypothesis_edges": 19
+  },
+  "skipped_targets": 0
+}

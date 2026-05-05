@@ -1,0 +1,185 @@
+id,biomarker_id,mechanism_id,relationship_type,evidence_strength,polarity,created_at,notes
+BME-00001,BIO-0001,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,S-adenosylmethionine (SAM) indicates MEC-0003
+BME-00002,BIO-0002,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,S-adenosylhomocysteine (SAH) indicates MEC-0003
+BME-00003,BIO-0003,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,SAM/SAH ratio indicates MEC-0003
+BME-00004,BIO-0004,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Plasma methionine indicates MEC-0003
+BME-00005,BIO-0005,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Homocysteine indicates MEC-0003
+BME-00006,BIO-0007,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Taurine indicates MEC-0003
+BME-00007,BIO-0007,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Taurine indicates MEC-0007
+BME-00008,BIO-0013,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Pyridoxal-5-phosphate (P5P / active B6) indicates MEC-0003
+BME-00009,BIO-0013,MEC-0023,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Pyridoxal-5-phosphate (P5P / active B6) indicates MEC-0023
+BME-00010,BIO-0014,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Whole-blood histamine indicates MEC-0003
+BME-00011,BIO-0014,MEC-0017,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Whole-blood histamine indicates MEC-0017
+BME-00012,BIO-0015,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — blocking indicates MEC-0003
+BME-00013,BIO-0015,MEC-0004,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — blocking indicates MEC-0004
+BME-00014,BIO-0016,MEC-0004,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — binding indicates MEC-0004
+BME-00015,BIO-0017,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,CSF 5-MTHF indicates MEC-0003
+BME-00016,BIO-0017,MEC-0004,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,CSF 5-MTHF indicates MEC-0004
+BME-00017,BIO-0018,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Lactate indicates MEC-0010
+BME-00018,BIO-0019,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Pyruvate indicates MEC-0010
+BME-00019,BIO-0020,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Lactate-to-pyruvate ratio (L:P) indicates MEC-0010
+BME-00020,BIO-0021,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Acylcarnitine profile indicates MEC-0010
+BME-00021,BIO-0022,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Free + total carnitine indicates MEC-0010
+BME-00022,BIO-0023,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Plasma ammonia indicates MEC-0010
+BME-00023,BIO-0024,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Creatine kinase (CK) indicates MEC-0010
+BME-00024,BIO-0025,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,CoQ10 (ubiquinone) indicates MEC-0010
+BME-00025,BIO-0026,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,mtDNA copy number indicates MEC-0010
+BME-00026,BIO-0027,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Krebs cycle metabolites (citrate/succinate/fumarate/malate) indicates MEC-0010
+BME-00027,BIO-0028,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Reduced glutathione (GSH) indicates MEC-0001
+BME-00028,BIO-0029,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Oxidized glutathione (GSSG) indicates MEC-0001
+BME-00029,BIO-0030,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,GSH/GSSG ratio indicates MEC-0001
+BME-00030,BIO-0031,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,8-hydroxy-2-deoxyguanosine (8-OHdG) indicates MEC-0001
+BME-00031,BIO-0032,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,F2-isoprostanes indicates MEC-0001
+BME-00032,BIO-0033,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Malondialdehyde (MDA) indicates MEC-0001
+BME-00033,BIO-0034,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Superoxide dismutase (SOD) activity indicates MEC-0001
+BME-00034,BIO-0035,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Total antioxidant capacity (TEAC/TAC) indicates MEC-0001
+BME-00035,BIO-0036,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Arabinose indicates MEC-0008
+BME-00036,BIO-0037,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) indicates MEC-0008
+BME-00037,BIO-0037,MEC-0024,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) indicates MEC-0024
+BME-00038,BIO-0038,MEC-0024,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,4-cresol (p-cresol) indicates MEC-0024
+BME-00039,BIO-0039,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Tartaric acid indicates MEC-0008
+BME-00040,BIO-0041,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Indican indicates MEC-0008
+BME-00041,BIO-0043,MEC-0023,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Indol-3-acetic acid (IAA) indicates MEC-0023
+BME-00042,BIO-0046,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Homovanillic acid (HVA) indicates MEC-0007
+BME-00043,BIO-0047,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Vanillylmandelic acid (VMA) indicates MEC-0007
+BME-00044,BIO-0048,MEC-0023,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,5-hydroxyindoleacetic acid (5-HIAA) indicates MEC-0023
+BME-00045,BIO-0049,MEC-0023,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Quinolinic acid indicates MEC-0023
+BME-00046,BIO-0049,MEC-0020,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Quinolinic acid indicates MEC-0020
+BME-00047,BIO-0050,MEC-0023,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Kynurenic acid indicates MEC-0023
+BME-00048,BIO-0051,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Kynurenine/tryptophan ratio indicates MEC-0002
+BME-00049,BIO-0051,MEC-0023,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Kynurenine/tryptophan ratio indicates MEC-0023
+BME-00050,BIO-0052,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,High-sensitivity CRP (hs-CRP) indicates MEC-0002
+BME-00051,BIO-0053,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ESR (erythrocyte sedimentation rate) indicates MEC-0002
+BME-00052,BIO-0054,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,IL-6 (interleukin-6) indicates MEC-0002
+BME-00053,BIO-0054,MEC-0005,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,IL-6 (interleukin-6) indicates MEC-0005
+BME-00054,BIO-0055,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,TNF-α (tumor necrosis factor alpha) indicates MEC-0002
+BME-00055,BIO-0055,MEC-0005,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,TNF-α (tumor necrosis factor alpha) indicates MEC-0005
+BME-00056,BIO-0056,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,IL-1β (interleukin-1 beta) indicates MEC-0002
+BME-00057,BIO-0056,MEC-0005,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,IL-1β (interleukin-1 beta) indicates MEC-0005
+BME-00058,BIO-0057,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,IL-17 indicates MEC-0002
+BME-00059,BIO-0058,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,IL-10 indicates MEC-0002
+BME-00060,BIO-0059,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,IFN-γ (interferon gamma) indicates MEC-0002
+BME-00061,BIO-0060,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Complement C3, C4 indicates MEC-0002"
+BME-00062,BIO-0060,MEC-0005,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Complement C3, C4 indicates MEC-0005"
+BME-00063,BIO-0061,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Total IgG / IgA / IgM / IgE + IgG subclasses indicates MEC-0002
+BME-00064,BIO-0062,MEC-0017,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Tryptase (baseline) indicates MEC-0017
+BME-00065,BIO-0063,MEC-0017,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,N-methylhistamine (urinary) indicates MEC-0017
+BME-00066,BIO-0064,MEC-0017,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Prostaglandin D2 metabolite (11β-PGF2α) indicates MEC-0017
+BME-00067,BIO-0065,MEC-0017,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Chromogranin A indicates MEC-0017
+BME-00068,BIO-0067,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-tubulin antibody (Cunningham Panel) indicates MEC-0002
+BME-00069,BIO-0068,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-lysoganglioside-GM1 antibody indicates MEC-0002
+BME-00070,BIO-0069,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-dopamine D1 receptor antibody indicates MEC-0002
+BME-00071,BIO-0069,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-dopamine D1 receptor antibody indicates MEC-0007
+BME-00072,BIO-0070,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-dopamine D2 receptor antibody indicates MEC-0002
+BME-00073,BIO-0070,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-dopamine D2 receptor antibody indicates MEC-0007
+BME-00074,BIO-0071,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,CaMKII activation indicates MEC-0002
+BME-00075,BIO-0072,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ASO (antistreptolysin O) indicates MEC-0002
+BME-00076,BIO-0073,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-DNase B indicates MEC-0002
+BME-00077,BIO-0074,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Hair mercury indicates MEC-0001
+BME-00078,BIO-0074,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Hair mercury indicates MEC-0010
+BME-00079,BIO-0075,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Hair lead indicates MEC-0001
+BME-00080,BIO-0076,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urine mercury (provoked or unprovoked) indicates MEC-0001
+BME-00081,BIO-0076,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urine mercury (provoked or unprovoked) indicates MEC-0010
+BME-00082,BIO-0077,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urine lead indicates MEC-0001
+BME-00083,BIO-0078,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urine cadmium indicates MEC-0001
+BME-00084,BIO-0079,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urine arsenic indicates MEC-0001
+BME-00085,BIO-0080,MEC-0032,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urine aluminum indicates MEC-0032
+BME-00086,BIO-0081,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urine glyphosate + AMPA indicates MEC-0003
+BME-00087,BIO-0081,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urine glyphosate + AMPA indicates MEC-0008
+BME-00088,BIO-0082,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Phthalate metabolites (composite — MEP, MBP, MEHP, others) indicates MEC-0008"
+BME-00089,BIO-0082,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Phthalate metabolites (composite — MEP, MBP, MEHP, others) indicates MEC-0016"
+BME-00090,BIO-0083,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Bisphenol A (BPA) indicates MEC-0016
+BME-00091,BIO-0084,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,PFAS / PFOA composite indicates MEC-0001
+BME-00092,BIO-0084,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,PFAS / PFOA composite indicates MEC-0016
+BME-00093,BIO-0085,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Organophosphate metabolites (DAPs) indicates MEC-0001
+BME-00094,BIO-0086,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Mycotoxin panel (aflatoxin, ochratoxin, gliotoxin, trichothecenes) indicates MEC-0001"
+BME-00095,BIO-0086,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Mycotoxin panel (aflatoxin, ochratoxin, gliotoxin, trichothecenes) indicates MEC-0002"
+BME-00096,BIO-0087,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Volatile solvents (composite) indicates MEC-0001
+BME-00097,BIO-0088,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Maternal anti-fetal-brain antibodies (MAR Antibodies) indicates MEC-0002
+BME-00098,BIO-0089,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Maternal MTHFR genotype indicates MEC-0003
+BME-00099,BIO-0090,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Maternal serum vitamin D (during pregnancy) indicates MEC-0002
+BME-00100,BIO-0090,MEC-0029,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Maternal serum vitamin D (during pregnancy) indicates MEC-0029
+BME-00101,BIO-0091,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Maternal CRP during pregnancy indicates MEC-0002
+BME-00102,BIO-0092,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Maternal thyroid panel during pregnancy indicates MEC-0016
+BME-00103,BIO-0093,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Cord blood acetaminophen / acetaminophen-protein adducts indicates MEC-0001
+BME-00104,BIO-0094,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Cord-blood methylation signature indicates MEC-0003
+BME-00105,BIO-0095,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Paternal age indicates MEC-0003
+BME-00106,BIO-0101,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urinary iodine indicates MEC-0016
+BME-00107,BIO-0105,MEC-0031,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,RBC omega-3 index (EPA + DHA) indicates MEC-0031
+BME-00108,BIO-0106,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Omega-6/omega-3 ratio indicates MEC-0002
+BME-00109,BIO-0106,MEC-0031,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Omega-6/omega-3 ratio indicates MEC-0031
+BME-00110,BIO-0109,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Zonulin indicates MEC-0008
+BME-00111,BIO-0109,MEC-0022,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Zonulin indicates MEC-0022
+BME-00112,BIO-0110,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Lipopolysaccharide (LPS) / endotoxin indicates MEC-0008
+BME-00113,BIO-0110,MEC-0022,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Lipopolysaccharide (LPS) / endotoxin indicates MEC-0022
+BME-00114,BIO-0111,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Calprotectin (fecal) indicates MEC-0008
+BME-00115,BIO-0112,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Secretory IgA (sIgA) indicates MEC-0008
+BME-00116,BIO-0113,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Lactulose:mannitol ratio indicates MEC-0008
+BME-00117,BIO-0113,MEC-0022,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Lactulose:mannitol ratio indicates MEC-0022
+BME-00118,BIO-0114,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Full thyroid panel (TSH, FT3, FT4, rT3, TPO, TgAb) indicates MEC-0016"
+BME-00119,BIO-0115,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,DUTCH cortisol (4-point + free + total) indicates MEC-0016
+BME-00120,BIO-0116,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,DHEA-S indicates MEC-0016
+BME-00121,BIO-0117,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Sex hormones (estradiol, progesterone, testosterone — DUTCH metabolites) indicates MEC-0016"
+BME-00122,BIO-0121,MEC-0011,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Insulin / HOMA-IR indicates MEC-0011
+BME-00123,BIO-0121,MEC-0012,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Insulin / HOMA-IR indicates MEC-0012
+BME-00124,BIO-0122,MEC-0012,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,IGF-1 + IGFBP-3 indicates MEC-0012
+BME-00125,BIO-0131,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,C. difficile toxin (stool) indicates MEC-0008
+BME-00126,BIO-0132,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Candida IgG + IgA indicates MEC-0008
+BME-00127,BIO-0133,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ANA + extractable nuclear antigens indicates MEC-0002
+BME-00128,BIO-0134,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-tTG IgA + Anti-DGP IgA/IgG indicates MEC-0008
+BME-00129,BIO-0134,MEC-0022,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-tTG IgA + Anti-DGP IgA/IgG indicates MEC-0022
+BME-00130,BIO-0137,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,MRI cortical thickness (region-specific) indicates MEC-0006
+BME-00131,BIO-0138,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Total brain volume / amygdala / cerebellar vermis volumetry indicates MEC-0006
+BME-00132,BIO-0139,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,DTI fractional anisotropy (white matter tracts) indicates MEC-0006
+BME-00133,BIO-0140,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Resting-state fMRI default mode network connectivity indicates MEC-0006
+BME-00134,BIO-0141,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA indicates MEC-0007
+BME-00135,BIO-0141,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA indicates MEC-0010
+BME-00136,BIO-0141,MEC-0020,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA indicates MEC-0020
+BME-00137,BIO-0142,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,PET-TSPO (translocator protein — microglial activation) indicates MEC-0002
+BME-00138,BIO-0142,MEC-0005,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,PET-TSPO (translocator protein — microglial activation) indicates MEC-0005
+BME-00139,BIO-0143,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,EEG resting-state spectral power (gamma/beta/alpha) indicates MEC-0007
+BME-00140,BIO-0143,MEC-0020,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,EEG resting-state spectral power (gamma/beta/alpha) indicates MEC-0020
+BME-00141,BIO-0144,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ERP P300 amplitude / latency indicates MEC-0006
+BME-00142,BIO-0144,MEC-0020,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ERP P300 amplitude / latency indicates MEC-0020
+BME-00143,BIO-0145,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ERP MMN (mismatch negativity) indicates MEC-0006
+BME-00144,BIO-0145,MEC-0020,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ERP MMN (mismatch negativity) indicates MEC-0020
+BME-00145,BIO-0146,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ERP N170 (face processing) indicates MEC-0006
+BME-00146,BIO-0147,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,qEEG coherence pattern indicates MEC-0006
+BME-00147,BIO-0147,MEC-0020,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,qEEG coherence pattern indicates MEC-0020
+BME-00148,BIO-0148,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Gaze fixation pattern (eye-tracking) indicates MEC-0006
+BME-00149,BIO-0149,MEC-0019,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Pupillometry / pupil response indicates MEC-0019
+BME-00150,BIO-0150,MEC-0019,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Heart rate variability (HRV) indicates MEC-0019
+BME-00151,BIO-0151,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,CSF cytokines indicates MEC-0002
+BME-00152,BIO-0151,MEC-0005,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,CSF cytokines indicates MEC-0005
+BME-00153,BIO-0152,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,CSF tau / NfL indicates MEC-0006
+BME-00154,BIO-0153,MEC-0028,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Serum BDNF (brain-derived neurotrophic factor) indicates MEC-0028
+BME-00155,BIO-0154,MEC-0004,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Serum S100β (astrocyte marker / BBB disruption) indicates MEC-0004
+BME-00156,BIO-0154,MEC-0005,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Serum S100β (astrocyte marker / BBB disruption) indicates MEC-0005
+BME-00157,BIO-0155,MEC-0005,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Serum GFAP (glial fibrillary acidic protein) indicates MEC-0005
+BME-00158,BIO-0156,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Serum neurofilament light chain (NfL) indicates MEC-0006
+BME-00159,BIO-0157,MEC-0006,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Serum tau indicates MEC-0006
+BME-00160,BIO-0158,MEC-0027,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,HSP70 / HSP90 plasma levels indicates MEC-0027
+BME-00161,BIO-0159,MEC-0018,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anandamide (AEA) indicates MEC-0018
+BME-00162,BIO-0160,MEC-0018,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,2-arachidonoylglycerol (2-AG) indicates MEC-0018
+BME-00163,BIO-0161,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,MTHFR C677T genotype indicates MEC-0003
+BME-00164,BIO-0162,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,MTHFR A1298C genotype indicates MEC-0003
+BME-00165,BIO-0163,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,COMT V158M (Val/Met) genotype indicates MEC-0003
+BME-00166,BIO-0163,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,COMT V158M (Val/Met) genotype indicates MEC-0007
+BME-00167,BIO-0164,MEC-0003,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,CBS upregulation variants indicates MEC-0003
+BME-00168,BIO-0165,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Vitamin D 25-OH (child / direct) indicates MEC-0002
+BME-00169,BIO-0165,MEC-0029,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Vitamin D 25-OH (child / direct) indicates MEC-0029
+BME-00170,BIO-0166,MEC-0001,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urinary porphyrins (heavy metal body burden surrogate) indicates MEC-0001
+BME-00171,BIO-0166,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urinary porphyrins (heavy metal body burden surrogate) indicates MEC-0010
+BME-00172,BIO-0167,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,FUT2 secretor status genotype indicates MEC-0008
+BME-00173,BIO-0168,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urinary oxalate indicates MEC-0008
+BME-00174,BIO-0168,MEC-0010,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Urinary oxalate indicates MEC-0010
+BME-00175,BIO-0172,MEC-0002,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-NMDA receptor antibodies indicates MEC-0002
+BME-00176,BIO-0172,MEC-0020,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-NMDA receptor antibodies indicates MEC-0020
+BME-00177,BIO-0174,MEC-0007,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-GAD65 antibodies indicates MEC-0007
+BME-00178,BIO-0174,MEC-0034,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Anti-GAD65 antibodies indicates MEC-0034
+BME-00179,BIO-0175,MEC-0016,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Salivary cortisol awakening response (CAR) indicates MEC-0016
+BME-00180,BIO-0176,MEC-0011,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Lipid panel (TC, LDL, HDL, triglycerides) indicates MEC-0011"
+BME-00181,BIO-0176,MEC-0012,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,"Lipid panel (TC, LDL, HDL, triglycerides) indicates MEC-0012"
+BME-00182,BIO-0177,MEC-0004,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ApoE genotype indicates MEC-0004
+BME-00183,BIO-0177,MEC-0031,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,ApoE genotype indicates MEC-0031
+BME-00184,BIO-0178,MEC-0008,indicates_dysfunction,0.50,supporting,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) indicates MEC-0008

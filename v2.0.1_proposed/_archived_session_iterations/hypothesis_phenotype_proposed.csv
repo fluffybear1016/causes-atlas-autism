@@ -1,0 +1,4 @@
+id,hypothesis_id,phenotype_id,relation_type,polarity,supporting_pmids,status,created_at
+HPE-0004,HYP-0025,PHE-0003,manifests_as,supporting,27287966;25218900,proposed,2026-04-28T02:13:59+00:00
+HPE-0008,HYP-0028,PHE-0005,manifests_as,supporting,25916396;31609537,proposed,2026-04-28T02:13:59+00:00
+HPE-0009,HYP-0028,PHE-0006,manifests_as,supporting,37759552;32026885,proposed,2026-04-28T02:13:59+00:00

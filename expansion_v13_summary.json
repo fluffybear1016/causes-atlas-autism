@@ -1,0 +1,11 @@
+{
+  "expansion_version": "v1.3",
+  "run_timestamp": "2026-04-27T21:24:31+00:00",
+  "added": {
+    "hypotheses": 1,
+    "sources": 38,
+    "evidence_fragments": 38,
+    "evidence_links": 65
+  },
+  "skipped_targets": 0
+}

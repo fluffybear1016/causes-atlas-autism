@@ -1,0 +1,50 @@
+{
+  "case_id": "rrc_002_lemonnier_2017_bumetanide_representative",
+  "case_date": "2026-05-05",
+  "input_version": "2.3",
+  "operating_mode": "young_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Lemonnier 2017 Transl Psychiatry (PMID 28291262). Encodes a high-baseline-intracellular-Cl⁻ / GABAergic-imbalance profile typical of bumetanide responders. Used to drive responder-rate validation for the Causes Atlas v0.2 engine.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 31, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {"infections": [], "medications": [], "autoimmune_dx": []},
+    "current_medications": [],
+    "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 33, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [],
+    "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [],
+    "consanguinity": false
+  },
+
+  "biomarkers": {
+    "child_data": {
+      "csf_or_neuronal_intracellular_chloride_proxy_high": true,
+      "kcc2_dysfunction_proxy": true,
+      "magnesium_serum": 1.7
+    }
+  },
+
+  "child_data": {
+    "phenotypic_features": ["social_communication_deficits", "repetitive_behaviors"],
+    "diagnoses": ["autism_spectrum_disorder"],
+    "exposure_history": [],
+    "vaccinations_administered_postnatal": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0007",
+    "top_intervention": "INT-0023 (bumetanide — confirm INT id)",
+    "rationale": "High-Cl⁻ / KCC2-dysfunction proxy biomarkers drive PHE-0007 GABA / Cl⁻ imbalance dominance, which should select bumetanide via v0.2 weighted scoring."
+  }
+}

@@ -1,0 +1,49 @@
+sheet,row,column,phrase,canonical,method,flagged
+causes,2,mechanism_summary,Impaired methylation,Impaired methylation,rule_based,False
+causes,2,mechanism_summary,BBB dysfunction,BBB dysfunction,rule_based,False
+causes,3,mechanism_summary,Oxidative stress,Oxidative stress,rule_based,False
+causes,4,mechanism_summary,Impaired methylation,Impaired methylation,rule_based,False
+causes,6,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False
+causes,7,mechanism_summary,Oxidative stress,Oxidative stress,rule_based,False
+causes,7,mechanism_summary,Mitochondrial dysfunction,Mitochondrial dysfunction,rule_based,False
+causes,8,mechanism_summary,BBB dysfunction,BBB dysfunction,rule_based,False
+causes,8,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False
+causes,9,mechanism_summary,Neuroinflammation,Neuroinflammation,rule_based,False
+causes,18,mechanism_summary,Oxidative stress,Oxidative stress,rule_based,False
+causes,19,mechanism_summary,Neuroinflammation,Neuroinflammation,rule_based,False
+causes,20,mechanism_summary,Neuroinflammation,Neuroinflammation,rule_based,False
+causes,23,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False
+causes,24,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False
+causes,30,mechanism_summary,mTOR pathway dysregulation,mTOR pathway dysregulation,rule_based,False
+causes,31,mechanism_summary,mTOR pathway dysregulation,mTOR pathway dysregulation,rule_based,False
+interventions,2,mechanism_summary,Impaired methylation,Impaired methylation,rule_based,False
+interventions,2,mechanism_summary,BBB dysfunction,BBB dysfunction,rule_based,False
+interventions,3,mechanism_summary,Oxidative stress,Oxidative stress,rule_based,False
+interventions,4,mechanism_summary,Impaired methylation,Impaired methylation,rule_based,False
+interventions,5,mechanism_summary,GABA/glutamate imbalance,GABA/glutamate imbalance,rule_based,False
+interventions,6,mechanism_summary,GABA/glutamate imbalance,GABA/glutamate imbalance,rule_based,False
+interventions,7,mechanism_summary,Neuroinflammation,Neuroinflammation,rule_based,False
+interventions,8,mechanism_summary,GABA/glutamate imbalance,GABA/glutamate imbalance,rule_based,False
+interventions,8,mechanism_summary,Mitochondrial dysfunction,Mitochondrial dysfunction,rule_based,False
+interventions,9,mechanism_summary,Impaired methylation,Impaired methylation,rule_based,False
+interventions,11,mechanism_summary,Oxidative stress,Oxidative stress,rule_based,False
+interventions,11,mechanism_summary,Impaired methylation,Impaired methylation,rule_based,False
+interventions,12,mechanism_summary,Mitochondrial dysfunction,Mitochondrial dysfunction,rule_based,False
+interventions,13,mechanism_summary,Mitochondrial dysfunction,Mitochondrial dysfunction,rule_based,False
+interventions,18,mechanism_summary,GABA/glutamate imbalance,GABA/glutamate imbalance,rule_based,False
+interventions,19,mechanism_summary,Impaired methylation,Impaired methylation,rule_based,False
+interventions,24,mechanism_summary,GABA/glutamate imbalance,GABA/glutamate imbalance,rule_based,False
+interventions,26,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False
+interventions,27,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False
+interventions,28,mechanism_summary,BBB dysfunction,BBB dysfunction,rule_based,False
+interventions,28,mechanism_summary,Microglial activation,Microglial activation,rule_based,False
+interventions,29,mechanism_summary,Mitochondrial dysfunction,Mitochondrial dysfunction,rule_based,False
+interventions,37,mechanism_summary,mTOR pathway dysregulation,mTOR pathway dysregulation,rule_based,False
+interventions,38,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False
+interventions,40,mechanism_summary,GABA/glutamate imbalance,GABA/glutamate imbalance,rule_based,False
+interventions,48,mechanism_summary,Neuroinflammation,Neuroinflammation,rule_based,False
+interventions,51,mechanism_summary,Oxidative stress,Oxidative stress,rule_based,False
+interventions,56,mechanism_summary,Mitochondrial dysfunction,Mitochondrial dysfunction,rule_based,False
+interventions,57,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False
+interventions,59,mechanism_summary,Impaired methylation,Impaired methylation,rule_based,False
+interventions,61,mechanism_summary,Gut-brain axis disruption,Gut-brain axis disruption,rule_based,False

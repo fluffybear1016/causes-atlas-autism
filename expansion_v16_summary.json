@@ -1,0 +1,20 @@
+{
+  "expansion_version": "v1.6_hbot_mito",
+  "run_timestamp": "2026-04-27T22:00:07+00:00",
+  "added": {
+    "interventions": 5,
+    "combinations": 1,
+    "combination_members": 12,
+    "sources": 7,
+    "evidence_fragments": 7,
+    "evidence_links": 22,
+    "intervention_hypothesis_edges": 17,
+    "intervention_mechanism_edges": 17
+  },
+  "skipped_targets": 0,
+  "commentary": {
+    "geographic_prevalence_note": "Discussion of country/Amish prevalence differences (France 1/144, Japan 1/160, S Korea ~1/38, US 1/31, Amish 1/271) is treated as DATA-METHODOLOGY context, not as causal evidence. Cross-country differences are confounded by diagnostic practices, screening intensity, awareness, healthcare access, and diagnostic substitution. Amish data confounded by limited healthcare access. NOT added as schema rows.",
+    "iacc_note": "IACC 2024-2025 strategic plan focuses on co-occurring conditions; reinforces relevance of GI, sleep, immune, mental-health phenotypes already in atlas. Provides priority signal for ingestion pipeline (option f).",
+    "social_media_handling": "X/Twitter posts and Substack content are not added as sources directly; their underlying claims are traced to peer-reviewed citations where they exist. Per spec \u00a77.2 social signals get the lowest weight tier in scoring."
+  }
+}

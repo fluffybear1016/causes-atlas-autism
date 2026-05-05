@@ -1,0 +1,163 @@
+# Phase 0G proof-of-concept candidates: cortisol state-conditional reference ranges
+#
+# Each row cites a methodology / reference-range source paper that is
+# PubMed-verified by seed_with_verification.py before write.
+#
+# IMPORTANT (verify-before-write protocol per spec §24):
+# - Numerical reference_low / reference_high values below are drawn from
+#   clinical-lab convention + the cited methodology paper. Where exact
+#   numbers cannot be confirmed directly from the cited paper without
+#   full-text access, the row is marked with `needs_clinical_lab_confirmation`
+#   in notes — the methodology citation is verified, but a clinician should
+#   confirm the specific cutoff against the underlying paper or against
+#   their preferred clinical lab's reference interval.
+# - Cortisol BIO IDs in the atlas: BIO-0115 (DUTCH composite), BIO-0175 (CAR).
+# - Cortisol rows here target BIO-0175 (Salivary CAR) since it has the
+#   most direct PMID-grounded methodology consensus (Stalder 2016/2022).
+
+# Row 1: CAR baseline — first morning sample, post-wake supine
+- row_id: PSN-CORT-001
+  claimed_pmid: 26563991
+  claimed_first_author: Stalder
+  claimed_year: 2016
+  claimed_key_terms: [cortisol, awakening]
+  claimed_journal_substring: Psychoneuroendocrinology
+  row_data:
+    biomarker_id: BIO-0175
+    reference_range_dimension: time_of_day
+    dimension_value: post_wake_t0_supine
+    reference_low: 5.0
+    reference_high: 25.0
+    reference_unit: nmol/L
+    reference_lab_method: salivary_LC_MS_or_immunoassay
+    z_score_correction_factor: 1.0
+    credal_low: 4.0
+    credal_high: 30.0
+    primary_pmid: 26563991
+    notes: "Stalder 2016 CAR expert consensus methodology; baseline sample taken in supine position immediately upon waking before getting out of bed. Numerical cutoffs are conservative central range; needs_clinical_lab_confirmation against specific assay manufacturer reference."
+
+# Row 2: CAR peak — t+30min post-wake
+- row_id: PSN-CORT-002
+  claimed_pmid: 26563991
+  claimed_first_author: Stalder
+  claimed_year: 2016
+  claimed_key_terms: [cortisol, awakening]
+  claimed_journal_substring: Psychoneuroendocrinology
+  row_data:
+    biomarker_id: BIO-0175
+    reference_range_dimension: time_of_day
+    dimension_value: post_wake_t30min
+    reference_low: 8.0
+    reference_high: 35.0
+    reference_unit: nmol/L
+    reference_lab_method: salivary_LC_MS_or_immunoassay
+    z_score_correction_factor: 1.0
+    credal_low: 6.0
+    credal_high: 40.0
+    primary_pmid: 26563991
+    notes: "Stalder 2016 CAR consensus; t+30min post-wake sample is peak of typical CAR. Healthy CAR shows ~50-100% rise from t0 baseline. needs_clinical_lab_confirmation."
+
+# Row 3: CAR updated consensus methodology (replaces Row 1 in v2.0+ sites)
+- row_id: PSN-CORT-003
+  claimed_pmid: 36252387
+  claimed_first_author: Stalder
+  claimed_year: 2022
+  claimed_key_terms: [cortisol, awakening]
+  claimed_journal_substring: Psychoneuroendocrinology
+  row_data:
+    biomarker_id: BIO-0175
+    reference_range_dimension: time_of_day_updated_consensus
+    dimension_value: post_wake_t0_to_t60_4_point_protocol
+    reference_low: 0.0
+    reference_high: 0.0
+    reference_unit: nmol/L
+    reference_lab_method: salivary_LC_MS_4_point_protocol
+    z_score_correction_factor: 1.0
+    credal_low: 0.0
+    credal_high: 0.0
+    primary_pmid: 36252387
+    notes: "Stalder 2022 CAR consensus update — methodology row, not numerical reference. Establishes 4-point sampling protocol (0, 30, 45, 60 min post-wake) and authentication via objective wake-time (electronic monitoring). Use with PSN-CORT-001 + PSN-CORT-002 numerical reference rows."
+
+# Row 4: Cortisol diurnal rhythm framework — Clow 2010 review
+- row_id: PSN-CORT-004
+  claimed_pmid: 20970005
+  claimed_first_author: Clow
+  claimed_year: 2010
+  claimed_key_terms: [cortisol, awakening]
+  claimed_journal_substring: Int Rev Neurobiol
+  row_data:
+    biomarker_id: BIO-0175
+    reference_range_dimension: methodology_framework
+    dimension_value: diurnal_rhythm_framework
+    reference_low: 0.0
+    reference_high: 0.0
+    reference_unit: framework
+    reference_lab_method: not_applicable
+    z_score_correction_factor: 1.0
+    credal_low: 0.0
+    credal_high: 0.0
+    primary_pmid: 20970005
+    notes: "Clow 2010 Int Rev Neurobiol — CAR-in-context framework. Establishes that CAR is mechanistically distinct from later-day diurnal cortisol decline; both should be measured for full HPA-axis assessment. Methodology row, not numerical."
+
+# Row 5: Genetic-component / heritability anchor for CAR
+- row_id: PSN-CORT-005
+  claimed_pmid: 10938450
+  claimed_first_author: Wüst
+  claimed_year: 2000
+  claimed_key_terms: [cortisol, awakening]
+  claimed_journal_substring: Psychoneuroendocrinology
+  row_data:
+    biomarker_id: BIO-0175
+    reference_range_dimension: heritability_modifier
+    dimension_value: genetic_component_acknowledged
+    reference_low: 0.0
+    reference_high: 0.0
+    reference_unit: scaling
+    reference_lab_method: not_applicable
+    z_score_correction_factor: 1.0
+    credal_low: 0.0
+    credal_high: 0.0
+    primary_pmid: 10938450
+    notes: "Wüst 2000 — twin study showing genetic component to free cortisol awakening response. Family-history modifier: a parent with documented blunted/exaggerated CAR raises within-family-cluster prior on the same pattern in the child. Methodology row."
+
+# Row 6: LC-MS/MS reference panel for serum steroids (Frederiksen 2024)
+- row_id: PSN-CORT-006
+  claimed_pmid: 38977173
+  claimed_first_author: Frederiksen
+  claimed_year: 2024
+  claimed_key_terms: [reference, steroid]
+  claimed_journal_substring: Clin Chim Acta
+  row_data:
+    biomarker_id: BIO-0175
+    reference_range_dimension: lab_method_calibration
+    dimension_value: lc_ms_ms_serum_steroid_reference_panel
+    reference_low: 0.0
+    reference_high: 0.0
+    reference_unit: framework
+    reference_lab_method: lc_ms_ms_serum
+    z_score_correction_factor: 1.0
+    credal_low: 0.0
+    credal_high: 0.0
+    primary_pmid: 38977173
+    notes: "Frederiksen 2024 Clin Chim Acta — sex- and age-specific reference intervals for 16 steroid metabolites quantified simultaneously by LC-MS/MS. Reference paper for harmonized steroid measurement; cortisol reference intervals stratified by age + sex available in supplementary data. Cite for serum cortisol when measured."
+
+# Row 7: PASS/FAIL TEST — intentionally wrong PMID to verify the script
+# rejects fabrications. Should be REJECTED on PubMed verify.
+- row_id: PSN-CORT-TEST-FAIL
+  claimed_pmid: 99999999
+  claimed_first_author: Fictitious
+  claimed_year: 2099
+  claimed_key_terms: [cortisol]
+  row_data:
+    biomarker_id: BIO-0175
+    reference_range_dimension: test_intentional_failure
+    dimension_value: should_not_appear_in_output
+    reference_low: 0.0
+    reference_high: 0.0
+    reference_unit: test
+    reference_lab_method: test
+    z_score_correction_factor: 1.0
+    credal_low: 0.0
+    credal_high: 0.0
+    primary_pmid: 99999999
+    notes: "Intentional failure case to verify the seed script rejects fabricated PMIDs. This row should NOT appear in the output CSV."

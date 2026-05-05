@@ -1,0 +1,7 @@
+# Top-level requirements.txt for Streamlit Community Cloud auto-deploy.
+# The engine itself (personalized_risk.py) uses ONLY the Python stdlib for
+# determinism — no third-party deps needed for the scoring math.
+# Streamlit + PyYAML are required for the UI layer + atlas manifest parsing.
+
+streamlit>=1.40
+pyyaml>=6.0

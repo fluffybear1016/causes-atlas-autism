@@ -1,0 +1,16 @@
+id,gene_id,hypothesis_id,relation_type,polarity,evidence_for_count,evidence_against_count,evidence_strength_aggregate,context_scope,status,created_at,last_updated
+GHE-00001,GEN-0001,HYP-0001,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00002,GEN-0002,HYP-0003,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00003,GEN-0004,HYP-0032,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00004,GEN-0003,HYP-0032,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00005,GEN-0006,HYP-0029,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00006,GEN-0007,HYP-0029,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00007,GEN-0008,HYP-0030,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00008,GEN-0005,HYP-0027,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00009,GEN-0009,HYP-0027,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00010,GEN-0003,HYP-0027,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00011,GEN-0743,HYP-0027,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00012,GEN-0728,HYP-0027,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00013,GEN-0729,HYP-0027,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00014,GEN-0973,HYP-0027,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00
+GHE-00015,GEN-0974,HYP-0027,risk_factor_for,supporting,,,0.0000,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:15:02+00:00

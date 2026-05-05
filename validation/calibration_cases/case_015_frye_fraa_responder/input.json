@@ -1,0 +1,206 @@
+{
+  "case_id": "case_015_frye_fraa_responder",
+  "case_date": "2026-04-30",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v2.3",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "maternal": {
+    "demographics": {
+      "age_at_conception_or_now": 31,
+      "ethnicity_self_reported": ["EUR"]
+    },
+    "pregnancy_history": {
+      "infections": [],
+      "medications": [],
+      "diet_quality_index": null,
+      "bmi_pre_pregnancy": null,
+      "weight_gain_kg": null,
+      "gestational_diabetes": false,
+      "preeclampsia": false,
+      "iugr_diagnosed": false,
+      "autoimmune_dx": ["maternal_hashimoto"],
+      "previous_pregnancies": 1,
+      "previous_autism_children": 0,
+      "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": ["levothyroxine"],
+    "current_supplements": []
+  },
+
+  "paternal": {
+    "age_at_conception": 33,
+    "phenotypic_features": [],
+    "current_medications": []
+  },
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [],
+    "first_degree_autoimmune": ["maternal_hashimoto"],
+    "first_degree_psychiatric": [],
+    "second_degree_autism": {"count": 0},
+    "consanguinity": false,
+    "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 60,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 19.5,
+      "weight_z_for_age_sex": 0.0,
+      "height_cm": 110,
+      "height_z_for_age_sex": 0.0,
+      "bmi": 16.1,
+      "bmi_z_for_age_sex": 0.0,
+      "head_circumference_cm": 51,
+      "head_circumference_z_for_age_sex": 0.0,
+      "body_surface_area_m2": 0.78,
+      "growth_trajectory_summary": "stable typical-track growth"
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track",
+      "social": "moderate_delay",
+      "language": "severe_delay",
+      "cognitive": "mild_delay",
+      "adaptive": "moderate_delay",
+      "regression_history": []
+    },
+    "pubertal_stage_tanner": null,
+    "current_diagnoses": ["autism spectrum disorder", "language impairment"],
+    "current_medications": [],
+    "current_supplements": []
+  },
+
+  "genomics": {
+    "data_sources": [
+      {"actor": "child", "type": "23andMe_v5", "date": "2025", "lab": "23andMe"}
+    ],
+    "snps": {
+      "maternal": {},
+      "paternal": {},
+      "child": {"rs1801133": {"genotype": "C/T", "confidence": 0.98}}
+    },
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null},
+    "ancestry_genetic_panel": {
+      "actor": "child",
+      "global_ancestry_proportions": {"EUR": 1.0},
+      "method": "23andMe_v5"
+    }
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+
+  "immunology": {
+    "autoantibodies": {
+      "fraa_blocking": {"value": 1.4, "unit": "OD/mL", "result": "positive_strong"},
+      "fraa_binding": {"value": 0.9, "unit": "pmol/mL", "result": "positive"},
+      "mar_panel": null,
+      "anti_nmda_r": false,
+      "ana": null,
+      "rf": null,
+      "anti_ttg": null,
+      "anti_thyroglobulin": null,
+      "cunningham_panel": null
+    }
+  },
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {
+      "organic_acids_urine": null,
+      "amino_acids_plasma": null,
+      "acylcarnitine_panel": null,
+      "sphingolipid_panel": null,
+      "untargeted_metabolomics_z_scores": null
+    },
+    "proteomics": null,
+    "epigenetics": null
+  },
+
+  "neuroimaging_eeg": null,
+
+  "comorbidities": {
+    "epilepsy": {"present": false, "type": null, "age_onset_months": null, "controlled_on_medication": false, "medication": null},
+    "adhd": {"present": false, "presentation": null, "subtype": null},
+    "ocd_anxiety": {"ocd": false, "anxiety": false, "panic": false},
+    "mood_disorders": {"depression": false, "bipolar": false},
+    "tic_disorder": false,
+    "feeding_disorder": {"present": false, "type": null, "current_diet_diversity_score": null},
+    "sleep_disorder": {"insomnia": false, "parasomnia": false, "sleep_apnea": false, "polysomnography_summary": null},
+    "gi_clusters": {
+      "chronic_constipation": false, "chronic_diarrhea": false, "reflux": false,
+      "abdominal_pain_chronic": false, "feeding_intolerance": false
+    },
+    "atopic_cluster": {"eczema": false, "asthma": false, "food_allergies": [], "ar": false},
+    "mcas_features": null,
+    "eds_features": null,
+    "pots_features": null,
+    "vagal_tone_proxy": null
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39,
+    "birth_weight_kg": 3.4,
+    "birth_length_cm": 50,
+    "head_circumference_cm": 35,
+    "apgar_1min": 9, "apgar_5min": 9,
+    "delivery_mode": "vaginal",
+    "intrapartum_antibiotics": false,
+    "intrapartum_fever": false,
+    "meconium_aspiration": false,
+    "cord_blood_data": null,
+    "placental_pathology_summary": null,
+    "neonatal_period": {
+      "nicu_days": 0,
+      "phototherapy_required": false,
+      "neonatal_antibiotics": [],
+      "neonatal_jaundice_max_bilirubin": null,
+      "feeding_method_first_6mo": "exclusive_breast",
+      "formula_type_if_used": null,
+      "first_solid_introduction_month": 6
+    },
+    "vaccinations_administered": []
+  },
+
+  "aces_trauma": {
+    "ace_score": 0,
+    "ace_category_flags": [],
+    "current_psychosocial_stressors": [],
+    "stable_attachment_figure_present": true
+  },
+
+  "longitudinal_biomarkers": {},
+
+  "planned_exposures": {
+    "vaccine_schedule": [],
+    "medications_planned": [],
+    "environmental_concerns": [],
+    "delivery_plan": null
+  },
+
+  "intervention_response_history": [],
+
+  "user_constraints": {
+    "max_monthly_cost_usd": null,
+    "insurance_coverage_constraints": [],
+    "geographic_access": null,
+    "preference_against_pharmaceuticals": false,
+    "preference_against_invasive_testing": false
+  },
+
+  "consent_flags": {
+    "research_use_anonymized": false,
+    "share_with_clinician_email": null,
+    "preconception_ethics_acknowledged": false
+  }
+}

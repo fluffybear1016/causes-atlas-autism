@@ -1,0 +1,97 @@
+{
+  "case_id": "rrc_001_frye_2018_leucovorin_fraa_representative",
+  "case_date": "2026-05-05",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for the FRAA-positive responder subgroup of Frye 2018 Mol Psychiatry (PMID 27752075). Mirrors the schema of case_015 (engine-verified to produce PHE-0001 dominant + INT-0001 top intervention). Used to drive responder-rate validation for the Causes Atlas v0.2 engine.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 31, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "bmi_pre_pregnancy": null, "weight_gain_kg": null,
+      "gestational_diabetes": false, "preeclampsia": false, "iugr_diagnosed": false,
+      "autoimmune_dx": [], "previous_pregnancies": 0, "previous_autism_children": 0,
+      "miscarriage_count": 0, "fertility_treatment": null
+    },
+    "current_medications": [],
+    "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 33, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 60,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 19.5, "weight_z_for_age_sex": 0.0,
+      "height_cm": 110, "height_z_for_age_sex": 0.0,
+      "bmi": 16.1, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "severe_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": ["autism spectrum disorder", "language impairment"],
+    "current_medications": [],
+    "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+
+  "immunology": {
+    "autoantibodies": {
+      "fraa_blocking": {"value": 1.4, "unit": "OD/mL", "result": "positive_strong"},
+      "fraa_binding": {"value": 0.9, "unit": "pmol/mL", "result": "positive"},
+      "mar_panel": null, "anti_nmda_r": false
+    }
+  },
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {
+      "organic_acids_urine": null, "amino_acids_plasma": null,
+      "acylcarnitine_panel": null, "untargeted_metabolomics_z_scores": null
+    }
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {}
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.4,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0001",
+    "top_intervention": "INT-0001",
+    "rationale": "FRAA-positive (blocking + binding) profile drives PHE-0001 cerebral-folate-deficiency dominance via the engine's biomarker→phenotype hardcoded shift, which selects leucovorin (INT-0001) as the highest-fit intervention via the v0.2 max-based scoring formula."
+  }
+}

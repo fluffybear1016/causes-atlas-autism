@@ -1,0 +1,244 @@
+{
+  "case_id": "case_011_hannah_poling",
+  "case_date": "2026-04-30",
+  "input_version": "2.3",
+  "operating_mode": "young_child",
+  "engine_version_requested": "session4_v2.3",
+
+  "subject_sex": "F",
+  "subject_ancestry": ["EUR"],
+
+  "maternal": {
+    "demographics": {
+      "age_at_conception_or_now": 32,
+      "ethnicity_self_reported": ["EUR"]
+    },
+    "pregnancy_history": {
+      "infections": [],
+      "medications": [],
+      "diet_quality_index": null,
+      "bmi_pre_pregnancy": null,
+      "weight_gain_kg": null,
+      "gestational_diabetes": false,
+      "preeclampsia": false,
+      "iugr_diagnosed": false,
+      "autoimmune_dx": ["maternal_sle_spectrum"],
+      "previous_pregnancies": 0,
+      "previous_autism_children": 0,
+      "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [],
+    "current_supplements": []
+  },
+
+  "paternal": {
+    "age_at_conception": 33,
+    "phenotypic_features": [],
+    "current_medications": []
+  },
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [],
+    "first_degree_autoimmune": ["maternal_sle_spectrum"],
+    "first_degree_psychiatric": [],
+    "second_degree_autism": {"count": 0},
+    "consanguinity": false,
+    "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 24,
+    "sex": "F",
+    "anthropometrics": {
+      "weight_kg": 11.5,
+      "weight_z_for_age_sex": 0.0,
+      "height_cm": 86,
+      "height_z_for_age_sex": 0.0,
+      "bmi": 15.5,
+      "bmi_z_for_age_sex": 0.0,
+      "head_circumference_cm": 48,
+      "head_circumference_z_for_age_sex": 0.0,
+      "body_surface_area_m2": 0.51,
+      "growth_trajectory_summary": "typical until 19 mo; weight loss + lethargy post-trigger event"
+    },
+    "developmental_milestones_status": {
+      "motor": "moderate_delay",
+      "social": "moderate_delay",
+      "language": "severe_delay",
+      "cognitive": "moderate_delay",
+      "adaptive": "moderate_delay",
+      "regression_history": [
+        {
+          "age_months": 19,
+          "domains": ["language", "social", "motor"],
+          "post_event": "simultaneous administration of 9 vaccine doses across 5 vaccines (DTaP, Hib, MMR, varicella, IPV); high fever within 48h, persistent regression beginning within 2 weeks"
+        }
+      ]
+    },
+    "pubertal_stage_tanner": null,
+    "current_diagnoses": ["regressive encephalopathy", "autism spectrum disorder", "mitochondrial enzyme deficiency Complex I III V"],
+    "current_medications": [],
+    "current_supplements": []
+  },
+
+  "genomics": {
+    "data_sources": [
+      {"actor": "child", "type": "clinical_panel_mtdna", "date": "2003", "lab": "clinical mitochondrial panel"}
+    ],
+    "snps": {
+      "maternal": {},
+      "paternal": {},
+      "child": {}
+    },
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {
+      "maternal": null,
+      "child": {
+        "haplogroup": null,
+        "heteroplasmy_variants": [
+          {
+            "position": null,
+            "ref": null,
+            "alt": null,
+            "region": "12S_rRNA_region",
+            "heteroplasmy_pct": null,
+            "tissue": "muscle_biopsy",
+            "notes": "[H-1 audit fix] 12S rRNA region heteroplasmy identified on clinical panel per published case narrative. Specific position/ref/alt not pin-cited to a verified PMID in atlas record — left null to avoid embedding a possibly-incorrect specific molecular claim into the calibration anchor case. Engine should treat region-level info as evidence without requiring exact position. Curator follow-up: cite specific PMID for exact variant when located in published mitochondrial workup record."
+          }
+        ],
+        "respiratory_chain_complex_deficits": ["Complex_I", "Complex_III", "Complex_V"],
+        "respiratory_chain_method": "muscle_biopsy_enzyme_activity"
+      }
+    },
+    "ancestry_genetic_panel": {
+      "actor": "child",
+      "global_ancestry_proportions": {"EUR": 1.0},
+      "method": "self_reported_only"
+    }
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+
+  "hormonal_axes": {
+    "actor": "child",
+    "hpa_axis": null,
+    "hpt_axis": null,
+    "sex_hormones": null,
+    "oxytocin_vasopressin": null
+  },
+
+  "immunology": {
+    "hla_typing": null,
+    "complement": null,
+    "cytokine_panel": null,
+    "immunoglobulins": null,
+    "specific_iges": null,
+    "lymphocyte_subsets": null,
+    "nk_cell_function": null,
+    "vaccine_titers": null,
+    "autoantibodies": null
+  },
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {
+      "organic_acids_urine": null,
+      "amino_acids_plasma": null,
+      "acylcarnitine_panel": {
+        "notes": "Complex I, III, V deficits identified on muscle biopsy; specific acylcarnitine values not in atlas record"
+      },
+      "sphingolipid_panel": null,
+      "untargeted_metabolomics_z_scores": null
+    },
+    "proteomics": null,
+    "epigenetics": null
+  },
+
+  "neuroimaging_eeg": null,
+
+  "comorbidities": {
+    "epilepsy": {"present": false, "type": null, "age_onset_months": null, "controlled_on_medication": false, "medication": null},
+    "adhd": {"present": false, "presentation": null, "subtype": null},
+    "ocd_anxiety": {"ocd": false, "anxiety": false, "panic": false},
+    "mood_disorders": {"depression": false, "bipolar": false},
+    "tic_disorder": false,
+    "feeding_disorder": {"present": false, "type": null, "current_diet_diversity_score": null},
+    "sleep_disorder": {"insomnia": false, "parasomnia": false, "sleep_apnea": false, "polysomnography_summary": null},
+    "gi_clusters": {
+      "chronic_constipation": false, "chronic_diarrhea": false, "reflux": false,
+      "abdominal_pain_chronic": false, "feeding_intolerance": false
+    },
+    "atopic_cluster": {"eczema": false, "asthma": false, "food_allergies": [], "ar": false},
+    "mcas_features": null,
+    "eds_features": null,
+    "pots_features": null,
+    "vagal_tone_proxy": null
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39,
+    "birth_weight_kg": 3.4,
+    "birth_length_cm": 51,
+    "head_circumference_cm": 35,
+    "apgar_1min": 9, "apgar_5min": 9,
+    "delivery_mode": "vaginal",
+    "intrapartum_antibiotics": false,
+    "intrapartum_fever": false,
+    "meconium_aspiration": false,
+    "cord_blood_data": null,
+    "placental_pathology_summary": null,
+    "neonatal_period": {
+      "nicu_days": 0,
+      "phototherapy_required": false,
+      "neonatal_antibiotics": [],
+      "neonatal_jaundice_max_bilirubin": null,
+      "feeding_method_first_6mo": "exclusive_breast",
+      "formula_type_if_used": null,
+      "first_solid_introduction_month": 6
+    },
+    "vaccinations_administered": [
+      {"vaccine": "Hep B", "age_days": 0, "lot": null, "post_vaccination_events": []},
+      {"vaccine": "DTaP+Hib+IPV+MMR+Varicella combined", "age_days": 580, "lot": null,
+       "post_vaccination_events": [
+         {"event": "high_fever_within_48h", "max_temp_C": 39.5},
+         {"event": "regression_within_2_weeks", "domains": ["language", "social", "motor"]}
+       ]}
+    ]
+  },
+
+  "aces_trauma": {
+    "ace_score": 0,
+    "ace_category_flags": [],
+    "current_psychosocial_stressors": ["family stress secondary to child's regressive course"],
+    "stable_attachment_figure_present": true
+  },
+
+  "longitudinal_biomarkers": {},
+
+  "planned_exposures": {
+    "vaccine_schedule": [],
+    "medications_planned": [],
+    "environmental_concerns": [],
+    "delivery_plan": null
+  },
+
+  "intervention_response_history": [],
+
+  "user_constraints": {
+    "max_monthly_cost_usd": null,
+    "insurance_coverage_constraints": [],
+    "geographic_access": null,
+    "preference_against_pharmaceuticals": false,
+    "preference_against_invasive_testing": false
+  },
+
+  "consent_flags": {
+    "research_use_anonymized": false,
+    "share_with_clinician_email": null,
+    "preconception_ethics_acknowledged": false
+  }
+}

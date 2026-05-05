@@ -1,0 +1,8 @@
+# UI dependencies for Causes Atlas — Autism Profile (research prototype)
+# Streamlit v0.3
+#
+# The engine itself (personalized_risk.py) has no third-party dependencies —
+# it uses only the Python stdlib for determinism. Streamlit is required only
+# for the front-end.
+
+streamlit>=1.40

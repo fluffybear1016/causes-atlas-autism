@@ -1,0 +1,21 @@
+# Streamlit Community Cloud config for the Causes Atlas app.
+
+[theme]
+# Stone / off-white palette consistent with the Jobs/Ive landing page.
+base = "light"
+primaryColor = "#1F1A14"
+backgroundColor = "#FAFAF7"
+secondaryBackgroundColor = "#F1ECE3"
+textColor = "#1F1A14"
+font = "serif"
+
+[server]
+headless = true
+runOnSave = false
+
+[browser]
+gatherUsageStats = false
+
+[client]
+showErrorDetails = "full"
+toolbarMode = "minimal"

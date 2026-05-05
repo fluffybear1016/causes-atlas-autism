@@ -1,0 +1,17 @@
+{
+  "expansion_version": "v1.5_patrick",
+  "run_timestamp": "2026-04-27T21:44:33+00:00",
+  "added": {
+    "mechanisms": 5,
+    "hypotheses": 4,
+    "interventions": 6,
+    "sources": 9,
+    "evidence_fragments": 9,
+    "evidence_links": 26,
+    "hypothesis_mechanism_edges": 14,
+    "mechanism_phenotype_edges": 8,
+    "intervention_mechanism_edges": 34,
+    "intervention_hypothesis_edges": 14
+  },
+  "skipped_targets": 0
+}

@@ -1,0 +1,40 @@
+# Verification run: 2026-04-30T18:22:50.646927Z
+# candidates: scripts/phase0g_cortisol_candidates.yaml
+# output: v2.0_scored/physiological_state_normalization_table.csv
+# Total candidates: 7
+
+## Row PSN-CORT-001
+  primary PMID 26563991: PASS claimed=(Stalder 2016) fetched=(stalder t 2016) title='assessment of the cortisol awakening response: expert consensus guidelines.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PSN-CORT-002
+  primary PMID 26563991: PASS claimed=(Stalder 2016) fetched=(stalder t 2016) title='assessment of the cortisol awakening response: expert consensus guidelines.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PSN-CORT-003
+  primary PMID 36252387: PASS claimed=(Stalder 2022) fetched=(stalder t 2022) title='evaluation and update of the expert consensus guidelines for the assessment of the cortisol awakening response (car).'
+  VERDICT: VERIFIED — row will be written
+
+## Row PSN-CORT-004
+  primary PMID 20970005: PASS claimed=(Clow 2010) fetched=(clow a 2010) title='the cortisol awakening response in context.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PSN-CORT-005
+  primary PMID 10938450: PASS claimed=(Wüst 2000) fetched=(wüst s 2000) title='genetic factors, perceived chronic stress, and the free cortisol response to awakening.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PSN-CORT-006
+  primary PMID 38977173: PASS claimed=(Frederiksen 2024) fetched=(frederiksen h 2024) title='sex- and age-specific reference intervals of 16 steroid metabolites quantified simultaneously by lc-ms/ms in sera from 2'
+  VERDICT: VERIFIED — row will be written
+
+## Row PSN-CORT-TEST-FAIL
+  primary PMID 99999999: FAIL claimed=(Fictitious 2099) fetched=( ) title=''
+    REASON: PMID 99999999 not found in PubMed
+  VERDICT: REJECTED — row will NOT be written
+
+
+## Summary
+Total candidates: 7
+Verified (will write): 6
+Rejected: 1
+Rejected row IDs: ['PSN-CORT-TEST-FAIL']

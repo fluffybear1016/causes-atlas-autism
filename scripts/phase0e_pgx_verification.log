@@ -1,0 +1,130 @@
+# Verification run: 2026-04-30T20:49:25.370766Z
+# candidates: scripts/phase0e_pgx_candidates.yaml
+# output: v2.0_scored/pgx_drug_gene_table.csv
+# Total candidates: 30
+
+## Row PGX-0001
+  primary PMID 37032427: PASS claimed=(Bousman 2023) fetched=(bousman ca 2023) title='clinical pharmacogenetics implementation consortium (cpic) guideline for cyp2d6, cyp2c19, cyp2b6, slc6a4, and htr2a geno'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0002
+  primary PMID 37032427: PASS claimed=(Bousman 2023) fetched=(bousman ca 2023) title='clinical pharmacogenetics implementation consortium (cpic) guideline for cyp2d6, cyp2c19, cyp2b6, slc6a4, and htr2a geno'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0003
+  primary PMID 37032427: PASS claimed=(Bousman 2023) fetched=(bousman ca 2023) title='clinical pharmacogenetics implementation consortium (cpic) guideline for cyp2d6, cyp2c19, cyp2b6, slc6a4, and htr2a geno'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0004
+  primary PMID 37032427: PASS claimed=(Bousman 2023) fetched=(bousman ca 2023) title='clinical pharmacogenetics implementation consortium (cpic) guideline for cyp2d6, cyp2c19, cyp2b6, slc6a4, and htr2a geno'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0005
+  primary PMID 37032427: PASS claimed=(Bousman 2023) fetched=(bousman ca 2023) title='clinical pharmacogenetics implementation consortium (cpic) guideline for cyp2d6, cyp2c19, cyp2b6, slc6a4, and htr2a geno'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0006
+  primary PMID 37032427: PASS claimed=(Bousman 2023) fetched=(bousman ca 2023) title='clinical pharmacogenetics implementation consortium (cpic) guideline for cyp2d6, cyp2c19, cyp2b6, slc6a4, and htr2a geno'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0007
+  primary PMID 37032427: PASS claimed=(Bousman 2023) fetched=(bousman ca 2023) title='clinical pharmacogenetics implementation consortium (cpic) guideline for cyp2d6, cyp2c19, cyp2b6, slc6a4, and htr2a geno'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0008
+  primary PMID 27997040: PASS claimed=(Hicks 2017) fetched=(hicks jk 2017) title='clinical pharmacogenetics implementation consortium guideline (cpic) for cyp2d6 and cyp2c19 genotypes and dosing of tric'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0009
+  primary PMID 27997040: PASS claimed=(Hicks 2017) fetched=(hicks jk 2017) title='clinical pharmacogenetics implementation consortium guideline (cpic) for cyp2d6 and cyp2c19 genotypes and dosing of tric'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0010
+  primary PMID 27997040: PASS claimed=(Hicks 2017) fetched=(hicks jk 2017) title='clinical pharmacogenetics implementation consortium guideline (cpic) for cyp2d6 and cyp2c19 genotypes and dosing of tric'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0011
+  primary PMID 33387367: PASS claimed=(Crews 2021) fetched=(crews kr 2021) title='clinical pharmacogenetics implementation consortium guideline for cyp2d6, oprm1, and comt genotypes and select opioid th'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0012
+  primary PMID 33387367: PASS claimed=(Crews 2021) fetched=(crews kr 2021) title='clinical pharmacogenetics implementation consortium guideline for cyp2d6, oprm1, and comt genotypes and select opioid th'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0013
+  primary PMID 33387367: PASS claimed=(Crews 2021) fetched=(crews kr 2021) title='clinical pharmacogenetics implementation consortium guideline for cyp2d6, oprm1, and comt genotypes and select opioid th'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0014
+  primary PMID 33387367: PASS claimed=(Crews 2021) fetched=(crews kr 2021) title='clinical pharmacogenetics implementation consortium guideline for cyp2d6, oprm1, and comt genotypes and select opioid th'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0015
+  primary PMID 33387367: PASS claimed=(Crews 2021) fetched=(crews kr 2021) title='clinical pharmacogenetics implementation consortium guideline for cyp2d6, oprm1, and comt genotypes and select opioid th'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0016
+  primary PMID 35152405: PASS claimed=(Cooper-DeHoff 2022) fetched=(cooper-dehoff rm 2022) title='the clinical pharmacogenetics implementation consortium guideline for slco1b1, abcg2, and cyp2c9 genotypes and statin-as'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0017
+  primary PMID 29392710: PASS claimed=(Phillips 2018) fetched=(phillips ej 2018) title='clinical pharmacogenetics implementation consortium guideline for hla genotype and use of carbamazepine and oxcarbazepin'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0018
+  primary PMID 29392710: PASS claimed=(Phillips 2018) fetched=(phillips ej 2018) title='clinical pharmacogenetics implementation consortium guideline for hla genotype and use of carbamazepine and oxcarbazepin'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0019
+  primary PMID 29392710: PASS claimed=(Phillips 2018) fetched=(phillips ej 2018) title='clinical pharmacogenetics implementation consortium guideline for hla genotype and use of carbamazepine and oxcarbazepin'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0020
+  primary PMID 15585776: PASS claimed=(James 2004) fetched=(james sj 2004) title='metabolic biomarkers of increased oxidative stress and impaired methylation capacity in children with autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0021
+  primary PMID 15585776: PASS claimed=(James 2004) fetched=(james sj 2004) title='metabolic biomarkers of increased oxidative stress and impaired methylation capacity in children with autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0022
+  primary PMID 15585776: PASS claimed=(James 2004) fetched=(james sj 2004) title='metabolic biomarkers of increased oxidative stress and impaired methylation capacity in children with autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0023
+  primary PMID 15585776: PASS claimed=(James 2004) fetched=(james sj 2004) title='metabolic biomarkers of increased oxidative stress and impaired methylation capacity in children with autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0024
+  primary PMID 29152729: PASS claimed=(Amstutz 2018) fetched=(amstutz u 2018) title='clinical pharmacogenetics implementation consortium (cpic) guideline for dihydropyrimidine dehydrogenase genotype and fl'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0025
+  primary PMID 30447069: PASS claimed=(Relling 2019) fetched=(relling mv 2019) title='clinical pharmacogenetics implementation consortium guideline for thiopurine dosing based on tpmt and nudt15 genotypes: '
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0026
+  primary PMID 35034351: PASS claimed=(Lee 2022) fetched=(lee cr 2022) title='clinical pharmacogenetics implementation consortium guideline for cyp2c19 genotype and clopidogrel therapy: 2022 update.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0027
+  primary PMID 28198005: PASS claimed=(Johnson 2017) fetched=(johnson ja 2017) title='clinical pharmacogenetics implementation consortium (cpic) guideline for pharmacogenetics-guided warfarin dosing: 2017 u'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0028
+  primary PMID 25801146: PASS claimed=(Birdwell 2015) fetched=(birdwell ka 2015) title='clinical pharmacogenetics implementation consortium (cpic) guidelines for cyp3a5 genotype and tacrolimus dosing.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0029
+  primary PMID 24561393: PASS claimed=(Martin 2014) fetched=(martin ma 2014) title='clinical pharmacogenetics implementation consortium guidelines for hla-b genotype and abacavir dosing: 2014 update.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0030
+  primary PMID 21412232: PASS claimed=(Swen 2011) fetched=(swen jj 2011) title='pharmacogenetics: from bench to byte--an update of guidelines.'
+  VERDICT: VERIFIED — row will be written
+
+
+## Summary
+Total candidates: 30
+Verified (will write): 30
+Rejected: 0

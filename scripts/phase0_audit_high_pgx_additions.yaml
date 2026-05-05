@@ -1,0 +1,156 @@
+# Phase 0 audit HIGH batch — PGx additions
+# H-9: stimulants/atomoxetine/risperidone/aripiprazole CYP2D6 rows missing per spec §3.8
+
+- row_id: PGX-0031
+  claimed_pmid: 15910008
+  claimed_first_author: Sauer
+  claimed_year: 2005
+  claimed_key_terms: [atomoxetine, pharmacokinetics]
+  claimed_journal_substring: Clin Pharmacokinet
+  row_data:
+    id: PGX-0031
+    drug_or_intervention_id: atomoxetine
+    drug_class: snri_norepinephrine_reuptake_inhibitor
+    gene: CYP2D6
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: dose_reduce_or_use_with_caution
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.40
+    primary_pmid: 15910008
+    autism_relevance: atomoxetine commonly prescribed for ADHD comorbid with autism; CYP2D6 PM 10-fold higher exposure
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-9 audit fix] Sauer 2005 Clin Pharmacokinet (PMID 15910008) — atomoxetine clinical pharmacokinetics review. CYP2D6 PMs have ~10x higher AUC vs extensive metabolizers; FDA labeling notes higher AE rates. Reduce dose or use with caution per CPIC-supplementary guidance (no formal CPIC atomoxetine guideline at time of writing)."
+
+- row_id: PGX-0032
+  claimed_pmid: 15910008
+  claimed_first_author: Sauer
+  claimed_year: 2005
+  claimed_key_terms: [atomoxetine, pharmacokinetics]
+  claimed_journal_substring: Clin Pharmacokinet
+  row_data:
+    id: PGX-0032
+    drug_or_intervention_id: atomoxetine
+    drug_class: snri_norepinephrine_reuptake_inhibitor
+    gene: CYP2D6
+    variant_phenotype_class: ultrarapid_metabolizer
+    variant_definition_summary: ≥3 functional alleles or duplications
+    recommendation_modifier: dose_increase_or_alternative
+    log_odds_efficacy_modifier: -0.30
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 15910008
+    autism_relevance: same
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-9 audit fix] Sauer 2005. CYP2D6 UMs may need higher doses or experience reduced efficacy."
+
+- row_id: PGX-0033
+  claimed_pmid: 36741090
+  claimed_first_author: Brown
+  claimed_year: 2022
+  claimed_key_terms: [methylphenidate, CES1]
+  claimed_journal_substring: Front Pediatr
+  row_data:
+    id: PGX-0033
+    drug_or_intervention_id: methylphenidate
+    drug_class: stimulant
+    gene: CES1
+    variant_phenotype_class: rs71647871_carrier_decreased_function
+    variant_definition_summary: CES1 G143E (rs71647871) heterozygous or homozygous
+    recommendation_modifier: dose_reduce_or_monitor_for_AE
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.45
+    primary_pmid: 36741090
+    autism_relevance: methylphenidate commonly prescribed for ADHD in autism comorbidity; CES1 hydrolyzes methylphenidate
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-9 audit fix] Brown 2022 Front Pediatr (PMID 36741090) — CES1 variant rs71647871 G143E associates with elevated methylphenidate plasma levels and increased AE in pediatric ADHD. Carboxylesterase-1 hydrolyzes methylphenidate; decreased function = higher exposure. PGx testing emerging in pediatric ADHD."
+
+- row_id: PGX-0034
+  claimed_pmid: 33054667
+  claimed_first_author: de Leon
+  claimed_year: 2020
+  claimed_key_terms: [risperidone, CYP2D6]
+  claimed_journal_substring: Pharmacogenomics
+  row_data:
+    id: PGX-0034
+    drug_or_intervention_id: risperidone
+    drug_class: antipsychotic
+    gene: CYP2D6
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: dose_reduce_with_AE_monitoring
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.45
+    primary_pmid: 33054667
+    autism_relevance: risperidone FDA-approved for autism irritability; CYP2D6 PM raises EPS, prolactin, sedation risk
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-9 audit fix] de Leon 2020 Pharmacogenomics (PMID 33054667) — 25-year reflection on CYP2D6 + risperidone. CYP2D6 PMs accumulate parent risperidone (active); EPS, hyperprolactinemia, weight gain risk increased. Dose reduction or alternative antipsychotic appropriate."
+
+- row_id: PGX-0035
+  claimed_pmid: 32519344
+  claimed_first_author: Zhang
+  claimed_year: 2020
+  claimed_key_terms: [risperidone, CYP2D6]
+  claimed_journal_substring: Pharmacotherapy
+  row_data:
+    id: PGX-0035
+    drug_or_intervention_id: risperidone
+    drug_class: antipsychotic
+    gene: CYP2D6
+    variant_phenotype_class: ultrarapid_metabolizer
+    variant_definition_summary: ≥3 functional alleles
+    recommendation_modifier: monitor_for_subtherapeutic_response
+    log_odds_efficacy_modifier: -0.30
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 32519344
+    autism_relevance: same as PGX-0034
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-9 audit fix] Zhang 2020 Pharmacotherapy (PMID 32519344) — systematic review of CYP2D6 + risperidone PK. UMs have lower steady-state risperidone; subtherapeutic risk."
+
+- row_id: PGX-0036
+  claimed_pmid: 33054667
+  claimed_first_author: de Leon
+  claimed_year: 2020
+  claimed_key_terms: [risperidone, CYP2D6]
+  claimed_journal_substring: Pharmacogenomics
+  row_data:
+    id: PGX-0036
+    drug_or_intervention_id: aripiprazole
+    drug_class: antipsychotic
+    gene: CYP2D6
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: dose_reduce_50pct_per_FDA_label
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.40
+    primary_pmid: 33054667
+    autism_relevance: aripiprazole FDA-approved for autism irritability; CYP2D6 PM dose-reduction explicitly in FDA label
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-9 audit fix] FDA aripiprazole label specifies CYP2D6 PM dose reduction. de Leon 2020 (PMID 33054667) reviews antipsychotic-CYP2D6 PGx including aripiprazole. Aripiprazole is largely CYP2D6 + CYP3A4 metabolized; PM accumulates parent drug."
+
+- row_id: PGX-0037
+  claimed_pmid: 27253829
+  claimed_first_author: Schmid
+  claimed_year: 2016
+  claimed_key_terms: [CYP2D6, methamphetamine]
+  claimed_journal_substring: Pharmacogenet Genomics
+  row_data:
+    id: PGX-0037
+    drug_or_intervention_id: amphetamine_dextroamphetamine
+    drug_class: stimulant
+    gene: CYP2D6
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: monitor_for_AE
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.20
+    primary_pmid: 27253829
+    autism_relevance: amphetamine prescribed for ADHD comorbid with autism
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-9 audit fix] Schmid 2016 Pharmacogenet Genomics (PMID 27253829) — CYP2D6 function moderates MDMA pharmacokinetics; mechanism extends to amphetamine class via CYP2D6-mediated p-hydroxylation. Effect smaller than for methylphenidate (CES1 dominant) or atomoxetine (CYP2D6 dominant). Monitor for AE."

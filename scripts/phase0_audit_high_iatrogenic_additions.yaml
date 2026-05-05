@@ -1,0 +1,90 @@
+# Phase 0 audit HIGH batch — iatrogenic additions
+# H-3: aluminum-adjuvant row (contested status, mito-vulnerable conditional)
+# H-8: SNRIs row (paralleling SSRI per spec §3.13c)
+
+- row_id: IEP-00025
+  claimed_pmid: 28418480
+  claimed_first_author: Brown
+  claimed_year: 2017
+  claimed_key_terms: [serotonergic, autism]
+  claimed_journal_substring: JAMA
+  row_data:
+    id: IEP-00025
+    iatrogenic_id: gestational_snri_any
+    iatrogenic_class: snri
+    specific_agent: venlafaxine_duloxetine_levomilnacipran
+    exposure_window: trimester_1_2_3
+    dose_or_intensity: any
+    target_phenotype_id: PHE-0003
+    log_odds_shift: 0.18
+    conditional_on_susceptibility: always
+    log_odds_shift_in_subgroup: 0.18
+    credal_low: -0.05
+    credal_high: 0.45
+    evidence_quality: 0.35
+    primary_pmids: 28418480;26660917
+    countervailing_evidence_pmids: 28418479
+    mechanism_id: MEC-0002
+    recommendation_for_avoidance_window: pregnancy_only
+    recommendation_when_clinically_indicated: use_alternative_class_when_safer_options_exist
+    status: contested
+    created_at: 2026-04-30T00:00:00+00:00
+    notes: "[H-8 audit fix] SNRI class — Brown 2017 JAMA (PMID 28418480) sibling-control 'serotonergic antidepressant' encompasses both SSRI and SNRI. Boukhris 2016 JAMA Pediatr (PMID 26660917) class-level antidepressant pregnancy-autism. Sujan 2017 JAMA (PMID 28418479) sibling-control countervailing. SNRI evidence base less independent than SSRI; treat similarly with same CONSIDER framing as IEP-00001. Mechanism (serotonin morphogen perturbation) is proposed not directly demonstrated. CONSIDER not AVOID. Untreated severe maternal depression has its own substantial fetal/neonatal risks."
+
+- row_id: IEP-00026
+  claimed_pmid: 22001122
+  claimed_first_author: Mitkus
+  claimed_year: 2011
+  claimed_key_terms: [aluminum, vaccin]
+  claimed_journal_substring: Vaccine
+  row_data:
+    id: IEP-00026
+    iatrogenic_id: vaccine_cumulative_aluminum_adjuvant_population_average
+    iatrogenic_class: vaccine_specific
+    specific_agent: aluminum_adjuvant_in_pediatric_vaccine_schedule
+    exposure_window: neonatal;0_6mo;6_24mo
+    dose_or_intensity: cumulative_per_pediatric_schedule
+    target_phenotype_id: PHE-0002
+    log_odds_shift: 0.0
+    conditional_on_susceptibility: always
+    log_odds_shift_in_subgroup: 0.0
+    credal_low: -0.20
+    credal_high: 0.20
+    evidence_quality: 0.50
+    primary_pmids: 22001122
+    countervailing_evidence_pmids: ''
+    mechanism_id: MEC-0032
+    recommendation_for_avoidance_window: no_avoidance_recommendation_at_population_average_level
+    recommendation_when_clinically_indicated: STOP_WITH_CLINICIAN_only_for_individual_concerns
+    status: contested
+    created_at: 2026-04-30T00:00:00+00:00
+    notes: "[H-3 audit fix] Population-average row for cumulative aluminum-adjuvant exposure across the US pediatric vaccine schedule. Mitkus 2011 Vaccine (PMID 22001122) — pharmacokinetic modeling that cumulative aluminum body burden through pediatric vaccination remains below FDA minimum-risk-level estimates. Population-average evidence supports null. STATUS: contested per CLAUDE.md §1.1. Atlas preserves contested-evidence record. Routes to PHE-0002 (mitochondrial) because aluminum mechanism (MEC-0032) couples to mito-toxicity. Recommendation type STOP_WITH_CLINICIAN always for vaccine-related outputs per audit M-17. Subgroup-conditional row IEP-00027 below."
+
+- row_id: IEP-00027
+  claimed_pmid: 23932735
+  claimed_first_author: Shaw
+  claimed_year: 2013
+  claimed_key_terms: [aluminum, vaccine]
+  claimed_journal_substring: J Inorg Biochem
+  row_data:
+    id: IEP-00027
+    iatrogenic_id: vaccine_cumulative_aluminum_adjuvant_mito_vulnerable_subgroup
+    iatrogenic_class: vaccine_specific
+    specific_agent: aluminum_adjuvant_in_pediatric_vaccine_schedule
+    exposure_window: neonatal;0_6mo;6_24mo
+    dose_or_intensity: cumulative_per_pediatric_schedule
+    target_phenotype_id: PHE-0002
+    log_odds_shift: 0.0
+    conditional_on_susceptibility: mito_vulnerable_classic
+    log_odds_shift_in_subgroup: 0.25
+    credal_low: -0.30
+    credal_high: 0.85
+    evidence_quality: 0.30
+    primary_pmids: 23932735
+    countervailing_evidence_pmids: 22001122
+    mechanism_id: MEC-0032
+    recommendation_for_avoidance_window: no_avoidance_at_population_level_consider_spaced_schedule_in_mito_vulnerable_subset
+    recommendation_when_clinically_indicated: STOP_WITH_CLINICIAN_only
+    status: contested
+    created_at: 2026-04-30T00:00:00+00:00
+    notes: "[H-3 audit fix] Subgroup-conditional row for cumulative aluminum adjuvant in mito-vulnerable subset. Shaw 2013 J Inorg Biochem (PMID 23932735) — vaccine-relevant aluminum doses in neonatal mice associated with neurobehavioral changes. Mitkus 2011 (PMID 22001122) population-average safety counterargument in countervailing. Pre-clinical-only evidence + animal model — wide credal interval reflects uncertainty. STATUS: contested per CLAUDE.md §1.1 + Hannah Poling framework principle 6. Atlas preserves both as evidence record. Recommendation: never AVOID without explicit family consent flag and clinical context per audit M-17. STOP_WITH_CLINICIAN framing for any vaccine-related output."

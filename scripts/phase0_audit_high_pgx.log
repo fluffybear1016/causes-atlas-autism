@@ -1,0 +1,38 @@
+# Verification run: 2026-04-30T21:15:32.104251Z
+# candidates: scripts/phase0_audit_high_pgx_additions.yaml
+# output: v2.0_scored/pgx_drug_gene_table.csv
+# Total candidates: 7
+
+## Row PGX-0031
+  primary PMID 15910008: PASS claimed=(Sauer 2005) fetched=(sauer jm 2005) title='clinical pharmacokinetics of atomoxetine.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0032
+  primary PMID 15910008: PASS claimed=(Sauer 2005) fetched=(sauer jm 2005) title='clinical pharmacokinetics of atomoxetine.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0033
+  primary PMID 36741090: PASS claimed=(Brown 2022) fetched=(brown jt 2022) title='associations between ces1 variants and dosing and adverse effects in children taking methylphenidate.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0034
+  primary PMID 33054667: PASS claimed=(de Leon 2020) fetched=(de leon j 2020) title='cyp2d6 pharmacogenetics and risperidone: reflections after 25 years of research.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0035
+  primary PMID 32519344: PASS claimed=(Zhang 2020) fetched=(zhang l 2020) title='cyp2d6 genetic polymorphisms and risperidone pharmacokinetics: a systematic review and meta-analysis.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0036
+  primary PMID 33054667: PASS claimed=(de Leon 2020) fetched=(de leon j 2020) title='cyp2d6 pharmacogenetics and risperidone: reflections after 25 years of research.'
+  VERDICT: VERIFIED — row will be written
+
+## Row PGX-0037
+  primary PMID 27253829: PASS claimed=(Schmid 2016) fetched=(schmid y 2016) title='cyp2d6 function moderates the pharmacokinetics and pharmacodynamics of 3,4-methylene-dioxymethamphetamine in a controlle'
+  VERDICT: VERIFIED — row will be written
+
+
+## Summary
+Total candidates: 7
+Verified (will write): 7
+Rejected: 0

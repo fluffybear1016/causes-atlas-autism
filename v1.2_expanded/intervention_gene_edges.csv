@@ -1,0 +1,10 @@
+id,intervention_id,gene_id,relation_type,polarity,evidence_for_count,evidence_against_count,evidence_strength_aggregate,context_scope,status,created_at,last_updated
+IGE-00001,INT-0001,GEN-0001,targets,supporting,,,0.6431,,active,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00
+IGE-00002,INT-0008,GEN-0002,targets,supporting,,,0.6184,,active,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00
+IGE-00003,INT-0002,GEN-0010,targets,supporting,,,0.5049,,active,2026-04-24T17:07:31+00:00,2026-04-27T20:58:07+00:00
+IGE-00004,INT-0061,GEN-0771,targets,supporting,,,,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:14:42+00:00
+IGE-00005,INT-0065,GEN-0004,targets,supporting,,,,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:14:42+00:00
+IGE-00006,INT-0065,GEN-0003,targets,supporting,,,,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:14:42+00:00
+IGE-00007,INT-0036,GEN-0006,targets,supporting,,,,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:14:42+00:00
+IGE-00008,INT-0036,GEN-0007,targets,supporting,,,,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:14:42+00:00
+IGE-00009,INT-0036,GEN-0008,targets,supporting,,,,,active,2026-04-27T21:14:42+00:00,2026-04-27T21:14:42+00:00

@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Costello J; Kaur M; Reformat MZ; Bolduc FV",
+  "doi": "doi: 10.2196/45268",
+  "first_author": "Costello J",
+  "journal": "J Med Internet Res",
+  "matched_queries": [
+    "\"knowledge graph\"[tiab] AND (autism[tiab] OR \"neurodevelopmental\"[tiab])"
+  ],
+  "pmid": "37067865",
+  "pubdate": "2023 Apr 17",
+  "title": "Leveraging Knowledge Graphs and Natural Language Processing for Automated Web Resource Labeling and Knowledge Mobilization in Neurodevelopmental Disorders: Development and Usability Study.",
+  "verified_at": "2026-05-05T13:07:59+00:00"
+}

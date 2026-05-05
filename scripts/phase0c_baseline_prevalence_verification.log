@@ -1,0 +1,118 @@
+# Verification run: 2026-04-30T20:26:13.409507Z
+# candidates: scripts/phase0c_baseline_prevalence_candidates.yaml
+# output: v2.0_scored/baseline_phenotype_prevalence.csv
+# Total candidates: 27
+
+## Row BPP-0001
+  primary PMID 36952288: PASS claimed=(Maenner 2023) fetched=(maenner mj 2023) title='prevalence and characteristics of autism spectrum disorder among children aged 8 years - autism and developmental disabi'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0002
+  primary PMID 35238171: PASS claimed=(Zeidan 2022) fetched=(zeidan j 2022) title='global prevalence of autism: a systematic review update.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0003
+  primary PMID 24794370: PASS claimed=(Sandin 2014) fetched=(sandin s 2014) title='the familial risk of autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0004
+  primary PMID 28973605: PASS claimed=(Sandin 2017) fetched=(sandin s 2017) title='the heritability of autism spectrum disorder.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0005
+  primary PMID 16953005: PASS claimed=(Reichenberg 2006) fetched=(reichenberg a 2006) title='advancing paternal age and autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0006
+  primary PMID 22230883: PASS claimed=(Frye 2013) fetched=(frye re 2013) title='cerebral folate receptor autoantibodies in autism spectrum disorder.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0007
+  primary PMID 23314536: PASS claimed=(Ramaekers 2013) fetched=(ramaekers v 2013) title='clinical recognition and aspects of the cerebral folate deficiency syndromes.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0008
+  primary PMID 27752075: PASS claimed=(Frye 2018) fetched=(frye re 2018) title='folinic acid improves verbal communication in children with autism and language impairment: a randomized double-blind pl'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0009
+  primary PMID 21263444: PASS claimed=(Rossignol 2012) fetched=(rossignol da 2012) title='mitochondrial dysfunction in autism spectrum disorders: a systematic review and meta-analysis.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0010
+  primary PMID 38703861: PASS claimed=(Frye 2024) fetched=(frye re 2024) title='biomarkers of mitochondrial dysfunction in autism spectrum disorder: a systematic review and meta-analysis.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0011
+  primary PMID 29028817: PASS claimed=(Rose 2017) fetched=(rose s 2017) title='mitochondrial dysfunction in the gastrointestinal mucosa of children with autism: a blinded case-control study.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0012
+  primary PMID 18956241: PASS claimed=(Stefanatos 2008) fetched=(stefanatos ga 2008) title='regression in autistic spectrum disorders.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0013
+  primary PMID 16061766: PASS claimed=(Werner 2005) fetched=(werner e 2005) title='validation of the phenomenon of autistic regression using home videotapes.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0014
+  primary PMID 20048083: PASS claimed=(Buie 2010) fetched=(buie t 2010) title='evaluation, diagnosis, and treatment of gastrointestinal disorders in individuals with asds: a consensus report.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0015
+  primary PMID 21410934: PASS claimed=(Adams 2011) fetched=(adams jb 2011) title='gastrointestinal flora and gastrointestinal status in children with autism--comparisons to typical children and correlat'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0016
+  primary PMID 30201051: PASS claimed=(de Vries 2018) fetched=(de vries pj 2018) title='tsc-associated neuropsychiatric disorders (tand): findings from the tosca natural history study.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0017
+  primary PMID 32873244: PASS claimed=(de Vries 2020) fetched=(de vries pj 2020) title='natural clusters of tuberous sclerosis complex (tsc)-associated neuropsychiatric disorders (tand): new findings from the'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0018
+  primary PMID 19127654: PASS claimed=(Harris 2008) fetched=(harris sw 2008) title='autism profiles of males with fragile x syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0019
+  primary PMID 19127654: PASS claimed=(Harris 2008) fetched=(harris sw 2008) title='autism profiles of males with fragile x syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0020
+  primary PMID 23233021: PASS claimed=(Lemonnier 2012) fetched=(lemonnier e 2012) title='a randomised controlled trial of bumetanide in the treatment of autism in children.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0021
+  primary PMID 25168736: PASS claimed=(Ben-Ari 2014) fetched=(ben-ari y 2014) title='the gaba excitatory/inhibitory developmental sequence: a personal journey.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0022
+  primary PMID 21263444: PASS claimed=(Rossignol 2012) fetched=(rossignol da 2012) title='mitochondrial dysfunction in autism spectrum disorders: a systematic review and meta-analysis.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0023
+  primary PMID 21263444: PASS claimed=(Rossignol 2012) fetched=(rossignol da 2012) title='mitochondrial dysfunction in autism spectrum disorders: a systematic review and meta-analysis.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0024
+  primary PMID 21263444: PASS claimed=(Rossignol 2012) fetched=(rossignol da 2012) title='mitochondrial dysfunction in autism spectrum disorders: a systematic review and meta-analysis.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0025
+  primary PMID 21263444: PASS claimed=(Rossignol 2012) fetched=(rossignol da 2012) title='mitochondrial dysfunction in autism spectrum disorders: a systematic review and meta-analysis.'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0026
+  primary PMID 26325558: PASS claimed=(Tammimies 2015) fetched=(tammimies k 2015) title='molecular diagnostic yield of chromosomal microarray analysis and whole-exome sequencing in children with autism spectru'
+  VERDICT: VERIFIED — row will be written
+
+## Row BPP-0027
+  primary PMID 24481935: PASS claimed=(Sarasua 2014) fetched=(sarasua sm 2014) title='clinical and genomic evaluation of 201 patients with phelan-mcdermid syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+
+## Summary
+Total candidates: 27
+Verified (will write): 27
+Rejected: 0

@@ -1,0 +1,172 @@
+id,biomarker_id,hypothesis_id,relationship_type,evidence_strength,created_at,notes
+BHE-00001,BIO-0001,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,S-adenosylmethionine (SAM) tests HYP-0001
+BHE-00002,BIO-0002,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,S-adenosylhomocysteine (SAH) tests HYP-0001
+BHE-00003,BIO-0003,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,SAM/SAH ratio tests HYP-0001
+BHE-00004,BIO-0003,HYP-0003,tests,0.50,2026-04-30T02:06:58+00:00,SAM/SAH ratio tests HYP-0003
+BHE-00005,BIO-0004,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,Plasma methionine tests HYP-0001
+BHE-00006,BIO-0005,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,Homocysteine tests HYP-0001
+BHE-00007,BIO-0005,HYP-0003,tests,0.50,2026-04-30T02:06:58+00:00,Homocysteine tests HYP-0003
+BHE-00008,BIO-0006,HYP-0063,tests,0.50,2026-04-30T02:06:58+00:00,Cysteine tests HYP-0063
+BHE-00009,BIO-0008,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,Methylmalonic acid (MMA) tests HYP-0001
+BHE-00010,BIO-0011,HYP-0003,tests,0.50,2026-04-30T02:06:58+00:00,Plasma folate tests HYP-0003
+BHE-00011,BIO-0012,HYP-0003,tests,0.50,2026-04-30T02:06:58+00:00,RBC folate tests HYP-0003
+BHE-00012,BIO-0014,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,Whole-blood histamine tests HYP-0001
+BHE-00013,BIO-0015,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — blocking tests HYP-0001
+BHE-00014,BIO-0016,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,FRAA (folate receptor alpha autoantibody) — binding tests HYP-0001
+BHE-00015,BIO-0017,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,CSF 5-MTHF tests HYP-0001
+BHE-00016,BIO-0018,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,Lactate tests HYP-0006
+BHE-00017,BIO-0018,HYP-0070,tests,0.50,2026-04-30T02:06:58+00:00,Lactate tests HYP-0070
+BHE-00018,BIO-0019,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,Pyruvate tests HYP-0006
+BHE-00019,BIO-0019,HYP-0070,tests,0.50,2026-04-30T02:06:58+00:00,Pyruvate tests HYP-0070
+BHE-00020,BIO-0020,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,Lactate-to-pyruvate ratio (L:P) tests HYP-0006
+BHE-00021,BIO-0020,HYP-0070,tests,0.50,2026-04-30T02:06:58+00:00,Lactate-to-pyruvate ratio (L:P) tests HYP-0070
+BHE-00022,BIO-0021,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,Acylcarnitine profile tests HYP-0006
+BHE-00023,BIO-0022,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,Free + total carnitine tests HYP-0006
+BHE-00024,BIO-0023,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,Plasma ammonia tests HYP-0006
+BHE-00025,BIO-0024,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,Creatine kinase (CK) tests HYP-0006
+BHE-00026,BIO-0025,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,CoQ10 (ubiquinone) tests HYP-0006
+BHE-00027,BIO-0026,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,mtDNA copy number tests HYP-0006
+BHE-00028,BIO-0027,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,Krebs cycle metabolites (citrate/succinate/fumarate/malate) tests HYP-0006
+BHE-00029,BIO-0028,HYP-0063,tests,0.50,2026-04-30T02:06:58+00:00,Reduced glutathione (GSH) tests HYP-0063
+BHE-00030,BIO-0029,HYP-0063,tests,0.50,2026-04-30T02:06:58+00:00,Oxidized glutathione (GSSG) tests HYP-0063
+BHE-00031,BIO-0030,HYP-0063,tests,0.50,2026-04-30T02:06:58+00:00,GSH/GSSG ratio tests HYP-0063
+BHE-00032,BIO-0036,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,Arabinose tests HYP-0007
+BHE-00033,BIO-0036,HYP-0061,tests,0.50,2026-04-30T02:06:58+00:00,Arabinose tests HYP-0061
+BHE-00034,BIO-0037,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) tests HYP-0007
+BHE-00035,BIO-0037,HYP-0057,tests,0.50,2026-04-30T02:06:58+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) tests HYP-0057
+BHE-00036,BIO-0037,HYP-0060,tests,0.50,2026-04-30T02:06:58+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) tests HYP-0060
+BHE-00037,BIO-0038,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,4-cresol (p-cresol) tests HYP-0007
+BHE-00038,BIO-0038,HYP-0057,tests,0.50,2026-04-30T02:06:58+00:00,4-cresol (p-cresol) tests HYP-0057
+BHE-00039,BIO-0038,HYP-0060,tests,0.50,2026-04-30T02:06:58+00:00,4-cresol (p-cresol) tests HYP-0060
+BHE-00040,BIO-0039,HYP-0061,tests,0.50,2026-04-30T02:06:58+00:00,Tartaric acid tests HYP-0061
+BHE-00041,BIO-0040,HYP-0061,tests,0.50,2026-04-30T02:06:58+00:00,Citramalic acid tests HYP-0061
+BHE-00042,BIO-0048,HYP-0062,tests,0.50,2026-04-30T02:06:58+00:00,5-hydroxyindoleacetic acid (5-HIAA) tests HYP-0062
+BHE-00043,BIO-0052,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,High-sensitivity CRP (hs-CRP) tests HYP-0008
+BHE-00044,BIO-0054,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,IL-6 (interleukin-6) tests HYP-0008
+BHE-00045,BIO-0055,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,TNF-α (tumor necrosis factor alpha) tests HYP-0008
+BHE-00046,BIO-0056,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,IL-1β (interleukin-1 beta) tests HYP-0008
+BHE-00047,BIO-0057,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,IL-17 tests HYP-0008
+BHE-00048,BIO-0062,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,Tryptase (baseline) tests HYP-0008
+BHE-00049,BIO-0067,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,Anti-tubulin antibody (Cunningham Panel) tests HYP-0026
+BHE-00050,BIO-0068,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,Anti-lysoganglioside-GM1 antibody tests HYP-0026
+BHE-00051,BIO-0069,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,Anti-dopamine D1 receptor antibody tests HYP-0026
+BHE-00052,BIO-0070,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,Anti-dopamine D2 receptor antibody tests HYP-0026
+BHE-00053,BIO-0071,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,CaMKII activation tests HYP-0026
+BHE-00054,BIO-0072,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,ASO (antistreptolysin O) tests HYP-0026
+BHE-00055,BIO-0073,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,Anti-DNase B tests HYP-0026
+BHE-00056,BIO-0074,HYP-0015,tests,0.50,2026-04-30T02:06:58+00:00,Hair mercury tests HYP-0015
+BHE-00057,BIO-0074,HYP-0069,tests,0.50,2026-04-30T02:06:58+00:00,Hair mercury tests HYP-0069
+BHE-00058,BIO-0075,HYP-0015,tests,0.50,2026-04-30T02:06:58+00:00,Hair lead tests HYP-0015
+BHE-00059,BIO-0076,HYP-0015,tests,0.50,2026-04-30T02:06:58+00:00,Urine mercury (provoked or unprovoked) tests HYP-0015
+BHE-00060,BIO-0076,HYP-0069,tests,0.50,2026-04-30T02:06:58+00:00,Urine mercury (provoked or unprovoked) tests HYP-0069
+BHE-00061,BIO-0077,HYP-0015,tests,0.50,2026-04-30T02:06:58+00:00,Urine lead tests HYP-0015
+BHE-00062,BIO-0078,HYP-0015,tests,0.50,2026-04-30T02:06:58+00:00,Urine cadmium tests HYP-0015
+BHE-00063,BIO-0079,HYP-0015,tests,0.50,2026-04-30T02:06:58+00:00,Urine arsenic tests HYP-0015
+BHE-00064,BIO-0080,HYP-0067,tests,0.50,2026-04-30T02:06:58+00:00,Urine aluminum tests HYP-0067
+BHE-00065,BIO-0081,HYP-0005,tests,0.50,2026-04-30T02:06:58+00:00,Urine glyphosate + AMPA tests HYP-0005
+BHE-00066,BIO-0082,HYP-0011,tests,0.50,2026-04-30T02:06:58+00:00,"Phthalate metabolites (composite — MEP, MBP, MEHP, others) tests HYP-0011"
+BHE-00067,BIO-0082,HYP-0043,tests,0.50,2026-04-30T02:06:58+00:00,"Phthalate metabolites (composite — MEP, MBP, MEHP, others) tests HYP-0043"
+BHE-00068,BIO-0083,HYP-0012,tests,0.50,2026-04-30T02:06:58+00:00,Bisphenol A (BPA) tests HYP-0012
+BHE-00069,BIO-0083,HYP-0043,tests,0.50,2026-04-30T02:06:58+00:00,Bisphenol A (BPA) tests HYP-0043
+BHE-00070,BIO-0084,HYP-0004,tests,0.50,2026-04-30T02:06:58+00:00,PFAS / PFOA composite tests HYP-0004
+BHE-00071,BIO-0085,HYP-0014,tests,0.50,2026-04-30T02:06:58+00:00,Organophosphate metabolites (DAPs) tests HYP-0014
+BHE-00072,BIO-0086,HYP-0016,tests,0.50,2026-04-30T02:06:58+00:00,"Mycotoxin panel (aflatoxin, ochratoxin, gliotoxin, trichothecenes) tests HYP-0016"
+BHE-00073,BIO-0088,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,Maternal anti-fetal-brain antibodies (MAR Antibodies) tests HYP-0008
+BHE-00074,BIO-0088,HYP-0051,tests,0.50,2026-04-30T02:06:58+00:00,Maternal anti-fetal-brain antibodies (MAR Antibodies) tests HYP-0051
+BHE-00075,BIO-0089,HYP-0003,tests,0.50,2026-04-30T02:06:58+00:00,Maternal MTHFR genotype tests HYP-0003
+BHE-00076,BIO-0090,HYP-0020,tests,0.50,2026-04-30T02:06:58+00:00,Maternal serum vitamin D (during pregnancy) tests HYP-0020
+BHE-00077,BIO-0090,HYP-0045,tests,0.50,2026-04-30T02:06:58+00:00,Maternal serum vitamin D (during pregnancy) tests HYP-0045
+BHE-00078,BIO-0091,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,Maternal CRP during pregnancy tests HYP-0008
+BHE-00079,BIO-0092,HYP-0035,tests,0.50,2026-04-30T02:06:58+00:00,Maternal thyroid panel during pregnancy tests HYP-0035
+BHE-00080,BIO-0092,HYP-0048,tests,0.50,2026-04-30T02:06:58+00:00,Maternal thyroid panel during pregnancy tests HYP-0048
+BHE-00081,BIO-0093,HYP-0002,tests,0.50,2026-04-30T02:06:58+00:00,Cord blood acetaminophen / acetaminophen-protein adducts tests HYP-0002
+BHE-00082,BIO-0094,HYP-0072,tests,0.50,2026-04-30T02:06:58+00:00,Cord-blood methylation signature tests HYP-0072
+BHE-00083,BIO-0095,HYP-0009,tests,0.50,2026-04-30T02:06:58+00:00,Paternal age tests HYP-0009
+BHE-00084,BIO-0095,HYP-0072,tests,0.50,2026-04-30T02:06:58+00:00,Paternal age tests HYP-0072
+BHE-00085,BIO-0096,HYP-0046,tests,0.50,2026-04-30T02:06:58+00:00,Plasma zinc tests HYP-0046
+BHE-00086,BIO-0097,HYP-0046,tests,0.50,2026-04-30T02:06:58+00:00,RBC zinc tests HYP-0046
+BHE-00087,BIO-0098,HYP-0046,tests,0.50,2026-04-30T02:06:58+00:00,Plasma copper + ceruloplasmin tests HYP-0046
+BHE-00088,BIO-0099,HYP-0046,tests,0.50,2026-04-30T02:06:58+00:00,Cu:Zn ratio tests HYP-0046
+BHE-00089,BIO-0100,HYP-0047,tests,0.50,2026-04-30T02:06:58+00:00,RBC magnesium tests HYP-0047
+BHE-00090,BIO-0101,HYP-0048,tests,0.50,2026-04-30T02:06:58+00:00,Urinary iodine tests HYP-0048
+BHE-00091,BIO-0102,HYP-0049,tests,0.50,2026-04-30T02:06:58+00:00,Selenium tests HYP-0049
+BHE-00092,BIO-0103,HYP-0052,tests,0.50,2026-04-30T02:06:58+00:00,Ferritin tests HYP-0052
+BHE-00093,BIO-0104,HYP-0046,tests,0.50,2026-04-30T02:06:58+00:00,Urinary kryptopyrroles tests HYP-0046
+BHE-00094,BIO-0105,HYP-0021,tests,0.50,2026-04-30T02:06:58+00:00,RBC omega-3 index (EPA + DHA) tests HYP-0021
+BHE-00095,BIO-0105,HYP-0064,tests,0.50,2026-04-30T02:06:58+00:00,RBC omega-3 index (EPA + DHA) tests HYP-0064
+BHE-00096,BIO-0106,HYP-0021,tests,0.50,2026-04-30T02:06:58+00:00,Omega-6/omega-3 ratio tests HYP-0021
+BHE-00097,BIO-0109,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,Zonulin tests HYP-0007
+BHE-00098,BIO-0109,HYP-0059,tests,0.50,2026-04-30T02:06:58+00:00,Zonulin tests HYP-0059
+BHE-00099,BIO-0110,HYP-0059,tests,0.50,2026-04-30T02:06:58+00:00,Lipopolysaccharide (LPS) / endotoxin tests HYP-0059
+BHE-00100,BIO-0111,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,Calprotectin (fecal) tests HYP-0007
+BHE-00101,BIO-0113,HYP-0059,tests,0.50,2026-04-30T02:06:58+00:00,Lactulose:mannitol ratio tests HYP-0059
+BHE-00102,BIO-0114,HYP-0035,tests,0.50,2026-04-30T02:06:58+00:00,"Full thyroid panel (TSH, FT3, FT4, rT3, TPO, TgAb) tests HYP-0035"
+BHE-00103,BIO-0114,HYP-0048,tests,0.50,2026-04-30T02:06:58+00:00,"Full thyroid panel (TSH, FT3, FT4, rT3, TPO, TgAb) tests HYP-0048"
+BHE-00104,BIO-0115,HYP-0036,tests,0.50,2026-04-30T02:06:58+00:00,DUTCH cortisol (4-point + free + total) tests HYP-0036
+BHE-00105,BIO-0115,HYP-0037,tests,0.50,2026-04-30T02:06:58+00:00,DUTCH cortisol (4-point + free + total) tests HYP-0037
+BHE-00106,BIO-0118,HYP-0034,tests,0.50,2026-04-30T02:06:58+00:00,Vasopressin (AVP) tests HYP-0034
+BHE-00107,BIO-0119,HYP-0034,tests,0.50,2026-04-30T02:06:58+00:00,Oxytocin tests HYP-0034
+BHE-00108,BIO-0120,HYP-0039,tests,0.50,2026-04-30T02:06:58+00:00,Melatonin (saliva or urinary 6-sulfatoxymelatonin) tests HYP-0039
+BHE-00109,BIO-0121,HYP-0018,tests,0.50,2026-04-30T02:06:58+00:00,Insulin / HOMA-IR tests HYP-0018
+BHE-00110,BIO-0121,HYP-0019,tests,0.50,2026-04-30T02:06:58+00:00,Insulin / HOMA-IR tests HYP-0019
+BHE-00111,BIO-0122,HYP-0032,tests,0.50,2026-04-30T02:06:58+00:00,IGF-1 + IGFBP-3 tests HYP-0032
+BHE-00112,BIO-0123,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,Mycoplasma pneumoniae IgM/IgG tests HYP-0026
+BHE-00113,BIO-0124,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,Borrelia burgdorferi (Lyme) panel tests HYP-0026
+BHE-00114,BIO-0126,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,HHV-6 IgG/IgM + PCR tests HYP-0026
+BHE-00115,BIO-0126,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,HHV-6 IgG/IgM + PCR tests HYP-0008
+BHE-00116,BIO-0128,HYP-0025,tests,0.50,2026-04-30T02:06:58+00:00,CMV IgG/IgM tests HYP-0025
+BHE-00117,BIO-0129,HYP-0025,tests,0.50,2026-04-30T02:06:58+00:00,Toxoplasma IgG/IgM tests HYP-0025
+BHE-00118,BIO-0130,HYP-0025,tests,0.50,2026-04-30T02:06:58+00:00,Rubella IgG (immune status / maternal exposure history) tests HYP-0025
+BHE-00119,BIO-0131,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,C. difficile toxin (stool) tests HYP-0007
+BHE-00120,BIO-0131,HYP-0057,tests,0.50,2026-04-30T02:06:58+00:00,C. difficile toxin (stool) tests HYP-0057
+BHE-00121,BIO-0132,HYP-0061,tests,0.50,2026-04-30T02:06:58+00:00,Candida IgG + IgA tests HYP-0061
+BHE-00122,BIO-0133,HYP-0051,tests,0.50,2026-04-30T02:06:58+00:00,ANA + extractable nuclear antigens tests HYP-0051
+BHE-00123,BIO-0135,HYP-0048,tests,0.50,2026-04-30T02:06:58+00:00,Thyroid antibodies (TPO + Tg) tests HYP-0048
+BHE-00124,BIO-0135,HYP-0051,tests,0.50,2026-04-30T02:06:58+00:00,Thyroid antibodies (TPO + Tg) tests HYP-0051
+BHE-00125,BIO-0136,HYP-0051,tests,0.50,2026-04-30T02:06:58+00:00,Anti-cardiolipin / anti-phospholipid tests HYP-0051
+BHE-00126,BIO-0137,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,MRI cortical thickness (region-specific) tests HYP-0073
+BHE-00127,BIO-0138,HYP-0071,tests,0.50,2026-04-30T02:06:58+00:00,Total brain volume / amygdala / cerebellar vermis volumetry tests HYP-0071
+BHE-00128,BIO-0138,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,Total brain volume / amygdala / cerebellar vermis volumetry tests HYP-0073
+BHE-00129,BIO-0139,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,DTI fractional anisotropy (white matter tracts) tests HYP-0073
+BHE-00130,BIO-0140,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,Resting-state fMRI default mode network connectivity tests HYP-0073
+BHE-00131,BIO-0141,HYP-0006,tests,0.50,2026-04-30T02:06:58+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA tests HYP-0006
+BHE-00132,BIO-0141,HYP-0071,tests,0.50,2026-04-30T02:06:58+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA tests HYP-0071
+BHE-00133,BIO-0142,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,PET-TSPO (translocator protein — microglial activation) tests HYP-0008
+BHE-00134,BIO-0143,HYP-0071,tests,0.50,2026-04-30T02:06:58+00:00,EEG resting-state spectral power (gamma/beta/alpha) tests HYP-0071
+BHE-00135,BIO-0144,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,ERP P300 amplitude / latency tests HYP-0073
+BHE-00136,BIO-0145,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,ERP MMN (mismatch negativity) tests HYP-0073
+BHE-00137,BIO-0146,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,ERP N170 (face processing) tests HYP-0073
+BHE-00138,BIO-0147,HYP-0071,tests,0.50,2026-04-30T02:06:58+00:00,qEEG coherence pattern tests HYP-0071
+BHE-00139,BIO-0148,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,Gaze fixation pattern (eye-tracking) tests HYP-0073
+BHE-00140,BIO-0151,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,CSF cytokines tests HYP-0008
+BHE-00141,BIO-0152,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,CSF tau / NfL tests HYP-0073
+BHE-00142,BIO-0153,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,Serum BDNF (brain-derived neurotrophic factor) tests HYP-0073
+BHE-00143,BIO-0154,HYP-0008,tests,0.50,2026-04-30T02:06:58+00:00,Serum S100β (astrocyte marker / BBB disruption) tests HYP-0008
+BHE-00144,BIO-0156,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,Serum neurofilament light chain (NfL) tests HYP-0073
+BHE-00145,BIO-0157,HYP-0073,tests,0.50,2026-04-30T02:06:58+00:00,Serum tau tests HYP-0073
+BHE-00146,BIO-0158,HYP-0065,tests,0.50,2026-04-30T02:06:58+00:00,HSP70 / HSP90 plasma levels tests HYP-0065
+BHE-00147,BIO-0159,HYP-0055,tests,0.50,2026-04-30T02:06:58+00:00,Anandamide (AEA) tests HYP-0055
+BHE-00148,BIO-0160,HYP-0055,tests,0.50,2026-04-30T02:06:58+00:00,2-arachidonoylglycerol (2-AG) tests HYP-0055
+BHE-00149,BIO-0161,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,MTHFR C677T genotype tests HYP-0001
+BHE-00150,BIO-0161,HYP-0003,tests,0.50,2026-04-30T02:06:58+00:00,MTHFR C677T genotype tests HYP-0003
+BHE-00151,BIO-0162,HYP-0001,tests,0.50,2026-04-30T02:06:58+00:00,MTHFR A1298C genotype tests HYP-0001
+BHE-00152,BIO-0165,HYP-0045,tests,0.50,2026-04-30T02:06:58+00:00,Vitamin D 25-OH (child / direct) tests HYP-0045
+BHE-00153,BIO-0165,HYP-0062,tests,0.50,2026-04-30T02:06:58+00:00,Vitamin D 25-OH (child / direct) tests HYP-0062
+BHE-00154,BIO-0166,HYP-0015,tests,0.50,2026-04-30T02:06:58+00:00,Urinary porphyrins (heavy metal body burden surrogate) tests HYP-0015
+BHE-00155,BIO-0166,HYP-0069,tests,0.50,2026-04-30T02:06:58+00:00,Urinary porphyrins (heavy metal body burden surrogate) tests HYP-0069
+BHE-00156,BIO-0167,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,FUT2 secretor status genotype tests HYP-0007
+BHE-00157,BIO-0167,HYP-0056,tests,0.50,2026-04-30T02:06:58+00:00,FUT2 secretor status genotype tests HYP-0056
+BHE-00158,BIO-0168,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,Urinary oxalate tests HYP-0007
+BHE-00159,BIO-0168,HYP-0061,tests,0.50,2026-04-30T02:06:58+00:00,Urinary oxalate tests HYP-0061
+BHE-00160,BIO-0172,HYP-0026,tests,0.50,2026-04-30T02:06:58+00:00,Anti-NMDA receptor antibodies tests HYP-0026
+BHE-00161,BIO-0172,HYP-0051,tests,0.50,2026-04-30T02:06:58+00:00,Anti-NMDA receptor antibodies tests HYP-0051
+BHE-00162,BIO-0173,HYP-0051,tests,0.50,2026-04-30T02:06:58+00:00,Anti-MOG (myelin oligodendrocyte glycoprotein) tests HYP-0051
+BHE-00163,BIO-0174,HYP-0071,tests,0.50,2026-04-30T02:06:58+00:00,Anti-GAD65 antibodies tests HYP-0071
+BHE-00164,BIO-0175,HYP-0036,tests,0.50,2026-04-30T02:06:58+00:00,Salivary cortisol awakening response (CAR) tests HYP-0036
+BHE-00165,BIO-0175,HYP-0037,tests,0.50,2026-04-30T02:06:58+00:00,Salivary cortisol awakening response (CAR) tests HYP-0037
+BHE-00166,BIO-0176,HYP-0018,tests,0.50,2026-04-30T02:06:58+00:00,"Lipid panel (TC, LDL, HDL, triglycerides) tests HYP-0018"
+BHE-00167,BIO-0176,HYP-0019,tests,0.50,2026-04-30T02:06:58+00:00,"Lipid panel (TC, LDL, HDL, triglycerides) tests HYP-0019"
+BHE-00168,BIO-0178,HYP-0007,tests,0.50,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) tests HYP-0007
+BHE-00169,BIO-0178,HYP-0056,tests,0.50,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) tests HYP-0056
+BHE-00170,BIO-0178,HYP-0057,tests,0.50,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) tests HYP-0057
+BHE-00171,BIO-0178,HYP-0061,tests,0.50,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) tests HYP-0061

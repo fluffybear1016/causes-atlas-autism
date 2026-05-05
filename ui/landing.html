@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Causes Atlas — Autism Profile</title>
+<meta name="description" content="An evidence-balanced, continuously-ingested knowledge graph of autism causation. Each child has a profile across the eleven dimensions, not a single phenotype." />
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --ink: #1F1A14;
+    --ink-soft: #5C5446;
+    --ink-mute: #7A6F5C;
+    --line: #E7E2D9;
+    --line-soft: #F1ECE3;
+    --paper: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, -apple-system, "SF Pro Text", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  .serif {
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
+  }
+  section {
+    padding: 8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+  }
+  section.hero { min-height: 100vh; }
+  section.tight { min-height: auto; padding: 6rem 1.5rem; border-top: 1px solid var(--line); }
+  .container { max-width: 720px; text-align: center; }
+  .container.wide { max-width: 1100px; }
+  .container.left { text-align: left; max-width: 720px; }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--ink-mute);
+    margin-bottom: 2rem;
+  }
+
+  h1.hero-title {
+    font-size: clamp(2.6rem, 6.5vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: var(--ink);
+    max-width: 16ch;
+    margin: 0 auto;
+  }
+  h1.hero-title .italic { font-style: italic; color: var(--ink-mute); }
+
+  .hero-tagline {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--ink-mute);
+    margin-top: 3rem;
+  }
+  .scroll-cue {
+    color: var(--ink-mute);
+    margin-top: 6rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  h2.section-h {
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+    line-height: 1.25;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  h2.section-h .italic { font-style: italic; color: var(--ink-mute); }
+  p.lead {
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead .em { color: var(--ink); font-style: italic; }
+
+  .map-svg { width: 100%; height: auto; max-width: 1000px; display: block; margin: 0 auto; }
+  .map-caption {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--ink-mute);
+    font-size: 0.95rem;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2rem;
+    margin-top: 3rem;
+  }
+  .stats .stat { text-align: center; }
+  .stats .stat .num {
+    font-size: clamp(2.5rem, 5vw, 3.6rem);
+    font-family: ui-serif, Georgia, serif;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .stats .stat .label {
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+  }
+  @media (max-width: 600px) {
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1rem; }
+  }
+
+  .frame-quote {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .frame-quote .em { font-style: italic; color: var(--ink-mute); }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+  a.btn {
+    display: inline-block;
+    padding: 0.95rem 2rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 200ms ease;
+    border: 1px solid var(--ink);
+  }
+  a.btn.primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  a.btn.primary:hover { background: #2d251c; }
+  a.btn.secondary {
+    background: transparent;
+    color: var(--ink);
+  }
+  a.btn.secondary:hover { background: var(--line-soft); }
+
+  .doors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    text-align: left;
+  }
+  @media (max-width: 720px) { .doors { grid-template-columns: 1fr; } }
+  .door {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 2.25rem;
+    transition: border-color 180ms ease, transform 180ms ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .door:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .door h3 {
+    font-family: ui-serif, Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .door p {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  footer {
+    padding: 3rem 1.5rem;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--ink-mute);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  footer .small { margin-top: 0.5rem; letter-spacing: 0.05em; text-transform: none; font-size: 0.78rem; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1 class="serif hero-title">
+      Autism isn’t one thing.<br>
+      <span class="italic">We mapped every thing it is.</span>
+    </h1>
+    <div class="hero-tagline">The Causes Atlas — a research project</div>
+    <div class="scroll-cue">↓ scroll</div>
+  </div>
+</section>
+
+<!-- THE GAP -->
+<section>
+  <div class="container left">
+    <div class="eyebrow">today</div>
+    <h2 class="serif section-h">Autism is a label.</h2>
+    <p class="serif lead">
+      One word. 1 in 36 children. No common biology, no common cause —
+      yet treatment is mostly behavioral, applied to everyone the same way.
+    </p>
+  </div>
+</section>
+
+<!-- THE INSIGHT -->
+<section>
+  <div class="container left">
+    <div class="eyebrow">what we found</div>
+    <h2 class="serif section-h">But autism has a shape.</h2>
+    <p class="serif lead">
+      Read across fifty years of primary literature and
+      <span class="em">eleven distinct biological patterns</span>
+      emerge — each with its own causes, its own biomarkers, and its own
+      response to treatment.
+    </p>
+  </div>
+</section>
+
+<!-- THE MAP -->
+<section>
+  <div class="container wide">
+    <div style="text-align:center; margin-bottom: 3rem;">
+      <div class="eyebrow">the eleven</div>
+      <h2 class="serif section-h">Each one is a different child.</h2>
+    </div>
+    <svg class="map-svg" viewBox="0 0 1070 880" xmlns="http://www.w3.org/2000/svg">
+      <!-- Subtle radial guides -->
+      <g stroke="#F1ECE3" stroke-width="1">
+        <line x1="535" y1="420" x2="600" y2="90" />
+        <line x1="535" y1="420" x2="870" y2="175" />
+        <line x1="535" y1="420" x2="980" y2="380" />
+        <line x1="535" y1="420" x2="940" y2="600" />
+        <line x1="535" y1="420" x2="770" y2="740" />
+        <line x1="535" y1="420" x2="530" y2="790" />
+        <line x1="535" y1="420" x2="290" y2="740" />
+        <line x1="535" y1="420" x2="130" y2="600" />
+        <line x1="535" y1="420" x2="90" y2="380" />
+        <line x1="535" y1="420" x2="200" y2="175" />
+        <line x1="535" y1="420" x2="470" y2="90" />
+      </g>
+
+      <!-- Faint inter-node connections -->
+      <g stroke="#E7E2D9" stroke-width="1">
+        <line x1="600" y1="90"  x2="870" y2="175" />
+        <line x1="870" y1="175" x2="980" y2="380" />
+        <line x1="980" y1="380" x2="940" y2="600" />
+        <line x1="940" y1="600" x2="770" y2="740" />
+        <line x1="770" y1="740" x2="530" y2="790" />
+        <line x1="530" y1="790" x2="290" y2="740" />
+        <line x1="290" y1="740" x2="130" y2="600" />
+        <line x1="130" y1="600" x2="90"  y2="380" />
+        <line x1="90"  y1="380" x2="200" y2="175" />
+        <line x1="200" y1="175" x2="470" y2="90" />
+        <line x1="470" y1="90"  x2="600" y2="90" />
+      </g>
+
+      <!-- Center -->
+      <circle cx="535" cy="420" r="3" fill="#A89F8E" />
+      <text x="535" y="456" text-anchor="middle" font-size="14" fill="#5C5446"
+            letter-spacing="3" style="text-transform: uppercase;">autism</text>
+
+      <!-- Nodes -->
+      <g font-family="ui-serif, Georgia, serif">
+        <!-- 01 cerebral folate -->
+        <circle cx="600" cy="90" r="6" fill="#1F1A14" />
+        <text x="600" y="62" text-anchor="middle" font-size="17" fill="#1F1A14" font-weight="500">Cerebral folate</text>
+        <text x="600" y="80" text-anchor="middle" font-size="12" fill="#7A6F5C" font-style="italic">FRAA-mediated</text>
+        <!-- 02 mitochondrial -->
+        <circle cx="870" cy="175" r="6" fill="#1F1A14" />
+        <text x="888" y="170" text-anchor="start" font-size="17" fill="#1F1A14" font-weight="500">Mitochondrial</text>
+        <text x="888" y="188" text-anchor="start" font-size="12" fill="#7A6F5C" font-style="italic">energy metabolism</text>
+        <!-- 03 regressive -->
+        <circle cx="980" cy="380" r="6" fill="#1F1A14" />
+        <text x="998" y="375" text-anchor="start" font-size="17" fill="#1F1A14" font-weight="500">Regressive</text>
+        <text x="998" y="393" text-anchor="start" font-size="12" fill="#7A6F5C" font-style="italic">immune-inflammatory</text>
+        <!-- 04 GI / microbiome -->
+        <circle cx="940" cy="600" r="6" fill="#1F1A14" />
+        <text x="958" y="595" text-anchor="start" font-size="17" fill="#1F1A14" font-weight="500">GI / microbiome</text>
+        <text x="958" y="613" text-anchor="start" font-size="12" fill="#7A6F5C" font-style="italic">gut-brain axis</text>
+        <!-- 05 mTOR -->
+        <circle cx="770" cy="740" r="6" fill="#1F1A14" />
+        <text x="770" y="776" text-anchor="middle" font-size="17" fill="#1F1A14" font-weight="500">mTOR</text>
+        <text x="770" y="794" text-anchor="middle" font-size="12" fill="#7A6F5C" font-style="italic">syndromic / TSC, PTEN</text>
+        <!-- 06 Fragile X -->
+        <circle cx="530" cy="790" r="6" fill="#1F1A14" />
+        <text x="530" y="826" text-anchor="middle" font-size="17" fill="#1F1A14" font-weight="500">Fragile X</text>
+        <text x="530" y="844" text-anchor="middle" font-size="12" fill="#7A6F5C" font-style="italic">FMR1 silencing</text>
+        <!-- 07 GABA / Cl⁻ -->
+        <circle cx="290" cy="740" r="6" fill="#1F1A14" />
+        <text x="290" y="776" text-anchor="middle" font-size="17" fill="#1F1A14" font-weight="500">GABA / Cl⁻</text>
+        <text x="290" y="794" text-anchor="middle" font-size="12" fill="#7A6F5C" font-style="italic">E/I imbalance</text>
+        <!-- 08 Undermethylator -->
+        <circle cx="130" cy="600" r="6" fill="#1F1A14" />
+        <text x="112" y="595" text-anchor="end" font-size="17" fill="#1F1A14" font-weight="500">Undermethylator</text>
+        <text x="112" y="613" text-anchor="end" font-size="12" fill="#7A6F5C" font-style="italic">low SAM:SAH</text>
+        <!-- 09 Overmethylator -->
+        <circle cx="90"  cy="380" r="6" fill="#1F1A14" />
+        <text x="72"  y="375" text-anchor="end" font-size="17" fill="#1F1A14" font-weight="500">Overmethylator</text>
+        <text x="72"  y="393" text-anchor="end" font-size="12" fill="#7A6F5C" font-style="italic">folate caution</text>
+        <!-- 10 Pyroluria -->
+        <circle cx="200" cy="175" r="6" fill="#1F1A14" />
+        <text x="182" y="170" text-anchor="end" font-size="17" fill="#1F1A14" font-weight="500">Pyroluria</text>
+        <text x="182" y="188" text-anchor="end" font-size="12" fill="#7A6F5C" font-style="italic">B6 + zinc deficiency</text>
+        <!-- 11 Cu:Zn imbalance -->
+        <circle cx="470" cy="90" r="6" fill="#1F1A14" />
+        <text x="470" y="62" text-anchor="middle" font-size="17" fill="#1F1A14" font-weight="500">Cu : Zn imbalance</text>
+        <text x="470" y="80" text-anchor="middle" font-size="12" fill="#7A6F5C" font-style="italic">metallothionein</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- THE NUMBERS -->
+<section class="tight">
+  <div class="container">
+    <div class="eyebrow">what’s in the atlas</div>
+    <div class="stats">
+      <div class="stat"><div class="num">1,420</div><div class="label">primary sources</div></div>
+      <div class="stat"><div class="num">11</div><div class="label">phenotype dimensions</div></div>
+      <div class="stat"><div class="num">178</div><div class="label">biomarkers</div></div>
+      <div class="stat"><div class="num">137</div><div class="label">interventions</div></div>
+      <div class="stat"><div class="num">1,564</div><div class="label">genes</div></div>
+      <div class="stat"><div class="num">100%</div><div class="label">PubMed-verified</div></div>
+    </div>
+    <p style="margin-top: 3rem; font-style: italic; color: var(--ink-mute);">
+      All deterministic. All open. No black box.
+    </p>
+  </div>
+</section>
+
+<!-- THE FRAME -->
+<section>
+  <div class="container">
+    <div class="eyebrow">for your child</div>
+    <p class="serif frame-quote">The question is no longer<br>
+      <span class="em">“is this autism?”</span><br><br>
+      but<br><br>
+      which pattern,<br>
+      <span class="em">and what does the evidence say?</span>
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="tight">
+  <div class="container">
+    <div class="eyebrow">two doors</div>
+    <p class="serif" style="font-size: 1.5rem; line-height: 1.5; margin-bottom: 1rem;">
+      Read the atlas. Or find a pattern.
+    </p>
+    <div class="cta-buttons">
+      <a class="btn primary"
+         href="https://share.streamlit.io/"
+         data-calculator-url
+         id="calculator-btn"
+         target="_blank" rel="noopener">
+        Run a profile
+      </a>
+      <a class="btn secondary"
+         href="https://github.com/"
+         id="github-btn"
+         target="_blank" rel="noopener">
+        Browse the source
+      </a>
+    </div>
+
+    <div class="doors">
+      <a class="door" href="#calculator-btn" onclick="document.getElementById('calculator-btn').click(); return false;">
+        <h3>For families</h3>
+        <p>Walk through your child’s profile. See which patterns the
+           atlas suggests, and the questions worth asking your clinician.</p>
+      </a>
+      <a class="door" href="#github-btn" onclick="document.getElementById('github-btn').click(); return false;">
+        <h3>For researchers</h3>
+        <p>Browse the verified-PMID source list, the per-condition phenotype
+           taxonomy, and the deterministic engine. Reproduce the digest.
+           Inspect every prior.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>The Causes Atlas · Autism Profile</div>
+  <div class="small">Open source · deterministic · evidence-balanced · continuously ingested · v0.3 · research prototype, not for clinical use</div>
+</footer>
+
+<script>
+  // Allow easy URL replacement post-deploy. Edit this once after Streamlit
+  // Cloud deploy: replace the placeholder with the actual *.streamlit.app URL.
+  // Same for GitHub repo.
+  (function() {
+    const CALC_URL = "https://causes-atlas-autism.streamlit.app";   // ← replace post-deploy
+    const REPO_URL = "https://github.com/your-username/causes-atlas-autism"; // ← replace post-deploy
+    const calc = document.getElementById('calculator-btn');
+    const repo = document.getElementById('github-btn');
+    if (calc) calc.href = CALC_URL;
+    if (repo) repo.href = REPO_URL;
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1646 @@
+category,target_table,target_id,legacy_row,reason,priority
+phenotype_top_lists,phenotypes,PHE-0001,2,top_* IDs in legacy-only columns; no edges written,normal
+phenotype_top_lists,phenotypes,PHE-0002,3,top_* IDs in legacy-only columns; no edges written,normal
+phenotype_top_lists,phenotypes,PHE-0003,4,top_* IDs in legacy-only columns; no edges written,normal
+phenotype_top_lists,phenotypes,PHE-0004,5,top_* IDs in legacy-only columns; no edges written,normal
+phenotype_top_lists,phenotypes,PHE-0005,6,top_* IDs in legacy-only columns; no edges written,normal
+phenotype_top_lists,phenotypes,PHE-0006,7,top_* IDs in legacy-only columns; no edges written,normal
+phenotype_top_lists,phenotypes,PHE-0007,8,top_* IDs in legacy-only columns; no edges written,normal
+hypothesis_category_remap,hypotheses,HYP-0001,2,legacy category 'pharmacological' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0002,3,legacy category 'pharmacological' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0003,4,legacy category 'dietary' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0007,8,legacy category 'microbiome' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0008,9,legacy category 'infectious' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0010,11,legacy category 'pharmacological' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0018,19,legacy category 'dietary' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0019,20,legacy category 'dietary' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0020,21,legacy category 'dietary' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0021,22,legacy category 'dietary' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0022,23,legacy category 'pharmacological' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0023,24,legacy category 'pharmacological' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0024,25,legacy category 'pharmacological' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0025,26,legacy category 'infectious' mapped to 'other',normal
+hypothesis_category_remap,hypotheses,HYP-0026,27,legacy category 'infectious' mapped to 'other',normal
+combination_zero_members,combinations,COM-0003,4,combination has zero members,normal
+observational_reclassify,sources,SRC-000002,3,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000007,8,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000009,10,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000010,11,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000013,14,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000015,16,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000020,21,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000021,22,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000022,23,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000023,24,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000026,27,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000027,28,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000028,29,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000030,31,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000033,34,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000035,36,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000036,37,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000037,38,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000038,39,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000039,40,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000040,41,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000042,43,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000043,44,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000044,45,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000045,46,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000046,47,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000049,50,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000050,51,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000052,53,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000053,54,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000057,58,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000058,59,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000066,67,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000069,70,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000078,79,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000080,81,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000081,82,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000082,83,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000085,86,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000092,93,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000094,95,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000095,96,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000100,101,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000101,102,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000102,103,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000104,105,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000107,108,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000109,110,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000114,115,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000116,117,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000117,118,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000118,119,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000121,122,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000124,125,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000125,126,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000127,128,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000128,129,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000129,130,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000132,133,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000133,134,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000135,136,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000136,137,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000141,142,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000143,144,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000144,145,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000145,146,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000148,149,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000149,150,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000158,159,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000160,161,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000162,163,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000166,167,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000168,169,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000169,170,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000171,172,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000172,173,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000174,175,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000175,176,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000178,179,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000180,181,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000181,182,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000184,185,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000186,187,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000187,188,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000188,189,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000194,195,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000195,196,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000198,199,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000201,202,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000202,203,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000204,205,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000207,208,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000208,209,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000209,210,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000212,213,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000213,214,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000227,228,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000244,245,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000245,246,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000260,261,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000263,264,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000264,265,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000266,267,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000267,268,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000271,272,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000272,273,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000277,278,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000279,280,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000283,284,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000286,287,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000288,289,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000290,291,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000292,293,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000293,294,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000294,295,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000296,297,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000297,298,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000299,300,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000300,301,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000301,302,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000305,306,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000316,317,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000318,319,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000322,323,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000325,326,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000327,328,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000331,332,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000333,334,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000336,337,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000337,338,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000341,342,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000343,344,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000344,345,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000345,346,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000347,348,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000349,350,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000356,357,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000362,363,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000366,367,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000369,370,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000371,372,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000373,374,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000375,376,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000377,378,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000378,379,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000379,380,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000380,381,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000383,384,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000384,385,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000386,387,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000391,392,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000392,393,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000393,394,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000394,395,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000395,396,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000396,397,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000397,398,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000405,406,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000418,419,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000427,428,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000433,434,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000436,437,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000442,443,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000445,446,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000447,448,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000449,450,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000451,452,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000453,454,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000470,471,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000474,475,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000487,488,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000493,494,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000498,499,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000499,500,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000500,501,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000501,502,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000502,503,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000503,504,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000505,506,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000506,507,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000507,508,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000508,509,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000512,513,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000515,516,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000516,517,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000518,519,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000519,520,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000520,521,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000521,522,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000523,524,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000525,526,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000529,530,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000530,531,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000531,532,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000533,534,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000534,535,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000535,536,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000536,537,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000537,538,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000538,539,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000539,540,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000541,542,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000544,545,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000546,547,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000547,548,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000548,549,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000549,550,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000550,551,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000553,554,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000555,556,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000557,558,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000560,561,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000562,563,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000563,564,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000566,567,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000567,568,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000568,569,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000570,571,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000571,572,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000575,576,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000576,577,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000578,579,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000580,581,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000581,582,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000583,584,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000593,594,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000595,596,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000596,597,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000597,598,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000599,600,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000602,603,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000603,604,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000604,605,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000611,612,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000613,614,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000616,617,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000618,619,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000619,620,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000622,623,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000623,624,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000624,625,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000628,629,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000629,630,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000631,632,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000633,634,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000635,636,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000636,637,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000637,638,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000639,640,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000640,641,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000641,642,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000642,643,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000644,645,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000645,646,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000646,647,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000647,648,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000648,649,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000650,651,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000651,652,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000652,653,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000653,654,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000655,656,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000657,658,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000658,659,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000663,664,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000665,666,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000666,667,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000667,668,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000669,670,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000671,672,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000672,673,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000673,674,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000674,675,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000675,676,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000676,677,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000678,679,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000680,681,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000681,682,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000682,683,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000683,684,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000687,688,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000689,690,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000692,693,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000693,694,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000694,695,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000696,697,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000698,699,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000700,701,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000703,704,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000704,705,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000706,707,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000707,708,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000718,719,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000719,720,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000723,724,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000724,725,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000728,729,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000734,735,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000740,741,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000749,750,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000751,752,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000753,754,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000754,755,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000755,756,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000757,758,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000758,759,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000759,760,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000761,762,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000762,763,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000765,766,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000771,772,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000775,776,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+observational_reclassify,sources,SRC-000778,779,study_type=observational remapped to other; cohort vs case_control refinement pending,normal
+anecdote_reporter_unknown,sources,SRC-000968,191,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000968,191,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000969,192,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000970,193,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000971,194,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000972,195,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000972,195,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000973,196,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000973,196,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000974,197,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000975,198,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000976,199,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000977,200,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000978,201,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000979,202,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000980,203,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000980,203,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000981,204,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000982,205,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000982,205,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000983,206,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000984,207,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000985,208,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000985,208,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000986,209,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000987,210,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000988,211,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000988,211,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000989,212,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000989,212,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-000990,213,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000991,214,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000991,214,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000992,215,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000992,215,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000993,216,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000993,216,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000994,217,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000994,217,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000995,218,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000995,218,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000996,219,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000996,219,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000997,220,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000997,220,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000998,221,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000998,221,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-000999,222,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-000999,222,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001000,223,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001000,223,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001001,224,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001002,225,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001003,226,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001003,226,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001004,227,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001004,227,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001005,228,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001006,229,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001006,229,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001007,230,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001008,231,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001009,232,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001009,232,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001010,233,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001010,233,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001011,234,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001012,235,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001012,235,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001013,236,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001014,237,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001015,238,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001015,238,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001016,239,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001017,240,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001018,241,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001019,242,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001019,242,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001020,243,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001021,244,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001022,245,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001023,246,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001024,247,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001024,247,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001025,248,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001025,248,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001026,249,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001027,250,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001028,251,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001029,252,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001029,252,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001030,253,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001030,253,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001031,254,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001032,255,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001032,255,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001033,256,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001033,256,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001034,257,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001034,257,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001035,258,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001035,258,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001036,259,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001036,259,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001037,260,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001038,261,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001038,261,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001039,262,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001039,262,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001040,263,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001040,263,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001041,264,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001041,264,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001042,265,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001043,266,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001043,266,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001044,267,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001044,267,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001045,268,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001045,268,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001046,269,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001046,269,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001047,270,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001047,270,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001048,271,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001048,271,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001049,272,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001049,272,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001050,273,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001050,273,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001051,274,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001051,274,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001052,275,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001052,275,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001053,276,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001053,276,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001054,277,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001055,278,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001055,278,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001056,279,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001057,280,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001057,280,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001058,281,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001058,281,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001059,282,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001059,282,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001060,283,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001061,284,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001062,285,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001062,285,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001063,286,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001063,286,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001064,287,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001064,287,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001065,288,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001065,288,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001066,289,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001066,289,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001067,290,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001067,290,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001068,291,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001069,292,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001069,292,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001070,293,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001071,294,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001071,294,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001072,295,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001073,296,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001073,296,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001074,297,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001075,298,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001075,298,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001076,299,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001076,299,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001077,300,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001078,301,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001079,302,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001080,303,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001081,304,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001082,305,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001082,305,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001083,306,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001084,307,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001085,308,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001086,309,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001086,309,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001087,310,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001087,310,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001088,311,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001088,311,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001089,312,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001089,312,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001090,313,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001091,314,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001092,315,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001092,315,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001093,316,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001094,317,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001095,318,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001095,318,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001096,319,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001097,320,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001098,321,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001098,321,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001099,322,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001100,323,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001100,323,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001101,324,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001101,324,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001102,325,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001103,326,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001104,327,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001104,327,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001105,328,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001105,328,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001106,329,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001106,329,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001107,330,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001107,330,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001108,331,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001108,331,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001109,332,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001110,333,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001111,334,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001111,334,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001112,335,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001113,336,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001113,336,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001114,337,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001115,338,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001116,339,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001116,339,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001117,340,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001117,340,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001118,341,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001119,342,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001119,342,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001120,343,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001120,343,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001121,344,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001121,344,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001122,345,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001122,345,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001123,346,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001123,346,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001124,347,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001124,347,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001125,348,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001125,348,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001126,349,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001126,349,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001127,350,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001128,351,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001128,351,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001129,352,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001129,352,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001130,353,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001131,354,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001131,354,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001132,355,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001132,355,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001133,356,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001134,357,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001135,358,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001136,359,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001137,360,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001138,361,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001138,361,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001139,362,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001140,363,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001140,363,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001141,364,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001141,364,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001142,365,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001143,366,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001144,367,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001145,368,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001146,369,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001146,369,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001147,370,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001147,370,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001148,371,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001149,372,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001150,373,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001150,373,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001151,374,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001151,374,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001152,375,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001153,376,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001153,376,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001154,377,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001154,377,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001155,378,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001156,379,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001156,379,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001157,380,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001158,381,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001158,381,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001159,382,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001159,382,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001160,383,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001160,383,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001161,384,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001161,384,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001162,385,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001162,385,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001163,386,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001163,386,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001164,387,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001164,387,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001165,388,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001165,388,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001166,389,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001167,390,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001167,390,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001168,391,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001168,391,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001169,392,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001169,392,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001170,393,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001171,394,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001172,395,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001173,396,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001174,397,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001174,397,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001175,398,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001176,399,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001176,399,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001177,400,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001177,400,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001178,401,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001178,401,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001179,402,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001179,402,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001180,403,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001180,403,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001181,404,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001181,404,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001182,405,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001183,406,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001183,406,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001184,407,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001184,407,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001185,408,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001186,409,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001186,409,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001187,410,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001187,410,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001188,411,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001189,412,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001189,412,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001190,413,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001190,413,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001191,414,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001192,415,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001192,415,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001193,416,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001193,416,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001194,417,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001194,417,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001195,418,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001196,419,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001196,419,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001197,420,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001197,420,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001198,421,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001199,422,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001199,422,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001200,423,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001201,424,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001202,425,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001202,425,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001203,426,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001204,427,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001204,427,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001205,428,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001205,428,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001206,429,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001206,429,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001207,430,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001208,431,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001209,432,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001209,432,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001210,433,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001210,433,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001211,434,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001211,434,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001212,435,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001212,435,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001213,436,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001213,436,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001214,437,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001214,437,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001215,438,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001215,438,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001216,439,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001217,440,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001217,440,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001218,441,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001218,441,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001219,442,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001220,443,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001220,443,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001221,444,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001221,444,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001222,445,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001222,445,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001223,446,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001224,447,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001225,448,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001226,449,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001226,449,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001227,450,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001228,451,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001228,451,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001229,452,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001229,452,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001230,453,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001231,454,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001232,455,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001232,455,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001233,456,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001233,456,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001234,457,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001235,458,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001235,458,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001236,459,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001236,459,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001237,460,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001238,461,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001238,461,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001239,462,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001239,462,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001240,463,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001240,463,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001241,464,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001241,464,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001242,465,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001242,465,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001243,466,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001243,466,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001244,467,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001244,467,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001245,468,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001245,468,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001246,469,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001247,470,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001247,470,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001248,471,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001248,471,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001249,472,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001249,472,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001250,473,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001250,473,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001251,474,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001251,474,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001252,475,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001252,475,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001253,476,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001253,476,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001254,477,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001255,478,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001255,478,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001256,479,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001256,479,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001257,480,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001258,481,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001259,482,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001260,483,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001260,483,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001261,484,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001261,484,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001262,485,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001262,485,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001263,486,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001264,487,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001265,488,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001265,488,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001266,489,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001267,490,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001268,491,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001268,491,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001269,492,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001269,492,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001270,493,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001270,493,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001271,494,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001271,494,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001272,495,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001272,495,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001273,496,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001273,496,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001274,497,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001274,497,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001275,498,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001275,498,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001276,499,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001276,499,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001277,500,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001278,501,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001278,501,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001279,502,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001279,502,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001280,503,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001280,503,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001281,504,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001281,504,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001282,505,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001282,505,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001283,506,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001283,506,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001284,507,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001284,507,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001285,508,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001285,508,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001286,509,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001287,510,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001287,510,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001288,511,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001288,511,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001289,512,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001290,513,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001290,513,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001291,514,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001292,515,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001293,516,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001293,516,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001294,517,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001294,517,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001295,518,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001295,518,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001296,519,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001296,519,date_iso missing in legacy,normal
+anecdote_missing_date,sources,SRC-001297,520,date_iso missing in legacy,normal
+anecdote_reporter_unknown,sources,SRC-001298,521,reporter_population=unknown; low strength tier,normal
+anecdote_missing_date,sources,SRC-001298,521,date_iso missing in legacy,normal
+fragment_unclear_effect,evidence_fragments,EVD-000007,8,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000011,12,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000012,13,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000013,14,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000014,15,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000015,16,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000016,17,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000017,18,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000018,19,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000019,20,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000020,21,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000021,22,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000022,23,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000023,24,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000024,25,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000025,26,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000026,27,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000027,28,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000028,29,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000029,30,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000030,31,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000031,32,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000032,33,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000033,34,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000034,35,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000035,36,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000036,37,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000037,38,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000038,39,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000039,40,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000040,41,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000041,42,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000042,43,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000043,44,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000044,45,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000045,46,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000046,47,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000047,48,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000048,49,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000049,50,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000050,51,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000051,52,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000052,53,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000053,54,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000054,55,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000055,56,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000056,57,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000057,58,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000058,59,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000059,60,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000060,61,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000061,62,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000062,63,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000063,64,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000064,65,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000065,66,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000066,67,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000067,68,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000068,69,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000069,70,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000070,71,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000071,72,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000072,73,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000073,74,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000074,75,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000075,76,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000076,77,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000077,78,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000078,79,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000079,80,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000080,81,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000081,82,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000082,83,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000083,84,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000084,85,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000085,86,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000086,87,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000087,88,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000088,89,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000089,90,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000090,91,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000091,92,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000092,93,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000093,94,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000094,95,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000095,96,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000096,97,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000097,98,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000098,99,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000099,100,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000100,101,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000101,102,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000102,103,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000103,104,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000104,105,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000105,106,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000106,107,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000107,108,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000108,109,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000109,110,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000110,111,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000111,112,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000112,113,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000113,114,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000114,115,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000115,116,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000116,117,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000117,118,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000118,119,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000119,120,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000120,121,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000121,122,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000122,123,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000123,124,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000124,125,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000125,126,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000126,127,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000127,128,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000128,129,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000129,130,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000130,131,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000131,132,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000132,133,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000133,134,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000134,135,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000135,136,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000136,137,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000137,138,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000138,139,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000139,140,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000140,141,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000141,142,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000142,143,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000143,144,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000144,145,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000145,146,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000146,147,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000147,148,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000148,149,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000149,150,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000150,151,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000151,152,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000152,153,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000153,154,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000154,155,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000155,156,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000156,157,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000157,158,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000158,159,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000159,160,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000160,161,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000161,162,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000162,163,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000163,164,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000164,165,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000165,166,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000166,167,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000167,168,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000168,169,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000169,170,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000170,171,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000171,172,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000172,173,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000173,174,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000174,175,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000175,176,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000176,177,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000177,178,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000178,179,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000179,180,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000180,181,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000181,182,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000182,183,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000183,184,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000184,185,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000185,186,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000186,187,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000187,188,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000188,189,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000189,190,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000190,191,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000191,192,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000192,193,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000193,194,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000194,195,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000195,196,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000196,197,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000197,198,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000198,199,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000199,200,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000200,201,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000201,202,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000202,203,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000203,204,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000204,205,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000205,206,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000206,207,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000207,208,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000208,209,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000209,210,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000210,211,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000211,212,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000212,213,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000213,214,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000214,215,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000215,216,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000216,217,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000217,218,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000218,219,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000219,220,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000220,221,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000221,222,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000222,223,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000223,224,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000224,225,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000225,226,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000226,227,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000227,228,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000228,229,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000229,230,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000230,231,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000231,232,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000232,233,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000233,234,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000234,235,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000235,236,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000236,237,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000237,238,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000238,239,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000239,240,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000240,241,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000241,242,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000242,243,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000243,244,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000244,245,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000245,246,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000246,247,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000247,248,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000248,249,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000249,250,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000250,251,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000251,252,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000252,253,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000253,254,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000254,255,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000255,256,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000256,257,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000257,258,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000258,259,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000259,260,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000260,261,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000261,262,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000262,263,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000263,264,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000264,265,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000265,266,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000266,267,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000267,268,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000268,269,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000269,270,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000270,271,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000271,272,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000272,273,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000273,274,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000274,275,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000275,276,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000276,277,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000277,278,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000278,279,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000279,280,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000280,281,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000281,282,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000282,283,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000283,284,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000284,285,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000285,286,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000286,287,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000287,288,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000288,289,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000289,290,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000290,291,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000291,292,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000292,293,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000293,294,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000294,295,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000295,296,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000296,297,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000297,298,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000298,299,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000299,300,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000300,301,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000301,302,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000302,303,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000303,304,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000304,305,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000305,306,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000306,307,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000307,308,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000308,309,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000309,310,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000310,311,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000311,312,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000312,313,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000313,314,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000314,315,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000315,316,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000316,317,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000317,318,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000318,319,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000319,320,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000320,321,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000321,322,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000322,323,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000323,324,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000324,325,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000325,326,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000326,327,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000327,328,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000328,329,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000329,330,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000330,331,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000331,332,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000332,333,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000333,334,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000334,335,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000335,336,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000336,337,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000337,338,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000338,339,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000339,340,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000340,341,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000341,342,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000342,343,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000343,344,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000344,345,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000345,346,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000346,347,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000347,348,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000348,349,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000349,350,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000350,351,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000351,352,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000352,353,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000353,354,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000354,355,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000355,356,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000356,357,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000357,358,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000358,359,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000359,360,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000360,361,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000361,362,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000362,363,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000363,364,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000364,365,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000365,366,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000366,367,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000367,368,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000368,369,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000369,370,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000370,371,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000371,372,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000372,373,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000373,374,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000374,375,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000375,376,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000376,377,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000377,378,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000378,379,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000379,380,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000380,381,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000381,382,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000382,383,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000383,384,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000384,385,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000385,386,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000386,387,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000387,388,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000388,389,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000389,390,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000390,391,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000391,392,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000392,393,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000393,394,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000394,395,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000395,396,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000396,397,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000397,398,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000398,399,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000399,400,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000400,401,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000401,402,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000402,403,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000403,404,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000404,405,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000405,406,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000406,407,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000407,408,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000408,409,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000409,410,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000410,411,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000411,412,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000412,413,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000413,414,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000414,415,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000415,416,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000416,417,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000417,418,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000418,419,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000419,420,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000420,421,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000421,422,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000422,423,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000423,424,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000424,425,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000425,426,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000426,427,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000427,428,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000428,429,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000429,430,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000430,431,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000431,432,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000432,433,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000433,434,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000434,435,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000435,436,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000436,437,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000437,438,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000438,439,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000439,440,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000440,441,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000441,442,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000442,443,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000443,444,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000444,445,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000445,446,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000446,447,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000447,448,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000448,449,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000449,450,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000450,451,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000451,452,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000452,453,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000453,454,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000454,455,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000455,456,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000456,457,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000457,458,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000458,459,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000459,460,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000460,461,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000461,462,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000462,463,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000463,464,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000464,465,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000465,466,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000466,467,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000467,468,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000468,469,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000469,470,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000470,471,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000471,472,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000472,473,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000473,474,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000474,475,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000475,476,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000476,477,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000477,478,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000478,479,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000479,480,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000480,481,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000481,482,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000482,483,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000483,484,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000484,485,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000485,486,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000486,487,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000487,488,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000488,489,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000489,490,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000490,491,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000491,492,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000492,493,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000493,494,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000494,495,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000495,496,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000496,497,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000497,498,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000498,499,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000499,500,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000500,501,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000501,502,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000502,503,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000503,504,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000504,505,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000505,506,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000506,507,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000507,508,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000508,509,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000509,510,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000510,511,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000511,512,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000512,513,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000513,514,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000514,515,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000515,516,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000516,517,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000517,518,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000518,519,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000519,520,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000520,521,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000521,522,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000522,523,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000523,524,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000524,525,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000525,526,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000526,527,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000527,528,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000528,529,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000529,530,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000530,531,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000531,532,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000532,533,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000533,534,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000534,535,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000535,536,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000536,537,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000537,538,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000538,539,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000539,540,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000540,541,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000541,542,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000542,543,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000543,544,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000544,545,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000545,546,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000546,547,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000547,548,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000548,549,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000549,550,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000550,551,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000551,552,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000552,553,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000553,554,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000554,555,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000555,556,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000556,557,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000557,558,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000558,559,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000559,560,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000560,561,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000561,562,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000562,563,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000563,564,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000564,565,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000565,566,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000566,567,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000567,568,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000568,569,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000569,570,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000570,571,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000571,572,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000572,573,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000573,574,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000574,575,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000575,576,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000576,577,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000577,578,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000578,579,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000579,580,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000580,581,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000581,582,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000582,583,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000583,584,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000584,585,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000585,586,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000586,587,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000587,588,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000588,589,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000589,590,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000590,591,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000591,592,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000592,593,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000593,594,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000594,595,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000595,596,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000596,597,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000597,598,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000598,599,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000599,600,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000600,601,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000601,602,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000602,603,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000603,604,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000604,605,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000605,606,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000606,607,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000607,608,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000608,609,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000609,610,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000610,611,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000611,612,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000612,613,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000613,614,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000614,615,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000615,616,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000616,617,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000617,618,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000618,619,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000619,620,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000620,621,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000621,622,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000622,623,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000623,624,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000624,625,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000625,626,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000626,627,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000627,628,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000628,629,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000629,630,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000630,631,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000631,632,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000632,633,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000633,634,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000634,635,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000635,636,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000636,637,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000637,638,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000638,639,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000639,640,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000640,641,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000641,642,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000642,643,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000643,644,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000644,645,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000645,646,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000646,647,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000647,648,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000648,649,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000649,650,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000650,651,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000651,652,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000652,653,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000653,654,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000654,655,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000655,656,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000656,657,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000657,658,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000658,659,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000659,660,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000660,661,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000661,662,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000662,663,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000663,664,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000664,665,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000665,666,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000666,667,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000667,668,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000668,669,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000669,670,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000670,671,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000671,672,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000672,673,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000673,674,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000674,675,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000675,676,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000676,677,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000677,678,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000678,679,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000679,680,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000680,681,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000681,682,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000682,683,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000683,684,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000684,685,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000685,686,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000686,687,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000687,688,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000688,689,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000689,690,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000690,691,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000691,692,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000692,693,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000693,694,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000694,695,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000695,696,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000696,697,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000697,698,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000698,699,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000699,700,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000700,701,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000701,702,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000702,703,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000703,704,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000704,705,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000705,706,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000706,707,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000707,708,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000708,709,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000709,710,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000710,711,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000711,712,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000712,713,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000713,714,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000714,715,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000715,716,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000716,717,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000717,718,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000718,719,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000719,720,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000720,721,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000721,722,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000722,723,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000723,724,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000724,725,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000725,726,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000726,727,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000727,728,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000728,729,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000729,730,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000730,731,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000731,732,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000732,733,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000733,734,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000734,735,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000735,736,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000736,737,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000737,738,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000738,739,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000739,740,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000740,741,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000741,742,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000742,743,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000743,744,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000744,745,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000745,746,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000746,747,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000747,748,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000748,749,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000749,750,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000750,751,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000751,752,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000752,753,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000753,754,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000754,755,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000755,756,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000756,757,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000757,758,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000758,759,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000759,760,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000760,761,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000761,762,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000762,763,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000763,764,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000764,765,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000765,766,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000766,767,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000767,768,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000768,769,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000769,770,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000770,771,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000771,772,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000772,773,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000773,774,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000774,775,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000775,776,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000776,777,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000777,778,effect_direction unresolved by rules,normal
+fragment_unclear_effect,evidence_fragments,EVD-000778,779,effect_direction unresolved by rules,normal
+gene_phenotype_syndromic,gene_phenotype_edges,,2,SFARI=S gene FOLR1→PHE-0001; confirm syndromic_cause_of,normal
+gene_phenotype_syndromic,gene_phenotype_edges,,6,SFARI=S gene FMR1→PHE-0006; confirm syndromic_cause_of,normal
+gene_phenotype_syndromic,gene_phenotype_edges,,7,SFARI=S gene TSC1→PHE-0005; confirm syndromic_cause_of,normal
+gene_phenotype_syndromic,gene_phenotype_edges,,8,SFARI=S gene TSC2→PHE-0005; confirm syndromic_cause_of,normal

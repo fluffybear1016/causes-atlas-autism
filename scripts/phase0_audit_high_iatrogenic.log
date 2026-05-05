@@ -1,0 +1,22 @@
+# Verification run: 2026-04-30T21:15:30.505164Z
+# candidates: scripts/phase0_audit_high_iatrogenic_additions.yaml
+# output: v2.0_scored/iatrogenic_exposure_priors.csv
+# Total candidates: 3
+
+## Row IEP-00025
+  primary PMID 28418480: PASS claimed=(Brown 2017) fetched=(brown hk 2017) title='association between serotonergic antidepressant use during pregnancy and autism spectrum disorder in children.'
+  VERDICT: VERIFIED — row will be written
+
+## Row IEP-00026
+  primary PMID 22001122: PASS claimed=(Mitkus 2011) fetched=(mitkus rj 2011) title='updated aluminum pharmacokinetics following infant exposures through diet and vaccination.'
+  VERDICT: VERIFIED — row will be written
+
+## Row IEP-00027
+  primary PMID 23932735: PASS claimed=(Shaw 2013) fetched=(shaw ca 2013) title='administration of aluminium to neonatal mice in vaccine-relevant amounts is associated with adverse long term neurologic'
+  VERDICT: VERIFIED — row will be written
+
+
+## Summary
+Total candidates: 3
+Verified (will write): 3
+Rejected: 0

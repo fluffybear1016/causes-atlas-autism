@@ -1,0 +1,45 @@
+# Phase 0 audit HIGH batch — baseline_phenotype_prevalence additions
+# H-11: paternal age modifier — supersede single-study Reichenberg 2006 (RR 5.75)
+# with meta-analytic estimate (Hultman 2011 + Sandin 2016)
+
+- row_id: BPP-0028
+  claimed_pmid: 21116277
+  claimed_first_author: Hultman
+  claimed_year: 2011
+  claimed_key_terms: [paternal age, autism]
+  claimed_journal_substring: Mol Psychiatry
+  row_data:
+    id: BPP-0028
+    phenotype_id: AUTISM_PATERNAL_AGE_MODIFIER_META
+    prevalence_estimate_low: 1.1
+    prevalence_estimate_high: 2.0
+    prevalence_point_estimate: 1.4
+    population_context: paternal_age_relative_risk_per_decade_meta
+    methodology: Swedish nationwide population-based study with meta-analytic comparison
+    sample_size_n: 1075588
+    primary_pmid: 21116277
+    confidence_label: HIGH
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-11 audit fix] Hultman 2011 Mol Psychiatry (PMID 21116277) — Swedish nationwide cohort + meta-analysis of paternal age and autism risk. RR per decade ~1.3-1.5 in meta-analyzed studies. SUPERSEDES single-study estimate in BPP-0005 (Reichenberg 2006 reported RR 5.75 for >40 vs <30 in Israeli draft-board cohort; high-end of single-study range and not representative of the meta-analytic estimate). Engine should prefer this row over BPP-0005 when computing paternal age modifier."
+
+- row_id: BPP-0029
+  claimed_pmid: 26055426
+  claimed_first_author: Sandin
+  claimed_year: 2016
+  claimed_key_terms: [parental age, autism]
+  claimed_journal_substring: Mol Psychiatry
+  row_data:
+    id: BPP-0029
+    phenotype_id: AUTISM_PARENTAL_AGE_DIFFERENCE_MODIFIER
+    prevalence_estimate_low: 1.0
+    prevalence_estimate_high: 1.5
+    prevalence_point_estimate: 1.2
+    population_context: parental_age_difference_relative_risk
+    methodology: 5-country population-based cohort
+    sample_size_n: 5766794
+    primary_pmid: 26055426
+    confidence_label: HIGH
+    status: active
+    created_at: 2026-04-30
+    notes: "[H-11 audit fix] Sandin 2016 Mol Psychiatry (PMID 26055426) — 5.7M-person 5-country cohort. Both maternal and paternal age contribute; effect of age difference between parents also significant. Engine modifier: combined parental-age effect rather than paternal age alone. Both Hultman 2011 and Sandin 2016 support meta-analytic per-decade RR ~1.2-1.5 — much smaller than Reichenberg 2006 single-study RR 5.75."

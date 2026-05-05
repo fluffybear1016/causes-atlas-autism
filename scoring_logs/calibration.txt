@@ -1,0 +1,18 @@
+======================================================================
+CALIBRATION TEST — INT-0001 (Leucovorin)
+Threshold: csrs_score >= 80.0
+======================================================================
+  csrs_score              = 82.72  [PASS]
+  components:
+    hypothesis_alignment      = 0.8028
+    mechanism_strength        = 0.7526
+    phenotype_effect          = 0.0000
+    genetic_coherence         = 1.0000
+    safety_score              = 0.8755
+    replication_score         = 1.0000
+    trend_score               = 0.7612
+    synergy_bonus             = 0.0000
+  HYP-0001 confidence       = 0.8028
+  MEC-0003 (methylation)    = 0.8854
+  MEC-0004 (BBB)            = 0.8232
+======================================================================

@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Wu C; Li X; Yang X; Wang H; Lin G; Liu Z",
+  "doi": "doi: 10.1186/s13287-025-04829-x",
+  "first_author": "Wu C",
+  "journal": "Stem Cell Res Ther",
+  "matched_queries": [
+    "autism[tiab] AND (mitochondrial[tiab] OR \"oxidative stress\"[tiab]) AND (\"clinical trial\"[pt] OR \"randomized\"[tiab])"
+  ],
+  "pmid": "41387911",
+  "pubdate": "2025 Dec 12",
+  "title": "\u200cDual-target hUCMSCs/EVs therapy for autism spectrum disorder: remodeling gut microbiota and modulating neuroimmune crosstalk in a valproic acid-induced C57BL/6 mice model.",
+  "verified_at": "2026-05-05T13:08:00+00:00"
+}

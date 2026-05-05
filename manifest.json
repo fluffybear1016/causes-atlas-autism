@@ -1,0 +1,316 @@
+{
+  "atlas_version": "v2.0",
+  "calibration": {
+    "csrs_score": 81.95,
+    "intervention": "INT-0001 Leucovorin",
+    "passed": true,
+    "threshold": 80
+  },
+  "chunked_files": {
+    "evidence_fragments.csv": {
+      "chunk_count": 6,
+      "chunk_prefix": "evidence_fragments.csv.gz.part_",
+      "gzipped_size": 153396,
+      "raw_size": 727180,
+      "reassembly": "python reassemble.py"
+    },
+    "sources.csv": {
+      "chunk_count": 17,
+      "chunk_prefix": "sources.csv.gz.part_",
+      "gzipped_size": 489815,
+      "raw_size": 1828380,
+      "reassembly": "python reassemble.py"
+    }
+  },
+  "files": {
+    "CAUSES_ATLAS_AUTISM_SPEC.md": {
+      "kind": "spec_doc",
+      "md5": "ce9ad234e39b602408eee18fb6a01793",
+      "size_bytes": 23287
+    },
+    "CAUSES_ATLAS_AUTISM_SPEC_v1.1.md": {
+      "kind": "spec_doc",
+      "md5": "c4d164ce240437909ae3c671ef1deeb9",
+      "size_bytes": 31096
+    },
+    "CAUSES_ATLAS_AUTISM_SPEC_v1.2.md": {
+      "kind": "spec_doc",
+      "md5": "2e9131cdde79d13bf1f115fa6db7c449",
+      "size_bytes": 11775
+    },
+    "MASTER_README.md": {
+      "kind": "spec_doc",
+      "md5": "51b7a2d27108c13027811e11ae525c7c",
+      "size_bytes": 16697
+    },
+    "MIGRATION_IMPLEMENTATION.md": {
+      "kind": "spec_doc",
+      "md5": "3ac42d2f73f0ee7f5d1e15b61f0332c9",
+      "size_bytes": 45862
+    },
+    "MIGRATION_PLAN.md": {
+      "kind": "spec_doc",
+      "md5": "10fddf411c265ada473120e339ff8c69",
+      "size_bytes": 50350
+    },
+    "SCORING_ENGINE_SPEC.md": {
+      "kind": "spec_doc",
+      "md5": "039c07c82fb6e5ac84db6b8102fb09aa",
+      "size_bytes": 18251
+    },
+    "expansion_summary.json": {
+      "kind": "summary",
+      "md5": "abe72d7781180f75def9abc0833aed13",
+      "size_bytes": 497
+    },
+    "expansion_v13_summary.json": {
+      "kind": "summary",
+      "md5": "29ca931e2b30151b146fcb2b656f4ea6",
+      "size_bytes": 218
+    },
+    "expansion_v14_summary.json": {
+      "kind": "summary",
+      "md5": "21c7dc073ae41fbfa56db203e033bdc9",
+      "size_bytes": 430
+    },
+    "expansion_v15_summary.json": {
+      "kind": "summary",
+      "md5": "d7a2a94b9bf9591f2b5f8e2d42ff0f01",
+      "size_bytes": 424
+    },
+    "expansion_v16_summary.json": {
+      "kind": "summary",
+      "md5": "909cdc41c78b8752617238d172e14f83",
+      "size_bytes": 1316
+    },
+    "expansion_v17_summary.json": {
+      "kind": "summary",
+      "md5": "cb8c623b2a3df73b9a0b34e823f81b03",
+      "size_bytes": 1117
+    },
+    "expansion_v18_summary.json": {
+      "kind": "summary",
+      "md5": "d8fdf687d36f03c2adc7a3620a2d4965",
+      "size_bytes": 1367
+    },
+    "expansion_v19_summary.json": {
+      "kind": "summary",
+      "md5": "5d4f1e97fe042c6b7bbf37be307d1d0c",
+      "size_bytes": 2508
+    },
+    "expansion_v20_summary.json": {
+      "kind": "summary",
+      "md5": "9ee3a1aea0664d50e89dad8d10bb6f38",
+      "size_bytes": 280
+    },
+    "reassemble.py": {
+      "kind": "script",
+      "md5": "5ac82b2c6bc66c3272aa7c4a0384fbd6",
+      "size_bytes": 2370
+    },
+    "run_expansion.py": {
+      "kind": "script",
+      "md5": "138c98ea6b89ed7bf4d24367b64ddae8",
+      "size_bytes": 51594
+    },
+    "run_expansion_v13.py": {
+      "kind": "script",
+      "md5": "8cae7d464db8b1300b82163511386dcf",
+      "size_bytes": 21375
+    },
+    "run_expansion_v14.py": {
+      "kind": "script",
+      "md5": "851f988e8c24573fdce9ae3d6958ba34",
+      "size_bytes": 34938
+    },
+    "run_expansion_v15.py": {
+      "kind": "script",
+      "md5": "aac4c1b3dbb890d480f535450391f657",
+      "size_bytes": 31148
+    },
+    "run_expansion_v16.py": {
+      "kind": "script",
+      "md5": "61e9435cee130cc296a2cf87145176e7",
+      "size_bytes": 25177
+    },
+    "run_expansion_v17.py": {
+      "kind": "script",
+      "md5": "7682172a9aa23bce9c5f1123472c7494",
+      "size_bytes": 17416
+    },
+    "run_expansion_v18.py": {
+      "kind": "script",
+      "md5": "ab48d5cabb0e01d69a074df6d89455e7",
+      "size_bytes": 19023
+    },
+    "run_expansion_v19.py": {
+      "kind": "script",
+      "md5": "f112d0f90eaaf5c50ae0b2af8f79e5bb",
+      "size_bytes": 27142
+    },
+    "run_expansion_v20.py": {
+      "kind": "script",
+      "md5": "5536c6b04569c121b5757777b835ea3b",
+      "size_bytes": 9621
+    },
+    "run_ingest.py": {
+      "kind": "script",
+      "md5": "b330819db249b11a348da29433303067",
+      "size_bytes": 22081
+    },
+    "run_migration.py": {
+      "kind": "script",
+      "md5": "3d49de6404d6799403feade4083d46d1",
+      "size_bytes": 57020
+    },
+    "run_scoring.py": {
+      "kind": "script",
+      "md5": "7ecc696b10fe6853c29de81b4d6cadab",
+      "size_bytes": 43912
+    },
+    "run_scoring_v20.py": {
+      "kind": "script",
+      "md5": "85395baafdb38335c4929d81fecaa473",
+      "size_bytes": 46156
+    },
+    "sync_to_drive.sh": {
+      "kind": "script",
+      "md5": "6730f38c601bed8d0118d49a0be88c9e",
+      "size_bytes": 4027
+    },
+    "v2.0_scored/calibration.txt": {
+      "kind": "scoring_log",
+      "md5": "a6ad637d5d82fb109d6138d482e361dc",
+      "size_bytes": 764
+    },
+    "v2.0_scored/combination_members.csv": {
+      "kind": "scored_csv",
+      "md5": "fa3d9635f77b2f5fdcfe31e87e4b3a7c",
+      "size_bytes": 1034
+    },
+    "v2.0_scored/combinations.csv": {
+      "kind": "scored_csv",
+      "md5": "0608e9f8de42ae9cef79441c477582f9",
+      "size_bytes": 3306
+    },
+    "v2.0_scored/evidence_fragments.csv": {
+      "kind": "scored_csv",
+      "md5": "e41c637f7bda17f72784489f65c9d762",
+      "size_bytes": 727180
+    },
+    "v2.0_scored/evidence_links.csv": {
+      "kind": "scored_csv",
+      "md5": "9deb887a76d2065170e9872dcbbe995d",
+      "size_bytes": 142290
+    },
+    "v2.0_scored/gene_hypothesis_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "cd6e8cd0cf05e0d0cd9ba7c27c523598",
+      "size_bytes": 2023
+    },
+    "v2.0_scored/gene_mechanism_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "c322fe20e42aac24041502d0ea7e56d0",
+      "size_bytes": 2890
+    },
+    "v2.0_scored/gene_phenotype_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "afaf490e4ff01fa52b6be9c6d629775f",
+      "size_bytes": 1290
+    },
+    "v2.0_scored/genes.csv": {
+      "kind": "scored_csv",
+      "md5": "21b7078d2e735ed11625a7bbe0cd5cae",
+      "size_bytes": 289634
+    },
+    "v2.0_scored/hypotheses.csv": {
+      "kind": "scored_csv",
+      "md5": "0e60cd170f65b1cc9d7c395560cc0095",
+      "size_bytes": 28250
+    },
+    "v2.0_scored/hypothesis_hypothesis_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "5b2838b53734fef16018f0d310b1346f",
+      "size_bytes": 3967
+    },
+    "v2.0_scored/hypothesis_mechanism_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "a06873800b7cd82d52f3a0b937adccc9",
+      "size_bytes": 13548
+    },
+    "v2.0_scored/intervention_gene_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "6e6deff21926ce8cbd53dfc549059ffc",
+      "size_bytes": 1209
+    },
+    "v2.0_scored/intervention_hypothesis_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "14c47286aab833c0d83ba4f58d22cc24",
+      "size_bytes": 12171
+    },
+    "v2.0_scored/intervention_mechanism_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "37efc4adedd10ff24cee4423b74dc6c0",
+      "size_bytes": 17835
+    },
+    "v2.0_scored/intervention_phenotype_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "aaaa61b78c053dde8103fea6a81c381b",
+      "size_bytes": 170
+    },
+    "v2.0_scored/interventions.csv": {
+      "kind": "scored_csv",
+      "md5": "25366807bcb5f0a98ac141e60d9e71a8",
+      "size_bytes": 43646
+    },
+    "v2.0_scored/mechanism_phenotype_edges.csv": {
+      "kind": "scored_csv",
+      "md5": "8255caea4ee9b561f878815ef3e486e5",
+      "size_bytes": 4681
+    },
+    "v2.0_scored/mechanisms.csv": {
+      "kind": "scored_csv",
+      "md5": "6f6a97aedb964c9077646b2a317811d5",
+      "size_bytes": 9277
+    },
+    "v2.0_scored/node_aliases.csv": {
+      "kind": "scored_csv",
+      "md5": "4f35cb91fd8a8becd3855fc705b27811",
+      "size_bytes": 416696
+    },
+    "v2.0_scored/phenotypes.csv": {
+      "kind": "scored_csv",
+      "md5": "da115be0ba43c1fa4e40fe5bf2c66a2c",
+      "size_bytes": 2873
+    },
+    "v2.0_scored/run_summary.json": {
+      "kind": "scoring_log",
+      "md5": "2935c312446a0c1e68338b3a545c4cfd",
+      "size_bytes": 913
+    },
+    "v2.0_scored/score_history.csv": {
+      "kind": "scored_csv",
+      "md5": "18c258fe011217aabe684d23c2abb933",
+      "size_bytes": 171914
+    },
+    "v2.0_scored/sources.csv": {
+      "kind": "scored_csv",
+      "md5": "44195981fd25c81790cffb8386e589a9",
+      "size_bytes": 1828380
+    }
+  },
+  "spec_version": "CAUSES_ATLAS_AUTISM_SPEC_v1.2.md",
+  "totals": {
+    "combinations": 5,
+    "evidence_fragments": 1414,
+    "evidence_links": 1633,
+    "genes": 1564,
+    "hypotheses": 70,
+    "interventions": 99,
+    "mechanisms": 33,
+    "node_aliases": 5299,
+    "phenotypes": 7,
+    "score_history": 518,
+    "sources": 1414
+  }
+}

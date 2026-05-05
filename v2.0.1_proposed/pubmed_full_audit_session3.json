@@ -1,0 +1,33 @@
+{
+  "run_at": "2026-04-28T16:02:33+00:00",
+  "total_pubmed_audited": 895,
+  "reclassified": [
+    {
+      "source_id": "SRC-001307",
+      "old": "cohort",
+      "new": "editorial",
+      "pubtypes": [
+        "Editorial",
+        "Comment"
+      ]
+    },
+    {
+      "source_id": "SRC-001363",
+      "old": "case_control",
+      "new": "comment",
+      "pubtypes": [
+        "Comment",
+        "Journal Article"
+      ]
+    },
+    {
+      "source_id": "SRC-001369",
+      "old": "rct",
+      "new": "comment",
+      "pubtypes": [
+        "Journal Article",
+        "Comment"
+      ]
+    }
+  ]
+}

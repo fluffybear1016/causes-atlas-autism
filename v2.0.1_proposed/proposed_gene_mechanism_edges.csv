@@ -1,0 +1,17 @@
+id,gene_id,mechanism_id,relation_type,polarity,evidence_for_count,evidence_against_count,evidence_strength_aggregate,context_scope,status,created_at,last_updated,rationale
+PGME-00001,GEN-0832,MEC-0009,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,PIK3CA gain-of-function → mTORC1 hyperactivation
+PGME-00002,GEN-0679,MEC-0009,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,MTOR — direct
+PGME-00003,GEN-0832,MEC-0015,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,PIK3CA — catalytic subunit of PI3K
+PGME-00004,GEN-1000,MEC-0006,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,SHANK1 — synaptic scaffolding
+PGME-00005,GEN-1001,MEC-0006,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,SHANK2 — synaptic scaffolding
+PGME-00006,GEN-0744,MEC-0006,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,NRXN2 — presynaptic adhesion
+PGME-00007,GEN-0463,MEC-0007,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,GRIN2B — NMDAR subunit; glutamatergic E:I
+PGME-00008,GEN-0462,MEC-0007,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,GRIN2A — NMDAR subunit; glutamatergic E:I
+PGME-00009,GEN-0418,MEC-0007,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,GABRB3 — GABA-A receptor → inhibitory tone
+PGME-00010,GEN-0415,MEC-0007,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,GABRA3 — GABA-A receptor
+PGME-00011,GEN-0417,MEC-0007,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,GABRB2 — GABA-A receptor
+PGME-00012,GEN-0463,MEC-0020,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,NMDAR Ca2+ permeability
+PGME-00013,GEN-0461,MEC-0020,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,NMDAR obligate subunit
+PGME-00014,GEN-0136,MEC-0020,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,CaV1.2 — L-type Ca2+ channel
+PGME-00015,GEN-0752,MEC-0028,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,TrkB — BDNF receptor
+PGME-00016,GEN-1309,MEC-0010,participates_in,supporting,,,0.0,,proposed,2026-04-28T03:26:16+00:00,2026-04-28T03:26:16+00:00,POLG — mtDNA polymerase

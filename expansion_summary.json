@@ -1,0 +1,19 @@
+{
+  "expansion_version": "v1.2",
+  "run_timestamp": "2026-04-27T21:14:42+00:00",
+  "added": {
+    "mechanisms": 10,
+    "hypotheses": 24,
+    "interventions": 15,
+    "sources": 18,
+    "evidence_fragments": 18,
+    "evidence_links": 28,
+    "hypothesis_mechanism_edges": 48,
+    "mechanism_phenotype_edges": 20,
+    "gene_mechanism_edges": 22,
+    "gene_hypothesis_edges": 15,
+    "intervention_mechanism_edges": 31,
+    "intervention_hypothesis_edges": 23,
+    "intervention_gene_edges": 6
+  }
+}

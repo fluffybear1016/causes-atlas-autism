@@ -1,0 +1,53 @@
+case_id: case_026_22q11_deletion
+description: 22q11.2 deletion syndrome — syndromic gate trigger test. Tests engine's §4 rare-syndrome screening gate which routes syndromic cases to syndrome-specific output, NOT generic phenotype assignment.
+provenance_pmids: [31174463]
+operating_mode: young_child
+input_completeness_min: 0.55
+
+expected_syndromic_flag: true
+expected_syndromic_flag_match_exact: true
+expected_syndromic_match_substring: 22q11
+
+expected_top_phenotype: 22q11_specific  # NOT a PHE-NNNN — syndromic-specific routing per RSG-0010
+expected_phenotype_p_floor: 0.0
+expected_phenotype_p_ceiling: 1.0
+
+# v0.2 profile-vector expectations (post-mortem Move 1).
+# Syndromic case bypasses generic intervention ranking. Profile vector is
+# still emitted for transparency but is dominated by the syndromic routing.
+expected_dominant_dimensions: []
+expected_dominant_dimensions_match_exact: false  # accept empty-or-low; syndromic supersedes
+expected_undifferentiated_flag: true
+expected_intervention_bundle_empty: true
+expected_calibration_anchor_int_0001_in_top_5: false
+
+expected_syndromic_routing_must_include:
+  - 22q11_specific
+  - cardiology_referral
+  - immunology_referral
+  - psychiatric_surveillance_for_emerging_psychosis
+  - 22q11_2_society_referral
+
+expected_top_3_intervention_ids: []  # syndromic case bypasses generic intervention bundle
+expected_top_3_intervention_match_min: 0
+
+expected_avoidance_bundle_must_include:
+  - live_virus_vaccine_caution_if_T_cell_deficient
+
+expected_open_questions_includes:
+  - T_cell_subset_full_panel
+  - serum_calcium_PTH
+  - thyroid_panel
+
+expected_phenotype_evidence_tier_for_top: null  # syndromic — no PHE-NNNN tier
+
+calibration_anchor_stability: null
+
+notes: |
+  Critical syndromic-gate test. Engine MUST detect 22q11.2 deletion in
+  genomics.cnvs and route to syndrome-specific output BEFORE generic
+  phenotype assignment runs. Generic PHE-NNNN posteriors may still be
+  emitted but with lower priority than syndromic-routing output.
+  Specialty referral bundle must include cardiology + immunology +
+  endocrinology + psychiatry surveillance + 22q11.2 Society network.
+  Cross-ref: RSG-0010 in rare_syndrome_screening_gate.csv.

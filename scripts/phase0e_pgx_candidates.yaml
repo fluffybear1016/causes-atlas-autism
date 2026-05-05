@@ -1,0 +1,697 @@
+# Phase 0E: pgx_drug_gene_table.csv candidates — CPIC-grounded
+# Per spec §3.8 — drug × gene × metabolizer-phenotype rows.
+# Each row cites a CPIC (Clinical Pharmacogenetics Implementation
+# Consortium) guideline PMID, PubMed-verified by seed_with_verification.py
+# before write.
+#
+# IMPORTANT: per audit H-5 / iatrogenic_exposure_priors §3.13c, SSRIs
+# are NOT autism core-feature interventions. PGx rows for SSRIs apply
+# when SSRIs are prescribed for non-autism indications (severe OCD,
+# depression, anxiety) in autistic individuals — to inform safety,
+# not to recommend SSRIs as autism treatment.
+
+# === SSRIs × CYP2D6 / CYP2C19 (Bousman 2023 CPIC, supersedes Hicks 2015) ===
+
+- row_id: PGX-0001
+  claimed_pmid: 37032427
+  claimed_first_author: Bousman
+  claimed_year: 2023
+  claimed_key_terms: [CPIC, CYP2D6]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0001
+    drug_or_intervention_id: paroxetine
+    drug_class: ssri
+    gene: CYP2D6
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: "0 functional alleles (e.g., *3/*4, *4/*4, *5/*5)"
+    recommendation_modifier: alternative_drug_or_dose_reduce_50pct
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.40
+    primary_pmid: 37032427
+    autism_relevance: paroxetine prescribed for non-autism comorbid indication; PGx caution per CPIC
+    status: active
+    created_at: 2026-04-30
+    notes: Bousman 2023 CPIC SSRI/SNRI guideline. CYP2D6 PM → consider alternative drug or 50% dose reduction.
+
+- row_id: PGX-0002
+  claimed_pmid: 37032427
+  claimed_first_author: Bousman
+  claimed_year: 2023
+  claimed_key_terms: [CPIC, CYP2D6]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0002
+    drug_or_intervention_id: paroxetine
+    drug_class: ssri
+    gene: CYP2D6
+    variant_phenotype_class: ultrarapid_metabolizer
+    variant_definition_summary: "≥3 functional alleles or duplications (e.g., *1/*1xN, *2/*2xN)"
+    recommendation_modifier: alternative_drug
+    log_odds_efficacy_modifier: -0.30
+    log_odds_adverse_event_modifier: -0.10
+    primary_pmid: 37032427
+    autism_relevance: same caveat as PGX-0001
+    status: active
+    created_at: 2026-04-30
+    notes: Bousman 2023 CPIC. CYP2D6 UM → alternative drug recommended; reduced efficacy expected.
+
+- row_id: PGX-0003
+  claimed_pmid: 37032427
+  claimed_first_author: Bousman
+  claimed_year: 2023
+  claimed_key_terms: [CPIC, CYP2D6]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0003
+    drug_or_intervention_id: fluoxetine
+    drug_class: ssri
+    gene: CYP2D6
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: use_with_caution_consider_alternative
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.30
+    primary_pmid: 37032427
+    autism_relevance: same caveat
+    status: active
+    created_at: 2026-04-30
+    notes: Bousman 2023 CPIC. Fluoxetine has long half-life and active metabolites; PM cumulative effects.
+
+- row_id: PGX-0004
+  claimed_pmid: 37032427
+  claimed_first_author: Bousman
+  claimed_year: 2023
+  claimed_key_terms: [CPIC, CYP2C19]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0004
+    drug_or_intervention_id: citalopram
+    drug_class: ssri
+    gene: CYP2C19
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: "0 functional alleles (*2/*2, *2/*3, *3/*3)"
+    recommendation_modifier: dose_reduce_50pct_or_alternative
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.50
+    primary_pmid: 37032427
+    autism_relevance: citalopram for non-autism indication; CYP2C19 PM raises QT-prolongation risk
+    status: active
+    created_at: 2026-04-30
+    notes: Bousman 2023 CPIC. CYP2C19 PM + citalopram → 50% dose reduction; FDA black-box for QT.
+
+- row_id: PGX-0005
+  claimed_pmid: 37032427
+  claimed_first_author: Bousman
+  claimed_year: 2023
+  claimed_key_terms: [CPIC, CYP2C19]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0005
+    drug_or_intervention_id: escitalopram
+    drug_class: ssri
+    gene: CYP2C19
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: dose_reduce_50pct_or_alternative
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.45
+    primary_pmid: 37032427
+    autism_relevance: same caveat
+    status: active
+    created_at: 2026-04-30
+    notes: Bousman 2023 CPIC. Escitalopram PM → 50% dose reduction or alternative.
+
+- row_id: PGX-0006
+  claimed_pmid: 37032427
+  claimed_first_author: Bousman
+  claimed_year: 2023
+  claimed_key_terms: [CPIC, CYP2C19]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0006
+    drug_or_intervention_id: citalopram
+    drug_class: ssri
+    gene: CYP2C19
+    variant_phenotype_class: ultrarapid_metabolizer
+    variant_definition_summary: "*17/*17 or compound"
+    recommendation_modifier: alternative_drug
+    log_odds_efficacy_modifier: -0.30
+    log_odds_adverse_event_modifier: -0.10
+    primary_pmid: 37032427
+    autism_relevance: same caveat
+    status: active
+    created_at: 2026-04-30
+    notes: Bousman 2023 CPIC. CYP2C19 UM → alternative; reduced efficacy.
+
+- row_id: PGX-0007
+  claimed_pmid: 37032427
+  claimed_first_author: Bousman
+  claimed_year: 2023
+  claimed_key_terms: [CPIC, CYP2C19]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0007
+    drug_or_intervention_id: sertraline
+    drug_class: ssri
+    gene: CYP2C19
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: dose_reduce_50pct
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.30
+    primary_pmid: 37032427
+    autism_relevance: same caveat
+    status: active
+    created_at: 2026-04-30
+    notes: Bousman 2023 CPIC. Sertraline CYP2C19 PM → 50% dose reduction.
+
+# === TCAs × CYP2D6 / CYP2C19 (Hicks 2017 CPIC) ===
+
+- row_id: PGX-0008
+  claimed_pmid: 27997040
+  claimed_first_author: Hicks
+  claimed_year: 2017
+  claimed_key_terms: [CPIC, CYP2D6]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0008
+    drug_or_intervention_id: amitriptyline
+    drug_class: tricyclic_antidepressant
+    gene: CYP2D6
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: alternative_drug_or_dose_reduce_50pct
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.50
+    primary_pmid: 27997040
+    autism_relevance: TCAs sometimes used for sleep, mood, neuropathic pain in autistic individuals; PGx safety
+    status: active
+    created_at: 2026-04-30
+    notes: Hicks 2017 CPIC TCA. CYP2D6 PM → alternative or 50% dose reduce. Cardiotoxicity risk.
+
+- row_id: PGX-0009
+  claimed_pmid: 27997040
+  claimed_first_author: Hicks
+  claimed_year: 2017
+  claimed_key_terms: [CPIC, CYP2D6]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0009
+    drug_or_intervention_id: nortriptyline
+    drug_class: tricyclic_antidepressant
+    gene: CYP2D6
+    variant_phenotype_class: ultrarapid_metabolizer
+    variant_definition_summary: ≥3 functional alleles
+    recommendation_modifier: alternative_drug
+    log_odds_efficacy_modifier: -0.40
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 27997040
+    autism_relevance: same caveat
+    status: active
+    created_at: 2026-04-30
+    notes: Hicks 2017 CPIC TCA. CYP2D6 UM → subtherapeutic levels; alternative.
+
+- row_id: PGX-0010
+  claimed_pmid: 27997040
+  claimed_first_author: Hicks
+  claimed_year: 2017
+  claimed_key_terms: [CPIC, CYP2C19]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0010
+    drug_or_intervention_id: clomipramine
+    drug_class: tricyclic_antidepressant
+    gene: CYP2C19
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: dose_reduce_50pct
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.40
+    primary_pmid: 27997040
+    autism_relevance: clomipramine sometimes used for severe OCD in autistic individuals
+    status: active
+    created_at: 2026-04-30
+    notes: Hicks 2017 CPIC TCA. CYP2C19 PM → 50% dose reduce.
+
+# === Codeine + opioids × CYP2D6 (Crews 2021 CPIC, supersedes Crews 2014) ===
+
+- row_id: PGX-0011
+  claimed_pmid: 33387367
+  claimed_first_author: Crews
+  claimed_year: 2021
+  claimed_key_terms: [CPIC, CYP2D6]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0011
+    drug_or_intervention_id: codeine
+    drug_class: opioid
+    gene: CYP2D6
+    variant_phenotype_class: ultrarapid_metabolizer
+    variant_definition_summary: ≥3 functional alleles
+    recommendation_modifier: contraindicated
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 1.50
+    primary_pmid: 33387367
+    autism_relevance: post-surgical pain control; UM converts codeine→morphine rapidly causing respiratory depression
+    status: active
+    created_at: 2026-04-30
+    notes: Crews 2021 CPIC opioid. CYP2D6 UM + codeine = AVOID. FDA black-box especially in children. Major safety concern.
+
+- row_id: PGX-0012
+  claimed_pmid: 33387367
+  claimed_first_author: Crews
+  claimed_year: 2021
+  claimed_key_terms: [CPIC, CYP2D6]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0012
+    drug_or_intervention_id: codeine
+    drug_class: opioid
+    gene: CYP2D6
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: alternative_drug
+    log_odds_efficacy_modifier: -1.20
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 33387367
+    autism_relevance: same caveat
+    status: active
+    created_at: 2026-04-30
+    notes: Crews 2021 CPIC. CYP2D6 PM + codeine = no analgesic effect; alternative needed.
+
+- row_id: PGX-0013
+  claimed_pmid: 33387367
+  claimed_first_author: Crews
+  claimed_year: 2021
+  claimed_key_terms: [CPIC, CYP2D6]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0013
+    drug_or_intervention_id: tramadol
+    drug_class: opioid
+    gene: CYP2D6
+    variant_phenotype_class: ultrarapid_metabolizer
+    variant_definition_summary: ≥3 functional alleles
+    recommendation_modifier: contraindicated
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 1.20
+    primary_pmid: 33387367
+    autism_relevance: post-surgical
+    status: active
+    created_at: 2026-04-30
+    notes: Crews 2021 CPIC. Tramadol like codeine — UM → respiratory depression risk.
+
+- row_id: PGX-0014
+  claimed_pmid: 33387367
+  claimed_first_author: Crews
+  claimed_year: 2021
+  claimed_key_terms: [CPIC, OPRM1]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0014
+    drug_or_intervention_id: opioid_general
+    drug_class: opioid
+    gene: OPRM1
+    variant_phenotype_class: rs1799971_AG_or_GG
+    variant_definition_summary: OPRM1 A118G (Asn40Asp); G allele
+    recommendation_modifier: use_with_caution_dose_optimization
+    log_odds_efficacy_modifier: -0.20
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 33387367
+    autism_relevance: opioid response / addiction risk modifier
+    status: active
+    created_at: 2026-04-30
+    notes: Crews 2021 CPIC. OPRM1 A118G G allele → reduced opioid response per some studies; CPIC level-of-evidence moderate.
+
+- row_id: PGX-0015
+  claimed_pmid: 33387367
+  claimed_first_author: Crews
+  claimed_year: 2021
+  claimed_key_terms: [CPIC, COMT]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0015
+    drug_or_intervention_id: opioid_general
+    drug_class: opioid
+    gene: COMT
+    variant_phenotype_class: rs4680_VV_homozygous
+    variant_definition_summary: COMT V158V (high-activity homozygous)
+    recommendation_modifier: use_with_caution_dose_optimization
+    log_odds_efficacy_modifier: -0.20
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 33387367
+    autism_relevance: COMT V/V → increased pain sensitivity / reduced opioid response
+    status: active
+    created_at: 2026-04-30
+    notes: Crews 2021 CPIC. COMT V/V (high enzyme activity) → reduced central pain modulation.
+
+# === Statins × SLCO1B1 (Cooper-DeHoff 2022 CPIC) ===
+
+- row_id: PGX-0016
+  claimed_pmid: 35152405
+  claimed_first_author: Cooper-DeHoff
+  claimed_year: 2022
+  claimed_key_terms: [CPIC, SLCO1B1]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0016
+    drug_or_intervention_id: simvastatin
+    drug_class: statin
+    gene: SLCO1B1
+    variant_phenotype_class: rs4149056_CC_decreased_function
+    variant_definition_summary: "SLCO1B1 *5 / rs4149056 C/C homozygous"
+    recommendation_modifier: dose_reduce_or_alternative_statin
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.70
+    primary_pmid: 35152405
+    autism_relevance: statins occasionally used in autism comorbid hypercholesterolemia; SLCO1B1 myopathy risk
+    status: active
+    created_at: 2026-04-30
+    notes: "Cooper-DeHoff 2022 CPIC. SLCO1B1 *5/*5 + simvastatin → high myopathy risk; alternative recommended."
+
+# === HLA-B + carbamazepine/oxcarbazepine/phenytoin (Phillips 2018 CPIC) ===
+
+- row_id: PGX-0017
+  claimed_pmid: 29392710
+  claimed_first_author: Phillips
+  claimed_year: 2018
+  claimed_key_terms: [CPIC, HLA]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0017
+    drug_or_intervention_id: carbamazepine
+    drug_class: anticonvulsant
+    gene: HLA-B
+    variant_phenotype_class: "HLA-B*15:02_positive"
+    variant_definition_summary: "at least one HLA-B*15:02 allele"
+    recommendation_modifier: contraindicated
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 2.50
+    primary_pmid: 29392710
+    autism_relevance: "carbamazepine for autism comorbid epilepsy / mood; HLA-B*15:02 raises Stevens-Johnson syndrome risk substantially in Asian ancestry populations"
+    status: active
+    created_at: 2026-04-30
+    notes: "Phillips 2018 CPIC HLA. HLA-B*15:02 + carbamazepine = AVOID; SJS/TEN risk especially Asian populations."
+
+- row_id: PGX-0018
+  claimed_pmid: 29392710
+  claimed_first_author: Phillips
+  claimed_year: 2018
+  claimed_key_terms: [CPIC, HLA]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0018
+    drug_or_intervention_id: phenytoin
+    drug_class: anticonvulsant
+    gene: HLA-B
+    variant_phenotype_class: "HLA-B*15:02_positive"
+    variant_definition_summary: "at least one HLA-B*15:02 allele"
+    recommendation_modifier: contraindicated
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 1.80
+    primary_pmid: 29392710
+    autism_relevance: phenytoin for autism comorbid epilepsy
+    status: active
+    created_at: 2026-04-30
+    notes: "Phillips 2018 CPIC. HLA-B*15:02 + phenytoin = AVOID. SJS/TEN risk."
+
+- row_id: PGX-0019
+  claimed_pmid: 29392710
+  claimed_first_author: Phillips
+  claimed_year: 2018
+  claimed_key_terms: [CPIC, HLA]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0019
+    drug_or_intervention_id: oxcarbazepine
+    drug_class: anticonvulsant
+    gene: HLA-B
+    variant_phenotype_class: "HLA-B*15:02_positive"
+    variant_definition_summary: "at least one HLA-B*15:02 allele"
+    recommendation_modifier: alternative_drug
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 1.20
+    primary_pmid: 29392710
+    autism_relevance: "oxcarbazepine cross-reactivity risk for SJS in HLA-B*15:02"
+    status: active
+    created_at: 2026-04-30
+    notes: "Phillips 2018 CPIC. HLA-B*15:02 + oxcarbazepine = elevated SJS risk; alternative."
+
+# === Methylated B-vitamins × MTHFR / COMT (mechanistic, not formal CPIC) ===
+
+- row_id: PGX-0020
+  claimed_pmid: 15585776
+  claimed_first_author: James
+  claimed_year: 2004
+  claimed_key_terms: [methylation, autism]
+  claimed_journal_substring: Am J Clin Nutr
+  row_data:
+    id: PGX-0020
+    drug_or_intervention_id: methylfolate_high_dose
+    drug_class: methyl_donor_supplement
+    gene: MTHFR
+    variant_phenotype_class: rs1801133_TT_homozygous
+    variant_definition_summary: MTHFR C677T T/T (~30% reduced enzyme activity)
+    recommendation_modifier: alternative_form_preferred_methylfolate_over_folic_acid
+    log_odds_efficacy_modifier: 0.40
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 15585776
+    autism_relevance: MTHFR T/T cannot fully reduce folic acid; methylfolate (5-MTHF) bypasses
+    status: active
+    created_at: 2026-04-30
+    notes: James 2004 Am J Clin Nutr — methylation cycle in autism. Mechanistic basis (not formal CPIC) for using 5-MTHF over folic acid in MTHFR-impaired children. Confidence MODERATE.
+
+- row_id: PGX-0021
+  claimed_pmid: 15585776
+  claimed_first_author: James
+  claimed_year: 2004
+  claimed_key_terms: [methylation, autism]
+  claimed_journal_substring: Am J Clin Nutr
+  row_data:
+    id: PGX-0021
+    drug_or_intervention_id: methylfolate_high_dose
+    drug_class: methyl_donor_supplement
+    gene: COMT
+    variant_phenotype_class: rs4680_MM_homozygous
+    variant_definition_summary: COMT V158M M/M (low enzyme activity, overmethylator-leaning)
+    recommendation_modifier: use_with_caution_low_dose_titrate
+    log_odds_efficacy_modifier: -0.20
+    log_odds_adverse_event_modifier: 0.30
+    primary_pmid: 15585776
+    autism_relevance: COMT M/M overmethylators may experience paradoxical agitation/anxiety with high-dose methylfolate
+    status: active
+    created_at: 2026-04-30
+    notes: James 2004 framework. COMT M/M slow methyl-clearance + high methylfolate = methyl-trap symptoms (agitation, anxiety, insomnia). Walsh framework calls these "overmethylators." Confidence MODERATE; mechanistic + clinical observation, not RCT.
+
+- row_id: PGX-0022
+  claimed_pmid: 15585776
+  claimed_first_author: James
+  claimed_year: 2004
+  claimed_key_terms: [methylation, autism]
+  claimed_journal_substring: Am J Clin Nutr
+  row_data:
+    id: PGX-0022
+    drug_or_intervention_id: methyl_b12_high_dose
+    drug_class: methyl_donor_supplement
+    gene: COMT
+    variant_phenotype_class: rs4680_MM_homozygous
+    variant_definition_summary: COMT V158M M/M
+    recommendation_modifier: use_with_caution_low_dose_titrate
+    log_odds_efficacy_modifier: -0.20
+    log_odds_adverse_event_modifier: 0.30
+    primary_pmid: 15585776
+    autism_relevance: same as PGX-0021 — COMT M/M caution with methyl-B12
+    status: active
+    created_at: 2026-04-30
+    notes: Same Walsh-framework mechanistic basis as methylfolate. Hydroxocobalamin is alternative B12 form for COMT M/M.
+
+- row_id: PGX-0023
+  claimed_pmid: 15585776
+  claimed_first_author: James
+  claimed_year: 2004
+  claimed_key_terms: [methylation, autism]
+  claimed_journal_substring: Am J Clin Nutr
+  row_data:
+    id: PGX-0023
+    drug_or_intervention_id: methyl_b12_high_dose
+    drug_class: methyl_donor_supplement
+    gene: MTRR
+    variant_phenotype_class: rs1801394_AA_homozygous_wild_type
+    variant_definition_summary: MTRR A66G A/A (full activity; G/G slows methionine cycle regen)
+    recommendation_modifier: standard_dose_for_AA_higher_for_GG
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 15585776
+    autism_relevance: MTRR variants modulate B12-dependent methionine cycle regeneration
+    status: active
+    created_at: 2026-04-30
+    notes: James 2004. MTRR G/G reduces methionine synthase reactivation, increases B12 demand for methylation cycle.
+
+# === DPYD + 5-fluorouracil (Amstutz 2018 CPIC) — for completeness ===
+
+- row_id: PGX-0024
+  claimed_pmid: 29152729
+  claimed_first_author: Amstutz
+  claimed_year: 2018
+  claimed_key_terms: [CPIC, DPYD]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0024
+    drug_or_intervention_id: 5_fluorouracil
+    drug_class: chemotherapeutic
+    gene: DPYD
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: "DPYD *2A or other null allele homozygous"
+    recommendation_modifier: contraindicated
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 2.00
+    primary_pmid: 29152729
+    autism_relevance: rare; for autism + comorbid cancer treatment context
+    status: active
+    created_at: 2026-04-30
+    notes: Amstutz 2018 CPIC DPYD. DPYD PM + 5-FU = severe/lethal toxicity; AVOID.
+
+# === TPMT/NUDT15 + thiopurines (Relling 2019 CPIC) ===
+
+- row_id: PGX-0025
+  claimed_pmid: 30447069
+  claimed_first_author: Relling
+  claimed_year: 2019
+  claimed_key_terms: [CPIC, thiopurine]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0025
+    drug_or_intervention_id: azathioprine_6mp
+    drug_class: thiopurine
+    gene: TPMT
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: "TPMT *2/*3A/*3B/*3C homozygous or compound"
+    recommendation_modifier: dose_reduce_90pct_or_alternative
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 1.80
+    primary_pmid: 30447069
+    autism_relevance: thiopurines for autism comorbid IBD or autoimmune disease
+    status: active
+    created_at: 2026-04-30
+    notes: Relling 2019 CPIC. TPMT PM + azathioprine = severe myelosuppression; 90% dose reduce or alternative.
+
+# === Clopidogrel + CYP2C19 (Lee 2022 CPIC update) ===
+
+- row_id: PGX-0026
+  claimed_pmid: 35034351
+  claimed_first_author: Lee
+  claimed_year: 2022
+  claimed_key_terms: [CPIC, CYP2C19]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0026
+    drug_or_intervention_id: clopidogrel
+    drug_class: antiplatelet
+    gene: CYP2C19
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: 0 functional alleles
+    recommendation_modifier: alternative_antiplatelet
+    log_odds_efficacy_modifier: -1.50
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 35034351
+    autism_relevance: rare autism context; for adult autism + cardiovascular
+    status: active
+    created_at: 2026-04-30
+    notes: Lee 2022 CPIC. CYP2C19 PM + clopidogrel = no antiplatelet effect; use alternative.
+
+# === Warfarin + CYP2C9/VKORC1 (Johnson 2017 CPIC) ===
+
+- row_id: PGX-0027
+  claimed_pmid: 28198005
+  claimed_first_author: Johnson
+  claimed_year: 2017
+  claimed_key_terms: [CPIC, warfarin]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0027
+    drug_or_intervention_id: warfarin
+    drug_class: anticoagulant
+    gene: CYP2C9
+    variant_phenotype_class: poor_metabolizer
+    variant_definition_summary: "CYP2C9 *2/*3 carriers"
+    recommendation_modifier: dose_reduce_or_alternative_DOAC
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.80
+    primary_pmid: 28198005
+    autism_relevance: rare context
+    status: active
+    created_at: 2026-04-30
+    notes: Johnson 2017 CPIC. CYP2C9 PM + warfarin = bleeding risk; dose adjust or DOAC.
+
+# === Tacrolimus + CYP3A5 (Birdwell 2015 CPIC) ===
+
+- row_id: PGX-0028
+  claimed_pmid: 25801146
+  claimed_first_author: Birdwell
+  claimed_year: 2015
+  claimed_key_terms: [CPIC, CYP3A5]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0028
+    drug_or_intervention_id: tacrolimus
+    drug_class: immunosuppressant
+    gene: CYP3A5
+    variant_phenotype_class: extensive_metabolizer
+    variant_definition_summary: "CYP3A5*1 carriers (expressers)"
+    recommendation_modifier: dose_increase_50pct
+    log_odds_efficacy_modifier: -0.40
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 25801146
+    autism_relevance: rare — for autism + organ transplant comorbidity
+    status: active
+    created_at: 2026-04-30
+    notes: "Birdwell 2015 CPIC. CYP3A5*1 expressers need ~1.5x standard tacrolimus dose for therapeutic levels."
+
+# === Abacavir + HLA-B*57:01 (Martin 2014 CPIC) ===
+
+- row_id: PGX-0029
+  claimed_pmid: 24561393
+  claimed_first_author: Martin
+  claimed_year: 2014
+  claimed_key_terms: [CPIC, HLA]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0029
+    drug_or_intervention_id: abacavir
+    drug_class: antiretroviral
+    gene: HLA-B
+    variant_phenotype_class: "HLA-B*57:01_positive"
+    variant_definition_summary: "at least one HLA-B*57:01 allele"
+    recommendation_modifier: contraindicated
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 2.20
+    primary_pmid: 24561393
+    autism_relevance: rare context
+    status: active
+    created_at: 2026-04-30
+    notes: "Martin 2014 CPIC. HLA-B*57:01 + abacavir = severe hypersensitivity; contraindicated. Pre-prescription HLA-B*57:01 screening is standard of care."
+
+# === DPWG framework (Swen 2011 — Dutch alternative to CPIC) ===
+
+- row_id: PGX-0030
+  claimed_pmid: 21412232
+  claimed_first_author: Swen
+  claimed_year: 2011
+  claimed_key_terms: [pharmacogenetics, guidelines]
+  claimed_journal_substring: Clin Pharmacol Ther
+  row_data:
+    id: PGX-0030
+    drug_or_intervention_id: methodology_reference_only
+    drug_class: framework_reference
+    gene: meta
+    variant_phenotype_class: framework_reference
+    variant_definition_summary: not applicable — framework reference row
+    recommendation_modifier: framework_reference_only
+    log_odds_efficacy_modifier: 0.0
+    log_odds_adverse_event_modifier: 0.0
+    primary_pmid: 21412232
+    autism_relevance: framework
+    status: active
+    created_at: 2026-04-30
+    notes: Swen 2011 DPWG — Dutch Pharmacogenetics Working Group guidelines. Reference row for the alternative-to-CPIC framework. Engine prefers CPIC where both exist; DPWG used for drugs not yet covered by CPIC.

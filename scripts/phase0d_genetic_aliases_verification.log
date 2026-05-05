@@ -1,0 +1,162 @@
+# Verification run: 2026-04-30T19:38:19.841610Z
+# candidates: scripts/phase0d_genetic_aliases_candidates.yaml
+# output: v2.0_scored/genetic_id_aliases.csv
+# Total candidates: 38
+
+## Row GIA-0001
+  primary PMID 7647779: PASS claimed=(Frosst 1995) fetched=(frosst p 1995) title='a candidate genetic risk factor for vascular disease: a common mutation in methylenetetrahydrofolate reductase.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0002
+  primary PMID 9719624: PASS claimed=(Weisberg 1998) fetched=(weisberg i 1998) title='a second genetic polymorphism in methylenetetrahydrofolate reductase (mthfr) associated with decreased enzyme activity.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0003
+  primary PMID 10484769: PASS claimed=(Wilson 1999) fetched=(wilson a 1999) title='molecular basis for methionine synthase reductase deficiency in patients belonging to the cble complementation group of '
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0004
+  primary PMID 11073719: PASS claimed=(Heil 2000) fetched=(heil sg 2000) title='betaine-homocysteine methyltransferase (bhmt): genomic sequencing and relevance to hyperhomocysteinemia and vascular dis'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0005
+  primary PMID 10338090: PASS claimed=(Kraus 1999) fetched=(kraus jp 1999) title='cystathionine beta-synthase mutations in homocystinuria.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0006
+  primary PMID 15888699: PASS claimed=(Ramaekers 2005) fetched=(ramaekers vt 2005) title='autoantibodies to folate receptors in the cerebral folate deficiency syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0007
+  primary PMID 8807664: PASS claimed=(Lachman 1996) fetched=(lachman hm 1996) title='human catechol-o-methyltransferase pharmacogenetics: description of a functional polymorphism and its potential applicat'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0008
+  primary PMID 8346443: PASS claimed=(Corder 1993) fetched=(corder eh 1993) title='gene dose of apolipoprotein e type 4 allele and the risk of alzheimer's disease in late onset families.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0009
+  primary PMID 9012401: PASS claimed=(Sachse 1997) fetched=(sachse c 1997) title='cytochrome p450 2d6 variants in a caucasian population: allele frequencies and phenotypic consequences.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0010
+  primary PMID 11678778: PASS claimed=(Goldstein 2001) fetched=(goldstein ja 2001) title='clinical relevance of genetic polymorphisms in the human cyp2c subfamily.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0011
+  primary PMID 9154246: PASS claimed=(Collier 1996) fetched=(collier da 1996) title='a novel functional polymorphism within the promoter of the serotonin transporter gene: possible role in susceptibility t'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0012
+  primary PMID 12869766: PASS claimed=(Caspi 2003) fetched=(caspi a 2003) title='influence of life stress on depression: moderation by a polymorphism in the 5-htt gene.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0013
+  primary PMID 12553913: PASS claimed=(Egan 2003) fetched=(egan mf 2003) title='the bdnf val66met polymorphism affects activity-dependent secretion of bdnf and human memory and hippocampal function.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0014
+  primary PMID 1319557: PASS claimed=(Van Tol 1992) fetched=(van tol hh 1992) title='multiple dopamine d4 receptor variants in the human population.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0015
+  primary PMID 15992526: PASS claimed=(Wu 2005) fetched=(wu s 2005) title='positive association of the oxytocin receptor gene (oxtr) with autism in the chinese han population.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0016
+  primary PMID 11920158: PASS claimed=(Buxbaum 2002) fetched=(buxbaum jd 2002) title='association between a gabrb3 polymorphism and autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0017
+  primary PMID 12669065: PASS claimed=(Jamain 2003) fetched=(jamain s 2003) title='mutations of the x-linked genes encoding neuroligins nlgn3 and nlgn4 are associated with autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0018
+  primary PMID 11586359: PASS claimed=(Lai 2001) fetched=(lai cs 2001) title='a forkhead-domain gene is mutated in a severe speech and language disorder.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0019
+  primary PMID 7876235: PASS claimed=(Kelly 1995) fetched=(kelly rj 1995) title='sequence and expression of a candidate for the human secretor blood group alpha(1,2)fucosyltransferase gene (fut2). homo'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0020
+  primary PMID 1710175: PASS claimed=(Verkerk 1991) fetched=(verkerk aj 1991) title='identification of a gene (fmr-1) containing a cgg repeat coincident with a breakpoint cluster region exhibiting length v'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0021
+  primary PMID 10508514: PASS claimed=(Amir 1999) fetched=(amir re 1999) title='rett syndrome is caused by mutations in x-linked mecp2, encoding methyl-cpg-binding protein 2.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0022
+  primary PMID 8269512: PASS claimed=(European 1993) fetched=(european chromosome 16 tuberous sclerosis consortium 1993) title='identification and characterization of the tuberous sclerosis gene on chromosome 16.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0023
+  primary PMID 9242607: PASS claimed=(van Slegtenhorst 1997) fetched=(van slegtenhorst m 1997) title='identification of the tuberous sclerosis gene tsc1 on chromosome 9q34.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0024
+  primary PMID 15805158: PASS claimed=(Butler 2005) fetched=(butler mg 2005) title='subset of individuals with autism spectrum disorders and extreme macrocephaly associated with germline pten tumour suppr'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0025
+  primary PMID 17173049: PASS claimed=(Durand 2007) fetched=(durand cm 2007) title='mutations in the gene encoding the synaptic scaffolding protein shank3 are associated with autism spectrum disorders.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0026
+  primary PMID 18179900: PASS claimed=(Kim 2008) fetched=(kim hg 2008) title='disruption of neurexin 1 associated with autism spectrum disorder.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0027
+  primary PMID 23160955: PASS claimed=(O'Roak 2012) fetched=(o'roak bj 2012) title='multiplex targeted sequencing identifies recurrently mutated genes in autism spectrum disorders.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0028
+  primary PMID 24531329: PASS claimed=(Helsmoortel 2014) fetched=(helsmoortel c 2014) title='a swi/snf-related autism syndrome caused by de novo mutations in adnp.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0029
+  primary PMID 22495306: PASS claimed=(Sanders 2012) fetched=(sanders sj 2012) title='de novo mutations revealed by whole-exome sequencing are strongly associated with autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0030
+  primary PMID 19196676: PASS claimed=(Hamdan 2009) fetched=(hamdan ff 2009) title='mutations in syngap1 in autosomal nonsyndromic mental retardation.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0031
+  primary PMID 18184952: PASS claimed=(Weiss 2008) fetched=(weiss la 2008) title='association between microdeletion and microduplication at 16p11.2 and autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0032
+  primary PMID 18184952: PASS claimed=(Weiss 2008) fetched=(weiss la 2008) title='association between microdeletion and microduplication at 16p11.2 and autism.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0033
+  primary PMID 18784092: PASS claimed=(Mefford 2008) fetched=(mefford hc 2008) title='recurrent rearrangements of chromosome 1q21.1 and variable pediatric phenotypes.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0034
+  primary PMID 2102678: PASS claimed=(Goto 1990) fetched=(goto y 1990) title='a mutation in the trna(leu)(uur) gene associated with the melas subgroup of mitochondrial encephalomyopathies.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0035
+  primary PMID 2137962: PASS claimed=(Holt 1990) fetched=(holt ij 1990) title='a new mitochondrial disease associated with mitochondrial dna heteroplasmy.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0036
+  primary PMID 2112427: PASS claimed=(Shoffner 1990) fetched=(shoffner jm 1990) title='myoclonic epilepsy and ragged-red fiber disease (merrf) is associated with a mitochondrial dna trna(lys) mutation.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0037
+  primary PMID 7693128: PASS claimed=(Ewart 1993) fetched=(ewart ak 1993) title='hemizygosity at the elastin locus in a developmental disorder, williams syndrome.'
+  VERDICT: VERIFIED — row will be written
+
+## Row GIA-0038
+  primary PMID 12757360: PASS claimed=(Baieli 2003) fetched=(baieli s 2003) title='autism and phenylketonuria.'
+  VERDICT: VERIFIED — row will be written
+
+
+## Summary
+Total candidates: 38
+Verified (will write): 38
+Rejected: 0

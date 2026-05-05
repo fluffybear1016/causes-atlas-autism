@@ -1,0 +1,2054 @@
+1. Int J Mol Sci. 2021 Oct 26;22(21):11516. doi: 10.3390/ijms222111516.
+
+The Role of Maternal Immune Activation in the Pathogenesis of Autism: A Review 
+of the Evidence, Proposed Mechanisms and Implications for Treatment.
+
+Zawadzka A(1), Cieślik M(1), Adamczyk A(1).
+
+Author information:
+(1)Department of Cellular Signalling, Mossakowski Medical Research Institute, 
+Polish Academy of Sciences, Pawińskiego 5, 02-106 Warsaw, Poland.
+
+Autism spectrum disorder (ASD) is a neurodevelopmental disease that is 
+characterized by a deficit in social interactions and communication, as well as 
+repetitive and restrictive behaviors. Increasing lines of evidence suggest an 
+important role for immune dysregulation and/or inflammation in the development 
+of ASD. Recently, a relationship between inflammation, oxidative stress, and 
+mitochondrial dysfunction has been reported in the brain tissue of individuals 
+with ASD. Some recent studies have also reported oxidative stress and 
+mitochondrial abnormalities in animal models of maternal immune activation 
+(MIA). This review is focused on the hypothesis that MIA induces microglial 
+activation, oxidative stress, and mitochondrial dysfunction, a deleterious trio 
+in the brain that can lead to neuroinflammation and neurodevelopmental 
+pathologies in offspring. Infection during pregnancy activates the mother's 
+immune system to release proinflammatory cytokines, such as IL-6, TNF-α, and 
+others. Furthermore, these cytokines can directly cross the placenta and enter 
+the fetal circulation, or activate resident immune cells, resulting in an 
+increased production of proinflammatory cytokines, including IL-6. 
+Proinflammatory cytokines that cross the blood-brain barrier (BBB) may initiate 
+a neuroinflammation cascade, starting with the activation of the microglia. 
+Inflammatory processes induce oxidative stress and mitochondrial dysfunction 
+that, in turn, may exacerbate oxidative stress in a self-perpetuating vicious 
+cycle that can lead to downstream abnormalities in brain development and 
+behavior.
+
+DOI: 10.3390/ijms222111516
+PMCID: PMC8584025
+PMID: 34768946 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.
+
+
+2. Nutrients. 2024 Feb 16;16(4):549. doi: 10.3390/nu16040549.
+
+Between Dysbiosis, Maternal Immune Activation and Autism: Is There a Common 
+Pathway?
+
+Suprunowicz M(1), Tomaszek N(1), Urbaniak A(1), Zackiewicz K(1), Modzelewski 
+S(1), Waszkiewicz N(1).
+
+Author information:
+(1)Department of Psychiatry, Medical University of Bialystok, pl. 
+Wołodyjowskiego 2, 15-272 Białystok, Poland.
+
+Autism spectrum disorder (ASD) is a neuropsychiatric condition characterized by 
+impaired social interactions and repetitive stereotyped behaviors. Growing 
+evidence highlights an important role of the gut-brain-microbiome axis in the 
+pathogenesis of ASD. Research indicates an abnormal composition of the gut 
+microbiome and the potential involvement of bacterial molecules in 
+neuroinflammation and brain development disruptions. Concurrently, attention is 
+directed towards the role of short-chain fatty acids (SCFAs) and impaired 
+intestinal tightness. This comprehensive review emphasizes the potential impact 
+of maternal gut microbiota changes on the development of autism in children, 
+especially considering maternal immune activation (MIA). The following paper 
+evaluates the impact of the birth route on the colonization of the child with 
+bacteria in the first weeks of life. Furthermore, it explores the role of 
+pro-inflammatory cytokines, such as IL-6 and IL-17a and mother's obesity as 
+potentially environmental factors of ASD. The purpose of this review is to 
+advance our understanding of ASD pathogenesis, while also searching for the 
+positive implications of the latest therapies, such as probiotics, prebiotics or 
+fecal microbiota transplantation, targeting the gut microbiota and reducing 
+inflammation. This review aims to provide valuable insights that could instruct 
+future studies and treatments for individuals affected by ASD.
+
+DOI: 10.3390/nu16040549
+PMCID: PMC10891846
+PMID: 38398873 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.
+
+
+3. Exp Neurol. 2018 Jan;299(Pt A):241-251. doi: 10.1016/j.expneurol.2017.07.002. 
+Epub 2017 Jul 8.
+
+Beyond infection - Maternal immune activation by environmental factors, 
+microglial development, and relevance for autism spectrum disorders.
+
+Bilbo SD(1), Block CL(2), Bolton JL(3), Hanamsagar R(4), Tran PK(4).
+
+Author information:
+(1)Pediatrics and Neuroscience, Harvard Medical School, Lurie Center for Autism, 
+Massachusetts General Hospital for Children, Boston, MA 02126, United States. 
+Electronic address: sbilbo@mgh.harvard.edu.
+(2)Psychology and Neuroscience, Duke University, Durham, NC 27708, United 
+States.
+(3)Pediatrics and Anatomy/Neurobiology, University of California-Irvine, Irvine, 
+CA 92697, United States.
+(4)Pediatrics and Neuroscience, Harvard Medical School, Lurie Center for Autism, 
+Massachusetts General Hospital for Children, Boston, MA 02126, United States.
+
+Immune molecules such as cytokines and chemokines and the cells that produce 
+them within the brain, notably microglia, are critical for normal brain 
+development. This recognition has in recent years led to the working hypothesis 
+that inflammatory events during pregnancy, e.g. in response to infection, may 
+disrupt the normal expression of immune molecules during critical stages of 
+neural development and thereby contribute to the risk for neurodevelopmental 
+disorders such as autism spectrum disorder (ASD). This hypothesis has in large 
+part been shepherded by the work of Dr. Paul Patterson and colleagues, which has 
+elegantly demonstrated that a single viral infection or injection of a viral 
+mimetic to pregnant mice significantly and persistently impacts offspring immune 
+and nervous system function, changes that underlie ASD-like behavioral 
+dysfunction including social and communication deficits. Subsequent studies by 
+many labs - in humans and in non-human animal models - have supported the 
+hypothesis that ongoing disrupted immune molecule expression and/or 
+neuroinflammation contributes to at least a significant subset of ASD. The 
+heterogeneous clinical and biological phenotypes observed in ASD strongly 
+suggest that in genetically susceptible individuals, environmental risk factors 
+combine or synergize to create a tipping or threshold point for dysfunction. 
+Importantly, animal studies showing a link between maternal immune activation 
+(MIA) and ASD-like outcomes in offspring involve different species and diverse 
+environmental factors associated with ASD in humans, beyond infection, including 
+toxin exposures, maternal stress, and maternal obesity, all of which impact 
+inflammatory or immune pathways. The goal of this review is to highlight the 
+broader implications of Dr. Patterson's work for the field of autism, with a 
+focus on the impact that MIA by diverse environmental factors has on fetal brain 
+development, immune system development, and the pathophysiology of ASD.
+
+Copyright © 2017 Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.expneurol.2017.07.002
+PMCID: PMC5723548
+PMID: 28698032 [Indexed for MEDLINE]
+
+
+4. Semin Immunopathol. 2024 Jul 11;46(1-2):1. doi: 10.1007/s00281-024-01017-6.
+
+The role of microglia in early neurodevelopment and the effects of maternal 
+immune activation.
+
+Mastenbroek LJM(1), Kooistra SM(2), Eggen BJL(2), Prins JR(3).
+
+Author information:
+(1)Department of Obstetrics and Gynaecology, University Medical Center 
+Groningen, University of Groningen, Groningen, the Netherlands.
+(2)Department of BioMedical Sciences, Section Molecular Neurobiology, University 
+Medical Center Groningen, University of Groningen, Groningen, the Netherlands.
+(3)Department of Obstetrics and Gynaecology, University Medical Center 
+Groningen, University of Groningen, Groningen, the Netherlands. 
+j.r.prins@umcg.nl.
+
+Activation of the maternal immune system during gestation has been associated 
+with an increased risk for neurodevelopmental disorders in the offspring, 
+particularly schizophrenia and autism spectrum disorder. Microglia, the 
+tissue-resident macrophages of the central nervous system, are implicated as 
+potential mediators of this increased risk. Early in development, microglia 
+start populating the embryonic central nervous system and in addition to their 
+traditional role as immune responders under homeostatic conditions, microglia 
+are also intricately involved in various early neurodevelopmental processes. The 
+timing of immune activation may interfere with microglia functioning during 
+early neurodevelopment, potentially leading to long-term consequences in 
+postnatal life. In this review we will discuss the involvement of microglia in 
+brain development during the prenatal and early postnatal stages of life, while 
+also examining the effects of maternal immune activation on microglia and 
+neurodevelopmental processes. Additionally, we discuss recent single cell 
+RNA-sequencing studies focusing on microglia during prenatal development, and 
+hypothesize how early life microglial priming, potentially through epigenetic 
+reprogramming, may be related to neurodevelopmental disorders.
+
+© 2024. The Author(s).
+
+DOI: 10.1007/s00281-024-01017-6
+PMCID: PMC11239780
+PMID: 38990389 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors have no relevant financial or 
+non-financial interests to disclose.
+
+
+5. J Pers Med. 2021 Aug 29;11(9):860. doi: 10.3390/jpm11090860.
+
+Ways to Address Perinatal Mast Cell Activation and Focal Brain Inflammation, 
+including Response to SARS-CoV-2, in Autism Spectrum Disorder.
+
+Theoharides TC(1)(2)(3)(4).
+
+Author information:
+(1)Laboratory of Molecular Immunopharmacology and Drug Discovery, Department of 
+Immunology, Tufts University School of Medicine, 136 Harrison Avenue, Suite 304, 
+Boston, MA 02111, USA.
+(2)School of Graduate Biomedical Sciences, Tufts University School of Medicine, 
+Boston, MA 02111, USA.
+(3)Department of Internal Medicine, Tufts University School of Medicine and 
+Tufts Medical Center, Boston, MA 02111, USA.
+(4)Department of Psychiatry, Tufts University School of Medicine and Tufts 
+Medical Center, Boston, MA 02111, USA.
+
+The prevalence of autism spectrum disorder (ASD) continues to increase, but no 
+distinct pathogenesis or effective treatment are known yet. The presence of many 
+comorbidities further complicates matters, making a personalized approach 
+necessary. An increasing number of reports indicate that inflammation of the 
+brain leads to neurodegenerative changes, especially during perinatal life, 
+"short-circuiting the electrical system" in the amygdala that is essential for 
+our ability to feel emotions, but also regulates fear. Inflammation of the brain 
+can result from the stimulation of mast cells-found in all tissues including the 
+brain-by neuropeptides, stress, toxins, and viruses such as SARS-CoV-2, leading 
+to the activation of microglia. These resident brain defenders then release even 
+more inflammatory molecules and stop "pruning" nerve connections, disrupting 
+neuronal connectivity, lowering the fear threshold, and derailing the expression 
+of emotions, as seen in ASD. Many epidemiological studies have reported a strong 
+association between ASD and atopic dermatitis (eczema), asthma, and food 
+allergies/intolerance, all of which involve activated mast cells. Mast cells can 
+be triggered by allergens, neuropeptides, stress, and toxins, leading to 
+disruption of the blood-brain barrier (BBB) and activation of microglia. 
+Moreover, many epidemiological studies have reported a strong association 
+between stress and atopic dermatitis (eczema) during gestation, which involves 
+activated mast cells. Both mast cells and microglia can also be activated by 
+SARS-CoV-2 in affected mothers during pregnancy. We showed increased expression 
+of the proinflammatory cytokine IL-18 and its receptor, but decreased expression 
+of the anti-inflammatory cytokine IL-38 and its receptor IL-36R, only in the 
+amygdala of deceased children with ASD. We further showed that the natural 
+flavonoid luteolin is a potent inhibitor of the activation of both mast cells 
+and microglia, but also blocks SARS-CoV-2 binding to its receptor 
+angiotensin-converting enzyme 2 (ACE2). A treatment approach should be tailored 
+to each individual patient and should address hyperactivity/stress, allergies, 
+or food intolerance, with the introduction of natural molecules or drugs to 
+inhibit mast cells and microglia, such as liposomal luteolin.
+
+DOI: 10.3390/jpm11090860
+PMCID: PMC8465360
+PMID: 34575637
+
+Conflict of interest statement: The author declares no conflict of interest. The 
+author is the recipient of US Patents 8,268,365, 9,050,275 and 9,176,146 
+covering brain inflammation and ASD. He is also the Scientific Director of 
+Algonot, LLC (Florida, USA) that develops unique dietary supplements containing 
+flavonoids.
+
+
+6. Biochim Biophys Acta. 2012 Jan;1822(1):34-41. doi:
+10.1016/j.bbadis.2010.12.017.  Epub 2010 Dec 28.
+
+Mast cell activation and autism.
+
+Theoharides TC(1), Angelidou A, Alysandratos KD, Zhang B, Asadi S, Francis K, 
+Toniato E, Kalogeromitros D.
+
+Author information:
+(1)Molecular Immunopharmacology and Drug Discovery Laboratory, Department of 
+Pharmacology and Experimental Therapeutics, Tufts University School of Medicine, 
+Boston, MA 02111, USA. theoharis.theoharides@tufts.edu
+
+Autism spectrum disorders (ASD) are neurodevelopmental disorders characterized 
+by varying degrees of dysfunctional communication and social interactions, 
+repetitive and stereotypic behaviors, as well as learning and sensory deficits. 
+Despite the impressive rise in the prevalence of autism during the last two 
+decades, there are few if any clues for its pathogenesis, early detection or 
+treatment. Increasing evidence indicates high brain expression of 
+pro-inflammatory cytokines and the presence of circulating antibodies against 
+brain proteins. A number of papers, mostly based on parental reporting on their 
+children's health problems, suggest that ASD children may present with 
+"allergic-like" problems in the absence of elevated serum IgE and chronic 
+urticaria. These findings suggest non-allergic mast cell activation, probably in 
+response to environmental and stress triggers that could contribute to 
+inflammation. In utero inflammation can lead to preterm labor and has itself 
+been strongly associated with adverse neurodevelopmental outcomes. Premature 
+babies have about four times higher risk of developing ASD and are also more 
+vulnerable to infections, while delayed development of their gut-blood-brain 
+barriers makes exposure to potential neurotoxins likely. Perinatal mast cell 
+activation by infectious, stress-related, environmental or allergic triggers can 
+lead to release of pro-inflammatory and neurotoxic molecules, thus contributing 
+to brain inflammation and ASD pathogenesis, at least in a subgroup of ASD 
+patients. This article is part of a Special Issue entitled: Mast cells in 
+inflammation.
+
+Copyright © 2010. Published by Elsevier B.V.
+
+DOI: 10.1016/j.bbadis.2010.12.017
+PMID: 21193035 [Indexed for MEDLINE]
+
+
+7. Brain Behav Immun. 2016 Nov;58:165-172. doi: 10.1016/j.bbi.2016.06.005. Epub 
+2016 Jun 7.
+
+Maternal infection during pregnancy and risk of autism spectrum disorders: A 
+systematic review and meta-analysis.
+
+Jiang HY(1), Xu LL(2), Shao L(1), Xia RM(3), Yu ZH(2), Ling ZX(1), Yang F(1), 
+Deng M(1), Ruan B(4).
+
+Author information:
+(1)State Key Laboratory for Diagnosis and Treatment of Infectious Diseases, 
+Collaborative Innovation Center for Diagnosis and Treatment of Infectious 
+Diseases, The First Affiliated Hospital, College of Medicine, Zhejiang 
+University, Hangzhou, Zhejiang 310003, China.
+(2)Department of Psychiatry, Hangzhou Seventh People's Hospital, Hangzhou 
+310013, China.
+(3)College of Basic Medical Science, Zhejiang Chinese Medical University, 
+Hangzhou, Zhejiang 310051, China.
+(4)State Key Laboratory for Diagnosis and Treatment of Infectious Diseases, 
+Collaborative Innovation Center for Diagnosis and Treatment of Infectious 
+Diseases, The First Affiliated Hospital, College of Medicine, Zhejiang 
+University, Hangzhou, Zhejiang 310003, China. Electronic address: 
+hzruanbing@gmail.com.
+
+Comment in
+    Brain Behav Immun. 2016 Oct;57:372. doi: 10.1016/j.bbi.2016.06.012.
+    Brain Behav Immun. 2016 Oct;57:371. doi: 10.1016/j.bbi.2016.06.013.
+
+Conflicting evidence exists with regard to the relationship between maternal 
+infection during pregnancy and the risk of autism spectrum disorder (ASD) in 
+offspring. The aim of this meta-analysis was to systematically assess this 
+relationship. To identify relevant studies, we conducted systematic searches in 
+PubMed and Embase of scientific articles published through March 2016. 
+Random-effects models were adopted to estimate overall relative risk. A total of 
+15 studies (2 cohort and 13 case-control studies) involving more than 40,000 ASD 
+cases were included in our meta-analysis. Our results showed that maternal 
+infection during pregnancy was associated with an increased risk of ASD in 
+offspring (OR=1.13, 95% confidence interval (CI): 1.03-1.23), particularly among 
+those requiring hospitalization (OR=1.30, 95% CI: 1.14-1.50). Subgroup analyses 
+suggested that risk may be modulated by the type of infectious agent, time of 
+infectious exposure, and site of infection. These findings indicate that 
+maternal infection during pregnancy increases the risk of ASD in offspring. 
+Possible mechanisms may include direct effects of pathogens and, more 
+indirectly, the effects of inflammatory responses on the developing brain.
+
+Copyright © 2016 Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.bbi.2016.06.005
+PMID: 27287966 [Indexed for MEDLINE]
+
+
+8. Brain Behav Immun. 2015 Feb;44:100-5. doi: 10.1016/j.bbi.2014.09.001. Epub
+2014  Sep 16.
+
+Maternal hospitalization with infection during pregnancy and risk of autism 
+spectrum disorders.
+
+Lee BK(1), Magnusson C(2), Gardner RM(3), Blomström Å(2), Newschaffer CJ(4), 
+Burstyn I(5), Karlsson H(6), Dalman C(2).
+
+Author information:
+(1)Department of Epidemiology and Biostatistics, Drexel University School of 
+Public Health, Philadelphia, PA, USA; A.J. Drexel Autism Institute, 
+Philadelphia, PA, USA. Electronic address: bklee@drexel.edu.
+(2)Division of Public Health Epidemiology, Department of Public Health Sciences, 
+Karolinska Institutet, Stockholm, Sweden.
+(3)Division of Public Health Epidemiology, Department of Public Health Sciences, 
+Karolinska Institutet, Stockholm, Sweden; Department of Neuroscience, Karolinska 
+Institutet, Stockholm, Sweden.
+(4)Department of Epidemiology and Biostatistics, Drexel University School of 
+Public Health, Philadelphia, PA, USA; A.J. Drexel Autism Institute, 
+Philadelphia, PA, USA.
+(5)A.J. Drexel Autism Institute, Philadelphia, PA, USA; Department of 
+Environmental and Occupational Health, Drexel University School of Public 
+Health, Philadelphia, PA, USA.
+(6)Department of Neuroscience, Karolinska Institutet, Stockholm, Sweden.
+
+Animal models indicate that maternal infection during pregnancy can result in 
+behavioral abnormalities and neuropathologies in offspring. We examined the 
+association between maternal inpatient diagnosis with infection during pregnancy 
+and risk of ASD in a Swedish nationwide register-based birth cohort born 
+1984-2007 with follow-up through 2011. In total, the sample consisted of 
+2,371,403 persons with 24,414 ASD cases. Infection during pregnancy was defined 
+from ICD codes. In the sample, 903 mothers of ASD cases (3.7%) had an inpatient 
+diagnosis of infection during pregnancy. Logistic regression models adjusted for 
+a number of covariates yielded odds ratios indicating approximately a 30% 
+increase in ASD risk associated with any inpatient diagnosis of infection. 
+Timing of infection did not appear to influence risk in the total Swedish 
+population, since elevated risk of ASD was associated with infection in all 
+trimesters. In a subsample analysis, infections were associated with greater 
+risk of ASD with intellectual disability than for ASD without intellectual 
+disability. The present study adds to the growing body of evidence, encompassing 
+both animal and human studies, that supports possible immune-mediated mechanisms 
+underlying the etiology of ASD.
+
+Copyright © 2014 Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.bbi.2014.09.001
+PMCID: PMC4418173
+PMID: 25218900 [Indexed for MEDLINE]
+
+Conflict of interest statement: Conflict of interest statement: All authors 
+declare that there are no conflicts of interest.
+
+
+9. Nature. 2014 Nov 13;515(7526):209-15. doi: 10.1038/nature13772. Epub 2014 Oct 
+29.
+
+Synaptic, transcriptional and chromatin genes disrupted in autism.
+
+De Rubeis S, He X, Goldberg AP, Poultney CS, Samocha K, Cicek AE, Kou Y, Liu L, 
+Fromer M, Walker S, Singh T, Klei L, Kosmicki J, Shih-Chen F, Aleksic B, 
+Biscaldi M, Bolton PF, Brownfeld JM, Cai J, Campbell NG, Carracedo A, Chahrour 
+MH, Chiocchetti AG, Coon H, Crawford EL, Curran SR, Dawson G, Duketis E, 
+Fernandez BA, Gallagher L, Geller E, Guter SJ, Hill RS, Ionita-Laza J, Jimenz 
+Gonzalez P, Kilpinen H, Klauck SM, Kolevzon A, Lee I, Lei I, Lei J, Lehtimäki T, 
+Lin CF, Ma'ayan A, Marshall CR, McInnes AL, Neale B, Owen MJ, Ozaki N, Parellada 
+M, Parr JR, Purcell S, Puura K, Rajagopalan D, Rehnström K, Reichenberg A, Sabo 
+A, Sachse M, Sanders SJ, Schafer C, Schulte-Rüther M, Skuse D, Stevens C, 
+Szatmari P, Tammimies K, Valladares O, Voran A, Li-San W, Weiss LA, Willsey AJ, 
+Yu TW, Yuen RK; DDD Study; Homozygosity Mapping Collaborative for Autism; UK10K 
+Consortium; Cook EH, Freitag CM, Gill M, Hultman CM, Lehner T, Palotie A, 
+Schellenberg GD, Sklar P, State MW, Sutcliffe JS, Walsh CA, Scherer SW, Zwick 
+ME, Barett JC, Cutler DJ, Roeder K, Devlin B, Daly MJ, Buxbaum JD.
+
+Collaborators: Akawi N, Al-Turki S, Ambridge K, Barrett J, Barrett D, 
+Bayzetinova T, Carter N, Clayton S, Coomber E, Firth H, Fitzgerald T, 
+Fitzpatrick D, Gererty S, Gribble S, Hurles M, Jones P, Jones W, King D, 
+Krishnappa N, Mason L, McRae J, Michael P, Middleton A, Miller R, Morley K, 
+Parthiban V, Prigmore E, Rajan D, Sifrim A, Tivery A, van Kogelenberg M, Wright 
+C, Adli M, Al-Awadi S, Al-Gazali L, Allub Z, Al-Saad S, Al-Saffar M, Ataman B, 
+Balkhy S, Barkovich AJ, Barry BJ, Bastaki L, Bauman M, Ben-Omran T, Braverman 
+NE, Chahrour MH, Chang BS, Chaudhry HR, Coulter M, D'Gama Am, Daoud A, Eapen V, 
+Felie JM, Gabriel SB, Gascon GG, Greenberg ME, Hanson E, Harmin DA, Hashmi A, 
+Herguner S, Hill RS, Hisama FM, Jiralerspong S, Joseph RM, Khalil S, Khuri-Bulos 
+N, Kwaja O, Kwan BY, LeClair E, Lim ET, Markianos K, Martin M, Masri A, Meyer B, 
+Mochida GH, Morrow EM, Mukaddes NM, Nasir RH, Niaz S, Okarmura-Ikeda K, Oner O, 
+Parlow JN, Poduri A, Rajab A, Rappaport L, Rodriguez J, Schmitz-Abe K, Shen Y, 
+Stevens CR, Stoler JM, Sunu CM, Tan WH, Taniguchi H, Teebi A, Walsh CA, Ware J, 
+Wu BL, Yoo SY, Yu T, Anney R, Ayub M, Bailey A, Baird G, Barrett J, Blackwood D, 
+Bolton P, Breen G, Collier D, Cormican P, Craddock N, Crooks L, Curran S, 
+Danecek P, Durbin R, Gallagher L, Green J, Gurling H, Holt R, Joyce C, LeCouteur 
+A, Lee I, Lönnqvist J, McCarthy S, McGuffin P, McIntosh A, McQuillen A, 
+Merkangas A, Monaco A, Muddyman D, O'Donovan M, Owen M, Palotie A, Parr J, 
+Paunio T, Pietilainen O, Rehnström K, Skuse D, Stalker J, St Clair D, Suvisaari 
+J, Williams H.
+
+The genetic architecture of autism spectrum disorder involves the interplay of 
+common and rare variants and their impact on hundreds of genes. Using exome 
+sequencing, here we show that analysis of rare coding variation in 3,871 autism 
+cases and 9,937 ancestry-matched or parental controls implicates 22 autosomal 
+genes at a false discovery rate (FDR) < 0.05, plus a set of 107 autosomal genes 
+strongly enriched for those likely to affect risk (FDR < 0.30). These 107 genes, 
+which show unusual evolutionary constraint against mutations, incur de novo 
+loss-of-function mutations in over 5% of autistic subjects. Many of the genes 
+implicated encode proteins for synaptic formation, transcriptional regulation 
+and chromatin-remodelling pathways. These include voltage-gated ion channels 
+regulating the propagation of action potentials, pacemaking and 
+excitability-transcription coupling, as well as histone-modifying enzymes and 
+chromatin remodellers-most prominently those that mediate post-translational 
+lysine methylation/demethylation modifications of histones.
+
+DOI: 10.1038/nature13772
+PMCID: PMC4402723
+PMID: 25363760 [Indexed for MEDLINE]
+
+
+10. Brain Dev. 2013 Feb;35(2):106-10. doi: 10.1016/j.braindev.2012.05.013. Epub
+2012  Jun 29.
+
+SHANK3 as an autism spectrum disorder-associated gene.
+
+Uchino S(1), Waga C.
+
+Author information:
+(1)Department of Neurochemistry, National Institute of Neuroscience, National 
+Center of Neurology and Psychiatry, Kodaira, Tokyo, Japan. uchino@ncnp.go.jp
+
+SHANK3 is a synaptic scaffolding protein enriched in the postsynaptic density of 
+excitatory synapses, and plays important roles in the formation, maturation, and 
+maintenance of synapses. Haploinsufficiency of the SHANK3 gene causes a 
+developmental disorder, 22q13.3 deletion syndrome (known as Phelan-McDermid 
+syndrome), that is characterized by severe expressive language and speech delay, 
+hypotonia, global developmental delay, and autistic behavior. Since several 
+SHANK3 mutations have been identified in a particular phenotypic group in 
+patients with autism spectrum disorder (ASD), the SHANK3 is strongly suspected 
+of being involved in the pathogenesis and neuropathology of ASD. Five 
+CpG-islands have been identified in the SHANK3 gene, and tissue-specific 
+expression of SHANK3 is regulated by DNA methylation in an epigenetic manner. 
+Cumulative evidence has shown that several SHANK3 variants are expressed in the 
+developing rodent brain and that their expression is regulated by DNA 
+methylation of intragenic promoters. We identified novel SHANK3 transcripts 
+whose transcription started at the vicinity of the CpG-island 2 in the mouse 
+brain. Shank3 mutant mice exhibit autistic-like behaviors, including impaired 
+social interaction and repetitive behaviors. In this article we review recent 
+findings in regard to higher brain functions of SHANK3, epigenetic regulation of 
+SHANK3 expression, and SHANK3-related ASD that were obtained from genetic 
+analyses in ASD patients, molecular biological studies using developing mouse 
+brains, and studies of Shank3 mutant mice.
+
+Copyright © 2012 The Japanese Society of Child Neurology. Published by Elsevier 
+B.V. All rights reserved.
+
+DOI: 10.1016/j.braindev.2012.05.013
+PMID: 22749736 [Indexed for MEDLINE]
+
+
+11. Eur J Neurosci. 2018 Mar;47(6):534-548. doi: 10.1111/ejn.13595. Epub 2017 May
+ 17.
+
+Neurobiological bases of autism-epilepsy comorbidity: a focus on 
+excitation/inhibition imbalance.
+
+Bozzi Y(1)(2), Provenzano G(3), Casarosa S(2)(4).
+
+Author information:
+(1)Neurodevelopmental Disorders Research Group, Centre for Mind/Brain Sciences, 
+University of Trento, via Sommarive 9, 38123, Povo, Trento, Italy.
+(2)CNR Neuroscience Institute, Pisa, Italy.
+(3)Laboratory of Molecular Neuropathology, Centre for Integrative Biology, 
+University of Trento, Trento, Italy.
+(4)Laboratory of Neural Development and Regeneration, Centre for Integrative 
+Biology, University of Trento, Trento, Italy.
+
+Autism spectrum disorders (ASD) and epilepsy are common neurological diseases of 
+childhood, with an estimated incidence of approximately 0.5-1% of the worldwide 
+population. Several genetic, neuroimaging and neuropathological studies clearly 
+showed that both ASD and epilepsy have developmental origins and a substantial 
+degree of heritability. Most importantly, ASD and epilepsy frequently coexist in 
+the same individual, suggesting a common neurodevelopmental basis for these 
+disorders. Genome-wide association studies recently allowed for the 
+identification of a substantial number of genes involved in ASD and epilepsy, 
+some of which are mutated in syndromes presenting both ASD and epilepsy clinical 
+features. At the cellular level, both preclinical and clinical studies indicate 
+that the different genetic causes of ASD and epilepsy may converge to perturb 
+the excitation/inhibition (E/I) balance, due to the dysfunction of excitatory 
+and inhibitory circuits in various brain regions. Metabolic and immune 
+dysfunctions, as well as environmental causes also contribute to ASD 
+pathogenesis. Thus, an E/I imbalance resulting from neurodevelopmental deficits 
+of multiple origins might represent a common pathogenic mechanism for both 
+diseases. Here, we will review the most significant studies supporting these 
+hypotheses. A deeper understanding of the molecular and cellular determinants of 
+autism-epilepsy comorbidity will pave the way to the development of novel 
+therapeutic strategies.
+
+© 2017 Federation of European Neuroscience Societies and John Wiley & Sons Ltd.
+
+DOI: 10.1111/ejn.13595
+PMID: 28452083 [Indexed for MEDLINE]
+
+
+12. Biochem Soc Trans. 2024 Oct 30;52(5):2047-2058. doi: 10.1042/BST20231004.
+
+Progress towards understanding risk factor mechanisms in the development of 
+autism spectrum disorders.
+
+Bryers A(1), Hawkes CA(1), Parkin E(1), Dawson N(1).
+
+Author information:
+(1)Division of Biomedical and Life Sciences, Faculty of Health and Medicine, 
+Lancaster University, Lancaster, UK.
+
+Autism spectrum disorders (ASD) are a heterogenous set of syndromes 
+characterised by social impairment and cognitive symptoms. Currently, there are 
+limited treatment options available to help people with ASD manage their 
+symptoms. Understanding the biological mechanisms that result in ASD diagnosis 
+and symptomatology is an essential step in developing new interventional 
+strategies. Human genetic studies have identified common gene variants of small 
+effect and rare risk genes and copy number variants (CNVs) that substantially 
+increase the risk of developing ASD. Reverse translational studies using rodent 
+models based on these genetic variants provide new insight into the biological 
+basis of ASD. Here we review recent findings from three ASD associated CNV mouse 
+models (16p11.2, 2p16.3 and 22q11.2 deletion) that show behavioural and 
+cognitive phenotypes relevant to ASD. These models have identified disturbed 
+excitation-inhibition neurotransmitter balance, evidenced by dysfunctional 
+glutamate and GABA signalling, as a key aetiological mechanism. These models 
+also provide emerging evidence for serotoninergic neurotransmitter system 
+dysfunction, although more work is needed to clarify the nature of this. At the 
+brain network level, prefrontal cortex (PFC) dysfunctional connectivity is also 
+evident across these models, supporting disturbed PFC function as a key nexus in 
+ASD aetiology. Overall, published data highlight the utility and valuable 
+insight gained into ASD aetiology from preclinical CNV mouse models. These have 
+identified key aetiological mechanisms that represent putative novel therapeutic 
+targets for the treatment of ASD symptoms, making them useful translational 
+models for future drug discovery, development and validation.
+
+© 2024 The Author(s).
+
+DOI: 10.1042/BST20231004
+PMCID: PMC11555714
+PMID: 39221783 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare that there are no competing 
+interests associated with the manuscript.
+
+
+13. Int J Mol Sci. 2017 Mar 18;18(3):659. doi: 10.3390/ijms18030659.
+
+Dysfunctional mTORC1 Signaling: A Convergent Mechanism between Syndromic and 
+Nonsyndromic Forms of Autism Spectrum Disorder?
+
+Magdalon J(1), Sánchez-Sánchez SM(2)(3), Griesi-Oliveira K(4), Sertié AL(5).
+
+Author information:
+(1)Hospital Israelita Albert Einstein, Centro de Pesquisa Experimental, São 
+Paulo 05652-900, Brazil. juliana.magdalon@einstein.br.
+(2)Hospital Israelita Albert Einstein, Centro de Pesquisa Experimental, São 
+Paulo 05652-900, Brazil. sandra.mabel@einstein.br.
+(3)Departamento de Genética e Biologia Evolutiva, Instituto de Biociências, 
+Universidade de São Paulo, São Paulo 05508-090, Brazil. 
+sandra.mabel@einstein.br.
+(4)Hospital Israelita Albert Einstein, Centro de Pesquisa Experimental, São 
+Paulo 05652-900, Brazil. karina.griesi@einstein.br.
+(5)Hospital Israelita Albert Einstein, Centro de Pesquisa Experimental, São 
+Paulo 05652-900, Brazil. andrea.sertie@einstein.br.
+
+Whereas autism spectrum disorder (ASD) exhibits striking heterogeneity in 
+genetics and clinical presentation, dysfunction of mechanistic target of 
+rapamycin complex 1 (mTORC1) signaling pathway has been identified as a 
+molecular feature common to several well-characterized syndromes with high 
+prevalence of ASD. Additionally, recent findings have also implicated mTORC1 
+signaling abnormalities in a subset of nonsyndromic ASD, suggesting that 
+defective mTORC1 pathway may be a potential converging mechanism in ASD 
+pathology across different etiologies. However, the mechanistic evidence for a 
+causal link between aberrant mTORC1 pathway activity and ASD neurobehavioral 
+features varies depending on the ASD form involved. In this review, we first 
+discuss six monogenic ASD-related syndromes, including both classical and 
+potentially novel mTORopathies, highlighting their contribution to our 
+understanding of the neurobiological mechanisms underlying ASD, and then we 
+discuss existing evidence suggesting that aberrant mTORC1 signaling may also 
+play a role in nonsyndromic ASD.
+
+DOI: 10.3390/ijms18030659
+PMCID: PMC5372671
+PMID: 28335463 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.
+
+
+14. Front Mol Neurosci. 2014 Feb 3;7:1. doi: 10.3389/fnmol.2014.00001.
+eCollection  2014.
+
+Loss of mTOR repressors Tsc1 or Pten has divergent effects on excitatory and 
+inhibitory synaptic transmission in single hippocampal neuron cultures.
+
+Weston MC(1), Chen H(1), Swann JW(1).
+
+Author information:
+(1)The Cain Foundation Laboratories, The Jan and Dan Duncan Neurological 
+Research Institute Houston, TX, USA ; Departments of Neuroscience and 
+Pediatrics, Baylor College of Medicine Houston, TX, USA.
+
+The Pten and Tsc1 genes both encode proteins that repress mechanistic target of 
+rapamycin (mTOR) signaling. Disruption of either gene in the brain results in 
+epilepsy and autism-like symptoms in humans and mouse models, therefore it is 
+important to understand the molecular and physiological events that lead from 
+gene disruption to disease phenotypes. Given the similar roles these two 
+molecules play in the regulation of cellular growth and the overlap in the 
+phenotypes that result from their loss, we predicted that the deletion of either 
+the Pten or Tsc1 gene from autaptic hippocampal neurons would have similar 
+effects on neuronal morphology and synaptic transmission. Accordingly, we found 
+that loss of either Pten or Tsc1 caused comparable increases in soma size, 
+dendrite length and action potential properties. However, the effects of Pten 
+and Tsc1 loss on synaptic transmission were different. Loss of Pten lead to an 
+increase in both excitatory and inhibitory neurotransmission, while loss of Tsc1 
+did not affect excitatory neurotransmission and reduced inhibitory transmission 
+by decreasing mIPSC amplitude. Although the loss of Pten or Tsc1 both increased 
+downstream mTORC1 signaling, phosphorylation of Akt was increased in Pten-ko and 
+decreased in Tsc1-ko neurons, potentially accounting for the different effects 
+on synaptic transmission. Despite the different effects at the synaptic level, 
+our data suggest that loss of Pten or Tsc1 may both lead to an increase in the 
+ratio of excitation to inhibition at the network level, an effect that has been 
+proposed to underlie both epilepsy and autism.
+
+DOI: 10.3389/fnmol.2014.00001
+PMCID: PMC3922082
+PMID: 24574959
+
+
+15. Neurotherapeutics. 2015 Jul;12(3):609-19. doi: 10.1007/s13311-015-0356-8.
+
+Balancing Proliferation and Connectivity in PTEN-associated Autism Spectrum 
+Disorder.
+
+Tilot AK(1), Frazier TW 2nd, Eng C.
+
+Author information:
+(1)Genomic Medicine Institute, Lerner Research Institute, Cleveland Clinic, 
+Cleveland, OH, 44195, USA.
+
+Germline mutations in PTEN, which encodes a widely expressed phosphatase, was 
+mapped to 10q23 and identified as the susceptibility gene for Cowden syndrome, 
+characterized by macrocephaly and high risks of breast, thyroid, and other 
+cancers. The phenotypic spectrum of PTEN mutations expanded to include autism 
+with macrocephaly only 10 years ago. Neurological studies of patients with 
+PTEN-associated autism spectrum disorder (ASD) show increases in cortical white 
+matter and a distinctive cognitive profile, including delayed language 
+development with poor working memory and processing speed. Once a germline PTEN 
+mutation is found, and a diagnosis of phosphatase and tensin homolog (PTEN) 
+hamartoma tumor syndrome made, the clinical outlook broadens to include higher 
+lifetime risks for multiple cancers, beginning in childhood with thyroid cancer. 
+First described as a tumor suppressor, PTEN is a major negative regulator of the 
+phosphatidylinositol 3-kinase/protein kinase B/mammalian target of rapamycin 
+(mTOR) signaling pathway-controlling growth, protein synthesis, and 
+proliferation. This canonical function combines with less well-understood 
+mechanisms to influence synaptic plasticity and neuronal cytoarchitecture. 
+Several excellent mouse models of Pten loss or dysfunction link these neural 
+functions to autism-like behavioral abnormalities, such as altered sociability, 
+repetitive behaviors, and phenotypes like anxiety that are often associated with 
+ASD in humans. These models also show the promise of mTOR inhibitors as 
+therapeutic agents capable of reversing phenotypes ranging from overgrowth to 
+low social behavior. Based on these findings, therapeutic options for patients 
+with PTEN hamartoma tumor syndrome and ASD are coming into view, even as new 
+discoveries in PTEN biology add complexity to our understanding of this master 
+regulator.
+
+DOI: 10.1007/s13311-015-0356-8
+PMCID: PMC4489960
+PMID: 25916396 [Indexed for MEDLINE]
+
+
+16. Am J Med Genet C Semin Med Genet. 2019 Dec;181(4):591-610. doi: 
+10.1002/ajmg.c.31743. Epub 2019 Oct 14.
+
+PTEN Hamartoma tumor syndrome in childhood: A review of the clinical literature.
+
+Macken WL(1), Tischkowitz M(2)(3), Lachlan KL(1)(4).
+
+Author information:
+(1)Wessex Clinical Genetics Service, University Hospitals Southampton NHS Trust, 
+Southampton, United Kingdom.
+(2)Department of Clinical Genetics, East Anglian Medical Genetics Service, 
+Cambridge University Hospitals NHS Foundation Trust, Cambridge, United Kingdom.
+(3)Department of Medical Genetics, University of Cambridge, Addenbrooke's 
+Hospital, Cambridge, United Kingdom.
+(4)Human Genetics and Genomic Medicine, Faculty of Medicine, University of 
+Southampton, Southampton, United Kingdom.
+
+PTEN hamartoma tumor syndrome (PHTS) is a highly variable autosomal dominant 
+condition associated with intellectual disability, overgrowth, and tumor 
+predisposition phenotypes, which often overlap. PHTS incorporates a number of 
+historical clinical presentations including Bannayan-Riley-Ruvalcaba syndrome, 
+Cowden syndrome, and a macrocephaly-autism/developmental delay syndrome. Many 
+reviews in the literature focus on PHTS as an adult hamartoma and malignancy 
+predisposition condition. Here, we review the current literature with a focus on 
+pediatric presentations. The review starts with a summary of the main conditions 
+encompassed within PHTS. We then discuss PHTS diagnostic criteria, and clinical 
+features. We briefly address rarer PTEN associations, and the possible role of 
+mTOR inhibitors in treatment. We acknowledge the limited understanding of the 
+natural history of childhood-onset PHTS as a cancer predisposition syndrome and 
+present a summary of important management considerations.
+
+© 2019 Wiley Periodicals, Inc.
+
+DOI: 10.1002/ajmg.c.31743
+PMID: 31609537 [Indexed for MEDLINE]
+
+
+17. Cells. 2023 Sep 21;12(18):2330. doi: 10.3390/cells12182330.
+
+Insight and Recommendations for Fragile X-Premutation-Associated Conditions from 
+the Fifth International Conference on FMR1 Premutation.
+
+Tassone F(1)(2), Protic D(3)(4), Allen EG(5), Archibald AD(6)(7)(8), Baud A(9), 
+Brown TW(10)(11)(12), Budimirovic DB(13)(14), Cohen J(15), Dufour B(2)(16), 
+Eiges R(17), Elvassore N(18)(19), Gabis LV(20)(21), Grudzien SJ(22)(23)(24), 
+Hall DA(25), Hessl D(2)(26), Hogan A(27), Hunter JE(28), Jin P(5), Jiraanont 
+P(29), Klusek J(27), Kooy RF(30), Kraan CM(7)(31), Laterza C(18)(19), Lee A(32), 
+Lipworth K(11), Losh M(33), Loesch D(34), Lozano R(35), Mailick MR(36), 
+Manolopoulos A(37), Martinez-Cerdeno V(2)(16), McLennan Y(16), Miller RM(38), 
+Montanaro FAM(39)(40), Mosconi MW(41)(42)(43), Potter SN(28), Raspa M(28), 
+Rivera SM(44), Shelly K(5), Todd PK(22)(45), Tutak K(9), Wang JY(46), Wheeler 
+A(28), Winarni TI(47), Zafarullah M(1), Hagerman RJ(2)(48).
+
+Author information:
+(1)Department of Biochemistry and Molecular Medicine, School of Medicine, 
+University of California Davis, Sacramento, CA 95817, USA.
+(2)MIND Institute, University of California Davis, Davis, CA 95817, USA.
+(3)Department of Pharmacology, Clinical Pharmacology and Toxicology, Faculty of 
+Medicine, University of Belgrade, 11129 Belgrade, Serbia.
+(4)Fragile X Clinic, Special Hospital for Cerebral Palsy and Developmental 
+Neurology, 11040 Belgrade, Serbia.
+(5)Department of Human Genetics, Emory University School of Medicine, Atlanta, 
+GA 30322, USA.
+(6)Victorian Clinical Genetics Services, Royal Children's Hospital, Melbourne, 
+VIC 3052, Australia.
+(7)Department of Paediatrics, Faculty of Medicine, Dentistry and Health 
+Sciences, The University of Melbourne, Melbourne, VIC 3052, Australia.
+(8)Genomics in Society Group, Murdoch Children's Research Institute, Royal 
+Children's Hospital, Melbourne, VIC 3052, Australia.
+(9)Department of Gene Expression, Institute of Molecular Biology and 
+Biotechnology, Adam Mickiewicz University, Uniwersytetu Poznańskiego 6, 61-614 
+Poznan, Poland.
+(10)Central Clinical School, University of Sydney, Sydney, NSW 2006, Australia.
+(11)Fragile X Association of Australia, Brookvale, NSW 2100, Australia.
+(12)NYS Institute for Basic Research in Developmental Disabilities, New York, NY 
+10314, USA.
+(13)Department of Psychiatry, Fragile X Clinic, Kennedy Krieger Institute, 
+Baltimore, MD 21205, USA.
+(14)Department of Psychiatry & Behavioral Sciences-Child Psychiatry, School of 
+Medicine, Johns Hopkins University, Baltimore, MD 21205, USA.
+(15)Fragile X Alliance Clinic, Melbourne, VIC 3161, Australia.
+(16)Department of Pathology and Laboratory Medicine, Institute for Pediatric 
+Regenerative Medicine, Shriners Hospitals for Children of Northern California, 
+School of Medicine, University of California Davis, Sacramento, CA 95817, USA.
+(17)Stem Cell Research Laboratory, Medical Genetics Institute, Shaare Zedek 
+Medical Center Affiliated with the Hebrew University School of Medicine, 
+Jerusalem 91031, Israel.
+(18)Veneto Institute of Molecular Medicine (VIMM), 35129 Padova, Italy.
+(19)Department of Industrial Engineering, University of Padova, 35131 Padova, 
+Italy.
+(20)Keshet Autism Center Maccabi Wolfson, Holon 5822012, Israel.
+(21)Faculty of Medicine, Tel-Aviv University, Tel Aviv 6997801, Israel.
+(22)Department of Neurology, University of Michigan, 4148 BSRB, 109 Zina Pitcher 
+Place, Ann Arbor, MI 48109, USA.
+(23)Neuroscience Graduate Program, University of Michigan, Ann Arbor, MI 48109, 
+USA.
+(24)Department of Computational Medicine and Bioinformatics, University of 
+Michigan, Ann Arbor, MI 48109, USA.
+(25)Department of Neurological Sciences, Rush University, Chicago, IL 60612, 
+USA.
+(26)Department of Psychiatry and Behavioral Sciences, School of Medicine, 
+University of California Davis, Sacramento, CA 95817, USA.
+(27)Department of Communication Sciences and Disorders, Arnold School of Public 
+Health, University of South Carolina, Columbia, SC 29208, USA.
+(28)RTI International, Research Triangle Park, NC 27709, USA.
+(29)Faculty of Medicine, King Mongkut's Institute of Technology Ladkrabang, 
+Bangkok 10520, Thailand.
+(30)Department of Medical Genetics, University of Antwerp, 2000 Antwerp, 
+Belgium.
+(31)Diagnosis and Development, Murdoch Children's Research Institute, Melbourne, 
+VIC 3052, Australia.
+(32)Fragile X New Zealand, Nelson 7040, New Zealand.
+(33)Roxelyn and Richard Pepper Department of Communication Sciences and 
+Disorders, Northwestern University, Evanston, IL 60201, USA.
+(34)School of Psychology and Public Health, La Trobe University, Melbourne, VIC 
+3086, Australia.
+(35)Departments of Genetics and Genomic Sciences and Pediatrics, Icahn School of 
+Medicine at Mount Sinai, New York, NY 10029, USA.
+(36)Waisman Center, University of Wisconsin-Madison, Madison, WI 53705, USA.
+(37)Intramural Research Program, Laboratory of Clinical Investigation, National 
+Institute on Aging, Baltimore, MD 21224, USA.
+(38)National Fragile X Foundation, Washington, DC 20005, USA.
+(39)Child and Adolescent Neuropsychiatry Unit, Department of Neuroscience, 
+Bambino Gesù Children's Hospital, IRCCS, 00165 Rome, Italy.
+(40)Department of Education, Psychology, Communication, University of Bari Aldo 
+Moro, 70121 Bari, Italy.
+(41)Schiefelbusch Institute for Life Span Studies, University of Kansas, 
+Lawrence, KS 66045, USA.
+(42)Clinical Child Psychology Program, University of Kansas, Lawrence, KS 66045, 
+USA.
+(43)Kansas Center for Autism Research and Training (K-CART), University of 
+Kansas, Lawrence, KS 66045, USA.
+(44)Department of Psychology, University of Maryland, College Park, MD 20742, 
+USA.
+(45)Ann Arbor Veterans Administration Healthcare, Ann Arbor, MI 48105, USA.
+(46)Center for Mind and Brain, University of California Davis, Davis, CA 95618, 
+USA.
+(47)Center for Biomedical Research (CEBIOR), Faculty of Medicine, Universitas 
+Diponegoro, Semarang 502754, Central Java, Indonesia.
+(48)Department of Pediatrics, School of Medicine, University of California 
+Davis, Sacramento, CA 95817, USA.
+
+The premutation of the fragile X messenger ribonucleoprotein 1 (FMR1) gene is 
+characterized by an expansion of the CGG trinucleotide repeats (55 to 200 CGGs) 
+in the 5' untranslated region and increased levels of FMR1 mRNA. Molecular 
+mechanisms leading to fragile X-premutation-associated conditions (FXPAC) 
+include cotranscriptional R-loop formations, FMR1 mRNA toxicity through both RNA 
+gelation into nuclear foci and sequestration of various CGG-repeat-binding 
+proteins, and the repeat-associated non-AUG (RAN)-initiated translation of 
+potentially toxic proteins. Such molecular mechanisms contribute to subsequent 
+consequences, including mitochondrial dysfunction and neuronal death. 
+Clinically, premutation carriers may exhibit a wide range of symptoms and 
+phenotypes. Any of the problems associated with the premutation can 
+appropriately be called FXPAC. Fragile X-associated tremor/ataxia syndrome 
+(FXTAS), fragile X-associated primary ovarian insufficiency (FXPOI), and fragile 
+X-associated neuropsychiatric disorders (FXAND) can fall under FXPAC. 
+Understanding the molecular and clinical aspects of the premutation of the FMR1 
+gene is crucial for the accurate diagnosis, genetic counseling, and appropriate 
+management of affected individuals and families. This paper summarizes all the 
+known problems associated with the premutation and documents the presentations 
+and discussions that occurred at the International Premutation Conference, which 
+took place in New Zealand in 2023.
+
+DOI: 10.3390/cells12182330
+PMCID: PMC10529056
+PMID: 37759552 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.
+
+
+18. Gac Med Mex. 2020;156(1):60-66. doi: 10.24875/GMM.19005275.
+
+Fragile X syndrome: clinical presentation, pathology and treatment.
+
+[Article in English]
+
+Salcedo-Arellano MJ(1), Hagerman RJ(1), Martínez-Cerdeño V(1).
+
+Author information:
+(1)Universidad de California en Davis, Escuela de Medicina, Instituto de 
+Investigación Médica de los Trastornos del Neurodesarrollo. Sacramento, 
+California, Estados Unidos.
+
+Fragile X syndrome is the monogenetic condition that produces more cases of 
+autism and intellectual disability. The repetition of CGG triplets (> 200) and 
+their methylation entail the silencing of the FMR1 gene. The FMRP protein 
+(product of the FMR1 gene) interacts with ribosomes by controlling the 
+translation of specific messengers, and its loss causes alterations in synaptic 
+connectivity. Screening for fragile X syndrome is performed by polymerase chain 
+reaction. Current recommendation of the American Academy of Pediatrics is to 
+test individuals with intellectual disability, global developmental retardation 
+or with a family history of presence of the mutation or premutation. Hispanic 
+countries such as Colombia, Chile and Spain report high prevalence of fragile X 
+syndrome and have created fragile X national associations or corporations that 
+seek to bring patients closer to available diagnostic and treatment networks.
+
+Publisher: El síndrome X frágil es la condición monogenética que produce más 
+casos de autismo y de discapacidad intelectual. La repetición de tripletes CGG 
+(> 200) y su metilación conllevan el silenciamiento del gen FMR1. La proteína 
+FMRP (producto del gen FMR1) interacciona con los ribosomas, controlando la 
+traducción de mensajeros específicos y su pérdida produce alteraciones de la 
+conectividad sináptica. El tamizaje de síndrome X frágil se realiza por reacción 
+en cadena de la polimerasa. La recomendación actual de la Academia Americana de 
+Pediatría es realizar pruebas a quienes presenten discapacidad intelectual, 
+retraso global del desarrollo o antecedentes familiares de afección por la 
+mutación o premutación. Países hispanos como Colombia, Chile y España reportan 
+altas prevalencias de síndrome X frágil y han creado asociaciones o 
+corporaciones nacionales de X frágil que buscan acercar a los pacientes a redes 
+disponibles de diagnóstico y tratamiento.
+
+Copyright: © 2019 Permanyer.
+
+DOI: 10.24875/GMM.19005275
+PMID: 32026885 [Indexed for MEDLINE]
+
+
+19. Front Cell Dev Biol. 2019 Sep 11;7:192. doi: 10.3389/fcell.2019.00192. 
+eCollection 2019.
+
+Pleiotropic Effects of mTOR and Autophagy During Development and Aging.
+
+Schmeisser K(1), Parker JA(2).
+
+Author information:
+(1)Max Planck Institute of Molecular Cell Biology and Genetics, Dresden, 
+Germany.
+(2)Département de Neurosciences, Université de Montréal, Montreal, QC, Canada.
+
+Autophagy as a ubiquitous catabolic process causes degradation of cytoplasmic 
+components and is generally considered to have beneficial effects on health and 
+lifespan. In contrast, inefficient autophagy has been linked with detrimental 
+effects on the organism and various diseases, such as Parkinson's disease. 
+Previous research, however, showed that this paradigm is far from being black 
+and white. For instance, it has been reported that increased levels of autophagy 
+during development can be harmful, but become advantageous in the aging cell or 
+organism, causing enhanced healthspan and even longevity. The antagonistic 
+pleiotropy hypothesis postulates that genes, which control various traits in an 
+organism, can be fitness-promoting in early life, but subsequently trigger aging 
+processes later. Autophagy is controlled by the mechanistic target of rapamycin 
+(mTOR), a key player of nutrient sensing and signaling and classic example of a 
+pleiotropic gene. mTOR acts upstream of transcription factors such as FOXO, NRF, 
+and TFEB, controlling protein synthesis, degradation, and cellular growth, 
+thereby regulating fertility as well as aging. Here, we review recent findings 
+about the pleiotropic role of autophagy during development and aging, examine 
+the upstream factors, and contemplate specific mechanisms leading to disease, 
+especially neurodegeneration.
+
+Copyright © 2019 Schmeisser and Parker.
+
+DOI: 10.3389/fcell.2019.00192
+PMCID: PMC6749033
+PMID: 31572724
+
+
+20. J Clin Exp Hepatol. 2022 Mar-Apr;12(2):510-518. doi:
+10.1016/j.jceh.2021.05.004.  Epub 2021 May 21.
+
+Alterations in Autophagy and Mammalian Target of Rapamycin (mTOR) Pathways 
+Mediate Sarcopenia in Patients with Cirrhosis.
+
+Anand A(1), Nambirajan A(2), Kumar V(3), Agarwal S(1), Sharma S(1), Mohta S(1), 
+Gopi S(1), Kaushal K(1), Gunjan D(1), Singh N(1), Madhusudhan KS(4), Chauhan 
+SS(3), Sharma MC(2), Bansal VK(5), Saraya A(1).
+
+Author information:
+(1)Department of Gastroenterology and Human Nutrition Unit, All India Institute 
+of Medical Sciences, New Delhi, India.
+(2)Department of Pathology, All India Institute of Medical Sciences, New Delhi, 
+India.
+(3)Department of Biochemistry, All India Institute of Medical Sciences, New 
+Delhi, India.
+(4)Department of Radiology, All India Institute of Medical Sciences, New Delhi, 
+India.
+(5)Department of Surgical Disciplines, All India Institute of Medical Sciences, 
+New Delhi, India.
+
+BACKGROUND AND AIMS: The pathophysiology of sarcopenia in cirrhosis is poorly 
+understood. We aimed to evaluate the histological alterations in the muscle 
+tissue of patients with cirrhosis and sarcopenia, and identify the regulators of 
+muscle homeostasis.
+METHODS: Computed tomography images at third lumbar vertebral level were used to 
+assess skeletal muscle index (SMI) in 180 patients. Sarcopenia was diagnosed 
+based on the SMI cut-offs from a population of similar ethnicity. Muscle biopsy 
+was obtained from the vastus lateralis in 10 sarcopenic patients with cirrhosis, 
+and the external oblique in five controls (voluntary kidney donors during 
+nephrectomy). Histological changes were assessed by hematoxylin and eosin 
+staining and immunohistochemistry for phospho-FOXO3, phospho-AKT, phospho-mTOR, 
+and apoptosis markers (annexin V and caspase 3). The messenger ribonucleic acid 
+(mRNA) expressions for MSTN, FoxO3, markers of ubiquitin-proteasome pathway 
+(FBXO32, TRIM63), and markers of autophagy (Beclin-1 and LC3) were also 
+quantified.
+RESULTS: The prevalence of sarcopenia was 14.4%. Muscle histology in sarcopenics 
+showed atrophic angulated fibers (P = 0.002) compared to controls. 
+Immunohistochemistry showed a significant loss of expression of phospho-mTOR 
+(P = 0.026) and an unaltered phospho-AKT (P = 0.089) in sarcopenic patients. 
+There were no differences in the immunostaining for annexin-V, caspase-3, and 
+phospho-FoxO3 between the two groups. The mRNA expressions of MSTN and Beclin-1 
+were higher in sarcopenics (P = 0.04 and P = 0.04, respectively). The two groups 
+did not differ in the mRNA levels for TRIM63, FBXO32, and LC3.
+CONCLUSIONS: Significant muscle atrophy, increase in autophagy, MSTN gene 
+expression, and an impaired mTOR signaling were seen in patients with sarcopenia 
+and cirrhosis.
+
+© 2021 Indian National Association for Study of the Liver. Published by Elsevier 
+B.V. All rights reserved.
+
+DOI: 10.1016/j.jceh.2021.05.004
+PMCID: PMC9077178
+PMID: 35535114
+
+
+21. Diabetes Res Clin Pract. 2017 Apr;126:172-181. doi: 
+10.1016/j.diabres.2016.12.005. Epub 2016 Dec 18.
+
+Resveratrol ameliorates hyperglycemia-induced renal tubular oxidative stress 
+damage via modulating the SIRT1/FOXO3a pathway.
+
+Wang X(1), Meng L(1), Zhao L(1), Wang Z(2), Liu H(1), Liu G(3), Guan G(4).
+
+Author information:
+(1)Nephrology Research Institute of Shandong University, The Second Hospital of 
+Shandong University, Shandong University, Jinan, Shandong, China.
+(2)Anesthesia Department, Shengli Oilfield Central Hospital, Dongying, Shandong, 
+China.
+(3)Nephrology Research Institute of Shandong University, The Second Hospital of 
+Shandong University, Shandong University, Jinan, Shandong, China. Electronic 
+address: lg69007@163.com.
+(4)Nephrology Research Institute of Shandong University, The Second Hospital of 
+Shandong University, Shandong University, Jinan, Shandong, China. Electronic 
+address: guangj@sdu.edu.cn.
+
+AIMS: Oxidative stress plays an important role in the development and 
+progression of diabetic nephropathy (DN). We aimed to investigate if resveratrol 
+(RSV) could ameliorate hyperglycemia-induced oxidative stress in renal tubules 
+via modulating the SIRT1/FOXO3a pathway.
+METHODS: The effects of RSV on diabetes rats were assessed by periodic 
+acid-Schiff, Masson staining, immunohistochemistry, and western blot analyses. 
+Additionally, oxidative indicators (such as catalase, superoxide dismutase, 
+reactive oxygen species, and malondialdehyde), the deacetylase activity of SIRT1 
+and protein expressions of SIRT1, FOXO3a, and acetylated-FOXO3a were measured. 
+These indicators were similarly evaluated in an in vitro study. Furthermore, the 
+silencing of SIRT1 was used to confirm its role in the resistance to oxidative 
+stress and the relationship between SIRT1 and FOXO3a in vitro.
+RESULTS: After 16weeks of RSV treatment, the renal function and 
+glomerulosclerosis of rats with DN was dramatically ameliorated. RSV treatment 
+increased SIRT1 deacetylase activity, subsequently decreasing the expression of 
+acetylated-FOXO3a and inhibiting the oxidative stress caused by hyperglycemia 
+both in vivo and in vitro. The silencing of SIRT1 in HK-2 cells aggravated the 
+high glucose-induced oxidative stress and overexpression of acetylated-FOXO3a; 
+RSV treatment failed to protect against these effects.
+CONCLUSIONS: RSV modulates the SIRT1/FOXO3a pathway by increasing SIRT1 
+deacetylase activity, subsequently ameliorating hyperglycemia-induced renal 
+tubular oxidative stress damage. This mechanism provides the basis for a new 
+approach to developing an effective DN treatment, which is of great clinical 
+significance for reducing the morbidity and mortality associated with DN.
+
+Copyright © 2016 Elsevier Ireland Ltd. All rights reserved.
+
+DOI: 10.1016/j.diabres.2016.12.005
+PMID: 28258028 [Indexed for MEDLINE]
+
+
+22. Int J Biol Sci. 2020 Aug 19;16(14):2712-2726. doi: 10.7150/ijbs.48169. 
+eCollection 2020.
+
+SIRT1/FOXO3a axis plays an important role in the prevention of mandibular bone 
+loss induced by 1,25(OH)(2)D deficiency.
+
+Chen H(1), Hu X(1), Yang R(1), Wu G(1), Tan Q(2), Goltzman D(3), Miao D(1).
+
+Author information:
+(1)The Research Center for Aging, Affiliated Friendship Plastic Surgery Hospital 
+of Nanjing Medical University, Nanjing 210029, China.
+(2)Department of Burns and Plastic Surgery, The Drum Tower Clinical Medical 
+College, Affiliated Drum Tower Hospital, Nanjing Medical University, Nanjing 
+210008, China.
+(3)Calcium Research Laboratory, McGill University Health Centre and Department 
+of Medicine, McGill University, Montreal, Quebec H3A 1A1, Canada.
+
+It has been reported that 1,25 dihydroxyvitamin D [1,25(OH)2D] deficiency leads 
+to the loss of mandibular bone, however the mechanism is unclear. We 
+investigated whether the Sirt1/FOXO3a signaling pathway is involved in this 
+process. Using a 1,25(OH)2D deficiency model induced by genetic deletion in mice 
+of 25-hydroxyvitamin D-1α hydroxylase [1α(OH)ase-/- mice]. We first documented a 
+sharp reduction of expression levels of Sirt1 in the 1α(OH)ase-/- mice in vivo. 
+Next, we demonstrated dose-dependent upregulation of Sirt1 by treatment with 
+exogenous 1,25(OH)2D3in vitro. We then identified a functional VDR binding site 
+in the Sirt1 promoter. By crossing Prx1-Sirt1 transgenic mice with 1α(OH)ase-/- 
+mice we demonstrated that the overexpression of Sirt1 in mesenchymal stem cells 
+(MSCs) greatly improved the 1α(OH)ase-/- mandibular bone loss phenotype by 
+increasing osteoblastic bone formation and reducing osteoclastic bone 
+resorption. In mechanistic studies, we showed, in 1α(OH)ase-/- mice, decreases 
+of Sirt1 and FoxO3a, an increase in oxidative stress as reflected by a reduction 
+of the antioxidant enzymes peroxiredoxin1 (Prdx1), SOD1 and SOD2 expression, and 
+an increase of markers for osteocyte senescence and senescence associated 
+secretory phenotypes (SASP), including β-galactosidase (β-gal), p16, p53 and 
+p21. The targeted overexpression of Sirt1 in the 1α(OH)ase-/- mice restored the 
+expression levels of these molecules. Finally, we demonstrated that a Sirt1 
+agonist can upregulate FOXO3a activity by increasing deacetylation and nuclear 
+translocation. Overall, results from this study support the concept that 
+targeted increases in Sirt1/FOXO3a signaling levels can greatly improve the bone 
+loss caused by 1,25(OH)2D deficiency.
+
+© The author(s).
+
+DOI: 10.7150/ijbs.48169
+PMCID: PMC7586429
+PMID: 33110391 [Indexed for MEDLINE]
+
+Conflict of interest statement: Competing Interests: The authors have declared 
+that no competing interest exists.
+
+
+23. Int Immunopharmacol. 2013 May;16(1):100-7. doi: 10.1016/j.intimp.2013.03.024.
+ Epub 2013 Apr 3.
+
+α-Lipoic acid attenuates LPS-induced cardiac dysfunction through a 
+PI3K/Akt-dependent mechanism.
+
+Jiang S(1), Zhu W, Li C, Zhang X, Lu T, Ding Z, Cao K, Liu L.
+
+Author information:
+(1)Department of Geriatrics, First Affiliated Hospital with Nanjing Medical 
+University, Nanjing 210029, China.
+
+Myocardial dysfunction is an important manifestation of sepsis/septic shock. 
+Activation of Phosphatidylinositol 3-kinase(PI3K)/protein kinase B (Akt) 
+signaling pathway has been shown to improve cardiac performance during 
+sepsis/septic shock. We have reported previously that α-lipoic acid (LA) 
+activates PI3K/Akt pathway in neuronal cells. It is possible, therefore, that 
+treatment with LA will attenuate cardiac dysfunction during sepsis/septic shock 
+through a PI3K/Akt-dependent mechanism. To test this possibility, we treated 
+mice with LA prior to lipopolysaccharide (LPS) challenge. Cardiac function was 
+analyzed by echocardiography 6h after LPS challenge. LPS significantly 
+suppressed cardiac function as evidenced by decreases in EF% and FS% in mice. 
+However, LA pretreatment significantly attenuated cardiac dysfunction following 
+LPS challenge. LA pretreatment also improved survival in LPS-challenged mice. 
+Furthermore, LA markedly attenuated the LPS-induced inflammatory response in 
+myocardium, as evidenced by decreases in the upregulation of VCAM-1, ICAM-1 and 
+iNOS, as well as myocardial leucocytes infiltration. Moreover, LPS challenge 
+significantly decreased the phosphorylation levels of Akt and Gsk-3β, which was 
+prevented by LA pretreatment. More importantly, inhibition of PI3K/Akt signaling 
+by Wortmannin (WM) completely abrogated the LA-induced protection in cardiac 
+dysfunction following LPS challenge. Collectively, our results demonstrated that 
+LA improved cardiac function during endotoxemia. The mechanism was through, at 
+least in part, preserved activation of the PI3K/Akt signaling.
+
+Copyright © 2013 Elsevier B.V. All rights reserved.
+
+DOI: 10.1016/j.intimp.2013.03.024
+PMID: 23562296 [Indexed for MEDLINE]
+
+
+24. Antioxid Redox Signal. 2005 Jul-Aug;7(7-8):1032-9. doi:
+10.1089/ars.2005.7.1032.
+
+Utilization of the insulin-signaling network in the metabolic actions of 
+alpha-lipoic acid-reduction or oxidation?
+
+Konrad D(1).
+
+Author information:
+(1)Division of Endocrinology and Diabetology, University Children's Hospital, 
+Zurich, Switzerland. daniel.konrad@kispi.unizh.ch
+
+Alpha-lipoic acid is a naturally occurring cofactor of mitochondrial 
+dehydrogenase complexes and a potent antioxidant. It can interchange between a 
+reduced form and an oxidized form, thereby displaying reducing (antioxidant) and 
+prooxidant properties, respectively. It is suggested that alpha-lipoic acid 
+through its prooxidant properties acutely stimulates the insulin-signaling 
+cascade, thereby increasing glucose uptake in muscle and fat cells. On the other 
+hand, alpha-lipoic acid appears to protect the insulin-signaling cascade from 
+oxidative stress-induced insulin resistance through its reducing capacities. In 
+addition, alpha-lipoic acid seems to inhibit hepatic gluconeogenesis by 
+interfering with fatty acid oxidation, as well as to increase peripheral glucose 
+utilization by activating pyruvate dehydrogenase resulting in increased glucose 
+oxidation. These different properties render alpha-lipoic acid a potentially 
+attractive therapeutic agent for the treatment of insulin resistance. Moreover, 
+given the potential role of oxidative stress in the pathogenesis of secondary 
+complications in diabetes, alpha-lipoic acid might be beneficial in the 
+prevention/treatment of these complications as was recently shown for diabetic 
+neuropathy.
+
+DOI: 10.1089/ars.2005.7.1032
+PMID: 15998258 [Indexed for MEDLINE]
+
+
+25. Nature. 2009 Apr 23;458(7241):1056-60. doi: 10.1038/nature07813.
+
+AMPK regulates energy expenditure by modulating NAD+ metabolism and SIRT1 
+activity.
+
+Cantó C(1), Gerhart-Hines Z, Feige JN, Lagouge M, Noriega L, Milne JC, Elliott 
+PJ, Puigserver P, Auwerx J.
+
+Author information:
+(1)Institut de Génétique et de Biologie Moléculaire et Cellulaire, 
+CNRS/INSERM/ULP, 67404 Illkirch, France.
+
+AMP-activated protein kinase (AMPK) is a metabolic fuel gauge conserved along 
+the evolutionary scale in eukaryotes that senses changes in the intracellular 
+AMP/ATP ratio. Recent evidence indicated an important role for AMPK in the 
+therapeutic benefits of metformin, thiazolidinediones and exercise, which form 
+the cornerstones of the clinical management of type 2 diabetes and associated 
+metabolic disorders. In general, activation of AMPK acts to maintain cellular 
+energy stores, switching on catabolic pathways that produce ATP, mostly by 
+enhancing oxidative metabolism and mitochondrial biogenesis, while switching off 
+anabolic pathways that consume ATP. This regulation can take place acutely, 
+through the regulation of fast post-translational events, but also by 
+transcriptionally reprogramming the cell to meet energetic needs. Here we 
+demonstrate that AMPK controls the expression of genes involved in energy 
+metabolism in mouse skeletal muscle by acting in coordination with another 
+metabolic sensor, the NAD+-dependent type III deacetylase SIRT1. AMPK enhances 
+SIRT1 activity by increasing cellular NAD+ levels, resulting in the 
+deacetylation and modulation of the activity of downstream SIRT1 targets that 
+include the peroxisome proliferator-activated receptor-gamma coactivator 1alpha 
+and the forkhead box O1 (FOXO1) and O3 (FOXO3a) transcription factors. The 
+AMPK-induced SIRT1-mediated deacetylation of these targets explains many of the 
+convergent biological effects of AMPK and SIRT1 on energy metabolism.
+
+DOI: 10.1038/nature07813
+PMCID: PMC3616311
+PMID: 19262508 [Indexed for MEDLINE]
+
+
+26. Brain Res Bull. 2019 Oct;152:117-127. doi:
+10.1016/j.brainresbull.2019.07.019.  Epub 2019 Jul 17.
+
+Lithium chloride promoted hematoma resolution after intracerebral hemorrhage 
+through GSK-3β-mediated pathways-dependent microglia phagocytosis and 
+M2-phenotype differentiation, angiogenesis and neurogenesis in a rat model.
+
+Li R(1), Liu Z(1), Wu X(1), Yu Z(1), Zhao S(1), Tang X(2).
+
+Author information:
+(1)Department of Biopharmaceutical Sciences (State-Province Key Laboratories of 
+Biomedicine-Pharmaceutics of China), College of Pharmacy, Harbin Medical 
+University, Heilongjiang, China.
+(2)Department of Biopharmaceutical Sciences (State-Province Key Laboratories of 
+Biomedicine-Pharmaceutics of China), College of Pharmacy, Harbin Medical 
+University, Heilongjiang, China. Electronic address: ty6163@aliyun.com.
+
+Some neuroprotective agents have been used clinically to address the resulting 
+various adverse effects after intracerebral hemorrhage (ICH). Particularly, 
+effectively removing the hematoma is of practical significance to exert 
+neuroprotective effects following ICH. However, such agents are still in need of 
+development. Lithium chloride (LiCl) has shown neuroprotective effects through 
+glycogen synthase kinase-3β (GSK-3β) inhibition in a variety of central nervous 
+system diseases. However, the impact of LiCl on hematoma clearance and the 
+potential molecular mechanisms have not been reported. We hypothesize that LiCl 
+may exert neuroprotective roles after ICH, partly through promoting hematoma 
+resolution. In this study, male Sprague-Dawley rats were subjected to ICH 
+followed by intraperitoneal injection of LiCl (60 mg/kg). The hematoma volumes 
+of ipsilateral hemisphere were determined using Drabkin's method. The 
+sensorimotor deficits were evaluated by neurobehavioral tests. The expressions 
+of target molecules involved in the process of hematoma clearance were assayed 
+using immunofluorescence and Western blot. Our results showed that animals 
+treated with LiCl presented significantly reduced hematoma volume after ICH, 
+which was coupled with enhanced microglia phagocytosis and its differentiation 
+into M2-phenotype within the first 7 days and up-regulated angiogenesis and 
+neurogenesis in the next 7 days. Meanwhile, GSK-3β was inhibited by LiCl and 
+β-catenin became stabilized, which was followed by up-regulation of nuclear 
+factor erythroid 2-related factor 2 and CD36 from days 3 to 7, and increase of 
+vascular endothelial growth factor and brain-derived neurotrophic factor from 
+days 7 to 14. These data suggest that LiCl promotes hematoma resolution via 
+enhancing microglia phagocytosis and M2-phenotype differentiation in the early 
+stage (< 7 days) and angiogenesis and neurogenesis in the chronic phase (days 
+7-14), thus eventually improving the functional outcomes of ICH rats.
+
+Copyright © 2019. Published by Elsevier Inc.
+
+DOI: 10.1016/j.brainresbull.2019.07.019
+PMID: 31325596 [Indexed for MEDLINE]
+
+
+27. Naunyn Schmiedebergs Arch Pharmacol. 2023 Jul;396(7):1339-1359. doi: 
+10.1007/s00210-023-02437-1. Epub 2023 Feb 27.
+
+Mood and behavior regulation: interaction of lithium and dopaminergic system.
+
+Mohamadian M(1), Fallah H(2), Ghofrani-Jahromi Z(3), Rahimi-Danesh M(3), 
+Shokouhi Qare Saadlou MS(4), Vaseghi S(5).
+
+Author information:
+(1)American Psychological Association, Worcester, MA, USA.
+(2)Department of Basic Sciences, Faculty of Veterinary Medicine, University of 
+Tehran, Tehran, Iran.
+(3)Cognitive Neuroscience Lab, Medicinal Plants Research Center, Institute of 
+Medicinal Plants, ACECR, Karaj, Iran.
+(4)Department of Psychology, Faculty of Humanities, Sirjan Branch, Islamic Azad 
+University, Sirjan, Iran.
+(5)Cognitive Neuroscience Lab, Medicinal Plants Research Center, Institute of 
+Medicinal Plants, ACECR, Karaj, Iran. vaseghi@imp.ac.ir.
+
+Lithium is one of the most effect mood-stabilizing drugs prescribed especially 
+for bipolar disorder. Lithium has wide range effects on different molecular 
+factors and neural transmission including dopaminergic signaling. On the other 
+hand, mesolimbic and mesocortical dopaminergic signaling is significantly 
+involved in the pathophysiology of neuropsychiatric disorders. This review 
+article aims to study lithium therapeutic mechanisms, dopaminergic signaling, 
+and the interaction of lithium and dopamine. We concluded that acute and chronic 
+lithium treatments often reduce dopamine synthesis and level in the brain. 
+However, some studies have reported conflicting results following lithium 
+treatment, especially chronic treatment. The dosage, duration, and type of 
+lithium administration, and the brain region selected for measuring dopamine 
+level were not significant differences in different chronic treatments used in 
+previous studies. It was suggested that lithium has various mechanisms affecting 
+dopaminergic signaling and mood, and that many molecular factors can be 
+involved, including brain-derived neurotrophic factor (BDNF), cAMP response 
+element-binding protein (CREB), β-catenin, protein kinase B (Akt), and glycogen 
+synthase kinase-3 beta (GSK-3β). Thus, molecular effects of lithium can be the 
+most important mechanisms of lithium that also alter neural transmissions 
+including dopaminergic signaling in mesolimbic and mesocortical pathways.
+
+© 2023. The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, 
+part of Springer Nature.
+
+DOI: 10.1007/s00210-023-02437-1
+PMID: 36843130 [Indexed for MEDLINE]
+
+
+28. Pharmacol Biochem Behav. 2020 Nov;198:173020. doi: 10.1016/j.pbb.2020.173020.
+ Epub 2020 Aug 28.
+
+The involvement of PI3K/Akt/mTOR/GSK3β signaling pathways in the 
+antidepressant-like effect of AZD6765.
+
+Neis VB(1), Moretti M(2), Rosa PB(2), Dalsenter YO(2), Werle I(2), Platt N(2), 
+Kaufmann FN(3), Rosado AF(2), Besen MH(2), Rodrigues ALS(2).
+
+Author information:
+(1)Department of Biochemistry, Center of Biological Sciences, Universidade 
+Federal de Santa Catarina, Campus Universitário, Trindade, 88040-900 
+Florianópolis, SC, Brazil. Electronic address: vivianbneis@gmail.com.
+(2)Department of Biochemistry, Center of Biological Sciences, Universidade 
+Federal de Santa Catarina, Campus Universitário, Trindade, 88040-900 
+Florianópolis, SC, Brazil.
+(3)Department of Biochemistry, Center of Biological Sciences, Universidade 
+Federal de Santa Catarina, Campus Universitário, Trindade, 88040-900 
+Florianópolis, SC, Brazil; Department of Psychiatry and Neuroscience, Faculty of 
+Medicine and CERVO Brain Research Center, Université Laval, Quebec City, Canada.
+
+AZD6765 (lanicemine) is a non-competitive NMDA receptor antagonist that induces 
+a fast-acting antidepressant effect without presenting psychotomimetic effects. 
+However, the mechanisms underlying its effects remain to be established. In this 
+context, we demonstrated that a single administration of AZD6765 (1 mg/kg, i.p.) 
+was able to induce an antidepressant-like effect in mice submitted to tail 
+suspension test (TST), an effect reversed by LY294002 (a reversible PI3K 
+inhibitor, 10 nmol/site, i.c.v.), wortmannin (an irreversible PI3K inhibitor, 
+0.1 μg/site, i.c.v.) and rapamycin (a selective mTOR inhibitor, 0.2 nmol/site, 
+i.c.v.). In addition, the administration of sub-effective doses of AZD6765 
+(0.1 mg/kg, i.p.) in combination with lithium chloride (non-selective GSK-3β 
+inhibitor, 10 mg/kg, p.o.) or AR-A014418 (selective GSK-3β inhibitor, 
+(0.01 μg/site, i.c.v.) caused a synergistic antidepressant-like effect. These 
+results suggest the involvement of PI3K/Akt/mTOR/GSK3β signaling in the AZD6765 
+antidepressant-like effect. In addition, western blotting analysis showed an 
+increased immunocontent of synapsin in the prefrontal cortex and a tendency to 
+an increased immunocontent of this protein in the hippocampus 30 min after 
+AZD6765 administration, but no significant effect of AZD6765 was observed in 
+P70S6K (Thr389) phosphorylation and GluA1 immunocontent. A single dose of 
+AZD6765 (3 mg/kg, i.p.), similarly to ketamine (1 mg/kg, i.p.), decreased the 
+latency to feed in the novelty suppressed feeding (NSF) test, a behavioral 
+paradigm that evaluates depression/anxiety-related behavior. This effect was 
+reversed by rapamycin administration, suggesting the activation of mTOR 
+signaling in the effect of AZD in the NSF test. In addition, a single 
+administration of AZD6765 (1 mg/kg, i.p.) or ketamine (1 mg/kg, i.p.) reversed 
+the depressive-like behavior induced by chronic unpredictable stress (CUS). 
+Altogether, the results provide evidence for the fast-acting antidepressant 
+profile of AZD6765, by a mechanism likely dependent on PI3K/Akt/mTOR/GSK3β.
+
+Copyright © 2020 Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.pbb.2020.173020
+PMID: 32861641 [Indexed for MEDLINE]
+
+
+29. Exp Ther Med. 2020 Nov;20(5):109. doi: 10.3892/etm.2020.9237. Epub 2020 Sep
+18.
+
+Lithium chloride ameliorated spatial cognitive impairment through activating 
+mTOR phosphorylation and inhibiting excessive autophagy in the repeated cerebral 
+ischemia-reperfusion mouse model.
+
+Xiao Y(1), Fan M(1), Jin W(1), Li WA(2), Jia Y(1), Dong Y(1), Jiang X(1), Xu 
+J(1), Meng N(1), Lv P(1)(3).
+
+Author information:
+(1)Department of Neurology, Hebei General Hospital, Shijiazhuang, Hebei 050051, 
+P.R. China.
+(2)Department of Neurosurgery, Wayne State University School of Medicine, 
+Detroit, MI 48201, USA.
+(3)Department of Neurology, Hebei Medical University, Shijiazhuang, Hebei 
+050017, P.R. China.
+
+Lithium has been previously demonstrated to alleviate cognitive impairment 
+caused by neurodegenerative diseases and acute brain injuries; however, the 
+specific mechanism remains elusive. In the present study, the C57BL/6 mouse 
+model of spatial cognitive impairment induced by repeated cerebral 
+ischemia-reperfusion was established. Morris water maze test was performed to 
+evaluate the levels of spatial cognitive impairment. Nissl staining was used to 
+observe any morphological alterations, whilst western blotting was performed to 
+measure the expression levels of microtubule-associated protein light chain 3 
+(LC3) and Beclin1 in addition to mTOR phosphorylation. LiCl was found to 
+significantly improve spatial learning and memory impairments according to data 
+from the Morris water maze test. Nissl staining indicated that LiCl inhibited 
+neuronal damage in the CA1 region of the hippocampus. Additionally, LiCl 
+increased mTOR phosphorylation, reduced beclin1 expression and reduced the LC3 
+II/I expression ratio. Taken together, these findings suggest that LiCl may 
+alleviate the spatial cognitive impairment induced by repeated cerebral 
+ischemia-reperfusion. This observation may be attributed to the inhibition of 
+excessive autophagy by LiCl through mTOR signaling activation.
+
+Copyright: © Xiao et al.
+
+DOI: 10.3892/etm.2020.9237
+PMCID: PMC7517419
+PMID: 32989388
+
+
+30. Biochem Pharmacol. 2024 Feb;220:115993. doi: 10.1016/j.bcp.2023.115993. Epub 
+2023 Dec 25.
+
+Research progress on phosphatidylinositol 4-kinase inhibitors.
+
+Li G(1), Wu Y(2), Zhang Y(1), Wang H(1), Li M(1), He D(3), Guan W(1), Yao H(4).
+
+Author information:
+(1)Guangdong Key Laboratory of Animal Conservation and Resource Utilization, 
+Guangdong Public Laboratory of Wild Animal Conservation and Utilization, 
+Institute of Zoology, Guangdong Academy of Sciences, Guangzhou, Guangdong, 
+510260, China.
+(2)Guangdong Key Laboratory of Animal Conservation and Resource Utilization, 
+Guangdong Public Laboratory of Wild Animal Conservation and Utilization, 
+Institute of Zoology, Guangdong Academy of Sciences, Guangzhou, Guangdong, 
+510260, China; Department of Chemistry, The Hong Kong University of Science and 
+Technology, Clearwater Bay, Kowloon, Hong Kong, 999077, China.
+(3)School of Biotechnology and Health Science, Wuyi University, 22 Dongchengcun, 
+Jiangmen, Guangdong, 529020, China.
+(4)Guangdong Key Laboratory of Animal Conservation and Resource Utilization, 
+Guangdong Public Laboratory of Wild Animal Conservation and Utilization, 
+Institute of Zoology, Guangdong Academy of Sciences, Guangzhou, Guangdong, 
+510260, China. Electronic address: yaohl@giz.gd.cn.
+
+Phosphatidylinositol 4-kinases (PI4Ks) could phosphorylate phosphatidylinositol 
+(PI) to produce phosphatidylinositol 4-phosphate (PI4P) and maintain its 
+metabolic balance and location. PI4P, the most abundant monophosphate inositol 
+in eukaryotic cells, is a precursor of higher phosphoinositols and an essential 
+substrate for the PLC/PKC and PI3K/Akt signaling pathways. PI4Ks regulate 
+vesicle transport, signal transduction, cytokinesis, and cell unity, and are 
+involved in various physiological and pathological processes, including 
+infection and growth of parasites such as Plasmodium and Cryptosporidium, 
+replication and survival of RNA viruses, and the development of tumors and 
+nervous system diseases. The development of novel drugs targeting PI4Ks and PI4P 
+has been the focus of the research and clinical application of drugs, especially 
+in recent years. In particular, PI4K inhibitors have made great progress in the 
+treatment of malaria and cryptosporidiosis. We describe the biological 
+characteristics of PI4Ks; summarize the physiological functions and effector 
+proteins of PI4P; and analyze the structural basis of selective PI4K inhibitors 
+for the treatment of human diseases in this review. Herein, this review mainly 
+summarizes the developments in the structure and enzyme activity of PI4K 
+inhibitors.
+
+Copyright © 2023 Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.bcp.2023.115993
+PMID: 38151075 [Indexed for MEDLINE]
+
+Conflict of interest statement: Declaration of competing interest The authors 
+declare that they have no known competing financial interests or personal 
+relationships that could have appeared to influence the work reported in this 
+paper.
+
+
+31. Cancer Metastasis Rev. 2010 Dec;29(4):751-9. doi: 10.1007/s10555-010-9261-0.
+
+The phosphatidyl inositol 3-kinase/AKT signaling pathway in breast cancer.
+
+Castaneda CA(1), Cortes-Funes H, Gomez HL, Ciruelos EM.
+
+Author information:
+(1)Instituto Nacional Enfermedades Neoplásicas, Lima, Peru. 
+carloscastanedaaltamirano@yahoo.com
+
+The phosphatidyl inositol 3-kinase (PI3K)/Akt pathway mediates the effects of a 
+variety of extracellular signals in a number of cellular processes including 
+cell growth, proliferation, and survival. The alteration of integrants of this 
+pathway through mutation of its coding genes increases the activation status of 
+the signaling and can thus lead to cellular transformation. The frequent 
+dysregulation of the PI3K/Akt pathway in breast cancer (BC) and the mediation of 
+this pathway in different processes characteristically implicated in 
+tumorigenesis have attracted the interest of this pathway in BC; however, a more 
+comprehensive understanding of the signaling intricacies is necessary to develop 
+clinical applications of the modulation of this pathway in this pathology. We 
+review a series of experiments examining the contribution of alteration of 
+integrants of this signaling network to human BC and we make an update of the 
+information about the effect of the modulation of this pathway in this cancer.
+
+DOI: 10.1007/s10555-010-9261-0
+PMID: 20922461 [Indexed for MEDLINE]
+
+
+32. Prog Neuropsychopharmacol Biol Psychiatry. 2019 Jun 8;92:387-404. doi: 
+10.1016/j.pnpbp.2019.02.001. Epub 2019 Feb 6.
+
+The glycine site of NMDA receptors: A target for cognitive enhancement in 
+psychiatric disorders.
+
+Peyrovian B(1), Rosenblat JD(2), Pan Z(3), Iacobucci M(1), Brietzke E(4), 
+McIntyre RS(5).
+
+Author information:
+(1)Mood Disorders Psychopharmacology Unit, University Health Network, Toronto, 
+ON, Canada.
+(2)Mood Disorders Psychopharmacology Unit, University Health Network, Toronto, 
+ON, Canada; Department of Psychiatry, University of Toronto, Toronto, ON, 
+Canada.
+(3)Mood Disorders Psychopharmacology Unit, University Health Network, Toronto, 
+ON, Canada; Institute of Medical Science, University of Toronto, Toronto, ON, 
+Canada.
+(4)Mood Disorders Psychopharmacology Unit, University Health Network, Toronto, 
+ON, Canada; Department of Psychiatry, Federal University of São Paulo (Unifesp), 
+São Paulo, SP, Brazil.
+(5)Mood Disorders Psychopharmacology Unit, University Health Network, Toronto, 
+ON, Canada; Department of Psychiatry, University of Toronto, Toronto, ON, 
+Canada; Institute of Medical Science, University of Toronto, Toronto, ON, 
+Canada; Department of Pharmacology, University of Toronto, Toronto, ON, Canada; 
+Brain and Cognition Discovery Foundation, Toronto, ON, Canada. Electronic 
+address: Roger.McIntyre@uhn.ca.
+
+Cognitive dysfunction is a principal determinant of functional impairment in 
+major depressive disorder (MDD) and often persists during periods of euthymia. 
+Abnormalities in the glutamate system, particularly in N-methyl-d-aspartate 
+receptors (NMDARs) activity, have been shown to contribute to both mood and 
+cognitive symptoms in MDD. The current narrative review aims to evaluate the 
+potential pro-cognitive effects of targeting the glycine site of NMDARs in the 
+treatment of psychiatric disorders, with a special focus on how these results 
+may apply to MDD. Literature databases were searched from inception to May 2018 
+for relevant pre-clinical and clinical studies evaluating antidepressant and 
+pro-cognitive effects of NMDAR glycine site modulators in both MDD and non-MDD 
+samples. Six glycine site modulators with pro-cognitive and antidepressant 
+properties were identified: d-serine (co-agonist), d-cycloserine (partial 
+agonist), d-alanine (co-agonist), glycine (agonist), sarcosine (co-agonist) and 
+rapastinel (partial agonist). Preclinical animal studies demonstrated improved 
+neuroplasticity and pro-cognitive effects with these agents. Numerous 
+proof-of-concept clinical trials demonstrated pro-cognitive and antidepressant 
+effects trans-diagnostically (e.g., in healthy participants, MDD, schizophrenia, 
+anxiety disorders, major neurocognitive disorders). The generalizability of 
+these clinical studies was limited by the small sample sizes and the paucity of 
+studies directly evaluating cognitive effects in MDD samples, as most clinical 
+trials were in non-MDD samples. Taken together, preliminary results suggest that 
+the glycine site of NMDARs is a promising target to ameliorate symptoms of 
+depression and cognitive dysfunction. Additional rigorously designed clinical 
+studies are required to determine the cognitive effects of these agents in MDD.
+
+Copyright © 2019 Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.pnpbp.2019.02.001
+PMID: 30738126 [Indexed for MEDLINE]
+
+
+33. Front Chem. 2022 Nov 17;10:1008233. doi: 10.3389/fchem.2022.1008233.
+eCollection  2022.
+
+Discovery of (R)-2-amino-3-triazolpropanoic acid derivatives as NMDA receptor 
+glycine site agonists with GluN2 subunit-specific activity.
+
+Zhao F(1)(2), Mazis G(1), Yi F(3), Lotti JS(3), Layeux MS(3), Schultz EP(3), 
+Bunch L(1), Hansen KB(3), Clausen RP(1).
+
+Author information:
+(1)Department of Drug Design and Pharmacology, Faculty of Health and Medical 
+Sciences, University of Copenhagen, Copenhagen, Denmark.
+(2)Department of Medicinal Chemistry, Key Laboratory of Chemical Biology 
+(Ministry of Education), School of Pharmaceutical Sciences, Shandong University, 
+Jinan, Shandong, China.
+(3)Center for Structural and Functional Neuroscience, Center for Biomolecular 
+Structure and Dynamics, Division of Biological Sciences, University of Montana, 
+Missoula, MT, United States.
+
+N-Methyl-d-aspartate (NMDA) receptors play critical roles in central nervous 
+system function and are involved in variety of brain disorders. We previously 
+developed a series of (R)-3-(5-furanyl)carboxamido-2-aminopropanoic acid glycine 
+site agonists with pronounced variation in activity among NMDA receptor 
+GluN1/2A-D subtypes. Here, a series of (R)-2-amino-3-triazolpropanoic acid 
+analogues with a novel chemical scaffold is designed and their pharmacological 
+properties are evaluated at NMDA receptor subtypes. We found that the triazole 
+can function as a bioisostere for amide to produce glycine site agonists with 
+variation in activity among NMDA receptor subtypes. Compounds 13g and 13i are 
+full and partial agonists, respectively, at GluN1/2C and GluN1/2D with 3- to 
+7-fold preference in agonist potency for GluN1/2C-D over GluN1/2A-B subtypes. 
+The agonist binding mode of these triazole analogues and the mechanisms by which 
+the triazole ring can serve as a bioisostere for amide were further explored 
+using molecular dynamics simulations. Thus, the novel 
+(R)-2-amino-3-triazolpropanoic acid derivatives reveal insights to agonist 
+binding at the GluN1 subunit of NMDA receptors and provide new opportunities for 
+the design of glycine site agonists.
+
+Copyright © 2022 Zhao, Mazis, Yi, Lotti, Layeux, Schultz, Bunch, Hansen and 
+Clausen.
+
+DOI: 10.3389/fchem.2022.1008233
+PMCID: PMC9713482
+PMID: 36465862
+
+Conflict of interest statement: The authors declare that the research was 
+conducted in the absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest.
+
+
+34. Ochsner J. 2018 Spring;18(1):81-87.
+
+Dietary Glycine Is Rate-Limiting for Glutathione Synthesis and May Have Broad 
+Potential for Health Protection.
+
+McCarty MF(1), O'Keefe JH(2), DiNicolantonio JJ(2).
+
+Author information:
+(1)Catalytic Longevity, Carlsbad, CA.
+(2)Department of Cardiology, Mid America Heart Institute, Saint Luke's Health 
+System, Kansas City, MO.
+
+BACKGROUND: Glutathione is a key scavenging antioxidant that opposes the 
+proinflammatory signaling of hydrogen peroxide. Boosting cellular glutathione 
+levels may have broad utility in the prevention and treatment of disorders 
+driven by oxidative stress. Supplemental N-acetylcysteine has been employed for 
+this purpose. Could supplemental glycine likewise promote glutathione synthesis?
+METHODS: We conducted a review of the pertinent literature using PubMed.
+RESULTS: Tissue glycine levels are lower than the glutathione synthase Michaelis 
+constant (Km) for glycine. When glycine availability is too low to sustain a 
+normal rate of glutathione synthesis, the consequent rise in tissue levels of 
+gamma-glutamylcysteine leads to an increase in urinary excretion of its 
+alternative metabolite 5-L-oxoproline. The fact that urinary excretion of this 
+metabolite is elevated in vegetarians and others consuming relatively 
+low-protein diets strongly suggests that dietary glycine can be rate-limiting 
+for glutathione synthesis in normally fed humans. Moreover, supplemental glycine 
+has been reported to increase tissue glutathione levels in several animal 
+studies. Glycine is a biosynthetic precursor for porphyrins, purines, creatine, 
+sarcosine, and bile salts; is an agonist for glycine-gated chloride channels and 
+a coagonist for N-methyl-D-aspartate receptors; inhibits protein glycation; and 
+increases hepatic production of pyruvate, an effective scavenger of hydrogen 
+peroxide. Supplemental glycine may have the potential for improving endothelial 
+function, preventing cardiac hypertrophy, aiding control of metabolic syndrome, 
+preventing the complications of diabetes, dampening inflammation, protecting the 
+liver, and promoting effective sleep.
+CONCLUSION: Clinical research is warranted to evaluate the impact of 
+supplemental glycine on glutathione levels and on various health disorders.
+
+PMCID: PMC5855430
+PMID: 29559876
+
+
+35. Br J Nutr. 2024 Jun 28;131(12):1947-1961. doi: 10.1017/S0007114524000370.
+Epub  2024 Feb 29.
+
+Glycine supplementation can partially restore oxidative stress-associated 
+glutathione deficiency in ageing cats.
+
+Ruparell A(1), Alexander JE(1), Eyre R(2), Carvell-Miller L(1), Leung YB(3), 
+Evans SJM(4), Holcombe LJ(1), Heer M(1), Watson P(1).
+
+Author information:
+(1)Waltham Petcare Science Institute, Melton Mowbray, Leicestershire, UK.
+(2)Royal Canin Pet Health and Nutrition Centre, 6574 State Route 503N, 
+Lewisburg, OH, USA.
+(3)Royal Canin Research & Development Center, Aimargues, France.
+(4)The Ohio State University, 1925 Coffey Rd, Columbus, OH, USA.
+
+Intracellular levels of glutathione, the major mammalian antioxidant, are 
+reported to decline with age in several species. To understand whether ageing 
+affects circulating glutathione levels in cats, blood was sampled from two age 
+groups, < 3 years and > 9 years. Further, to determine whether dietary 
+supplementation with glutathione precursor glycine (GLY) affects glutathione 
+concentrations in senior cats (> 8 years), a series of free GLY inclusion level 
+dry diets were fed. Subsequently, a 16-week GLY feeding study was conducted in 
+senior cats (> 7 years), measuring glutathione, and markers of oxidative stress. 
+Whole blood and erythrocyte total, oxidised and reduced glutathione levels were 
+significantly decreased in senior cats, compared with their younger counterparts 
+(P ≤ 0·02). The inclusion level study identified 1·5 % free GLY for the 
+subsequent dry diet feeding study. Significant increases in erythrocyte total 
+and reduced glutathione were observed between senior cats fed supplemented and 
+control diets at 4 weeks (P ≤ 0·03; maximum difference of 1·23 µM). Oxidative 
+stress markers were also significantly different between groups at 8 (P = 0·004; 
+difference of 0·68 nG/ml in 8-hydroxy-2'-deoxyguanosine) and 12 weeks (P ≤ 
+0·049; maximum difference of 0·62 nG/mG Cr in F2-isoprostane PGF2α). Senior cats 
+have lower circulating glutathione levels compared with younger cats. Feeding 
+senior cats a complete and balanced dry diet supplemented with 1·5 % free GLY 
+for 12 weeks elevated initial erythrocyte glutathione and altered markers of 
+oxidative stress. Dietary supplementation with free GLY provides a potential 
+opportunity to restore age-associated reduction in glutathione in cats.
+
+DOI: 10.1017/S0007114524000370
+PMCID: PMC11361917
+PMID: 38418414 [Indexed for MEDLINE]
+
+
+36. J Autism Dev Disord. 2020 Mar;50(3):935-948. doi: 10.1007/s10803-019-04333-1.
+
+Influence of a Combined Gluten-Free and Casein-Free Diet on Behavior Disorders 
+in Children and Adolescents Diagnosed with Autism Spectrum Disorder: A 12-Month 
+Follow-Up Clinical Trial.
+
+González-Domenech PJ(1)(2), Díaz Atienza F(1), García Pablos C(1), Fernández 
+Soto ML(3), Martínez-Ortega JM(2), Gutiérrez-Rojas L(4)(5)(6).
+
+Author information:
+(1)Child and Adolescent Mental Health Unit, Virgen de las Nieves University 
+Hospital, Granada, Spain.
+(2)Department of Psychiatry, University of Granada, Granada, Spain.
+(3)Department of Medicine, University of Granada, Granada, Spain.
+(4)Department of Psychiatry, University of Granada, Granada, Spain. 
+gutierrezrojasl@hotmail.com.
+(5)Psychiatry Service, Hospital Clínico San Cecilio, Granada, Spain. 
+gutierrezrojasl@hotmail.com.
+(6)CTS-549 Research Group, Institute of Neuroscience, Granada, Spain. 
+gutierrezrojasl@hotmail.com.
+
+The use of alternative interventions, such as gluten-free and casein-free (GFCF) 
+diets, is frequent due to limited therapies for Autism Spectrum Disorder (ASD). 
+Our aims were to determine the influence of a GFCF diet on behavior disorders in 
+children and adolescents diagnosed with ASD and the potential association with 
+urinary beta-casomorphin concentrations. Thirty-seven patients were recruited 
+for this crossover trial. Each patient consumed a normal diet (including gluten 
+and casein) for 6 months and a GFCF diet for another 6 months. The order of the 
+intervention (beginning with normal diet or with GFCF diet) was assigned 
+randomly. Patients were evaluated at three time-points (at the beginning of the 
+study, after normal diet and after GFCF diet). Questionnaires regarding behavior 
+and autism and dietary adherence were completed and urinary beta-casomorphin 
+concentrations were determined at each time-point. No significant behavioral 
+changes and no association with urinary beta-casomorphin concentrations were 
+found after GFCF diet. A 6-month GFCF diet do not induce significant changes in 
+behavioral symptoms of autism and urinary beta-casomorphin concentrations. 
+Further studies with a long follow-up period similar to ours and including 
+placebo and blinding elements are needed to identify better those respondents to 
+GFCF diets.
+
+DOI: 10.1007/s10803-019-04333-1
+PMID: 31813108 [Indexed for MEDLINE]
+
+
+37. J Autism Dev Disord. 2006 Apr;36(3):413-20. doi: 10.1007/s10803-006-0079-0.
+
+The gluten-free, casein-free diet in autism: results of a preliminary double 
+blind clinical trial.
+
+Elder JH(1), Shankar M, Shuster J, Theriaque D, Burns S, Sherrill L.
+
+Author information:
+(1)College of Nursing, University of Florida, Gainesville, 32610, USA. 
+elderjh@nursing.ufl.edu
+
+This study tested the efficacy of a gluten-free and casein-free (GFCF) diet in 
+treating autism using a randomized, double blind repeated measures crossover 
+design. The sample included 15 children aged 2-16 years with autism spectrum 
+disorder. Data on autistic symptoms and urinary peptide levels were collected in 
+the subjects' homes over the 12 weeks that they were on the diet. Group data 
+indicated no statistically significant findings even though several parents 
+reported improvement in their children. Although preliminary, this study 
+demonstrates how a controlled clinical trial of the GFCF diet can be conducted, 
+and suggests directions for future research.
+
+DOI: 10.1007/s10803-006-0079-0
+PMID: 16555138 [Indexed for MEDLINE]
+
+
+38. J Med Food. 2018 Feb;21(2):181-187. doi: 10.1089/jmf.2017.0069. Epub 2017 Oct
+ 26.
+
+The Occurrence of Antibodies Against Gluten in Children with Autism Spectrum 
+Disorders Does Not Correlate with Serological Markers of Impaired Intestinal 
+Permeability.
+
+Józefczuk J(1), Konopka E(2), Bierła JB(2), Trojanowska I(2), Sowińska A(2), 
+Czarnecki R(1), Sobol L(3), Józefczuk P(4), Surdy W(1), Cukrowska B(2).
+
+Author information:
+(1)1 The Paediatric Ward with the Paediatric Cardiology Unit, Specialist 
+Hospital of the Holy Spirit , Sandomierz, Poland .
+(2)2 Laboratory of Immunology, Department of Pathology, The Children's Memorial 
+Health Institute , Warsaw, Poland .
+(3)3 Department of Pathology, Specialist Hospital of the Holy Spirit , 
+Sandomierz, Poland .
+(4)4 Foundation for Protection of the Immunological System "Immuno ," Warsaw, 
+Poland .
+
+There is evidence that children with autism spectrum disorders (ASDs) display an 
+increased immune reactivity against gluten, which is supposed to be the effect 
+of intestinal barrier abnormalities. The aim of study was to evaluate the 
+relation of antibody induced by gluten to zonulin and intestinal fatty acid 
+binding proteins (I-FABP), that is, serological markers of an impaired gut 
+barrier. The study included 77 patients with ASDs. Zonulin, I-FABP, 
+celiac-specific antibodies, anti-gliadin antibodies (AGA), and antibodies 
+against neural transglutaminase 6 (TG6) of immunoglobulin (Ig) A and IgG classes 
+were detected in sera. Celiac-specific antibodies were negative in all ASD 
+children, four children (5.2%) had positive anti-TG6 antibodies, and increased 
+AGA-IgG production was found in 21 patients (27.3%). Mean levels of zonulin and 
+I-FABP in ASD patients were similar to those found in healthy controls and 
+revealed a negative correlation with age, whereas regression analysis revealed a 
+significant positive relationship between antibody production and the age. Serum 
+concentrations of zonulin and I-FABP showed no statistically significant 
+association with antibody positivity. An increased production of antibodies 
+related to gliadin and neural TG6 in ASD children is not related to serological 
+markers of an impaired intestinal barrier.
+
+DOI: 10.1089/jmf.2017.0069
+PMID: 29072974 [Indexed for MEDLINE]
+
+
+39. Nutrients. 2022 Apr 25;14(9):1797. doi: 10.3390/nu14091797.
+
+A Narrative Review about Autism Spectrum Disorders and Exclusion of Gluten and 
+Casein from the Diet.
+
+González-Domenech PJ(1), Diaz-Atienza F(1), Gutiérrez-Rojas L(1)(2), 
+Fernández-Soto ML(3), González-Domenech CM(4).
+
+Author information:
+(1)Department of Psychiatry, University of Granada, Health Technology Park, Av. 
+de la Investigación, 11, 18071 Granada, Spain.
+(2)Psychiatry Service, Hospital San Cecilio, Health Technology Park, Av. de la 
+Investigación, 11, 18016 Granada, Spain.
+(3)Department of Medicine, University of Granada, Health Technology Park, Av. de 
+la Investigación, 11, 18071 Granada, Spain.
+(4)Department of Microbiology, University of Málaga, Louis Pasteur Avenue, 29010 
+Málaga, Spain.
+
+OBJECTIVE: Autism spectrum disorders (ASDs) appear in the early stages of 
+neurodevelopment, and they remain constant throughout life. Currently, due to 
+limitations in ASDs treatment, alternative approaches, such as nutritional 
+interventions, have frequently been implemented. The aim of this narrative 
+review is to gather the most relevant and updated studies about dietary 
+interventions related to ASDs etiopathogenesis.
+RESULTS: Our literature search focused on the gluten- and casein-free (GFCF) 
+diet. The literature found shows the inexistence of enough scientific evidence 
+to support a general recommendation of dietary intervention in children with 
+ASD. Protocols and procedures for assessing risk and safety are also needed. 
+Future lines: Prospective and controlled research studies with larger sample 
+sizes and longer follow-up times are scarce and needed. In addition, studies 
+considering an assessment of intestinal permeability, bacterial population, 
+enzymatic, and inflammatory gastrointestinal activity are interesting to 
+identify possible responders. Besides brain imaging techniques, genetic tests 
+can also contribute as markers to evaluate the comorbidity of gastrointestinal 
+symptoms.
+
+DOI: 10.3390/nu14091797
+PMCID: PMC9102850
+PMID: 35565765 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.
+
+
+40. Complement Ther Med. 2012 Dec;20(6):437-40. doi: 10.1016/j.ctim.2012.08.004. 
+Epub 2012 Sep 19.
+
+A pilot study to evaluate nutritional influences on gastrointestinal symptoms 
+and behavior patterns in children with Autism Spectrum Disorder.
+
+Harris C(1), Card B.
+
+Author information:
+(1)Department of Nutrition & Exercise Science, School of Natural Health Arts & 
+Sciences, Bastyr University, NE Kenmore, WA 98028-4966, United States. 
+charris@bastyr.edu
+
+BACKGROUND: One in 110 children in the US have autism spectrum disorder (ASD), a 
+debilitating and life-long disorder that affects the health, relationships, and 
+learning of affected children. Existing research on the etiology, contributing 
+factors, and treatment for ASD is limited and controversial. Studies suggest 
+that GI symptoms are related to behavior issues in children with ASD, which may 
+be improved by a gluten-free, casein-free (GFCF) diet.
+OBJECTIVES: To evaluate the relationship between a GFCF diet and 
+gastrointestinal symptoms and behavior patterns in children with ASD.
+DESIGN AND SETTING: Cross-sectional design in which parents completed an online 
+survey regarding general health, diet (adapted food-frequency questionnaire 
+(FFQ)), gastrointestinal symptoms, and behavior patterns of their children with 
+ASD.
+MAIN OUTCOME MEASURES: Scores on the Gastrointestinal Symptoms Rating Scale 
+(GSRS) and Childhood Autism Rating Scale (CARS).
+RESULTS: Seven of thirteen children (median age 9years) were on a GFCF diet, 
+consuming significantly fewer gluten- and casein-containing foods than those not 
+on a GFCF diet. GSRS and CARS scores did not differ significantly according to 
+diet. Parents of all the children on a GFCF diet reported improved GI symptoms 
+and behavior patterns.
+CONCLUSIONS: This study provides evidence that the adapted FFQ is an effective 
+tool for evaluating adherence to a GFCF diet. Continued well-controlled research 
+is necessary to elucidate the gut-brain relationship in ASD.
+
+Copyright © 2012 Elsevier Ltd. All rights reserved.
+
+DOI: 10.1016/j.ctim.2012.08.004
+PMID: 23131376 [Indexed for MEDLINE]
+
+
+41. FASEB J. 2014 Jun;28(6):2398-413. doi: 10.1096/fj.13-246546. Epub 2014 Feb
+20.
+
+Vitamin D hormone regulates serotonin synthesis. Part 1: relevance for autism.
+
+Patrick RP(1), Ames BN(1).
+
+Author information:
+(1)Nutrition and Metabolism Center, Children's Hospital Oakland Research 
+Institute, Oakland, California, USA rpatrick@chori.org bames@chori.org.
+
+Serotonin and vitamin D have been proposed to play a role in autism; however, no 
+causal mechanism has been established. Here, we present evidence that vitamin D 
+hormone (calcitriol) activates the transcription of the serotonin-synthesizing 
+gene tryptophan hydroxylase 2 (TPH2) in the brain at a vitamin D response 
+element (VDRE) and represses the transcription of TPH1 in tissues outside the 
+blood-brain barrier at a distinct VDRE. The proposed mechanism explains 4 major 
+characteristics associated with autism: the low concentrations of serotonin in 
+the brain and its elevated concentrations in tissues outside the blood-brain 
+barrier; the low concentrations of the vitamin D hormone precursor 
+25-hydroxyvitamin D [25(OH)D3]; the high male prevalence of autism; and the 
+presence of maternal antibodies against fetal brain tissue. Two peptide 
+hormones, oxytocin and vasopressin, are also associated with autism and genes 
+encoding the oxytocin-neurophysin I preproprotein, the oxytocin receptor, and 
+the arginine vasopressin receptor contain VDREs for activation. Supplementation 
+with vitamin D and tryptophan is a practical and affordable solution to help 
+prevent autism and possibly ameliorate some symptoms of the disorder.
+
+© FASEB.
+
+DOI: 10.1096/fj.13-246546
+PMID: 24558199 [Indexed for MEDLINE]
+
+
+42. Front Psychiatry. 2026 Feb 11;17:1743465. doi: 10.3389/fpsyt.2026.1743465. 
+eCollection 2026.
+
+The effect of bright light therapy on glycemic control and cortisol rhythmicity 
+in depression: a randomized controlled trial.
+
+Fang J(#)(1)(2)(3)(4), Li X(#)(1)(2)(3)(4), Zhu S(1)(2)(3)(4), Hu Q(1)(2)(3)(4), 
+Wang T(2)(3)(4), Yu J(2)(3)(4), Qin X(5), Zhu D(2)(3)(4).
+
+Author information:
+(1)The School of Mental Health and Psychological Sciences, Anhui Medical 
+University, Hefei, China.
+(2)Department of Sleep Medicine, Affiliated Psychological Hospital of Anhui 
+Medical University, Hefei, China.
+(3)Department of Sleep Medicine, Anhui Mental Health Center, Hefei, China.
+(4)Department of Sleep Medicine, Hefei Fourth People's Hospital, Hefei, China.
+(5)Institutes of Physical Science and Information Technology, Anhui University, 
+Hefei, China.
+(#)Contributed equally
+
+BACKGROUND: Depressed patients with comorbid metabolic disorders have poorer 
+quality of life and prognosis. Pharmacological interventions carries risks of 
+liver and kidney toxicity, which highlights the need for safer 
+non-pharmacological alternatives. Experimental data suggest that light exposure 
+modulates cortisol secretion, thereby influencing metabolic outcomes in 
+depression. We hypothesized that bright light therapy may ameliorate metabolic 
+disturbances by modulating cortisol secretion.
+METHODS: In this randomized controlled trial, hospitalized patients with 
+depression were assigned to receive either bright light therapy (BLT) or 
+dim-light control condition. The pre-specified primary endpoint was the change 
+in fasting blood glucose (FBG) and cortisol rhythm indices from baseline to 
+post-treatment. Secondary endpoints included changes in other glycolipid 
+parameters, and scores on the Hamilton Depression (HAMD) and Anxiety (HAMA) 
+scales. Treatment effects were evaluated using linear mixed-effects models with 
+baseline adjustment.
+RESULTS: After the 2-week intervention, the BLT group showed a significant 
+reduction in fasting blood glucose (95% CI: 0.280 to 0.600; p < 0.001) and 
+cortisol mesor (95% CI: -2.677 to -0.064; p = 0.040) compared to the control 
+group. Within the BLT group, the change in FBG was positively associated with 
+the change in cortisol mesor after adjusting for covariates (β = 0.053, 95% CI: 
+0.016 to 0.122, p = 0.036).
+CONCLUSIONS: The findings of this study support a potential mechanism whereby 
+BLT modulates cortisol rhythmicity, which in turn may contribute to improved 
+glycemic control, pointing to its potential therapeutic benefit for addressing 
+metabolic disturbances in depression.
+CLINICAL TRIAL REGISTRATION: 
+https://www.chictr.org.cn/bin/project/edit?pid=260569, identifier 
+ChiCTR2500097364.
+
+Copyright © 2026 Fang, Li, Zhu, Hu, Wang, Yu, Qin and Zhu.
+
+DOI: 10.3389/fpsyt.2026.1743465
+PMCID: PMC12932458
+PMID: 41756577
+
+Conflict of interest statement: The author(s) declared that this work was 
+conducted in the absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest.
+
+
+43. Neurology. 2019 Mar 12;92(11):e1145-e1156. doi: 10.1212/WNL.0000000000007090.
+ Epub 2019 Feb 15.
+
+Bright light therapy for depression in Parkinson disease: A randomized 
+controlled trial.
+
+Rutten S(1), Vriend C(2), Smit JH(2), Berendse HW(2), van Someren EJW(2), 
+Hoogendoorn AW(2), Twisk JWR(2), van der Werf YD(2), van den Heuvel OA(2).
+
+Author information:
+(1)From Amsterdam UMC (S.R., C.V., J.H.S., E.J.W.v.S., A.W.H., O.A.v.d.H.), 
+Vrije Universiteit Amsterdam, Department of Psychiatry, Amsterdam Neuroscience; 
+Department of Research and Innovation (S.R., J.H.S., A.W.H., O.A.v.d.H.), GGZ 
+InGeest; Amsterdam UMC (C.V., H.W.B., Y.D.v.d.W.), Vrije Universiteit Amsterdam, 
+Department of Anatomy and Neurosciences, Amsterdam Neuroscience; Amsterdam UMC 
+(H.W.B.), Vrije Universiteit Amsterdam, Department of Neurology, Amsterdam 
+Neuroscience; Department of Sleep and Cognition (E.J.W.v.S., Y.D.v.d.W.), 
+Netherlands Institute for Neuroscience; Department of Integrative 
+Neurophysiology (E.J.W.v.S.), Center for Neurogenomics and Cognitive Research, 
+Amsterdam Neuroscience, VU University; and Amsterdam UMC (J.W.T.), Vrije 
+Universiteit Amsterdam, Department of Epidemiology and Biostatistics, Amsterdam, 
+the Netherlands. s.rutten@vumc.nl.
+(2)From Amsterdam UMC (S.R., C.V., J.H.S., E.J.W.v.S., A.W.H., O.A.v.d.H.), 
+Vrije Universiteit Amsterdam, Department of Psychiatry, Amsterdam Neuroscience; 
+Department of Research and Innovation (S.R., J.H.S., A.W.H., O.A.v.d.H.), GGZ 
+InGeest; Amsterdam UMC (C.V., H.W.B., Y.D.v.d.W.), Vrije Universiteit Amsterdam, 
+Department of Anatomy and Neurosciences, Amsterdam Neuroscience; Amsterdam UMC 
+(H.W.B.), Vrije Universiteit Amsterdam, Department of Neurology, Amsterdam 
+Neuroscience; Department of Sleep and Cognition (E.J.W.v.S., Y.D.v.d.W.), 
+Netherlands Institute for Neuroscience; Department of Integrative 
+Neurophysiology (E.J.W.v.S.), Center for Neurogenomics and Cognitive Research, 
+Amsterdam Neuroscience, VU University; and Amsterdam UMC (J.W.T.), Vrije 
+Universiteit Amsterdam, Department of Epidemiology and Biostatistics, Amsterdam, 
+the Netherlands.
+
+Comment in
+    Neurology. 2019 Mar 12;92(11):499-500. doi: 10.1212/WNL.0000000000007078.
+
+OBJECTIVE: To assess the efficacy of bright light therapy (BLT) in reducing 
+depressive symptoms in patients with Parkinson disease (PD) and major depressive 
+disorder (MDD) compared to a control light.
+METHODS: In this double-blind controlled trial, we randomized patients with PD 
+and MDD to treatment with BLT (±10,000 lux) or a control light (±200 lux). 
+Participants were treated for 3 months, followed by a 6-month naturalistic 
+follow-up. The primary outcome of the study was the Hamilton Depression Rating 
+Scale (HDRS) score. Secondary outcomes were objective and subjective sleep 
+measures and salivary melatonin and cortisol concentrations. Assessments were 
+repeated halfway, at the end of treatment, and 1, 3, and 6 months after 
+treatment. Data were analyzed with a linear mixed-model analysis.
+RESULTS: We enrolled 83 participants. HDRS scores decreased in both groups 
+without a significant between-group difference at the end of treatment. 
+Subjective sleep quality improved in both groups, with a larger improvement in 
+the BLT group (B [SE] = 0.32 [0.16], p = 0.04). Total salivary cortisol 
+secretion decreased in the BLT group, while it increased in the control group (B 
+[SE] = -8.11 [3.93], p = 0.04).
+CONCLUSION: BLT was not more effective in reducing depressive symptoms than a 
+control light. Mood and subjective sleep improved in both groups. BLT was more 
+effective in improving subjective sleep quality than control light, possibly 
+through a BLT-induced decrease in cortisol levels.
+CLINICALTRIALSGOV IDENTIFIER: NCT01604876.
+CLASSIFICATION OF EVIDENCE: This study provides Class I evidence that BLT is not 
+superior to a control light device in reducing depressive symptoms in patients 
+with PD with MDD.
+
+© 2019 American Academy of Neurology.
+
+DOI: 10.1212/WNL.0000000000007090
+PMID: 30770426 [Indexed for MEDLINE]
