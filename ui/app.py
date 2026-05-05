@@ -37,7 +37,8 @@ ATLAS_CSV_DIR = REPO_ROOT / "v2.0_scored"
 # Page config — narrow centered column, sidebar collapsed
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Causes Atlas",
+    page_title="Causes Atlas — Autism",
+    page_icon="◉",  # subtle constellation-suggestive favicon glyph
     layout="centered",
     initial_sidebar_state="collapsed",
 )
@@ -70,16 +71,37 @@ st.markdown(
     /* Hide the default Streamlit chrome */
     #MainMenu, footer, header [data-testid="stStatusWidget"] { visibility: hidden; }
 
-    /* Serif headlines */
+    /* Serif headlines — bigger, more confident */
     h1, h2, h3 {
         font-family: ui-serif, Georgia, "Times New Roman", serif !important;
         font-weight: 500 !important;
-        letter-spacing: -0.01em !important;
+        letter-spacing: -0.02em !important;
         color: var(--ink) !important;
     }
-    h1 { font-size: 2.6rem !important; line-height: 1.15 !important; }
-    h2 { font-size: 1.7rem !important; line-height: 1.3 !important; }
+    h1 {
+        font-size: clamp(2.8rem, 5.8vw, 4.6rem) !important;
+        line-height: 1.05 !important;
+    }
+    h2 {
+        font-size: clamp(1.8rem, 3.2vw, 2.6rem) !important;
+        line-height: 1.2 !important;
+    }
     h3 { font-size: 1.2rem !important; line-height: 1.4 !important; }
+
+    /* Widen the centered content column on desktop — Streamlit's default
+       caps too tight for marketing-grade layout. Still reads on mobile. */
+    .stApp .main .block-container {
+        max-width: 920px !important;
+        padding-top: 3rem !important;
+        padding-bottom: 4rem !important;
+    }
+    @media (max-width: 900px) {
+        .stApp .main .block-container {
+            max-width: 100% !important;
+            padding-left: 1.25rem !important;
+            padding-right: 1.25rem !important;
+        }
+    }
 
     /* Body */
     p, li, .stMarkdown p, .stMarkdown li {
@@ -297,32 +319,62 @@ def go_to(step: str):
 # ---------------------------------------------------------------------------
 # Step 0 — HERO
 # ---------------------------------------------------------------------------
+def _hero_constellation_svg() -> str:
+    """Decorative miniaturized constellation for the hero. Quiet, subtle —
+    establishes visual identity without competing with the type. All 11
+    nodes drawn faintly; the word AUTISM at center."""
+    POSITIONS = [
+        (600, 90), (870, 175), (980, 380), (940, 600), (770, 740),
+        (530, 790), (290, 740), (130, 600), (90, 380), (200, 175), (470, 90)
+    ]
+    cx, cy = 535, 420
+    parts = ['<svg viewBox="0 0 1070 880" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:560px; height:auto; display:block; margin:0 auto; opacity:0.78;">']
+    # ring connections
+    for i, (x, y) in enumerate(POSITIONS):
+        x2, y2 = POSITIONS[(i + 1) % len(POSITIONS)]
+        parts.append(f'<line x1="{x}" y1="{y}" x2="{x2}" y2="{y2}" stroke="#E7E2D9" stroke-width="1"/>')
+    # spokes
+    for x, y in POSITIONS:
+        parts.append(f'<line x1="{cx}" y1="{cy}" x2="{x}" y2="{y}" stroke="#F1ECE3" stroke-width="1"/>')
+    # nodes
+    for x, y in POSITIONS:
+        parts.append(f'<circle cx="{x}" cy="{y}" r="6" fill="#1F1A14" fill-opacity="0.85"/>')
+    # center
+    parts.append(f'<circle cx="{cx}" cy="{cy}" r="4" fill="#A89F8E"/>')
+    parts.append(f'<text x="{cx}" y="{cy+34}" text-anchor="middle" font-size="14" fill="#5C5446" letter-spacing="3" font-family="ui-serif, Georgia, serif">AUTISM</text>')
+    parts.append("</svg>")
+    return "".join(parts)
+
+
 def render_hero():
-    st.markdown("<div style='height:6vh'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:2vh'></div>", unsafe_allow_html=True)
     st.markdown(
-        """
+        f"""
         <div style='text-align:center;'>
             <div class='eyebrow'>The Causes Atlas</div>
-            <h1 style='margin-top:1rem;'>
+            <h1 style='margin-top:1.2rem;'>
                 Autism isn't one thing.<br>
                 <em style='color: var(--ink-mute);'>We mapped every thing it is.</em>
             </h1>
-            <p style='margin-top:2rem; font-size:1.1rem; color: var(--ink-soft); max-width:38ch; margin-left:auto; margin-right:auto;'>
-                Your child isn't a phenotype.<br>They're a shape on the map.
+            <p style='margin-top:2.4rem; font-size: clamp(1.1rem, 1.6vw, 1.35rem); color: var(--ink-soft); max-width:36ch; margin-left:auto; margin-right:auto; line-height:1.5;'>
+                Your child isn't a phenotype.<br>
+                They're a shape on the map.
             </p>
         </div>
+        <div style='height:3vh'></div>
+        {_hero_constellation_svg()}
         """,
         unsafe_allow_html=True,
     )
-    st.markdown("<div style='height:5vh'></div>", unsafe_allow_html=True)
-    c = st.columns([1, 2, 1])
+    st.markdown("<div style='height:3vh'></div>", unsafe_allow_html=True)
+    c = st.columns([1, 1.4, 1])
     with c[1]:
         if st.button("See a profile", use_container_width=True):
             go_to("pick")
-    st.markdown("<div style='height:8vh'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:6vh'></div>", unsafe_allow_html=True)
     st.markdown(
         """
-        <div style='text-align:center; color: var(--ink-mute); font-size:0.78rem; letter-spacing:0.18em; text-transform:uppercase;'>
+        <div style='text-align:center; color: var(--ink-mute); font-size:0.74rem; letter-spacing:0.22em; text-transform:uppercase;'>
             Open · deterministic · evidence-balanced · continuously ingested
         </div>
         """,
@@ -639,12 +691,17 @@ def render_footer():
         unsafe_allow_html=True,
     )
     with st.expander("Behind the scenes — how this is built", expanded=False):
+        st.markdown(
+            "<div style='font-size:0.78rem; letter-spacing:0.18em; text-transform:uppercase; color: var(--ink-mute); margin-bottom:0.6rem;'>Choose a section</div>",
+            unsafe_allow_html=True,
+        )
         sub_tab = st.radio(
             "Section",
             ["What this is", "Eleven dimensions", "Contested entities", "Live updates", "Methodology", "Disclaimer"],
-            horizontal=True,
+            horizontal=False,
             label_visibility="collapsed",
         )
+        st.markdown("<div style='height:1rem; border-top:1px solid var(--line); margin-top:0.5rem;'></div>", unsafe_allow_html=True)
 
         if sub_tab == "What this is":
             st.markdown(
