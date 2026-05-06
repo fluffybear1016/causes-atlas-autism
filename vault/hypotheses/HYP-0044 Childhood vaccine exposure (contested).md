@@ -45,6 +45,15 @@ Per CLAUDE.md §1, §5, §9, status=contested permanent. Per atlas mission, indi
 **Notes:** Status=contested permanent. Six subpopulation signals identified per CLAUDE.md §9: poor-mercury-excreter, MT-deficient, MBP-autoimmune, Rh-neg-mother + prenatal Rho(D), Al-burden cumulative, conjugate-vaccine immune-deviation. Plus mito-vulnerable (Hannah Poling). Mainstream null studies don't refute subpopulation-specific signals — different study designs answer different questions.
 
 
+## Evidence balance
+
+
+### Mainstream consensus position
+
+
+> WHO, CDC, AAP, NIH, and major medical societies recommend universal childhood vaccination per the standard schedule for prevention of vaccine-preventable infectious disease. Multiple large-scale cohort studies — Madsen 2002 NEJM (PMID 12421889), Hviid 2019 Ann Intern Med (PMID 30831578), DeStefano 2019 Annu Rev Virol (PMID 30986133) — find no association between MMR or other routine pediatric vaccines and autism at population level. Mainstream public-health position: benefit substantially exceeds risk at population level.
+
+
 ## Mechanisms
 
 - [[MEC-0002 Neuroinflammation]]

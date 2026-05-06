@@ -2,12 +2,17 @@
 id: 'PHE-0001'
 type: 'phenotype'
 name: 'Cerebral folate deficiency phenotype'
+evidence_tier: 2
+evidence_tier_label: 'Tier 2 — emerging evidence'
 prevalence_estimate: '~10-25% of cases'
 status: 'active'
 last_updated: '2026-04-24T17:07:31+00:00'
 ---
 
 # PHE-0001 Cerebral folate deficiency phenotype
+
+
+> **Evidence tier:** Tier 2 — emerging evidence
 
 
 Subset of autism with documented blockade of folate transport into the brain via FOLR1 autoantibodies. High response rate to high-dose folinic acid (leucovorin) per Frye 2018 RCT.

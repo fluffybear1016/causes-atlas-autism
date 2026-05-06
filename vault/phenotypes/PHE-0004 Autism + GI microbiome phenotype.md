@@ -2,12 +2,17 @@
 id: 'PHE-0004'
 type: 'phenotype'
 name: 'Autism + GI / microbiome phenotype'
+evidence_tier: 2
+evidence_tier_label: 'Tier 2 — emerging evidence'
 prevalence_estimate: '~30-70% have GI symptoms'
 status: 'active'
 last_updated: '2026-04-24T17:07:31+00:00'
 ---
 
 # PHE-0004 Autism + GI microbiome phenotype
+
+
+> **Evidence tier:** Tier 2 — emerging evidence
 
 
 Subset with chronic GI symptoms and altered gut microbiome. FMT trials show sustained improvement (Kang 2019).

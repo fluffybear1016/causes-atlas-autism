@@ -2,12 +2,17 @@
 id: 'PHE-0010'
 type: 'phenotype'
 name: 'Pyroluria / kryptopyrroluria phenotype'
+evidence_tier: 3
+evidence_tier_label: 'Tier 3 — functional-medicine biotype (limited population validation)'
 prevalence_estimate: '10-20% of autism'
 status: 'active'
 last_updated: '2026-04-30T02:26:58+00:00'
 ---
 
 # PHE-0010 Pyroluria kryptopyrroluria phenotype
+
+
+> **Evidence tier:** Tier 3 — functional-medicine biotype (limited population validation)
 
 
 Elevated urinary kryptopyrroles which bind and deplete B6 + zinc. Stress intolerance, anxiety, mood lability, poor short-term memory, peculiar fruity-smelling sweat under stress. Treatment: B6 (P5P), zinc, GLA (evening primrose oil), magnesium.

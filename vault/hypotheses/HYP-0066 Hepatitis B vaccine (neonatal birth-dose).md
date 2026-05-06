@@ -25,6 +25,15 @@ Day-of-birth hepatitis B vaccination has been hypothesized as a specific autism 
 **Notes:** Status=contested permanent. Atlas position: for low-transmission-risk families (negative maternal HBsAg, no household contacts with active Hep B), delaying birth-dose to adolescence or later is medically defensible. Population-average null studies (Andersson 2025 etc.) do not refute subgroup-specific signals per Hannah Poling framework — different study designs answer different questions. ACIP Sep 2025 (SRC-001420) currently reviewing this policy.
 
 
+## Evidence balance
+
+
+### Mainstream consensus position
+
+
+> WHO, AAP, ACIP recommend universal hepatitis B birth-dose vaccination. Vertical-transmission mortality reduction is well-established and outside dispute. ACIP September 2025 review retained the universal birth-dose recommendation. Mainstream epidemiology shows no population-average autism association.
+
+
 ## Mechanisms
 
 - [[MEC-0002 Neuroinflammation]]

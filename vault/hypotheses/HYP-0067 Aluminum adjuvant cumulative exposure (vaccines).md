@@ -25,6 +25,15 @@ Cumulative aluminum from adjuvanted vaccines through the routine childhood sched
 **Notes:** Andersson 2025 JAMA Ann Intern Med null at population scale; minority claims (Tomljenovic + Shaw, Exley) maintain concerns. Status=contested.
 
 
+## Evidence balance
+
+
+### Mainstream consensus position
+
+
+> FDA, WHO, EMA, and major immunology bodies conclude that aluminum adjuvants in pediatric vaccines remain below toxicokinetic harm thresholds, supported by Mitkus 2011 Vaccine (PMID 22001122). Andersson 2025 Ann Intern Med Danish nationwide cohort (PMID 40658954) found no association between cumulative aluminum-adsorbed-vaccine exposure and chronic-disease outcomes including autism, asthma, and autoimmune disease at population level.
+
+
 ## Mechanisms
 
 - [[MEC-0002 Neuroinflammation]]

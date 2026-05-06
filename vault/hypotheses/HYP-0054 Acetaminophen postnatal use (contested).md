@@ -25,6 +25,15 @@ Postnatal acetaminophen exposure during fever/illness explored as potential risk
 **Notes:** Schultz 2008; debated.
 
 
+## Evidence balance
+
+
+### Mainstream consensus position
+
+
+> WHO and AAP consider acetaminophen the preferred analgesic and antipyretic for infants and young children when clinically indicated, due to the contraindication of NSAIDs and aspirin in this age group. The 2021 Bauer et al multi-author consensus statement (PMID 34507921) calling for precautionary minimization of pregnancy + early-life acetaminophen is an emerging signal, not a guideline change.
+
+
 ## Mechanisms
 
 - [[MEC-0001 Oxidative stress]]

@@ -2,12 +2,17 @@
 id: 'PHE-0007'
 type: 'phenotype'
 name: 'GABA/Cl- imbalance phenotype'
+evidence_tier: 2
+evidence_tier_label: 'Tier 2 — emerging evidence'
 prevalence_estimate: 'Subset, identification challenging'
 status: 'active'
 last_updated: '2026-04-24T17:07:31+00:00'
 ---
 
 # PHE-0007 GABA Cl- imbalance phenotype
+
+
+> **Evidence tier:** Tier 2 — emerging evidence
 
 
 Phenotype defined by responsiveness to bumetanide; may reflect persistence of immature GABA polarity.

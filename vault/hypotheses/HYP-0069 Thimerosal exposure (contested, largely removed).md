@@ -25,6 +25,15 @@ Thimerosal (ethylmercury preservative) was removed from essentially all US child
 **Notes:** IOM 2004 review specifically rejected; mostly historical.
 
 
+## Evidence balance
+
+
+### Mainstream consensus position
+
+
+> WHO continues to endorse thimerosal-containing multi-dose vaccines globally as safe and necessary for cold-chain logistics. Thimerosal was removed from US childhood vaccines (excluding some influenza formulations) by 2001 per a precautionary FDA / AAP joint statement. Subsequent large cohort studies — Verstraeten 2003 Pediatrics (PMID 14595043), Madsen 2003, Heron 2004 — found no association between thimerosal exposure and autism at population level.
+
+
 ## Mechanisms
 
 - [[MEC-0001 Oxidative stress]]

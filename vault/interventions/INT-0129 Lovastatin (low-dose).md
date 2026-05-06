@@ -27,3 +27,12 @@ Statin with FXR / cholesterol effects; preclinical Fragile X work
 
 **Notes / warnings:** Preclinical Fragile X work only; mitochondrially toxic + CoQ10 depleting. Not for general autism use. Status: contested.
 
+
+## Evidence balance
+
+
+### Mainstream consensus position
+
+
+> Statins (HMG-CoA reductase inhibitors including lovastatin) are FDA-approved and well-established for cardiovascular indications (hyperlipidemia, atherosclerotic disease). Their use in autism specifically — investigated by Frye et al for FXR / Ras-pathway modulation in subset cohorts — is investigational with limited published clinical evidence and is not a mainstream pediatric-neurology recommendation. Off-label use should be discussed with clinician oversight; CSRS in this atlas reflects mechanistic rationale + small published series, not population-validated efficacy.
+

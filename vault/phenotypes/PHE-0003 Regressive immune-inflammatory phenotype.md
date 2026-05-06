@@ -2,12 +2,17 @@
 id: 'PHE-0003'
 type: 'phenotype'
 name: 'Regressive immune-inflammatory phenotype'
+evidence_tier: 2
+evidence_tier_label: 'Tier 2 — emerging evidence'
 prevalence_estimate: '~25-35% of cases'
 status: 'active'
 last_updated: '2026-04-24T17:07:31+00:00'
 ---
 
 # PHE-0003 Regressive immune-inflammatory phenotype
+
+
+> **Evidence tier:** Tier 2 — emerging evidence
 
 
 Children who develop typically until 18-36 months then regress. Elevated inflammatory markers; family history of autoimmunity common.

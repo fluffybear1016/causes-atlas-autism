@@ -2,12 +2,17 @@
 id: 'PHE-0002'
 type: 'phenotype'
 name: 'Mitochondrial dysfunction phenotype'
+evidence_tier: 1
+evidence_tier_label: 'Tier 1 — validated biology'
 prevalence_estimate: '~30-50% show mitochondrial markers; ~5% meet strict criteria'
 status: 'active'
 last_updated: '2026-04-24T17:07:31+00:00'
 ---
 
 # PHE-0002 Mitochondrial dysfunction phenotype
+
+
+> **Evidence tier:** Tier 1 — validated biology
 
 
 Subset with elevated mitochondrial biomarkers; responds to mitochondrial cocktails (CoQ10, L-carnitine, B vitamins).

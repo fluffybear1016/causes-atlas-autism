@@ -25,6 +25,15 @@ Measles-mumps-rubella combination vaccine has been the most intensively studied 
 **Notes:** Wakefield 1998 retracted (Lancet); 4 large cohort studies negative; Hooker 2014/2018 reanalysis claims subgroup effect.
 
 
+## Evidence balance
+
+
+### Mainstream consensus position
+
+
+> WHO, CDC, AAP, EMA, NHS recommend MMR vaccine on the standard schedule. Multiple large cohort studies — Madsen 2002 NEJM 537,000+ children (PMID 12421889); Hviid 2019 Ann Intern Med 657,000+ children (PMID 30831578); DeStefano 2019 Annu Rev Virol review (PMID 30986133); Honda 2005 Yokohama natural experiment (PMID 15877763) — find no association between MMR and autism. Wakefield 1998 paper was retracted by The Lancet in 2010 (PMID 20137807 retraction notice).
+
+
 ## Mechanisms
 
 - [[MEC-0002 Neuroinflammation]]

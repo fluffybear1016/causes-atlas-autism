@@ -134,6 +134,60 @@ def parse_year(date_published: str, raw_metadata: str) -> str:
     return ""
 
 
+# Per-phenotype evidence tier (post-ChatGPT-critique sweep).
+# Tier 1 = validated biology; Tier 2 = emerging evidence;
+# Tier 3 = functional-medicine biotype with limited population validation.
+PHENOTYPE_TIER = {
+    "PHE-0001": 2, "PHE-0002": 1, "PHE-0003": 2, "PHE-0004": 2,
+    "PHE-0005": 1, "PHE-0006": 1, "PHE-0007": 2, "PHE-0008": 3,
+    "PHE-0009": 3, "PHE-0010": 3, "PHE-0011": 3,
+}
+TIER_LABEL = {
+    1: "Tier 1 — validated biology",
+    2: "Tier 2 — emerging evidence",
+    3: "Tier 3 — functional-medicine biotype (limited population validation)",
+}
+
+
+def render_consensus_block(row: dict) -> list[str]:
+    """Return markdown lines for the mainstream-consensus + countervailing
+    PMID block on contested rows. Empty list if no consensus populated.
+
+    Used on hypothesis pages, intervention pages, and the iatrogenic-exposures
+    index. Mainstream consensus shown FIRST at equal prominence with the
+    contested-evidence position. Each PMID list is rendered as a wiki-style
+    list. The atlas does not pick a side; it preserves the actual shape of
+    the evidence landscape.
+    """
+    out: list[str] = []
+    consensus = (row.get("mainstream_consensus_position") or "").strip()
+    sup = (row.get("primary_pmids") or row.get("primary_pmid") or "").strip()
+    opp = (row.get("countervailing_evidence_pmids") or "").strip()
+    bal = (row.get("evidence_balance") or "").strip()
+    if not (consensus or sup or opp):
+        return out
+    out.append("\n## Evidence balance\n")
+    if consensus:
+        out.append("\n### Mainstream consensus position\n")
+        out.append(f"\n> {consensus}\n")
+    if sup or opp:
+        out.append("\n### Citations — both positions\n")
+        if sup:
+            out.append("\n**Primary (supporting the row's stated effect):**\n")
+            for p in [x.strip() for x in sup.split(";") if x.strip().isdigit()]:
+                out.append(f"- [PMID {p}](https://pubmed.ncbi.nlm.nih.gov/{p}/)\n")
+        if opp:
+            out.append("\n**Countervailing (against the row's stated effect):**\n")
+            for p in [x.strip() for x in opp.split(";") if x.strip().isdigit()]:
+                out.append(f"- [PMID {p}](https://pubmed.ncbi.nlm.nih.gov/{p}/)\n")
+    if bal and bal != "0":
+        out.append(
+            f"\n*Auto-computed evidence balance "
+            f"(supporting count − opposing count): **{bal}**.*\n"
+        )
+    return out
+
+
 def parse_doi(raw_metadata: str) -> str:
     if not raw_metadata:
         return ""
@@ -455,6 +509,9 @@ for h in hypotheses:
     if h.get("notes"):
         body.append(f"\n**Notes:** {h['notes']}\n")
 
+    # Mainstream consensus + contested-evidence block (post-ChatGPT-critique sweep)
+    body.extend(render_consensus_block(h))
+
     link_list(hyp_to_mec.get(hid, []), "Mechanisms", body)
     link_list(hyp_to_int.get(hid, []), "Interventions", body)
     link_list(hyp_to_gen.get(hid, []), "Genes", body)
@@ -532,6 +589,9 @@ for it in interventions:
     if it.get("notes"):
         body.append(f"\n**Notes / warnings:** {it['notes']}\n")
 
+    # Mainstream consensus + contested-evidence block (post-ChatGPT-critique sweep)
+    body.extend(render_consensus_block(it))
+
     link_list(int_to_hyp.get(iid, []), "Hypotheses", body)
     link_list(int_to_mec.get(iid, []), "Mechanisms", body)
     link_list(int_to_gen.get(iid, []), "Genes", body)
@@ -583,15 +643,21 @@ print("Writing phenotypes…")
 for p in phenotypes:
     pid = p["id"]
     label = label_by_id[pid]
+    tier = PHENOTYPE_TIER.get(pid)
     front = {
         "id": pid,
         "type": "phenotype",
         "name": p.get("name", ""),
+        "evidence_tier": tier or "",
+        "evidence_tier_label": TIER_LABEL.get(tier, "") if tier else "",
         "prevalence_estimate": p.get("prevalence_estimate", ""),
         "status": p.get("status", ""),
         "last_updated": p.get("last_updated", ""),
     }
     body = [fm(front), f"# {label}\n"]
+    # Tier badge — visible at top of page (post-ChatGPT-critique sweep)
+    if tier:
+        body.append(f"\n> **Evidence tier:** {TIER_LABEL[tier]}\n")
     if p.get("description"):
         body.append(f"\n{p['description']}\n")
     if p.get("diagnostic_markers"):
@@ -951,6 +1017,132 @@ idx.append("```")
 idx.append("")
 
 (VAULT / "00_INDEX.md").write_text("\n".join(idx) + "\n", encoding="utf-8")
+
+# --------------------------------------------------------------------------
+# Iatrogenic exposure priors index (post-ChatGPT-critique sweep)
+# --------------------------------------------------------------------------
+# Renders all 27 iatrogenic exposure rows as a single navigable index page,
+# with mainstream consensus shown FIRST at equal prominence with the
+# contested-evidence position. Defangs the framing-attack risk for any
+# reader walking the vault by exposing the contested-row mainstream
+# position right where the contested evidence is recorded.
+
+print("\nWriting iatrogenic exposures index…")
+iep_path = SRC_DIR / "iatrogenic_exposure_priors.csv"
+iep_index_lines: list[str] = []
+if iep_path.exists():
+    iep_rows = read_csv(iep_path)
+    iep_index_lines = [
+        "---",
+        "type: index",
+        "title: Iatrogenic exposure priors",
+        "---",
+        "# Iatrogenic & environmental exposure priors\n",
+        "Every contested row below shows the **mainstream consensus position** "
+        "first, at equal prominence with the contested-evidence position. The "
+        "atlas does not pick a side; it preserves the actual shape of the "
+        "evidence landscape so individual decisions can be made with the full "
+        "picture.\n",
+        f"\n*{len(iep_rows)} rows total · "
+        f"{sum(1 for r in iep_rows if (r.get('status') or '').lower() == 'contested')} "
+        f"flagged contested.*\n",
+        "\n---\n",
+    ]
+    for r in iep_rows:
+        agent = (r.get("specific_agent") or "").replace("_", " ").title()
+        target = r.get("target_phenotype_id") or "—"
+        log_odds = r.get("log_odds_shift") or "—"
+        status = r.get("status") or ""
+        iep_index_lines.append(f"\n## {r.get('id','?')} · {agent}\n")
+        iep_index_lines.append(
+            f"\n*Target phenotype:* `{target}` · "
+            f"*log-odds shift:* `{log_odds}` · "
+            f"*status:* `{status}`\n"
+        )
+        consensus_block = render_consensus_block(r)
+        if consensus_block:
+            iep_index_lines.extend(consensus_block)
+        notes = (r.get("notes") or "").strip()
+        if notes:
+            iep_index_lines.append(f"\n**Atlas notes:** {notes[:600]}"
+                                   f"{'…' if len(notes) > 600 else ''}\n")
+        iep_index_lines.append("\n---\n")
+    (VAULT / "topics" / "00_IATROGENIC_EXPOSURES_INDEX.md").parent.mkdir(parents=True, exist_ok=True)
+    (VAULT / "topics" / "00_IATROGENIC_EXPOSURES_INDEX.md").write_text(
+        "\n".join(iep_index_lines), encoding="utf-8"
+    )
+    print(f"  Wrote vault/topics/00_IATROGENIC_EXPOSURES_INDEX.md ({len(iep_rows)} rows)")
+else:
+    print("  (skipped — iatrogenic_exposure_priors.csv not found)")
+
+
+# --------------------------------------------------------------------------
+# Responder-rate calibration cohort index (post-ChatGPT-critique sweep)
+# --------------------------------------------------------------------------
+# Generated from validation/responder_rate_calibration/cohort.yaml.
+# Lists all PMID-verified RCT entries scaffolded for the validation paper.
+
+print("Writing responder-rate cohort index…")
+cohort_path = ROOT / "validation" / "responder_rate_calibration" / "cohort.yaml"
+if cohort_path.exists():
+    try:
+        import yaml as _yaml
+        cohort = _yaml.safe_load(cohort_path.read_text(encoding="utf-8")) or {}
+        entries = cohort.get("entries") or []
+    except Exception as e:
+        print(f"  (failed to parse cohort.yaml: {e})")
+        entries = []
+    if entries:
+        cohort_lines = [
+            "---",
+            "type: index",
+            "title: Responder-rate calibration cohort",
+            f"cohort_version: {cohort.get('cohort_version','?')}",
+            f"engine_version_required: {cohort.get('engine_version_required','?')}",
+            "---",
+            "# Responder-rate calibration cohort\n",
+            "Move 2 of the post-mortem fix plan: replace atlas-internal "
+            "calibration with **literature-predictive** calibration. The "
+            "engine, fed published baseline profiles from N stratified RCTs, "
+            "should predict published responder rates within X% mean absolute "
+            "error. This cohort is the credentialing-paper deliverable.\n",
+            f"\n*{len(entries)} PMID-verified entries; full-text responder-"
+            "rate extraction pending for most.*\n",
+            "\n---\n",
+        ]
+        for e in entries:
+            eid = e.get("entry_id", "?")
+            pmid = e.get("rct_pmid", "?")
+            author = e.get("rct_first_author", "?")
+            year = e.get("rct_year", "?")
+            journal = e.get("rct_journal", "?")
+            int_id = e.get("intervention_id", "?")
+            int_name = e.get("intervention_name", "?")
+            target = e.get("target_phenotype_id", "—")
+            status = e.get("status", "scaffold")
+            cohort_lines.append(
+                f"\n## {eid}\n\n"
+                f"- **RCT:** {author} {year} *({journal})*\n"
+                f"- **PMID:** [{pmid}](https://pubmed.ncbi.nlm.nih.gov/{pmid}/)\n"
+                f"- **Intervention:** `{int_id}` {int_name}\n"
+                f"- **Target dimension:** `{target}`\n"
+                f"- **Status:** `{status}`\n"
+            )
+            crit = (e.get("stratification_criterion") or "").strip()
+            if crit:
+                cohort_lines.append(f"\n*Stratification:* {crit[:300]}"
+                                    f"{'…' if len(crit) > 300 else ''}\n")
+            cohort_lines.append("\n---\n")
+        (VAULT / "topics" / "00_RESPONDER_RATE_COHORT.md").parent.mkdir(parents=True, exist_ok=True)
+        (VAULT / "topics" / "00_RESPONDER_RATE_COHORT.md").write_text(
+            "\n".join(cohort_lines), encoding="utf-8"
+        )
+        print(f"  Wrote vault/topics/00_RESPONDER_RATE_COHORT.md ({len(entries)} entries)")
+    else:
+        print("  (skipped — cohort.yaml empty or unreadable)")
+else:
+    print("  (skipped — cohort.yaml not found)")
+
 
 # --------------------------------------------------------------------------
 # Wiki-link resolution report

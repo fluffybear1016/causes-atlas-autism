@@ -2,12 +2,17 @@
 id: 'PHE-0005'
 type: 'phenotype'
 name: 'mTOR pathway syndromic (TSC, PTEN)'
+evidence_tier: 1
+evidence_tier_label: 'Tier 1 — validated biology'
 prevalence_estimate: '~1-3% of cases'
 status: 'active'
 last_updated: '2026-04-24T17:07:31+00:00'
 ---
 
 # PHE-0005 mTOR pathway syndromic (TSC, PTEN)
+
+
+> **Evidence tier:** Tier 1 — validated biology
 
 
 Single-gene variants in mTOR pathway. Rapamycin/sirolimus FDA-approved for TSC; off-label use in autism + mTOR variants.

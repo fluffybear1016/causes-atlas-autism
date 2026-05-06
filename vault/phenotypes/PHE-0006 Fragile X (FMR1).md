@@ -2,12 +2,17 @@
 id: 'PHE-0006'
 type: 'phenotype'
 name: 'Fragile X (FMR1)'
+evidence_tier: 1
+evidence_tier_label: 'Tier 1 — validated biology'
 prevalence_estimate: '~1-2% of autism cases (~50% of Fragile X has autism)'
 status: 'active'
 last_updated: '2026-04-24T17:07:31+00:00'
 ---
 
 # PHE-0006 Fragile X (FMR1)
+
+
+> **Evidence tier:** Tier 1 — validated biology
 
 
 Single-gene cause. Multiple failed phase 3 trials; mechanism continues to refine.
