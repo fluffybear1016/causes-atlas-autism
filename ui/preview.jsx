@@ -321,11 +321,11 @@ export default function PreviewApp() {
         {/* ---------------- Main ---------------- */}
         <main className="flex-1 p-8 max-w-5xl">
           <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
-            Causes Atlas — Personalized Risk Calculator
+            Causes Atlas — Autism Profile
           </h1>
           <div className="text-sm text-slate-500 mt-1">
             Individual-level profile across 11 phenotype dimensions ·
-            deterministic Layer 3 of the Causes Atlas (Autism)
+            an open, deterministic, evidence-weighted inference engine over the autism causation graph
           </div>
 
           {/* Disclaimer banner */}
@@ -389,7 +389,7 @@ export default function PreviewApp() {
                 className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded text-sm"
                 onClick={() => setHasRun(true)}
               >
-                Compute personalized risk
+                Map a profile
               </button>
 
               {hasRun && (
@@ -621,22 +621,14 @@ export default function PreviewApp() {
                           <div className="col-span-4 font-medium text-slate-800">
                             {it.name}
                           </div>
-                          <div className="col-span-2">
-                            <Pill
-                              color={
-                                it.recommendation_type === "START"
-                                  ? "green"
-                                  : "blue"
-                              }
-                            >
-                              {it.recommendation_type}
-                            </Pill>
+                          <div className="col-span-3 text-xs text-slate-600 font-mono">
+                            linked to {it.target_phenotype}
                           </div>
-                          <div className="col-span-2 text-xs text-slate-500 font-mono">
-                            target: {it.target_phenotype}
+                          <div className="col-span-3 text-xs text-slate-500 italic">
+                            literature link, not a recommendation
                           </div>
                           <div className="col-span-2 text-xs text-slate-500 font-mono text-right">
-                            P={it.posterior_at_invocation.toFixed(3)}
+                            atlas signal {(it.posterior_at_invocation * 100).toFixed(0)}/100
                           </div>
                         </div>
                       ))}
@@ -891,12 +883,14 @@ export default function PreviewApp() {
               <h3 className="text-base font-semibold mt-5">Calibration</h3>
               <ul className="text-sm text-slate-700 list-disc list-inside space-y-1 mt-2">
                 <li>
-                  INT-0001 leucovorin CSRS = <strong>83.35</strong> (required ≥
-                  80.0). Engine refuses to run if anchor fails.
+                  INT-0001 leucovorin atlas signal = <strong>83.35</strong>{" "}
+                  (≥ 80 required for engine to run). The atlas signal is a
+                  heuristic composite, not a validated meta-analytic
+                  effect-size estimator — treat magnitudes as ordinal.
                 </li>
                 <li>
-                  Four literature-derived calibration cases pass with the
-                  expected top-phenotype assignment.
+                  Four literature-derived calibration cases pass the v0.2
+                  profile-vector expectations.
                 </li>
               </ul>
 
@@ -927,7 +921,7 @@ export default function PreviewApp() {
 
               <h3 className="text-base font-semibold mt-4">What this is</h3>
               <ul className="text-sm text-slate-700 list-disc list-inside space-y-1">
-                <li>A deterministic, auditable scoring engine.</li>
+                <li>A deterministic, auditable evidence-weighted inference engine.</li>
                 <li>
                   An explicit map of evidence — every prior shift is grounded
                   in PMID-verified literature.

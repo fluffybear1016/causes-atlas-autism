@@ -226,6 +226,34 @@ PHENOTYPE_DISPLAY = {
     "PHE-0011": ("Cu : Zn imbalance", "metallothionein"),
 }
 
+# Per-phenotype evidence tier (Fix 2 of post-ChatGPT-critique sweep).
+# Tier 1 = validated biology, Tier 2 = emerging evidence, Tier 3 =
+# functional-medicine biotype with limited population-level validation.
+# The engine internally tags Walsh phenotypes (PHE-0008..0011) as
+# `framework_derived_LOW` already; this surface makes the tier visible
+# in the UI and the constellation visualization.
+PHENOTYPE_TIER = {
+    "PHE-0001": 2,  # cerebral folate — emerging (FRAA biomarker validated; trial RCTs limited)
+    "PHE-0002": 1,  # mitochondrial — validated biology (decades of OXPHOS literature)
+    "PHE-0003": 2,  # regressive immune-inflammatory — emerging (Frye/Rossignol)
+    "PHE-0004": 2,  # GI/microbiome — emerging (Hsiao, Krajmalnik-Brown)
+    "PHE-0005": 1,  # mTOR syndromic (TSC1/2, PTEN) — validated, monogenic
+    "PHE-0006": 1,  # Fragile X (FMR1) — validated, monogenic
+    "PHE-0007": 2,  # GABA/Cl⁻ (Lemonnier, Ben-Ari) — emerging
+    "PHE-0008": 3,  # Walsh undermethylator — FM biotype, limited validation
+    "PHE-0009": 3,  # Walsh overmethylator — FM biotype, limited validation
+    "PHE-0010": 3,  # pyroluria — FM biotype, kryptopyrrole biomarker reproducibility weak
+    "PHE-0011": 3,  # Cu:Zn — FM biotype, limited validation
+}
+
+TIER_LABEL = {
+    1: "Validated biology",
+    2: "Emerging evidence",
+    3: "Functional-medicine biotype (limited validation)",
+}
+
+TIER_SHORT = {1: "Tier 1", 2: "Tier 2", 3: "Tier 3"}
+
 # Plain-language case names for the four bundled profiles
 SAMPLE_PROFILES = [
     {
@@ -301,6 +329,121 @@ def load_freshness() -> dict | None:
 
 
 # ---------------------------------------------------------------------------
+# PMID → study-design lookup (Fix 5 of post-ChatGPT-critique sweep).
+# Used in the contested-entities tab so each cited PMID carries its evidence
+# tier — defangs ChatGPT's "epistemically flattening" critique. Equal
+# *visibility* of both contested positions; *unequal weight* per citation.
+# ---------------------------------------------------------------------------
+
+# Per CLAUDE.md epistemic principles §2: source-quality hierarchy.
+# Maps study_design → numeric tier (1 = highest, 5 = bottom).
+PMID_DESIGN_TIER = {
+    "meta_analysis": 1,
+    "rct": 1,
+    "natural_experiment": 1,
+    "cohort": 2,
+    "case_control": 2,
+    "court_ruling": 2,
+    "review": 3,
+    "case_series": 3,
+    "mechanistic": 3,
+    "hypothesis_paper": 3,
+    "preliminary_analysis": 4,
+    "internal_correspondence": 4,
+    "advisory_review": 4,
+    "editorial": 5,
+    "letter": 5,
+    "comment": 5,
+    "news": 5,
+    "factcheck_review": 5,
+    "advocacy": 5,
+    "preprint": 4,
+    "in_vitro": 4,
+    "other": 4,
+}
+
+PMID_TIER_LABEL = {
+    1: "tier 1 (RCT / meta-analysis / natural experiment)",
+    2: "tier 2 (cohort / case-control / federal court ruling)",
+    3: "tier 3 (review / case series / mechanistic)",
+    4: "tier 4 (preliminary / advisory / preprint)",
+    5: "tier 5 (editorial / letter / comment / news)",
+}
+
+PMID_TIER_COLOR = {
+    1: "#1F1A14",  # near-black — strongest
+    2: "#3F3628",  # dark stone
+    3: "#5C5446",  # mid stone
+    4: "#7A6F5C",  # light stone
+    5: "#A89F8E",  # palest — weakest
+}
+
+
+@st.cache_data(show_spinner=False)
+def pmid_metadata_lookup() -> dict[str, dict]:
+    """Build {pmid → {design, tier, journal, year, first_author}} from sources.csv.
+
+    Used to render evidence-tier metadata next to each PMID in the
+    contested-entities UI. Cached for the session.
+    """
+    out: dict[str, dict] = {}
+    src_path = ATLAS_CSV_DIR / "sources.csv"
+    if not src_path.exists():
+        return out
+    with open(src_path, encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            if (r.get("platform") or "").lower() != "pubmed":
+                continue
+            pmid = (r.get("external_id") or "").strip()
+            if not pmid.isdigit():
+                continue
+            design_raw = (r.get("study_design") or "").strip().lower()
+            tier = PMID_DESIGN_TIER.get(design_raw, None)
+            out[pmid] = {
+                "design": design_raw,
+                "tier": tier,
+                "title": (r.get("title") or "").strip(),
+                "date_published": (r.get("date_published") or "").strip(),
+                "sample_size": (r.get("sample_size") or "").strip(),
+            }
+    return out
+
+
+def render_pmid_with_tier(pmid: str) -> str:
+    """Return HTML markup for a PMID link annotated with evidence tier."""
+    pmid = pmid.strip()
+    if not pmid.isdigit():
+        return ""
+    lookup = pmid_metadata_lookup()
+    meta = lookup.get(pmid)
+    base = f'<a href="https://pubmed.ncbi.nlm.nih.gov/{pmid}/" target="_blank" rel="noopener" style="color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line);">PMID {pmid}</a>'
+    if not meta:
+        return f"<li style='margin:0.4rem 0; font-size:0.92rem;'>{base} <span style='color:var(--ink-mute); font-size:0.78rem;'>· (not in atlas sources)</span></li>"
+    tier = meta.get("tier")
+    design = meta.get("design") or "unknown design"
+    n = meta.get("sample_size")
+    n_str = f" · n={n}" if n else ""
+    if tier:
+        color = PMID_TIER_COLOR[tier]
+        tier_pill = (
+            f'<span style="font-size:0.68rem; letter-spacing:0.14em; '
+            f'text-transform:uppercase; color:{color}; border:1px solid {color}; '
+            f'border-radius:999px; padding:0.1rem 0.5rem; margin-left:0.6rem;" '
+            f'title="{PMID_TIER_LABEL[tier]}">T{tier}</span>'
+        )
+    else:
+        tier_pill = ""
+    return (
+        f"<li style='margin:0.45rem 0; font-size:0.92rem; line-height:1.45;'>"
+        f"{base} {tier_pill}"
+        f"<span style='color:var(--ink-mute); font-size:0.78rem; margin-left:0.5rem;'>"
+        f"{design.replace('_',' ')}{n_str}"
+        f"</span>"
+        f"</li>"
+    )
+
+
+# ---------------------------------------------------------------------------
 # State machine
 # ---------------------------------------------------------------------------
 if "step" not in st.session_state:
@@ -356,10 +499,10 @@ def render_hero():
                 Treat the child,<br>
                 <em style='color: var(--ink-mute);'>not the diagnosis.</em>
             </h1>
-            <p style='margin-top:2.4rem; font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--ink-soft); max-width:42ch; margin-left:auto; margin-right:auto; line-height:1.55;'>
-                Eleven biological patterns.<br>
-                One profile per child.<br>
-                The interventions the evidence links to each.
+            <p style='margin-top:2.4rem; font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: var(--ink-soft); max-width:46ch; margin-left:auto; margin-right:auto; line-height:1.6;'>
+                An open, deterministic, evidence-weighted knowledge graph
+                that maps your child's biology to literature-linked
+                interventions — with the uncertainty made visible.
             </p>
         </div>
         <div style='height:2vh'></div>
@@ -376,10 +519,12 @@ def render_hero():
     st.markdown(
         """
         <div style='text-align:center; color: var(--ink-mute); font-size:0.74rem; letter-spacing:0.22em; text-transform:uppercase;'>
-            Open · deterministic · evidence-balanced · continuously ingested
+            Open · deterministic · evidence-weighted · continuously ingested
         </div>
         <div style='text-align:center; color: var(--ink-mute); font-size:0.78rem; margin-top:1rem; max-width:54ch; margin-left:auto; margin-right:auto; font-style:italic;'>
             Research prototype. Decision support, not a diagnostic device.
+            The atlas surfaces what the literature links to a child's profile;
+            it does not predict treatment response or recommend interventions.
         </div>
         """,
         unsafe_allow_html=True,
@@ -446,7 +591,14 @@ def render_pick():
 # Step 2 — RESULT
 # ---------------------------------------------------------------------------
 def render_constellation_svg(loadings: dict[str, float], dominant: list[str]) -> str:
-    """11-node constellation SVG with this child's loadings as halo intensity."""
+    """11-node constellation SVG with this child's loadings as halo intensity.
+
+    Fix 2: nodes are now visually tier-differentiated:
+      - Tier 1 (validated biology):     solid filled circle
+      - Tier 2 (emerging evidence):     filled circle + thin solid ring
+      - Tier 3 (FM biotype, limited):   filled circle + dashed ring + tier badge
+    Halo intensity still indicates this child's loading on the dimension.
+    """
     POSITIONS = {
         "PHE-0001": (600, 90), "PHE-0002": (870, 175), "PHE-0003": (980, 380),
         "PHE-0004": (940, 600), "PHE-0005": (770, 740), "PHE-0006": (530, 790),
@@ -461,10 +613,11 @@ def render_constellation_svg(loadings: dict[str, float], dominant: list[str]) ->
     # center
     svg.append(f'<circle cx="{cx}" cy="{cy}" r="3" fill="#A89F8E"/>')
     svg.append(f'<text x="{cx}" y="{cy+36}" text-anchor="middle" font-size="14" fill="#5C5446" letter-spacing="3">AUTISM</text>')
-    # nodes with halos sized by loading
+    # nodes with halos sized by loading + tier-differentiated rings
     for pid, (x, y) in POSITIONS.items():
         load = float(loadings.get(pid, 0.5))
         is_dom = pid in dominant
+        tier = PHENOTYPE_TIER.get(pid, 2)
         # halo radius scales with loading above 0.5
         halo_r = max(8, int(8 + (load - 0.5) * 60)) if load > 0.5 else 8
         halo_op = max(0.05, min(0.45, (load - 0.5) * 1.8)) if load > 0.5 else 0.05
@@ -474,6 +627,13 @@ def render_constellation_svg(loadings: dict[str, float], dominant: list[str]) ->
         node_fill = "#1F1A14" if is_dom else "#7A6F5C" if load >= 0.45 else "#C8C0AF"
         node_r = 7 if is_dom else 5
         svg.append(f'<circle cx="{x}" cy="{y}" r="{node_r}" fill="{node_fill}"/>')
+        # Tier ring overlay
+        if tier == 2:
+            # Solid thin ring for emerging evidence
+            svg.append(f'<circle cx="{x}" cy="{y}" r="{node_r+5}" fill="none" stroke="#1F1A14" stroke-width="1" stroke-opacity="0.45"/>')
+        elif tier == 3:
+            # Dashed ring + small "FM" badge for FM biotype
+            svg.append(f'<circle cx="{x}" cy="{y}" r="{node_r+5}" fill="none" stroke="#7A6F5C" stroke-width="1" stroke-dasharray="3,3" stroke-opacity="0.7"/>')
         # labels
         name, sub = PHENOTYPE_DISPLAY.get(pid, (pid, ""))
         label_above = y < cy - 50
@@ -482,19 +642,40 @@ def render_constellation_svg(loadings: dict[str, float], dominant: list[str]) ->
         if label_above:
             tx, ty, anchor = x, y - 28, "middle"
             ty2 = ty + 18
+            ty3 = ty - 18  # tier badge above name
         elif label_right:
             tx, ty, anchor = x + 18, y + 5, "start"
             ty2 = ty + 16
+            ty3 = ty - 14
         elif label_left:
             tx, ty, anchor = x - 18, y + 5, "end"
             ty2 = ty + 16
+            ty3 = ty - 14
         else:
             tx, ty, anchor = x, y + 36, "middle"
             ty2 = ty + 16
+            ty3 = ty - 18
         weight = "600" if is_dom else "500"
         opacity = 1.0 if is_dom else 0.85 if load >= 0.45 else 0.5
+        # FM-biotype tier-3 badge above the name
+        if tier == 3:
+            svg.append(f'<text x="{tx}" y="{ty3}" text-anchor="{anchor}" font-size="9" fill="#7A6F5C" letter-spacing="2" font-family="ui-sans-serif, sans-serif" opacity="{opacity}">FM BIOTYPE</text>')
         svg.append(f'<text x="{tx}" y="{ty}" text-anchor="{anchor}" font-size="17" fill="#1F1A14" font-weight="{weight}" opacity="{opacity}">{name}</text>')
         svg.append(f'<text x="{tx}" y="{ty2}" text-anchor="{anchor}" font-size="12" fill="#7A6F5C" font-style="italic" opacity="{opacity}">{sub}</text>')
+
+    # Tier legend (bottom-right corner)
+    svg.append('<g transform="translate(820,830)" font-family="ui-sans-serif, sans-serif">')
+    svg.append('<text x="0" y="0" font-size="9" fill="#7A6F5C" letter-spacing="2">EVIDENCE TIER</text>')
+    svg.append('<circle cx="8" cy="14" r="5" fill="#1F1A14"/>')
+    svg.append('<text x="20" y="17" font-size="10" fill="#5C5446">Tier 1 — validated biology</text>')
+    svg.append('<circle cx="8" cy="30" r="5" fill="#7A6F5C"/>')
+    svg.append('<circle cx="8" cy="30" r="9" fill="none" stroke="#1F1A14" stroke-width="1" stroke-opacity="0.45"/>')
+    svg.append('<text x="20" y="33" font-size="10" fill="#5C5446">Tier 2 — emerging evidence</text>')
+    svg.append('<circle cx="8" cy="46" r="5" fill="#7A6F5C"/>')
+    svg.append('<circle cx="8" cy="46" r="9" fill="none" stroke="#7A6F5C" stroke-width="1" stroke-dasharray="3,3" stroke-opacity="0.7"/>')
+    svg.append('<text x="20" y="49" font-size="10" fill="#5C5446">Tier 3 — FM biotype (limited validation)</text>')
+    svg.append('</g>')
+
     svg.append("</svg>")
     return "".join(svg)
 
@@ -577,19 +758,34 @@ def render_result():
         unsafe_allow_html=True,
     )
 
-    # Top interventions (plain English)
+    # Interventions the atlas links to this profile (citation-surfacing,
+    # not recommendation. Fix 3 of post-ChatGPT-critique sweep: dropped
+    # "First-line / Also consider" verbs to stay clearly out of FDA SaMD
+    # territory. The atlas surfaces what the published literature links to
+    # this profile shape; it does not recommend any intervention.)
     bundle = out.get("intervention_bundle", []) or []
     if bundle and not out.get("syndromic_flag"):
         st.markdown("<div style='height:5vh'></div>", unsafe_allow_html=True)
         st.markdown(
-            "<div style='text-align:center;'><div class='eyebrow'>What the literature points to</div></div>",
+            "<div style='text-align:center;'><div class='eyebrow'>"
+            "What the literature links to this profile</div></div>",
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            "<div style='text-align:center; color:var(--ink-mute); font-size:0.88rem; max-width:48ch; margin:0.5rem auto 1.5rem; line-height:1.55;'>"
+            "<em>The atlas surfaces interventions linked in the published literature "
+            "to this profile's strongest dimensions. It does not recommend treatment. "
+            "Decisions are for clinicians.</em>"
+            "</div>",
             unsafe_allow_html=True,
         )
         for i, item in enumerate(bundle[:3]):
             primary_dim = item.get("primary_target_dimension")
             primary_name = PHENOTYPE_DISPLAY.get(primary_dim, (primary_dim or "?", ""))[0]
-            reco = item.get("recommendation_type", "CONSIDER")
-            label = "First-line" if reco == "START" else "Also consider"
+            target_dims = item.get("target_dimensions") or []
+            n_links = max(1, len(target_dims))
+            score = float(item.get("score", 0.0) or 0.0)
+            atlas_q = float(item.get("atlas_quality", 0.0) or 0.0) * 100.0
             st.markdown(
                 f"""
                 <div style='border-bottom: 1px solid var(--line); padding: 1.1rem 0;'>
@@ -599,11 +795,13 @@ def render_result():
                                 {item.get('name','?')}
                             </div>
                             <div style='font-size: 0.88rem; color: var(--ink-mute); margin-top: 0.2rem;'>
-                                Linked to <strong style='color:var(--ink-soft);'>{primary_name.lower()}</strong> in this child's profile
+                                Linked to <strong style='color:var(--ink-soft);'>{primary_name.lower()}</strong>
+                                via {n_links} atlas edge{'s' if n_links != 1 else ''}
+                                · atlas signal {atlas_q:.0f}/100
                             </div>
                         </div>
-                        <div style='font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); white-space: nowrap;'>
-                            {label}
+                        <div style='font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); white-space: nowrap; text-align: right;'>
+                            profile-fit {score:.2f}
                         </div>
                     </div>
                 </div>
@@ -624,18 +822,29 @@ def render_result():
     # Deep view — single expander, optional
     st.markdown("<div style='height:4vh'></div>", unsafe_allow_html=True)
     with st.expander("Show the technical view", expanded=False):
-        st.markdown("**Profile loadings — all eleven dimensions**")
+        st.markdown(
+            "**Profile loadings — all eleven dimensions** "
+            "<span style='font-size:0.8rem; color:var(--ink-mute); font-weight:normal;'>"
+            "(tier badge indicates per-dimension evidence strength)</span>",
+            unsafe_allow_html=True,
+        )
         for pid in sorted(pl.keys()):
             load = float(pl[pid])
             name, sub = PHENOTYPE_DISPLAY.get(pid, (pid, ""))
+            tier = PHENOTYPE_TIER.get(pid, 2)
             cls = "dom" if load >= 0.55 else "sec" if load >= 0.45 else "dor"
             pct = max(0, min(100, load * 100))
+            tier_color = {1: "#1F1A14", 2: "#5C5446", 3: "#A89F8E"}[tier]
+            tier_label = TIER_SHORT[tier]
+            tier_full = TIER_LABEL[tier]
             st.markdown(
                 f"""
                 <div class='lvrow'>
                     <div class='dot {cls}'></div>
                     <div>
-                        <div class='name'>{name}<span class='sub'>{sub}</span></div>
+                        <div class='name'>{name}<span class='sub'>{sub}</span>
+                            <span style='font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:{tier_color}; border:1px solid {tier_color}; border-radius:999px; padding:0.1rem 0.5rem; margin-left:0.6rem;' title='{tier_full}'>{tier_label}</span>
+                        </div>
                         <div class='lvbar'><div class='fill' style='width:{pct:.1f}%'></div></div>
                     </div>
                     <div class='val'>{load:.2f}</div>
@@ -675,8 +884,14 @@ def render_result():
         st.markdown(
             f"<div style='font-size:0.85rem; color:var(--ink-mute);'>"
             f"<span class='verified-pill'>verified</span>"
-            f"engine `{ENGINE_VERSION}` · atlas `{ATLAS_VERSION}` · "
-            f"calibration anchor `{CALIBRATION_ANCHOR_NAME} = {CALIBRATION_ANCHOR_CURRENT_CSRS}` ≥ 80 required"
+            f"inference engine `{ENGINE_VERSION}` · atlas `{ATLAS_VERSION}` · "
+            f"atlas-signal anchor `{CALIBRATION_ANCHOR_NAME} = "
+            f"{CALIBRATION_ANCHOR_CURRENT_CSRS}` (≥ 80 required for engine to run)"
+            f"</div>"
+            f"<div style='font-size:0.78rem; color:var(--ink-mute); margin-top:0.6rem; font-style:italic;'>"
+            f"The atlas signal is a heuristic composite of evidence type, replication "
+            f"count, and source-quality tier. Not a validated meta-analytic effect-size "
+            f"estimator. Treat magnitudes as ordinal."
             f"</div>"
             f"<div style='font-size:0.78rem; color:var(--ink-mute); margin-top:0.6rem; word-break:break-all;'>"
             f"canonical_digest: <code style='font-size:0.7rem;'>{out.get('canonical_digest','')}</code>"
@@ -710,43 +925,120 @@ def render_footer():
         if sub_tab == "What this is":
             st.markdown(
                 """
-                The Causes Atlas is a curated, continuously-ingested,
-                evidence-balanced knowledge graph of autism causation,
-                phenotypes, biomarkers, and interventions.
+                The Causes Atlas is the first **open, deterministic,
+                evidence-weighted knowledge graph for stratifying autism-
+                related biological signals and mapping them to literature-
+                linked interventions with explicit uncertainty.**
 
-                It treats autism as **eleven biological pattern dimensions**,
-                not a single label. Every child has a profile *across* those
-                dimensions, not a fixed phenotype.
+                The atlas treats autism as **eleven biological pattern
+                dimensions** — not a single label, and not all weighted
+                equally (see the Eleven dimensions tab for the per-pattern
+                evidence tier). Every child has a profile *across* those
+                dimensions; no single dimension is a diagnosis.
 
-                It is open source. It is deterministic — same input always
-                produces the same output, with a SHA-256 digest you can
-                verify. It is not a diagnostic device, not regulated, not a
-                substitute for clinical judgment.
+                The engine is an **evidence-weighted inference engine**, not
+                a clinical-prediction model: it surfaces what the published
+                literature links to a child's profile, with each link
+                carrying its underlying study design and replication count.
+                It does not predict treatment response. It does not
+                recommend interventions.
+
+                **What you can verify yourself:** every PMID is PubMed-
+                checked before being allowed in (verify-before-write). Every
+                contested claim shows mainstream consensus and contested
+                evidence side by side, with each citation carrying its own
+                study design. The whole graph is open source, deterministic,
+                and reproducible — same input → same SHA-256 digest, every
+                time.
+
+                **What this is not:** a diagnostic device. A regulated
+                medical device. A substitute for clinical judgment. A
+                validated population-level prediction tool. A protocol
+                library or course.
                 """
             )
 
         elif sub_tab == "Eleven dimensions":
-            for pid in sorted(PHENOTYPE_DISPLAY.keys()):
-                name, sub = PHENOTYPE_DISPLAY[pid]
-                st.markdown(f"- **{name}** — *{sub}*")
+            st.markdown(
+                "Each dimension carries an explicit **evidence tier**. The "
+                "atlas does not pretend they are on equal footing — Fragile X "
+                "(monogenic, decades of biology) and pyroluria (a functional-"
+                "medicine biotype with limited population validation) are "
+                "different epistemic objects."
+            )
+            for tier in (1, 2, 3):
+                pids = sorted(p for p, t in PHENOTYPE_TIER.items() if t == tier)
+                tier_color = {1: "#1F1A14", 2: "#5C5446", 3: "#A89F8E"}[tier]
+                st.markdown(
+                    f"""
+                    <div style='margin-top:1.4rem; margin-bottom:0.6rem;'>
+                        <span style='font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:{tier_color}; border:1px solid {tier_color}; border-radius:999px; padding:0.2rem 0.7rem;'>
+                            {TIER_SHORT[tier]} — {TIER_LABEL[tier]}
+                        </span>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                for pid in pids:
+                    name, sub = PHENOTYPE_DISPLAY[pid]
+                    st.markdown(f"- **{name}** — *{sub}*")
 
         elif sub_tab == "Contested entities":
             st.markdown(
                 "For every claim the literature is split on — vaccines, "
                 "aluminum adjuvants, certain medications, prenatal exposures — "
-                "the atlas records **both views at equal prominence**. "
-                "Mainstream consensus is shown alongside the contested "
-                "evidence. The atlas does not pick a side."
+                "the atlas records **both views with equal visibility**, but "
+                "**not equal weight**. Each PMID below carries its own study-"
+                "design tier; an RCT is not a letter-to-the-editor. The "
+                "atlas does not pick a side; it preserves the actual shape "
+                "of the evidence landscape."
             )
             atlas = cached_load_atlas()
             iep_rows = atlas.get("iatrogenic", [])
             contested = [r for r in iep_rows if (r.get("status") or "").lower() == "contested"]
-            st.caption(f"{len(contested)} contested rows in iatrogenic exposure priors.")
-            for r in contested[:5]:
-                with st.expander(f"{(r.get('specific_agent') or '').replace('_',' ').title()}"):
+            st.caption(
+                f"{len(contested)} contested rows in iatrogenic exposure priors. "
+                f"Tier badges per PMID: T1 (RCT/meta-analysis/natural experiment) → "
+                f"T5 (editorial/letter/comment)."
+            )
+            for r in contested:
+                agent = (r.get("specific_agent") or "").replace("_", " ").title()
+                with st.expander(agent):
+                    # Mainstream consensus FIRST, in equal prominence
                     consensus = (r.get("mainstream_consensus_position") or "").strip()
                     if consensus:
-                        st.markdown(f"**Mainstream consensus**\n\n> {consensus}")
+                        st.markdown("**Mainstream consensus position**")
+                        st.markdown(f"> {consensus}")
+                    else:
+                        st.warning("Mainstream consensus position not yet populated.")
+
+                    st.markdown("---")
+                    st.markdown("**Citations — both positions, weighted by study design**")
+
+                    sup_pmids = [p.strip() for p in (r.get("primary_pmids") or "").split(";") if p.strip()]
+                    opp_pmids = [p.strip() for p in (r.get("countervailing_evidence_pmids") or "").split(";") if p.strip()]
+
+                    col_s, col_o = st.columns(2)
+                    with col_s:
+                        st.markdown("*Primary (supporting the row's stated effect):*")
+                        if sup_pmids:
+                            html = "<ul style='list-style:none; padding:0; margin:0;'>"
+                            for p in sup_pmids:
+                                html += render_pmid_with_tier(p)
+                            html += "</ul>"
+                            st.markdown(html, unsafe_allow_html=True)
+                        else:
+                            st.caption("(none populated yet)")
+                    with col_o:
+                        st.markdown("*Countervailing (against the row's stated effect):*")
+                        if opp_pmids:
+                            html = "<ul style='list-style:none; padding:0; margin:0;'>"
+                            for p in opp_pmids:
+                                html += render_pmid_with_tier(p)
+                            html += "</ul>"
+                            st.markdown(html, unsafe_allow_html=True)
+                        else:
+                            st.caption("(none populated yet)")
 
         elif sub_tab == "Live updates":
             fresh = load_freshness()
@@ -775,24 +1067,51 @@ def render_footer():
         elif sub_tab == "Methodology":
             st.markdown(
                 """
-                **The engine.** Each child's input — biomarkers, genetics,
-                exposures — is mapped through the atlas into a **loading
-                vector** across eleven biological pattern dimensions.
+                **The engine — what it actually is.** A deterministic,
+                evidence-weighted inference engine over the atlas knowledge
+                graph. Not a causal model (we don't run interventional
+                studies). Not a prediction model (no prospective cohort
+                validation). It is a structured reading of what the
+                published literature links to a profile shape.
 
-                **The math.** Per-dimension log-odds shifts → sigmoid →
-                probability. Intervention scoring: the highest-fit
-                intervention to this child's *strongest* dimension wins,
-                weighted by atlas-internal CSRS. Specificity is rewarded;
-                broad polypills are not.
+                **The pipeline.** Each child's input — biomarkers, genetics,
+                exposures — maps through the atlas into a loading vector
+                across eleven biological pattern dimensions, each carrying
+                its own evidence tier (Tier 1 validated → Tier 3 functional-
+                medicine biotype). Per-dimension log-odds shifts → sigmoid →
+                probability.
 
-                **Determinism.** No LLMs in the scoring math. No random
+                **Intervention surfacing.** For each candidate intervention
+                in the atlas, score = best (loading × edge_weight) across
+                this child's dimensions, weighted by the intervention's
+                **atlas signal** (a heuristic composite of evidence type,
+                replication count, source-quality tier — *not* a validated
+                meta-analytic effect-size estimator; treat magnitudes as
+                ordinal). Specificity is rewarded; broad polypills are not.
+                The output is a ranked *citation surface*, not a
+                recommendation.
+
+                **Determinism.** No LLMs in the inference math. No random
                 seeds. Same input → same output → same SHA-256 digest.
                 Re-running this profile a hundred times produces the same
                 answer a hundred times.
 
                 **Verification.** Every PMID in the atlas is verified
-                against PubMed before it is allowed in. Memory-based
-                citation generation is forbidden by protocol.
+                against PubMed esummary before it is allowed in. Memory-
+                based citation generation is forbidden by protocol. In
+                live testing, the protocol caught 9 of 23 fabricated PMIDs
+                an LLM tried to insert — direct evidence the discipline
+                works.
+
+                **Δ² (research-attention velocity).** A separate engine
+                tracks which entities are *accelerating* in the literature
+                (recency × cross-design convergence × subset validation ×
+                replication independence × trajectory mismatch). Important:
+                Δ² is **research-attention velocity, not truth velocity**.
+                A fast-rising entity may be correct, faddish, or funded;
+                Δ² doesn't decide. Anti-reflexivity discipline halts the
+                pipeline if curator behavior correlates with prior Δ²
+                rankings.
                 """
             )
 
