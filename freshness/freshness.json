@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 901,
-  "generated_at_utc": "2026-05-06T08:08:43+00:00",
+  "generated_at_utc": "2026-05-07T08:14:37+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -121,6 +121,17 @@
       "since": "2026-05-05T14:46:26+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1068,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-07T08:14:37+00:00",
+      "since": "2026-05-06T08:08:42+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "41903401"
+      ]
     }
   ],
   "queue_preview": [
@@ -211,6 +222,14 @@
       "pmid": "39417900",
       "pubdate": "2026 Mar",
       "title": "Gastrointestinal, Behaviour and Anxiety Outcomes in Autistic Children Following an Open Label, Randomised Pilot Study of Synbiotics vs Synbiotics and Gut-Direct"
+    },
+    {
+      "first_author": "Bouelkhair M",
+      "journal": "J Neuroimmunol",
+      "matched_queries_count": 1,
+      "pmid": "41903401",
+      "pubdate": "2026 Jul",
+      "title": "Short-chain fatty acids, neuroinflammation, and autism spectrum disorders: A mechanistic systematic review."
     },
     {
       "first_author": "Jeejo M",
@@ -515,15 +534,7 @@
       "pmid": "36129785",
       "pubdate": "2025 Jan-Feb",
       "title": "Mental Health Crisis Screening in Youth with Autism Spectrum Disorder."
-    },
-    {
-      "first_author": "Zhang A",
-      "journal": "Heliyon",
-      "matched_queries_count": 1,
-      "pmid": "39958733",
-      "pubdate": "2025 Jan 15",
-      "title": "Collaborative arts therapies as a supportive intervention for autism spectrum disorders: Bibliometric analysis, insights, and directions."
     }
   ],
-  "queue_size": 135
+  "queue_size": 136
 }
