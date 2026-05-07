@@ -1,4 +1,4 @@
-cohort_version: v0.4_full_text_extracted_11_of_13
+cohort_version: v0.5_full_text_extracted_12_of_13_complete
 engine_version_required: session4_v0.2.0_profile_vector
 verification_protocol: "BioMysteryBench-aligned (CLAUDE.md \xA7Verification protocol)"
 entries:
@@ -212,17 +212,39 @@ entries:
   intervention_name: L-carnosine
   target_phenotype_id: PHE-0007
   stratification_criterion: GABA-modulation framework (Chez hypothesis)
-  n_total_in_stratum: <extract from paper>
-  n_responder_in_stratum: <extract from paper>
-  published_responder_rate: <extract from paper>
-  placebo_responder_rate: <extract from paper>
-  responder_definition: GARS receptive language + behavior; per-paper
-  representative_input_profile_path: <pending>
+  n_total_in_stratum: 14
+  n_responder_in_stratum: null
+  published_responder_rate: null
+  placebo_responder_rate: null
+  responder_definition: 'Paper does NOT publish a dichotomized responder rate. Primary outcomes
+    are continuous: Clinical Global Impression (CGI), Childhood Autism Rating Scale, Gilliam
+    Autism Rating Scale (GARS) total + Behavior/Socialization/Communication subscales, Receptive
+    and Expressive One-Word Picture Vocabulary tests. Significant 8-week active-arm changes
+    (Table 3 page 836): CGI 2-vs-6wk p=0.04, Receptive Vocabulary raw p=0.01, GARS total p=0.04
+    (Behavior p=0.04, Socialization p=0.01, Communication p=0.03). Placebo arm (Table 2):
+    all measures NS.'
+  representative_input_profile_path: representative_inputs/rrc_005.json
   expected_engine_behavior:
     intervention_in_top_5: true
     primary_target_dimension: PHE-0007
-    _representative_input_pending: true
-  status: scaffold
+    _representative_input_authored_for_qualitative_check_only: true
+  status: full_text_extracted_excluded_from_mae_2026_05_07
+  response_minus_placebo: null
+  effect_size_cohen_d: null
+  p_value: 0.04
+  p_value_test: paired t-test with Tukey correction, GARS total score, active arm baseline-vs-8wk
+  extraction_notes: "Source: Chez 2002 J Child Neurol (PMID 12585724). N=31 enrolled (17 placebo\
+    \ + 14 active L-carnosine 800 mg/day), 8 weeks double-blind RCT, ages 3-12, broad ASD\
+    \ inclusion (NOT biomarker stratified). 13 subjects had abnormal EEG; 13 were on valproic\
+    \ acid. Mechanism: GABA modulation via homocarnosine, possible anticonvulsant effects,\
+    \ frontal/temporal cortex protection. Maps to PHE-0007 (GABA/Cl\u207B imbalance). EXCLUDED\
+    \ from cohort responder-rate MAE for two reasons: (1) paper publishes only continuous\
+    \ outcomes (no dichotomized responder rate, like Adams 2011 and Wright 2011), and (2)\
+    \ PHE-0007 has no biomarker drivers in v0.3 engine \u2014 same architectural gap as Lemonnier\
+    \ rrc_002. Both gaps would be addressed by the engine v0.4 refactor. Representative profile\
+    \ (rrc_005.json) encodes the GABA-imbalance phenotype proxy (epileptiform EEG + valproic\
+    \ acid concomitant) for engine STRUCTURAL-TEST purposes only."
+  pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_006_hendren_2016_methyl_b12
   rct_pmid: 26889605
   rct_first_author: Hendren RL

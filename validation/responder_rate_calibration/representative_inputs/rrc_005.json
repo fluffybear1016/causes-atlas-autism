@@ -1,0 +1,94 @@
+{
+  "case_id": "rrc_005_chez_2002_carnosine_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "young_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Chez 2002 J Child Neurol (PMID 12585724) L-carnosine RCT. Trial inclusion was broad ASD (ages 3-12), NOT biomarker-stratified. 13/31 had abnormal EEG and 13/31 were on valproic acid — a GABA-axis-loaded subset. L-carnosine's mechanism is GABA modulation via homocarnosine, frontal/temporal cortex protection, anticonvulsant. Maps to PHE-0007 (GABA/Cl⁻ imbalance). EXCLUDED from cohort MAE because (1) paper publishes only continuous outcomes (no dichotomized responder rate) AND (2) PHE-0007 has no biomarker drivers in v0.3 engine. The representative profile encodes the GABA-imbalance phenotype proxy via abnormal EEG + concomitant valproic acid for engine STRUCTURAL-TEST purposes only — and remains relevant once engine v0.4 wires PHE-0007 biomarker drivers (would also unblock rrc_002 Lemonnier).",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 30, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 0,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 32, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 89,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 25.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 124, "height_z_for_age_sex": 0.0,
+      "bmi": 16.3, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "moderate_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": [
+      "autism spectrum disorder",
+      "epileptiform_eeg_abnormalities_subclinical",
+      "_42pct_of_chez_cohort_per_paper_methods"
+    ],
+    "current_medications": [
+      "valproic_acid_concomitant_per_chez_cohort_42pct"
+    ],
+    "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+  "immunology": {"autoantibodies": {}},
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {}
+  },
+
+  "comorbidities": {
+    "epilepsy": {
+      "present": false,
+      "_subclinical_epileptiform_activity_per_chez_cohort": true,
+      "_eeg_abnormalities_consistent_with_gaba_imbalance_subset": true
+    },
+    "gi_clusters": {},
+    "atopic_cluster": {}
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.3,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0007",
+    "rationale": "Subclinical epileptiform EEG + valproic acid concomitant = GABA-axis-loaded subset that L-carnosine's homocarnosine/GABA mechanism would address. Engine v0.3 has no PHE-0007 biomarker drivers (same architectural gap as Lemonnier rrc_002), so engine returns near-baseline 0.20 on this profile rather than the elevated PHE-0007 the trial's mechanism implies. Once engine v0.4 adds PHE-0007 biomarker drivers (epileptiform-EEG, CSF Cl⁻ proxies, GABA/glutamate ratios from MR spectroscopy), this profile should drive PHE-0007 dominance and serve as a paired test with Lemonnier."
+  }
+}

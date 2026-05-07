@@ -1,8 +1,9 @@
-# Responder-rate calibration cohort — validation results v0.5
+# Responder-rate calibration cohort — validation results v0.6
 
 **Run date:** 2026-05-07
 **Engine:** `session4_v0.2.0_profile_vector`
-**Cohort:** `v0.4_full_text_extracted_11_of_13`
+**Cohort:** `v0.5_full_text_extracted_12_of_13_complete`
+**Manuscript outline:** [`MANUSCRIPT_OUTLINE.md`](MANUSCRIPT_OUTLINE.md) — draft v0.1, target *Patterns*
 
 ## Headline
 
@@ -43,17 +44,18 @@ These two are documented engine gaps, not engine error in the meta-analytic sens
 - **Owen** — engine returns near-baseline PHE-0003 (0.332). Aripiprazole's behavioral-severity stratification doesn't have a clean atlas analog. Future fix: add a behavioral-severity cross-cutting dimension OR restrict the cohort headline to biomarker-stratified entries.
 - **Kang** — engine's PHE-0004 (GI/microbiome) loading returns its 0.500 baseline regardless of GI cluster severity or microbiome composition. PHE-0004 in v0.3 engine has no biomarker-driven shifts, analogous to the PHE-0007 (GABA/Cl⁻) gap blocking rrc_002 Lemonnier. Future fix: engine v0.4 refactor adding PHE-0004 biomarker drivers (GSRS severity index, microbiome dysbiosis composite, calprotectin, zonulin).
 
-### Excluded from MAE (n=4)
+### Excluded from MAE (n=6)
 
 - **rrc_002 Lemonnier bumetanide** — PHE-0007 (GABA/Cl⁻) has no biomarker drivers in v0.3 engine. Awaits engine v0.4 refactor.
+- **rrc_005 Chez 2002 carnosine** — paper publishes only continuous outcomes (CGI, GARS, vocabulary scores). PHE-0007 GABA-axis target dimension also has no engine drivers yet (paired with Lemonnier). Awaits engine v0.4.
 - **rrc_007 Wright 2011 melatonin** — paper publishes only continuous outcomes (sleep latency, total sleep time, wakenings). No dichotomized responder rate. Engine has no sleep-axis phenotype dimension yet.
 - **rrc_010 Rossignol 2012 HBOT** — source PMID is a *review* of HBOT-in-ASD evidence, not a single RCT. No dichotomized responder rate at the review level.
 - **rrc_011 Adams 2011 vitamin/mineral** — paper publishes only continuous outcomes (PGI-R Average Change). No dichotomized responder rate.
 - **rrc_013 Frankovich 2017 PANS treatment** — source PMID is a treatment guidelines / consensus document from the PANS Research Consortium, not an RCT. No primary responder rate.
 
-### Pending authoring (n=1)
+### Cohort completion status
 
-- **rrc_005 Chez 2002 carnosine** — representative input profile pending; full-text extraction pending.
+**12 of 13 cohort entries are now fully extracted from full-text PDFs.** The only entry remaining at scaffold is rrc_002 Lemonnier, which is blocked on engine v0.4 PHE-0007 driver wiring (same architectural gap that blocks rrc_005 Chez carnosine from MAE contribution).
 
 ## Methodological notes
 
@@ -105,6 +107,7 @@ PDF source files are NOT committed (copyright). DOIs to fetch:
 - 26418275 — https://doi.org/10.1038/tp.2015.142 (Tsilioni)
 - 20535539 — https://doi.org/10.1007/s10803-010-1036-5 (Wright melatonin)
 - 36358107 — https://doi.org/10.1089/cap.2016.0148 (Frankovich PANS guidelines)
+- 12585724 — https://doi.org/10.1177/08830738020170111501 (Chez carnosine)
 
 All PMIDs verified against PubMed esummary on 2026-05-05 / 2026-05-07; full-text extractions performed 2026-05-07.
 
@@ -120,6 +123,6 @@ In the order they would close cohort gaps fastest:
 
 ## Next session
 
-1. Engine v0.4 refactor — PHE-0004 + PHE-0007 biomarker driver wiring.
-2. Re-run cohort MAE; expected n=7 MAE drops from 0.109 to ~0.05 once PHE-0004 closes.
-3. Once cohort MAE is computed across n=8–10 entries with adequate driver coverage, draft validation manuscript for *Patterns* / *npj Digital Medicine* / *Cell Reports Medicine*.
+1. **Manuscript draft v0.2** — fill in the section-by-section content from [`MANUSCRIPT_OUTLINE.md`](MANUSCRIPT_OUTLINE.md). Draft v0.1 outline is complete; full draft target is 2026-05-21.
+2. **Engine v0.4 refactor** — PHE-0004 + PHE-0007 biomarker driver wiring. Highest-leverage closure for the all-in MAE number (Kang AE 0.389 → ~0.10 expected; unblocks Lemonnier validation).
+3. **Cohort expansion** — additional RCTs to push n=5-within-coverage to n=10-15 for stronger headline claim. Candidate next targets: Adams DMSA chelation, Hardan oxytocin, Lemonnier bumetanide Phase 3 (post-v0.4), James Adams glutathione, Hendren 2020 LDN.
