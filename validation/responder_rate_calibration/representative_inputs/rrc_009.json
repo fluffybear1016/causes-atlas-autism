@@ -1,0 +1,103 @@
+{
+  "case_id": "rrc_009_kang_2017_mtt_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Kang 2017 Microbiome (PMID 28122648) Microbiota Transfer Therapy open-label trial. Trial inclusion criterion was ASD + moderate-to-severe GI problems (GSRS-rated). This representative encodes a child with the GI-symptomatic + microbiome-dysbiotic profile that Kang's MTT was designed to address. Target phenotype PHE-0004 (GI / microbiome) is the engine's direct analog. The trial's high responder rate (16/18 = 0.889) for GI symptom improvement should be predicted by strong PHE-0004 loading on this profile. Open-label, no placebo — caveat documented in cohort.yaml.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 32, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 1,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 34, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 132,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 36.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 140, "height_z_for_age_sex": 0.0,
+      "bmi": 18.4, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "moderate_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": ["autism spectrum disorder", "chronic_constipation", "chronic_diarrhea_intermittent"],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {
+    "samples": [
+      {
+        "sample_type": "stool",
+        "_dysbiosis_signature_per_kang_2017_inclusion": "Reduced overall microbial diversity (Faith's PD low); reduced Bifidobacterium and Prevotella relative abundance",
+        "bifidobacterium_low": true,
+        "prevotella_low": true,
+        "low_diversity": true
+      }
+    ]
+  },
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+  "immunology": {"autoantibodies": {}},
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {}
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {
+      "constipation_severity": "moderate_to_severe",
+      "diarrhea_severity": "moderate",
+      "abdominal_pain_severity": "moderate",
+      "indigestion_severity": "moderate",
+      "_gsrs_score_baseline_severe_per_kang_inclusion": true
+    },
+    "atopic_cluster": {},
+    "mcas_features": {
+      "tryptase_elevated": false,
+      "methylhistamine_elevated": false
+    }
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.3,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0004",
+    "rationale": "Severe GI cluster (constipation + diarrhea + abdominal pain + indigestion) plus dysbiotic microbiome signature (Bifidobacterium/Prevotella low + low diversity) drive PHE-0004 loading via the engine's atlas-driven biomarker shifts. Kang 2017 stratified by moderate-to-severe GI symptoms (inclusion criterion); the engine's PHE-0004 loading on this profile should approximate the trial's 88.9% responder rate within the GI-stratified subgroup."
+  }
+}

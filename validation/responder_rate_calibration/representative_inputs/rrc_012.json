@@ -1,0 +1,101 @@
+{
+  "case_id": "rrc_012_tsilioni_2015_luteolin_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Tsilioni 2015 Transl Psychiatry (PMID 26418275) luteolin-containing formulation OPEN-LABEL trial. Trial cohort was n=38 ASD children; post-hoc bimodal stratification on baseline serum IL-6 + TNF identified a high-cytokine subgroup (n=10) that showed significant VABS improvement (effect sizes 0.35–0.45, p=0.0003 to p=0.008). This representative encodes the high-cytokine subgroup phenotype — the Theoharides MCAS-like inflammatory subset that the formulation was designed to address. Target phenotype PHE-0003 (regressive immune-inflammatory). Cohort-level responder fraction = 10/38 = 0.263.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 30, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 0,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 32, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 84,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 24.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 122, "height_z_for_age_sex": 0.0,
+      "bmi": 16.1, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "moderate_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": ["autism spectrum disorder"],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+
+  "immunology": {
+    "autoantibodies": {},
+    "cytokine_panel": {
+      "il6_elevated": true,
+      "tnf_alpha_elevated": true,
+      "_high_il6_high_tnf_subgroup_per_tsilioni_2015_n10_of_38": true,
+      "_il6_baseline_pgml_approx_61_per_paper_subgroup_mean": true,
+      "_tnf_baseline_pgml_approx_313_per_paper_subgroup_mean": true
+    }
+  },
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {}
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {
+      "_allergic_like_symptoms_per_theoharides_mcas_framework": "Tsilioni cites that as many as 50% of ASD children have allergic-like symptoms implicating MC activation",
+      "food_intolerance": "moderate"
+    },
+    "mcas_features": {
+      "tryptase_elevated": false,
+      "methylhistamine_elevated": false,
+      "_mast_cell_activation_proxy_via_il6_tnf_elevation": true
+    }
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.3,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0003",
+    "rationale": "Elevated IL-6 + elevated TNF cytokine pattern drives PHE-0003 (regressive immune-inflammatory) loading via the engine's atlas-driven biomarker shifts. Tsilioni 2015 stratified post-hoc by exactly this cytokine pattern (n=10/38 high-cytokine subgroup); the engine's PHE-0003 loading on this profile should approximate the cohort-level responder fraction (10/38 = 0.263) — testing whether the engine correctly identifies the proportion of an unselected cohort that falls into the inflammatory-responder subset. Open-label trial; numeric agreement at this level is necessarily approximate."
+  }
+}

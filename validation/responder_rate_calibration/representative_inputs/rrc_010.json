@@ -1,0 +1,97 @@
+{
+  "case_id": "rrc_010_rossignol_2012_hbot_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Rossignol 2012 Med Gas Res REVIEW (PMID 22703610). Per cohort.yaml notes, this entry is a REVIEW of HBOT-in-ASD evidence and is EXCLUDED from cohort responder-rate MAE because no dichotomized stratum responder rate is published at the review level. The representative profile is authored for engine STRUCTURAL-TEST purposes only — encoding the mito-vulnerable + neuroinflammatory subset that Rossignol 2012 explicitly hypothesizes (page 9) as the responder phenotype: 'children with abnormal cytokines, higher inflammatory markers, cerebral hypoperfusion, or mitochondrial dysfunction may be more likely to demonstrate improvements.' Engine should load PHE-0002 + PHE-0003 (mito + immune-inflammatory) on this profile.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 32, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 1,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 34, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 84,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 22.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 122, "height_z_for_age_sex": 0.0,
+      "bmi": 14.8, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "moderate_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": ["language_regression_18mo"]
+    },
+    "current_diagnoses": ["autism spectrum disorder"],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+
+  "immunology": {
+    "autoantibodies": {},
+    "cytokine_panel": {
+      "il6_elevated": true,
+      "tnf_alpha_elevated": true,
+      "_neuroinflammatory_signal_per_rossignol_subset_claim": true
+    }
+  },
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {
+      "organic_acids_urine": {
+        "lactate_elevated": true,
+        "_mito_dysfunction_marker_per_rossignol_subset_claim": "Rossignol 2012 cites mito dysfunction in 145 ASD publications and notes HBOT may improve mito function specifically in this subset"
+      }
+    }
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {}
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.3,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0002",
+    "secondary_dimension": "PHE-0003",
+    "rationale": "Rossignol 2012 review explicitly hypothesizes a mito-vulnerable + neuroinflammatory subset as the HBOT responder phenotype. This representative profile encodes elevated lactate (mito proxy) + elevated IL-6 + TNF (neuroinflammation proxy). Engine should load PHE-0002 (mito) primary + PHE-0003 (immune-inflammatory) secondary. EXCLUDED from cohort MAE because the source is a review and does not publish a dichotomized stratum responder rate."
+  }
+}

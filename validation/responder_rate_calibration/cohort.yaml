@@ -1,6 +1,6 @@
-cohort_version: v0.2_full_text_extracted_6_of_13
+cohort_version: v0.3_full_text_extracted_8_of_13
 engine_version_required: session4_v0.2.0_profile_vector
-verification_protocol: BioMysteryBench-aligned (CLAUDE.md §Verification protocol)
+verification_protocol: "BioMysteryBench-aligned (CLAUDE.md \xA7Verification protocol)"
 entries:
 - entry_id: rrc_001_frye_2018_leucovorin_fraa
   rct_pmid: 27752075
@@ -21,14 +21,15 @@ entries:
   target_phenotype_id: PHE-0001
   stratification_criterion: FRAA-positive (folate receptor alpha autoantibody)
   stratifier_biomarker: serum_folate_receptor_alpha_autoantibody
-  stratifier_threshold: positive (binding-type ≥ baseline as defined in paper)
+  stratifier_threshold: "positive (binding-type \u2265 baseline as defined in paper)"
   n_total_in_stratum: 32
   n_responder_in_stratum: 10
   published_responder_rate: 0.77
   placebo_responder_rate: 0.22
   response_minus_placebo: 0.55
-  responder_definition: ≥5 standardized point increase on primary verbal communication outcome (Preschool Language Scale-5
-    / Clinical Evaluation of Language Fundamentals); FRAA-positive subgroup analysis.
+  responder_definition: "\u22655 standardized point increase on primary verbal communication\
+    \ outcome (Preschool Language Scale-5 / Clinical Evaluation of Language Fundamentals);\
+    \ FRAA-positive subgroup analysis."
   representative_input_profile_path: representative_inputs/rrc_001.json
   expected_engine_behavior:
     intervention_in_top_5: true
@@ -54,9 +55,10 @@ entries:
   - 5.6
   - 999.9
   number_needed_to_treat: 1.8
-  extraction_notes: 'Source: Frye 2018 Mol Psychiatry, Table 2B page 5. Responder definition is paper-defined (5 std-point
-    ≥ minimal clinically important difference). FRAA-positive subgroup is the cohort''s strongest stratification signal; OR=67.4
-    reflects very wide CI due to small subgroup denominator.'
+  extraction_notes: "Source: Frye 2018 Mol Psychiatry, Table 2B page 5. Responder definition\
+    \ is paper-defined (5 std-point \u2265 minimal clinically important difference). FRAA-positive\
+    \ subgroup is the cohort's strongest stratification signal; OR=67.4 reflects very wide\
+    \ CI due to small subgroup denominator."
   pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_002_lemonnier_2017_bumetanide
   rct_pmid: 28291262
@@ -73,23 +75,19 @@ entries:
   intervention_id: INT-0023
   intervention_name: Bumetanide
   target_phenotype_id: PHE-0007
-  stratification_criterion: 'Phase 2/3 cohort — atlas-tagged subgroup of high-baseline-intracellular-
-
-    Cl⁻ neonates / children. Lemonnier''s later analyses show responder-
-
-    enriched effects in this subgroup; population-average response in
-
-    Phase 3 was modest. Engine should encode this stratification.
-
-    '
+  stratification_criterion: "Phase 2/3 cohort \u2014 atlas-tagged subgroup of high-baseline-intracellular-\n\
+    Cl\u207B neonates / children. Lemonnier's later analyses show responder-\nenriched effects\
+    \ in this subgroup; population-average response in\nPhase 3 was modest. Engine should\
+    \ encode this stratification.\n"
   stratifier_biomarker: csf_or_neuronal_intracellular_chloride_proxy
   stratifier_threshold: <to be defined; placeholder>
   n_total_in_stratum: 88
   n_responder_in_stratum: 23
   published_responder_rate: 0.354
   placebo_responder_rate: 0.043
-  responder_definition: '≥6 point reduction on Childhood Autism Rating Scale (CARS) from screening to day 90. Per-dose responder
-    rates: 0.5 mg b.i.d. 10/20 (50%); 1.0 mg b.i.d. 5/23 (22%); 2.0 mg b.i.d. 8/22 (36%).'
+  responder_definition: "\u22656 point reduction on Childhood Autism Rating Scale (CARS) from\
+    \ screening to day 90. Per-dose responder rates: 0.5 mg b.i.d. 10/20 (50%); 1.0 mg b.i.d.\
+    \ 5/23 (22%); 2.0 mg b.i.d. 8/22 (36%)."
   representative_input_profile_path: representative_inputs/rrc_002.json
   expected_engine_behavior:
     intervention_in_top_5: true
@@ -98,23 +96,19 @@ entries:
     - PHE-0007
     _expected_to_fail_until_engine_v03: true
   status: full_text_extracted_2026_05_07
-  notes: 'Lemonnier 2017 Translational Psychiatry is the well-known phase 2/3
-
-    bumetanide trial. Subsequent stratification work (e.g., Hadjikhani 2018
-
-    eye-contact subset) supports a responder-enriched subgroup. Engine
-
-    should match high-Cl⁻ profiles to bumetanide preferentially.
-
-    '
+  notes: "Lemonnier 2017 Translational Psychiatry is the well-known phase 2/3\nbumetanide\
+    \ trial. Subsequent stratification work (e.g., Hadjikhani 2018\neye-contact subset) supports\
+    \ a responder-enriched subgroup. Engine\nshould match high-Cl\u207B profiles to bumetanide\
+    \ preferentially.\n"
   response_minus_placebo: 0.311
   effect_size_cohen_d: null
   p_value: 0.0029
-  p_value_test: Fisher's exact test, ≥6 CARS reduction responder analysis
-  extraction_notes: 'Source: Lemonnier 2017 Transl Psychiatry, Table 3 page 6. IMPORTANT: this RCT was NOT stratified by CSF
-    Cl⁻ or KCC2 biomarker — it''s an unstratified pediatric ASD population (CARS ≥34, age 2-18). The cohort.yaml''s earlier
-    stratifier_biomarker = csf_or_neuronal_intracellular_chloride_proxy was aspirational; the trial doesn''t actually use
-    it.'
+  p_value_test: "Fisher's exact test, \u22656 CARS reduction responder analysis"
+  extraction_notes: "Source: Lemonnier 2017 Transl Psychiatry, Table 3 page 6. IMPORTANT:\
+    \ this RCT was NOT stratified by CSF Cl\u207B or KCC2 biomarker \u2014 it's an unstratified\
+    \ pediatric ASD population (CARS \u226534, age 2-18). The cohort.yaml's earlier stratifier_biomarker\
+    \ = csf_or_neuronal_intracellular_chloride_proxy was aspirational; the trial doesn't actually\
+    \ use it."
   pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_003_zimmerman_singh_2021_sulforaphane
   rct_pmid: 34034808
@@ -131,7 +125,8 @@ entries:
   intervention_id: INT-0002
   intervention_name: Sulforaphane (broccoli sprout extract)
   target_phenotype_id: PHE-0002
-  stratification_criterion: 'Mito-vulnerable / oxidative-stress subset (Singh 2014 PNAS earlier work
+  stratification_criterion: 'Mito-vulnerable / oxidative-stress subset (Singh 2014 PNAS earlier
+    work
 
     showed responder enrichment in elevated-oxidative-stress profiles).
 
@@ -169,9 +164,9 @@ entries:
   n_responder_in_stratum: 5
   published_responder_rate: 0.357
   placebo_responder_rate: 0.133
-  responder_definition: 'CGI-I = 1 (''very much improved'') or 2 (''much improved'') at 12 weeks. Per-subject CGI-I distribution
-    from page 958 prose. Note: paper''s primary statistic was continuous ABC-Irritability change (Cohen''s d = 0.96), not
-    the binary responder count.'
+  responder_definition: 'CGI-I = 1 (''very much improved'') or 2 (''much improved'') at 12
+    weeks. Per-subject CGI-I distribution from page 958 prose. Note: paper''s primary statistic
+    was continuous ABC-Irritability change (Cohen''s d = 0.96), not the binary responder count.'
   representative_input_profile_path: representative_inputs/rrc_004.json
   expected_engine_behavior:
     intervention_in_top_5: true
@@ -183,9 +178,10 @@ entries:
   effect_size_cohen_d: 0.96
   p_value: 0.001
   p_value_test: mixed-effects regression, ABC-Irritability change
-  extraction_notes: 'Source: Hardan 2012 Biol Psychiatry, Table 2 page 959 + prose page 958. The binary responder count was
-    NOT the primary statistic — paper analyzed continuous ABC-Irritability change via mixed-effects regression (F=6.80, p<.001,
-    d=.96). Binary count derived from per-subject CGI-I narrative description.'
+  extraction_notes: "Source: Hardan 2012 Biol Psychiatry, Table 2 page 959 + prose page 958.\
+    \ The binary responder count was NOT the primary statistic \u2014 paper analyzed continuous\
+    \ ABC-Irritability change via mixed-effects regression (F=6.80, p<.001, d=.96). Binary\
+    \ count derived from per-subject CGI-I narrative description."
   pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_005_chez_2002_carnosine
   rct_pmid: 12585724
@@ -238,9 +234,10 @@ entries:
   n_responder_in_stratum: 14
   published_responder_rate: 0.519
   placebo_responder_rate: 0.261
-  responder_definition: CGI-I = 1 ('very much improved') or 2 ('much improved') at 8 weeks. Subset analysis (Table 5) showed
-    responders had significantly lower baseline plasma methionine (17.3 vs 21.6 μM, p=0.006), suggesting methylation-deficient
-    subgroup enrichment.
+  responder_definition: "CGI-I = 1 ('very much improved') or 2 ('much improved') at 8 weeks.\
+    \ Subset analysis (Table 5) showed responders had significantly lower baseline plasma\
+    \ methionine (17.3 vs 21.6 \u03BCM, p=0.006), suggesting methylation-deficient subgroup\
+    \ enrichment."
   representative_input_profile_path: representative_inputs/rrc_006.json
   expected_engine_behavior:
     intervention_in_top_5: true
@@ -253,10 +250,11 @@ entries:
   p_value: 0.086
   p_value_test: Fisher's exact, binary responder
   p_value_continuous: 0.005
-  extraction_notes: 'Source: Hendren 2016, Results page 6. The continuous mean CGI-I primary outcome was significant (p=0.005,
-    d=0.84); the binary responder analysis trended toward significance (p=0.086) but did not reach the 0.05 threshold. Paper
-    notes this is likely due to information loss in dichotomization. Cohort entry uses binary responder rate per ChatGPT validation
-    framing.'
+  extraction_notes: 'Source: Hendren 2016, Results page 6. The continuous mean CGI-I primary
+    outcome was significant (p=0.005, d=0.84); the binary responder analysis trended toward
+    significance (p=0.086) but did not reach the 0.05 threshold. Paper notes this is likely
+    due to information loss in dichotomization. Cohort entry uses binary responder rate per
+    ChatGPT validation framing.'
   pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_007_wright_2011_melatonin
   rct_pmid: 20535539
@@ -278,7 +276,7 @@ entries:
   n_responder_in_stratum: <extract from paper>
   published_responder_rate: <extract from paper>
   placebo_responder_rate: <extract from paper>
-  responder_definition: Sleep latency reduction ≥30min + total sleep time gain
+  responder_definition: "Sleep latency reduction \u226530min + total sleep time gain"
   representative_input_profile_path: <pending>
   expected_engine_behavior:
     intervention_in_top_5: true
@@ -299,13 +297,13 @@ entries:
   intervention_id: INT-0029
   intervention_name: Aripiprazole
   target_phenotype_id: PHE-0003
-  stratification_criterion: Irritability subset (ABC-I baseline ≥18)
+  stratification_criterion: "Irritability subset (ABC-I baseline \u226518)"
   n_total_in_stratum: 95
   n_responder_in_stratum: 24
   published_responder_rate: 0.522
   placebo_responder_rate: 0.143
-  responder_definition: ≥25% reduction in ABC-Irritability subscale score AND CGI-I = 1 or 2 at week 8 (composite responder
-    criterion).
+  responder_definition: "\u226525% reduction in ABC-Irritability subscale score AND CGI-I\
+    \ = 1 or 2 at week 8 (composite responder criterion)."
   representative_input_profile_path: representative_inputs/rrc_008.json
   expected_engine_behavior:
     intervention_in_top_5: true
@@ -323,10 +321,10 @@ entries:
   response_minus_placebo: 0.379
   effect_size_cohen_d: 0.87
   p_value: 0.001
-  p_value_test: χ² test, composite responder criterion
-  extraction_notes: 'Source: Owen 2009 Pediatrics, Results page 1537 + Figure 3. Industry-funded BMS/Otsuka submission trial;
-    responder analysis is rigorous and pre-specified. NOT biomarker-stratified — inclusion was CGI-S ≥4 + ABC-I ≥18 (irritability
-    severity).'
+  p_value_test: "\u03C7\xB2 test, composite responder criterion"
+  extraction_notes: "Source: Owen 2009 Pediatrics, Results page 1537 + Figure 3. Industry-funded\
+    \ BMS/Otsuka submission trial; responder analysis is rigorous and pre-specified. NOT biomarker-stratified\
+    \ \u2014 inclusion was CGI-S \u22654 + ABC-I \u226518 (irritability severity)."
   pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_009_kang_2017_microbiota_transfer
   rct_pmid: 28122648
@@ -344,22 +342,39 @@ entries:
   intervention_name: Microbiota Transfer Therapy (MTT)
   target_phenotype_id: PHE-0004
   stratification_criterion: GI-symptomatic + dysbiotic-microbiome subset
-  n_total_in_stratum: <extract from paper>
-  n_responder_in_stratum: <extract from paper>
-  published_responder_rate: <extract from paper>
+  n_total_in_stratum: 18
+  n_responder_in_stratum: 16
+  published_responder_rate: 0.889
   placebo_responder_rate: null
-  responder_definition: GI severity index + ATEC autism-symptom reduction
-  representative_input_profile_path: <pending>
+  responder_definition: "\u226550% reduction in average GSRS (Gastrointestinal Symptom Rating\
+    \ Scale) from baseline; ASD-related behavior improvement also reported (CARS \u221222%,\
+    \ VABS-II +1.4y dev age) but the dichotomized responder criterion is the GSRS-reduction\
+    \ cutoff."
+  representative_input_profile_path: representative_inputs/rrc_009.json
   expected_engine_behavior:
     intervention_in_top_5: true
     primary_target_dimension: PHE-0004
-    _representative_input_pending: true
-  status: scaffold
+    profile_dominant_dimensions_must_include:
+    - PHE-0004
+  status: full_text_extracted_2026_05_07
   notes: 'Companion follow-up: PMID 30967657 Kang 2019 Sci Rep showed 2-year
 
     benefit retention. Both papers verified 2026-05-05.
 
     '
+  response_minus_placebo: null
+  effect_size_cohen_d: null
+  p_value: 0.001
+  p_value_test: two-tailed Wilcoxon signed-rank test on GSRS pre-vs-post (p<0.001 at end of
+    treatment; p=0.002 after 8-week observation)
+  extraction_notes: "Source: Kang 2017 Microbiome (open access). Results section page 7-8\
+    \ + Figure 2a. Quote: 'Only two out of 18 children with ASD (11%) achieved less than 50%\
+    \ reduction in the average GSRS, the cutoff for improvement, and were designated as non-responders.'\
+    \ \u2192 responder rate = 16/18 = 0.889. Open-label, no placebo arm \u2014 a major caveat\
+    \ for the responder rate magnitude. Trial design is GI-symptom-stratified (inclusion criterion:\
+    \ moderate-to-severe GI problems), so this is a clean stratified-subgroup entry for PHE-0004\
+    \ (GI/microbiome) calibration."
+  pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_010_rossignol_2012_hbot
   rct_pmid: 22703610
   rct_first_author: Rossignol DA
@@ -373,29 +388,47 @@ entries:
   intervention_id: INT-0017
   intervention_name: Hyperbaric Oxygen Therapy (HBOT)
   target_phenotype_id: PHE-0002
-  stratification_criterion: 'Mito-vulnerable + neuroinflammatory subset; Rossignol earlier work
+  stratification_criterion: 'Mito-vulnerable + neuroinflammatory subset; Rossignol earlier
+    work
 
     stratified by pre-treatment GSH/GSSG and inflammatory markers.
 
     '
-  n_total_in_stratum: <extract from paper>
-  n_responder_in_stratum: <extract from paper>
-  published_responder_rate: <extract from paper>
-  placebo_responder_rate: <extract from paper>
-  responder_definition: Per-paper composite behavioral + biomarker
-  representative_input_profile_path: <pending>
+  n_total_in_stratum: null
+  n_responder_in_stratum: null
+  published_responder_rate: null
+  placebo_responder_rate: null
+  responder_definition: Per-paper composite behavioral outcomes; review aggregates 2 controlled
+    trials (Rossignol 2009 multicenter RCT [125] and Granpeesheh 2010 [120]) with conflicting
+    results. No single dichotomized responder rate published at the review level.
+  representative_input_profile_path: representative_inputs/rrc_010.json
   expected_engine_behavior:
     intervention_in_top_5: true
     primary_target_dimension: PHE-0002
-    _representative_input_pending: true
-  status: scaffold
-  notes: 'Review of multiple HBOT trials including the Rossignol 2009 RCT.
-
-    Mixed published evidence; per principle §9 mixed = effect heterogeneity,
-
-    not absence — engine should reflect responder-subset behavior.
-
-    '
+    _representative_input_authored_for_qualitative_check_only: true
+  status: review_extracted_excluded_from_mae_2026_05_07
+  notes: "Review of multiple HBOT trials including the Rossignol 2009 RCT.\nMixed published\
+    \ evidence; per principle \xA79 mixed = effect heterogeneity,\nnot absence \u2014 engine\
+    \ should reflect responder-subset behavior.\n"
+  response_minus_placebo: null
+  effect_size_cohen_d: null
+  p_value: null
+  p_value_test: null
+  extraction_notes: 'Source: Rossignol 2012 Med Gas Res review (PMID 22703610), open access.
+    CRITICAL FRAMING: this entry is a REVIEW of HBOT-in-ASD evidence, NOT a single RCT. The
+    review aggregates two controlled trials with conflicting results: Rossignol 2009 multicenter
+    RCT [ref 125, PMID 19284641] showed effect sizes 0.55-1.00 favoring HBOT; Granpeesheh
+    2010 [ref 120] showed no significant changes. Rossignol 2012 explicitly hypothesizes that
+    ''the variability in results between studies could also have been due to certain subgroups
+    of children with ASD responding differently to HBOT'' (p9), specifically children with
+    abnormal cytokines, higher inflammatory markers, cerebral hypoperfusion, or mitochondrial
+    dysfunction. This is the responder-stratification claim. Because the review does not publish
+    a dichotomized stratum responder rate, this entry is EXCLUDED from cohort responder-rate
+    MAE computation. The representative input profile (rrc_010.json) encodes the mito-vulnerable
+    + neuroinflammatory subset claim qualitatively for engine structural-test purposes only.
+    Future work: add Rossignol 2009 (PMID 19284641) as a separate cohort entry with its actual
+    published responder rate.'
+  pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_011_adams_2011_vitamin_mineral
   rct_pmid: 22151477
   rct_first_author: Adams JB
@@ -411,7 +444,8 @@ entries:
   intervention_id: INT-0018
   intervention_name: Vitamin/mineral multinutrient supplement (Adams formulation)
   target_phenotype_id: PHE-0002
-  stratification_criterion: 'Broad metabolic deficiency subset; Adams''s later work stratified by
+  stratification_criterion: 'Broad metabolic deficiency subset; Adams''s later work stratified
+    by
 
     pre-treatment biomarker abnormalities.
 
@@ -420,9 +454,10 @@ entries:
   n_responder_in_stratum: null
   published_responder_rate: null
   placebo_responder_rate: null
-  responder_definition: 'Paper does NOT publish a dichotomized responder rate. Primary outcome is continuous Parental Global
-    Impressions-Revised Average Change score. Significance reported as p-values: PGI-R Average Change p=0.008; Hyperactivity
-    p=0.003; Tantrumming p=0.009; Overall p=0.02; Receptive Language p=0.03.'
+  responder_definition: 'Paper does NOT publish a dichotomized responder rate. Primary outcome
+    is continuous Parental Global Impressions-Revised Average Change score. Significance reported
+    as p-values: PGI-R Average Change p=0.008; Hyperactivity p=0.003; Tantrumming p=0.009;
+    Overall p=0.02; Receptive Language p=0.03.'
   representative_input_profile_path: <pending>
   expected_engine_behavior:
     intervention_in_top_5: true
@@ -432,10 +467,12 @@ entries:
   effect_size_cohen_d: null
   p_value: 0.008
   p_value_test: unpaired t-test, PGI-R Average Change
-  extraction_notes: 'Source: Adams 2011 BMC Pediatr (open access), Abstract + Results. NO dichotomized responder rate published
-    — outcomes are continuous. This entry is retained in the cohort for documentation of the continuous-effect signal but
-    cannot contribute to responder-rate MAE computation. Bonus: paper reports R²=0.61 regression with biotin and vitamin K
-    as strongest baseline predictors of clinical response, suggesting responder-stratification opportunity in re-analysis.'
+  extraction_notes: "Source: Adams 2011 BMC Pediatr (open access), Abstract + Results. NO\
+    \ dichotomized responder rate published \u2014 outcomes are continuous. This entry is\
+    \ retained in the cohort for documentation of the continuous-effect signal but cannot\
+    \ contribute to responder-rate MAE computation. Bonus: paper reports R\xB2=0.61 regression\
+    \ with biotin and vitamin K as strongest baseline predictors of clinical response, suggesting\
+    \ responder-stratification opportunity in re-analysis."
   pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_012_tsilioni_2015_luteolin
   rct_pmid: 26418275
@@ -457,37 +494,56 @@ entries:
   stratification_criterion: 'Elevated TNF / IL-6 / mast-cell-marker subset; Theoharides framework.
 
     '
-  n_total_in_stratum: <extract from paper>
-  n_responder_in_stratum: <extract from paper>
-  published_responder_rate: <extract from paper>
+  n_total_in_stratum: 10
+  n_responder_in_stratum: 10
+  published_responder_rate: 0.263
   placebo_responder_rate: null
-  responder_definition: ABC improvement + cytokine reduction
-  representative_input_profile_path: <pending>
+  responder_definition: 'Subgroup-membership-as-responder framing: of n=38 ASD children, n=10
+    had elevated baseline serum IL-6 AND TNF (post-hoc bimodal stratification, page 2). This
+    high-cytokine subgroup showed significant VABS improvement at 26 weeks (effect sizes 0.35-0.45
+    across communication/daily-living/social/composite, p=0.0003 to p=0.008 per Table 1 page
+    3). Low-cytokine subgroup did not. Cohort-level responder fraction = 10/38 = 0.263.'
+  representative_input_profile_path: representative_inputs/rrc_012.json
   expected_engine_behavior:
     intervention_in_top_5: true
     primary_target_dimension: PHE-0003
-    _representative_input_pending: true
-  status: scaffold
+    profile_dominant_dimensions_must_include:
+    - PHE-0003
+  status: full_text_extracted_2026_05_07
+  response_minus_placebo: null
+  effect_size_cohen_d: 0.42
+  p_value: 0.001
+  p_value_test: general linear model for repeated measures, VABS composite score, high-IL-6/TNF
+    subgroup pre-vs-post
+  extraction_notes: "Source: Tsilioni 2015 Transl Psychiatry (PMID 26418275), open access.\
+    \ CRITICAL CAVEAT: this is an OPEN-LABEL trial, not an RCT \u2014 no placebo arm, n=38\
+    \ ASD children all received the luteolin-containing dietary formulation (NeuroProtek:\
+    \ luteolin 100mg + quercetin 70mg + rutin 30mg) for 26 weeks. Stratification is post-hoc\
+    \ on baseline serum IL-6 + TNF (bimodal distribution, page 2): n=10 in high-cytokine cluster,\
+    \ n=28 in low-cytokine cluster. The high-cytokine subgroup showed significant VABS improvement\
+    \ (Table 1 page 3): communication AE 38.91\u219248.64 (d=0.38, p=0.008), daily living\
+    \ 38.45\u219245.09 (d=0.35, p=0.0003), social 36.55\u219244.64 (d=0.45, p=0.001), composite\
+    \ 37.97\u219246.12 (d=0.42, p=0.001). Cytokines significantly decreased in the high-cytokine\
+    \ subgroup post-treatment (IL-6 p=0.036, TNF p=0.015). The paper does NOT dichotomize\
+    \ responders at the individual level; the 'responder rate' encoded here uses the subgroup-membership-as-responder\
+    \ convention (10/38=0.263), which is the most defensible numeric value extractable. This\
+    \ tests whether the engine's MCAS-like / inflammatory-stratifier logic correctly predicts\
+    \ the proportion of cohort that responds \u2014 Theoharides framework."
+  pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_013_frankovich_2017_pans_treatment
   rct_pmid: 36358107
   rct_first_author: Frankovich J
   rct_year: 2017
   rct_journal: J Child Adolesc Psychopharmacol
-  rct_title: 'Clinical Management of Pediatric Acute-Onset Neuropsychiatric Syndrome:
-
-    Part II — Use of Immunomodulatory Therapies.
-
-    '
+  rct_title: "Clinical Management of Pediatric Acute-Onset Neuropsychiatric Syndrome:\nPart\
+    \ II \u2014 Use of Immunomodulatory Therapies.\n"
   pmid_verified: true
   pmid_verified_at: 2026-05-05
   intervention_id: INT-0027
   intervention_name: IVIG / immunomodulatory therapy (PANS subset)
   target_phenotype_id: PHE-0003
-  stratification_criterion: 'PANS-positive subset (Cunningham panel composite + acute onset). Not
-
-    generic autism — PANS overlapping subset.
-
-    '
+  stratification_criterion: "PANS-positive subset (Cunningham panel composite + acute onset).\
+    \ Not\ngeneric autism \u2014 PANS overlapping subset.\n"
   n_total_in_stratum: <extract from paper>
   n_responder_in_stratum: <extract from paper>
   published_responder_rate: <extract from paper>
@@ -517,7 +573,8 @@ deliverables:
     produces a single-number cohort MAE and per-entry abs error.
 
     '
-  v1.0_target_month_5: 'Preprint draft submitted to Patterns / npj Digital Medicine / Cell Reports
+  v1.0_target_month_5: 'Preprint draft submitted to Patterns / npj Digital Medicine / Cell
+    Reports
 
     Medicine. Blinded re-extraction of 5 entries by a sub-agent for
 
