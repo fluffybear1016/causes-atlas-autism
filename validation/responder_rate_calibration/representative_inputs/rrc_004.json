@@ -1,0 +1,88 @@
+{
+  "case_id": "rrc_004_hardan_2012_nac_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "young_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Hardan 2012 Biol Psychiatry (PMID 22342106) NAC pilot RCT. The trial was UNSTRATIFIED — all participants were ASD with CGI-S ≥ 4 (moderate or worse) without biomarker selection. NAC's mechanism is glutathione/oxidative-stress modulation, so the cohort entry targets PHE-0002 (mitochondrial dysfunction). This representative encodes a child with mild lactate/oxidative-stress signals consistent with the literature on ASD-redox imbalance — the population-typical rather than subgroup-stratified profile.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 30, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 0,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 32, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 84,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 22.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 122, "height_z_for_age_sex": 0.0,
+      "bmi": 14.8, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "moderate_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": ["autism spectrum disorder", "irritability_moderate_to_severe"],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+  "immunology": {"autoantibodies": {}},
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {
+      "organic_acids_urine": {
+        "lactate_elevated": true,
+        "_mild_oxidative_stress_signal_consistent_with_ASD_population": "Hardan 2012 trial inclusion criteria did not require this; encoded as the population-typical mild signal"
+      }
+    }
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {}
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.3,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0002",
+    "rationale": "Mild lactate elevation drives PHE-0002 loading via biomarker shift (+0.30). This represents the engine's expectation for an ASD child with the kind of mild oxidative-stress signal that NAC's mechanism would address. Hardan 2012 was unstratified, so this comparison tests engine baseline + mild-signal calibration vs a population-average responder rate (35.7%)."
+  }
+}

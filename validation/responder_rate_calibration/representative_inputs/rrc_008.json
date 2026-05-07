@@ -1,0 +1,94 @@
+{
+  "case_id": "rrc_008_owen_2009_aripiprazole_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Owen 2009 Pediatrics (PMID 19948625) aripiprazole RCT. Trial inclusion criteria were behavioral: ABC-Irritability ≥18 + CGI-S ≥4. NOT biomarker-stratified. This representative encodes an autistic child with high behavioral irritability + mild inflammatory signal (cytokine elevation). Target phenotype PHE-0003 (regressive immune-inflammatory) is the engine's closest analog to behavioral irritability with possible inflammatory contribution.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 31, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 1,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 33, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 112,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 41.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 142, "height_z_for_age_sex": 0.0,
+      "bmi": 20.3, "bmi_z_for_age_sex": 0.5
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "mild_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": ["autism spectrum disorder", "severe_irritability_with_aggression"],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+
+  "immunology": {
+    "autoantibodies": {},
+    "cytokine_panel": {
+      "il6_elevated": true,
+      "_mild_inflammatory_signal_typical_of_irritability_subset": true
+    }
+  },
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {}
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {},
+    "mcas_features": {
+      "tryptase_elevated": false,
+      "methylhistamine_elevated": false
+    }
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.2,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0003",
+    "rationale": "Mild IL-6 elevation drives PHE-0003 loading via biomarker shift (+0.40). This represents the inflammatory subset of irritability presentations that aripiprazole was tested in. Owen 2009 was unstratified by cytokines but stratified by behavioral irritability severity; this comparison tests whether engine PHE-0003 loading on a mildly-inflamed irritability profile predicts the trial's 52.2% responder rate."
+  }
+}

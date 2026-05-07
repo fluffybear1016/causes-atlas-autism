@@ -172,11 +172,12 @@ entries:
   responder_definition: 'CGI-I = 1 (''very much improved'') or 2 (''much improved'') at 12 weeks. Per-subject CGI-I distribution
     from page 958 prose. Note: paper''s primary statistic was continuous ABC-Irritability change (Cohen''s d = 0.96), not
     the binary responder count.'
-  representative_input_profile_path: <pending>
+  representative_input_profile_path: representative_inputs/rrc_004.json
   expected_engine_behavior:
     intervention_in_top_5: true
     primary_target_dimension: PHE-0002
-    _representative_input_pending: true
+    profile_dominant_dimensions_must_include:
+    - PHE-0002
   status: full_text_extracted_2026_05_07
   response_minus_placebo: 0.224
   effect_size_cohen_d: 0.96
@@ -305,9 +306,12 @@ entries:
   placebo_responder_rate: 0.143
   responder_definition: ≥25% reduction in ABC-Irritability subscale score AND CGI-I = 1 or 2 at week 8 (composite responder
     criterion).
-  representative_input_profile_path: <pending>
+  representative_input_profile_path: representative_inputs/rrc_008.json
   expected_engine_behavior:
-    _representative_input_pending: true
+    intervention_in_top_5: true
+    primary_target_dimension: PHE-0003
+    profile_dominant_dimensions_must_include:
+    - PHE-0003
   status: full_text_extracted_2026_05_07
   notes: 'Mainstream pharmacology RCT. Population-average response; not a
 
