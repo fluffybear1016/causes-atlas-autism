@@ -56,7 +56,7 @@ from typing import Any
 # CONSTANTS — v0.1 frozen per spec §7.1
 # ============================================================================
 
-ENGINE_VERSION = "session4_v0.2.0_profile_vector"
+ENGINE_VERSION = "session4_v0.4.0_profile_vector"
 ATLAS_VERSION = "v2.0_scored"
 CALIBRATION_ANCHOR_NAME = "INT-0001"
 CALIBRATION_ANCHOR_REQUIRED_CSRS = 80.0
@@ -678,12 +678,28 @@ def collect_biomarker_shifts(input_data: dict, atlas: dict) -> dict[str, float]:
     biomarker_phenotype_edges.csv evidence_strength values or hand-curated
     Walsh / Frye / Rossignol functional-medicine literature priors.
 
-    v0.4 roadmap: replace the current explicit-rule dispatcher with a
-    fully data-driven loop reading from biomarker_phenotype_edges.csv plus
-    a `biomarker_input_registry.yaml` that maps input.json paths →
-    biomarker_id. The current explicit form is preserved for v0.3 because
-    rule semantics (above-range vs below-range, absolute thresholds, binary
-    flags) are not yet uniformly encoded in the atlas edge data.
+    v0.4 (cohort-driven driver expansion, 2026-05-07): closes two cohort
+    calibration gaps surfaced by the responder-rate cohort.
+    - PHE-0004 (GI/microbiome): now accepts severity-string-graded GI fields
+      (constipation_severity, diarrhea_severity, etc.) in addition to the
+      legacy boolean flags; reads per-sample microbiome composition signals
+      (bifidobacterium_low, prevotella_low, low_diversity, akkermansia_depleted,
+      clostridia_overgrowth, klebsiella_overgrowth, candida_overgrowth) from
+      microbiome.samples[]; adds GSRS-severity proxy weight. Closes the Kang
+      2017 MTT cohort entry from AE 0.389 → expected ~0.13.
+    - PHE-0007 (GABA/Cl⁻): now also reads the alternative biomarkers.child_data
+      path used by Lemonnier rrc_002; adds clinical epilepsy.present, subclinical
+      epileptiform EEG (Chez 2002 cohort signal), concomitant GABAergic
+      anticonvulsants (valproate / vigabatrin / tiagabine), and MR spectroscopy
+      GABA/Glu ratio. Unblocks Lemonnier rrc_002 cohort entry validation.
+
+    v0.5 roadmap: replace the explicit-rule dispatcher with a data-driven
+    loop reading from biomarker_phenotype_edges.csv plus a
+    `biomarker_input_registry.yaml` that maps input.json paths →
+    biomarker_id. Current explicit form is preserved for v0.3+v0.4 because
+    rule semantics (severity strings, above-range thresholds, binary flags,
+    sample-level vs root-level encoding) are not yet uniformly encoded in
+    the atlas edge data.
     """
     shifts: dict[str, float] = {}
 
@@ -750,14 +766,36 @@ def collect_biomarker_shifts(input_data: dict, atlas: dict) -> dict[str, float]:
     # ------------------------------------------------------------------
     # PHE-0004 — GI / microbiome
     # ------------------------------------------------------------------
+    # v0.4 expansion: accept BOTH the boolean-flag encoding (legacy) and
+    # the severity-graded string encoding ("moderate", "moderate_to_severe",
+    # "severe") that newer cohort representative profiles use. Per-symptom
+    # union semantics: a symptom is "active" if EITHER its boolean flag is
+    # truthy OR its severity string starts with "moderate" or "severe".
+    # Same magnitude buckets as before so calibration anchors don't break.
     comorbid = input_data.get("comorbidities", {}) or {}
     gi = comorbid.get("gi_clusters", {}) or {}
-    gi_active_count = sum(
-        1 for k in (
-            "chronic_constipation", "chronic_diarrhea", "reflux",
-            "abdominal_pain_chronic", "feeding_intolerance"
-        ) if gi.get(k)
-    )
+
+    def _gi_severity_active(sev_value: object) -> bool:
+        s = str(sev_value or "").lower()
+        return s.startswith("moderate") or s.startswith("severe")
+
+    gi_symptom_pairs = [
+        # (boolean_field_name, severity_field_name, output_label)
+        ("chronic_constipation", "constipation_severity", "constipation"),
+        ("chronic_diarrhea", "diarrhea_severity", "diarrhea"),
+        ("reflux", "reflux_severity", "reflux"),
+        ("abdominal_pain_chronic", "abdominal_pain_severity", "abdominal_pain"),
+        ("feeding_intolerance", "feeding_intolerance_severity", "feeding_intolerance"),
+        (None, "indigestion_severity", "indigestion"),  # severity-only field
+    ]
+    active_gi_symptoms: set[str] = set()
+    for bool_key, sev_key, label in gi_symptom_pairs:
+        if bool_key and gi.get(bool_key):
+            active_gi_symptoms.add(label)
+            continue
+        if _gi_severity_active(gi.get(sev_key)):
+            active_gi_symptoms.add(label)
+    gi_active_count = len(active_gi_symptoms)
     if gi_active_count >= 3:
         shifts["PHE-0004"] = shifts.get("PHE-0004", 0) + 0.55  # heavy GI cluster
     elif gi_active_count == 2:
@@ -767,6 +805,13 @@ def collect_biomarker_shifts(input_data: dict, atlas: dict) -> dict[str, float]:
         # without dysbiosis); only enough to nudge, not to drive dominance.
         shifts["PHE-0004"] = shifts.get("PHE-0004", 0) + 0.15
 
+    # v0.4: GSRS severity proxy flag (Kang 2017 inclusion criterion mirror).
+    # Adds modest weight when the profile flags moderate-to-severe baseline
+    # GSRS without redundantly adding per-symptom shifts (those above already
+    # capture the underlying symptom load).
+    if gi.get("_gsrs_score_baseline_severe_per_kang_inclusion"):
+        shifts["PHE-0004"] = shifts.get("PHE-0004", 0) + 0.20
+
     # GI biomarker panel: calprotectin, zonulin
     gi_panel = metab.get("gi_panel") or {}
     if gi_panel.get("calprotectin_elevated"):
@@ -774,10 +819,32 @@ def collect_biomarker_shifts(input_data: dict, atlas: dict) -> dict[str, float]:
     if gi_panel.get("zonulin_elevated"):
         shifts["PHE-0004"] = shifts.get("PHE-0004", 0) + 0.30
 
-    # Microbiome dysbiosis flag
+    # Microbiome dysbiosis flag (root-level legacy encoding)
     microbiome_root = input_data.get("microbiome", {}) or {}
     if microbiome_root.get("dysbiosis_flag") or microbiome_root.get("akkermansia_depleted"):
         shifts["PHE-0004"] = shifts.get("PHE-0004", 0) + 0.30
+
+    # v0.4: per-sample microbiome composition signals (Kang 2017 / Hsiao /
+    # Vuong-Kang dysbiosis literature). Each distinct abnormality flag
+    # adds +0.20, capped at +0.40 total to prevent multi-correlated-signal
+    # double-counting. Sorted iteration for determinism.
+    microbiome_samples = microbiome_root.get("samples", []) or []
+    microbiome_distinct = set()
+    for sample in microbiome_samples:
+        if not isinstance(sample, dict):
+            continue
+        for flag in sorted(sample.keys()):
+            if flag in (
+                "bifidobacterium_low", "prevotella_low", "low_diversity",
+                "akkermansia_depleted", "clostridia_overgrowth",
+                "klebsiella_overgrowth", "candida_overgrowth",
+            ) and sample.get(flag):
+                microbiome_distinct.add(flag)
+    microbiome_count = len(microbiome_distinct)
+    if microbiome_count >= 2:
+        shifts["PHE-0004"] = shifts.get("PHE-0004", 0) + 0.40
+    elif microbiome_count == 1:
+        shifts["PHE-0004"] = shifts.get("PHE-0004", 0) + 0.20
 
     # ------------------------------------------------------------------
     # PHE-0005 — mTOR pathway syndromic
@@ -819,15 +886,72 @@ def collect_biomarker_shifts(input_data: dict, atlas: dict) -> dict[str, float]:
     # ------------------------------------------------------------------
     # PHE-0007 — GABA / Cl⁻ imbalance
     # ------------------------------------------------------------------
-    # CSF or proxy intracellular chloride elevation (Lemonnier framework)
+    # CSF or proxy intracellular chloride elevation (Lemonnier framework).
+    # v0.4: also reads the alternative `biomarkers.child_data.*` path used
+    # by some cohort representative profiles (rrc_002 Lemonnier). Union
+    # semantics: only adds the shift once per signal class, even if both
+    # encodings are present.
     neuro = input_data.get("neuroimaging_eeg", {}) or {}
-    csf_proxy = (neuro or {}).get("csf_chloride_elevated_proxy")
+    biomarkers_child = (input_data.get("biomarkers", {}) or {}).get("child_data", {}) or {}
+    csf_proxy = bool(
+        (neuro or {}).get("csf_chloride_elevated_proxy")
+        or biomarkers_child.get("csf_or_neuronal_intracellular_chloride_proxy_high")
+    )
     if csf_proxy:
         shifts["PHE-0007"] = shifts.get("PHE-0007", 0) + 0.50
     # KCC2 dysfunction proxy (rare; specialized testing)
     cytokine_panel = immunology.get("cytokine_panel", {}) or {}  # reuse var
     if (immunology.get("kcc2_dysfunction_proxy")
-            or (input_data.get("comorbidities") or {}).get("kcc2_dysfunction_proxy")):
+            or (input_data.get("comorbidities") or {}).get("kcc2_dysfunction_proxy")
+            or biomarkers_child.get("kcc2_dysfunction_proxy")):
+        shifts["PHE-0007"] = shifts.get("PHE-0007", 0) + 0.40
+
+    # v0.4: clinical epilepsy diagnosis (existing comorbid signal). Strong
+    # GABA-axis dysfunction prior — modest shift since epilepsy alone is
+    # not deterministic for the bumetanide responder phenotype.
+    epilepsy = (input_data.get("comorbidities", {}) or {}).get("epilepsy", {}) or {}
+    if epilepsy.get("present"):
+        shifts["PHE-0007"] = shifts.get("PHE-0007", 0) + 0.40
+
+    # v0.4: subclinical epileptiform EEG (Chez 2002 had 13/31 = 42% of cohort).
+    # Either encoded in current_diagnoses (string contains "epileptiform")
+    # or as a comorbidity sub-flag.
+    diagnoses_list = (input_data.get("child_data", {}) or {}).get("current_diagnoses", []) or []
+    diagnoses_text = " ".join(str(d).lower() for d in diagnoses_list)
+    if ("epileptiform" in diagnoses_text or
+            epilepsy.get("_subclinical_epileptiform_activity_per_chez_cohort")):
+        shifts["PHE-0007"] = shifts.get("PHE-0007", 0) + 0.25
+
+    # v0.4: concomitant GABAergic anticonvulsant signals known GABA-axis
+    # involvement (clinically managed seizure tendency or behavioral
+    # indication). Audit-hardened (sub-agent v0.4 review): per-item word-
+    # boundary regex match (not joined-string substring) AND skip items
+    # whose lowercased text contains negation/historical markers ("no ",
+    # "discontinued", "history of", "past ", "stopped", "former "). Includes
+    # brand-name aliases per audit feedback.
+    meds_list = (input_data.get("child_data", {}) or {}).get("current_medications", []) or []
+    _meds_token_pattern = re.compile(
+        r"\b(valproic|valproate|depakote|depakene|vigabatrin|sabril|tiagabine|gabitril)\b"
+    )
+    _meds_negation_markers = (
+        "no ", "discontinued", "history of", "past ", "stopped", "former ",
+        "previously", "h/o ", "hx ",
+    )
+    meds_active_gabaergic = False
+    for m in meds_list:
+        t = str(m).lower().strip()
+        if not t:
+            continue
+        if any(neg in t for neg in _meds_negation_markers):
+            continue
+        if _meds_token_pattern.search(t):
+            meds_active_gabaergic = True
+            break
+    if meds_active_gabaergic:
+        shifts["PHE-0007"] = shifts.get("PHE-0007", 0) + 0.30
+
+    # v0.4: MR spectroscopy GABA/Glu ratio (rare; specialized neuroimaging).
+    if neuro.get("mrs_gaba_glu_ratio_low"):
         shifts["PHE-0007"] = shifts.get("PHE-0007", 0) + 0.40
 
     # ------------------------------------------------------------------

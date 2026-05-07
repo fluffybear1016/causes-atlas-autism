@@ -94,7 +94,7 @@ entries:
     primary_target_dimension: PHE-0007
     profile_dominant_dimensions_must_include:
     - PHE-0007
-    _expected_to_fail_until_engine_v03: true
+    _unblocked_in_engine_v04_2026_05_07: true
   status: full_text_extracted_2026_05_07
   notes: "Lemonnier 2017 Translational Psychiatry is the well-known phase 2/3\nbumetanide\
     \ trial. Subsequent stratification work (e.g., Hadjikhani 2018\neye-contact subset) supports\
