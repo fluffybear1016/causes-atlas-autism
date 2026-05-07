@@ -1,0 +1,93 @@
+{
+  "case_id": "rrc_006_hendren_2016_methyl_b12_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "young_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for the low-methionine responder subgroup of Hendren 2016 J Child Adolesc Psychopharmacol (PMID 26889605). Per Table 5 (page 8), responders had significantly lower baseline plasma methionine (17.34 vs 21.62 μM, p=0.006), indicating methylation-deficient subgroup enrichment. Representative input encodes the Walsh undermethylator biotype that is the engine's atlas-driven analog of the responder stratification.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 30, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 0,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 32, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 63,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 19.5, "weight_z_for_age_sex": 0.0,
+      "height_cm": 110, "height_z_for_age_sex": 0.0,
+      "bmi": 16.1, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "moderate_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": ["autism spectrum disorder"],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+  "immunology": {"autoantibodies": {}},
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {
+      "amino_acids_plasma": {
+        "_methionine_baseline_low_per_hendren_responders": "≈17 μM (responder mean) vs 22 μM (nonresponder mean)",
+        "histamine_low_per_walsh": true,
+        "_walsh_low_histamine_marker_proxy_for_undermethylator": true
+      },
+      "untargeted_metabolomics_z_scores": {
+        "sam_sah_low_per_walsh": true,
+        "_low_methionine_drives_low_SAM": true
+      }
+    }
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {}
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 40, "birth_weight_kg": 3.4,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0008",
+    "rationale": "Walsh undermethylator markers (histamine_low + SAM/SAH_low) drive PHE-0008 dominance via the engine's biomarker shifts; this is the atlas-encoded analog of Hendren 2016's low-methionine responder stratification."
+  }
+}

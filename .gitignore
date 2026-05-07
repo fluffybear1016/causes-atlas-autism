@@ -18,3 +18,6 @@ delta_squared_v1/run_summary.json
 delta_squared_v1/calibration_status.txt
 delta_squared_v1/reflexivity_status.txt
 .config/rclone/rclone.conf
+
+# Copyrighted source PDFs — do not redistribute publicly
+validation/responder_rate_calibration/papers/
