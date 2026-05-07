@@ -1,4 +1,4 @@
-cohort_version: v0.3_full_text_extracted_8_of_13
+cohort_version: v0.4_full_text_extracted_11_of_13
 engine_version_required: session4_v0.2.0_profile_vector
 verification_protocol: "BioMysteryBench-aligned (CLAUDE.md \xA7Verification protocol)"
 entries:
@@ -110,40 +110,53 @@ entries:
     \ = csf_or_neuronal_intracellular_chloride_proxy was aspirational; the trial doesn't actually\
     \ use it."
   pmid_verified_at_fulltext: '2026-05-07'
-- entry_id: rrc_003_zimmerman_singh_2021_sulforaphane
-  rct_pmid: 34034808
-  rct_first_author: Zimmerman AW
-  rct_year: 2021
-  rct_journal: Mol Autism
-  rct_title: 'Randomized controlled trial of sulforaphane and metabolite discovery in
-
-    children with Autism Spectrum Disorder.
-
-    '
+- entry_id: rrc_003_singh_2014_sulforaphane
+  rct_pmid: 25313065
+  rct_first_author: Singh K
+  rct_year: 2014
+  rct_journal: Proc Natl Acad Sci USA
+  rct_title: Sulforaphane treatment of autism spectrum disorder (ASD).
   pmid_verified: true
-  pmid_verified_at: 2026-05-05
-  intervention_id: INT-0002
+  pmid_verified_at: '2026-05-07'
+  intervention_id: INT-0030
   intervention_name: Sulforaphane (broccoli sprout extract)
   target_phenotype_id: PHE-0002
-  stratification_criterion: 'Mito-vulnerable / oxidative-stress subset (Singh 2014 PNAS earlier
-    work
-
-    showed responder enrichment in elevated-oxidative-stress profiles).
-
-    '
-  n_total_in_stratum: <extract from paper>
-  n_responder_in_stratum: <extract from paper>
-  published_responder_rate: <extract from paper>
-  placebo_responder_rate: <extract from paper>
-  responder_definition: ABC + SRS improvement; per-paper definition
-  representative_input_profile_path: <pending>
+  stratification_criterion: "None (unstratified by biomarker). Trial inclusion was male age\
+    \ 13-27 with moderate-to-severe ASD. Cohort had unusually high prevalence of fever-responder\
+    \ phenotype (32/40 = 80% vs ~35% in general ASD populations) \u2014 a behavioral observation,\
+    \ not a stratification axis."
+  n_total_in_stratum: 26
+  n_responder_in_stratum: 9
+  published_responder_rate: 0.346
+  placebo_responder_rate: 0.0
+  responder_definition: "Post-hoc dichotomization: positive response = \u226530% decrease\
+    \ from baseline in BOTH total ABC and total SRS scores at 18 weeks. 9/26 (34.6%) sulforaphane\
+    \ vs 0/11 (0%) placebo, Fisher's exact p=0.036. (Looser ABC-alone responder criterion:\
+    \ 15/25 = 60% sulforaphane vs 2/10 = 20% placebo, p=0.059.)"
+  representative_input_profile_path: representative_inputs/rrc_003.json
   expected_engine_behavior:
     intervention_in_top_5: true
     primary_target_dimension: PHE-0002
     profile_dominant_dimensions_must_include:
     - PHE-0002
-    _representative_input_pending: true
-  status: scaffold
+  status: full_text_extracted_2026_05_07
+  response_minus_placebo: 0.346
+  effect_size_cohen_d: null
+  p_value: 0.036
+  p_value_test: Fisher's exact test, dual ABC+SRS responder criterion at 18 weeks
+  extraction_notes: "Source: Singh 2014 PNAS (PMID 25313065), open access. Quote: 'A positive\
+    \ response was defined post hoc as a 30% decrease from baseline in total ABC and SRS scores.\
+    \ Thirty-five percent (9 of 26) of participants on sulforaphane had a positive response\
+    \ with 0% (0 of 11) on placebo (Fisher's exact test P = 0.036), and 60% (15 of 25) of\
+    \ participants receiving sulforaphane had a positive response on ABC compared with 20%\
+    \ (2 of 10) on placebo (P = 0.059).' COHORT ENTRY REWRITE: previously pointed at PMID\
+    \ 34034808 (Zimmerman 2021, younger-children followup); now points at PMID 25313065 (Singh\
+    \ 2014, original landmark RCT). Singh 2014 has cleaner dichotomized responder data and\
+    \ a larger effect size than Zimmerman 2021 (which had non-significant primary outcome\
+    \ OACIS d=0.10-0.21). Mechanism is oxidative stress / Nrf2 / glutathione / mitochondrial\
+    \ \u2014 maps to PHE-0002. Trial was unstratified by biomarker; representative profile\
+    \ encodes population-typical mild oxidative-stress signal."
+  pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_004_hardan_2012_nac
   rct_pmid: 22342106
   rct_first_author: Hardan AY
@@ -272,16 +285,38 @@ entries:
   intervention_name: Melatonin
   target_phenotype_id: PHE-0007
   stratification_criterion: Severe sleep disorder subset
-  n_total_in_stratum: <extract from paper>
-  n_responder_in_stratum: <extract from paper>
-  published_responder_rate: <extract from paper>
-  placebo_responder_rate: <extract from paper>
-  responder_definition: "Sleep latency reduction \u226530min + total sleep time gain"
-  representative_input_profile_path: <pending>
+  n_total_in_stratum: 17
+  n_responder_in_stratum: null
+  published_responder_rate: null
+  placebo_responder_rate: null
+  responder_definition: "Paper does NOT publish a dichotomized responder rate. Primary outcomes\
+    \ are continuous: sleep latency, total sleep time, number of night wakenings. Significant\
+    \ improvements in sleep latency (mean reduction 46.7 min, p=0.004 melatonin vs placebo)\
+    \ and total sleep time (+52.3 min, p=0.002), no difference in wakenings (p=0.209). Trial\
+    \ defined 'good sleep' as \u226550% improvement for individual dose-titration purposes\
+    \ but did not report what fraction of subjects met that threshold."
+  representative_input_profile_path: representative_inputs/rrc_007.json
   expected_engine_behavior:
     intervention_in_top_5: true
-    _representative_input_pending: true
-  status: scaffold
+    _representative_input_authored_for_qualitative_check_only: true
+  status: full_text_extracted_excluded_from_mae_2026_05_07
+  response_minus_placebo: null
+  effect_size_cohen_d: null
+  p_value: 0.004
+  p_value_test: Wilcoxon signed-rank test, sleep latency, melatonin vs placebo, crossover
+    design
+  extraction_notes: "Source: Wright 2011 J Autism Dev Disord (PMID 20535539). Randomized double-blind\
+    \ crossover trial; n=22 randomized, n=17 completed. Inclusion: ASD with severe sleep problems\
+    \ NOT amenable to behavior management \u2014 sleep-stratified subset. Primary outcomes\
+    \ are continuous (Table 1 page 7); paper does NOT publish a dichotomized responder rate.\
+    \ Closest proxy: 12/16 placebo subjects reached the 10mg max dose vs 6/16 on melatonin,\
+    \ suggesting ~62% on melatonin achieved 'good sleep' without needing the maximum dose,\
+    \ but this is a dose-titration metric not a responder rate. EXCLUDED from cohort responder-rate\
+    \ MAE for the same reason as Adams 2011 (continuous outcomes only). The engine does not\
+    \ currently have a sleep-axis phenotype dimension; this entry remains in the cohort to\
+    \ document the sleep-stratifier gap and motivate engine v0.5+ work on a PHE-0012 sleep/circadian\
+    \ phenotype."
+  pmid_verified_at_fulltext: '2026-05-07'
 - entry_id: rrc_008_owen_2009_aripiprazole
   rct_pmid: 19948625
   rct_first_author: Owen R
@@ -544,17 +579,20 @@ entries:
   target_phenotype_id: PHE-0003
   stratification_criterion: "PANS-positive subset (Cunningham panel composite + acute onset).\
     \ Not\ngeneric autism \u2014 PANS overlapping subset.\n"
-  n_total_in_stratum: <extract from paper>
-  n_responder_in_stratum: <extract from paper>
-  published_responder_rate: <extract from paper>
+  n_total_in_stratum: null
+  n_responder_in_stratum: null
+  published_responder_rate: null
   placebo_responder_rate: null
-  responder_definition: PANS Severity Scale reduction
-  representative_input_profile_path: <pending>
+  responder_definition: Paper is a TREATMENT GUIDELINES / consensus document, NOT an RCT.
+    It reviews two prior controlled trials (Perlmutter 1999 and Williams 2016) and synthesizes
+    expert clinical experience from >1000 PRC-evaluated PANS patients. No primary responder
+    rate is published at the guidelines level.
+  representative_input_profile_path: representative_inputs/rrc_013.json
   expected_engine_behavior:
     intervention_in_top_5: true
     primary_target_dimension: PHE-0003
-    _representative_input_pending: true
-  status: scaffold
+    _representative_input_authored_for_qualitative_check_only: true
+  status: guidelines_paper_excluded_from_mae_2026_05_07
   notes: 'Treatment-guidance paper rather than a single RCT. Used as cohort
 
     anchor for PANS-stratified responder analysis. Cunningham panel
@@ -564,6 +602,25 @@ entries:
     v0.3 reads autoabs.cunningham_panel.composite_elevated).
 
     '
+  response_minus_placebo: null
+  effect_size_cohen_d: null
+  p_value: null
+  p_value_test: null
+  extraction_notes: "Source: Frankovich 2017 J Child Adolesc Psychopharmacol (PMID 36358107).\
+    \ Marked as 'Review Article' on page 1. CRITICAL FRAMING: this entry is an EXPERT GUIDELINES\
+    \ paper from the PANS Research Consortium immunomodulatory task force, NOT a single RCT.\
+    \ The paper reviews two prior controlled trials: Perlmutter 1999 (IVIG vs TPE vs placebo\
+    \ in PANDAS \u2014 OC symptoms reduced 45% IVIG / 58% TPE / no effect placebo) and Williams\
+    \ 2016 (IVIG vs placebo in PANDAS \u2014 primary outcome did not reach statistical significance\
+    \ in double-blind portion; open-label IVIG produced ~50% OCD severity reduction). The\
+    \ Frankovich guidelines paper does NOT publish its own dichotomized responder rate. EXCLUDED\
+    \ from cohort responder-rate MAE for the same reason as Rossignol 2012 (review/guidelines\
+    \ paper, not RCT). The representative input profile (rrc_013.json) encodes the PANS-positive\
+    \ Cunningham panel composite + acute onset phenotype for engine STRUCTURAL-TEST purposes\
+    \ only \u2014 engine should load PHE-0003 (regressive immune-inflammatory) on this profile.\
+    \ Future work: add Williams 2016 (PMID 27227558) as a separate cohort entry with its actual\
+    \ published responder rate."
+  pmid_verified_at_fulltext: '2026-05-07'
 deliverables:
   v0.1: 'Scaffold + 2 worked entries with verified PMIDs (current state).
 

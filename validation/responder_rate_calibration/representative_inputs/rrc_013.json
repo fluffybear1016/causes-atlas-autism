@@ -1,0 +1,115 @@
+{
+  "case_id": "rrc_013_frankovich_2017_pans_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Frankovich 2017 J Child Adolesc Psychopharmacol (PMID 36358107) PANS treatment guidelines paper. Per cohort.yaml notes, this entry is a guidelines/review paper and is EXCLUDED from cohort responder-rate MAE. The representative profile is authored for engine STRUCTURAL-TEST purposes only — encoding the PANS-positive phenotype: acute neuropsychiatric onset + Cunningham panel positivity + post-streptococcal autoimmune signal. Engine should load PHE-0003 (regressive immune-inflammatory) on this profile.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 32, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 1,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 34, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [],
+    "first_degree_autoimmune": ["rheumatoid_arthritis_maternal", "thyroiditis_maternal"],
+    "first_degree_psychiatric": ["ocd_paternal"],
+    "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null,
+    "_71pct_pans_families_have_first_degree_autoimmune_per_frankovich": true
+  },
+
+  "child_data": {
+    "current_age_months": 108,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 32.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 135, "height_z_for_age_sex": 0.0,
+      "bmi": 17.6, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "mild_delay", "cognitive": "on_track",
+      "adaptive": "mild_delay",
+      "regression_history": [
+        "acute_onset_ocd_age_8_post_strep",
+        "acute_behavioral_regression_age_8"
+      ]
+    },
+    "current_diagnoses": [
+      "autism spectrum disorder",
+      "pans_pediatric_acute_onset_neuropsychiatric_syndrome",
+      "obsessive_compulsive_disorder_acute_onset",
+      "anxiety_disorder",
+      "tic_disorder"
+    ],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+
+  "immunology": {
+    "autoantibodies": {
+      "_cunningham_panel_composite_elevated": true,
+      "anti_lysoganglioside_elevated": true,
+      "anti_tubulin_elevated": true,
+      "anti_dopamine_d1_d2_elevated": true,
+      "_camkii_activation_elevated": true
+    },
+    "cytokine_panel": {
+      "il6_elevated": true,
+      "tnf_alpha_elevated": true,
+      "_th17_signal_elevated_per_swedo_dileepan": true
+    },
+    "_recent_strep_or_other_infection_trigger": true
+  },
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {}
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {},
+    "mcas_features": {
+      "tryptase_elevated": false,
+      "methylhistamine_elevated": false
+    }
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.3,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0003",
+    "rationale": "Cunningham panel autoantibody composite (anti-lysoganglioside + anti-tubulin + anti-dopamine D1/D2) + elevated IL-6 + TNF + first-degree autoimmune family history drive PHE-0003 (regressive immune-inflammatory) loading via the engine's atlas-driven biomarker shifts. The PANS-positive subset that Frankovich 2017 guidelines recommend immunomodulatory therapy for. EXCLUDED from cohort MAE because the source paper is guidelines, not RCT — but engine structural test should fire PHE-0003 dominance on this profile."
+  }
+}

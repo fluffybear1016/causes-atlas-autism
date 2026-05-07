@@ -1,0 +1,88 @@
+{
+  "case_id": "rrc_003_singh_2014_sulforaphane_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Singh 2014 PNAS (PMID 25313065) sulforaphane RCT. Trial inclusion was male age 13-27 with moderate-to-severe ASD; NOT biomarker-stratified. Sulforaphane's mechanism is Nrf2 / glutathione / oxidative-stress modulation, so the cohort entry targets PHE-0002 (mitochondrial dysfunction). This representative encodes the population-typical mild oxidative-stress signal — the same framing as Hardan 2012 NAC (rrc_004) since both trials are unstratified and target the same biological axis. The trial's responder rate (9/26 = 0.346, both ABC+SRS ≥30%) should be predicted by a near-baseline PHE-0002 loading on this profile.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 30, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 0,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 32, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 204,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 60.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 170, "height_z_for_age_sex": 0.0,
+      "bmi": 20.8, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "moderate_delay", "cognitive": "moderate_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": ["autism spectrum disorder"],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+  "hormonal_axes": {"actor": "child"},
+  "immunology": {"autoantibodies": {}},
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {
+      "organic_acids_urine": {
+        "lactate_elevated": true,
+        "_mild_oxidative_stress_signal_consistent_with_singh_2014_target_biology": "Singh 2014 was unstratified; encoded as the population-typical mild signal that sulforaphane's Nrf2/glutathione mechanism would address"
+      }
+    }
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {}
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.3,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": "PHE-0002",
+    "rationale": "Mild lactate elevation drives PHE-0002 loading via biomarker shift (+0.30). Singh 2014 was unstratified, so this comparison tests engine baseline + mild-signal calibration vs the trial's 34.6% responder rate. Same architectural test as Hardan 2012 NAC (rrc_004); should give a similar near-baseline PHE-0002 loading. Both trials target the same oxidative-stress axis with population-typical (unstratified) ASD cohorts."
+  }
+}

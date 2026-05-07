@@ -1,0 +1,92 @@
+{
+  "case_id": "rrc_007_wright_2011_melatonin_representative",
+  "case_date": "2026-05-07",
+  "input_version": "2.3",
+  "operating_mode": "older_child",
+  "engine_version_requested": "session4_v0.2.0_profile_vector",
+
+  "subject_sex": "M",
+  "subject_ancestry": ["EUR"],
+
+  "_source": "Synthetic representative profile for Wright 2011 J Autism Dev Disord (PMID 20535539) melatonin crossover trial. Trial inclusion was ASD with severe sleep problems NOT amenable to behavior management (sleep-stratified subset). This representative encodes a child with severe dysomnia + ASD. EXCLUDED from cohort MAE because the paper publishes only continuous outcomes (sleep latency, total sleep time, wakenings) — no dichotomized responder rate. The engine does not currently have a sleep-axis phenotype dimension, so this entry serves as a placeholder for future engine v0.5+ work on PHE-0012 sleep/circadian phenotype.",
+
+  "maternal": {
+    "demographics": {"age_at_conception_or_now": 30, "ethnicity_self_reported": ["EUR"]},
+    "pregnancy_history": {
+      "infections": [], "medications": [], "diet_quality_index": null,
+      "autoimmune_dx": [], "previous_pregnancies": 0,
+      "previous_autism_children": 0, "miscarriage_count": 0,
+      "fertility_treatment": null
+    },
+    "current_medications": [], "current_supplements": []
+  },
+
+  "paternal": {"age_at_conception": 32, "phenotypic_features": [], "current_medications": []},
+
+  "family_history": {
+    "first_degree_autism": {"count": 0, "phenotype_if_known": null},
+    "first_degree_essence_features": [], "first_degree_autoimmune": [],
+    "first_degree_psychiatric": [], "second_degree_autism": {"count": 0},
+    "consanguinity": false, "sibling_phenotypes": [],
+    "ethnic_genetic_isolate_membership": null
+  },
+
+  "child_data": {
+    "current_age_months": 108,
+    "sex": "M",
+    "anthropometrics": {
+      "weight_kg": 32.0, "weight_z_for_age_sex": 0.0,
+      "height_cm": 135, "height_z_for_age_sex": 0.0,
+      "bmi": 17.6, "bmi_z_for_age_sex": 0.0
+    },
+    "developmental_milestones_status": {
+      "motor": "on_track", "social": "moderate_delay",
+      "language": "moderate_delay", "cognitive": "mild_delay",
+      "adaptive": "moderate_delay", "regression_history": []
+    },
+    "current_diagnoses": [
+      "autism spectrum disorder",
+      "severe_dysomnia_not_amenable_to_behavior_management"
+    ],
+    "current_medications": [], "current_supplements": []
+  },
+
+  "genomics": {
+    "snps": {"maternal": {}, "paternal": {}, "child": {}},
+    "cnvs": {"child": []},
+    "wes_wgs_rare_variants": {"child": []},
+    "mtdna": {"maternal": null, "child": null}
+  },
+
+  "microbiome": {"samples": []},
+  "toxicology": {},
+
+  "hormonal_axes": {
+    "actor": "child",
+    "_melatonin_synthesis_low_per_melke_2008_subset_proxy": true,
+    "_baseline_sleep_latency_135min_per_wright_2011_population_mean": true
+  },
+
+  "immunology": {"autoantibodies": {}},
+
+  "metabolomics_proteomics_epigenetics": {
+    "metabolomics": {}
+  },
+
+  "comorbidities": {
+    "epilepsy": {"present": false},
+    "gi_clusters": {},
+    "atopic_cluster": {}
+  },
+
+  "gestational_birth_data": {
+    "gestational_age_weeks": 39, "birth_weight_kg": 3.3,
+    "delivery_mode": "vaginal", "intrapartum_antibiotics": false,
+    "vaccinations_administered": []
+  },
+
+  "_engine_expectation": {
+    "dominant_dimension": null,
+    "rationale": "Engine v0.3 has no sleep-axis phenotype. Profile is recorded for documentation of the sleep-stratifier gap exposed by Wright 2011. Future engine v0.5+ refactor: add PHE-0012 sleep/circadian phenotype with biomarker drivers (melatonin synthesis markers, ASMT/SNORD genes, polysomnography findings). EXCLUDED from cohort MAE."
+  }
+}
