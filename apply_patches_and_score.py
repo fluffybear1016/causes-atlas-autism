@@ -315,6 +315,25 @@ if proc.returncode != 0:
     for line in proc.stderr.splitlines()[-10:]: print(f"  STDERR: {line}")
     raise RuntimeError("Vault rebuild failed")
 
+# === STEP 7: Δ² prioritization overlay ==================================
+# Δ² (second-derivative / inflection-point) overlay measures TRAJECTORY of
+# evidence accumulation per entity, not truth. Runs ON TOP of CSRS.
+# Calibration anchors mirror CSRS's INT-0001 ≥ 80 discipline; if any anchor
+# fails, the engine exits non-zero and halts the pipeline. See
+# scripts/compute_delta_squared.py and delta_squared_v1/calibration_status.txt.
+print()
+print("="*72)
+print("STEP 7: Δ² prioritization overlay")
+print("="*72)
+proc = subprocess.run(
+    [sys.executable, str(ROOT / "scripts" / "compute_delta_squared.py")],
+    cwd=str(ROOT), capture_output=True, text=True, timeout=60)
+for line in proc.stdout.splitlines(): print(f"  {line}")
+if proc.returncode != 0:
+    for line in proc.stderr.splitlines()[-15:]: print(f"  STDERR: {line}")
+    raise RuntimeError(
+        f"Δ² engine failed (exit {proc.returncode}); calibration regression — pipeline halted")
+
 print()
 print("="*72)
 print("DONE.")

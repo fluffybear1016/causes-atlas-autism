@@ -95,6 +95,18 @@ WALSH_PHENOTYPES = {"PHE-0008", "PHE-0009", "PHE-0010", "PHE-0011"}
 ATLAS_ROOT = Path(__file__).parent / "v2.0_scored"
 DEFAULT_ATLAS_ROOT = ATLAS_ROOT  # immutable reference for fallback
 
+# Δ² overlay integration (Session 5, post-2026-05-05). The engine optionally
+# reads delta_squared_v1/components.csv and applies a SMALL multiplicative
+# momentum bonus to intervention scores. Truth-strength (CSRS) remains
+# dominant; trajectory provides a tiebreaker.
+#
+# Formula: score = best_match × atlas_quality × (1 + α × Δ²/100)
+# At α = 0.20:  Δ²=0 → ×1.00 ;  Δ²=50 → ×1.10 ;  Δ²=100 → ×1.20.
+# A 14% CSRS gap can be made up by a ~70-point Δ² delta, but no more.
+# This keeps the calculator anchored on truth, with momentum as a nudge.
+DELTA_SQUARED_PATH = Path(__file__).parent / "delta_squared_v1" / "components.csv"
+DELTA_SQUARED_BONUS_ALPHA = 0.20
+
 
 # ============================================================================
 # UTILS — deterministic helpers
@@ -145,6 +157,26 @@ def load_csv(path: Path) -> list[dict]:
             raise ValueError(f"{path.name}: rows {missing[:5]} have empty 'id' field")
         rows = stable_sort_rows(rows, "id")
     return rows
+
+
+def load_delta_squared(path: Path | str | None = None) -> dict[str, float]:
+    """Load Δ² scores keyed by entity_id from delta_squared_v1/components.csv.
+
+    Returns empty dict if file missing — graceful fallback so engine never
+    fails because the Δ² overlay hasn't been computed yet. Deterministic;
+    no side effects.
+    """
+    src = Path(path) if path else DELTA_SQUARED_PATH
+    if not src.exists():
+        return {}
+    out: dict[str, float] = {}
+    with open(src, newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            try:
+                out[r["entity_id"]] = float(r["delta_squared_score"])
+            except (KeyError, ValueError):
+                continue
+    return out
 
 
 def load_atlas(atlas_path: Path | str | None = None) -> dict[str, list[dict]]:
@@ -1081,14 +1113,26 @@ def rank_interventions(
     atlas: dict,
     syndromic_match: dict | None,
     profile_summary: dict | None = None,
+    delta_squared_lookup: dict[str, float] | None = None,
 ) -> list[dict]:
     """
-    v0.2 weighted multi-target intervention ranking with max-based fit.
+    v0.2 weighted multi-target intervention ranking with max-based fit,
+    optionally blended with Δ² trajectory momentum (post-2026-05-05).
 
-    score(intervention) = atlas_quality × best_match_score
+    Without Δ²:
+        score = atlas_quality × best_match_score
+    With Δ² (delta_squared_lookup provided):
+        score = atlas_quality × best_match_score × momentum_multiplier
+        momentum_multiplier = 1 + DELTA_SQUARED_BONUS_ALPHA × (Δ²/100)
 
       best_match_score = max_d ( loading_d × edge_weight_d )
       atlas_quality    = CSRS / 100   (intervention's atlas-wide score, 0–1)
+
+    Δ² is OPT-IN. If delta_squared_lookup is None, behavior is byte-identical
+    to the pre-integration engine; existing calibration tests are unaffected.
+    Truth-strength (CSRS) remains dominant; momentum is a tiebreaker bonus
+    bounded at +20%. A high-Δ² low-CSRS intervention cannot leapfrog a
+    moderate-CSRS moderate-Δ² intervention.
 
     Rationale: sum-based scoring rewards edge proliferation (an intervention
     with 5 weak edges beats one with 1 strong, specific edge), which is
@@ -1098,7 +1142,7 @@ def rank_interventions(
     drive ranking.
 
     Ties broken by intervention_id ascending.
-    Per spec §7.10.
+    Per spec §7.10 + §7.10.1 (Δ² momentum).
     """
     if syndromic_match:
         return []
@@ -1145,6 +1189,14 @@ def rank_interventions(
             continue
         score = best_match_score * atlas_quality
 
+        # Δ² momentum multiplier (opt-in via delta_squared_lookup)
+        d2_score = 0.0
+        momentum_mult = 1.0
+        if delta_squared_lookup is not None:
+            d2_score = float(delta_squared_lookup.get(int_id, 0.0))
+            momentum_mult = 1.0 + DELTA_SQUARED_BONUS_ALPHA * (d2_score / 100.0)
+            score = score * momentum_mult
+
         scored.append((
             int_id,
             score,
@@ -1154,6 +1206,8 @@ def rank_interventions(
             best_dim,
             contributions,
             int_row,
+            d2_score,
+            momentum_mult,
         ))
 
     # Sort: descending score, ties by intervention_id ascending
@@ -1161,8 +1215,8 @@ def rank_interventions(
 
     bundle = []
     for (int_id, score, best_match, breadth, atlas_quality,
-         best_dim, contribs, int_row) in scored[:5]:
-        bundle.append({
+         best_dim, contribs, int_row, d2_score, momentum_mult) in scored[:5]:
+        entry = {
             "intervention_id": int_id,
             "name": int_row.get("name", ""),
             "category": int_row.get("category", ""),
@@ -1174,7 +1228,11 @@ def rank_interventions(
             "target_dimensions": sorted(contribs.keys()),
             "contribution_by_dimension": dict(sorted(contribs.items())),
             "recommendation_type": "CONSIDER",
-        })
+        }
+        if delta_squared_lookup is not None:
+            entry["delta_squared_score"] = round6(d2_score)
+            entry["momentum_multiplier"] = round6(momentum_mult)
+        bundle.append(entry)
 
     if bundle:
         bundle[0]["recommendation_type"] = "START"
@@ -1234,7 +1292,9 @@ def assemble_canonical_payload(output: dict) -> str:
 
 
 def compute_personalized_risk(
-    input_data: dict, atlas_path: Path | str | None = None
+    input_data: dict,
+    atlas_path: Path | str | None = None,
+    use_delta_squared: bool = False,
 ) -> dict:
     """
     Top-level engine entry point. Per spec §7.2.
@@ -1295,9 +1355,12 @@ def compute_personalized_risk(
         pid: round6(float(posteriors[pid]["point"])) for pid in ALL_PHENOTYPE_IDS
     }
 
-    # Stage 7: interventions — v0.2 weighted multi-target scoring
+    # Stage 7: interventions — v0.2 weighted multi-target scoring,
+    # optionally blended with Δ² trajectory momentum (opt-in).
+    delta_squared_lookup = load_delta_squared() if use_delta_squared else None
     intervention_bundle = rank_interventions(
-        posteriors, atlas, syndromic_match, profile_summary
+        posteriors, atlas, syndromic_match, profile_summary,
+        delta_squared_lookup=delta_squared_lookup,
     )
 
     # Stage 8: assemble output (v0.2 schema)
@@ -1325,6 +1388,7 @@ def compute_personalized_risk(
         "phenotype_posteriors": posteriors,
         "phenotype_ranking": phenotype_ranking,
         "intervention_bundle": intervention_bundle,
+        "delta_squared_blended": use_delta_squared,
         "provisional_hardcoded_shifts": True,  # Audit H-2: stub values used; v0.2 will replace with priors-CSV-driven values
         "deferred_features": [
             "full_walley_idm_credal_aggregation_v0.2",
@@ -1364,12 +1428,23 @@ def main():
         help="Path to atlas directory (e.g., atlases/long_covid/v0.1/). "
              "Default = autism atlas at v2.0_scored/ (back-compat)."
     )
+    parser.add_argument(
+        "--use-delta-squared", action="store_true",
+        help="Blend Δ² trajectory momentum into intervention ranking. "
+             "OFF by default to preserve byte-identical output for existing "
+             "calibration tests. ON adds a +0–20%% multiplicative bonus to "
+             "interventions with high Δ² scores from delta_squared_v1/."
+    )
     args = parser.parse_args()
 
     with open(args.input) as f:
         input_data = json.load(f)
 
-    output = compute_personalized_risk(input_data, atlas_path=args.atlas_path)
+    output = compute_personalized_risk(
+        input_data,
+        atlas_path=args.atlas_path,
+        use_delta_squared=args.use_delta_squared,
+    )
     output_str = json.dumps(output, indent=2, sort_keys=True)
 
     if args.output:

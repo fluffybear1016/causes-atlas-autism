@@ -480,6 +480,128 @@ enumeration across the full causal manifold:
   entity in the atlas, automatically identify the responder phenotype
   per principle §9.
 
+## Δ² prioritization overlay (post-2026-05-05)
+
+The Δ² (second-derivative / inflection-point) overlay is a **prioritization
+layer over CSRS, not a replacement.** CSRS measures truth-strength
+(steady-state evidence weight). Δ² measures *trajectory* — whether the
+evidence base for an entity is bending upward right now. Both belong in
+the atlas; they answer different questions.
+
+**Architecture:**
+- Engine: `scripts/compute_delta_squared.py` (deterministic, no LLM,
+  stable sort by ID, sliding year windows computed from `current_year`).
+- Outputs: `delta_squared_v1/`
+  - `rankings.csv`, `components.csv` — current state, overwritten each run
+  - `score_history.csv` — append-only timestamped history
+  - `anomaly_flags.csv` — append-only single-source-dominance flags
+  - `data_gaps.csv` — defined entities with zero ingested sources
+  - `calibration_status.txt`, `run_summary.json` — pipeline-readable
+    pass/fail
+  - `FINDINGS.md` — interpretive report (manually curated)
+- Determinism test: `scripts/test_delta_squared_determinism.py` — runs
+  engine twice and asserts byte-identical `rankings.csv` + `components.csv`.
+- Pipeline integration: invoked as Step 7 of `apply_patches_and_score.py`.
+  Calibration failure halts the pipeline.
+
+**Five components (weights sum to 1.0):**
+
+| Code | Component | Weight | What it captures |
+|---|---|---|---|
+| C1 | Recency acceleration | 0.30 | Second derivative of sources-per-year |
+| C2 | Cross-design convergence Δ | 0.20 | Tier-weighted growth in distinct study designs |
+| C3 | Subset-validation | 0.25 | Recency-weighted stratified-effect signal hits |
+| C4 | Replication independence | 0.10 | Distinct-source count, log-shaped |
+| C5 | Trajectory-mismatch | 0.15 | Contested status + tier-1 primary records |
+
+**Calibration anchors (must hold; regression halts pipeline):**
+
+| Anchor | Check | Threshold | Protects |
+|---|---|---|---|
+| INT-0001 Leucovorin | score | ≥ 30 | Subset-validation signal for FOLR1+ |
+| MEC-0010 Mitochondrial | score | ≥ 50 | Cross-design convergence cluster |
+| HYP-0028 Polygenic risk | C2 | ≥ 0.85 | Maximum design diversity in recent window |
+| HYP-0001 FOLR1 autoantibodies | C3 | ≥ 0.55 | Stratified-subset signal in literature |
+| HYP-0044 / 66 / 67 / 68 / 69 (vaccine cluster) | C5 | = 1.00 | Trajectory-mismatch detection (contested + tier-1 primary) |
+
+**Anti-reflexivity defense (code-enforced):**
+
+The Druckenmiller analogy works in markets because markets are reflexive
+— prices incorporate participant beliefs. Biology is not reflexive, but
+**editorial behavior is.** If ingestion is preferentially directed at
+already-Δ²-positive entities, those entities will look more accelerated
+in the next run because the curator fed them more recent sources, not
+because the field actually accelerated.
+
+This is the framework's most insidious failure mode, and it is **defended
+by code, not by discipline.** Every Δ² run executes `audit_reflexivity()`
+which:
+
+1. Reads `score_history.csv` to find the previous run's per-entity ranking.
+2. Identifies sources whose `date_ingested` post-dates that run.
+3. Maps the new sources to entities and computes Spearman rank correlation
+   between previous-run rank and inter-run new-source count.
+4. Classifies the result:
+   - `r < 0.30` → PASS
+   - `0.30 ≤ r < 0.70` → WARN (logged, not halted)
+   - `r ≥ 0.70` → FAIL (engine exits non-zero, **pipeline halts**)
+5. Writes append-only log `delta_squared_v1/reflexivity_audit.csv` and
+   human-readable `reflexivity_status.txt`.
+
+Tested under attack: `scripts/test_delta_squared_reflexivity.py`
+synthesizes a scenario where the curator preferentially fed top-ranked
+entities; the audit correctly fires FAIL with r=0.985 and halts.
+
+Threshold tuning: edit `REFLEXIVITY_WARN_THRESHOLD` and
+`REFLEXIVITY_FAIL_THRESHOLD` constants in the engine. Override of a FAIL
+must be documented in the commit raising the threshold; otherwise the
+defense reverts to default on next pull.
+
+Recommended ingestion budget allocation (when planning sessions): drive by
+external literature volume (PubMed query counts per entity keyword set)
+or hypothesis-coverage gaps. The audit catches violations either way.
+
+**Window auto-rolling:** windows are computed at runtime from
+`datetime.utcnow().year`. No annual code change needed.
+
+**Anomaly detection:** if any single source contributes more than 30%
+of an entity's recent-window tier-weighted weight, the entity is flagged
+for human review. Defends against single-study spike inflation
+(e.g. Hassan-2025 copper paper-style claims with implausible effect sizes
+that would otherwise drive C1 / C2 acceleration).
+
+**Data gap watchlist:** `DATA_GAP_WATCHLIST` in the engine is a list of
+defined-entity IDs that should have non-zero sources. Currently includes
+HYP-0026 PANDAS/PANS — a known real Δ²-positive field that the atlas has
+not yet ingested. Each run writes a `data_gaps.csv` flagging unsatisfied
+entries. Close gaps via `run_ingest.py` per the verification protocol.
+
+**Run command:**
+
+```bash
+cd /Users/Greg/Autism
+python3 scripts/compute_delta_squared.py
+```
+
+Or as part of the canonical pipeline (Step 7 in `apply_patches_and_score.py`).
+
+**Personalized-risk integration (opt-in).** `personalized_risk.py` accepts a
+`--use-delta-squared` flag (or `use_delta_squared=True` in the API call)
+that blends Δ² trajectory momentum into intervention ranking:
+
+```
+score = atlas_quality × best_match_score × (1 + α × Δ²/100)
+```
+
+with α = 0.20 (so Δ²=100 → ×1.20 momentum bonus, Δ²=0 → ×1.00). Truth-
+strength (CSRS) remains dominant; momentum is a tiebreaker bounded at +20%.
+A high-Δ² low-CSRS intervention cannot leapfrog a moderate-CSRS moderate-
+Δ² intervention. Default behavior is OFF — when the flag is unset the
+output is byte-identical to the pre-integration engine, so existing
+calibration cases continue to pass without modification. When ON, each
+ranked intervention's `delta_squared_score` and `momentum_multiplier`
+appear in the bundle for transparency.
+
 ## Verification protocol (BioMysteryBench-aligned, post-2026-04-30)
 
 **Binding rule for all future seeding work, ingestion, and citation:**
