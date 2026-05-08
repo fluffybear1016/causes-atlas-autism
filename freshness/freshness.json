@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 901,
-  "generated_at_utc": "2026-05-07T08:14:37+00:00",
+  "generated_at_utc": "2026-05-08T07:15:49+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -132,6 +132,15 @@
       "verified_pmids": [
         "41903401"
       ]
+    },
+    {
+      "atlas_pmid_count": 1068,
+      "candidates_found": 1,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-08T07:15:49+00:00",
+      "since": "2026-05-07T08:14:37+00:00",
+      "verified_added_to_queue": 0,
+      "verified_pmids": []
     }
   ],
   "queue_preview": [
