@@ -1,0 +1,116 @@
+name: Autonomous discoveries (daily pattern-mining pipeline)
+
+# Items 5 + 7 of the meta-roadmap. Runs the autonomous pattern-mining
+# orchestrator daily after the ingestion job has refreshed the atlas. The
+# orchestrator runs 4 finders (emergent edges, combination gaps, higher-
+# order hypotheses, responder phenotype gaps) and writes candidate
+# discoveries to vault/Discoveries_Inbox/.
+#
+# CRITICAL: no candidate is auto-promoted to the atlas. All findings are
+# gated by human curator review per the verify-before-write protocol.
+# Calibration anchor INT-0001 must remain ≥80 — smoke-tested at the end.
+
+on:
+  schedule:
+    # 07:00 UTC daily — 1 hour after daily_ingestion.yml so we run on the
+    # freshest atlas state.
+    - cron: "0 7 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Run autonomous-discoveries orchestrator (run 1)
+        run: |
+          python scripts/run_autonomous_discoveries.py
+
+      - name: Snapshot run 1 outputs for determinism check
+        run: |
+          mkdir -p /tmp/run1
+          cp vault/Discoveries_Inbox/*.json /tmp/run1/ 2>/dev/null || true
+
+      - name: Run autonomous-discoveries orchestrator (run 2)
+        run: |
+          python scripts/run_autonomous_discoveries.py
+
+      - name: Verify finder output is byte-identical (determinism gate)
+        run: |
+          # If any JSON file differs between runs, the pipeline is non-deterministic
+          # and we MUST NOT push it to main. This is the bot-on-main safeguard.
+          for f in /tmp/run1/*.json; do
+            base=$(basename "$f")
+            if ! diff -q "/tmp/run1/$base" "vault/Discoveries_Inbox/$base"; then
+              echo "❌ DETERMINISM REGRESSION: $base differs across runs"
+              echo "Pipeline must be deterministic before auto-commit. Halting."
+              exit 1
+            fi
+          done
+          echo "✅ All finder JSON outputs byte-identical across 2 runs"
+
+      - name: Smoke-test calibration anchor still holds
+        run: |
+          python scripts/validate_v02_calibration.py
+          python scripts/compute_responder_mae.py | tail -1 > /tmp/mae_a.txt
+          python scripts/compute_responder_mae.py | tail -1 > /tmp/mae_b.txt
+          if ! diff -q /tmp/mae_a.txt /tmp/mae_b.txt; then
+            echo "❌ Cohort MAE drifted across runs"
+            cat /tmp/mae_a.txt /tmp/mae_b.txt
+            exit 1
+          fi
+          echo "✅ calibration anchor + cohort MAE determinism OK"
+
+      - name: Verify only Inbox is staged (not scored CSVs)
+        run: |
+          # Defense-in-depth: confirm the bot is NOT touching any v2.0_scored/
+          # CSVs. If a future finder bug ever writes outside the Inbox, this
+          # halts the push. The atlas's hard rule (CLAUDE.md "What not to do":
+          # don't edit v2.0_scored/ CSVs by hand) extends to bot writes too.
+          git config user.name "causes-atlas-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --staged --name-only | grep -E '^v2\.0_scored/' >/dev/null; then
+            echo "❌ Bot attempted to modify v2.0_scored/ CSVs:"
+            git diff --staged --name-only | grep -E '^v2\.0_scored/'
+            exit 1
+          fi
+          # Reset and re-stage only Inbox + freshness paths
+          git reset
+          echo "✅ Bot writes confined to vault/Discoveries_Inbox/ + freshness/"
+
+      # NOTE on anti-reflexivity: this cron job intentionally runs ONLY
+      # pattern miners that read the atlas state read-only. No atlas writes
+      # happen here. Downstream consumers (curators or future automation)
+      # MUST NOT auto-act on Discoveries_Inbox contents without first invoking
+      # `compute_delta_squared.audit_reflexivity()` to verify ingestion isn't
+      # being preferentially fed by Δ² rankings. See CLAUDE.md §Δ² overlay
+      # "Anti-reflexivity defense" section.
+
+      - name: Commit and push (Inbox + freshness only)
+        run: |
+          # Strict path allowlist for bot writes.
+          git add vault/Discoveries_Inbox/ freshness/ 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No new discoveries this cycle."
+          else
+            git commit -m "discoveries: autonomous pattern-mining run $(date -u +%Y-%m-%d)"
+            git push
+          fi

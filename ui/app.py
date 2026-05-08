@@ -328,6 +328,54 @@ def load_freshness() -> dict | None:
         return None
 
 
+@st.cache_data(show_spinner=False)
+def load_formulations_by_parent() -> dict[str, list[dict]]:
+    """
+    Load formulation rows grouped by parent_intervention_id.
+    Used to surface formulation-aware recommendations in the UI.
+    Per (2) of meta-roadmap: orthogonal-formulation negative evidence
+    does NOT cascade down; this loader returns formulation-specific
+    scores so the UI shows e.g. liposomal curcumin separately from
+    standard curcumin powder.
+    """
+    out: dict[str, list[dict]] = {}
+    p = REPO_ROOT / "v2.0_scored" / "intervention_formulations_scored.csv"
+    if not p.exists():
+        # Fall back to bare schema if scoring hasn't been run
+        p = REPO_ROOT / "v2.0_scored" / "intervention_formulations.csv"
+    if not p.exists():
+        return out
+    import csv as _csv
+    with p.open() as f:
+        for row in _csv.DictReader(f):
+            pid = row.get("parent_intervention_id", "")
+            if not pid:
+                continue
+            out.setdefault(pid, []).append(row)
+    # Sort each parent's formulations by formulation_score (desc)
+    for pid, rows in out.items():
+        def _score(r):
+            try:
+                return -float(r.get("formulation_score") or 0)
+            except (ValueError, TypeError):
+                return 0.0
+        rows.sort(key=_score)
+    return out
+
+
+def _formulation_evidence_label(status: str) -> str:
+    """Map evidence_status → user-friendly label."""
+    return {
+        "established_RCT": "RCT-validated",
+        "established_mechanistic": "well-established",
+        "anecdotal_plus_mechanistic": "promising — case reports + mechanism",
+        "mechanistic_only": "mechanism-only",
+        "anecdotal_only": "anecdotal-only",
+        "untested": "untested for this use",
+        "contested": "mixed evidence",
+    }.get(status, status or "—")
+
+
 # ---------------------------------------------------------------------------
 # PMID → study-design lookup (Fix 5 of post-ChatGPT-critique sweep).
 # Used in the contested-entities tab so each cited PMID carries its evidence
@@ -765,17 +813,21 @@ def render_result():
     # this profile shape; it does not recommend any intervention.)
     bundle = out.get("intervention_bundle", []) or []
     if bundle and not out.get("syndromic_flag"):
+        # Load formulation data once for the whole result page
+        formulations_by_parent = load_formulations_by_parent()
+
         st.markdown("<div style='height:5vh'></div>", unsafe_allow_html=True)
         st.markdown(
             "<div style='text-align:center;'><div class='eyebrow'>"
-            "What the literature links to this profile</div></div>",
+            "What to discuss with your clinician</div></div>",
             unsafe_allow_html=True,
         )
         st.markdown(
-            "<div style='text-align:center; color:var(--ink-mute); font-size:0.88rem; max-width:48ch; margin:0.5rem auto 1.5rem; line-height:1.55;'>"
-            "<em>The atlas surfaces interventions linked in the published literature "
-            "to this profile's strongest dimensions. It does not recommend treatment. "
-            "Decisions are for clinicians.</em>"
+            "<div style='text-align:center; color:var(--ink-mute); font-size:0.88rem; max-width:52ch; margin:0.5rem auto 1.5rem; line-height:1.55;'>"
+            "<em>The atlas surfaces what the published literature links to this profile's strongest "
+            "biological patterns. Where the formulation matters (oral vs liposomal, methylated vs synthetic, etc.), "
+            "the atlas distinguishes them. This is not a treatment recommendation — clinical decisions are "
+            "for licensed clinicians who can examine the child.</em>"
             "</div>",
             unsafe_allow_html=True,
         )
@@ -786,6 +838,50 @@ def render_result():
             n_links = max(1, len(target_dims))
             score = float(item.get("score", 0.0) or 0.0)
             atlas_q = float(item.get("atlas_quality", 0.0) or 0.0) * 100.0
+            int_id = item.get("intervention_id", "")
+
+            # v0.5 (item 2): formulation-aware display. If this intervention
+            # has formulation rows in intervention_formulations_scored.csv,
+            # surface the top-scored formulation under the main card so the
+            # user sees e.g. "Liposomal Glutathione (RCT-validated)" rather
+            # than just "Glutathione (mixed evidence)".
+            forms = formulations_by_parent.get(int_id, [])
+            top_form_html = ""
+            if forms:
+                # Show up to top 2 formulations with score ≥ 50 and not contested-at-formulation-level
+                top_forms = [
+                    f for f in forms
+                    if (f.get("contested_at_formulation_level", "").lower() != "true")
+                    and float(f.get("formulation_score") or 0) >= 50
+                ][:2]
+                if top_forms:
+                    rows = []
+                    for f in top_forms:
+                        fname = f.get("formulation_name", "")
+                        fscore = float(f.get("formulation_score") or 0)
+                        flabel = _formulation_evidence_label(f.get("formulation_evidence_status", ""))
+                        froute = f.get("delivery_route", "") or ""
+                        responder = (f.get("responder_population_notes") or "").strip()
+                        responder_html = ""
+                        if responder and responder.lower() not in ("cohort baseline; frm-specific responder profile not established", ""):
+                            responder_html = (
+                                f"<div style='font-size:0.78rem; color:var(--ink-mute); margin-top:0.15rem; max-width:48ch;'>"
+                                f"<strong style='color:var(--ink-soft);'>Responder profile:</strong> {responder[:140]}{'…' if len(responder) > 140 else ''}"
+                                f"</div>"
+                            )
+                        rows.append(
+                            f"<div style='padding: 0.45rem 0 0.5rem 1.2rem; border-left: 2px solid var(--line); margin-top: 0.6rem;'>"
+                            f"<div style='font-size:0.92rem; color:var(--ink-soft);'>"
+                            f"<strong>{fname}</strong>"
+                            f" <span style='font-size:0.78rem; color:var(--ink-mute);'>· {froute or 'oral'}</span>"
+                            f" <span style='font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-mute); margin-left:0.4rem;'>{flabel}</span>"
+                            f" <span style='font-size:0.78rem; color:var(--ink-mute); margin-left:0.4rem;'>· {fscore:.0f}/100</span>"
+                            f"</div>"
+                            f"{responder_html}"
+                            f"</div>"
+                        )
+                    top_form_html = "".join(rows)
+
             st.markdown(
                 f"""
                 <div style='border-bottom: 1px solid var(--line); padding: 1.1rem 0;'>
@@ -804,6 +900,7 @@ def render_result():
                             profile-fit {score:.2f}
                         </div>
                     </div>
+                    {top_form_html}
                 </div>
                 """,
                 unsafe_allow_html=True,
