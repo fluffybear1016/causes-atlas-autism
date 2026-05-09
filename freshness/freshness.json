@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 901,
-  "generated_at_utc": "2026-05-08T07:15:49+00:00",
+  "generated_at_utc": "2026-05-09T07:42:38+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -141,6 +141,17 @@
       "since": "2026-05-07T08:14:37+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1068,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-09T07:42:38+00:00",
+      "since": "2026-05-08T07:15:49+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42101085"
+      ]
     }
   ],
   "queue_preview": [
@@ -151,6 +162,14 @@
       "pmid": "41990651",
       "pubdate": "2026 May 15",
       "title": "Proteome-wide reverse molecular docking reveals folate receptor as a mediator of PFAS-induced neurodevelopmental toxicity."
+    },
+    {
+      "first_author": "El Sehrawy AAMA",
+      "journal": "Int J Dev Neurosci",
+      "matched_queries_count": 1,
+      "pmid": "42101085",
+      "pubdate": "2026 May",
+      "title": "Personalized Medicine in Autism Spectrum Disorder: Integrating Epigenomics, Microbiome Research and Early Diagnostics."
     },
     {
       "first_author": "Ghahari AA",
@@ -535,15 +554,7 @@
       "pmid": "40655087",
       "pubdate": "2025 Jan-Feb",
       "title": "Effect of Bumetanide on Neural Correlates of Emotion Recognition in Youth With Autism Spectrum Disorder: An Event-related Potential Study."
-    },
-    {
-      "first_author": "Kalb LG",
-      "journal": "J Clin Child Adolesc Psychol",
-      "matched_queries_count": 1,
-      "pmid": "36129785",
-      "pubdate": "2025 Jan-Feb",
-      "title": "Mental Health Crisis Screening in Youth with Autism Spectrum Disorder."
     }
   ],
-  "queue_size": 136
+  "queue_size": 137
 }
