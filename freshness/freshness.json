@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 901,
-  "generated_at_utc": "2026-05-10T07:56:30+00:00",
+  "generated_at_utc": "2026-05-11T08:58:27+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -161,6 +161,17 @@
       "since": "2026-05-09T07:42:38+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1068,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-11T08:58:27+00:00",
+      "since": "2026-05-10T07:56:30+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42019703"
+      ]
     }
   ],
   "queue_preview": [
@@ -259,6 +270,14 @@
       "pmid": "39417900",
       "pubdate": "2026 Mar",
       "title": "Gastrointestinal, Behaviour and Anxiety Outcomes in Autistic Children Following an Open Label, Randomised Pilot Study of Synbiotics vs Synbiotics and Gut-Direct"
+    },
+    {
+      "first_author": "Burch K",
+      "journal": "Neurosci Biobehav Rev",
+      "matched_queries_count": 1,
+      "pmid": "42019703",
+      "pubdate": "2026 Jul",
+      "title": "From mouth to mind: Investigating oral microbial contributions to autism spectrum disorder."
     },
     {
       "first_author": "Bouelkhair M",
@@ -555,15 +574,7 @@
       "pmid": "40863715",
       "pubdate": "2025 Jul 28",
       "title": "Validation of Pediatric Acute-Onset Neuropsychiatric Syndrome (PANS)-Related Pediatric Treatment Evaluation Checklist (PTEC)."
-    },
-    {
-      "first_author": "Mollajani R",
-      "journal": "Basic Clin Neurosci",
-      "matched_queries_count": 1,
-      "pmid": "40655087",
-      "pubdate": "2025 Jan-Feb",
-      "title": "Effect of Bumetanide on Neural Correlates of Emotion Recognition in Youth With Autism Spectrum Disorder: An Event-related Potential Study."
     }
   ],
-  "queue_size": 137
+  "queue_size": 138
 }
