@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 901,
-  "generated_at_utc": "2026-05-11T08:58:27+00:00",
+  "generated_at_utc": "2026-05-12T08:26:00+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -172,6 +172,17 @@
       "verified_pmids": [
         "42019703"
       ]
+    },
+    {
+      "atlas_pmid_count": 1068,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-12T08:26:00+00:00",
+      "since": "2026-05-11T08:58:27+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42115306"
+      ]
     }
   ],
   "queue_preview": [
@@ -182,6 +193,14 @@
       "pmid": "41990651",
       "pubdate": "2026 May 15",
       "title": "Proteome-wide reverse molecular docking reveals folate receptor as a mediator of PFAS-induced neurodevelopmental toxicity."
+    },
+    {
+      "first_author": "Tabbaa M",
+      "journal": "Commun Biol",
+      "matched_queries_count": 1,
+      "pmid": "42115306",
+      "pubdate": "2026 May 11",
+      "title": "Offspring genetic diversity regulates rearing experiences that predict differential susceptibility to Chd8 haploinsufficiency."
     },
     {
       "first_author": "El Sehrawy AAMA",
@@ -566,15 +585,7 @@
       "pmid": "38950809",
       "pubdate": "2025 Mar 1",
       "title": "The NKCC1 Inhibitor Bumetanide Restores Cortical Feedforward Inhibition and Lessens Sensory Hypersensitivity in Early Postnatal Fragile X Mice."
-    },
-    {
-      "first_author": "Vyshedskiy A",
-      "journal": "Pediatr Rep",
-      "matched_queries_count": 1,
-      "pmid": "40863715",
-      "pubdate": "2025 Jul 28",
-      "title": "Validation of Pediatric Acute-Onset Neuropsychiatric Syndrome (PANS)-Related Pediatric Treatment Evaluation Checklist (PTEC)."
     }
   ],
-  "queue_size": 138
+  "queue_size": 139
 }
