@@ -457,12 +457,26 @@ if VAULT.exists():
     # PRESERVE manually-curated subdirectories (researchers/) — these
     # are hand-written content not derived from the canonical CSVs.
     # Top-level preserved subdirs (recursively preserved by virtue of being skipped)
-    PRESERVE = {"researchers", "topics", "biomarkers"}
+    PRESERVE = {
+        "researchers", "topics", "biomarkers",
+        # Added 2026-05-09: research scaffolds + autonomous pipeline output +
+        # session artifacts that are NOT derived from the canonical CSVs and
+        # must not be wiped when build_vault.py reruns.
+        "peptides",
+        "Discoveries_Inbox",
+        "_quarantine_obsidian_artifacts",
+        ".obsidian",  # Obsidian app state — must never be wiped
+    }
     # Hand-written files at vault root (not auto-generated)
     PRESERVE_FILES = {
         "01_PARENT_QUICK_START.md",
         "Hannah Poling framework.md",
         "CLAUDE.md",
+        # Added 2026-05-09: connectivity audit + cyrilXBT-style second-brain
+        # surfaces. These are session artifacts, not auto-generated.
+        "CONNECTIVITY_AUDIT.md",
+        "CITATION_VERIFICATION.md",
+        "MAPPING_PROPOSAL.md",
     }
     for child in VAULT.iterdir():
         if child.name in PRESERVE:

@@ -11,8 +11,8 @@ Generated from `v2.0_scored/`. One markdown note per entity (except genes, which
 
 - Hypotheses: **75**
 - Mechanisms: **34**
-- Interventions: **137**
-- Combinations: **5**
+- Interventions: **140**
+- Combinations: **25**
 - Phenotypes: **11**
 - Genes: **1564** (see [[INDEX|genes/INDEX]])
 - Sources: **1462**
@@ -58,16 +58,16 @@ Generated from `v2.0_scored/`. One markdown note per entity (except genes, which
 
 | ID | Name | CSRS | Last updated |
 |----|------|------|--------------|
+| INT-0145 | [[INT-0145 L-theanine]] |  |  |
+| INT-0143 | [[INT-0143 IVIG (intravenous immunoglobulin)]] |  |  |
+| INT-0142 | [[INT-0142 Vitamin mineral multinutrient supplement (Adams 2011 formulation)]] |  |  |
+| INT-0141 | [[INT-0141 Aripiprazole]] |  |  |
+| INT-0140 | [[INT-0140 L-carnosine (oral dipeptide)]] |  |  |
 | INT-0128 | [[INT-0128 Trehalose (autophagy promoter)]] |  |  |
 | INT-0120 | [[INT-0120 MitoQ (mito-targeted CoQ10)]] |  |  |
 | INT-0119 | [[INT-0119 PQQ (pyrroloquinoline quinone)]] |  |  |
 | INT-0129 | [[INT-0129 Lovastatin (low-dose)]] |  |  |
 | INT-0121 | [[INT-0121 NAD+ precursors (NMN NR)]] |  |  |
-| INT-0137 | [[INT-0137 Vitamin D high-dose (deficiency-correction)]] |  |  |
-| INT-0136 | [[INT-0136 Pregnenolone (low-dose)]] |  |  |
-| INT-0135 | [[INT-0135 MOTS-c (mito-derived peptide)]] |  |  |
-| INT-0134 | [[INT-0134 Humanin (mito-derived peptide)]] |  |  |
-| INT-0133 | [[INT-0133 Antimicrobial peptides (cathelicidin LL-37)]] |  |  |
 
 ## Calibration status
 

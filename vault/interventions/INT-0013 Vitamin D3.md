@@ -46,6 +46,8 @@ Maternal/postnatal vitamin D deficiency associated with autism risk; supplementa
 ## Combinations
 
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0006 Leucovorin + Methyl-B12 + Vitamin D]]
+- [[COM-0020 Recurrent-infection + immune stack Thymosin α-1 + Vitamin D + Zinc]]
 
 ## Sources
 

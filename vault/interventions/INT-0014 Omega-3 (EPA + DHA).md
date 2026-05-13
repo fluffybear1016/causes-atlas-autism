@@ -47,6 +47,10 @@ DHA critical for neurodevelopment; preconception/prenatal omega-3 reduces risk; 
 ## Combinations
 
 - [[COM-0002 Methylated folate + Choline + Omega-3 (preconception prenatal)]]
+- [[COM-0010 Anti-inflammatory polyphenol stack Liposomal curcumin + Quercetin phytosome + Om]]
+- [[COM-0021 Choline + DHA + Methylfolate (preconception prenatal cognitive-development stack]]
+- [[COM-0023 Cold exposure + sauna + omega-3 (anti-inflammatory lifestyle stack)]]
+- [[COM-0025 Maternal preconception methylation + mito stack]]
 
 ## Sources
 

@@ -45,6 +45,7 @@ Provides active form of B12 to support methylation; subcutaneous injection bypas
 
 - [[COM-0001 Leucovorin + Methyl-B12 + Sulforaphane]]
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0006 Leucovorin + Methyl-B12 + Vitamin D]]
 
 ## Sources
 

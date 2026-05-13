@@ -44,3 +44,7 @@ Methyl donor (via creatine synthesis cost), brain energy buffer via phosphocreat
 
 - [[PHE-0001 Cerebral folate deficiency phenotype]]
 - [[PHE-0002 Mitochondrial dysfunction phenotype]]
+
+## Combinations
+
+- [[COM-0009 Energy-substrate stack D-ribose + Creatine + L-carnitine]]

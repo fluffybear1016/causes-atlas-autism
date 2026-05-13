@@ -36,6 +36,10 @@ Inhibitory neuromodulator; supports GABA tone.
 
 - [[PHE-0007 GABA Cl- imbalance phenotype]]
 
+## Combinations
+
+- [[COM-0017 L-carnosine + L-taurine + Magnesium threonate (GABA-axis stack)]]
+
 ## Sources
 
 - [[SRC-000289 22851255]]

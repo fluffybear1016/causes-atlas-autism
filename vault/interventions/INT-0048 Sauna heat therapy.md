@@ -43,6 +43,10 @@ Activates HSPs; supports detoxification.
 - [[PHE-0003 Regressive immune-inflammatory phenotype]]
 - [[PHE-0005 mTOR pathway syndromic (TSC, PTEN)]]
 
+## Combinations
+
+- [[COM-0023 Cold exposure + sauna + omega-3 (anti-inflammatory lifestyle stack)]]
+
 ## Sources
 
 - [[SRC-001377 37968722]]

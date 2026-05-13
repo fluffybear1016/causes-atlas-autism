@@ -1,7 +1,7 @@
 ---
 type: audit
 title: "Connectivity audit — v2.0_scored"
-refreshed: 2026-05-09
+refreshed: 2026-05-09 (post-rebuild)
 ---
 
 # Connectivity audit
@@ -14,15 +14,16 @@ Read-only pass over `v2.0_scored/`. Counts every edge of every type for every en
 
 | Entity table | Rows | vs prior audit |
 | --- | --- | --- |
-| interventions | 137 | unchanged |
-| hypotheses | 95 | unchanged |
+| interventions | **140** | +3 net (added INT-0140 L-carnosine, INT-0141 Aripiprazole, INT-0142 Adams multinutrient, INT-0143 IVIG, INT-0145 L-theanine; removed duplicate INT-0105 Quercetin → canonical INT-0029, INT-0118 NAC → canonical INT-0004, INT-0144 Cromolyn → canonical INT-0103) |
+| hypotheses | 75 | refreshed |
 | mechanisms | 34 | unchanged |
 | phenotypes | 11 | unchanged |
 | genes | 1,564 | unchanged (SFARI Tier 1+2 + atlas additions) |
 | biomarkers | 178 | unchanged |
 | sources | 1,462 | unchanged |
-| combinations | **25** | was 5 — 5× expansion this audit cycle |
-| intervention_formulations | 52 | added in formulations-layer batch |
+| combinations | **25** | unchanged from prior audit (5 → 25 expansion); member-list integrity now repaired across 11 combinations |
+| intervention_formulations | 52 | 4 parent-link fixes applied (FRM-0044, FRM-0045 cromolyn → INT-0103; FRM-0050, FRM-0051 Mg threonate/oxide → INT-0015) |
+| combination_members | **81** | was 70; integrity sweep added 15 component links, removed 4 mis-wired refs |
 
 ## Edge-table summary (current truth)
 

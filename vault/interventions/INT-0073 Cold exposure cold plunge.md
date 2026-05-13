@@ -44,3 +44,7 @@ Brief cold immersion increases norepinephrine, dopamine, vagal tone; emerging in
 
 - [[PHE-0003 Regressive immune-inflammatory phenotype]]
 - [[PHE-0004 Autism + GI microbiome phenotype]]
+
+## Combinations
+
+- [[COM-0023 Cold exposure + sauna + omega-3 (anti-inflammatory lifestyle stack)]]

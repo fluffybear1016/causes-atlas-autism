@@ -35,6 +35,9 @@ Zinc deficiency / elevated copper:zinc ratio in autism subset; supplementation n
 ## Combinations
 
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0013 Gut-repair stack Bifidobacterium infantis EVC001 + L-glutamine + Zinc carnosine]]
+- [[COM-0020 Recurrent-infection + immune stack Thymosin α-1 + Vitamin D + Zinc]]
+- [[COM-0024 Paternal preconception stack CoQ10 ubiquinol + Zinc + Selenium + L-carnitine + A]]
 
 ## Sources
 

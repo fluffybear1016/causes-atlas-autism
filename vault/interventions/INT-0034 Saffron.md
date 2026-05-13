@@ -37,6 +37,10 @@ RCTs show comparable efficacy to methylphenidate in pediatric ADHD.
 - [[PHE-0005 mTOR pathway syndromic (TSC, PTEN)]]
 - [[PHE-0006 Fragile X (FMR1)]]
 
+## Combinations
+
+- [[COM-0016 Calm-axis stack L-theanine + Magnesium glycinate + Saffron]]
+
 ## Sources
 
 - [[SRC-000346 41628871]]

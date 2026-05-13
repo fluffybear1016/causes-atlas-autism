@@ -45,6 +45,7 @@ Specific strains (Visbiome) modulate autism gut microbiome.
 ## Combinations
 
 - [[COM-0003 GFCF diet + L-glutamine + Probiotics (gut-axis combo)]]
+- [[COM-0014 VSL 3 Visbiome + Bovine colostrum + L-glutamine (intensive gut-repair)]]
 
 ## Sources
 

@@ -51,6 +51,10 @@ Whole microbiota transfer from healthy donor (often familial). Kang 2017 open-la
 - [[PHE-0004 Autism + GI microbiome phenotype]]
 - [[PHE-0007 GABA Cl- imbalance phenotype]]
 
+## Combinations
+
+- [[COM-0015 Microbiota repair + immune-modulation MTT + Bifidobacterium infantis + LDN]]
+
 ## Sources
 
 - [[SRC-001356 28122648]]

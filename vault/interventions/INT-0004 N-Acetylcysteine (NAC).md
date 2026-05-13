@@ -44,6 +44,7 @@ Replenishes glutathione; modulates glutamatergic neurotransmission; documented e
 ## Combinations
 
 - [[COM-0001 Leucovorin + Methyl-B12 + Sulforaphane]]
+- [[COM-0011 Glutathione regeneration stack Sulforaphane + Liposomal glutathione + NAC]]
 
 ## Sources
 

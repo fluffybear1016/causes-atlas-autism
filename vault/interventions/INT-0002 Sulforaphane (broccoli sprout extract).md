@@ -52,6 +52,10 @@ Activates NRF2 antioxidant response; upregulates phase II detox enzymes; reduces
 - [[PHE-0002 Mitochondrial dysfunction phenotype]]
 - [[PHE-0003 Regressive immune-inflammatory phenotype]]
 
+## Combinations
+
+- [[COM-0011 Glutathione regeneration stack Sulforaphane + Liposomal glutathione + NAC]]
+
 ## Sources
 
 - [[SRC-000003 25313065]]

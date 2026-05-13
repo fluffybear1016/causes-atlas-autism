@@ -46,3 +46,4 @@ Cofactor for glutathione peroxidase; antioxidant support and thyroid hormone dei
 ## Combinations
 
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0024 Paternal preconception stack CoQ10 ubiquinol + Zinc + Selenium + L-carnitine + A]]

@@ -45,6 +45,11 @@ Strain-specific probiotic targeting documented Bifidobacterium depletion in auti
 - [[PHE-0004 Autism + GI microbiome phenotype]]
 - [[PHE-0007 GABA Cl- imbalance phenotype]]
 
+## Combinations
+
+- [[COM-0013 Gut-repair stack Bifidobacterium infantis EVC001 + L-glutamine + Zinc carnosine]]
+- [[COM-0015 Microbiota repair + immune-modulation MTT + Bifidobacterium infantis + LDN]]
+
 ## Sources
 
 - [[SRC-001358 38715916]]

@@ -44,6 +44,11 @@ Sub-clinical doses produce paradoxical immunomodulation; reduces neuroinflammati
 
 - [[PHE-0003 Regressive immune-inflammatory phenotype]]
 
+## Combinations
+
+- [[COM-0015 Microbiota repair + immune-modulation MTT + Bifidobacterium infantis + LDN]]
+- [[COM-0019 PANS-overlap stack LDN + Cromolyn + Quercetin]]
+
 ## Sources
 
 - [[SRC-000578 19041189]]

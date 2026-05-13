@@ -51,6 +51,9 @@ Bioavailable form of folate that bypasses MTHFR variants; preconception/prenatal
 
 - [[COM-0002 Methylated folate + Choline + Omega-3 (preconception prenatal)]]
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0007 5-MTHF + P5P (B6) + TMG Betaine]]
+- [[COM-0021 Choline + DHA + Methylfolate (preconception prenatal cognitive-development stack]]
+- [[COM-0025 Maternal preconception methylation + mito stack]]
 
 ## Sources
 

@@ -49,3 +49,5 @@ Conditionally essential amino acid; primary fuel for enterocytes; supports intes
 ## Combinations
 
 - [[COM-0003 GFCF diet + L-glutamine + Probiotics (gut-axis combo)]]
+- [[COM-0013 Gut-repair stack Bifidobacterium infantis EVC001 + L-glutamine + Zinc carnosine]]
+- [[COM-0014 VSL 3 Visbiome + Bovine colostrum + L-glutamine (intensive gut-repair)]]

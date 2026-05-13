@@ -32,6 +32,10 @@ Sleep disturbance prevalent; structured sleep hygiene + melatonin (0.5-3 mg) imp
 
 - [[HYP-0039 Sleep disruption circadian misalignment]]
 
+## Combinations
+
+- [[COM-0018 Sleep-architecture stack Melatonin (ext-release) + Magnesium glycinate + L-thean]]
+
 ## Sources
 
 - [[SRC-000410 36584862]]

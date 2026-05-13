@@ -27,3 +27,7 @@ BBB-crossing bioflavonoid; stabilizes mast cells AND microglia
 
 **Notes / warnings:** Per Theoharides framework. NeuroProtek and similar formulations.
 
+
+## Combinations
+
+- [[COM-0012 Mast-cell stabilizer stack Luteolin + Quercetin + Rutin (NeuroProtek-style)]]

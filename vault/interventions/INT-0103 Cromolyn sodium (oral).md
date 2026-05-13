@@ -27,3 +27,7 @@ Mast cell stabilizer; pre-meal for GI mast cell stabilization
 
 **Notes / warnings:** MCAS/PHE-0008 candidate per Theoharides framework
 
+
+## Combinations
+
+- [[COM-0019 PANS-overlap stack LDN + Cromolyn + Quercetin]]

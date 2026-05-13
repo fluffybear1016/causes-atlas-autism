@@ -38,6 +38,11 @@ Active B6; cofactor for serotonin, GABA, dopamine; classic Rimland B6+Mg protoco
 - [[PHE-0001 Cerebral folate deficiency phenotype]]
 - [[PHE-0007 GABA Cl- imbalance phenotype]]
 
+## Combinations
+
+- [[COM-0007 5-MTHF + P5P (B6) + TMG Betaine]]
+- [[COM-0025 Maternal preconception methylation + mito stack]]
+
 ## Sources
 
 - [[SRC-000268 33036783]]

@@ -44,6 +44,8 @@ Methyl donor; preconception/prenatal choline reduces neurodevelopmental risk.
 
 - [[COM-0002 Methylated folate + Choline + Omega-3 (preconception prenatal)]]
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0021 Choline + DHA + Methylfolate (preconception prenatal cognitive-development stack]]
+- [[COM-0025 Maternal preconception methylation + mito stack]]
 
 ## Sources
 

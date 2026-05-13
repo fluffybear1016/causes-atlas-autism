@@ -43,6 +43,9 @@ Highly bioavailable form; calming effect on hyperactivity.
 ## Combinations
 
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0016 Calm-axis stack L-theanine + Magnesium glycinate + Saffron]]
+- [[COM-0017 L-carnosine + L-taurine + Magnesium threonate (GABA-axis stack)]]
+- [[COM-0018 Sleep-architecture stack Melatonin (ext-release) + Magnesium glycinate + L-thean]]
 
 ## Sources
 

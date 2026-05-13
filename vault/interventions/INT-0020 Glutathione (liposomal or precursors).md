@@ -36,6 +36,11 @@ Master antioxidant; depletion documented in autism.
 
 - [[PHE-0002 Mitochondrial dysfunction phenotype]]
 
+## Combinations
+
+- [[COM-0011 Glutathione regeneration stack Sulforaphane + Liposomal glutathione + NAC]]
+- [[COM-0022 Detox + binder stack Liposomal glutathione + Modified citrus pectin + Activated]]
+
 ## Sources
 
 - [[SRC-000281 34681816]]

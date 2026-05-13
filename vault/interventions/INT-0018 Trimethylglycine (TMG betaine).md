@@ -35,3 +35,7 @@ Methyl donor for homocysteine remethylation.
 ## Phenotypes
 
 - [[PHE-0001 Cerebral folate deficiency phenotype]]
+
+## Combinations
+
+- [[COM-0007 5-MTHF + P5P (B6) + TMG Betaine]]

@@ -39,6 +39,8 @@ Mitochondrial cofactor; ubiquinol form preferred for absorption.
 ## Combinations
 
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0008 Mito-CNS stack ALCAR + CoQ10 ubiquinol + Alpha-lipoic acid]]
+- [[COM-0024 Paternal preconception stack CoQ10 ubiquinol + Zinc + Selenium + L-carnitine + A]]
 
 ## Sources
 

@@ -36,6 +36,12 @@ Mast cell stabilizer; relevant for autism + MCAS subset.
 
 - [[PHE-0003 Regressive immune-inflammatory phenotype]]
 
+## Combinations
+
+- [[COM-0010 Anti-inflammatory polyphenol stack Liposomal curcumin + Quercetin phytosome + Om]]
+- [[COM-0012 Mast-cell stabilizer stack Luteolin + Quercetin + Rutin (NeuroProtek-style)]]
+- [[COM-0019 PANS-overlap stack LDN + Cromolyn + Quercetin]]
+
 ## Sources
 
 - [[SRC-000536 32181519]]

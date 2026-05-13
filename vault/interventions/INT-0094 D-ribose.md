@@ -45,6 +45,10 @@ Pentose sugar; ATP synthesis substrate via 5-phosphoribosyl-1-pyrophosphate (PRP
 
 - [[PHE-0002 Mitochondrial dysfunction phenotype]]
 
+## Combinations
+
+- [[COM-0009 Energy-substrate stack D-ribose + Creatine + L-carnitine]]
+
 ## Sources
 
 - [[SRC-001384 40141123]]

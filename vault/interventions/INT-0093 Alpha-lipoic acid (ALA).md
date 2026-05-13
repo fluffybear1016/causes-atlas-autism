@@ -51,6 +51,7 @@ Mitochondrial cofactor and antioxidant; regenerates glutathione, vitamin C, vita
 ## Combinations
 
 - [[COM-0005 Preconception mitochondrial optimization combo (parental)]]
+- [[COM-0008 Mito-CNS stack ALCAR + CoQ10 ubiquinol + Alpha-lipoic acid]]
 
 ## Sources
 

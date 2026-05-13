@@ -637,6 +637,123 @@ This rule applies to:
 
 Full protocol documented in `SESSION_4_HANNAH_POLING_SPEC.md` §24.
 
+## Design system & cinematic GTM layer
+
+The atlas has **two communication surfaces with different brand languages.**
+Confusing them collapses both.
+
+**Surface 1 — Institutional (deck, atlas explorer, internal UI, investor
+and researcher comms).** Palantir × CERN × Arc Institute. Heavy
+typographic restraint, no emojis, no marketing voice. The word
+"deterministic" never appears in public copy — use "reproducible" or
+"stable." Density as authority. Slow, confident, institutional. The
+aesthetic argument is *we have been here forever; we're only now
+revealing ourselves.* The live design engagement (see "Active design
+engagement" below) delivers against this surface.
+
+**Surface 2 — Cinematic / cultural (landing page, films, X drops,
+comms to parent communities, anything that touches culture rather than
+capital).** Karpathy-vault aesthetic but encoded with meaning. Ive on
+form (restraint, inevitability, UI vanishes into scene); the cultural
+register on truth (no softening of the framing, real human cost made
+visible, build in public via mysterious fragments rather than launch
+events). Going "full Kanye" on this surface means **discipline about
+which voice goes where** — Kanye-level restraint when speaking to
+capital, Kanye-level unflinchingness when speaking about the missed
+children. Not loud, never loud. Inevitable.
+
+**The hero interaction (cinematic surface).** Default graph shows a
+generic patient with most edges dim. Load a specific susceptibility
+profile (Hannah Poling demo first) and a specific subgraph LIGHTS UP
+while the rest fades to ghost. That sub-graph is the child's map.
+This is the money shot — personalized resolution as visual revelation.
+Population-average medicine literally fading in real time, replaced
+by one child's truth. The emotional anchor over any cinematic is one
+autism mom's voice — 30 seconds, real story, no narrator, no AI
+voice, no music. A sub-bass pulse at ~60 bpm fires only when nodes
+pulse. Silence between. Restraint as luxury.
+
+**The wedge is autism, not "every medical condition."** Autism done
+with such individual-level resolution that population-average
+approaches look like malpractice. Other conditions tile in as their
+mechanisms absorb into the atlas (mito, PANDAS/PANS, MCAS,
+methylation, dysautonomia, dysmotility). The graph absorbs them
+naturally. Don't pitch the absorption — let the graph show it.
+
+**Color encoding (cinematic surface).** Deep navy near-black
+background; off-white nodes (not pure white — pure white reads
+clinical/sterile/hospital, off-white reads inevitable/civilizational);
+edges color-graded by source tier — tier-1 FOIA / federal-record / RCT
+primary edges glow warm (gold-amber), mainstream cohort epidemiology
+cool blue, contested edges flicker subtly. Encode `W_DESIGN`,
+`evidence_strength_aggregate`, Δ², polarity, and source-tier directly
+in light. This is what the scoring engine gives this product that
+Karpathy's vault doesn't — meaning per edge.
+
+**Color encoding (institutional / atlas explorer).** Under review per
+DESIGN_TEAM_HANDOFF.md. Current implementation uses 11 hues for
+mechanism class — collapse to 5–6 superclasses likely wins for
+first-look legibility.
+
+**Typography.** Custom serif (Söhne Buch, GT Sectra, Editorial New,
+or commissioned). Never Inter / Roboto / dataviz-library defaults.
+The wordmark and typeface together carry the institutional weight.
+
+**Naming.** "Causes Atlas (Autism)" is the internal / engineering
+name only. Public-facing name is TBD — should be one word, Greek/Latin
+medical root or fully abstract, no "AI," no "atlas," no descriptive
+construction. Mission encoded by the graph, not the name.
+
+### Active design engagement (P0 — opened 2026-05-12)
+
+Repo: https://github.com/fluffybear1016/causes-atlas-autism
+Entry doc: `DESIGN_TEAM_HANDOFF.md` (brand guardrails, 5-min
+quickstart to open existing visual artifacts in a browser, P0/P1/P2
+scope in §8)
+Slide spec: `DECK_v2_15_SLIDE_SPEC.md`
+Existing chrome: `ui/components/deck/_slide_chrome.css` — already-
+built slides 1, 2, 10 show the system in action
+Sanity-check before/after any change: `python3 scripts/pre_handoff_audit.py`
+Expected: `0 CRIT / 0 HIGH / 0 MED / 12 LOW / 9 OK`. Anything else,
+ping the data team before changing data files.
+Regression commands (calibration + MAE) in `REGRESSION_2026_05_09.md`.
+
+**P0 in priority order:**
+
+1. **Slide 6 — the cathedral slide.** Load-bearing slide of the deck.
+   Emotional beat, not data density. Spec under "Slide 6 — The
+   cathedral slide" in `DECK_v2_15_SLIDE_SPEC.md`. Build on top of
+   `ui/components/substrate_diagram_slide.html`.
+2. **Slides 3, 4, 5, 7, 8, 9, 11, 12, 13, 14, 15.** Typography-heavy,
+   share chrome with slides 1, 2, 10. Content per slide in
+   `DECK_v2_15_SLIDE_SPEC.md`.
+3. **Atlas explorer color encoding review.** Open
+   `ui/components/atlas_explorer_preview.html`. Decide whether to
+   collapse 11 hues → 5–6 superclasses for first-look legibility.
+
+**Three ground-truth numbers — must appear verbatim in public copy:**
+
+| Claim | Exact value to print |
+|---|---|
+| Within-driver coverage MAE (n=7) | `0.049` |
+| Sub-3% errors spanning 3 mechanism axes | `4` (oxidative stress / methylation / GABA-Cl⁻) |
+| INT-0001 Leucovorin CSRS (calibration anchor, never drifted) | `83.35` |
+
+Do not paraphrase. Do not restate as "~5%" or "around 80." The exact
+numbers are the proof. The non-drift of `83.35` across major revisions
+is itself the argument.
+
+**Hard word constraints (public copy / deck / atlas explorer):**
+- Never "deterministic" — use "reproducible" or "stable."
+- No emojis.
+- No marketing voice. Institutional restraint only.
+- Don't paraphrase the three ground-truth numbers.
+
+**Deliver as PRs to:**
+- `ui/components/deck/` — slides
+- `ui/components/atlas_explorer.py` — explorer
+- Open data-team questions → §10 of `DESIGN_TEAM_HANDOFF.md`
+
 ## What not to do
 
 - Don't edit `v2.0_scored/` CSVs by hand — re-run the scoring pipeline.
@@ -661,3 +778,22 @@ Full protocol documented in `SESSION_4_HANNAH_POLING_SPEC.md` §24.
   content as primary evidence.** They go in only if the user explicitly
   requests, with `study_design=editorial/letter/comment/news` or
   `type=advocacy/factcheck`, which auto-downweights them.
+- **Don't paraphrase the three ground-truth numbers in public copy.**
+  `MAE = 0.049` (n=7 within-driver coverage), `4` sub-3% errors across
+  3 mechanism axes (oxidative stress / methylation / GABA-Cl⁻), and
+  `INT-0001 Leucovorin CSRS = 83.35` appear exactly as written. Their
+  precision and non-drift are the argument. "Around 5%" or "above 80"
+  collapses the claim.
+- **Don't use "deterministic" in public copy.** Use "reproducible" or
+  "stable." (Internal CLAUDE.md / scripts / specs may use the term.)
+- **Don't use emojis in the deck, atlas explorer, or any
+  institutional surface.** Palantir × CERN × Arc Institute — restraint
+  as authority.
+- **Don't pitch "every medical condition" as the wedge.** Autism is
+  the wedge; other conditions tile in as their mechanisms absorb into
+  the graph. Pitch the depth, not the breadth.
+- **Don't collapse the two brand surfaces.** Institutional surface
+  (deck, explorer, capital comms) is Palantir/CERN/Arc restraint.
+  Cinematic surface (films, X drops, parent-community comms) is
+  Karpathy-vault aesthetic with Ive form + cultural unflinchingness.
+  Marketing voice doesn't appear on either surface.

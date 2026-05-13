@@ -51,6 +51,7 @@ Reduced folate that bypasses folate-receptor autoantibody blockade; restores cer
 ## Combinations
 
 - [[COM-0001 Leucovorin + Methyl-B12 + Sulforaphane]]
+- [[COM-0006 Leucovorin + Methyl-B12 + Vitamin D]]
 
 ## Sources
 

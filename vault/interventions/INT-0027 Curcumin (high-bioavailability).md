@@ -39,6 +39,10 @@ Crosses BBB in bioavailable forms; modulates microglial activation.
 - [[PHE-0001 Cerebral folate deficiency phenotype]]
 - [[PHE-0003 Regressive immune-inflammatory phenotype]]
 
+## Combinations
+
+- [[COM-0010 Anti-inflammatory polyphenol stack Liposomal curcumin + Quercetin phytosome + Om]]
+
 ## Sources
 
 - [[SRC-000316 32803366]]
