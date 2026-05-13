@@ -108,4 +108,4 @@ Pattern miner #2 of the autonomous discovery pipeline. These are intervention pa
 ## Provenance
 
 - Pipeline: `scripts/find_combination_gaps.py`
-- Run timestamp: 2026-05-13T00:24:11.276919Z
+- Run timestamp: 2026-05-13T09:38:03.459588Z

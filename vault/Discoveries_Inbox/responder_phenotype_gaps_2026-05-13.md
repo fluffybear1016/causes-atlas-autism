@@ -42,4 +42,4 @@ For each candidate above:
 ## Provenance
 
 - Pipeline: `scripts/find_responder_phenotype_gaps.py`
-- Run timestamp: 2026-05-13T00:24:11.351479Z
+- Run timestamp: 2026-05-13T09:38:03.529744Z
