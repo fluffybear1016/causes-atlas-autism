@@ -1,0 +1,2 @@
+deprecated_filename,replaced_by,note
+delta_squared_rankings.csv,rankings.csv,"v1.0 schema; superseded 2026-05-05 by v1.1 production engine. See rankings.csv in this directory."

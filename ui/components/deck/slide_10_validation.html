@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Slide 10 · Validation</title>
+<link rel="stylesheet" href="_slide_chrome.css">
+<style>
+  .slide.validation {
+    grid-template-rows: auto auto 1fr auto;
+    padding: 64px 96px 56px;
+    gap: 18px;
+  }
+  .v-pre {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  h1.v-title {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink);
+    max-width: 1500px;
+  }
+  .v-vis-wrap {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .v-vis svg { width: 100%; height: auto; max-height: 540px; }
+  .v-side {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .v-side h3 {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+  }
+  .v-side .legend-row {
+    display: flex; align-items: center;
+    padding: 6px 0;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .v-side .legend-row:first-child { border-top: none; }
+  .v-side .swatch {
+    width: 10px; height: 10px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  .v-side .swatch.indigo { background: var(--indigo); border-radius: 50%; }
+  .v-side .swatch.emerald { background: #5fa86d; border-radius: 50%; }
+  .v-side .swatch.graphite { background: #8a8a8e; border-radius: 50%; }
+  .v-side .swatch.outlier {
+    border: 1.5px solid var(--warn);
+    background: transparent;
+    border-radius: 50%;
+  }
+  .v-side .legend-row .count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-left: auto;
+    letter-spacing: 0.04em;
+  }
+  .v-pull {
+    font-family: var(--sans);
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -0.005em;
+    border-left: 2px solid var(--ink-mute);
+    padding-left: 18px;
+    margin: 22px 0 0 0;
+  }
+  .v-foot {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .v-foot strong { color: var(--ink-soft); font-weight: 500; }
+</style></head>
+<body>
+<div class="slide validation">
+  <div class="grid-bg"></div>
+
+  <div class="v-pre">Slide 10 · Validation against published RCTs</div>
+
+  <h1 class="v-title">
+    Cohort responder-rate MAE = 0.067 across 8 published autism RCTs.
+  </h1>
+
+  <div class="v-vis-wrap">
+    <div class="v-vis">
+      <svg viewBox="0 0 700 580" xmlns="http://www.w3.org/2000/svg"
+           font-family="Inter, sans-serif">
+        <!-- Plot box -->
+        <g transform="translate(80, 40)">
+          <!-- Axes -->
+          <line x1="0" y1="500" x2="540" y2="500" stroke="#3a3a40" stroke-width="1"/>
+          <line x1="0" y1="0" x2="0" y2="500" stroke="#3a3a40" stroke-width="1"/>
+
+          <!-- Gridlines + tick labels (0, 0.25, 0.5, 0.75, 1.0) -->
+          <!-- Plot scale: x=0..1 maps to 0..540, y=0..1 maps to 500..0 -->
+          <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#6a6a70">
+            <!-- X axis -->
+            <line x1="0" y1="500" x2="0" y2="506" stroke="#3a3a40"/>
+            <text x="0" y="522" text-anchor="middle">0.0</text>
+            <line x1="135" y1="500" x2="135" y2="506" stroke="#3a3a40"/>
+            <line x1="135" y1="500" x2="135" y2="0" stroke="#1f2128"
+                  stroke-dasharray="2 4"/>
+            <text x="135" y="522" text-anchor="middle">0.25</text>
+            <line x1="270" y1="500" x2="270" y2="506" stroke="#3a3a40"/>
+            <line x1="270" y1="500" x2="270" y2="0" stroke="#1f2128"
+                  stroke-dasharray="2 4"/>
+            <text x="270" y="522" text-anchor="middle">0.50</text>
+            <line x1="405" y1="500" x2="405" y2="506" stroke="#3a3a40"/>
+            <line x1="405" y1="500" x2="405" y2="0" stroke="#1f2128"
+                  stroke-dasharray="2 4"/>
+            <text x="405" y="522" text-anchor="middle">0.75</text>
+            <line x1="540" y1="500" x2="540" y2="506" stroke="#3a3a40"/>
+            <text x="540" y="522" text-anchor="middle">1.0</text>
+            <text x="270" y="548" text-anchor="middle" font-size="11" fill="#a8a89e"
+                  font-family="Inter, sans-serif" letter-spacing="0.02em">
+              Predicted responder rate (engine output)
+            </text>
+
+            <!-- Y axis -->
+            <line x1="-6" y1="500" x2="0" y2="500" stroke="#3a3a40"/>
+            <text x="-12" y="503" text-anchor="end">0.0</text>
+            <line x1="-6" y1="375" x2="0" y2="375" stroke="#3a3a40"/>
+            <line x1="0" y1="375" x2="540" y2="375" stroke="#1f2128"
+                  stroke-dasharray="2 4"/>
+            <text x="-12" y="378" text-anchor="end">0.25</text>
+            <line x1="-6" y1="250" x2="0" y2="250" stroke="#3a3a40"/>
+            <line x1="0" y1="250" x2="540" y2="250" stroke="#1f2128"
+                  stroke-dasharray="2 4"/>
+            <text x="-12" y="253" text-anchor="end">0.50</text>
+            <line x1="-6" y1="125" x2="0" y2="125" stroke="#3a3a40"/>
+            <line x1="0" y1="125" x2="540" y2="125" stroke="#1f2128"
+                  stroke-dasharray="2 4"/>
+            <text x="-12" y="128" text-anchor="end">0.75</text>
+            <line x1="-6" y1="0" x2="0" y2="0" stroke="#3a3a40"/>
+            <text x="-12" y="3" text-anchor="end">1.0</text>
+            <text transform="translate(-58, 250) rotate(-90)" text-anchor="middle"
+                  font-size="11" fill="#a8a89e" font-family="Inter, sans-serif"
+                  letter-spacing="0.02em">
+              Published responder rate (RCT)
+            </text>
+          </g>
+
+          <!-- Diagonal y=x (perfect calibration) -->
+          <line x1="0" y1="500" x2="540" y2="0" stroke="#5fa86d"
+                stroke-width="1" stroke-opacity="0.45" stroke-dasharray="6 4"/>
+          <text x="490" y="50" font-family="IBM Plex Mono, monospace"
+                font-size="10" fill="#5fa86d" opacity="0.7">
+            y = x
+          </text>
+
+          <!-- Data points: (predicted, published, label, class)
+               class: indigo (anchor), emerald (sub-3%), graphite (within), outlier
+               x-coord = predicted * 540, y-coord = (1 - published) * 500 -->
+
+          <!-- rrc_004 Hardan/NAC pred=0.366 pub=0.357 AE=0.009 (sub-3%) -->
+          <circle cx="197.6" cy="321.5" r="9" fill="#5fa86d" opacity="0.92"/>
+          <text x="207" y="344" font-size="11" fill="#5fa86d" font-weight="500">
+            Hardan · NAC
+          </text>
+          <text x="207" y="357" font-family="IBM Plex Mono,monospace" font-size="9"
+                fill="#a8a89e" letter-spacing="0.04em">AE 0.009</text>
+
+          <!-- rrc_006 Hendren/methyl-B12 pred=0.501 pub=0.519 AE=0.018 (sub-3%) -->
+          <circle cx="270.5" cy="240.5" r="9" fill="#5fa86d" opacity="0.92"/>
+          <text x="280" y="232" font-size="11" fill="#5fa86d" font-weight="500">
+            Hendren · methyl-B12
+          </text>
+          <text x="280" y="245" font-family="IBM Plex Mono,monospace" font-size="9"
+                fill="#a8a89e" letter-spacing="0.04em">AE 0.018</text>
+
+          <!-- rrc_003 Singh/sulforaphane pred=0.366 pub=0.346 AE=0.020 (sub-3%) -->
+          <circle cx="197.6" cy="327.0" r="9" fill="#5fa86d" opacity="0.92"
+                  stroke="#0a0b0d" stroke-width="2"/>
+          <text x="125" y="356" font-size="11" fill="#5fa86d" font-weight="500"
+                text-anchor="end">
+            Singh · sulforaphane
+          </text>
+          <text x="125" y="369" font-family="IBM Plex Mono,monospace" font-size="9"
+                fill="#a8a89e" letter-spacing="0.04em" text-anchor="end">AE 0.020</text>
+
+          <!-- rrc_002 Lemonnier/bumetanide pred=0.381 pub=0.354 AE=0.027 (sub-3%) -->
+          <circle cx="205.7" cy="323" r="9" fill="#5fa86d" opacity="0.92"
+                  stroke="#0a0b0d" stroke-width="3"/>
+
+          <!-- rrc_001 Frye/leucovorin pred=0.839 pub=0.770 AE=0.069 (anchor) -->
+          <circle cx="453.1" cy="115" r="11" fill="#8881e0"/>
+          <circle cx="453.1" cy="115" r="16" fill="none" stroke="#8881e0"
+                  stroke-width="1" opacity="0.5"/>
+          <text x="463" y="100" font-size="12" fill="#8881e0" font-weight="600">
+            Frye · leucovorin
+          </text>
+          <text x="463" y="115" font-family="IBM Plex Mono,monospace" font-size="9"
+                fill="#a8a89e" letter-spacing="0.04em">
+            anchor · AE 0.069
+          </text>
+
+          <!-- rrc_012 Tsilioni/luteolin pred=0.332 pub=0.263 AE=0.069 (within) -->
+          <circle cx="179.3" cy="368.5" r="8" fill="#8a8a8e" opacity="0.85"/>
+          <text x="189" y="378" font-size="11" fill="#a8a89e">
+            Tsilioni · luteolin
+          </text>
+          <text x="189" y="391" font-family="IBM Plex Mono,monospace" font-size="9"
+                fill="#6a6a70" letter-spacing="0.04em">AE 0.069</text>
+
+          <!-- rrc_009 Kang/MTT pred=0.760 pub=0.889 AE=0.129 (within) -->
+          <circle cx="410.4" cy="55.5" r="8" fill="#8a8a8e" opacity="0.85"/>
+          <text x="402" y="36" font-size="11" fill="#a8a89e" text-anchor="end">
+            Kang · MTT
+          </text>
+          <text x="402" y="49" font-family="IBM Plex Mono,monospace" font-size="9"
+                fill="#6a6a70" letter-spacing="0.04em" text-anchor="end">AE 0.129</text>
+
+          <!-- rrc_008 Owen/aripiprazole pred=0.332 pub=0.522 AE=0.190 (outlier) -->
+          <circle cx="179.3" cy="239" r="9" fill="none" stroke="#c54f47"
+                  stroke-width="1.8"/>
+          <text x="60" y="225" font-size="11" fill="#c54f47" font-weight="500">
+            Owen · aripiprazole
+          </text>
+          <text x="60" y="238" font-family="IBM Plex Mono,monospace" font-size="9"
+                fill="#a8a89e" letter-spacing="0.04em">AE 0.190</text>
+          <text x="60" y="252" font-family="Inter, sans-serif" font-size="10"
+                fill="#c54f47" font-style="italic">
+            behavioral-severity gap
+          </text>
+          <line x1="120" y1="225" x2="170" y2="237" stroke="#c54f47"
+                stroke-width="1" stroke-opacity="0.55"/>
+
+          <!-- Annotation: structural-replication cluster -->
+          <g>
+            <ellipse cx="222" cy="290" rx="62" ry="55"
+                     fill="none" stroke="#5fa86d" stroke-width="1"
+                     stroke-dasharray="3 3" opacity="0.6"/>
+            <line x1="285" y1="282" x2="395" y2="180" stroke="#5fa86d"
+                  stroke-width="1" stroke-opacity="0.55"/>
+            <text x="395" y="170" font-size="12" fill="#5fa86d" font-weight="500">
+              Sub-3% AE cluster
+            </text>
+            <text x="395" y="187" font-family="Inter, sans-serif" font-size="11"
+                  fill="#cfd0d4" letter-spacing="0.005em">
+              3 mechanism axes:
+            </text>
+            <text x="395" y="202" font-family="Inter, sans-serif" font-size="11"
+                  fill="#cfd0d4" letter-spacing="0.005em">
+              oxidative · methylation · GABA/Cl⁻
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="v-side">
+      <h3>Cohort entries (n=8)</h3>
+      <div class="legend-row">
+        <span class="swatch indigo"></span>
+        <span>calibration anchor</span>
+        <span class="count">n=1</span>
+      </div>
+      <div class="legend-row">
+        <span class="swatch emerald"></span>
+        <span>sub-3% AE — structural replication</span>
+        <span class="count">n=4</span>
+      </div>
+      <div class="legend-row">
+        <span class="swatch graphite"></span>
+        <span>within driver coverage, AE &gt; 3%</span>
+        <span class="count">n=2</span>
+      </div>
+      <div class="legend-row">
+        <span class="swatch outlier"></span>
+        <span>exposing engine gap (behavioral severity)</span>
+        <span class="count">n=1</span>
+      </div>
+
+      <p class="v-pull">
+        Same input → byte-identical output. The cohort recomputes deterministically.
+      </p>
+    </div>
+  </div>
+
+  <div class="v-foot">
+    n=8 all-in MAE = <strong>0.067</strong> · n=7 within driver coverage MAE = <strong>0.049</strong> · engine <strong>session4_v0.4.0_profile_vector</strong>
+  </div>
+
+  <div class="slide-num">10 / 15</div>
+</div>
+</body></html>

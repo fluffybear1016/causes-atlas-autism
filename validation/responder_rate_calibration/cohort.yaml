@@ -1,4 +1,4 @@
-cohort_version: v0.5_full_text_extracted_12_of_13_complete
+cohort_version: v0.6_intervention_ids_corrected_2026_05_09
 engine_version_required: session4_v0.2.0_profile_vector
 verification_protocol: "BioMysteryBench-aligned (CLAUDE.md \xA7Verification protocol)"
 entries:
@@ -72,7 +72,7 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0023
+  intervention_id: INT-0005
   intervention_name: Bumetanide
   target_phenotype_id: PHE-0007
   stratification_criterion: "Phase 2/3 cohort \u2014 atlas-tagged subgroup of high-baseline-intracellular-\n\
@@ -110,6 +110,9 @@ entries:
     \ = csf_or_neuronal_intracellular_chloride_proxy was aspirational; the trial doesn't actually\
     \ use it."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0023 \u2192 INT-0005 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_003_singh_2014_sulforaphane
   rct_pmid: 25313065
   rct_first_author: Singh K
@@ -118,7 +121,7 @@ entries:
   rct_title: Sulforaphane treatment of autism spectrum disorder (ASD).
   pmid_verified: true
   pmid_verified_at: '2026-05-07'
-  intervention_id: INT-0030
+  intervention_id: INT-0002
   intervention_name: Sulforaphane (broccoli sprout extract)
   target_phenotype_id: PHE-0002
   stratification_criterion: "None (unstratified by biomarker). Trial inclusion was male age\
@@ -157,6 +160,9 @@ entries:
     \ \u2014 maps to PHE-0002. Trial was unstratified by biomarker; representative profile\
     \ encodes population-typical mild oxidative-stress signal."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0030 \u2192 INT-0002 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_004_hardan_2012_nac
   rct_pmid: 22342106
   rct_first_author: Hardan AY
@@ -169,8 +175,8 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0029
-  intervention_name: N-acetylcysteine (NAC)
+  intervention_id: INT-0004
+  intervention_name: N-Acetylcysteine (NAC)
   target_phenotype_id: PHE-0002
   stratification_criterion: Oxidative-stress / GSH:GSSG-low subset (mechanistic)
   n_total_in_stratum: 29
@@ -196,6 +202,9 @@ entries:
     \ ABC-Irritability change via mixed-effects regression (F=6.80, p<.001, d=.96). Binary\
     \ count derived from per-subject CGI-I narrative description."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0029 \u2192 INT-0004 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_005_chez_2002_carnosine
   rct_pmid: 12585724
   rct_first_author: Chez MG
@@ -208,8 +217,8 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0036
-  intervention_name: L-carnosine
+  intervention_id: INT-0140
+  intervention_name: L-carnosine (oral dipeptide)
   target_phenotype_id: PHE-0007
   stratification_criterion: GABA-modulation framework (Chez hypothesis)
   n_total_in_stratum: 14
@@ -245,6 +254,9 @@ entries:
     \ (rrc_005.json) encodes the GABA-imbalance phenotype proxy (epileptiform EEG + valproic\
     \ acid concomitant) for engine STRUCTURAL-TEST purposes only."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0036 \u2192 INT-0140 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_006_hendren_2016_methyl_b12
   rct_pmid: 26889605
   rct_first_author: Hendren RL
@@ -303,8 +315,8 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0042
-  intervention_name: Melatonin
+  intervention_id: INT-0046
+  intervention_name: Sleep architecture optimization + melatonin
   target_phenotype_id: PHE-0007
   stratification_criterion: Severe sleep disorder subset
   n_total_in_stratum: 17
@@ -339,6 +351,9 @@ entries:
     \ document the sleep-stratifier gap and motivate engine v0.5+ work on a PHE-0012 sleep/circadian\
     \ phenotype."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0042 \u2192 INT-0046 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_008_owen_2009_aripiprazole
   rct_pmid: 19948625
   rct_first_author: Owen R
@@ -351,7 +366,7 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0029
+  intervention_id: INT-0141
   intervention_name: Aripiprazole
   target_phenotype_id: PHE-0003
   stratification_criterion: "Irritability subset (ABC-I baseline \u226518)"
@@ -383,6 +398,9 @@ entries:
     \ BMS/Otsuka submission trial; responder analysis is rigorous and pre-specified. NOT biomarker-stratified\
     \ \u2014 inclusion was CGI-S \u22654 + ABC-I \u226518 (irritability severity)."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0029 \u2192 INT-0141 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_009_kang_2017_microbiota_transfer
   rct_pmid: 28122648
   rct_first_author: Kang DW
@@ -395,8 +413,8 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0025
-  intervention_name: Microbiota Transfer Therapy (MTT)
+  intervention_id: INT-0076
+  intervention_name: Fecal microbiota transplantation (FMT) [MTT closest canonical match]
   target_phenotype_id: PHE-0004
   stratification_criterion: GI-symptomatic + dysbiotic-microbiome subset
   n_total_in_stratum: 18
@@ -432,6 +450,9 @@ entries:
     \ moderate-to-severe GI problems), so this is a clean stratified-subgroup entry for PHE-0004\
     \ (GI/microbiome) calibration."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0025 \u2192 INT-0076 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_010_rossignol_2012_hbot
   rct_pmid: 22703610
   rct_first_author: Rossignol DA
@@ -442,8 +463,8 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0017
-  intervention_name: Hyperbaric Oxygen Therapy (HBOT)
+  intervention_id: INT-0092
+  intervention_name: Hyperbaric oxygen therapy (HBOT)
   target_phenotype_id: PHE-0002
   stratification_criterion: 'Mito-vulnerable + neuroinflammatory subset; Rossignol earlier
     work
@@ -486,6 +507,9 @@ entries:
     Future work: add Rossignol 2009 (PMID 19284641) as a separate cohort entry with its actual
     published responder rate.'
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0017 \u2192 INT-0092 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_011_adams_2011_vitamin_mineral
   rct_pmid: 22151477
   rct_first_author: Adams JB
@@ -498,8 +522,8 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0018
-  intervention_name: Vitamin/mineral multinutrient supplement (Adams formulation)
+  intervention_id: INT-0142
+  intervention_name: Vitamin/mineral multinutrient supplement (Adams 2011 formulation)
   target_phenotype_id: PHE-0002
   stratification_criterion: 'Broad metabolic deficiency subset; Adams''s later work stratified
     by
@@ -531,6 +555,9 @@ entries:
     \ with biotin and vitamin K as strongest baseline predictors of clinical response, suggesting\
     \ responder-stratification opportunity in re-analysis."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0018 \u2192 INT-0142 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_012_tsilioni_2015_luteolin
   rct_pmid: 26418275
   rct_first_author: Tsilioni I
@@ -545,8 +572,8 @@ entries:
     '
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0006
-  intervention_name: Luteolin formulation
+  intervention_id: INT-0106
+  intervention_name: Luteolin (BBB-crossing formulation)
   target_phenotype_id: PHE-0003
   stratification_criterion: 'Elevated TNF / IL-6 / mast-cell-marker subset; Theoharides framework.
 
@@ -587,6 +614,9 @@ entries:
     \ tests whether the engine's MCAS-like / inflammatory-stratifier logic correctly predicts\
     \ the proportion of cohort that responds \u2014 Theoharides framework."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0006 \u2192 INT-0106 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 - entry_id: rrc_013_frankovich_2017_pans_treatment
   rct_pmid: 36358107
   rct_first_author: Frankovich J
@@ -596,8 +626,8 @@ entries:
     \ II \u2014 Use of Immunomodulatory Therapies.\n"
   pmid_verified: true
   pmid_verified_at: 2026-05-05
-  intervention_id: INT-0027
-  intervention_name: IVIG / immunomodulatory therapy (PANS subset)
+  intervention_id: INT-0143
+  intervention_name: IVIG (intravenous immunoglobulin)
   target_phenotype_id: PHE-0003
   stratification_criterion: "PANS-positive subset (Cunningham panel composite + acute onset).\
     \ Not\ngeneric autism \u2014 PANS overlapping subset.\n"
@@ -643,6 +673,9 @@ entries:
     \ Future work: add Williams 2016 (PMID 27227558) as a separate cohort entry with its actual\
     \ published responder rate."
   pmid_verified_at_fulltext: '2026-05-07'
+  notes_audit_fix:
+  - "intervention_id corrected 2026-05-09: INT-0027 \u2192 INT-0143 (per pre_handoff_audit.py\
+    \ mismatch finding)"
 deliverables:
   v0.1: 'Scaffold + 2 worked entries with verified PMIDs (current state).
 

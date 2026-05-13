@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Causes Atlas — Substrate Architecture</title>
+<!--
+  The substrate diagram. Most important slide in the HHS deck.
+  Aesthetic targets: Palantir × CERN × Arc Institute × early DeepMind.
+  NOT modern biotech gradient sludge. NOT startup SaaS architecture.
+
+  Six layers:
+    L1  Raw scientific intake
+    L2  Deterministic ingestion
+    L3  Shared evidence substrate  (← the moat; visually privileged)
+    L4  Deterministic subgroup inference
+    L5  Condition-specific atlases (autism = proof, not identity)
+    L6  Institutional interface
+-->
+<style>
+  :root {
+    --bg: #f7f6f1;
+    --paper: #fbfaf6;
+    --ink: #1a1a1f;
+    --ink-soft: #4a4a4f;
+    --ink-mute: #8a8a8e;
+    --line: #d8d6cc;
+    --line-strong: #a8a89e;
+    --moat: #2c2826;
+    --accent: #5e5cb8;
+    --warn: #b3261e;
+    --green: #2e7d32;
+    --serif: "Tiempos Text", "EB Garamond", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 56px 80px;
+    background: var(--paper);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Top meta bar */
+  .meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 14px;
+    margin-bottom: 36px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .meta-bar .left { display: flex; gap: 24px; }
+  .meta-bar .right { color: var(--ink-soft); }
+
+  /* Title */
+  .title-block { margin-bottom: 48px; }
+  .title-block .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .title-block h1 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0 0 10px 0;
+    color: var(--ink);
+  }
+  .title-block .thesis {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0;
+  }
+  .title-block .thesis em {
+    color: var(--ink);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* Substrate stack */
+  .stack { position: relative; }
+
+  .layer {
+    position: relative;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 28px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+  }
+  .layer:last-child { border-bottom: 1px solid var(--line); }
+
+  /* L3 is gravitational, not highlighted.
+     Per design feedback: "density reduction around L3, cleaner spacing,
+     calmer geometry, stronger edge coherence." No color saturation,
+     no glow, no oversized type. The viewer feels everything routes
+     through this layer; nothing draws attention to it. */
+  .layer.privileged {
+    border-top: 1px solid var(--moat);
+    border-bottom: 1px solid var(--moat);
+    padding: 32px 0 36px;  /* more breathing room than other layers */
+  }
+  /* Wider gap before & after L3 — density reduction creates gravity */
+  .layer.privileged + .between,
+  .between + .layer.privileged {
+    height: 40px;  /* was 28px elsewhere */
+  }
+
+  .layer .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.16em;
+    padding-top: 4px;
+    border-right: 1px solid var(--line);
+    padding-right: 24px;
+    text-align: right;
+  }
+  .layer.privileged .num {
+    color: var(--moat);
+    font-weight: 500;
+  }
+
+  .layer .body { padding-top: 0; }
+
+  .layer h2 {
+    font-family: var(--sans);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px 0;
+    color: var(--ink);
+  }
+  /* L3 heading: same size as others. The privilege comes from spacing
+     and edge coherence, not from typographic emphasis. */
+  .layer.privileged h2 {
+    color: var(--moat);
+  }
+
+  .layer .subtitle {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 6px 24px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .components .item {
+    display: flex;
+    align-items: baseline;
+  }
+  .components .item::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: var(--ink-mute);
+    margin-right: 10px;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .layer.privileged .components .item::before {
+    background: var(--moat);
+  }
+
+  .layer .stat-strip {
+    display: flex;
+    gap: 28px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+  }
+  .layer .stat-strip strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-family: var(--mono);
+    margin-right: 4px;
+  }
+
+  .between {
+    height: 28px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .between::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    border-left: 1px solid var(--line-strong);
+  }
+  .between .arrow {
+    width: 9px;
+    height: 9px;
+    border-right: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+    transform: rotate(45deg);
+    background: var(--paper);
+    position: relative;
+    top: 4px;
+  }
+
+  /* L5 — autism callout */
+  .atlas-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 4px;
+  }
+  .atlas-card {
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    background: var(--paper);
+    position: relative;
+  }
+  .atlas-card.autism {
+    border: 1px solid var(--ink);
+    background: var(--paper);
+  }
+  .atlas-card.autism::before {
+    content: "PROOF-OF-CONCEPT";
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    background: var(--paper);
+    padding: 0 8px;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink);
+    letter-spacing: 0.18em;
+    font-weight: 600;
+  }
+  .atlas-card .name {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .atlas-card .status {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .atlas-card .status.live { color: var(--green); }
+  .atlas-card .status.seeded { color: var(--accent); }
+  .atlas-card .status.future { color: var(--ink-mute); }
+
+  /* L6 — institutions. Tight list, single line, no labels.
+     Minimalism increases inevitability. */
+  .insts-tight {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+    align-items: baseline;
+  }
+  .insts-tight .inst-group {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .insts-tight .inst-group + .inst-group::before {
+    content: "·";
+    color: var(--ink-mute);
+    margin-right: 32px;
+    margin-left: -32px;
+    /* visually equivalent gap; semantic separator only */
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.10em;
+  }
+
+  /* Determinism mark — bottom-right */
+  .det-mark {
+    position: absolute;
+    bottom: 80px;
+    right: 56px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    text-align: right;
+    line-height: 1.5;
+  }
+  .det-mark .check {
+    color: var(--green);
+    margin-right: 4px;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { background: white; padding: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="meta-bar">
+    <div class="left">
+      <span>causes atlas</span>
+      <span>substrate architecture</span>
+      <span>v0.4.0</span>
+    </div>
+    <div class="right">MIT license · github.com/abel-causesatlas/Autism</div>
+  </div>
+
+  <div class="title-block">
+    <div class="eyebrow">shared evidence-ingestion substrate</div>
+    <h1>An open infrastructure for condition-specific causal inference atlases</h1>
+    <p class="thesis">
+      <em>Shared infrastructure, condition-specific evidence graphs.</em>
+      The substrate is condition-agnostic. The autism instantiation is a proof-of-concept;
+      the same engine, scoring protocol, verification protocol, discovery pipeline, and
+      validation framework operate on any chronic condition where effect heterogeneity
+      dominates the published literature.
+    </p>
+  </div>
+
+  <div class="stack">
+
+    <!-- LAYER 1 — RAW INTAKE -->
+    <div class="layer">
+      <div class="num">L1</div>
+      <div class="body">
+        <h2>Raw scientific intake</h2>
+        <div class="subtitle">heterogeneous source corpus · provenance-preserving capture</div>
+        <div class="components">
+          <div class="item">peer-reviewed primary literature (PubMed)</div>
+          <div class="item">FOIA-released government records</div>
+          <div class="item">federal court rulings</div>
+          <div class="item">mechanistic + omics datasets</div>
+          <div class="item">RCT outputs + responder-rate cohorts</div>
+          <div class="item">longitudinal patient-cohort registries</div>
+          <div class="item">orchestrator file (VAULT.md)</div>
+          <div class="item">curator-submitted candidate sources</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="between"><div class="arrow"></div></div>
+
+    <!-- LAYER 2 — DETERMINISTIC INGESTION -->
+    <div class="layer">
+      <div class="num">L2</div>
+      <div class="body">
+        <h2>Deterministic ingestion</h2>
+        <div class="subtitle">canonicalization · typed claims · provenance preservation</div>
+        <div class="components">
+          <div class="item">PMID verification protocol (PubMed esummary cross-check)</div>
+          <div class="item">structured claim extraction</div>
+          <div class="item">study-design tier classification</div>
+          <div class="item">contested-status preservation</div>
+          <div class="item">node-alias idempotence</div>
+          <div class="item">no language-model calls in ingestion logic</div>
+        </div>
+        <div class="stat-strip">
+          <span><strong>verify-before-write</strong> · enforced at code level</span>
+          <span><strong>typed-claim canonicalization</strong> · idempotent</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="between"><div class="arrow"></div></div>
+
+    <!-- LAYER 3 — SHARED EVIDENCE SUBSTRATE (THE MOAT) -->
+    <div class="layer privileged">
+      <div class="num">L3</div>
+      <div class="body">
+        <h2>Shared evidence substrate</h2>
+        <div class="subtitle">claim graph · mechanistic edges · evidence weighting · contradiction mapping · reproducible lineage</div>
+        <div class="components">
+          <div class="item">22-table canonical schema</div>
+          <div class="item">tier-weighted source-quality hierarchy</div>
+          <div class="item">contested-evidence preservation (both directions)</div>
+          <div class="item">deterministic scoring engine</div>
+          <div class="item">formulation-aware evidence resolution</div>
+          <div class="item">research-attention velocity overlay (Δ²)</div>
+          <div class="item">anti-reflexivity audit (code-enforced)</div>
+          <div class="item">reproducibility verification (3-run byte-identical)</div>
+        </div>
+        <div class="stat-strip">
+          <span><strong>1,462</strong> primary sources</span>
+          <span><strong>137</strong> interventions</span>
+          <span><strong>52</strong> formulations</span>
+          <span><strong>1,564</strong> genes</span>
+          <span><strong>178</strong> biomarkers</span>
+          <span><strong>361</strong> visible edges</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="between"><div class="arrow"></div></div>
+
+    <!-- LAYER 4 — DETERMINISTIC SUBGROUP INFERENCE -->
+    <div class="layer">
+      <div class="num">L4</div>
+      <div class="body">
+        <h2>Deterministic subgroup inference</h2>
+        <div class="subtitle">phenotype clustering · responder stratification · mechanistic subgroup emergence</div>
+        <div class="components">
+          <div class="item">11-dimension phenotype loading vector (per condition)</div>
+          <div class="item">biomarker-driven shift logic</div>
+          <div class="item">individual-level conditional risk: P(Φ | P, E)</div>
+          <div class="item">structural collapse of population-average averaging</div>
+          <div class="item">calibration anchor protocol</div>
+          <div class="item">no random seeds · no language-model calls in inference</div>
+        </div>
+        <div class="stat-strip">
+          <span>cohort MAE = <strong>0.067</strong> across 8 published RCTs</span>
+          <span><strong>4 sub-3% errors</strong> across 3 mechanism axes</span>
+          <span>structural replication</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="between"><div class="arrow"></div></div>
+
+    <!-- LAYER 5 — CONDITION-SPECIFIC ATLASES -->
+    <div class="layer">
+      <div class="num">L5</div>
+      <div class="body">
+        <h2>Condition-specific atlases</h2>
+        <div class="subtitle">forkable instantiations · domain-specific evidence graphs</div>
+        <div class="atlas-row">
+          <div class="atlas-card autism">
+            <div class="name">Autism atlas</div>
+            <div class="status live">● fully instantiated · n=8 RCT validated</div>
+          </div>
+          <div class="atlas-card">
+            <div class="name">Long COVID atlas</div>
+            <div class="status seeded">○ v0.1 seeded</div>
+          </div>
+          <div class="atlas-card">
+            <div class="name">Autoimmune atlas</div>
+            <div class="status future">— architecture supports</div>
+          </div>
+          <div class="atlas-card">
+            <div class="name">Future forks</div>
+            <div class="status future">— community-extensible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="between"><div class="arrow"></div></div>
+
+    <!-- LAYER 6 — INSTITUTIONAL INTERFACE
+         Per design feedback: avoid aspirational logo-cloud syndrome.
+         Tighter list = stronger signal. Minimalism increases inevitability.
+         The point is not "look who could use this." The point is "this
+         naturally resolves into national infrastructure." -->
+    <div class="layer">
+      <div class="num">L6</div>
+      <div class="body">
+        <h2>Institutional interface</h2>
+        <div class="subtitle">national scientific infrastructure · open access · audit-resolvable</div>
+        <div class="insts insts-tight">
+          <div class="inst-group">
+            <div class="inst-name">HHS</div>
+          </div>
+          <div class="inst-group">
+            <div class="inst-name">NIH</div>
+          </div>
+          <div class="inst-group">
+            <div class="inst-name">Academic Medical Centers</div>
+          </div>
+          <div class="inst-group">
+            <div class="inst-name">Patient Registries</div>
+          </div>
+          <div class="inst-group">
+            <div class="inst-name">Therapeutics Programs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>causes atlas · substrate v0.4.0 · MIT license · 2026</span>
+    <span>shared infrastructure · condition-specific evidence graphs</span>
+  </div>
+
+  <!-- Architectural properties, not truth claims. Per design feedback:
+       "deterministic" must read as a constraint on ingestion / provenance
+       / reproducibility — not as a guarantee of scientific conclusions.
+       The distinction is existential. -->
+  <div class="det-mark">
+    <div>provenance-preserving</div>
+    <div>reproducible lineage</div>
+    <div>typed claims</div>
+    <div>audit-resolvable</div>
+  </div>
+
+</div>
+
+</body>
+</html>

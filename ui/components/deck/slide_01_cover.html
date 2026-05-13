@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Slide 1 · Cover</title>
+<link rel="stylesheet" href="_slide_chrome.css">
+<style>
+  .slide.cover {
+    grid-template-rows: 1fr auto auto auto 1fr;
+    gap: 0;
+    padding: 96px 96px 64px;
+    align-items: center;
+    text-align: left;
+  }
+  .cover-mark {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cover-mark .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--indigo);
+    box-shadow: 0 0 18px var(--indigo);
+  }
+  .cover-mark .dot.dim {
+    width: 7px; height: 7px;
+    background: var(--accent-soft);
+    box-shadow: 0 0 8px var(--accent-soft);
+  }
+  .cover-mark .dot.dim2 {
+    width: 5px; height: 5px;
+    background: var(--ink-mute);
+    box-shadow: none;
+  }
+  .cover-mark .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-left: 12px;
+  }
+  h1.cover-title {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 88px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 0 0 28px 0;
+    color: var(--ink);
+  }
+  .cover-subtitle {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.3;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+    max-width: 1100px;
+    margin: 0;
+  }
+  .cover-thesis {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-mute);
+    margin-top: 36px;
+    letter-spacing: 0.005em;
+  }
+  .cover-thesis em {
+    color: var(--ink-soft);
+    font-style: normal;
+    font-weight: 500;
+  }
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .cover-meta .right { color: var(--ink-soft); text-transform: none; letter-spacing: 0.06em; font-size: 11px; }
+</style></head>
+<body>
+<div class="slide cover">
+  <div class="grid-bg"></div>
+
+  <!-- Spacer for top -->
+  <div></div>
+
+  <!-- Mark -->
+  <div class="cover-mark">
+    <div class="dot"></div>
+    <div class="dot dim"></div>
+    <div class="dot dim2"></div>
+    <div class="label">Causes Atlas · v0.4.0</div>
+  </div>
+
+  <!-- Title block -->
+  <div>
+    <h1 class="cover-title">Causes Atlas</h1>
+    <p class="cover-subtitle">
+      An open, deterministic substrate for<br>
+      condition-specific causal inference atlases.
+    </p>
+    <p class="cover-thesis">
+      <em>Shared infrastructure</em>, condition-specific evidence graphs.
+    </p>
+  </div>
+
+  <!-- Spacer + meta -->
+  <div></div>
+  <div class="cover-meta">
+    <div>Prepared for HHS · 2026</div>
+    <div class="right">MIT License · github.com/abel-causesatlas/Autism · DOI: pending Zenodo</div>
+  </div>
+
+  <div class="slide-num">01 / 15</div>
+</div>
+</body></html>

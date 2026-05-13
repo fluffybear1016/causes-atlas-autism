@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  html, body { margin:0; padding:0; background:#0a0b0d;
+    font-family:-apple-system,Inter,system-ui,sans-serif; color:#e5e4df;
+    overflow:hidden; }
+  #atlas-root { position:relative; width:100%; height:100vh;
+    background: radial-gradient(ellipse at 30% 30%, #15171c 0%, #0a0b0d 60%, #06070a 100%); }
+  svg { width:100%; height:100%; display:block; cursor:grab; }
+  svg:active { cursor:grabbing; }
+
+  /* Top stats banner */
+  .stats-banner {
+    position:absolute; top:16px; left:50%; transform:translateX(-50%);
+    background: rgba(20,22,26,0.78); backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(120,120,140,0.2);
+    border-radius: 14px; padding: 12px 22px;
+    display:flex; gap:28px; align-items:center;
+    font-size:11px; color:#a8a89e; letter-spacing:0.04em;
+    z-index:10; box-shadow:0 12px 40px rgba(0,0,0,0.6);
+  }
+  .stats-banner .stat { text-align:center; }
+  .stats-banner .stat-num { color:#e5e4df; font-size:18px;
+    font-weight:600; font-family:"IBM Plex Mono",ui-monospace,monospace;
+    letter-spacing:-0.01em; display:block; }
+  .stats-banner .stat-label { font-size:9px; text-transform:uppercase;
+    letter-spacing:0.16em; margin-top:2px; }
+  .stats-banner .pulse-dot {
+    display:inline-block; width:7px; height:7px; border-radius:50%;
+    background:#00B26D; box-shadow:0 0 10px #00B26D;
+    animation: livePulse 2.4s infinite ease-in-out;
+    margin-right:6px;
+  }
+  @keyframes livePulse { 0%,100%{opacity:0.5;} 50%{opacity:1;} }
+
+  /* Filter sidebar */
+  .filter-sidebar {
+    position:absolute; top:88px; left:24px; width:230px;
+    background: rgba(20,22,26,0.72); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(120,120,140,0.2);
+    border-radius: 14px; padding: 18px 18px;
+    z-index: 10; max-height: 75vh; overflow-y:auto;
+    box-shadow:0 12px 40px rgba(0,0,0,0.6);
+  }
+  .filter-sidebar h3 { margin:0 0 12px 0; font-size:11px;
+    font-weight:600; letter-spacing:0.18em;
+    text-transform:uppercase; color:#a8a89e; }
+  .filter-group { margin-bottom: 16px; }
+  .filter-group .label { font-size:10px;
+    color:#7a7a7f; letter-spacing:0.12em;
+    text-transform:uppercase; margin-bottom: 6px; }
+  .filter-row { display:flex; align-items:center;
+    padding: 4px 0; font-size:13px; cursor:pointer;
+    transition: color 0.15s; user-select:none; }
+  .filter-row:hover { color:#fff; }
+  .filter-row .swatch { display:inline-block;
+    width:9px; height:9px; border-radius:50%;
+    margin-right:9px; flex-shrink:0; }
+  .filter-row.disabled { opacity:0.35; }
+  .filter-row .count {
+    margin-left:auto; font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px; color:#7a7a7f; }
+  .search-box {
+    width:100%; padding:8px 10px; box-sizing:border-box;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(120,120,140,0.25);
+    border-radius:8px; color:#e5e4df; font-size:13px;
+    margin-bottom:14px; outline:none;
+    font-family:inherit;
+  }
+  .search-box:focus { border-color:#7C5CFF; }
+
+  /* Tooltip */
+  .a-tooltip {
+    position:absolute; pointer-events:none;
+    background: rgba(15,17,22,0.95); backdrop-filter: blur(16px);
+    border: 1px solid rgba(120,120,140,0.3);
+    border-radius: 10px; padding: 10px 14px;
+    font-size:12px; line-height:1.5; max-width:280px;
+    opacity:0; transition: opacity 0.15s; z-index:50;
+    box-shadow:0 8px 32px rgba(0,0,0,0.7);
+  }
+  .a-tooltip .name { font-weight:600; font-size:13px; margin-bottom:3px; }
+  .a-tooltip .type { font-size:9px; text-transform:uppercase;
+    letter-spacing:0.16em; color:#a8a89e; }
+  .a-tooltip .score { font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px; color:#cfd0d4; margin-top:4px; }
+
+  /* Drawer */
+  .a-drawer {
+    position:absolute; top:24px; right:24px; bottom:24px; width:380px;
+    background:rgba(18,20,24,0.96); backdrop-filter: blur(20px);
+    border:1px solid rgba(120,120,140,0.25);
+    border-radius:14px; padding:28px 26px; overflow-y:auto;
+    transform: translateX(420px);
+    transition:transform 0.42s cubic-bezier(0.22,1,0.36,1);
+    z-index:30; box-shadow:0 20px 60px rgba(0,0,0,0.7);
+  }
+  .a-drawer.open { transform: translateX(0); }
+  .a-drawer .close-btn { position:absolute; top:14px; right:14px;
+    background:transparent; border:none; color:#a8a89e; cursor:pointer;
+    font-size:20px; padding:6px 10px; border-radius:6px; }
+  .a-drawer .close-btn:hover { background:rgba(255,255,255,0.06); color:#fff; }
+  .a-drawer h2 { font-size:21px; font-weight:600; margin:0 0 12px 0;
+    letter-spacing:-0.01em; line-height:1.2; }
+  .a-drawer .eyebrow { font-size:10px;
+    letter-spacing:0.18em; text-transform:uppercase; color:#a8a89e;
+    margin-bottom:6px; }
+  .a-drawer .meta { font-size:13px; color:#cfd0d4; line-height:1.6;
+    margin-top:8px; }
+  .a-drawer .related { margin-top:18px; padding-top:14px;
+    border-top:1px solid rgba(255,255,255,0.07); font-size:12px; }
+  .a-drawer .related-item {
+    display:flex; align-items:center; padding:6px 0;
+    color:#a8a89e; cursor:pointer; transition:color 0.15s;
+  }
+  .a-drawer .related-item:hover { color:#fff; }
+  .a-drawer .related-item .swatch {
+    width:7px; height:7px; border-radius:50%; margin-right:8px;
+  }
+
+  /* Edge classes — contested edges only animate on hover (per design feedback) */
+  .edge { stroke-opacity:0.18; stroke-width:0.6; pointer-events:none;
+          transition: stroke-opacity 0.3s, stroke-width 0.3s; }
+  .edge-contested {
+    stroke-dasharray: 5 4;
+    /* idle: no animation. hover: phase shimmer */
+  }
+  .edge-contested.shimmer-on {
+    animation: contestedFlow 8s linear infinite;
+  }
+  @keyframes contestedFlow {
+    0% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -90; }
+  }
+  .edge-highlight { stroke-opacity:0.7; stroke-width:1.6; }
+  .edge-faded { stroke-opacity:0.04 !important; }
+
+  /* View-mode toggle */
+  .mode-toggle {
+    position:absolute; top:88px; right:24px;
+    background:rgba(20,22,26,0.78); backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border:1px solid rgba(120,120,140,0.2);
+    border-radius:999px; padding:4px;
+    display:flex; z-index:11;
+    box-shadow:0 12px 40px rgba(0,0,0,0.6);
+  }
+  .mode-toggle button {
+    background:transparent; border:none;
+    padding:7px 16px; border-radius:999px;
+    color:#a8a89e; font-size:11px;
+    letter-spacing:0.08em; cursor:pointer;
+    font-family:inherit; font-weight:500;
+    transition:all 0.18s;
+  }
+  .mode-toggle button:hover { color:#fff; }
+  .mode-toggle button.active {
+    background:rgba(124,92,255,0.25);
+    color:#fff;
+    box-shadow:inset 0 0 0 1px rgba(124,92,255,0.5);
+  }
+
+  /* Node states */
+  .node { cursor:pointer; transition: filter 0.2s; }
+  .node:hover { filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
+  .node-faded { opacity: 0.12; }
+  .node-contested-ring {
+    fill:none; stroke:#B3261E; stroke-width:1; stroke-opacity:0.5;
+    stroke-dasharray:3 2;
+  }
+
+  /* Star backdrop */
+  .bg-star { fill:#cfd0d4; }
+  .bg-star.twinkle1 { animation: tw1 9s infinite ease-in-out; }
+  .bg-star.twinkle2 { animation: tw2 6s infinite ease-in-out; }
+  @keyframes tw1 {0%,100%{opacity:0.1;}50%{opacity:0.3;}}
+  @keyframes tw2 {0%,100%{opacity:0.2;}50%{opacity:0.5;}}
+
+  /* Replicate CTA */
+  .replicate-cta {
+    position:absolute; bottom:24px; right:24px;
+    background: rgba(124,92,255,0.15);
+    border:1px solid rgba(124,92,255,0.5);
+    border-radius:999px; padding:10px 18px; color:#9D89FF;
+    font-size:12px; font-weight:500; letter-spacing:0.04em;
+    cursor:pointer; transition:all 0.2s; z-index:10;
+    text-decoration:none;
+    backdrop-filter: blur(10px);
+  }
+  .replicate-cta:hover { background: rgba(124,92,255,0.25);
+    color:#fff; transform: translateY(-1px); }
+</style></head>
+<body>
+<div id="atlas-root">
+
+  <div class="stats-banner">
+    <div class="stat">
+      <span class="pulse-dot"></span>
+      <span style="font-size:10px; color:#00B26D;
+                   text-transform:uppercase; letter-spacing:0.16em;">live</span>
+    </div>
+    <div class="stat"><span class="stat-num" id="ct-nodes">—</span>
+      <span class="stat-label">visible nodes</span></div>
+    <div class="stat"><span class="stat-num" id="ct-edges">—</span>
+      <span class="stat-label">edges</span></div>
+    <div class="stat"><span class="stat-num" id="ct-int">—</span>
+      <span class="stat-label">interventions</span></div>
+    <div class="stat"><span class="stat-num" id="ct-frm">—</span>
+      <span class="stat-label">formulations</span></div>
+    <div class="stat"><span class="stat-num" id="ct-hyp">—</span>
+      <span class="stat-label">hypotheses</span></div>
+    <div class="stat"><span class="stat-num" id="ct-src">—</span>
+      <span class="stat-label">sources</span></div>
+    <div class="stat"><span class="stat-num" id="ct-genes">1564</span>
+      <span class="stat-label">genes (clustered)</span></div>
+    <div class="stat"><span style="font-size:10px;
+      color:#7a7a7f;">last refreshed<br/>
+      <span id="updated" style="color:#cfd0d4; font-size:11px;
+        font-family:'IBM Plex Mono',monospace;"></span></span></div>
+  </div>
+
+  <div class="mode-toggle" id="mode-toggle">
+    <button data-mode="parent">Parent</button>
+    <button data-mode="research" class="active">Research</button>
+    <button data-mode="atlas">Atlas</button>
+  </div>
+
+  <div class="filter-sidebar">
+    <input class="search-box" id="search" placeholder="search the atlas..." />
+
+    <h3>Entity type</h3>
+    <div class="filter-group" id="type-filters"></div>
+
+    <h3>Status</h3>
+    <div class="filter-group" id="status-filters">
+      <div class="filter-row" data-status="active">
+        <span class="swatch" style="background:#cfd0d4;"></span>
+        active <span class="count" id="ct-active">0</span></div>
+      <div class="filter-row" data-status="contested">
+        <span class="swatch" style="background:#B3261E;"></span>
+        contested <span class="count" id="ct-contested">0</span></div>
+    </div>
+
+    <h3 style="margin-top:8px;">Constellation</h3>
+    <div class="filter-group" id="phe-filters"></div>
+  </div>
+
+  <svg id="atlas-svg"></svg>
+
+  <div class="a-tooltip" id="tooltip"></div>
+
+  <div class="a-drawer" id="drawer">
+    <button class="close-btn" id="close-drawer">×</button>
+    <div class="eyebrow" id="d-eyebrow">—</div>
+    <h2 id="d-title">—</h2>
+    <div class="meta" id="d-meta"></div>
+    <div class="related" id="d-related"></div>
+  </div>
+
+  <a class="replicate-cta" href="#" id="replicate-link">
+    Replicate this for your own knowledge →</a>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+const PAYLOAD = {"nodes": [{"id": "PHE-0001", "type": "phenotype", "name": "Cerebral folate deficiency phenotype", "color": "#7C5CFF", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0002", "type": "phenotype", "name": "Mitochondrial dysfunction phenotype", "color": "#00A7B5", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0003", "type": "phenotype", "name": "Regressive immune-inflammatory phenotype", "color": "#00B26D", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0004", "type": "phenotype", "name": "Autism + GI / microbiome phenotype", "color": "#5BAE3C", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0005", "type": "phenotype", "name": "mTOR pathway syndromic (TSC, PTEN)", "color": "#355CFF", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0006", "type": "phenotype", "name": "Fragile X (FMR1)", "color": "#4F7BFF", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0007", "type": "phenotype", "name": "GABA/Cl- imbalance phenotype", "color": "#7A7DFF", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0008", "type": "phenotype", "name": "Undermethylator phenotype (Walsh)", "color": "#B05EFF", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0009", "type": "phenotype", "name": "Overmethylator phenotype (Walsh)", "color": "#FF6BB3", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0010", "type": "phenotype", "name": "Pyroluria / kryptopyrroluria phenotype", "color": "#E07A5F", "score": 100.0, "status": "tier_1"}, {"id": "PHE-0011", "type": "phenotype", "name": "Copper:zinc imbalance phenotype", "color": "#D4A017", "score": 100.0, "status": "tier_1"}, {"id": "INT-0001", "type": "intervention", "name": "Leucovorin (folinic acid)", "score": 83.35, "status": "active"}, {"id": "INT-0008", "type": "intervention", "name": "Methylated folate (5-MTHF) \u2014 preconception/prenata", "score": 75.9, "status": "active"}, {"id": "INT-0002", "type": "intervention", "name": "Sulforaphane (broccoli sprout extract)", "score": 74.51, "status": "active"}, {"id": "INT-0025", "type": "intervention", "name": "Probiotics (multi-strain)", "score": 72.04, "status": "active"}, {"id": "INT-0076", "type": "intervention", "name": "Fecal microbiota transplantation (FMT)", "score": 69.67, "status": "active"}, {"id": "INT-0013", "type": "intervention", "name": "Vitamin D3", "score": 67.74, "status": "active"}, {"id": "INT-0047", "type": "intervention", "name": "Aerobic exercise (structured)", "score": 67.27, "status": "active"}, {"id": "INT-0036", "type": "intervention", "name": "Rapamycin (sirolimus)", "score": 67.02, "status": "active"}, {"id": "INT-0015", "type": "intervention", "name": "Magnesium glycinate", "score": 64.73, "status": "active"}, {"id": "INT-0030", "type": "intervention", "name": "Choline (CDP-choline / Alpha-GPC)", "score": 63.9, "status": "active"}, {"id": "INT-0096", "type": "intervention", "name": "Preconception mitochondrial optimization combo (pa", "score": 63.72, "status": "active"}, {"id": "INT-0078", "type": "intervention", "name": "Lactobacillus rhamnosus GG", "score": 63.65, "status": "active"}, {"id": "INT-0093", "type": "intervention", "name": "Alpha-lipoic acid (ALA)", "score": 63.34, "status": "active"}, {"id": "INT-0009", "type": "intervention", "name": "Reverse osmosis water filtration", "score": 62.6, "status": "active"}, {"id": "INT-0007", "type": "intervention", "name": "Ketogenic diet", "score": 62.41, "status": "active"}, {"id": "INT-0037", "type": "intervention", "name": "Metformin", "score": 62.4, "status": "active"}, {"id": "INT-0046", "type": "intervention", "name": "Sleep architecture optimization + melatonin", "score": 61.91, "status": "active"}, {"id": "INT-0077", "type": "intervention", "name": "Bifidobacterium infantis / longum probiotic", "score": 61.78, "status": "active"}, {"id": "INT-0065", "type": "intervention", "name": "Cerebrolysin", "score": 60.8, "status": "active"}, {"id": "INT-0016", "type": "intervention", "name": "Zinc (zinc picolinate)", "score": 60.61, "status": "active"}, {"id": "INT-0092", "type": "intervention", "name": "Hyperbaric oxygen therapy (HBOT)", "score": 60.44, "status": "active"}, {"id": "INT-0094", "type": "intervention", "name": "D-ribose", "score": 59.44, "status": "active"}, {"id": "INT-0101", "type": "intervention", "name": "L-glutamine (free amino acid)", "score": 58.15, "status": "active"}, {"id": "INT-0082", "type": "intervention", "name": "Galactooligosaccharides (GOS) / fructooligosacchar", "score": 56.6, "status": "active"}, {"id": "INT-0014", "type": "intervention", "name": "Omega-3 (EPA + DHA)", "score": 55.87, "status": "active"}, {"id": "INT-0081", "type": "intervention", "name": "Human milk oligosaccharides (HMOs)", "score": 55.68, "status": "active"}, {"id": "INT-0074", "type": "intervention", "name": "Breathwork / vagal toning practices", "score": 55.39, "status": "active"}, {"id": "INT-0088", "type": "intervention", "name": "Creatine monohydrate", "score": 53.92, "status": "active"}, {"id": "INT-0095", "type": "intervention", "name": "Niacinamide / nicotinamide", "score": 53.92, "status": "active"}, {"id": "INT-0097", "type": "intervention", "name": "Red light / photobiomodulation therapy (635 nm)", "score": 53.85, "status": "active"}, {"id": "INT-0061", "type": "intervention", "name": "Intranasal oxytocin", "score": 53.74, "status": "active"}, {"id": "INT-0100", "type": "intervention", "name": "Cod liver oil (fermented preferred)", "score": 53.43, "status": "active"}, {"id": "INT-0024", "type": "intervention", "name": "Glycine", "score": 52.56, "status": "active"}, {"id": "INT-0029", "type": "intervention", "name": "Quercetin", "score": 52.28, "status": "active"}, {"id": "INT-0071", "type": "intervention", "name": "Vagal nerve stimulation (transcutaneous)", "score": 52.2, "status": "active"}, {"id": "INT-0099", "type": "intervention", "name": "Chelation therapy (DMSA / EDTA)", "score": 52.16, "status": "active"}, {"id": "INT-0048", "type": "intervention", "name": "Sauna / heat therapy", "score": 51.98, "status": "active"}, {"id": "INT-0020", "type": "intervention", "name": "Glutathione (liposomal or precursors)", "score": 51.97, "status": "active"}, {"id": "INT-0028", "type": "intervention", "name": "Resveratrol", "score": 51.84, "status": "active"}, {"id": "INT-0011", "type": "intervention", "name": "L-carnitine", "score": 51.7, "status": "active"}, {"id": "INT-0041", "type": "intervention", "name": "GFCF diet", "score": 51.46, "status": "active"}, {"id": "INT-0027", "type": "intervention", "name": "Curcumin (high-bioavailability)", "score": 51.36, "status": "active"}, {"id": "INT-0004", "type": "intervention", "name": "N-Acetylcysteine (NAC)", "score": 51.23, "status": "active"}, {"id": "INT-0073", "type": "intervention", "name": "Cold exposure / cold plunge", "score": 51.13, "status": "active"}, {"id": "INT-0091", "type": "intervention", "name": "Whole-body hyperthermia (clinical)", "score": 50.65, "status": "active"}, {"id": "INT-0006", "type": "intervention", "name": "Low-dose naltrexone (LDN)", "score": 50.58, "status": "active"}, {"id": "INT-0084", "type": "intervention", "name": "Vancomycin (oral, transient pre-FMT)", "score": 50.18, "status": "active"}, {"id": "INT-0023", "type": "intervention", "name": "Taurine", "score": 49.89, "status": "active"}, {"id": "INT-0012", "type": "intervention", "name": "Coenzyme Q10 (ubiquinol)", "score": 49.51, "status": "active"}, {"id": "INT-0035", "type": "intervention", "name": "Cannabidiol (CBD)", "score": 49.45, "status": "active"}, {"id": "INT-0090", "type": "intervention", "name": "HIIT (high-intensity interval training)", "score": 49.33, "status": "active"}, {"id": "INT-0089", "type": "intervention", "name": "Time-restricted eating / 16:8 fasting", "score": 49.01, "status": "active"}, {"id": "INT-0075", "type": "intervention", "name": "MBSR / stress reduction (parent + child)", "score": 48.14, "status": "active"}, {"id": "INT-0003", "type": "intervention", "name": "Methyl-B12 (methylcobalamin) injection", "score": 48.07, "status": "active"}, {"id": "INT-0017", "type": "intervention", "name": "Pyridoxal-5-phosphate (active B6)", "score": 47.71, "status": "active"}, {"id": "INT-0005", "type": "intervention", "name": "Bumetanide", "score": 47.27, "status": "active"}, {"id": "INT-0038", "type": "intervention", "name": "Memantine", "score": 46.88, "status": "active"}, {"id": "INT-0042", "type": "intervention", "name": "GAPS diet", "score": 46.78, "status": "active"}, {"id": "INT-0087", "type": "intervention", "name": "Tryptophan supplementation (with vitamin D)", "score": 46.74, "status": "active"}, {"id": "INT-0083", "type": "intervention", "name": "Sodium butyrate (postbiotic)", "score": 46.65, "status": "active"}, {"id": "FRM-0013", "type": "formulation", "name": "Leucovorin (folinic acid) oral capsule", "score": 95.0, "parent_intervention_id": "INT-0001", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0036", "type": "formulation", "name": "VSL#3 / Visbiome (multi-strain)", "score": 91.61, "parent_intervention_id": "INT-0025", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0041", "type": "formulation", "name": "Melatonin standard release oral", "score": 88.57, "parent_intervention_id": "INT-0046", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0042", "type": "formulation", "name": "Melatonin extended-release / controlled-release", "score": 88.57, "parent_intervention_id": "INT-0046", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0034", "type": "formulation", "name": "Bifidobacterium infantis EVC001", "score": 88.53, "parent_intervention_id": "INT-0077", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0020", "type": "formulation", "name": "Acetyl-L-carnitine (ALCAR)", "score": 85.51, "parent_intervention_id": "INT-0011", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0047", "type": "formulation", "name": "L-carnosine (Chez 2002 formulation)", "score": 85.51, "parent_intervention_id": "INT-0011", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0007", "type": "formulation", "name": "NAC oral capsule (effervescent)", "score": 85.37, "parent_intervention_id": "INT-0004", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0025", "type": "formulation", "name": "Vitamin D3 (cholecalciferol oil capsule)", "score": 85.0, "parent_intervention_id": "INT-0137", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0038", "type": "formulation", "name": "Bumetanide oral tablet (standard pharma)", "score": 84.97, "parent_intervention_id": "INT-0023", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0011", "type": "formulation", "name": "Methyl-B12 subcutaneous (Neubrander protocol)", "score": 84.42, "parent_intervention_id": "INT-0003", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0028", "type": "formulation", "name": "Sulforaphane via broccoli sprout extract WITH myrosinase", "score": 80.06, "parent_intervention_id": "INT-0044", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0030", "type": "formulation", "name": "Avmacol (Pinnacle Biolabs commercial)", "score": 80.06, "parent_intervention_id": "INT-0044", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0045", "type": "formulation", "name": "Cromolyn nasal spray", "score": 80.06, "parent_intervention_id": "INT-0044", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0046", "type": "formulation", "name": "Cromolyn inhaled / nebulized", "score": 80.06, "parent_intervention_id": "INT-0044", "status": "active", "evidence": "established_RCT"}, {"id": "FRM-0014", "type": "formulation", "name": "Methylfolate (5-MTHF) oral", "score": 77.77, "parent_intervention_id": "INT-0008", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0035", "type": "formulation", "name": "L. reuteri DSM 17938", "score": 74.09, "parent_intervention_id": "INT-0078", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0019", "type": "formulation", "name": "L-carnitine (free amino acid)", "score": 70.51, "parent_intervention_id": "INT-0011", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0002", "type": "formulation", "name": "Glutathione IV push", "score": 70.37, "parent_intervention_id": "INT-0004", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0008", "type": "formulation", "name": "NAC IV", "score": 70.37, "parent_intervention_id": "INT-0004", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0022", "type": "formulation", "name": "Low-dose naltrexone oral (compounded)", "score": 70.17, "parent_intervention_id": "INT-0006", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0012", "type": "formulation", "name": "Methyl-B12 IM (intramuscular shot)", "score": 69.42, "parent_intervention_id": "INT-0003", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0049", "type": "formulation", "name": "Magnesium glycinate (bisglycinate)", "score": 66.55, "parent_intervention_id": "INT-0067", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0044", "type": "formulation", "name": "Cromolyn sodium oral (gut-targeted)", "score": 65.06, "parent_intervention_id": "INT-0044", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0018", "type": "formulation", "name": "Curcumin Meriva (phytosome)", "score": 64.57, "parent_intervention_id": "INT-0010", "status": "active", "evidence": "established_mechanistic"}, {"id": "FRM-0032", "type": "formulation", "name": "Quercetin phytosome / liposomal", "score": 60.68, "parent_intervention_id": "INT-0029", "status": "active", "evidence": "anecdotal_plus_mechanistic"}, {"id": "FRM-0003", "type": "formulation", "name": "Liposomal glutathione (oral)", "score": 60.37, "parent_intervention_id": "INT-0004", "status": "active", "evidence": "anecdotal_plus_mechanistic"}, {"id": "FRM-0005", "type": "formulation", "name": "Glutathione nasal spray", "score": 60.37, "parent_intervention_id": "INT-0004", "status": "active", "evidence": "anecdotal_plus_mechanistic"}, {"id": "FRM-0006", "type": "formulation", "name": "Acetyl-glutathione (S-acetyl-GSH oral)", "score": 60.37, "parent_intervention_id": "INT-0004", "status": "active", "evidence": "anecdotal_plus_mechanistic"}, {"id": "FRM-0023", "type": "formulation", "name": "Low-dose naltrexone sublingual liquid", "score": 60.17, "parent_intervention_id": "INT-0006", "status": "active", "evidence": "anecdotal_plus_mechanistic"}, {"id": "FRM-0050", "type": "formulation", "name": "Magnesium L-threonate", "score": 56.55, "parent_intervention_id": "INT-0067", "status": "active", "evidence": "anecdotal_plus_mechanistic"}, {"id": "FRM-0052", "type": "formulation", "name": "Magnesium chloride (transdermal oil/spray)", "score": 56.55, "parent_intervention_id": "INT-0067", "status": "active", "evidence": "anecdotal_plus_mechanistic"}, {"id": "FRM-0017", "type": "formulation", "name": "Curcumin liposomal", "score": 54.57, "parent_intervention_id": "INT-0010", "status": "active", "evidence": "anecdotal_plus_mechanistic"}, {"id": "FRM-0043", "type": "formulation", "name": "Melatonin sublingual", "score": 53.57, "parent_intervention_id": "INT-0046", "status": "active", "evidence": "mechanistic_only"}, {"id": "FRM-0033", "type": "formulation", "name": "Quercetin + bromelain (synergistic)", "score": 50.68, "parent_intervention_id": "INT-0029", "status": "active", "evidence": "mechanistic_only"}, {"id": "FRM-0021", "type": "formulation", "name": "Propionyl-L-carnitine", "score": 50.51, "parent_intervention_id": "INT-0011", "status": "active", "evidence": "mechanistic_only"}, {"id": "FRM-0048", "type": "formulation", "name": "N-acetylcarnosine eye drops", "score": 50.51, "parent_intervention_id": "INT-0011", "status": "active", "evidence": "mechanistic_only"}, {"id": "FRM-0009", "type": "formulation", "name": "NAC nebulized", "score": 50.37, "parent_intervention_id": "INT-0004", "status": "active", "evidence": "mechanistic_only"}, {"id": "FRM-0026", "type": "formulation", "name": "Vitamin D3 sublingual spray", "score": 50.0, "parent_intervention_id": "INT-0137", "status": "active", "evidence": "mechanistic_only"}, {"id": "FRM-0040", "type": "formulation", "name": "Bumetanide intranasal (research stage)", "score": 49.97, "parent_intervention_id": "INT-0023", "status": "active", "evidence": "mechanistic_only"}, {"id": "MEC-0001", "type": "mechanism", "name": "Oxidative stress", "score": 0.8905, "status": "active"}, {"id": "MEC-0002", "type": "mechanism", "name": "Neuroinflammation", "score": 0.9278, "status": "active"}, {"id": "MEC-0003", "type": "mechanism", "name": "Impaired methylation", "score": 0.7529, "status": "active"}, {"id": "MEC-0004", "type": "mechanism", "name": "BBB dysfunction", "score": 0.8238, "status": "active"}, {"id": "MEC-0005", "type": "mechanism", "name": "Microglial activation", "score": 0.8307, "status": "active"}, {"id": "MEC-0006", "type": "mechanism", "name": "Synaptic pruning abnormalities", "score": 0.5919, "status": "active"}, {"id": "MEC-0007", "type": "mechanism", "name": "GABA/glutamate imbalance", "score": 0.6819, "status": "active"}, {"id": "MEC-0008", "type": "mechanism", "name": "Gut-brain axis disruption", "score": 0.8599, "status": "active"}, {"id": "MEC-0009", "type": "mechanism", "name": "mTOR pathway dysregulation", "score": 0.5486, "status": "active"}, {"id": "MEC-0010", "type": "mechanism", "name": "Mitochondrial dysfunction", "score": 0.8709, "status": "active"}, {"id": "MEC-0011", "type": "mechanism", "name": "AMPK signaling", "score": 0.741, "status": "active"}, {"id": "MEC-0012", "type": "mechanism", "name": "IGF-1 / insulin signaling", "score": 0.4508, "status": "active"}, {"id": "MEC-0013", "type": "mechanism", "name": "FOXO transcription factors", "score": 0.12, "status": "active"}, {"id": "MEC-0014", "type": "mechanism", "name": "SIRTUIN / NAD+ metabolism", "score": 0.7696, "status": "active"}, {"id": "MEC-0015", "type": "mechanism", "name": "PI3K/AKT signaling", "score": 0.2345, "status": "active"}, {"id": "MEC-0016", "type": "mechanism", "name": "HPA axis dysregulation", "score": 0.5711, "status": "active"}, {"id": "MEC-0017", "type": "mechanism", "name": "Mast cell activation", "score": 0.7987, "status": "active"}, {"id": "MEC-0018", "type": "mechanism", "name": "Endocannabinoid system", "score": 0.7848, "status": "active"}, {"id": "MEC-0019", "type": "mechanism", "name": "Vagus nerve / autonomic regulation", "score": 0.8289, "status": "active"}, {"id": "MEC-0020", "type": "mechanism", "name": "Calcium / glutamate-NMDA homeostasis", "score": 0.6934, "status": "active"}, {"id": "MEC-0021", "type": "mechanism", "name": "Short-chain fatty acid (SCFA) signaling", "score": 0.8194, "status": "active"}, {"id": "MEC-0022", "type": "mechanism", "name": "Lipopolysaccharide (LPS) endotoxemia / leaky gut", "score": 0.6427, "status": "active"}, {"id": "MEC-0023", "type": "mechanism", "name": "Tryptophan-kynurenine metabolism", "score": 0.7417, "status": "active"}, {"id": "MEC-0024", "type": "mechanism", "name": "p-cresol / 4-EPS aromatic metabolite production", "score": 0.4825, "status": "active"}, {"id": "MEC-0025", "type": "mechanism", "name": "Bile acid metabolism / FXR signaling", "score": 0.8095, "status": "active"}, {"id": "MEC-0026", "type": "mechanism", "name": "Microbial GABA / neurotransmitter synthesis", "score": 0.8701, "status": "active"}, {"id": "MEC-0027", "type": "mechanism", "name": "Heat shock protein (HSF1/HSP70/HSP90) response", "score": 0.8324, "status": "active"}, {"id": "MEC-0028", "type": "mechanism", "name": "BDNF / neurotrophin signaling", "score": 0.4834, "status": "active"}, {"id": "MEC-0029", "type": "mechanism", "name": "Vitamin-D-regulated serotonin synthesis (TPH2)", "score": 0.5989, "status": "active"}, {"id": "MEC-0030", "type": "mechanism", "name": "Autophagy / proteostasis", "score": 0.7089, "status": "active"}, {"id": "MEC-0031", "type": "mechanism", "name": "DHA membrane phospholipid composition", "score": 0.4389, "status": "active"}, {"id": "MEC-0032", "type": "mechanism", "name": "Aluminum adjuvant accumulation / TLR-mediated neur", "score": 0.8277, "status": "active"}, {"id": "MEC-0033", "type": "mechanism", "name": "Photobiomodulation / cytochrome c oxidase activati", "score": 0.2036, "status": "active"}, {"id": "MEC-0034", "type": "mechanism", "name": "GABA developmental polarity switch (NKCC1/KCC2)", "score": 0.6434, "status": "active"}, {"id": "HYP-0001", "type": "hypothesis", "name": "FOLR1 autoantibodies / cerebral folate deficiency", "score": 50.0, "status": "active"}, {"id": "HYP-0002", "type": "hypothesis", "name": "Prenatal acetaminophen (paracetamol) exposure", "score": 50.0, "status": "active"}, {"id": "HYP-0003", "type": "hypothesis", "name": "Maternal folate deficiency during preconception/pregnancy", "score": 50.0, "status": "active"}, {"id": "HYP-0004", "type": "hypothesis", "name": "PFAS / forever-chemical drinking-water exposure", "score": 50.0, "status": "active"}, {"id": "HYP-0005", "type": "hypothesis", "name": "Glyphosate exposure (food + water)", "score": 50.0, "status": "active"}, {"id": "HYP-0006", "type": "hypothesis", "name": "Mitochondrial dysfunction (acquired or inherited)", "score": 50.0, "status": "active"}, {"id": "HYP-0007", "type": "hypothesis", "name": "Gut microbiome dysbiosis / dysbiotic fermentation", "score": 50.0, "status": "active"}, {"id": "HYP-0008", "type": "hypothesis", "name": "Maternal immune activation (prenatal infection or autoimmune", "score": 50.0, "status": "active"}, {"id": "HYP-0009", "type": "hypothesis", "name": "Advanced parental age (especially paternal)", "score": 50.0, "status": "active"}, {"id": "HYP-0010", "type": "hypothesis", "name": "Prenatal valproate (sodium valproate) exposure", "score": 50.0, "status": "active"}, {"id": "HYP-0011", "type": "hypothesis", "name": "Phthalate exposure (prenatal+postnatal)", "score": 50.0, "status": "active"}, {"id": "HYP-0012", "type": "hypothesis", "name": "BPA / bisphenol exposure", "score": 50.0, "status": "active"}, {"id": "HYP-0013", "type": "hypothesis", "name": "Air pollution (PM2.5, traffic)", "score": 50.0, "status": "active"}, {"id": "HYP-0014", "type": "hypothesis", "name": "Pesticide exposure (organophosphates, glyphosate)", "score": 50.0, "status": "active"}, {"id": "HYP-0015", "type": "hypothesis", "name": "Heavy metal exposure (Pb, Hg, Al)", "score": 50.0, "status": "active"}, {"id": "HYP-0016", "type": "hypothesis", "name": "Mold / mycotoxin exposure", "score": 50.0, "status": "active"}, {"id": "HYP-0017", "type": "hypothesis", "name": "EMF exposure (controversial)", "score": 50.0, "status": "active"}, {"id": "HYP-0018", "type": "hypothesis", "name": "Maternal diabetes (GDM, T2)", "score": 50.0, "status": "active"}, {"id": "HYP-0019", "type": "hypothesis", "name": "Maternal obesity", "score": 50.0, "status": "active"}, {"id": "HYP-0020", "type": "hypothesis", "name": "Maternal vitamin D deficiency", "score": 50.0, "status": "active"}, {"id": "HYP-0021", "type": "hypothesis", "name": "Maternal omega-3 deficiency", "score": 50.0, "status": "active"}, {"id": "HYP-0022", "type": "hypothesis", "name": "Early-life antibiotics (especially first year)", "score": 50.0, "status": "active"}, {"id": "HYP-0023", "type": "hypothesis", "name": "Cesarean section delivery", "score": 50.0, "status": "active"}, {"id": "HYP-0024", "type": "hypothesis", "name": "Maternal SSRI in pregnancy", "score": 50.0, "status": "active"}, {"id": "HYP-0025", "type": "hypothesis", "name": "Prenatal viral infection (rubella, CMV, flu)", "score": 50.0, "status": "active"}, {"id": "HYP-0026", "type": "hypothesis", "name": "PANDAS/PANS triggers (strep, mycoplasma)", "score": 50.0, "status": "active"}, {"id": "HYP-0027", "type": "hypothesis", "name": "De novo mutations in synaptic genes", "score": 50.0, "status": "active"}, {"id": "HYP-0028", "type": "hypothesis", "name": "Inherited polygenic risk", "score": 50.0, "status": "active"}, {"id": "HYP-0029", "type": "hypothesis", "name": "Tuberous sclerosis (TSC1/TSC2)", "score": 50.0, "status": "active"}, {"id": "HYP-0030", "type": "hypothesis", "name": "PTEN hamartoma syndrome", "score": 50.0, "status": "active"}, {"id": "HYP-0031", "type": "hypothesis", "name": "AMPK pathway dysregulation", "score": 50.0, "status": "active"}, {"id": "HYP-0032", "type": "hypothesis", "name": "IGF-1 axis insufficiency", "score": 50.0, "status": "active"}, {"id": "HYP-0033", "type": "hypothesis", "name": "SIRTUIN / NAD+ depletion", "score": 50.0, "status": "active"}, {"id": "HYP-0034", "type": "hypothesis", "name": "Oxytocin system dysregulation", "score": 50.0, "status": "active"}, {"id": "HYP-0035", "type": "hypothesis", "name": "Maternal/prenatal thyroid hypofunction", "score": 50.0, "status": "active"}, {"id": "HYP-0036", "type": "hypothesis", "name": "Maternal psychological stress (prenatal)", "score": 50.0, "status": "active"}, {"id": "HYP-0037", "type": "hypothesis", "name": "Childhood/family emotional stress", "score": 50.0, "status": "active"}, {"id": "HYP-0038", "type": "hypothesis", "name": "Excessive screen / smartphone exposure (early life)", "score": 50.0, "status": "active"}, {"id": "HYP-0039", "type": "hypothesis", "name": "Sleep disruption / circadian misalignment", "score": 50.0, "status": "active"}, {"id": "HYP-0040", "type": "hypothesis", "name": "Birth complications (hypoxia, instrumental delivery)", "score": 50.0, "status": "active"}, {"id": "BIO-0001", "type": "biomarker", "name": "S-adenosylmethionine (SAM)", "score": 50, "status": "active"}, {"id": "BIO-0002", "type": "biomarker", "name": "S-adenosylhomocysteine (SAH)", "score": 50, "status": "active"}, {"id": "BIO-0003", "type": "biomarker", "name": "SAM/SAH ratio", "score": 50, "status": "active"}, {"id": "BIO-0004", "type": "biomarker", "name": "Plasma methionine", "score": 50, "status": "active"}, {"id": "BIO-0005", "type": "biomarker", "name": "Homocysteine", "score": 50, "status": "active"}, {"id": "BIO-0006", "type": "biomarker", "name": "Cysteine", "score": 50, "status": "active"}, {"id": "BIO-0007", "type": "biomarker", "name": "Taurine", "score": 50, "status": "active"}, {"id": "BIO-0008", "type": "biomarker", "name": "Methylmalonic acid (MMA)", "score": 50, "status": "active"}, {"id": "BIO-0009", "type": "biomarker", "name": "Plasma B12 (cobalamin)", "score": 50, "status": "active"}, {"id": "BIO-0010", "type": "biomarker", "name": "Holotranscobalamin (active B12)", "score": 50, "status": "active"}, {"id": "BIO-0011", "type": "biomarker", "name": "Plasma folate", "score": 50, "status": "active"}, {"id": "BIO-0012", "type": "biomarker", "name": "RBC folate", "score": 50, "status": "active"}, {"id": "BIO-0013", "type": "biomarker", "name": "Pyridoxal-5-phosphate (P5P / active B6)", "score": 50, "status": "active"}, {"id": "BIO-0014", "type": "biomarker", "name": "Whole-blood histamine", "score": 50, "status": "active"}, {"id": "BIO-0015", "type": "biomarker", "name": "FRAA (folate receptor alpha autoantibody) \u2014 blocki", "score": 50, "status": "active"}, {"id": "BIO-0016", "type": "biomarker", "name": "FRAA (folate receptor alpha autoantibody) \u2014 bindin", "score": 50, "status": "active"}, {"id": "BIO-0017", "type": "biomarker", "name": "CSF 5-MTHF", "score": 50, "status": "active"}, {"id": "BIO-0018", "type": "biomarker", "name": "Lactate", "score": 50, "status": "active"}, {"id": "BIO-0019", "type": "biomarker", "name": "Pyruvate", "score": 50, "status": "active"}, {"id": "BIO-0020", "type": "biomarker", "name": "Lactate-to-pyruvate ratio (L:P)", "score": 50, "status": "active"}, {"id": "BIO-0021", "type": "biomarker", "name": "Acylcarnitine profile", "score": 50, "status": "active"}, {"id": "BIO-0022", "type": "biomarker", "name": "Free + total carnitine", "score": 50, "status": "active"}, {"id": "BIO-0023", "type": "biomarker", "name": "Plasma ammonia", "score": 50, "status": "active"}, {"id": "BIO-0024", "type": "biomarker", "name": "Creatine kinase (CK)", "score": 50, "status": "active"}, {"id": "BIO-0025", "type": "biomarker", "name": "CoQ10 (ubiquinone)", "score": 50, "status": "active"}, {"id": "BIO-0026", "type": "biomarker", "name": "mtDNA copy number", "score": 50, "status": "active"}, {"id": "BIO-0027", "type": "biomarker", "name": "Krebs cycle metabolites (citrate/succinate/fumarat", "score": 50, "status": "active"}, {"id": "BIO-0028", "type": "biomarker", "name": "Reduced glutathione (GSH)", "score": 50, "status": "active"}, {"id": "BIO-0029", "type": "biomarker", "name": "Oxidized glutathione (GSSG)", "score": 50, "status": "active"}, {"id": "BIO-0030", "type": "biomarker", "name": "GSH/GSSG ratio", "score": 50, "status": "active"}, {"id": "SRC-000001", "type": "source", "name": "Folinic acid improves verbal communication in children with ", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000002", "type": "source", "name": "Maternal Folate Receptor Alpha Autoantibodies and Increased ", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000003", "type": "source", "name": "Sulforaphane treatment of autism spectrum disorder (ASD)", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000004", "type": "source", "name": "Randomized, Placebo-Controlled Trial of Methyl B12 for Child", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000005", "type": "source", "name": "A randomized controlled pilot trial of oral N-acetylcysteine", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000006", "type": "source", "name": "Effects of bumetanide on neurobehavioral function in childre", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000007", "type": "source", "name": "The association between maternal use of folic acid supplemen", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000008", "type": "source", "name": "Long-term benefit of Microbiota Transfer Therapy on autism s", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000009", "type": "source", "name": "Acetaminophen Use During Pregnancy and Children's Risk of Au", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000010", "type": "source", "name": "Dispersion and stratification of per- and polyfluoroalkyl su", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000011", "type": "source", "name": "Cerebral Folate Deficiency, Folate Receptor Alpha Autoantibo", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000012", "type": "source", "name": "Folinic acid improves verbal communication in children with ", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000013", "type": "source", "name": "The Soluble Folate Receptor in Autism Spectrum Disorder: Rel", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000014", "type": "source", "name": "Efficacy of oral folinic acid supplementation in children wi", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000015", "type": "source", "name": "Correction: Rossignol, D.A.; Frye, R.E. Cerebral Folate Defi", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000016", "type": "source", "name": "Safety and Efficacy of High-Dose Folinic Acid in Children wi", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000017", "type": "source", "name": "Clinical concerns and considerations for leucovorin use in a", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000018", "type": "source", "name": "Treatment of Folate Metabolism Abnormalities in Autism Spect", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000019", "type": "source", "name": "Autism Spectrum Disorder as a Multifactorial Disorder: The I", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000020", "type": "source", "name": "Autism: Trump links condition to Tylenol and touts leucovori", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000021", "type": "source", "name": "Cerebral folate receptor autoantibodies in autism spectrum d", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000022", "type": "source", "name": "Binding Folate Receptor Alpha Autoantibody Is a Biomarker fo", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000023", "type": "source", "name": "Cerebral Folate Deficiency, Autism, and the Role of Leucovor", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000024", "type": "source", "name": "Folinic Acid as Adjunctive Therapy in Treatment of Inappropr", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000025", "type": "source", "name": "Folinic acid improves the score of Autism in the EFFET place", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000026", "type": "source", "name": "Leucovorin for Autism.", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000027", "type": "source", "name": "Folinic acid as a treatment for autism in children: A within", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000028", "type": "source", "name": "AAP: Leucovorin Not Recommended for Autism.", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000029", "type": "source", "name": "Cerebral folate deficiency with developmental delay, autism,", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000030", "type": "source", "name": "Can Leucovorin (Folinic Acid) Treat Autism Features?", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000031", "type": "source", "name": "The basis for folinic acid treatment in neuro-psychiatric di", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000032", "type": "source", "name": "Vitamins, Vascular Health and Disease.", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000033", "type": "source", "name": "Autism initiative embraces little-tested vitamin as a treatm", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000034", "type": "source", "name": "Cerebral folate transporter deficiency: a potentially treata", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000035", "type": "source", "name": "Comment on Chu et al. Acetaminophen's Role in Autism and ADH", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000036", "type": "source", "name": "Folate Receptor Alpha Autoantibodies in the Pediatric Acute-", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000037", "type": "source", "name": "Metabolic biomarkers of increased oxidative stress and impai", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000038", "type": "source", "name": "Emerging Discussions on Folinic Acid and Acetaminophen in Au", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000039", "type": "source", "name": "The FDA's Leucovorin Approval-A Departure From Evidentiary S", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000040", "type": "source", "name": "Efficacy of methylcobalamin and folinic acid treatment on gl", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000041", "type": "source", "name": "Clinical recognition and aspects of the cerebral folate defi", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000042", "type": "source", "name": "Folate metabolism abnormalities in autism: potential biomark", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000043", "type": "source", "name": "FDA approves leucovorin-but not for autism, despite Trump hy", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000044", "type": "source", "name": "Folinic acid treatment for schizophrenia associated with fol", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000045", "type": "source", "name": "Brain Uptake of Folate Forms in the Presence of Folate Recep", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000046", "type": "source", "name": "Prevention of behavioral deficits in rats exposed to folate ", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000047", "type": "source", "name": "Folic Acid and Autism: A Systematic Review of the Current St", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000048", "type": "source", "name": "Pharmacological and dietary-supplement treatments for autism", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000049", "type": "source", "name": "Correspondence to \"Efficacy of oral folinic acid supplementa", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000050", "type": "source", "name": "Retraction Note: Efficacy of oral folinic acid supplementati", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000051", "type": "source", "name": "The pediatric psychopharmacology of autism spectrum disorder", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000052", "type": "source", "name": "Can Folinic Acid Be a Treatment Option for Autism?", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000053", "type": "source", "name": "Folate receptor alpha autoantibodies in children with autism", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000054", "type": "source", "name": "The potential use of folate and its derivatives in treating ", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000055", "type": "source", "name": "Folate Receptor Alpha Autoantibodies in Autism Spectrum Diso", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000056", "type": "source", "name": "Meta-analysis: Pharmacologic Treatment of Restricted and Rep", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000057", "type": "source", "name": "Comparative Analysis of Treatment With Folate Forms in Clini", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000058", "type": "source", "name": "Reply to letter: Correspondence to \"Efficacy of oral folinic", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000059", "type": "source", "name": "Targeted Biomedical Treatment for Autism Spectrum Disorders.", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000060", "type": "source", "name": "Isothiocyanate from Broccoli, Sulforaphane, and Its Properti", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000061", "type": "source", "name": "Randomized controlled trial of sulforaphane and metabolite d", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000062", "type": "source", "name": "A Review on Autism Spectrum Disorder: Pathogenesis, Biomarke", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000063", "type": "source", "name": "The effect of sulforaphane on autism spectrum disorder: syst", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000064", "type": "source", "name": "Effects of sulforaphane on ABC and SRS scales in patients wi", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000065", "type": "source", "name": "Investigating the clinical efficacy, safety and molecular me", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000066", "type": "source", "name": "Therapeutic efficacy of sulforaphane in autism spectrum diso", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000067", "type": "source", "name": "The psychopharmacology of autism spectrum disorder and Rett ", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000068", "type": "source", "name": "The neuroprotective mechanisms and effects of sulforaphane.", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000069", "type": "source", "name": "Nrf2 activator, sulforaphane ameliorates autism-like symptom", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000070", "type": "source", "name": "Sulforaphane as a potential therapeutic agent: a comprehensi", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000071", "type": "source", "name": "Pre-Clinical Neuroprotective Evidences and Plausible Mechani", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000072", "type": "source", "name": "Biological mechanisms and clinical efficacy of sulforaphane ", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000073", "type": "source", "name": "Profiles of urine and blood metabolomics in autism spectrum ", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000074", "type": "source", "name": "Sulforaphane and Brain Health: From Pathways of Action to Ef", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000075", "type": "source", "name": "Sulforaphane treatment for autism spectrum disorder: A syste", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000076", "type": "source", "name": "Hormesis, cellular stress response, and redox homeostasis in", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000077", "type": "source", "name": "Sulforaphane Treatment in Children with Autism: A Prospectiv", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000078", "type": "source", "name": "Factors Influencing Sulforaphane Content in Broccoli Sprouts", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000079", "type": "source", "name": "Dietary Phytochemicals as Neurotherapeutics for Autism Spect", "pmid": "", "score": 30, "status": "active"}, {"id": "SRC-000080", "type": "source", "name": "Deregulated Nrf2-Keap1-BACH1 axis in autism spectrum disorde", "pmid": "", "score": 30, "status": "active"}], "edges": [{"source": "INT-0001", "target": "MEC-0003", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0001", "target": "MEC-0004", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0002", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0002", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0003", "target": "MEC-0003", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0004", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0004", "target": "MEC-0007", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0005", "target": "MEC-0007", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0006", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0006", "target": "MEC-0005", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0007", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0007", "target": "MEC-0007", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0007", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0008", "target": "MEC-0003", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0011", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0012", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0014", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0015", "target": "MEC-0007", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0017", "target": "MEC-0003", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0017", "target": "MEC-0007", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0020", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0023", "target": "MEC-0007", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0025", "target": "MEC-0008", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0027", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0027", "target": "MEC-0004", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0027", "target": "MEC-0005", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0028", "target": "MEC-0009", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0028", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0030", "target": "MEC-0003", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0035", "target": "MEC-0007", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0036", "target": "MEC-0009", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0037", "target": "MEC-0008", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0042", "target": "MEC-0008", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0047", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0061", "target": "MEC-0016", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0065", "target": "MEC-0006", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0071", "target": "MEC-0019", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0071", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0073", "target": "MEC-0019", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0074", "target": "MEC-0019", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0075", "target": "MEC-0016", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0037", "target": "MEC-0011", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0028", "target": "MEC-0014", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0002", "target": "MEC-0014", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0005", "target": "MEC-0020", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0038", "target": "MEC-0020", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0035", "target": "MEC-0018", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0035", "target": "MEC-0017", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0029", "target": "MEC-0017", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0047", "target": "MEC-0011", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0007", "target": "MEC-0011", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0036", "target": "MEC-0015", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0076", "target": "MEC-0026", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0076", "target": "MEC-0021", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0076", "target": "MEC-0022", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0077", "target": "MEC-0026", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0077", "target": "MEC-0021", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0078", "target": "MEC-0026", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0081", "target": "MEC-0026", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0082", "target": "MEC-0021", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0083", "target": "MEC-0021", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0084", "target": "MEC-0024", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0087", "target": "MEC-0029", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0088", "target": "MEC-0003", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0088", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0089", "target": "MEC-0011", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0089", "target": "MEC-0030", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0090", "target": "MEC-0028", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0090", "target": "MEC-0011", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0090", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0091", "target": "MEC-0027", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0091", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0048", "target": "MEC-0027", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0048", "target": "MEC-0030", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0073", "target": "MEC-0027", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0002", "target": "MEC-0027", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0047", "target": "MEC-0028", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0047", "target": "MEC-0030", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0007", "target": "MEC-0028", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0007", "target": "MEC-0030", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0036", "target": "MEC-0030", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0013", "target": "MEC-0029", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0035", "target": "MEC-0028", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0065", "target": "MEC-0028", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0037", "target": "MEC-0030", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0028", "target": "MEC-0030", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0014", "target": "MEC-0031", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0014", "target": "MEC-0028", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0003", "target": "MEC-0029", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0092", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0092", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0092", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0092", "target": "MEC-0027", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0093", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0093", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0093", "target": "MEC-0003", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0094", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0094", "target": "MEC-0011", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0095", "target": "MEC-0014", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0095", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0095", "target": "MEC-0030", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "MEC-0011", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "MEC-0003", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "MEC-0031", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "MEC-0029", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0097", "target": "MEC-0033", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0097", "target": "MEC-0010", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0097", "target": "MEC-0002", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0099", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0036", "target": "MEC-0013", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0028", "target": "MEC-0013", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0093", "target": "MEC-0013", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0047", "target": "MEC-0013", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0024", "target": "MEC-0020", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0024", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0041", "target": "MEC-0008", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0041", "target": "MEC-0022", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0100", "target": "MEC-0029", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0100", "target": "MEC-0031", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0100", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0101", "target": "MEC-0008", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0101", "target": "MEC-0022", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0101", "target": "MEC-0001", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0005", "target": "MEC-0034", "kind": "int-mech", "weight": 0.4, "contested": false}, {"source": "INT-0001", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0002", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0002", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0003", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0003", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0004", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0004", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0005", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0006", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0007", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0007", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0007", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0007", "target": "PHE-0006", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0007", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0008", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0011", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0012", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0013", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0013", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0014", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0014", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0014", "target": "PHE-0006", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0015", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0017", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0017", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0020", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0023", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0025", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0027", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0027", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0028", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0028", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0029", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0030", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0035", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0035", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0035", "target": "PHE-0006", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0035", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0036", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0036", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0037", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0037", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0037", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0038", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0042", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0047", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0047", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0047", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0047", "target": "PHE-0006", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0048", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0048", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0048", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0061", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0065", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0065", "target": "PHE-0006", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0071", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0071", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0073", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0073", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0074", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0075", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0076", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0076", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0076", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0077", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0077", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0078", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0078", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0081", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0081", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0082", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0083", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0084", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0087", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0087", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0088", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0088", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0089", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0089", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0090", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0090", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0090", "target": "PHE-0006", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0091", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0092", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0092", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0093", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0093", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0094", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0095", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0095", "target": "PHE-0005", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0096", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0096", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0096", "target": "PHE-0006", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0096", "target": "PHE-0007", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0097", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0097", "target": "PHE-0003", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0099", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0041", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0100", "target": "PHE-0001", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0100", "target": "PHE-0002", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0101", "target": "PHE-0004", "kind": "int-phe", "weight": 0.0, "contested": false}, {"source": "INT-0001", "target": "HYP-0001", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0008", "target": "HYP-0003", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0009", "target": "HYP-0004", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0009", "target": "HYP-0005", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0009", "target": "HYP-0015", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0013", "target": "HYP-0020", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0014", "target": "HYP-0021", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0025", "target": "HYP-0022", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0006", "target": "HYP-0026", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0036", "target": "HYP-0029", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0036", "target": "HYP-0030", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0061", "target": "HYP-0034", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0071", "target": "HYP-0037", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0073", "target": "HYP-0037", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0074", "target": "HYP-0037", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0075", "target": "HYP-0036", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0075", "target": "HYP-0037", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0065", "target": "HYP-0032", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0046", "target": "HYP-0039", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0047", "target": "HYP-0031", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0007", "target": "HYP-0031", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0037", "target": "HYP-0031", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0076", "target": "HYP-0007", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0078", "target": "HYP-0007", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0088", "target": "HYP-0006", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0089", "target": "HYP-0031", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0089", "target": "HYP-0006", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0090", "target": "HYP-0031", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0092", "target": "HYP-0006", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0093", "target": "HYP-0006", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0094", "target": "HYP-0006", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0094", "target": "HYP-0031", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0095", "target": "HYP-0033", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0095", "target": "HYP-0006", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "HYP-0006", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "HYP-0003", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "HYP-0021", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "HYP-0035", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "HYP-0031", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0096", "target": "HYP-0033", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0097", "target": "HYP-0006", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0099", "target": "HYP-0015", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0100", "target": "HYP-0021", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "INT-0101", "target": "HYP-0007", "kind": "int-hyp", "weight": 0.4, "contested": false}, {"source": "HYP-0001", "target": "MEC-0003", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0001", "target": "MEC-0004", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0002", "target": "MEC-0001", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0003", "target": "MEC-0003", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0005", "target": "MEC-0008", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0006", "target": "MEC-0001", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0006", "target": "MEC-0010", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0007", "target": "MEC-0004", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0007", "target": "MEC-0008", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0008", "target": "MEC-0002", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0017", "target": "MEC-0001", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0018", "target": "MEC-0002", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0019", "target": "MEC-0002", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0022", "target": "MEC-0008", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0023", "target": "MEC-0008", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0029", "target": "MEC-0009", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0030", "target": "MEC-0009", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0031", "target": "MEC-0011", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0031", "target": "MEC-0010", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0032", "target": "MEC-0012", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0032", "target": "MEC-0006", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0033", "target": "MEC-0014", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0033", "target": "MEC-0010", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0034", "target": "MEC-0016", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0035", "target": "MEC-0016", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0036", "target": "MEC-0016", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0036", "target": "MEC-0002", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0037", "target": "MEC-0019", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0037", "target": "MEC-0016", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0038", "target": "MEC-0006", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0039", "target": "MEC-0002", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0039", "target": "MEC-0010", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0040", "target": "MEC-0001", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0040", "target": "MEC-0002", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0006", "target": "MEC-0011", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0006", "target": "MEC-0014", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0029", "target": "MEC-0015", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0030", "target": "MEC-0015", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0008", "target": "MEC-0017", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0007", "target": "MEC-0019", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0005", "target": "MEC-0018", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0011", "target": "MEC-0016", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0012", "target": "MEC-0016", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0007", "target": "MEC-0021", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0007", "target": "MEC-0023", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0007", "target": "MEC-0025", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0007", "target": "MEC-0026", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0022", "target": "MEC-0026", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0022", "target": "MEC-0021", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0023", "target": "MEC-0026", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0005", "target": "MEC-0023", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0021", "target": "MEC-0031", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0008", "target": "MEC-0027", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0006", "target": "MEC-0030", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0029", "target": "MEC-0030", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0030", "target": "MEC-0030", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0031", "target": "MEC-0030", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0025", "target": "MEC-0002", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0025", "target": "MEC-0005", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0025", "target": "MEC-0017", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0028", "target": "MEC-0006", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0028", "target": "MEC-0007", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "HYP-0028", "target": "MEC-0009", "kind": "hyp-mech", "weight": 0.4, "contested": false}, {"source": "FRM-0013", "target": "INT-0001", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0036", "target": "INT-0025", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0041", "target": "INT-0046", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0042", "target": "INT-0046", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0034", "target": "INT-0077", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0020", "target": "INT-0011", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0047", "target": "INT-0011", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0007", "target": "INT-0004", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0038", "target": "INT-0023", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0011", "target": "INT-0003", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0014", "target": "INT-0008", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0035", "target": "INT-0078", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0019", "target": "INT-0011", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0002", "target": "INT-0004", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0008", "target": "INT-0004", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0022", "target": "INT-0006", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0012", "target": "INT-0003", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0032", "target": "INT-0029", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0003", "target": "INT-0004", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0005", "target": "INT-0004", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0006", "target": "INT-0004", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0023", "target": "INT-0006", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0043", "target": "INT-0046", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0033", "target": "INT-0029", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0021", "target": "INT-0011", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0048", "target": "INT-0011", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0009", "target": "INT-0004", "kind": "form-int", "weight": 0.6, "contested": false}, {"source": "FRM-0040", "target": "INT-0023", "kind": "form-int", "weight": 0.6, "contested": false}], "counts": {"phenotypes": 11, "interventions": 60, "formulations": 40, "mechanisms": 34, "hypotheses": 40, "biomarkers": 30, "sources_visible": 80, "edges": 361, "nodes_total_visible": 295, "atlas_total_sources": 1462, "atlas_total_genes": 1564}, "last_updated": "2026-05-09 16:19 UTC"};
+const NEBULA = {"PHE-0001": "#7C5CFF", "PHE-0002": "#00A7B5", "PHE-0003": "#00B26D", "PHE-0004": "#5BAE3C", "PHE-0005": "#355CFF", "PHE-0006": "#4F7BFF", "PHE-0007": "#7A7DFF", "PHE-0008": "#B05EFF", "PHE-0009": "#FF6BB3", "PHE-0010": "#E07A5F", "PHE-0011": "#D4A017"};
+const TYPE_STYLE = {
+  phenotype:    { color: null, size: 18, shape:"phenotype" },
+  intervention: { color: "#e5e4df", size: 7, shape:"pill" },
+  formulation:  { color: "#a8a89e", size: 4, shape:"diamond" },
+  mechanism:    { color: "#7BB3FF", size: 9, shape:"diamond" },
+  hypothesis:   { color: "#FFB36B", size: 6, shape:"circle" },
+  biomarker:    { color: "#5BAE3C", size: 5, shape:"ring" },
+  source:       { color: "#3a3a3f", size: 1.5, shape:"dot" },
+};
+
+const { nodes, edges, counts, last_updated } = PAYLOAD;
+
+// Stats banner
+document.getElementById("ct-nodes").textContent = counts.nodes_total_visible;
+document.getElementById("ct-edges").textContent = counts.edges;
+document.getElementById("ct-int").textContent = counts.interventions;
+document.getElementById("ct-frm").textContent = counts.formulations;
+document.getElementById("ct-hyp").textContent = counts.hypotheses;
+document.getElementById("ct-src").textContent = counts.atlas_total_sources;
+document.getElementById("updated").textContent = last_updated;
+
+// Color for a node: phenotypes use NEBULA, others use type color
+function nodeColor(n) {
+  if (n.type === "phenotype") return NEBULA[n.id] || "#cfd0d4";
+  if (n.type === "formulation" && n.parent_intervention_id) {
+    // Inherit a hint from parent intervention's phenotype edge if available
+  }
+  return TYPE_STYLE[n.type]?.color || "#cfd0d4";
+}
+
+// SVG setup
+const svg = d3.select("#atlas-svg");
+const w = window.innerWidth, h = window.innerHeight;
+svg.attr("viewBox", `0 0 ${w} ${h}`);
+
+const root = svg.append("g");
+
+// ── Background starfield (parallax) ─────────────────────────────────
+function makeLCG(seed){let s=seed;return ()=>{s=(s*1103515245+12345)&0x7FFFFFFF;return s/0x7FFFFFFF;};}
+const bg = root.append("g").attr("class","bg");
+const rng = makeLCG(7);
+for (let i = 0; i < 220; i++) {
+  bg.append("circle")
+    .attr("class", `bg-star twinkle${(i%2)+1}`)
+    .attr("cx", rng() * w).attr("cy", rng() * h)
+    .attr("r", 0.4 + rng() * 1.2)
+    .attr("opacity", 0.15 + rng() * 0.4)
+    .style("animation-delay", `${rng() * -10}s`);
+}
+
+const edgeGroup = root.append("g").attr("class","edges");
+const nodeGroup = root.append("g").attr("class","nodes");
+
+// ── Force simulation (tuned for fast equilibrium, not infinite jitter) ─
+const sim = d3.forceSimulation(nodes)
+  .force("link", d3.forceLink(edges).id(d => d.id).distance(d => {
+    const k = d.kind;
+    if (k === "form-int") return 32;
+    if (k === "int-mech") return 80;
+    if (k === "int-phe") return 100;
+    if (k === "hyp-mech") return 70;
+    if (k === "hyp-hyp") return 90;
+    return 80;
+  }).strength(0.18))
+  .force("charge", d3.forceManyBody().strength(d => {
+    const t = d.type;
+    if (t === "phenotype") return -700;
+    if (t === "intervention") return -260;
+    if (t === "mechanism") return -350;
+    if (t === "hypothesis") return -260;
+    if (t === "formulation") return -50;
+    if (t === "biomarker") return -100;
+    return -30;
+  }))
+  .force("center", d3.forceCenter(w/2, h/2))
+  .force("collide", d3.forceCollide().radius(d => (TYPE_STYLE[d.type]?.size || 6) + 4))
+  // Aggressive alpha decay → reach equilibrium in ~5 seconds, then freeze.
+  // This addresses ChatGPT design feedback A: graph should drift slowly,
+  // not jitter continuously. Computational trustworthiness > biological liveness.
+  .alphaDecay(0.04)
+  .velocityDecay(0.5);
+
+// After ~5 seconds, freeze positions to prevent perpetual drift
+setTimeout(() => {
+  sim.alphaTarget(0.0);
+  // Soft-freeze: extremely low alpha but not stopped (allows hover interactions)
+  sim.alpha(0.005);
+}, 5500);
+
+// ── Edges ──────────────────────────────────────────────────────────
+const edgeSel = edgeGroup.selectAll("line")
+  .data(edges).enter().append("line")
+  .attr("class", d => "edge" + (d.contested ? " edge-contested" : ""))
+  .attr("stroke", d => d.contested ? "#B3261E" : "#7a7a7f");
+
+// Contested edges: dual-color rendering
+edgeGroup.selectAll("line.edge-contested")
+  .each(function(d){
+    const ln = d3.select(this);
+    ln.attr("stroke", "url(#contested-grad)");
+  });
+
+// Defs: contested gradient
+const defs = svg.append("defs");
+const cgrad = defs.append("linearGradient").attr("id", "contested-grad");
+cgrad.append("stop").attr("offset","0%").attr("stop-color","#B3261E").attr("stop-opacity",0.7);
+cgrad.append("stop").attr("offset","50%").attr("stop-color","#a8a89e").attr("stop-opacity",0.3);
+cgrad.append("stop").attr("offset","100%").attr("stop-color","#00B26D").attr("stop-opacity",0.7);
+
+// ── Nodes ──────────────────────────────────────────────────────────
+const nodeSel = nodeGroup.selectAll("g")
+  .data(nodes).enter().append("g")
+  .attr("class", "node")
+  .each(function(d) {
+    const g = d3.select(this);
+    const style = TYPE_STYLE[d.type];
+    const color = nodeColor(d);
+    if (d.type === "phenotype") {
+      // Halo + core
+      g.append("circle").attr("r", style.size * 1.6)
+        .attr("fill", color).attr("opacity", 0.18);
+      g.append("circle").attr("r", style.size).attr("fill", color);
+    } else if (style.shape === "pill") {
+      g.append("rect")
+        .attr("x", -style.size).attr("y", -style.size * 0.45)
+        .attr("width", style.size * 2).attr("height", style.size * 0.9)
+        .attr("rx", style.size * 0.45)
+        .attr("fill", color).attr("opacity", 0.85);
+      if (d.status === "contested") {
+        g.append("rect")
+          .attr("x", -style.size - 2).attr("y", -style.size * 0.45 - 2)
+          .attr("width", style.size * 2 + 4).attr("height", style.size * 0.9 + 4)
+          .attr("rx", style.size * 0.45 + 2)
+          .attr("fill", "none").attr("stroke", "#B3261E")
+          .attr("stroke-width", 1).attr("stroke-dasharray", "2 2")
+          .attr("opacity", 0.6);
+      }
+    } else if (style.shape === "diamond") {
+      const s = style.size;
+      g.append("polygon")
+        .attr("points", `0,-${s} ${s},0 0,${s} -${s},0`)
+        .attr("fill", color).attr("opacity", 0.85);
+    } else if (style.shape === "ring") {
+      g.append("circle").attr("r", style.size)
+        .attr("fill", "none").attr("stroke", color).attr("stroke-width", 1.5)
+        .attr("opacity", 0.85);
+    } else {
+      g.append("circle").attr("r", style.size).attr("fill", color)
+        .attr("opacity", style.shape === "dot" ? 0.45 : 0.85);
+    }
+
+    // Always render label, but visibility controlled by zoom + view mode.
+    // ChatGPT feedback C: adaptive label reveal thresholds.
+    g.append("text")
+      .attr("y", (style.size || 6) + 12)
+      .attr("text-anchor", "middle")
+      .attr("font-size", d.type === "phenotype" ? 10 : 9)
+      .attr("font-weight", 500)
+      .attr("fill", d.type === "phenotype" ? "#e5e4df" : "#a8a89e")
+      .style("pointer-events", "none")
+      .style("opacity", d.type === "phenotype" ? 1 :
+             (d.type === "intervention" && d.score >= 70) ? 0.85 : 0)
+      .text(d.name.slice(0, 28));
+  })
+  .call(d3.drag()
+    .on("start", e => {
+      if (!e.active) sim.alphaTarget(0.3).restart();
+      e.subject.fx = e.subject.x; e.subject.fy = e.subject.y;
+    })
+    .on("drag", e => { e.subject.fx = e.x; e.subject.fy = e.y; })
+    .on("end", e => {
+      if (!e.active) sim.alphaTarget(0);
+      e.subject.fx = null; e.subject.fy = null;
+    }));
+
+// Build neighbor index (1-hop) for hover-isolation
+const neighbors = {};
+edges.forEach(e => {
+  const sid = e.source.id || e.source;
+  const tid = e.target.id || e.target;
+  (neighbors[sid] = neighbors[sid] || new Set()).add(tid);
+  (neighbors[tid] = neighbors[tid] || new Set()).add(sid);
+});
+
+// Tooltip + drawer + neighborhood isolation on hover
+const tooltip = d3.select("#tooltip");
+nodeSel.on("mouseenter", (e, d) => {
+  tooltip.style("opacity", 1)
+    .style("left", (e.clientX + 14) + "px")
+    .style("top", (e.clientY - 10) + "px")
+    .html(`<div class="type">${d.type}${d.status === "contested" ? " · contested" : ""}</div>
+           <div class="name">${d.name}</div>
+           <div class="score">${d.id} · score ${d.score.toFixed(1)}</div>`);
+  // ChatGPT feedback C: local neighborhood isolation on hover
+  const nbrs = neighbors[d.id] || new Set();
+  nodeSel.classed("node-faded", nd => nd.id !== d.id && !nbrs.has(nd.id));
+  edgeSel
+    .classed("edge-highlight", e2 => e2.source.id === d.id || e2.target.id === d.id)
+    .classed("edge-faded", e2 => e2.source.id !== d.id && e2.target.id !== d.id)
+    // ChatGPT feedback B: contested edges shimmer ONLY on hover, not idle
+    .classed("shimmer-on", e2 =>
+      e2.contested && (e2.source.id === d.id || e2.target.id === d.id));
+})
+.on("mousemove", (e) => {
+  tooltip.style("left", (e.clientX + 14) + "px")
+         .style("top", (e.clientY - 10) + "px");
+})
+.on("mouseleave", () => {
+  tooltip.style("opacity", 0);
+  nodeSel.classed("node-faded", false);
+  edgeSel.classed("edge-highlight", false)
+         .classed("edge-faded", false)
+         .classed("shimmer-on", false);
+  applyFilter();  // Re-apply filter state
+})
+.on("click", (e, d) => openDrawer(d));
+
+function openDrawer(d) {
+  document.getElementById("d-eyebrow").textContent =
+    `${d.type} · ${d.id}${d.status==="contested" ? " · contested" : ""}`;
+  const titleEl = document.getElementById("d-title");
+  titleEl.textContent = d.name;
+  titleEl.style.color = nodeColor(d);
+
+  const meta = document.getElementById("d-meta");
+  let metaHtml = `<strong>Score:</strong> ${d.score.toFixed(2)}<br/>`;
+  if (d.evidence) metaHtml += `<strong>Evidence tier:</strong> ${d.evidence}<br/>`;
+  if (d.parent_intervention_id) metaHtml += `<strong>Parent intervention:</strong> ${d.parent_intervention_id}<br/>`;
+  if (d.pmid) metaHtml += `<strong>PMID:</strong> ${d.pmid}<br/>`;
+  if (d.status === "contested") metaHtml += `<br/><span style="color:#FF6B6B;">⚠ Contested status — both directions of evidence preserved in atlas. Click related nodes to see countervailing evidence.</span>`;
+  meta.innerHTML = metaHtml;
+
+  // Related: nodes connected by edges
+  const related = edges.filter(e => e.source.id === d.id || e.target.id === d.id)
+    .map(e => e.source.id === d.id ? e.target : e.source).slice(0, 8);
+  const relHtml = related.map(r => `
+    <div class="related-item" data-id="${r.id}">
+      <span class="swatch" style="background:${nodeColor(r)};"></span>
+      <span style="margin-right:auto;">${r.name.slice(0, 38)}</span>
+      <span style="font-family:monospace; font-size:10px; opacity:0.5;">${r.type}</span>
+    </div>
+  `).join("");
+  document.getElementById("d-related").innerHTML =
+    `<div style="font-size:10px; letter-spacing:0.16em;
+       text-transform:uppercase; color:#7a7a7f; margin-bottom:8px;">
+       connected (${related.length})</div>${relHtml || "<em>no connections in current view</em>"}`;
+  document.querySelectorAll("#d-related .related-item").forEach(el => {
+    el.addEventListener("click", () => {
+      const id = el.dataset.id;
+      const node = nodes.find(n => n.id === id);
+      if (node) openDrawer(node);
+    });
+  });
+
+  document.getElementById("drawer").classList.add("open");
+}
+document.getElementById("close-drawer").addEventListener("click", () => {
+  document.getElementById("drawer").classList.remove("open");
+});
+
+// ── Filter sidebar (entity types) ─────────────────────────────────
+const TYPES_ORDER = ["phenotype","intervention","formulation","mechanism","hypothesis","biomarker","source"];
+const typeCounts = {}; nodes.forEach(n => { typeCounts[n.type] = (typeCounts[n.type]||0) + 1; });
+const typeFilters = document.getElementById("type-filters");
+const enabled = new Set(TYPES_ORDER);
+TYPES_ORDER.forEach(t => {
+  const row = document.createElement("div");
+  row.className = "filter-row";
+  row.dataset.type = t;
+  const sw = TYPE_STYLE[t]?.color || "#cfd0d4";
+  row.innerHTML = `<span class="swatch" style="background:${sw};"></span>
+                   ${t}<span class="count">${typeCounts[t]||0}</span>`;
+  row.addEventListener("click", () => {
+    if (enabled.has(t)) { enabled.delete(t); row.classList.add("disabled"); }
+    else { enabled.add(t); row.classList.remove("disabled"); }
+    applyFilter();
+  });
+  typeFilters.appendChild(row);
+});
+
+// Status counts
+document.getElementById("ct-active").textContent = nodes.filter(n => n.status==="active").length;
+document.getElementById("ct-contested").textContent = nodes.filter(n => n.status==="contested").length;
+const statusEnabled = new Set(["active","contested"]);
+document.querySelectorAll("#status-filters .filter-row").forEach(row => {
+  row.addEventListener("click", () => {
+    const s = row.dataset.status;
+    if (statusEnabled.has(s)) { statusEnabled.delete(s); row.classList.add("disabled"); }
+    else { statusEnabled.add(s); row.classList.remove("disabled"); }
+    applyFilter();
+  });
+});
+
+// Phenotype filter: highlight one constellation
+const pheFilters = document.getElementById("phe-filters");
+let pheFocus = null;
+[
+  ["PHE-0001", "Cerebral folate"],
+  ["PHE-0002", "Mitochondrial"],
+  ["PHE-0003", "Immune-brain"],
+  ["PHE-0004", "Gut–microbiome"],
+  ["PHE-0007", "GABA / Cl⁻"],
+  ["PHE-0008", "Walsh under-meth"],
+].forEach(([pid, name]) => {
+  const row = document.createElement("div");
+  row.className = "filter-row";
+  row.innerHTML = `<span class="swatch" style="background:${NEBULA[pid]};"></span>
+                   ${name}`;
+  row.addEventListener("click", () => {
+    pheFocus = pheFocus === pid ? null : pid;
+    document.querySelectorAll("#phe-filters .filter-row").forEach(r => r.classList.remove("disabled"));
+    if (pheFocus) {
+      document.querySelectorAll("#phe-filters .filter-row").forEach(r => {
+        if (!r.innerHTML.includes(NEBULA[pheFocus])) r.classList.add("disabled");
+      });
+    }
+    applyFilter();
+  });
+  pheFilters.appendChild(row);
+});
+
+// Search
+let searchQ = "";
+document.getElementById("search").addEventListener("input", e => {
+  searchQ = e.target.value.toLowerCase().trim();
+  applyFilter();
+});
+
+function applyFilter() {
+  nodeSel.classed("node-faded", d => {
+    let visible = enabled.has(d.type) && statusEnabled.has(d.status);
+    if (searchQ) visible = visible && (
+      d.name.toLowerCase().includes(searchQ) || d.id.toLowerCase().includes(searchQ));
+    if (pheFocus && d.type !== "phenotype") {
+      // Show only nodes connected to the focused phenotype
+      const conn = edges.some(e =>
+        (e.source.id === pheFocus && e.target.id === d.id) ||
+        (e.target.id === pheFocus && e.source.id === d.id));
+      visible = visible && conn;
+    } else if (pheFocus && d.type === "phenotype") {
+      visible = visible && d.id === pheFocus;
+    }
+    return !visible;
+  });
+  edgeSel.style("opacity", e => {
+    const sv = enabled.has(e.source.type) && enabled.has(e.target.type) &&
+               statusEnabled.has(e.source.status) && statusEnabled.has(e.target.status);
+    if (!sv) return 0.03;
+    if (pheFocus) {
+      const conn = e.source.id === pheFocus || e.target.id === pheFocus;
+      return conn ? 0.55 : 0.03;
+    }
+    return null;
+  });
+}
+
+// ── Pan/zoom ───────────────────────────────────────────────────────
+svg.call(d3.zoom().scaleExtent([0.4, 4]).on("zoom", e => {
+  root.attr("transform", e.transform);
+  // Adaptive label visibility — show more labels as user zooms in
+  applyZoomLabels(e.transform.k);
+}));
+
+function applyZoomLabels(k) {
+  // At zoom 1.0 (default): show only phenotypes + top-tier interventions
+  // At zoom 1.5+: show all interventions
+  // At zoom 2.5+: show formulations + hypotheses too
+  nodeSel.selectAll("text").style("opacity", function(d) {
+    if (d.type === "phenotype") return 1;
+    if (d.type === "intervention") {
+      if (k >= 1.5) return 0.85;
+      return d.score >= 70 ? 0.85 : 0;
+    }
+    if (d.type === "hypothesis") return k >= 2.0 ? 0.7 : 0;
+    if (d.type === "formulation") return k >= 2.5 ? 0.7 : 0;
+    if (d.type === "mechanism") return k >= 1.8 ? 0.65 : 0;
+    return k >= 3.0 ? 0.55 : 0;
+  });
+}
+
+// ── View-mode toggle (Parent / Research / Atlas) ──────────────────
+let viewMode = "research";
+const VIEW_DENSITY = {
+  parent:   {types: new Set(["phenotype","intervention"]),
+             max_int: 12, label_score_threshold: 70},
+  research: {types: new Set(["phenotype","intervention","formulation","mechanism","hypothesis","biomarker"]),
+             max_int: 60, label_score_threshold: 60},
+  atlas:    {types: new Set(["phenotype","intervention","formulation","mechanism","hypothesis","biomarker","source"]),
+             max_int: 999, label_score_threshold: 0},
+};
+
+document.querySelectorAll("#mode-toggle button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#mode-toggle button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    viewMode = btn.dataset.mode;
+    const cfg = VIEW_DENSITY[viewMode];
+    // Update enabled set + sidebar
+    enabled.clear();
+    cfg.types.forEach(t => enabled.add(t));
+    document.querySelectorAll("#type-filters .filter-row").forEach(row => {
+      const t = row.dataset.type;
+      if (cfg.types.has(t)) row.classList.remove("disabled");
+      else row.classList.add("disabled");
+    });
+    // For "parent" mode: only show top N interventions by score
+    if (viewMode === "parent") {
+      const sortedInts = nodes.filter(n => n.type === "intervention")
+        .sort((a, b) => b.score - a.score);
+      const keepIds = new Set(sortedInts.slice(0, cfg.max_int).map(n => n.id));
+      nodeSel.style("display", n =>
+        (n.type === "intervention" && !keepIds.has(n.id)) ? "none" : null);
+    } else {
+      nodeSel.style("display", null);
+    }
+    applyFilter();
+  });
+});
+
+// ── Tick ──────────────────────────────────────────────────────────
+sim.on("tick", () => {
+  edgeSel
+    .attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+    .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+  nodeSel.attr("transform", d => `translate(${d.x}, ${d.y})`);
+});
+
+// Replicate CTA
+document.getElementById("replicate-link").addEventListener("click", e => {
+  e.preventDefault();
+  alert("See VAULT.md and VAULT_SETUP_GUIDE.md in the repo root for the full pattern. The same Connector / Briefer / Catcher pipeline you see running on this atlas (autonomous discoveries cron, Δ² overlay, daily ingestion) can be cloned for any chronic-condition knowledge base.");
+});
+</script>
+</body></html>

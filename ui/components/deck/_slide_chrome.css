@@ -1,0 +1,95 @@
+/* Shared chrome for all 16:9 slides in the HHS deck.
+   Used by slide_01_cover.html, slide_02_averaging.html,
+   slide_06 (substrate, already built), slide_10_validation.html.
+*/
+@page {
+  size: 1920px 1080px;
+  margin: 0;
+}
+
+:root {
+  --bg: #08090b;
+  --ink: #e8e7e2;
+  --ink-soft: #b4b3ac;
+  --ink-mute: #6a6a70;
+  --line: #1f2128;
+  --line-strong: #2c2e36;
+  --moat: #efeee8;
+  --accent: #8881e0;
+  --accent-soft: #4a4570;
+  --warn: #c54f47;
+  --green: #5fa86d;
+  --indigo: #5e5cb8;
+  --gold: #c4a850;
+  --serif: "Tiempos Text", "EB Garamond", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.slide {
+  width: 100vw; height: 100vh;
+  aspect-ratio: 16 / 9;
+  max-width: 100vw;
+  max-height: calc(100vw * 9 / 16);
+  margin: 0 auto;
+  padding: 56px 96px 56px 96px;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(40,42,50,0.4) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 90%, rgba(20,22,28,0.6) 0%, transparent 60%);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media print {
+  body { background: var(--bg); }
+  .slide {
+    width: 1920px; height: 1080px;
+    max-width: none; max-height: none;
+    aspect-ratio: auto;
+    page-break-after: always;
+  }
+}
+
+.slide-pre {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.slide-num {
+  position: absolute;
+  bottom: 28px; right: 96px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: 0.18em;
+}
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 96px 96px;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+}
+.slide > * { position: relative; z-index: 1; }

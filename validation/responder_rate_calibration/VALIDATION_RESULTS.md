@@ -13,16 +13,16 @@ Up from n=7 because engine v0.4 added PHE-0004 + PHE-0007 biomarker drivers, unb
 
 | Subset | n | MAE | Status |
 |---|---|---|---|
-| Engine has biomarker-driver coverage for the trial's stratifier | 7 | **0.052** | strong |
+| Engine has biomarker-driver coverage for the trial's stratifier | 7 | **0.049** | strong |
 | Trial stratifies on a dimension the engine does not yet drive | 1 | 0.190 | known calibration gap (PHE-0003 behavioral) |
 
-Defensible peer-reviewable headline now: **"on the seven cohort entries within engine biomarker-driver coverage, MAE = 0.052 (5.2 percentage points)"**, with the n=8 figure of 0.067 reported transparently.
+Defensible peer-reviewable headline now: **"on the seven cohort entries within engine biomarker-driver coverage, MAE = 0.049 (4.9 percentage points)"**, with the n=8 figure of 0.067 reported transparently.
 
-The four sub-3-percentage-point entries (Hardan 0.009, Hendren 0.018, Singh 0.020, Lemonnier 0.027) span four mechanistically independent intervention classes (NAC oxidative stress / methyl-B12 methylation / sulforaphane Nrf2 / bumetanide GABA-Cl⁻). That's structural replication across mechanism axes, not just within one axis.
+The four sub-3-percentage-point entries (Hardan 0.009, Hendren 0.018, Singh 0.020, Lemonnier 0.027) span three mechanistically independent intervention axes: oxidative stress (Hardan NAC + Singh sulforaphane both upstream of glutathione regeneration), methylation (Hendren methyl-B12), and GABA-Cl⁻ polarity (Lemonnier bumetanide). Structural replication across mechanism axes, not just within one — and the count holds even after collapsing the two oxidative-stress entries into a single axis.
 
 ## Per-entry results (engine v0.4)
 
-### Within engine biomarker-driver coverage (n=7, MAE = 0.052)
+### Within engine biomarker-driver coverage (n=7, MAE = 0.049)
 
 | Entry | Stratifier | Engine driver | Predicted | Published | AE |
 |---|---|---|---|---|---|
@@ -150,6 +150,6 @@ Updated for v0.4 closure:
 
 ## Next session
 
-1. **Manuscript draft v0.2** — fill in section-by-section content from [`MANUSCRIPT_OUTLINE.md`](MANUSCRIPT_OUTLINE.md). Numbers locked at v0.4 engine: n=8 MAE = 0.067, n=7 within-coverage MAE = 0.052, structural replication across 4 mechanism axes at AE ≤ 0.027.
+1. **Manuscript draft v0.2** — fill in section-by-section content from [`MANUSCRIPT_OUTLINE.md`](MANUSCRIPT_OUTLINE.md). Numbers locked at v0.4 engine: n=8 MAE = 0.067, n=7 within-coverage MAE = 0.049. Sub-3% AE cluster spans **3 mechanism axes** (oxidative stress, methylation, GABA/Cl⁻); when inflammation (Tsilioni AE 0.069) is included, top-5 entries span 4 mechanism axes at AE ≤ 0.07.
 2. **Engine v0.5 PHE-0012 sleep-axis** — unblocks Wright 2011.
 3. **Cohort expansion** — additional RCTs to push n=8 to n=15-20.
