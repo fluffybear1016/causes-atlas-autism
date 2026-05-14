@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Causes Atlas — Living Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+  :root {
+    --void:    #050810;
+    --node:    #f0ebdc;
+    --gold:    #e8c46e;
+    --gold-dim:#7a6230;
+    --cool:    #b4c8e8;
+    --warm:    #d8b894;
+    --gene:    #7a7770;
+    --text:    #d8d2c4;
+    --text-mute:#5a574e;
+    --text-vmute:#33312c;
+    --line:    #1a1d24;
+    --line-hi: #2e3540;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width:100%; height:100%; overflow:hidden;
+               background: var(--void); color: var(--text);
+               font-family: ui-serif, "Iowan Old Style", "Apple Garamond",
+                            Garamond, "Times New Roman", serif;
+               font-weight: 400; letter-spacing: 0.01em;
+               -webkit-font-smoothing: antialiased; }
+  canvas { display: block; position: absolute; inset: 0;
+           width: 100%; height: 100%; cursor: crosshair; }
+
+  /* error overlay — only shown if something throws */
+  .err { position: fixed; top: 50%; left: 50%;
+         transform: translate(-50%, -50%); z-index: 100;
+         max-width: 70vw; padding: 18px 22px;
+         background: rgba(20,8,8,0.92); border: 1px solid #6e2222;
+         color: #f0b4a0; font-family: ui-monospace, monospace;
+         font-size: 12px; line-height: 1.5; white-space: pre-wrap;
+         display: none; }
+  .err.on { display: block; }
+
+  /* ── manifesto ghost text — sits behind the graph ──────────────── */
+  .manifesto {
+    position: fixed; inset: 0; display: flex; align-items: center;
+    justify-content: center; pointer-events: none; user-select: none;
+    z-index: 0;
+  }
+  .manifesto-inner {
+    font-family: ui-serif, "Iowan Old Style", Garamond, serif;
+    font-weight: 400; font-size: clamp(48px, 9vw, 156px);
+    line-height: 0.96; letter-spacing: -0.02em;
+    color: #1a1d22; text-align: center;
+    text-transform: uppercase;
+    opacity: 0; transition: opacity 2400ms ease 800ms;
+  }
+  .manifesto-inner.ready { opacity: 1; }
+  .manifesto-inner em { font-style: italic; color: #2a1f12; }
+
+  /* ── corner chrome ─────────────────────────────────────────────── */
+  .overlay { position: fixed; pointer-events: none;
+             font-size: 10.5px; letter-spacing: 0.22em;
+             text-transform: uppercase; color: var(--text-mute);
+             user-select: none; z-index: 5; mix-blend-mode: screen; }
+  .tl { top: 26px; left: 30px; }
+  .tr { top: 26px; right: 30px; text-align: right; }
+  .bl { bottom: 28px; left: 30px; }
+  .title { font-size: 13px; letter-spacing: 0.34em; color: var(--text); }
+  .num   { color: var(--text); font-variant-numeric: tabular-nums; }
+  .dim   { color: var(--text-mute); }
+  .vmute { color: var(--text-vmute); }
+  .gold  { color: var(--gold); }
+
+  /* pulsing dot next to "INGESTING" — sells the live loop */
+  .ingest-dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+    margin-right: 8px; vertical-align: middle;
+    animation: ingest-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes ingest-pulse {
+    0%, 100% { opacity: 0.35; transform: scale(0.85); }
+    50%      { opacity: 1.0;  transform: scale(1.15); }
+  }
+
+  /* ── profile dock — bottom right, opens upward ─────────────────── */
+  .dock { position: fixed; bottom: 26px; right: 30px;
+          z-index: 10; pointer-events: auto;
+          display: flex; flex-direction: column; align-items: flex-end;
+          gap: 8px; }
+  .dock .input {
+    width: clamp(260px, 30vw, 420px);
+    background: rgba(8,11,18,0.6); backdrop-filter: blur(8px);
+    border: 1px solid var(--line); color: var(--text);
+    font: inherit; font-size: 13px; letter-spacing: 0.04em;
+    padding: 11px 14px; outline: none;
+    transition: border-color 400ms, background 400ms;
+  }
+  .dock .input::placeholder {
+    color: var(--text-mute); font-style: italic;
+    letter-spacing: 0.06em;
+  }
+  .dock .input:focus { border-color: var(--gold-dim);
+                       background: rgba(12,14,22,0.75); }
+
+  .dock .presets {
+    display: flex; flex-direction: column; gap: 0;
+    background: rgba(8,11,18,0.6); backdrop-filter: blur(8px);
+    border: 1px solid var(--line); max-width: 420px;
+    max-height: 0; overflow: hidden;
+    transition: max-height 520ms ease;
+  }
+  .dock.open .presets { max-height: 360px; }
+  .dock .preset {
+    background: transparent; border: none; border-bottom: 1px solid var(--line);
+    color: var(--text-mute); font: inherit; font-size: 10.5px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 10px 14px; cursor: pointer; text-align: right;
+    transition: color 300ms, background 300ms;
+  }
+  .dock .preset:last-child { border-bottom: none; }
+  .dock .preset:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+  .dock .preset.on { color: var(--gold); }
+  .dock .toggle {
+    background: transparent; border: 1px solid var(--line);
+    color: var(--text-mute); font: inherit; font-size: 10.5px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 11px 16px; cursor: pointer;
+    transition: color 300ms, border-color 300ms;
+  }
+  .dock .toggle:hover { color: var(--text); border-color: var(--line-hi); }
+  .dock .toggle.on   { color: var(--gold); border-color: var(--gold-dim); }
+
+  /* ── hover label ───────────────────────────────────────────────── */
+  .hover-label {
+    position: fixed; pointer-events: none; z-index: 8;
+    font-family: ui-serif, Garamond, serif; font-size: 12px;
+    color: rgba(240,235,220,0.92); letter-spacing: 0.02em;
+    text-shadow: 0 0 8px rgba(0,0,0,0.9);
+    opacity: 0; transition: opacity 220ms;
+    white-space: nowrap;
+  }
+  .hover-label .meta {
+    display: block; font-size: 9.5px; letter-spacing: 0.22em;
+    color: var(--text-mute); text-transform: uppercase;
+    margin-top: 3px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ghost manifesto behind the graph -->
+<div class="manifesto">
+  <div class="manifesto-inner">
+    Population&nbsp;average<br>
+    <em>is&nbsp;not</em><br>
+    your&nbsp;child
+  </div>
+</div>
+
+<canvas id="c"></canvas>
+
+<div class="overlay tl">
+  <div class="title">Causes Atlas</div>
+  <div class="vmute" style="margin-top:5px;">Autism · v2.0 · reproducible</div>
+  <div style="margin-top:14px;">
+    <span class="ingest-dot"></span>
+    <span class="vmute" style="letter-spacing:0.26em;">ingesting</span>
+    <span class="num" id="papers" style="margin-left:10px;">1,462</span>
+    <span class="vmute" style="margin-left:5px;">papers</span>
+  </div>
+  <div class="vmute" style="margin-top:4px;">
+    last evidence
+    <span id="last-ingest" class="num" style="margin-left:6px;">just now</span>
+  </div>
+</div>
+
+<div class="overlay tr">
+  <div class="num">530 nodes · 845 edges</div>
+  <div class="vmute" style="margin-top:5px;">n=7 mae 0.049 · 4 sub-3% errors</div>
+</div>
+
+<div class="overlay bl">
+  <div class="vmute">int-0001 leucovorin csrs</div>
+  <div class="gold num" style="font-size:14px;letter-spacing:0.16em;margin-top:3px;">83.35</div>
+</div>
+
+<div id="dock" class="dock">
+  <div class="presets" id="presets"></div>
+  <input class="input" id="search" type="text" autocomplete="off"
+         spellcheck="false" placeholder="describe your child · a gene · a symptom" />
+  <button class="toggle" id="toggle">load susceptibility profile</button>
+</div>
+
+<div class="hover-label" id="hover"></div>
+
+<div class="err" id="err"></div>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"
+        crossorigin="anonymous"></script>
+<script>
+window.addEventListener('error', (e) => {
+  const el = document.getElementById('err');
+  el.textContent = '⚠ ' + (e.message || e.error || 'script error') +
+                   '\n' + (e.filename || '') + ':' + (e.lineno || '');
+  el.classList.add('on');
+});
+</script>
+<script>
+'use strict';
+
+const DATA     = {"nodes":[{"id":"HYP-0001","t":"H","l":"FOLR1 autoantibodies / cerebral folate deficiency","ll":"folr1 autoantibodies / cerebral folate deficiency","s":10.33,"m":115},{"id":"HYP-0002","t":"H","l":"Prenatal acetaminophen (paracetamol) exposure","ll":"prenatal acetaminophen (paracetamol) exposure","s":9.297,"m":115},{"id":"HYP-0003","t":"H","l":"Maternal folate deficiency during preconception/pregnancy","ll":"maternal folate deficiency during preconception/pregnancy","s":9.488,"m":119},{"id":"HYP-0004","t":"H","l":"PFAS / forever-chemical drinking-water exposure","ll":"pfas / forever-chemical drinking-water exposure","s":8.528,"m":0},{"id":"HYP-0005","t":"H","l":"Glyphosate exposure (food + water)","ll":"glyphosate exposure (food + water)","s":9.467,"m":68},{"id":"HYP-0006","t":"H","l":"Mitochondrial dysfunction (acquired or inherited)","ll":"mitochondrial dysfunction (acquired or inherited)","s":8.584,"m":127},{"id":"HYP-0007","t":"H","l":"Gut microbiome dysbiosis / dysbiotic fermentation","ll":"gut microbiome dysbiosis / dysbiotic fermentation","s":9.467,"m":111},{"id":"HYP-0008","t":"H","l":"Maternal immune activation (prenatal infection or autoimmune)","ll":"maternal immune activation (prenatal infection or autoimmune)","s":8.919,"m":109},{"id":"HYP-0009","t":"H","l":"Advanced parental age (especially paternal)","ll":"advanced parental age (especially paternal)","s":6.019,"m":0},{"id":"HYP-0010","t":"H","l":"Prenatal valproate (sodium valproate) exposure","ll":"prenatal valproate (sodium valproate) exposure","s":8.594,"m":0},{"id":"HYP-0011","t":"H","l":"Phthalate exposure (prenatal+postnatal)","ll":"phthalate exposure (prenatal+postnatal)","s":6.986,"m":41},{"id":"HYP-0012","t":"H","l":"BPA / bisphenol exposure","ll":"bpa / bisphenol exposure","s":6.986,"m":41},{"id":"HYP-0013","t":"H","l":"Air pollution (PM2.5, traffic)","ll":"air pollution (pm2.5, traffic)","s":6.368,"m":0},{"id":"HYP-0014","t":"H","l":"Pesticide exposure (organophosphates, glyphosate)","ll":"pesticide exposure (organophosphates, glyphosate)","s":4.64,"m":0},{"id":"HYP-0015","t":"H","l":"Heavy metal exposure (Pb, Hg, Al)","ll":"heavy metal exposure (pb, hg, al)","s":6.498,"m":33},{"id":"HYP-0016","t":"H","l":"Mold / mycotoxin exposure","ll":"mold / mycotoxin exposure","s":4.64,"m":0},{"id":"HYP-0017","t":"H","l":"EMF exposure (controversial)","ll":"emf exposure (controversial)","s":4.774,"m":115},{"id":"HYP-0018","t":"H","l":"Maternal diabetes (GDM, T2)","ll":"maternal diabetes (gdm, t2)","s":4.774,"m":109},{"id":"HYP-0019","t":"H","l":"Maternal obesity","ll":"maternal obesity","s":4.774,"m":109},{"id":"HYP-0020","t":"H","l":"Maternal vitamin D deficiency","ll":"maternal vitamin d deficiency","s":4.64,"m":0},{"id":"HYP-0021","t":"H","l":"Maternal omega-3 deficiency","ll":"maternal omega-3 deficiency","s":4.774,"m":127},{"id":"HYP-0022","t":"H","l":"Early-life antibiotics (especially first year)","ll":"early-life antibiotics (especially first year)","s":4.906,"m":68},{"id":"HYP-0023","t":"H","l":"Cesarean section delivery","ll":"cesarean section delivery","s":4.906,"m":68},{"id":"HYP-0024","t":"H","l":"Maternal SSRI in pregnancy","ll":"maternal ssri in pregnancy","s":6.623,"m":0},{"id":"HYP-0025","t":"H","l":"Prenatal viral infection (rubella, CMV, flu)","ll":"prenatal viral infection (rubella, cmv, flu)","s":4.774,"m":109},{"id":"HYP-0026","t":"H","l":"PANDAS/PANS triggers (strep, mycoplasma)","ll":"pandas/pans triggers (strep, mycoplasma)","s":4.64,"m":45},{"id":"HYP-0027","t":"H","l":"De novo mutations in synaptic genes","ll":"de novo mutations in synaptic genes","s":8.394,"m":0},{"id":"HYP-0028","t":"H","l":"Inherited polygenic risk","ll":"inherited polygenic risk","s":10.294,"m":84},{"id":"HYP-0029","t":"H","l":"Tuberous sclerosis (TSC1/TSC2)","ll":"tuberous sclerosis (tsc1/tsc2)","s":7.542,"m":33},{"id":"HYP-0030","t":"H","l":"PTEN hamartoma syndrome","ll":"pten hamartoma syndrome","s":5.866,"m":33},{"id":"HYP-0031","t":"H","l":"AMPK pathway dysregulation","ll":"ampk pathway dysregulation","s":7.41,"m":127},{"id":"HYP-0032","t":"H","l":"IGF-1 axis insufficiency","ll":"igf-1 axis insufficiency","s":9.351,"m":68},{"id":"HYP-0033","t":"H","l":"SIRTUIN / NAD+ depletion","ll":"sirtuin / nad+ depletion","s":6.834,"m":119},{"id":"HYP-0034","t":"H","l":"Oxytocin system dysregulation","ll":"oxytocin system dysregulation","s":8.486,"m":41},{"id":"HYP-0035","t":"H","l":"Maternal/prenatal thyroid hypofunction","ll":"maternal/prenatal thyroid hypofunction","s":7.07,"m":127},{"id":"HYP-0036","t":"H","l":"Maternal psychological stress (prenatal)","ll":"maternal psychological stress (prenatal)","s":8.182,"m":109},{"id":"HYP-0037","t":"H","l":"Childhood/family emotional stress","ll":"childhood/family emotional stress","s":8.766,"m":109},{"id":"HYP-0038","t":"H","l":"Excessive screen / smartphone exposure (early life)","ll":"excessive screen / smartphone exposure (early life)","s":6.814,"m":68},{"id":"HYP-0039","t":"H","l":"Sleep disruption / circadian misalignment","ll":"sleep disruption / circadian misalignment","s":9.398,"m":109},{"id":"HYP-0040","t":"H","l":"Birth complications (hypoxia, instrumental delivery)","ll":"birth complications (hypoxia, instrumental delivery)","s":7.922,"m":127},{"id":"HYP-0041","t":"H","l":"Preterm birth / NICU exposure","ll":"preterm birth / nicu exposure","s":9.739,"m":109},{"id":"HYP-0042","t":"H","l":"Ultra-processed food / Western diet pattern","ll":"ultra-processed food / western diet pattern","s":7.399,"m":68},{"id":"HYP-0043","t":"H","l":"Endocrine-disruptor exposure (personal care, cleaning)","ll":"endocrine-disruptor exposure (personal care, cleaning)","s":8.037,"m":41},{"id":"HYP-0044","t":"H","l":"Childhood vaccine exposure (contested)","ll":"childhood vaccine exposure (contested)","s":9.693,"m":109},{"id":"HYP-0045","t":"H","l":"Vitamin D deficiency (maternal + child)","ll":"vitamin d deficiency (maternal + child)","s":8.322,"m":127},{"id":"HYP-0046","t":"H","l":"Zinc deficiency / copper:zinc imbalance","ll":"zinc deficiency / copper:zinc imbalance","s":9.276,"m":119},{"id":"HYP-0047","t":"H","l":"Magnesium deficiency","ll":"magnesium deficiency","s":7.837,"m":16},{"id":"HYP-0048","t":"H","l":"Iodine deficiency / thyroid hypofunction","ll":"iodine deficiency / thyroid hypofunction","s":7.07,"m":127},{"id":"HYP-0049","t":"H","l":"Selenium deficiency","ll":"selenium deficiency","s":4.774,"m":115},{"id":"HYP-0050","t":"H","l":"Choline insufficiency (postnatal)","ll":"choline insufficiency (postnatal)","s":7.107,"m":51},{"id":"HYP-0051","t":"H","l":"Maternal autoimmune comorbidity","ll":"maternal autoimmune comorbidity","s":8.959,"m":109},{"id":"HYP-0052","t":"H","l":"Iron metabolism dysregulation","ll":"iron metabolism dysregulation","s":7.878,"m":33},{"id":"HYP-0053","t":"H","l":"AGE / acrylamide cooking exposures","ll":"age / acrylamide cooking exposures","s":4.906,"m":127},{"id":"HYP-0054","t":"H","l":"Acetaminophen postnatal use (contested)","ll":"acetaminophen postnatal use (contested)","s":6.561,"m":115},{"id":"HYP-0055","t":"H","l":"Endocannabinoid system dysregulation","ll":"endocannabinoid system dysregulation","s":6.532,"m":0},{"id":"HYP-0056","t":"H","l":"Bifidobacterium depletion (autism-specific)","ll":"bifidobacterium depletion (autism-specific)","s":9.155,"m":109},{"id":"HYP-0057","t":"H","l":"Clostridia overgrowth / dysbiotic fermentation","ll":"clostridia overgrowth / dysbiotic fermentation","s":8.55,"m":109},{"id":"HYP-0058","t":"H","l":"Akkermansia / Faecalibacterium depletion","ll":"akkermansia / faecalibacterium depletion","s":8.225,"m":109},{"id":"HYP-0059","t":"H","l":"Intestinal barrier permeability ('leaky gut')","ll":"intestinal barrier permeability ('leaky gut')","s":7.766,"m":109},{"id":"HYP-0060","t":"H","l":"Microbial p-cresol / 4-EPS metabolite excess","ll":"microbial p-cresol / 4-eps metabolite excess","s":8.16,"m":84},{"id":"HYP-0061","t":"H","l":"Fungal dysbiosis / candida overgrowth","ll":"fungal dysbiosis / candida overgrowth","s":4.906,"m":109},{"id":"HYP-0062","t":"H","l":"Brain serotonin synthesis dysregulation (TPH2/vitamin D)","ll":"brain serotonin synthesis dysregulation (tph2/vitamin d)","s":6.668,"m":49},{"id":"HYP-0063","t":"H","l":"Brain glutathione depletion","ll":"brain glutathione depletion","s":9.054,"m":127},{"id":"HYP-0064","t":"H","l":"DHA membrane phospholipid insufficiency","ll":"dha membrane phospholipid insufficiency","s":6.894,"m":100},{"id":"HYP-0065","t":"H","l":"Heat shock response insufficiency / 'fever effect' subtype","ll":"heat shock response insufficiency / 'fever effect' subtype","s":7.619,"m":109},{"id":"HYP-0066","t":"H","l":"Hepatitis B vaccine (neonatal birth-dose)","ll":"hepatitis b vaccine (neonatal birth-dose)","s":8.981,"m":109},{"id":"HYP-0067","t":"H","l":"Aluminum adjuvant cumulative exposure (vaccines)","ll":"aluminum adjuvant cumulative exposure (vaccines)","s":8.702,"m":109},{"id":"HYP-0068","t":"H","l":"MMR vaccine specifically (contested)","ll":"mmr vaccine specifically (contested)","s":9.012,"m":109},{"id":"HYP-0069","t":"H","l":"Thimerosal exposure (contested, largely removed)","ll":"thimerosal exposure (contested, largely removed)","s":9.234,"m":115},{"id":"HYP-0070","t":"H","l":"Lactate / pyruvate ratio elevation (bioenergetic biomarker)","ll":"lactate / pyruvate ratio elevation (bioenergetic biomarker)","s":6.97,"m":45},{"id":"HYP-0071","t":"H","l":"Brainstem/pons hypoplasia + GABA developmental switch failure","ll":"brainstem/pons hypoplasia + gaba developmental switch failure","s":8.774,"m":16},{"id":"HYP-0072","t":"H","l":"Epigenetic canalization failure","ll":"epigenetic canalization failure","s":6.934,"m":51},{"id":"HYP-0073","t":"H","l":"Developmental timing / state-transition disorder","ll":"developmental timing / state-transition disorder","s":8.192,"m":68},{"id":"HYP-0074","t":"H","l":"PANS/PANDAS \u2014 post-infectious autoimmune neuropsychiatric syndrome","ll":"pans/pandas \u2014 post-infectious autoimmune neuropsychiatric syndrome","s":4.64,"m":9},{"id":"HYP-0075","t":"H","l":"Mast Cell Activation Syndrome (MCAS) in autism","ll":"mast cell activation syndrome (mcas) in autism","s":4.64,"m":4},{"id":"MEC-0001","t":"M","l":"Oxidative stress","ll":"oxidative stress","s":8.889,"m":127},{"id":"MEC-0002","t":"M","l":"Neuroinflammation","ll":"neuroinflammation","s":12.0,"m":109},{"id":"MEC-0003","t":"M","l":"Impaired methylation","ll":"impaired methylation","s":7.333,"m":119},{"id":"MEC-0004","t":"M","l":"BBB dysfunction","ll":"bbb dysfunction","s":5.778,"m":127},{"id":"MEC-0005","t":"M","l":"Microglial activation","ll":"microglial activation","s":6.556,"m":109},{"id":"MEC-0006","t":"M","l":"Synaptic pruning abnormalities","ll":"synaptic pruning abnormalities","s":6.944,"m":100},{"id":"MEC-0007","t":"M","l":"GABA/glutamate imbalance","ll":"gaba/glutamate imbalance","s":7.333,"m":127},{"id":"MEC-0008","t":"M","l":"Gut-brain axis disruption","ll":"gut-brain axis disruption","s":7.333,"m":109},{"id":"MEC-0009","t":"M","l":"mTOR pathway dysregulation","ll":"mtor pathway dysregulation","s":6.556,"m":33},{"id":"MEC-0010","t":"M","l":"Mitochondrial dysfunction","ll":"mitochondrial dysfunction","s":8.111,"m":127},{"id":"MEC-0011","t":"M","l":"AMPK signaling","ll":"ampk signaling","s":6.167,"m":127},{"id":"MEC-0012","t":"M","l":"IGF-1 / insulin signaling","ll":"igf-1 / insulin signaling","s":5.389,"m":100},{"id":"MEC-0013","t":"M","l":"FOXO transcription factors","ll":"foxo transcription factors","s":5.0,"m":127},{"id":"MEC-0014","t":"M","l":"SIRTUIN / NAD+ metabolism","ll":"sirtuin / nad+ metabolism","s":5.778,"m":59},{"id":"MEC-0015","t":"M","l":"PI3K/AKT signaling","ll":"pi3k/akt signaling","s":5.778,"m":0},{"id":"MEC-0016","t":"M","l":"HPA axis dysregulation","ll":"hpa axis dysregulation","s":8.111,"m":109},{"id":"MEC-0017","t":"M","l":"Mast cell activation","ll":"mast cell activation","s":6.556,"m":109},{"id":"MEC-0018","t":"M","l":"Endocannabinoid system","ll":"endocannabinoid system","s":5.389,"m":109},{"id":"MEC-0019","t":"M","l":"Vagus nerve / autonomic regulation","ll":"vagus nerve / autonomic regulation","s":5.778,"m":109},{"id":"MEC-0020","t":"M","l":"Calcium / glutamate-NMDA homeostasis","ll":"calcium / glutamate-nmda homeostasis","s":5.778,"m":125},{"id":"MEC-0021","t":"M","l":"Short-chain fatty acid (SCFA) signaling","ll":"short-chain fatty acid (scfa) signaling","s":6.556,"m":109},{"id":"MEC-0022","t":"M","l":"Lipopolysaccharide (LPS) endotoxemia / leaky gut","ll":"lipopolysaccharide (lps) endotoxemia / leaky gut","s":6.167,"m":109},{"id":"MEC-0023","t":"M","l":"Tryptophan-kynurenine metabolism","ll":"tryptophan-kynurenine metabolism","s":6.167,"m":68},{"id":"MEC-0024","t":"M","l":"p-cresol / 4-EPS aromatic metabolite production","ll":"p-cresol / 4-eps aromatic metabolite production","s":5.778,"m":68},{"id":"MEC-0025","t":"M","l":"Bile acid metabolism / FXR signaling","ll":"bile acid metabolism / fxr signaling","s":5.389,"m":68},{"id":"MEC-0026","t":"M","l":"Microbial GABA / neurotransmitter synthesis","ll":"microbial gaba / neurotransmitter synthesis","s":6.556,"m":125},{"id":"MEC-0027","t":"M","l":"Heat shock protein (HSF1/HSP70/HSP90) response","ll":"heat shock protein (hsf1/hsp70/hsp90) response","s":5.778,"m":109},{"id":"MEC-0028","t":"M","l":"BDNF / neurotrophin signaling","ll":"bdnf / neurotrophin signaling","s":5.389,"m":109},{"id":"MEC-0029","t":"M","l":"Vitamin-D-regulated serotonin synthesis (TPH2)","ll":"vitamin-d-regulated serotonin synthesis (tph2)","s":5.778,"m":127},{"id":"MEC-0030","t":"M","l":"Autophagy / proteostasis","ll":"autophagy / proteostasis","s":6.556,"m":127},{"id":"MEC-0031","t":"M","l":"DHA membrane phospholipid composition","ll":"dha membrane phospholipid composition","s":5.778,"m":127},{"id":"MEC-0032","t":"M","l":"Aluminum adjuvant accumulation / TLR-mediated neuroinflammation","ll":"aluminum adjuvant accumulation / tlr-mediated neuroinflammation","s":6.556,"m":45},{"id":"MEC-0033","t":"M","l":"Photobiomodulation / cytochrome c oxidase activation","ll":"photobiomodulation / cytochrome c oxidase activation","s":5.389,"m":63},{"id":"MEC-0034","t":"M","l":"GABA developmental polarity switch (NKCC1/KCC2)","ll":"gaba developmental polarity switch (nkcc1/kcc2)","s":5.778,"m":0},{"id":"PHE-0001","t":"P","l":"Cerebral folate deficiency phenotype","ll":"cerebral folate deficiency phenotype","s":13,"m":127},{"id":"PHE-0002","t":"P","l":"Mitochondrial dysfunction phenotype","ll":"mitochondrial dysfunction phenotype","s":13,"m":127},{"id":"PHE-0003","t":"P","l":"Regressive immune-inflammatory phenotype","ll":"regressive immune-inflammatory phenotype","s":13,"m":109},{"id":"PHE-0004","t":"P","l":"Autism + GI / microbiome phenotype","ll":"autism + gi / microbiome phenotype","s":13,"m":109},{"id":"PHE-0005","t":"P","l":"mTOR pathway syndromic (TSC, PTEN)","ll":"mtor pathway syndromic (tsc, pten)","s":13,"m":109},{"id":"PHE-0006","t":"P","l":"Fragile X (FMR1)","ll":"fragile x (fmr1)","s":13,"m":127},{"id":"PHE-0007","t":"P","l":"GABA/Cl- imbalance phenotype","ll":"gaba/cl- imbalance phenotype","s":13,"m":127},{"id":"PHE-0008","t":"P","l":"Undermethylator phenotype (Walsh)","ll":"undermethylator phenotype (walsh)","s":13,"m":0},{"id":"PHE-0009","t":"P","l":"Overmethylator phenotype (Walsh)","ll":"overmethylator phenotype (walsh)","s":13,"m":0},{"id":"PHE-0010","t":"P","l":"Pyroluria / kryptopyrroluria phenotype","ll":"pyroluria / kryptopyrroluria phenotype","s":13,"m":0},{"id":"PHE-0011","t":"P","l":"Copper:zinc imbalance phenotype","ll":"copper:zinc imbalance phenotype","s":13,"m":0},{"id":"INT-0001","t":"I","l":"Leucovorin (folinic acid)","ll":"leucovorin (folinic acid)","s":9.668,"m":115,"k":"INT-0001"},{"id":"INT-0002","t":"I","l":"Sulforaphane (broccoli sprout extract)","ll":"sulforaphane (broccoli sprout extract)","s":8.961,"m":127},{"id":"INT-0003","t":"I","l":"Methyl-B12 (methylcobalamin) injection","ll":"methyl-b12 (methylcobalamin) injection","s":6.846,"m":115},{"id":"INT-0004","t":"I","l":"N-Acetylcysteine (NAC)","ll":"n-acetylcysteine (nac)","s":7.098,"m":115},{"id":"INT-0005","t":"I","l":"Bumetanide","ll":"bumetanide","s":6.818,"m":113},{"id":"INT-0006","t":"I","l":"Low-dose naltrexone (LDN)","ll":"low-dose naltrexone (ldn)","s":7.046,"m":109},{"id":"INT-0007","t":"I","l":"Ketogenic diet","ll":"ketogenic diet","s":7.993,"m":127},{"id":"INT-0008","t":"I","l":"Methylated folate (5-MTHF) \u2014 preconception/prenatal","ll":"methylated folate (5-mthf) \u2014 preconception/prenatal","s":9.072,"m":51},{"id":"INT-0009","t":"I","l":"Reverse osmosis water filtration","ll":"reverse osmosis water filtration","s":8.008,"m":0},{"id":"INT-0010","t":"I","l":"Leucovorin + methyl-B12 + sulforaphane (combo)","ll":"leucovorin + methyl-b12 + sulforaphane (combo)","s":5.552,"m":115},{"id":"INT-0011","t":"I","l":"L-carnitine","ll":"l-carnitine","s":7.136,"m":51},{"id":"INT-0012","t":"I","l":"Coenzyme Q10 (ubiquinol)","ll":"coenzyme q10 (ubiquinol)","s":6.961,"m":51},{"id":"INT-0013","t":"I","l":"Vitamin D3","ll":"vitamin d3","s":8.419,"m":127},{"id":"INT-0014","t":"I","l":"Omega-3 (EPA + DHA)","ll":"omega-3 (epa + dha)","s":7.47,"m":109},{"id":"INT-0015","t":"I","l":"Magnesium glycinate","ll":"magnesium glycinate","s":8.201,"m":113},{"id":"INT-0016","t":"I","l":"Zinc (zinc picolinate)","ll":"zinc (zinc picolinate)","s":7.849,"m":51},{"id":"INT-0017","t":"I","l":"Pyridoxal-5-phosphate (active B6)","ll":"pyridoxal-5-phosphate (active b6)","s":6.817,"m":115},{"id":"INT-0018","t":"I","l":"Trimethylglycine (TMG / betaine)","ll":"trimethylglycine (tmg / betaine)","s":5.523,"m":51},{"id":"INT-0020","t":"I","l":"Glutathione (liposomal or precursors)","ll":"glutathione (liposomal or precursors)","s":7.158,"m":115},{"id":"INT-0022","t":"I","l":"Inositol (myo-inositol)","ll":"inositol (myo-inositol)","s":6.443,"m":0},{"id":"INT-0023","t":"I","l":"Taurine","ll":"taurine","s":7.01,"m":113},{"id":"INT-0024","t":"I","l":"Glycine","ll":"glycine","s":7.205,"m":115},{"id":"INT-0025","t":"I","l":"Probiotics (multi-strain)","ll":"probiotics (multi-strain)","s":8.763,"m":68},{"id":"INT-0027","t":"I","l":"Curcumin (high-bioavailability)","ll":"curcumin (high-bioavailability)","s":7.109,"m":127},{"id":"INT-0028","t":"I","l":"Resveratrol","ll":"resveratrol","s":7.147,"m":51},{"id":"INT-0029","t":"I","l":"Quercetin","ll":"quercetin","s":7.182,"m":109},{"id":"INT-0030","t":"I","l":"Choline (CDP-choline / Alpha-GPC)","ll":"choline (cdp-choline / alpha-gpc)","s":8.112,"m":51},{"id":"INT-0031","t":"I","l":"Bacopa monnieri","ll":"bacopa monnieri","s":6.487,"m":100},{"id":"INT-0034","t":"I","l":"Saffron","ll":"saffron","s":6.687,"m":100},{"id":"INT-0035","t":"I","l":"Cannabidiol (CBD)","ll":"cannabidiol (cbd)","s":6.956,"m":125},{"id":"INT-0036","t":"I","l":"Rapamycin (sirolimus)","ll":"rapamycin (sirolimus)","s":8.364,"m":51},{"id":"INT-0037","t":"I","l":"Metformin","ll":"metformin","s":7.992,"m":119},{"id":"INT-0038","t":"I","l":"Memantine","ll":"memantine","s":6.786,"m":113},{"id":"INT-0041","t":"I","l":"GFCF diet","ll":"gfcf diet","s":7.117,"m":109},{"id":"INT-0042","t":"I","l":"GAPS diet","ll":"gaps diet","s":6.742,"m":68},{"id":"INT-0043","t":"I","l":"Low-glutamate diet","ll":"low-glutamate diet","s":5.491,"m":113},{"id":"INT-0044","t":"I","l":"Cruciferous vegetable-rich diet","ll":"cruciferous vegetable-rich diet","s":5.684,"m":115},{"id":"INT-0045","t":"I","l":"Low-oxalate diet","ll":"low-oxalate diet","s":5.407,"m":51},{"id":"INT-0046","t":"I","l":"Sleep architecture optimization + melatonin","ll":"sleep architecture optimization + melatonin","s":7.953,"m":45},{"id":"INT-0047","t":"I","l":"Aerobic exercise (structured)","ll":"aerobic exercise (structured)","s":8.382,"m":127},{"id":"INT-0048","t":"I","l":"Sauna / heat therapy","ll":"sauna / heat therapy","s":7.158,"m":127},{"id":"INT-0050","t":"I","l":"EMF reduction (bedroom)","ll":"emf reduction (bedroom)","s":5.939,"m":115},{"id":"INT-0051","t":"I","l":"HEPA air filtration","ll":"hepa air filtration","s":5.401,"m":0},{"id":"INT-0052","t":"I","l":"Glass / stainless replacement of plastic","ll":"glass / stainless replacement of plastic","s":5.626,"m":0},{"id":"INT-0055","t":"I","l":"Mitochondrial cocktail (CoQ10+L-carnitine+B-complex)","ll":"mitochondrial cocktail (coq10+l-carnitine+b-complex)","s":6.492,"m":51},{"id":"INT-0056","t":"I","l":"Gut healing combo (GFCF + L-glutamine + probiotics)","ll":"gut healing combo (gfcf + l-glutamine + probiotics)","s":5.55,"m":68},{"id":"INT-0057","t":"I","l":"Anti-inflammatory combo (sulforaphane + omega-3 + vitamin D)","ll":"anti-inflammatory combo (sulforaphane + omega-3 + vitamin d)","s":5.736,"m":109},{"id":"INT-0058","t":"I","l":"Preconception methylation panel + targeted nutrient repletion","ll":"preconception methylation panel + targeted nutrient repletion","s":5.478,"m":51},{"id":"INT-0059","t":"I","l":"Vaginal microbiome seeding at C-section","ll":"vaginal microbiome seeding at c-section","s":5.695,"m":68},{"id":"INT-0060","t":"I","l":"Extended exclusive breastfeeding (>=6mo)","ll":"extended exclusive breastfeeding (>=6mo)","s":5.653,"m":68},{"id":"INT-0061","t":"I","l":"Intranasal oxytocin","ll":"intranasal oxytocin","s":7.299,"m":109},{"id":"INT-0062","t":"I","l":"BPC-157 (peptide)","ll":"bpc-157 (peptide)","s":5.516,"m":109},{"id":"INT-0065","t":"I","l":"Cerebrolysin","ll":"cerebrolysin","s":7.901,"m":100},{"id":"INT-0066","t":"I","l":"Iodine (potassium iodide / kelp)","ll":"iodine (potassium iodide / kelp)","s":6.454,"m":109},{"id":"INT-0067","t":"I","l":"Selenium (selenomethionine)","ll":"selenium (selenomethionine)","s":6.079,"m":115},{"id":"INT-0068","t":"I","l":"NAD+ precursors (NMN / NR)","ll":"nad+ precursors (nmn / nr)","s":6.546,"m":51},{"id":"INT-0069","t":"I","l":"Pregnenolone (low-dose)","ll":"pregnenolone (low-dose)","s":6.671,"m":109},{"id":"INT-0070","t":"I","l":"Levothyroxine (T4) replacement","ll":"levothyroxine (t4) replacement","s":6.365,"m":109},{"id":"INT-0071","t":"I","l":"Vagal nerve stimulation (transcutaneous)","ll":"vagal nerve stimulation (transcutaneous)","s":7.176,"m":109},{"id":"INT-0072","t":"I","l":"Screen time reduction (structured)","ll":"screen time reduction (structured)","s":6.447,"m":100},{"id":"INT-0073","t":"I","l":"Cold exposure / cold plunge","ll":"cold exposure / cold plunge","s":7.09,"m":109},{"id":"INT-0074","t":"I","l":"Breathwork / vagal toning practices","ll":"breathwork / vagal toning practices","s":7.431,"m":68},{"id":"INT-0075","t":"I","l":"MBSR / stress reduction (parent + child)","ll":"mbsr / stress reduction (parent + child)","s":6.851,"m":109},{"id":"INT-0076","t":"I","l":"Fecal microbiota transplantation (FMT)","ll":"fecal microbiota transplantation (fmt)","s":8.574,"m":125},{"id":"INT-0077","t":"I","l":"Bifidobacterium infantis / longum probiotic","ll":"bifidobacterium infantis / longum probiotic","s":7.942,"m":117},{"id":"INT-0078","t":"I","l":"Lactobacillus rhamnosus GG","ll":"lactobacillus rhamnosus gg","s":8.092,"m":125},{"id":"INT-0079","t":"I","l":"Saccharomyces boulardii (yeast probiotic)","ll":"saccharomyces boulardii (yeast probiotic)","s":5.826,"m":109},{"id":"INT-0080","t":"I","l":"Akkermansia muciniphila (live)","ll":"akkermansia muciniphila (live)","s":6.642,"m":109},{"id":"INT-0081","t":"I","l":"Human milk oligosaccharides (HMOs)","ll":"human milk oligosaccharides (hmos)","s":7.454,"m":117},{"id":"INT-0082","t":"I","l":"Galactooligosaccharides (GOS) / fructooligosaccharides (FOS)","ll":"galactooligosaccharides (gos) / fructooligosaccharides (fos)","s":7.528,"m":68},{"id":"INT-0083","t":"I","l":"Sodium butyrate (postbiotic)","ll":"sodium butyrate (postbiotic)","s":6.732,"m":77},{"id":"INT-0084","t":"I","l":"Vancomycin (oral, transient pre-FMT)","ll":"vancomycin (oral, transient pre-fmt)","s":7.014,"m":68},{"id":"INT-0085","t":"I","l":"Antifungal protocol (nystatin / fluconazole, targeted)","ll":"antifungal protocol (nystatin / fluconazole, targeted)","s":5.428,"m":109},{"id":"INT-0086","t":"I","l":"Phospholipid DHA (krill oil / salmon roe)","ll":"phospholipid dha (krill oil / salmon roe)","s":6.621,"m":100},{"id":"INT-0087","t":"I","l":"Tryptophan supplementation (with vitamin D)","ll":"tryptophan supplementation (with vitamin d)","s":6.739,"m":127},{"id":"INT-0088","t":"I","l":"Creatine monohydrate","ll":"creatine monohydrate","s":7.314,"m":51},{"id":"INT-0089","t":"I","l":"Time-restricted eating / 16:8 fasting","ll":"time-restricted eating / 16:8 fasting","s":6.921,"m":51},{"id":"INT-0090","t":"I","l":"HIIT (high-intensity interval training)","ll":"hiit (high-intensity interval training)","s":6.946,"m":119},{"id":"INT-0091","t":"I","l":"Whole-body hyperthermia (clinical)","ll":"whole-body hyperthermia (clinical)","s":7.052,"m":109},{"id":"INT-0092","t":"I","l":"Hyperbaric oxygen therapy (HBOT)","ll":"hyperbaric oxygen therapy (hbot)","s":7.835,"m":127},{"id":"INT-0093","t":"I","l":"Alpha-lipoic acid (ALA)","ll":"alpha-lipoic acid (ala)","s":8.067,"m":115},{"id":"INT-0094","t":"I","l":"D-ribose","ll":"d-ribose","s":7.755,"m":51},{"id":"INT-0095","t":"I","l":"Niacinamide / nicotinamide","ll":"niacinamide / nicotinamide","s":7.314,"m":51},{"id":"INT-0096","t":"I","l":"Preconception mitochondrial optimization combo (parental)","ll":"preconception mitochondrial optimization combo (parental)","s":8.098,"m":127},{"id":"INT-0097","t":"I","l":"Red light / photobiomodulation therapy (635 nm)","ll":"red light / photobiomodulation therapy (635 nm)","s":7.308,"m":127},{"id":"INT-0098","t":"I","l":"Vitamin A megadose (single 200,000 IU)","ll":"vitamin a megadose (single 200,000 iu)","s":6.461,"m":115},{"id":"INT-0099","t":"I","l":"Chelation therapy (DMSA / EDTA)","ll":"chelation therapy (dmsa / edta)","s":7.173,"m":115},{"id":"INT-0100","t":"I","l":"Cod liver oil (fermented preferred)","ll":"cod liver oil (fermented preferred)","s":7.274,"m":127},{"id":"INT-0101","t":"I","l":"L-glutamine (free amino acid)","ll":"l-glutamine (free amino acid)","s":7.652,"m":127},{"id":"INT-0102","t":"I","l":"Stem cell therapy (UC-MSC / cord blood / cord tissue MSC, IV infusion)","ll":"stem cell therapy (uc-msc / cord blood / cord tissue msc, iv infusion)","s":5.421,"m":0},{"id":"GEN-0002","t":"G","l":"GEN-0002","ll":"gen-0002","s":1.6,"m":51},{"id":"GEN-0011","t":"G","l":"GEN-0011","ll":"gen-0011","s":1.6,"m":0},{"id":"GEN-0012","t":"G","l":"GEN-0012","ll":"gen-0012","s":1.6,"m":0},{"id":"GEN-0013","t":"G","l":"GEN-0013","ll":"gen-0013","s":1.6,"m":0},{"id":"GEN-0014","t":"G","l":"GEN-0014","ll":"gen-0014","s":1.6,"m":0},{"id":"GEN-0015","t":"G","l":"GEN-0015","ll":"gen-0015","s":1.6,"m":0},{"id":"GEN-0017","t":"G","l":"GEN-0017","ll":"gen-0017","s":1.6,"m":0},{"id":"GEN-0018","t":"G","l":"GEN-0018","ll":"gen-0018","s":1.6,"m":0},{"id":"GEN-0019","t":"G","l":"GEN-0019","ll":"gen-0019","s":1.6,"m":0},{"id":"GEN-0020","t":"G","l":"GEN-0020","ll":"gen-0020","s":1.6,"m":0},{"id":"GEN-0023","t":"G","l":"GEN-0023","ll":"gen-0023","s":1.6,"m":0},{"id":"GEN-0025","t":"G","l":"GEN-0025","ll":"gen-0025","s":1.6,"m":0},{"id":"GEN-0026","t":"G","l":"GEN-0026","ll":"gen-0026","s":1.6,"m":0},{"id":"GEN-0027","t":"G","l":"GEN-0027","ll":"gen-0027","s":1.6,"m":0},{"id":"GEN-0028","t":"G","l":"GEN-0028","ll":"gen-0028","s":1.6,"m":0},{"id":"GEN-0029","t":"G","l":"GEN-0029","ll":"gen-0029","s":1.6,"m":0},{"id":"GEN-0031","t":"G","l":"GEN-0031","ll":"gen-0031","s":1.6,"m":0},{"id":"GEN-0033","t":"G","l":"GEN-0033","ll":"gen-0033","s":1.6,"m":0},{"id":"GEN-0035","t":"G","l":"GEN-0035","ll":"gen-0035","s":1.6,"m":0},{"id":"GEN-0037","t":"G","l":"GEN-0037","ll":"gen-0037","s":1.6,"m":0},{"id":"GEN-0038","t":"G","l":"GEN-0038","ll":"gen-0038","s":1.6,"m":0},{"id":"GEN-0039","t":"G","l":"GEN-0039","ll":"gen-0039","s":1.6,"m":0},{"id":"GEN-0040","t":"G","l":"GEN-0040","ll":"gen-0040","s":1.6,"m":0},{"id":"GEN-0041","t":"G","l":"GEN-0041","ll":"gen-0041","s":1.6,"m":0},{"id":"GEN-0042","t":"G","l":"GEN-0042","ll":"gen-0042","s":1.6,"m":0},{"id":"GEN-0044","t":"G","l":"GEN-0044","ll":"gen-0044","s":1.6,"m":0},{"id":"GEN-0045","t":"G","l":"GEN-0045","ll":"gen-0045","s":1.6,"m":0},{"id":"GEN-0046","t":"G","l":"GEN-0046","ll":"gen-0046","s":1.6,"m":0},{"id":"GEN-0049","t":"G","l":"GEN-0049","ll":"gen-0049","s":1.6,"m":0},{"id":"GEN-0050","t":"G","l":"GEN-0050","ll":"gen-0050","s":1.6,"m":0},{"id":"GEN-0052","t":"G","l":"GEN-0052","ll":"gen-0052","s":1.6,"m":0},{"id":"GEN-0055","t":"G","l":"GEN-0055","ll":"gen-0055","s":1.6,"m":0},{"id":"GEN-0056","t":"G","l":"GEN-0056","ll":"gen-0056","s":1.6,"m":0},{"id":"GEN-0060","t":"G","l":"GEN-0060","ll":"gen-0060","s":1.6,"m":0},{"id":"GEN-0064","t":"G","l":"GEN-0064","ll":"gen-0064","s":1.6,"m":0},{"id":"GEN-0066","t":"G","l":"GEN-0066","ll":"gen-0066","s":1.6,"m":0},{"id":"GEN-0068","t":"G","l":"GEN-0068","ll":"gen-0068","s":1.6,"m":0},{"id":"GEN-0069","t":"G","l":"GEN-0069","ll":"gen-0069","s":1.6,"m":0},{"id":"GEN-0070","t":"G","l":"GEN-0070","ll":"gen-0070","s":1.6,"m":0},{"id":"GEN-0071","t":"G","l":"GEN-0071","ll":"gen-0071","s":1.6,"m":0},{"id":"GEN-0072","t":"G","l":"GEN-0072","ll":"gen-0072","s":1.6,"m":0},{"id":"GEN-0074","t":"G","l":"GEN-0074","ll":"gen-0074","s":1.6,"m":0},{"id":"GEN-0075","t":"G","l":"GEN-0075","ll":"gen-0075","s":1.6,"m":0},{"id":"GEN-0076","t":"G","l":"GEN-0076","ll":"gen-0076","s":1.6,"m":0},{"id":"GEN-0077","t":"G","l":"GEN-0077","ll":"gen-0077","s":1.6,"m":0},{"id":"GEN-0078","t":"G","l":"GEN-0078","ll":"gen-0078","s":1.6,"m":0},{"id":"GEN-0079","t":"G","l":"GEN-0079","ll":"gen-0079","s":1.6,"m":0},{"id":"GEN-0084","t":"G","l":"GEN-0084","ll":"gen-0084","s":1.6,"m":0},{"id":"GEN-0086","t":"G","l":"GEN-0086","ll":"gen-0086","s":1.6,"m":0},{"id":"GEN-0087","t":"G","l":"GEN-0087","ll":"gen-0087","s":1.6,"m":0},{"id":"GEN-0088","t":"G","l":"GEN-0088","ll":"gen-0088","s":1.6,"m":0},{"id":"GEN-0090","t":"G","l":"GEN-0090","ll":"gen-0090","s":1.6,"m":0},{"id":"GEN-0091","t":"G","l":"GEN-0091","ll":"gen-0091","s":1.6,"m":0},{"id":"GEN-0092","t":"G","l":"GEN-0092","ll":"gen-0092","s":1.6,"m":0},{"id":"GEN-0094","t":"G","l":"GEN-0094","ll":"gen-0094","s":1.6,"m":0},{"id":"GEN-0098","t":"G","l":"GEN-0098","ll":"gen-0098","s":1.6,"m":0},{"id":"GEN-0099","t":"G","l":"GEN-0099","ll":"gen-0099","s":1.6,"m":0},{"id":"GEN-0102","t":"G","l":"GEN-0102","ll":"gen-0102","s":1.6,"m":0},{"id":"GEN-0104","t":"G","l":"GEN-0104","ll":"gen-0104","s":1.6,"m":0},{"id":"GEN-0105","t":"G","l":"GEN-0105","ll":"gen-0105","s":1.6,"m":0},{"id":"GEN-0106","t":"G","l":"GEN-0106","ll":"gen-0106","s":1.6,"m":0},{"id":"GEN-0107","t":"G","l":"GEN-0107","ll":"gen-0107","s":1.6,"m":0},{"id":"GEN-0109","t":"G","l":"GEN-0109","ll":"gen-0109","s":1.6,"m":0},{"id":"GEN-0110","t":"G","l":"GEN-0110","ll":"gen-0110","s":1.6,"m":0},{"id":"GEN-0113","t":"G","l":"GEN-0113","ll":"gen-0113","s":1.6,"m":0},{"id":"GEN-0116","t":"G","l":"GEN-0116","ll":"gen-0116","s":1.6,"m":0},{"id":"GEN-0118","t":"G","l":"GEN-0118","ll":"gen-0118","s":1.6,"m":0},{"id":"GEN-0119","t":"G","l":"GEN-0119","ll":"gen-0119","s":1.6,"m":0},{"id":"GEN-0120","t":"G","l":"GEN-0120","ll":"gen-0120","s":1.6,"m":0},{"id":"GEN-0123","t":"G","l":"GEN-0123","ll":"gen-0123","s":1.6,"m":0},{"id":"GEN-0124","t":"G","l":"GEN-0124","ll":"gen-0124","s":1.6,"m":0},{"id":"GEN-0125","t":"G","l":"GEN-0125","ll":"gen-0125","s":1.6,"m":0},{"id":"GEN-0126","t":"G","l":"GEN-0126","ll":"gen-0126","s":1.6,"m":0},{"id":"GEN-0128","t":"G","l":"GEN-0128","ll":"gen-0128","s":1.6,"m":0},{"id":"GEN-0129","t":"G","l":"GEN-0129","ll":"gen-0129","s":1.6,"m":0},{"id":"GEN-0130","t":"G","l":"GEN-0130","ll":"gen-0130","s":1.6,"m":0},{"id":"GEN-0132","t":"G","l":"GEN-0132","ll":"gen-0132","s":1.6,"m":0},{"id":"GEN-0133","t":"G","l":"GEN-0133","ll":"gen-0133","s":1.6,"m":0},{"id":"GEN-0134","t":"G","l":"GEN-0134","ll":"gen-0134","s":1.6,"m":0},{"id":"GEN-0135","t":"G","l":"GEN-0135","ll":"gen-0135","s":1.6,"m":0},{"id":"GEN-0137","t":"G","l":"GEN-0137","ll":"gen-0137","s":1.6,"m":0},{"id":"GEN-0139","t":"G","l":"GEN-0139","ll":"gen-0139","s":1.6,"m":0},{"id":"GEN-0140","t":"G","l":"GEN-0140","ll":"gen-0140","s":1.6,"m":0},{"id":"GEN-0141","t":"G","l":"GEN-0141","ll":"gen-0141","s":1.6,"m":0},{"id":"GEN-0142","t":"G","l":"GEN-0142","ll":"gen-0142","s":1.6,"m":0},{"id":"GEN-0143","t":"G","l":"GEN-0143","ll":"gen-0143","s":1.6,"m":0},{"id":"GEN-0145","t":"G","l":"GEN-0145","ll":"gen-0145","s":1.6,"m":0},{"id":"GEN-0146","t":"G","l":"GEN-0146","ll":"gen-0146","s":1.6,"m":0},{"id":"GEN-0147","t":"G","l":"GEN-0147","ll":"gen-0147","s":1.6,"m":0},{"id":"GEN-0148","t":"G","l":"GEN-0148","ll":"gen-0148","s":1.6,"m":0},{"id":"GEN-0149","t":"G","l":"GEN-0149","ll":"gen-0149","s":1.6,"m":0},{"id":"GEN-0150","t":"G","l":"GEN-0150","ll":"gen-0150","s":1.6,"m":0},{"id":"GEN-0151","t":"G","l":"GEN-0151","ll":"gen-0151","s":1.6,"m":0},{"id":"GEN-0155","t":"G","l":"GEN-0155","ll":"gen-0155","s":1.6,"m":0},{"id":"GEN-0157","t":"G","l":"GEN-0157","ll":"gen-0157","s":1.6,"m":0},{"id":"GEN-0159","t":"G","l":"GEN-0159","ll":"gen-0159","s":1.6,"m":0},{"id":"GEN-0160","t":"G","l":"GEN-0160","ll":"gen-0160","s":1.6,"m":0},{"id":"GEN-0162","t":"G","l":"GEN-0162","ll":"gen-0162","s":1.6,"m":0},{"id":"GEN-0164","t":"G","l":"GEN-0164","ll":"gen-0164","s":1.6,"m":0},{"id":"GEN-0166","t":"G","l":"GEN-0166","ll":"gen-0166","s":1.6,"m":0},{"id":"GEN-0167","t":"G","l":"GEN-0167","ll":"gen-0167","s":1.6,"m":0},{"id":"GEN-0168","t":"G","l":"GEN-0168","ll":"gen-0168","s":1.6,"m":0},{"id":"GEN-0169","t":"G","l":"GEN-0169","ll":"gen-0169","s":1.6,"m":0},{"id":"GEN-0170","t":"G","l":"GEN-0170","ll":"gen-0170","s":1.6,"m":0},{"id":"GEN-0171","t":"G","l":"GEN-0171","ll":"gen-0171","s":1.6,"m":0},{"id":"GEN-0173","t":"G","l":"GEN-0173","ll":"gen-0173","s":1.6,"m":0},{"id":"GEN-0174","t":"G","l":"GEN-0174","ll":"gen-0174","s":1.6,"m":0},{"id":"GEN-0175","t":"G","l":"GEN-0175","ll":"gen-0175","s":1.6,"m":0},{"id":"GEN-0176","t":"G","l":"GEN-0176","ll":"gen-0176","s":1.6,"m":0},{"id":"GEN-0177","t":"G","l":"GEN-0177","ll":"gen-0177","s":1.6,"m":0},{"id":"GEN-0178","t":"G","l":"GEN-0178","ll":"gen-0178","s":1.6,"m":0},{"id":"GEN-0179","t":"G","l":"GEN-0179","ll":"gen-0179","s":1.6,"m":0},{"id":"GEN-0180","t":"G","l":"GEN-0180","ll":"gen-0180","s":1.6,"m":0},{"id":"GEN-0182","t":"G","l":"GEN-0182","ll":"gen-0182","s":1.6,"m":0},{"id":"GEN-0183","t":"G","l":"GEN-0183","ll":"gen-0183","s":1.6,"m":0},{"id":"GEN-0184","t":"G","l":"GEN-0184","ll":"gen-0184","s":1.6,"m":0},{"id":"GEN-0186","t":"G","l":"GEN-0186","ll":"gen-0186","s":1.6,"m":0},{"id":"GEN-0188","t":"G","l":"GEN-0188","ll":"gen-0188","s":1.6,"m":0},{"id":"GEN-0191","t":"G","l":"GEN-0191","ll":"gen-0191","s":1.6,"m":0},{"id":"GEN-0192","t":"G","l":"GEN-0192","ll":"gen-0192","s":1.6,"m":0},{"id":"GEN-0195","t":"G","l":"GEN-0195","ll":"gen-0195","s":1.6,"m":0},{"id":"GEN-0196","t":"G","l":"GEN-0196","ll":"gen-0196","s":1.6,"m":0},{"id":"GEN-0198","t":"G","l":"GEN-0198","ll":"gen-0198","s":1.6,"m":0},{"id":"GEN-0200","t":"G","l":"GEN-0200","ll":"gen-0200","s":1.6,"m":0},{"id":"GEN-0204","t":"G","l":"GEN-0204","ll":"gen-0204","s":1.6,"m":0},{"id":"GEN-0208","t":"G","l":"GEN-0208","ll":"gen-0208","s":1.6,"m":0},{"id":"GEN-0210","t":"G","l":"GEN-0210","ll":"gen-0210","s":1.6,"m":0},{"id":"GEN-0211","t":"G","l":"GEN-0211","ll":"gen-0211","s":1.6,"m":0},{"id":"GEN-0212","t":"G","l":"GEN-0212","ll":"gen-0212","s":1.6,"m":0},{"id":"GEN-0213","t":"G","l":"GEN-0213","ll":"gen-0213","s":1.6,"m":0},{"id":"GEN-0214","t":"G","l":"GEN-0214","ll":"gen-0214","s":1.6,"m":0},{"id":"GEN-0215","t":"G","l":"GEN-0215","ll":"gen-0215","s":1.6,"m":0},{"id":"GEN-0216","t":"G","l":"GEN-0216","ll":"gen-0216","s":1.6,"m":0},{"id":"GEN-0218","t":"G","l":"GEN-0218","ll":"gen-0218","s":1.6,"m":0},{"id":"GEN-0220","t":"G","l":"GEN-0220","ll":"gen-0220","s":1.6,"m":0},{"id":"GEN-0221","t":"G","l":"GEN-0221","ll":"gen-0221","s":1.6,"m":0},{"id":"GEN-0222","t":"G","l":"GEN-0222","ll":"gen-0222","s":1.6,"m":0},{"id":"GEN-0223","t":"G","l":"GEN-0223","ll":"gen-0223","s":1.6,"m":0},{"id":"GEN-0224","t":"G","l":"GEN-0224","ll":"gen-0224","s":1.6,"m":0},{"id":"GEN-0225","t":"G","l":"GEN-0225","ll":"gen-0225","s":1.6,"m":0},{"id":"GEN-0226","t":"G","l":"GEN-0226","ll":"gen-0226","s":1.6,"m":0},{"id":"GEN-0230","t":"G","l":"GEN-0230","ll":"gen-0230","s":1.6,"m":0},{"id":"GEN-0231","t":"G","l":"GEN-0231","ll":"gen-0231","s":1.6,"m":0},{"id":"GEN-0232","t":"G","l":"GEN-0232","ll":"gen-0232","s":1.6,"m":0},{"id":"GEN-0233","t":"G","l":"GEN-0233","ll":"gen-0233","s":1.6,"m":0},{"id":"GEN-0234","t":"G","l":"GEN-0234","ll":"gen-0234","s":1.6,"m":0},{"id":"GEN-0236","t":"G","l":"GEN-0236","ll":"gen-0236","s":1.6,"m":0},{"id":"GEN-0237","t":"G","l":"GEN-0237","ll":"gen-0237","s":1.6,"m":0},{"id":"GEN-0238","t":"G","l":"GEN-0238","ll":"gen-0238","s":1.6,"m":0},{"id":"GEN-0239","t":"G","l":"GEN-0239","ll":"gen-0239","s":1.6,"m":0},{"id":"GEN-0240","t":"G","l":"GEN-0240","ll":"gen-0240","s":1.6,"m":0},{"id":"GEN-0242","t":"G","l":"GEN-0242","ll":"gen-0242","s":1.6,"m":0},{"id":"GEN-0244","t":"G","l":"GEN-0244","ll":"gen-0244","s":1.6,"m":0},{"id":"GEN-0245","t":"G","l":"GEN-0245","ll":"gen-0245","s":1.6,"m":0},{"id":"GEN-0247","t":"G","l":"GEN-0247","ll":"gen-0247","s":1.6,"m":0},{"id":"GEN-0249","t":"G","l":"GEN-0249","ll":"gen-0249","s":1.6,"m":0},{"id":"GEN-0250","t":"G","l":"GEN-0250","ll":"gen-0250","s":1.6,"m":0},{"id":"GEN-0251","t":"G","l":"GEN-0251","ll":"gen-0251","s":1.6,"m":0},{"id":"GEN-0252","t":"G","l":"GEN-0252","ll":"gen-0252","s":1.6,"m":0},{"id":"GEN-0258","t":"G","l":"GEN-0258","ll":"gen-0258","s":1.6,"m":0},{"id":"GEN-0260","t":"G","l":"GEN-0260","ll":"gen-0260","s":1.6,"m":0},{"id":"GEN-0261","t":"G","l":"GEN-0261","ll":"gen-0261","s":1.6,"m":0},{"id":"GEN-0262","t":"G","l":"GEN-0262","ll":"gen-0262","s":1.6,"m":0},{"id":"GEN-0264","t":"G","l":"GEN-0264","ll":"gen-0264","s":1.6,"m":0},{"id":"GEN-0265","t":"G","l":"GEN-0265","ll":"gen-0265","s":1.6,"m":0},{"id":"GEN-0268","t":"G","l":"GEN-0268","ll":"gen-0268","s":1.6,"m":0},{"id":"GEN-0269","t":"G","l":"GEN-0269","ll":"gen-0269","s":1.6,"m":0},{"id":"GEN-0271","t":"G","l":"GEN-0271","ll":"gen-0271","s":1.6,"m":0},{"id":"GEN-0272","t":"G","l":"GEN-0272","ll":"gen-0272","s":1.6,"m":0},{"id":"GEN-0273","t":"G","l":"GEN-0273","ll":"gen-0273","s":1.6,"m":0},{"id":"GEN-0274","t":"G","l":"GEN-0274","ll":"gen-0274","s":1.6,"m":0},{"id":"GEN-0275","t":"G","l":"GEN-0275","ll":"gen-0275","s":1.6,"m":0},{"id":"GEN-0276","t":"G","l":"GEN-0276","ll":"gen-0276","s":1.6,"m":0},{"id":"GEN-0278","t":"G","l":"GEN-0278","ll":"gen-0278","s":1.6,"m":0},{"id":"GEN-0279","t":"G","l":"GEN-0279","ll":"gen-0279","s":1.6,"m":0},{"id":"GEN-0280","t":"G","l":"GEN-0280","ll":"gen-0280","s":1.6,"m":0},{"id":"GEN-0281","t":"G","l":"GEN-0281","ll":"gen-0281","s":1.6,"m":0},{"id":"GEN-0282","t":"G","l":"GEN-0282","ll":"gen-0282","s":1.6,"m":0},{"id":"GEN-0285","t":"G","l":"GEN-0285","ll":"gen-0285","s":1.6,"m":0},{"id":"GEN-0290","t":"G","l":"GEN-0290","ll":"gen-0290","s":1.6,"m":0},{"id":"GEN-0315","t":"G","l":"GEN-0315","ll":"gen-0315","s":1.6,"m":0},{"id":"GEN-0317","t":"G","l":"GEN-0317","ll":"gen-0317","s":1.6,"m":0},{"id":"GEN-0331","t":"G","l":"GEN-0331","ll":"gen-0331","s":1.6,"m":0},{"id":"GEN-0350","t":"G","l":"GEN-0350","ll":"gen-0350","s":1.6,"m":0},{"id":"GEN-0353","t":"G","l":"GEN-0353","ll":"gen-0353","s":1.6,"m":0},{"id":"GEN-0354","t":"G","l":"GEN-0354","ll":"gen-0354","s":1.6,"m":0},{"id":"GEN-0362","t":"G","l":"GEN-0362","ll":"gen-0362","s":1.6,"m":0},{"id":"GEN-0363","t":"G","l":"GEN-0363","ll":"gen-0363","s":1.6,"m":0},{"id":"GEN-0368","t":"G","l":"GEN-0368","ll":"gen-0368","s":1.6,"m":0},{"id":"GEN-0381","t":"G","l":"GEN-0381","ll":"gen-0381","s":1.6,"m":0},{"id":"GEN-0389","t":"G","l":"GEN-0389","ll":"gen-0389","s":1.6,"m":0},{"id":"GEN-0397","t":"G","l":"GEN-0397","ll":"gen-0397","s":1.6,"m":0},{"id":"GEN-0400","t":"G","l":"GEN-0400","ll":"gen-0400","s":1.6,"m":0},{"id":"GEN-0409","t":"G","l":"GEN-0409","ll":"gen-0409","s":1.6,"m":0},{"id":"GEN-0411","t":"G","l":"GEN-0411","ll":"gen-0411","s":1.6,"m":0},{"id":"GEN-0414","t":"G","l":"GEN-0414","ll":"gen-0414","s":1.6,"m":0},{"id":"GEN-0419","t":"G","l":"GEN-0419","ll":"gen-0419","s":1.6,"m":0},{"id":"GEN-0434","t":"G","l":"GEN-0434","ll":"gen-0434","s":1.6,"m":0},{"id":"GEN-0443","t":"G","l":"GEN-0443","ll":"gen-0443","s":1.6,"m":0},{"id":"GEN-0450","t":"G","l":"GEN-0450","ll":"gen-0450","s":1.6,"m":0},{"id":"GEN-0476","t":"G","l":"GEN-0476","ll":"gen-0476","s":1.6,"m":0},{"id":"GEN-0478","t":"G","l":"GEN-0478","ll":"gen-0478","s":1.6,"m":0},{"id":"GEN-0482","t":"G","l":"GEN-0482","ll":"gen-0482","s":1.6,"m":0},{"id":"GEN-0495","t":"G","l":"GEN-0495","ll":"gen-0495","s":1.6,"m":0},{"id":"GEN-0508","t":"G","l":"GEN-0508","ll":"gen-0508","s":1.6,"m":0},{"id":"GEN-0512","t":"G","l":"GEN-0512","ll":"gen-0512","s":1.6,"m":0},{"id":"GEN-0513","t":"G","l":"GEN-0513","ll":"gen-0513","s":1.6,"m":0},{"id":"GEN-0519","t":"G","l":"GEN-0519","ll":"gen-0519","s":1.6,"m":0},{"id":"GEN-0531","t":"G","l":"GEN-0531","ll":"gen-0531","s":1.6,"m":0},{"id":"GEN-0541","t":"G","l":"GEN-0541","ll":"gen-0541","s":1.6,"m":0},{"id":"GEN-0544","t":"G","l":"GEN-0544","ll":"gen-0544","s":1.6,"m":0},{"id":"GEN-0545","t":"G","l":"GEN-0545","ll":"gen-0545","s":1.6,"m":0},{"id":"GEN-0548","t":"G","l":"GEN-0548","ll":"gen-0548","s":1.6,"m":0},{"id":"GEN-0552","t":"G","l":"GEN-0552","ll":"gen-0552","s":1.6,"m":0},{"id":"GEN-0553","t":"G","l":"GEN-0553","ll":"gen-0553","s":1.6,"m":0},{"id":"GEN-0558","t":"G","l":"GEN-0558","ll":"gen-0558","s":1.6,"m":0},{"id":"GEN-0563","t":"G","l":"GEN-0563","ll":"gen-0563","s":1.6,"m":0},{"id":"GEN-0565","t":"G","l":"GEN-0565","ll":"gen-0565","s":1.6,"m":0},{"id":"GEN-0567","t":"G","l":"GEN-0567","ll":"gen-0567","s":1.6,"m":0},{"id":"GEN-0584","t":"G","l":"GEN-0584","ll":"gen-0584","s":1.6,"m":0},{"id":"GEN-0586","t":"G","l":"GEN-0586","ll":"gen-0586","s":1.6,"m":0},{"id":"GEN-0589","t":"G","l":"GEN-0589","ll":"gen-0589","s":1.6,"m":0},{"id":"GEN-0591","t":"G","l":"GEN-0591","ll":"gen-0591","s":1.6,"m":0},{"id":"GEN-0594","t":"G","l":"GEN-0594","ll":"gen-0594","s":1.6,"m":0},{"id":"GEN-0600","t":"G","l":"GEN-0600","ll":"gen-0600","s":1.6,"m":0},{"id":"GEN-0601","t":"G","l":"GEN-0601","ll":"gen-0601","s":1.6,"m":0},{"id":"GEN-0603","t":"G","l":"GEN-0603","ll":"gen-0603","s":1.6,"m":0},{"id":"GEN-0610","t":"G","l":"GEN-0610","ll":"gen-0610","s":1.6,"m":0},{"id":"GEN-0630","t":"G","l":"GEN-0630","ll":"gen-0630","s":1.6,"m":0},{"id":"GEN-0633","t":"G","l":"GEN-0633","ll":"gen-0633","s":1.6,"m":0},{"id":"GEN-0635","t":"G","l":"GEN-0635","ll":"gen-0635","s":1.6,"m":0},{"id":"GEN-0638","t":"G","l":"GEN-0638","ll":"gen-0638","s":1.6,"m":0},{"id":"GEN-0639","t":"G","l":"GEN-0639","ll":"gen-0639","s":1.6,"m":0},{"id":"GEN-0662","t":"G","l":"GEN-0662","ll":"gen-0662","s":1.6,"m":0},{"id":"GEN-0666","t":"G","l":"GEN-0666","ll":"gen-0666","s":1.6,"m":0},{"id":"GEN-0668","t":"G","l":"GEN-0668","ll":"gen-0668","s":1.6,"m":0},{"id":"GEN-0673","t":"G","l":"GEN-0673","ll":"gen-0673","s":1.6,"m":0},{"id":"GEN-0676","t":"G","l":"GEN-0676","ll":"gen-0676","s":1.6,"m":0},{"id":"GEN-0687","t":"G","l":"GEN-0687","ll":"gen-0687","s":1.6,"m":0},{"id":"GEN-0692","t":"G","l":"GEN-0692","ll":"gen-0692","s":1.6,"m":0},{"id":"GEN-0694","t":"G","l":"GEN-0694","ll":"gen-0694","s":1.6,"m":0},{"id":"GEN-0701","t":"G","l":"GEN-0701","ll":"gen-0701","s":1.6,"m":0},{"id":"GEN-0706","t":"G","l":"GEN-0706","ll":"gen-0706","s":1.6,"m":0},{"id":"GEN-0712","t":"G","l":"GEN-0712","ll":"gen-0712","s":1.6,"m":0},{"id":"GEN-0725","t":"G","l":"GEN-0725","ll":"gen-0725","s":1.6,"m":0},{"id":"GEN-0731","t":"G","l":"GEN-0731","ll":"gen-0731","s":1.6,"m":0},{"id":"GEN-0734","t":"G","l":"GEN-0734","ll":"gen-0734","s":1.6,"m":0},{"id":"GEN-0735","t":"G","l":"GEN-0735","ll":"gen-0735","s":1.6,"m":0},{"id":"GEN-0736","t":"G","l":"GEN-0736","ll":"gen-0736","s":1.6,"m":0},{"id":"GEN-0758","t":"G","l":"GEN-0758","ll":"gen-0758","s":1.6,"m":0},{"id":"GEN-0787","t":"G","l":"GEN-0787","ll":"gen-0787","s":1.6,"m":0},{"id":"GEN-0814","t":"G","l":"GEN-0814","ll":"gen-0814","s":1.6,"m":0},{"id":"GEN-0815","t":"G","l":"GEN-0815","ll":"gen-0815","s":1.6,"m":0},{"id":"GEN-0818","t":"G","l":"GEN-0818","ll":"gen-0818","s":1.6,"m":0},{"id":"GEN-0823","t":"G","l":"GEN-0823","ll":"gen-0823","s":1.6,"m":0},{"id":"GEN-0830","t":"G","l":"GEN-0830","ll":"gen-0830","s":1.6,"m":0},{"id":"GEN-0832","t":"G","l":"GEN-0832","ll":"gen-0832","s":1.6,"m":0},{"id":"GEN-0837","t":"G","l":"GEN-0837","ll":"gen-0837","s":1.6,"m":0},{"id":"GEN-0838","t":"G","l":"GEN-0838","ll":"gen-0838","s":1.6,"m":0},{"id":"GEN-0842","t":"G","l":"GEN-0842","ll":"gen-0842","s":1.6,"m":0},{"id":"GEN-0844","t":"G","l":"GEN-0844","ll":"gen-0844","s":1.6,"m":0},{"id":"GEN-0882","t":"G","l":"GEN-0882","ll":"gen-0882","s":1.6,"m":0},{"id":"GEN-0887","t":"G","l":"GEN-0887","ll":"gen-0887","s":1.6,"m":0},{"id":"GEN-0890","t":"G","l":"GEN-0890","ll":"gen-0890","s":1.6,"m":0},{"id":"GEN-0895","t":"G","l":"GEN-0895","ll":"gen-0895","s":1.6,"m":0},{"id":"GEN-0898","t":"G","l":"GEN-0898","ll":"gen-0898","s":1.6,"m":0},{"id":"GEN-0906","t":"G","l":"GEN-0906","ll":"gen-0906","s":1.6,"m":0},{"id":"GEN-0912","t":"G","l":"GEN-0912","ll":"gen-0912","s":1.6,"m":0},{"id":"GEN-0924","t":"G","l":"GEN-0924","ll":"gen-0924","s":1.6,"m":0},{"id":"GEN-0939","t":"G","l":"GEN-0939","ll":"gen-0939","s":1.6,"m":0},{"id":"GEN-0955","t":"G","l":"GEN-0955","ll":"gen-0955","s":1.6,"m":0},{"id":"GEN-0972","t":"G","l":"GEN-0972","ll":"gen-0972","s":1.6,"m":0},{"id":"GEN-0975","t":"G","l":"GEN-0975","ll":"gen-0975","s":1.6,"m":0},{"id":"GEN-0982","t":"G","l":"GEN-0982","ll":"gen-0982","s":1.6,"m":0},{"id":"GEN-0983","t":"G","l":"GEN-0983","ll":"gen-0983","s":1.6,"m":0},{"id":"GEN-0998","t":"G","l":"GEN-0998","ll":"gen-0998","s":1.6,"m":0},{"id":"GEN-1009","t":"G","l":"GEN-1009","ll":"gen-1009","s":1.6,"m":0},{"id":"GEN-1011","t":"G","l":"GEN-1011","ll":"gen-1011","s":1.6,"m":0},{"id":"GEN-1032","t":"G","l":"GEN-1032","ll":"gen-1032","s":1.6,"m":0},{"id":"GEN-1046","t":"G","l":"GEN-1046","ll":"gen-1046","s":1.6,"m":0},{"id":"GEN-1062","t":"G","l":"GEN-1062","ll":"gen-1062","s":1.6,"m":0},{"id":"GEN-1070","t":"G","l":"GEN-1070","ll":"gen-1070","s":1.6,"m":0},{"id":"GEN-1085","t":"G","l":"GEN-1085","ll":"gen-1085","s":1.6,"m":0},{"id":"GEN-1086","t":"G","l":"GEN-1086","ll":"gen-1086","s":1.6,"m":0},{"id":"GEN-1093","t":"G","l":"GEN-1093","ll":"gen-1093","s":1.6,"m":0},{"id":"GEN-1106","t":"G","l":"GEN-1106","ll":"gen-1106","s":1.6,"m":0},{"id":"GEN-1112","t":"G","l":"GEN-1112","ll":"gen-1112","s":1.6,"m":0},{"id":"GEN-1114","t":"G","l":"GEN-1114","ll":"gen-1114","s":1.6,"m":0},{"id":"GEN-1124","t":"G","l":"GEN-1124","ll":"gen-1124","s":1.6,"m":0},{"id":"GEN-1126","t":"G","l":"GEN-1126","ll":"gen-1126","s":1.6,"m":0},{"id":"GEN-1131","t":"G","l":"GEN-1131","ll":"gen-1131","s":1.6,"m":0},{"id":"GEN-1135","t":"G","l":"GEN-1135","ll":"gen-1135","s":1.6,"m":0},{"id":"GEN-1138","t":"G","l":"GEN-1138","ll":"gen-1138","s":1.6,"m":0},{"id":"GEN-1141","t":"G","l":"GEN-1141","ll":"gen-1141","s":1.6,"m":0},{"id":"GEN-1146","t":"G","l":"GEN-1146","ll":"gen-1146","s":1.6,"m":0},{"id":"GEN-1147","t":"G","l":"GEN-1147","ll":"gen-1147","s":1.6,"m":0},{"id":"GEN-1151","t":"G","l":"GEN-1151","ll":"gen-1151","s":1.6,"m":0},{"id":"GEN-1156","t":"G","l":"GEN-1156","ll":"gen-1156","s":1.6,"m":0},{"id":"GEN-1157","t":"G","l":"GEN-1157","ll":"gen-1157","s":1.6,"m":0},{"id":"GEN-1161","t":"G","l":"GEN-1161","ll":"gen-1161","s":1.6,"m":0},{"id":"GEN-1162","t":"G","l":"GEN-1162","ll":"gen-1162","s":1.6,"m":0},{"id":"GEN-1172","t":"G","l":"GEN-1172","ll":"gen-1172","s":1.6,"m":0},{"id":"GEN-1176","t":"G","l":"GEN-1176","ll":"gen-1176","s":1.6,"m":0},{"id":"GEN-1187","t":"G","l":"GEN-1187","ll":"gen-1187","s":1.6,"m":0},{"id":"GEN-1194","t":"G","l":"GEN-1194","ll":"gen-1194","s":1.6,"m":0},{"id":"GEN-1195","t":"G","l":"GEN-1195","ll":"gen-1195","s":1.6,"m":0},{"id":"GEN-1196","t":"G","l":"GEN-1196","ll":"gen-1196","s":1.6,"m":0},{"id":"GEN-1202","t":"G","l":"GEN-1202","ll":"gen-1202","s":1.6,"m":0},{"id":"GEN-1206","t":"G","l":"GEN-1206","ll":"gen-1206","s":1.6,"m":0},{"id":"GEN-1208","t":"G","l":"GEN-1208","ll":"gen-1208","s":1.6,"m":0},{"id":"GEN-1214","t":"G","l":"GEN-1214","ll":"gen-1214","s":1.6,"m":0},{"id":"GEN-1219","t":"G","l":"GEN-1219","ll":"gen-1219","s":1.6,"m":0},{"id":"GEN-1222","t":"G","l":"GEN-1222","ll":"gen-1222","s":1.6,"m":0},{"id":"GEN-1227","t":"G","l":"GEN-1227","ll":"gen-1227","s":1.6,"m":0},{"id":"GEN-1233","t":"G","l":"GEN-1233","ll":"gen-1233","s":1.6,"m":0},{"id":"GEN-1237","t":"G","l":"GEN-1237","ll":"gen-1237","s":1.6,"m":0},{"id":"GEN-1244","t":"G","l":"GEN-1244","ll":"gen-1244","s":1.6,"m":0},{"id":"GEN-1256","t":"G","l":"GEN-1256","ll":"gen-1256","s":1.6,"m":0},{"id":"GEN-1257","t":"G","l":"GEN-1257","ll":"gen-1257","s":1.6,"m":0},{"id":"GEN-1261","t":"G","l":"GEN-1261","ll":"gen-1261","s":1.6,"m":0}],"links":[{"s":"HYP-0001","t":"MEC-0003","w":0.691,"k":"hm"},{"s":"HYP-0001","t":"MEC-0004","w":0.723,"k":"hm"},{"s":"HYP-0002","t":"MEC-0001","w":0.741,"k":"hm"},{"s":"HYP-0003","t":"MEC-0003","w":0.606,"k":"hm"},{"s":"HYP-0005","t":"MEC-0008","w":0.712,"k":"hm"},{"s":"HYP-0006","t":"MEC-0001","w":0.775,"k":"hm"},{"s":"HYP-0006","t":"MEC-0010","w":0.766,"k":"hm"},{"s":"HYP-0007","t":"MEC-0004","w":0.723,"k":"hm"},{"s":"HYP-0007","t":"MEC-0008","w":0.739,"k":"hm"},{"s":"HYP-0008","t":"MEC-0002","w":0.773,"k":"hm"},{"s":"HYP-0017","t":"MEC-0001","w":0.0,"k":"hm"},{"s":"HYP-0018","t":"MEC-0002","w":0.0,"k":"hm"},{"s":"HYP-0019","t":"MEC-0002","w":0.0,"k":"hm"},{"s":"HYP-0022","t":"MEC-0008","w":0.0,"k":"hm"},{"s":"HYP-0023","t":"MEC-0008","w":0.0,"k":"hm"},{"s":"HYP-0029","t":"MEC-0009","w":0.15,"k":"hm"},{"s":"HYP-0030","t":"MEC-0009","w":0.0,"k":"hm"},{"s":"HYP-0031","t":"MEC-0011","w":0.384,"k":"hm"},{"s":"HYP-0031","t":"MEC-0010","w":0.417,"k":"hm"},{"s":"HYP-0032","t":"MEC-0012","w":0.469,"k":"hm"},{"s":"HYP-0032","t":"MEC-0006","w":0.55,"k":"hm"},{"s":"HYP-0033","t":"MEC-0014","w":0.317,"k":"hm"},{"s":"HYP-0033","t":"MEC-0010","w":0.337,"k":"hm"},{"s":"HYP-0034","t":"MEC-0016","w":0.481,"k":"hm"},{"s":"HYP-0035","t":"MEC-0016","w":0.359,"k":"hm"},{"s":"HYP-0036","t":"MEC-0016","w":0.541,"k":"hm"},{"s":"HYP-0036","t":"MEC-0002","w":0.689,"k":"hm"},{"s":"HYP-0037","t":"MEC-0019","w":0.697,"k":"hm"},{"s":"HYP-0037","t":"MEC-0016","w":0.578,"k":"hm"},{"s":"HYP-0038","t":"MEC-0006","w":0.24,"k":"hm"},{"s":"HYP-0039","t":"MEC-0002","w":0.828,"k":"hm"},{"s":"HYP-0039","t":"MEC-0010","w":0.803,"k":"hm"},{"s":"HYP-0040","t":"MEC-0001","w":0.561,"k":"hm"},{"s":"HYP-0040","t":"MEC-0002","w":0.572,"k":"hm"},{"s":"HYP-0041","t":"MEC-0002","w":0.836,"k":"hm"},{"s":"HYP-0041","t":"MEC-0005","w":0.791,"k":"hm"},{"s":"HYP-0041","t":"MEC-0008","w":0.805,"k":"hm"},{"s":"HYP-0042","t":"MEC-0008","w":0.446,"k":"hm"},{"s":"HYP-0043","t":"MEC-0016","w":0.534,"k":"hm"},{"s":"HYP-0044","t":"MEC-0002","w":0.936,"k":"hm"},{"s":"HYP-0044","t":"MEC-0010","w":0.907,"k":"hm"},{"s":"HYP-0045","t":"MEC-0002","w":0.668,"k":"hm"},{"s":"HYP-0045","t":"MEC-0020","w":0.59,"k":"hm"},{"s":"HYP-0046","t":"MEC-0001","w":0.774,"k":"hm"},{"s":"HYP-0046","t":"MEC-0003","w":0.712,"k":"hm"},{"s":"HYP-0047","t":"MEC-0020","w":0.541,"k":"hm"},{"s":"HYP-0047","t":"MEC-0007","w":0.532,"k":"hm"},{"s":"HYP-0048","t":"MEC-0016","w":0.359,"k":"hm"},{"s":"HYP-0049","t":"MEC-0001","w":0.0,"k":"hm"},{"s":"HYP-0050","t":"MEC-0003","w":0.394,"k":"hm"},{"s":"HYP-0051","t":"MEC-0002","w":0.715,"k":"hm"},{"s":"HYP-0051","t":"MEC-0017","w":0.663,"k":"hm"},{"s":"HYP-0052","t":"MEC-0010","w":0.586,"k":"hm"},{"s":"HYP-0053","t":"MEC-0001","w":0.0,"k":"hm"},{"s":"HYP-0053","t":"MEC-0002","w":0.0,"k":"hm"},{"s":"HYP-0054","t":"MEC-0001","w":0.218,"k":"hm"},{"s":"HYP-0006","t":"MEC-0011","w":0.832,"k":"hm"},{"s":"HYP-0006","t":"MEC-0014","w":0.848,"k":"hm"},{"s":"HYP-0029","t":"MEC-0015","w":0.114,"k":"hm"},{"s":"HYP-0030","t":"MEC-0015","w":0.0,"k":"hm"},{"s":"HYP-0008","t":"MEC-0017","w":0.844,"k":"hm"},{"s":"HYP-0007","t":"MEC-0019","w":0.853,"k":"hm"},{"s":"HYP-0005","t":"MEC-0018","w":0.8,"k":"hm"},{"s":"HYP-0011","t":"MEC-0016","w":0.337,"k":"hm"},{"s":"HYP-0012","t":"MEC-0016","w":0.337,"k":"hm"},{"s":"HYP-0056","t":"MEC-0026","w":0.74,"k":"hm"},{"s":"HYP-0056","t":"MEC-0021","w":0.719,"k":"hm"},{"s":"HYP-0057","t":"MEC-0024","w":0.5,"k":"hm"},{"s":"HYP-0057","t":"MEC-0023","w":0.62,"k":"hm"},{"s":"HYP-0058","t":"MEC-0021","w":0.613,"k":"hm"},{"s":"HYP-0058","t":"MEC-0022","w":0.543,"k":"hm"},{"s":"HYP-0059","t":"MEC-0022","w":0.459,"k":"hm"},{"s":"HYP-0059","t":"MEC-0002","w":0.551,"k":"hm"},{"s":"HYP-0060","t":"MEC-0024","w":0.446,"k":"hm"},{"s":"HYP-0060","t":"MEC-0007","w":0.537,"k":"hm"},{"s":"HYP-0061","t":"MEC-0022","w":0.0,"k":"hm"},{"s":"HYP-0007","t":"MEC-0021","w":0.848,"k":"hm"},{"s":"HYP-0007","t":"MEC-0023","w":0.807,"k":"hm"},{"s":"HYP-0007","t":"MEC-0025","w":0.843,"k":"hm"},{"s":"HYP-0007","t":"MEC-0026","w":0.874,"k":"hm"},{"s":"HYP-0022","t":"MEC-0026","w":0.0,"k":"hm"},{"s":"HYP-0022","t":"MEC-0021","w":0.0,"k":"hm"},{"s":"HYP-0023","t":"MEC-0026","w":0.0,"k":"hm"},{"s":"HYP-0005","t":"MEC-0023","w":0.777,"k":"hm"},{"s":"HYP-0062","t":"MEC-0029","w":0.204,"k":"hm"},{"s":"HYP-0063","t":"MEC-0001","w":0.775,"k":"hm"},{"s":"HYP-0063","t":"MEC-0003","w":0.712,"k":"hm"},{"s":"HYP-0064","t":"MEC-0031","w":0.262,"k":"hm"},{"s":"HYP-0064","t":"MEC-0028","w":0.275,"k":"hm"},{"s":"HYP-0065","t":"MEC-0027","w":0.503,"k":"hm"},{"s":"HYP-0065","t":"MEC-0002","w":0.531,"k":"hm"},{"s":"HYP-0045","t":"MEC-0029","w":0.537,"k":"hm"},{"s":"HYP-0021","t":"MEC-0031","w":0.0,"k":"hm"},{"s":"HYP-0008","t":"MEC-0027","w":0.861,"k":"hm"},{"s":"HYP-0006","t":"MEC-0030","w":0.813,"k":"hm"},{"s":"HYP-0029","t":"MEC-0030","w":0.186,"k":"hm"},{"s":"HYP-0030","t":"MEC-0030","w":0.0,"k":"hm"},{"s":"HYP-0031","t":"MEC-0030","w":0.376,"k":"hm"},{"s":"HYP-0066","t":"MEC-0032","w":0.809,"k":"hm"},{"s":"HYP-0066","t":"MEC-0002","w":0.856,"k":"hm"},{"s":"HYP-0067","t":"MEC-0032","w":0.802,"k":"hm"},{"s":"HYP-0067","t":"MEC-0002","w":0.849,"k":"hm"},{"s":"HYP-0067","t":"MEC-0005","w":0.803,"k":"hm"},{"s":"HYP-0044","t":"MEC-0032","w":0.884,"k":"hm"},{"s":"HYP-0068","t":"MEC-0032","w":0.863,"k":"hm"},{"s":"HYP-0068","t":"MEC-0002","w":0.914,"k":"hm"},{"s":"HYP-0069","t":"MEC-0010","w":0.87,"k":"hm"},{"s":"HYP-0069","t":"MEC-0001","w":0.88,"k":"hm"},{"s":"HYP-0070","t":"MEC-0010","w":0.405,"k":"hm"},{"s":"HYP-0070","t":"MEC-0011","w":0.374,"k":"hm"},{"s":"HYP-0070","t":"MEC-0033","w":0.196,"k":"hm"},{"s":"HYP-0025","t":"MEC-0002","w":0.0,"k":"hm"},{"s":"HYP-0025","t":"MEC-0005","w":0.0,"k":"hm"},{"s":"HYP-0025","t":"MEC-0017","w":0.0,"k":"hm"},{"s":"HYP-0028","t":"MEC-0006","w":0.622,"k":"hm"},{"s":"HYP-0028","t":"MEC-0007","w":0.662,"k":"hm"},{"s":"HYP-0028","t":"MEC-0009","w":0.632,"k":"hm"},{"s":"HYP-0071","t":"MEC-0034","w":0.625,"k":"hm"},{"s":"HYP-0071","t":"MEC-0007","w":0.652,"k":"hm"},{"s":"HYP-0072","t":"MEC-0003","w":0.31,"k":"hm"},{"s":"HYP-0072","t":"MEC-0007","w":0.254,"k":"hm"},{"s":"HYP-0073","t":"MEC-0006","w":0.502,"k":"hm"},{"s":"HYP-0073","t":"MEC-0034","w":0.435,"k":"hm"},{"s":"HYP-0025","t":"MEC-0002","w":0.0,"k":"hm"},{"s":"HYP-0025","t":"MEC-0005","w":0.0,"k":"hm"},{"s":"HYP-0025","t":"MEC-0017","w":0.0,"k":"hm"},{"s":"HYP-0028","t":"MEC-0006","w":0.622,"k":"hm"},{"s":"HYP-0028","t":"MEC-0007","w":0.662,"k":"hm"},{"s":"HYP-0028","t":"MEC-0009","w":0.632,"k":"hm"},{"s":"INT-0001","t":"MEC-0003","w":0.673,"k":"im"},{"s":"INT-0001","t":"MEC-0004","w":0.704,"k":"im"},{"s":"INT-0002","t":"MEC-0001","w":0.692,"k":"im"},{"s":"INT-0002","t":"MEC-0010","w":0.685,"k":"im"},{"s":"INT-0003","t":"MEC-0003","w":0.511,"k":"im"},{"s":"INT-0004","t":"MEC-0001","w":0.574,"k":"im"},{"s":"INT-0004","t":"MEC-0007","w":0.509,"k":"im"},{"s":"INT-0005","t":"MEC-0007","w":0.492,"k":"im"},{"s":"INT-0006","t":"MEC-0002","w":0.582,"k":"im"},{"s":"INT-0006","t":"MEC-0005","w":0.551,"k":"im"},{"s":"INT-0007","t":"MEC-0002","w":0.647,"k":"im"},{"s":"INT-0007","t":"MEC-0007","w":0.562,"k":"im"},{"s":"INT-0007","t":"MEC-0010","w":0.627,"k":"im"},{"s":"INT-0008","t":"MEC-0003","w":0.642,"k":"im"},{"s":"INT-0010","t":"MEC-0001","w":0.453,"k":"im"},{"s":"INT-0010","t":"MEC-0003","w":0.416,"k":"im"},{"s":"INT-0011","t":"MEC-0010","w":0.57,"k":"im"},{"s":"INT-0012","t":"MEC-0010","w":0.558,"k":"im"},{"s":"INT-0014","t":"MEC-0002","w":0.612,"k":"im"},{"s":"INT-0015","t":"MEC-0007","w":0.574,"k":"im"},{"s":"INT-0017","t":"MEC-0003","w":0.509,"k":"im"},{"s":"INT-0017","t":"MEC-0007","w":0.491,"k":"im"},{"s":"INT-0018","t":"MEC-0003","w":0.414,"k":"im"},{"s":"INT-0020","t":"MEC-0001","w":0.578,"k":"im"},{"s":"INT-0023","t":"MEC-0007","w":0.504,"k":"im"},{"s":"INT-0025","t":"MEC-0008","w":0.669,"k":"im"},{"s":"INT-0027","t":"MEC-0002","w":0.587,"k":"im"},{"s":"INT-0027","t":"MEC-0004","w":0.553,"k":"im"},{"s":"INT-0027","t":"MEC-0005","w":0.555,"k":"im"},{"s":"INT-0028","t":"MEC-0009","w":0.49,"k":"im"},{"s":"INT-0028","t":"MEC-0010","w":0.571,"k":"im"},{"s":"INT-0030","t":"MEC-0003","w":0.59,"k":"im"},{"s":"INT-0035","t":"MEC-0007","w":0.5,"k":"im"},{"s":"INT-0036","t":"MEC-0009","w":0.557,"k":"im"},{"s":"INT-0037","t":"MEC-0008","w":0.623,"k":"im"},{"s":"INT-0042","t":"MEC-0008","w":0.539,"k":"im"},{"s":"INT-0043","t":"MEC-0007","w":0.397,"k":"im"},{"s":"INT-0044","t":"MEC-0001","w":0.465,"k":"im"},{"s":"INT-0045","t":"MEC-0010","w":0.435,"k":"im"},{"s":"INT-0047","t":"MEC-0002","w":0.671,"k":"im"},{"s":"INT-0050","t":"MEC-0001","w":0.486,"k":"im"},{"s":"INT-0055","t":"MEC-0010","w":0.524,"k":"im"},{"s":"INT-0056","t":"MEC-0008","w":0.445,"k":"im"},{"s":"INT-0057","t":"MEC-0002","w":0.479,"k":"im"},{"s":"INT-0058","t":"MEC-0003","w":0.41,"k":"im"},{"s":"INT-0059","t":"MEC-0008","w":0.458,"k":"im"},{"s":"INT-0060","t":"MEC-0008","w":0.454,"k":"im"},{"s":"INT-0061","t":"MEC-0016","w":0.554,"k":"im"},{"s":"INT-0062","t":"MEC-0002","w":0.54,"k":"im"},{"s":"INT-0062","t":"MEC-0008","w":0.52,"k":"im"},{"s":"INT-0065","t":"MEC-0006","w":0.616,"k":"im"},{"s":"INT-0066","t":"MEC-0016","w":0.496,"k":"im"},{"s":"INT-0067","t":"MEC-0001","w":0.585,"k":"im"},{"s":"INT-0068","t":"MEC-0014","w":0.584,"k":"im"},{"s":"INT-0068","t":"MEC-0010","w":0.621,"k":"im"},{"s":"INT-0069","t":"MEC-0016","w":0.512,"k":"im"},{"s":"INT-0070","t":"MEC-0016","w":0.49,"k":"im"},{"s":"INT-0071","t":"MEC-0019","w":0.658,"k":"im"},{"s":"INT-0071","t":"MEC-0002","w":0.696,"k":"im"},{"s":"INT-0072","t":"MEC-0006","w":0.516,"k":"im"},{"s":"INT-0073","t":"MEC-0019","w":0.651,"k":"im"},{"s":"INT-0074","t":"MEC-0019","w":0.678,"k":"im"},{"s":"INT-0075","t":"MEC-0016","w":0.524,"k":"im"},{"s":"INT-0037","t":"MEC-0011","w":0.68,"k":"im"},{"s":"INT-0028","t":"MEC-0014","w":0.632,"k":"im"},{"s":"INT-0002","t":"MEC-0014","w":0.757,"k":"im"},{"s":"INT-0005","t":"MEC-0020","w":0.588,"k":"im"},{"s":"INT-0038","t":"MEC-0020","w":0.585,"k":"im"},{"s":"INT-0035","t":"MEC-0018","w":0.623,"k":"im"},{"s":"INT-0035","t":"MEC-0017","w":0.628,"k":"im"},{"s":"INT-0029","t":"MEC-0017","w":0.646,"k":"im"},{"s":"INT-0047","t":"MEC-0011","w":0.706,"k":"im"},{"s":"INT-0007","t":"MEC-0011","w":0.68,"k":"im"},{"s":"INT-0036","t":"MEC-0015","w":0.421,"k":"im"},{"s":"INT-0076","t":"MEC-0026","w":0.779,"k":"im"},{"s":"INT-0076","t":"MEC-0021","w":0.756,"k":"im"},{"s":"INT-0076","t":"MEC-0022","w":0.669,"k":"im"},{"s":"INT-0077","t":"MEC-0026","w":0.733,"k":"im"},{"s":"INT-0077","t":"MEC-0021","w":0.712,"k":"im"},{"s":"INT-0078","t":"MEC-0026","w":0.744,"k":"im"},{"s":"INT-0079","t":"MEC-0022","w":0.476,"k":"im"},{"s":"INT-0080","t":"MEC-0022","w":0.541,"k":"im"},{"s":"INT-0081","t":"MEC-0026","w":0.696,"k":"im"},{"s":"INT-0082","t":"MEC-0021","w":0.681,"k":"im"},{"s":"INT-0083","t":"MEC-0021","w":0.618,"k":"im"},{"s":"INT-0084","t":"MEC-0024","w":0.492,"k":"im"},{"s":"INT-0085","t":"MEC-0022","w":0.442,"k":"im"},{"s":"INT-0086","t":"MEC-0031","w":0.446,"k":"im"},{"s":"INT-0086","t":"MEC-0028","w":0.468,"k":"im"},{"s":"INT-0087","t":"MEC-0029","w":0.529,"k":"im"},{"s":"INT-0088","t":"MEC-0003","w":0.637,"k":"im"},{"s":"INT-0088","t":"MEC-0010","w":0.685,"k":"im"},{"s":"INT-0089","t":"MEC-0011","w":0.603,"k":"im"},{"s":"INT-0089","t":"MEC-0030","w":0.589,"k":"im"},{"s":"INT-0090","t":"MEC-0028","w":0.488,"k":"im"},{"s":"INT-0090","t":"MEC-0011","w":0.605,"k":"im"},{"s":"INT-0090","t":"MEC-0010","w":0.655,"k":"im"},{"s":"INT-0091","t":"MEC-0027","w":0.649,"k":"im"},{"s":"INT-0091","t":"MEC-0002","w":0.685,"k":"im"},{"s":"INT-0048","t":"MEC-0027","w":0.658,"k":"im"},{"s":"INT-0048","t":"MEC-0030","w":0.607,"k":"im"},{"s":"INT-0073","t":"MEC-0027","w":0.652,"k":"im"},{"s":"INT-0002","t":"MEC-0027","w":0.788,"k":"im"},{"s":"INT-0047","t":"MEC-0028","w":0.57,"k":"im"},{"s":"INT-0047","t":"MEC-0030","w":0.691,"k":"im"},{"s":"INT-0007","t":"MEC-0028","w":0.549,"k":"im"},{"s":"INT-0007","t":"MEC-0030","w":0.665,"k":"im"},{"s":"INT-0036","t":"MEC-0030","w":0.689,"k":"im"},{"s":"INT-0013","t":"MEC-0029","w":0.637,"k":"im"},{"s":"INT-0035","t":"MEC-0028","w":0.489,"k":"im"},{"s":"INT-0065","t":"MEC-0028","w":0.544,"k":"im"},{"s":"INT-0031","t":"MEC-0028","w":0.459,"k":"im"},{"s":"INT-0034","t":"MEC-0028","w":0.472,"k":"im"},{"s":"INT-0037","t":"MEC-0030","w":0.665,"k":"im"},{"s":"INT-0028","t":"MEC-0030","w":0.606,"k":"im"},{"s":"INT-0014","t":"MEC-0031","w":0.495,"k":"im"},{"s":"INT-0014","t":"MEC-0028","w":0.52,"k":"im"},{"s":"INT-0003","t":"MEC-0029","w":0.537,"k":"im"},{"s":"INT-0092","t":"MEC-0010","w":0.726,"k":"im"},{"s":"INT-0092","t":"MEC-0002","w":0.749,"k":"im"},{"s":"INT-0092","t":"MEC-0001","w":0.734,"k":"im"},{"s":"INT-0092","t":"MEC-0027","w":0.709,"k":"im"},{"s":"INT-0093","t":"MEC-0010","w":0.743,"k":"im"},{"s":"INT-0093","t":"MEC-0001","w":0.751,"k":"im"},{"s":"INT-0093","t":"MEC-0003","w":0.691,"k":"im"},{"s":"INT-0094","t":"MEC-0010","w":0.72,"k":"im"},{"s":"INT-0094","t":"MEC-0011","w":0.664,"k":"im"},{"s":"INT-0095","t":"MEC-0014","w":0.644,"k":"im"},{"s":"INT-0095","t":"MEC-0010","w":0.685,"k":"im"},{"s":"INT-0095","t":"MEC-0030","w":0.618,"k":"im"},{"s":"INT-0096","t":"MEC-0010","w":0.745,"k":"im"},{"s":"INT-0096","t":"MEC-0011","w":0.687,"k":"im"},{"s":"INT-0096","t":"MEC-0003","w":0.693,"k":"im"},{"s":"INT-0096","t":"MEC-0031","w":0.529,"k":"im"},{"s":"INT-0096","t":"MEC-0029","w":0.618,"k":"im"},{"s":"INT-0097","t":"MEC-0033","w":0.331,"k":"im"},{"s":"INT-0097","t":"MEC-0010","w":0.685,"k":"im"},{"s":"INT-0097","t":"MEC-0002","w":0.707,"k":"im"},{"s":"INT-0098","t":"MEC-0001","w":0.621,"k":"im"},{"s":"INT-0099","t":"MEC-0001","w":0.681,"k":"im"},{"s":"INT-0036","t":"MEC-0013","w":0.317,"k":"im"},{"s":"INT-0028","t":"MEC-0013","w":0.279,"k":"im"},{"s":"INT-0093","t":"MEC-0013","w":0.308,"k":"im"},{"s":"INT-0047","t":"MEC-0013","w":0.318,"k":"im"},{"s":"INT-0022","t":"MEC-0015","w":0.337,"k":"im"},{"s":"INT-0024","t":"MEC-0020","w":0.617,"k":"im"},{"s":"INT-0024","t":"MEC-0001","w":0.684,"k":"im"},{"s":"INT-0041","t":"MEC-0008","w":0.565,"k":"im"},{"s":"INT-0041","t":"MEC-0022","w":0.575,"k":"im"},{"s":"INT-0100","t":"MEC-0029","w":0.566,"k":"im"},{"s":"INT-0100","t":"MEC-0031","w":0.484,"k":"im"},{"s":"INT-0100","t":"MEC-0001","w":0.69,"k":"im"},{"s":"INT-0101","t":"MEC-0008","w":0.707,"k":"im"},{"s":"INT-0101","t":"MEC-0022","w":0.611,"k":"im"},{"s":"INT-0101","t":"MEC-0001","w":0.72,"k":"im"},{"s":"INT-0005","t":"MEC-0034","w":0.554,"k":"im"},{"s":"INT-0036","t":"MEC-0013","w":0.317,"k":"im"},{"s":"INT-0028","t":"MEC-0013","w":0.279,"k":"im"},{"s":"INT-0093","t":"MEC-0013","w":0.308,"k":"im"},{"s":"INT-0047","t":"MEC-0013","w":0.318,"k":"im"},{"s":"INT-0022","t":"MEC-0015","w":0.337,"k":"im"},{"s":"INT-0024","t":"MEC-0020","w":0.617,"k":"im"},{"s":"INT-0024","t":"MEC-0001","w":0.684,"k":"im"},{"s":"INT-0041","t":"MEC-0008","w":0.565,"k":"im"},{"s":"INT-0041","t":"MEC-0022","w":0.575,"k":"im"},{"s":"INT-0001","t":"HYP-0001","w":0.812,"k":"ih"},{"s":"INT-0008","t":"HYP-0003","w":0.722,"k":"ih"},{"s":"INT-0009","t":"HYP-0004","w":0.595,"k":"ih"},{"s":"INT-0009","t":"HYP-0005","w":0.654,"k":"ih"},{"s":"INT-0052","t":"HYP-0011","w":0.35,"k":"ih"},{"s":"INT-0052","t":"HYP-0012","w":0.35,"k":"ih"},{"s":"INT-0051","t":"HYP-0013","w":0.298,"k":"ih"},{"s":"INT-0009","t":"HYP-0015","w":0.442,"k":"ih"},{"s":"INT-0050","t":"HYP-0017","w":0.189,"k":"ih"},{"s":"INT-0013","t":"HYP-0020","w":0.233,"k":"ih"},{"s":"INT-0014","t":"HYP-0021","w":0.232,"k":"ih"},{"s":"INT-0025","t":"HYP-0022","w":0.286,"k":"ih"},{"s":"INT-0059","t":"HYP-0023","w":0.195,"k":"ih"},{"s":"INT-0006","t":"HYP-0026","w":0.201,"k":"ih"},{"s":"INT-0036","t":"HYP-0029","w":0.545,"k":"ih"},{"s":"INT-0036","t":"HYP-0030","w":0.396,"k":"ih"},{"s":"INT-0061","t":"HYP-0034","w":0.549,"k":"ih"},{"s":"INT-0066","t":"HYP-0048","w":0.407,"k":"ih"},{"s":"INT-0066","t":"HYP-0035","w":0.407,"k":"ih"},{"s":"INT-0067","t":"HYP-0049","w":0.193,"k":"ih"},{"s":"INT-0068","t":"HYP-0033","w":0.396,"k":"ih"},{"s":"INT-0069","t":"HYP-0034","w":0.507,"k":"ih"},{"s":"INT-0070","t":"HYP-0048","w":0.402,"k":"ih"},{"s":"INT-0070","t":"HYP-0035","w":0.402,"k":"ih"},{"s":"INT-0071","t":"HYP-0037","w":0.558,"k":"ih"},{"s":"INT-0072","t":"HYP-0038","w":0.389,"k":"ih"},{"s":"INT-0073","t":"HYP-0037","w":0.552,"k":"ih"},{"s":"INT-0074","t":"HYP-0037","w":0.574,"k":"ih"},{"s":"INT-0075","t":"HYP-0036","w":0.502,"k":"ih"},{"s":"INT-0075","t":"HYP-0037","w":0.535,"k":"ih"},{"s":"INT-0013","t":"HYP-0045","w":0.605,"k":"ih"},{"s":"INT-0016","t":"HYP-0046","w":0.632,"k":"ih"},{"s":"INT-0015","t":"HYP-0047","w":0.558,"k":"ih"},{"s":"INT-0030","t":"HYP-0050","w":0.498,"k":"ih"},{"s":"INT-0065","t":"HYP-0032","w":0.64,"k":"ih"},{"s":"INT-0046","t":"HYP-0039","w":0.646,"k":"ih"},{"s":"INT-0047","t":"HYP-0031","w":0.535,"k":"ih"},{"s":"INT-0007","t":"HYP-0031","w":0.516,"k":"ih"},{"s":"INT-0037","t":"HYP-0031","w":0.516,"k":"ih"},{"s":"INT-0076","t":"HYP-0056","w":0.67,"k":"ih"},{"s":"INT-0076","t":"HYP-0057","w":0.629,"k":"ih"},{"s":"INT-0076","t":"HYP-0058","w":0.607,"k":"ih"},{"s":"INT-0076","t":"HYP-0059","w":0.573,"k":"ih"},{"s":"INT-0076","t":"HYP-0007","w":0.69,"k":"ih"},{"s":"INT-0077","t":"HYP-0056","w":0.631,"k":"ih"},{"s":"INT-0078","t":"HYP-0059","w":0.547,"k":"ih"},{"s":"INT-0078","t":"HYP-0007","w":0.659,"k":"ih"},{"s":"INT-0079","t":"HYP-0061","w":0.2,"k":"ih"},{"s":"INT-0080","t":"HYP-0058","w":0.49,"k":"ih"},{"s":"INT-0080","t":"HYP-0059","w":0.463,"k":"ih"},{"s":"INT-0081","t":"HYP-0056","w":0.599,"k":"ih"},{"s":"INT-0082","t":"HYP-0056","w":0.604,"k":"ih"},{"s":"INT-0082","t":"HYP-0058","w":0.547,"k":"ih"},{"s":"INT-0083","t":"HYP-0059","w":0.469,"k":"ih"},{"s":"INT-0084","t":"HYP-0057","w":0.534,"k":"ih"},{"s":"INT-0085","t":"HYP-0061","w":0.185,"k":"ih"},{"s":"INT-0025","t":"HYP-0056","w":0.681,"k":"ih"},{"s":"INT-0025","t":"HYP-0058","w":0.617,"k":"ih"},{"s":"INT-0086","t":"HYP-0064","w":0.405,"k":"ih"},{"s":"INT-0086","t":"HYP-0021","w":0.209,"k":"ih"},{"s":"INT-0087","t":"HYP-0062","w":0.395,"k":"ih"},{"s":"INT-0087","t":"HYP-0045","w":0.502,"k":"ih"},{"s":"INT-0088","t":"HYP-0006","w":0.556,"k":"ih"},{"s":"INT-0089","t":"HYP-0031","w":0.457,"k":"ih"},{"s":"INT-0089","t":"HYP-0006","w":0.53,"k":"ih"},{"s":"INT-0090","t":"HYP-0031","w":0.459,"k":"ih"},{"s":"INT-0091","t":"HYP-0065","w":0.479,"k":"ih"},{"s":"INT-0048","t":"HYP-0065","w":0.485,"k":"ih"},{"s":"INT-0013","t":"HYP-0062","w":0.475,"k":"ih"},{"s":"INT-0002","t":"HYP-0063","w":0.686,"k":"ih"},{"s":"INT-0002","t":"HYP-0065","w":0.581,"k":"ih"},{"s":"INT-0047","t":"HYP-0065","w":0.552,"k":"ih"},{"s":"INT-0092","t":"HYP-0006","w":0.589,"k":"ih"},{"s":"INT-0092","t":"HYP-0063","w":0.618,"k":"ih"},{"s":"INT-0093","t":"HYP-0006","w":0.603,"k":"ih"},{"s":"INT-0093","t":"HYP-0063","w":0.633,"k":"ih"},{"s":"INT-0094","t":"HYP-0006","w":0.584,"k":"ih"},{"s":"INT-0094","t":"HYP-0031","w":0.503,"k":"ih"},{"s":"INT-0095","t":"HYP-0033","w":0.437,"k":"ih"},{"s":"INT-0095","t":"HYP-0006","w":0.556,"k":"ih"},{"s":"INT-0096","t":"HYP-0006","w":0.604,"k":"ih"},{"s":"INT-0096","t":"HYP-0003","w":0.661,"k":"ih"},{"s":"INT-0096","t":"HYP-0021","w":0.248,"k":"ih"},{"s":"INT-0096","t":"HYP-0045","w":0.587,"k":"ih"},{"s":"INT-0096","t":"HYP-0035","w":0.494,"k":"ih"},{"s":"INT-0096","t":"HYP-0048","w":0.494,"k":"ih"},{"s":"INT-0096","t":"HYP-0046","w":0.648,"k":"ih"},{"s":"INT-0096","t":"HYP-0031","w":0.521,"k":"ih"},{"s":"INT-0096","t":"HYP-0033","w":0.475,"k":"ih"},{"s":"INT-0097","t":"HYP-0006","w":0.555,"k":"ih"},{"s":"INT-0097","t":"HYP-0070","w":0.447,"k":"ih"},{"s":"INT-0098","t":"HYP-0062","w":0.38,"k":"ih"},{"s":"INT-0099","t":"HYP-0015","w":0.404,"k":"ih"},{"s":"INT-0099","t":"HYP-0069","w":0.584,"k":"ih"},{"s":"INT-0100","t":"HYP-0021","w":0.227,"k":"ih"},{"s":"INT-0100","t":"HYP-0045","w":0.537,"k":"ih"},{"s":"INT-0101","t":"HYP-0007","w":0.63,"k":"ih"},{"s":"INT-0101","t":"HYP-0059","w":0.523,"k":"ih"},{"s":"INT-0001","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0002","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0002","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0003","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0003","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0004","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0004","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0005","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0006","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0008","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0010","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0010","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0011","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0012","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0013","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0013","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0014","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0014","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0014","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0015","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0017","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0017","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0018","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0020","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0023","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0025","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0027","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0027","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0028","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0028","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0029","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0030","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0031","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0031","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0034","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0034","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0035","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0035","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0035","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0035","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0036","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0036","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0037","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0037","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0037","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0038","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0042","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0043","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0044","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0045","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0047","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0047","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0047","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0047","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0048","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0048","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0048","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0050","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0055","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0056","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0057","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0058","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0059","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0060","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0061","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0062","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0062","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0065","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0065","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0066","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0067","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0068","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0069","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0070","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0071","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0071","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0072","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0072","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0073","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0073","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0074","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0075","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0076","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0076","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0076","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0077","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0077","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0078","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0078","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0079","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0079","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0080","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0080","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0081","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0081","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0082","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0083","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0084","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0085","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0085","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0086","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0086","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0087","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0087","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0088","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0088","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0089","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0089","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0090","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0090","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0090","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0091","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0092","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0092","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0093","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0093","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0094","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0095","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0095","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0096","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0096","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0096","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0096","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0097","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0097","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0098","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0099","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0041","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0100","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0100","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0101","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0001","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0002","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0002","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0003","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0003","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0004","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0004","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0005","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0006","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0007","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0008","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0010","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0010","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0011","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0012","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0013","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0013","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0014","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0014","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0014","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0015","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0017","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0017","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0018","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0020","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0023","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0025","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0027","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0027","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0028","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0028","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0029","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0030","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0031","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0031","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0034","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0034","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0035","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0035","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0035","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0035","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0036","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0036","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0037","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0037","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0037","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0038","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0042","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0043","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0044","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0045","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0047","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0047","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0047","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0047","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0048","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0048","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0048","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0050","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0055","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0056","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0057","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0058","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0059","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0060","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0061","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0062","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0062","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0065","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0065","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0066","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0067","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0068","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0069","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0070","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0071","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0071","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0072","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0072","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0073","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0073","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0074","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0075","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0076","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0076","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0076","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0077","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0077","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0078","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0078","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0079","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0079","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0080","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0080","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0081","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0081","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0082","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0083","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0084","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0085","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0085","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"INT-0086","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0086","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0087","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0087","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0088","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0088","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0089","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0089","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0090","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0090","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0090","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0091","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0092","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0092","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0093","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0093","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0094","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0095","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0095","t":"PHE-0005","w":0.0,"k":"ip"},{"s":"INT-0096","t":"PHE-0001","w":0.0,"k":"ip"},{"s":"INT-0096","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0096","t":"PHE-0006","w":0.0,"k":"ip"},{"s":"INT-0096","t":"PHE-0007","w":0.0,"k":"ip"},{"s":"INT-0097","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0097","t":"PHE-0003","w":0.0,"k":"ip"},{"s":"INT-0098","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0099","t":"PHE-0002","w":0.0,"k":"ip"},{"s":"INT-0041","t":"PHE-0004","w":0.0,"k":"ip"},{"s":"MEC-0003","t":"PHE-0001","w":0.0,"k":"mp"},{"s":"MEC-0004","t":"PHE-0001","w":0.0,"k":"mp"},{"s":"MEC-0010","t":"PHE-0002","w":0.0,"k":"mp"},{"s":"MEC-0011","t":"PHE-0002","w":0.0,"k":"mp"},{"s":"MEC-0014","t":"PHE-0002","w":0.0,"k":"mp"},{"s":"MEC-0001","t":"PHE-0002","w":0.0,"k":"mp"},{"s":"MEC-0002","t":"PHE-0003","w":0.0,"k":"mp"},{"s":"MEC-0005","t":"PHE-0003","w":0.0,"k":"mp"},{"s":"MEC-0017","t":"PHE-0003","w":0.0,"k":"mp"},{"s":"MEC-0016","t":"PHE-0003","w":0.0,"k":"mp"},{"s":"MEC-0008","t":"PHE-0004","w":0.0,"k":"mp"},{"s":"MEC-0019","t":"PHE-0004","w":0.0,"k":"mp"},{"s":"MEC-0015","t":"PHE-0005","w":0.0,"k":"mp"},{"s":"MEC-0009","t":"PHE-0005","w":0.0,"k":"mp"},{"s":"MEC-0012","t":"PHE-0005","w":0.0,"k":"mp"},{"s":"MEC-0006","t":"PHE-0005","w":0.0,"k":"mp"},{"s":"MEC-0006","t":"PHE-0006","w":0.0,"k":"mp"},{"s":"MEC-0012","t":"PHE-0006","w":0.0,"k":"mp"},{"s":"MEC-0007","t":"PHE-0007","w":0.0,"k":"mp"},{"s":"MEC-0020","t":"PHE-0007","w":0.0,"k":"mp"},{"s":"MEC-0021","t":"PHE-0004","w":0.0,"k":"mp"},{"s":"MEC-0022","t":"PHE-0004","w":0.0,"k":"mp"},{"s":"MEC-0022","t":"PHE-0003","w":0.0,"k":"mp"},{"s":"MEC-0023","t":"PHE-0004","w":0.0,"k":"mp"},{"s":"MEC-0024","t":"PHE-0004","w":0.0,"k":"mp"},{"s":"MEC-0025","t":"PHE-0004","w":0.0,"k":"mp"},{"s":"MEC-0026","t":"PHE-0004","w":0.0,"k":"mp"},{"s":"MEC-0026","t":"PHE-0007","w":0.0,"k":"mp"},{"s":"MEC-0027","t":"PHE-0003","w":0.0,"k":"mp"},{"s":"MEC-0028","t":"PHE-0006","w":0.0,"k":"mp"},{"s":"MEC-0028","t":"PHE-0005","w":0.0,"k":"mp"},{"s":"MEC-0029","t":"PHE-0001","w":0.0,"k":"mp"},{"s":"MEC-0029","t":"PHE-0007","w":0.0,"k":"mp"},{"s":"MEC-0030","t":"PHE-0002","w":0.0,"k":"mp"},{"s":"MEC-0030","t":"PHE-0005","w":0.0,"k":"mp"},{"s":"MEC-0031","t":"PHE-0006","w":0.0,"k":"mp"},{"s":"MEC-0033","t":"PHE-0002","w":0.0,"k":"mp"},{"s":"GEN-0002","t":"HYP-0003","w":0.0,"k":"gh"},{"s":"GEN-0011","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0012","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0013","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0015","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0018","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0019","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0020","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0023","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0025","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0027","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0028","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0031","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0033","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0035","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0037","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0038","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0040","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0041","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0042","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0044","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0045","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0046","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0049","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0050","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0055","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0056","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0060","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0064","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0066","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0068","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0069","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0070","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0071","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0072","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0074","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0076","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0077","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0078","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0084","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0086","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0088","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0090","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0091","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0092","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0094","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0098","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0099","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0104","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0105","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0109","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0110","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0116","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0118","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0119","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0124","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0125","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0126","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0128","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0129","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0130","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0133","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0134","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0135","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0137","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0139","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0140","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0141","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0142","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0143","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0146","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0147","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0148","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0149","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0150","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0151","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0155","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0157","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0160","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0162","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0167","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0168","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0169","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0170","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0171","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0173","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0174","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0175","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0176","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0177","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0178","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0179","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0180","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0182","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0183","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0184","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0186","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0192","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0195","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0196","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0198","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0200","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0204","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0211","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0212","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0213","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0214","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0216","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0218","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0221","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0223","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0224","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0225","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0226","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0230","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0231","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0232","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0233","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0234","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0236","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0237","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0238","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0240","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0242","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0244","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0245","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0249","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0252","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0258","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0260","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0261","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0264","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0268","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0269","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0271","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0273","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0275","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0276","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0278","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0279","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0280","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0281","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0282","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0285","t":"HYP-0028","w":0.0,"k":"gh"},{"s":"GEN-0002","t":"MEC-0003","w":0.0,"k":"gm"},{"s":"GEN-0832","t":"MEC-0009","w":0.0,"k":"gm"},{"s":"GEN-0832","t":"MEC-0015","w":0.0,"k":"gm"}]};
+const PROFILES = [{"k":"hp","label":"Hannah Poling \u00b7 mito + immune + contested-vaccine cluster"},{"k":"folr1","label":"FOLR1+ \u00b7 cerebral folate \u00b7 leucovorin responder"},{"k":"mcas","label":"MCAS \u00b7 mast cell activation \u00b7 histamine"},{"k":"pans","label":"PANS / PANDAS \u00b7 post-infectious autoimmune"},{"k":"methyl","label":"Undermethylator \u00b7 methylation cycle \u00b7 Walsh phenotype"},{"k":"mito","label":"Mitochondrial-vulnerable"},{"k":"gut","label":"Gut\u2013brain \u00b7 microbiome \u00b7 GI inflammation"}];        // [{k, label}, ...] index = bit
+
+// ── canvas + DPR ───────────────────────────────────────────────────
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0, DPR = 1;
+function resize() {
+  DPR = window.devicePixelRatio || 1;
+  W = window.innerWidth;
+  H = window.innerHeight;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+  canvas.width  = Math.round(W * DPR);
+  canvas.height = Math.round(H * DPR);
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+}
+window.addEventListener('resize', resize); resize();
+
+// ── color per type ─────────────────────────────────────────────────
+const TYPE_COLOR = {
+  H: [240, 235, 220],
+  M: [180, 200, 232],
+  I: [232, 196, 110],
+  P: [216, 184, 148],
+  G: [122, 119, 112],
+};
+
+// ── d3 check ───────────────────────────────────────────────────────
+if (typeof d3 === 'undefined' || !d3.forceSimulation) {
+  const el = document.getElementById('err');
+  el.textContent = '⚠ d3 failed to load from CDN.\n' +
+    'If you are on file://, your browser may be blocking the script.\n' +
+    'Try: open Chrome DevTools → Console; or serve this file via a local HTTP server.';
+  el.classList.add('on');
+  throw new Error('d3 missing');
+}
+
+// ── prepare graph ──────────────────────────────────────────────────
+// Pre-position nodes in a phyllotaxis spiral so the graph is visible
+// from frame 1 — d3-force then relaxes it into its natural shape.
+const PHI = Math.PI * (3 - Math.sqrt(5));
+const nodes = DATA.nodes.map((n, i) => {
+  const r = 10 * Math.sqrt(i + 1);
+  const a = i * PHI;
+  return { ...n, x: r * Math.cos(a), y: r * Math.sin(a), vx: 0, vy: 0 };
+});
+const idIdx = new Map(nodes.map(n => [n.id, n]));
+const links = DATA.links
+  .filter(l => idIdx.has(l.s) && idIdx.has(l.t))
+  .map(l => ({ source: l.s, target: l.t, w: l.w, k: l.k }));
+
+function chargeStrength(n) {
+  if (n.t === 'P') return -1800;
+  if (n.t === 'H') return -520;
+  if (n.t === 'M') return -440;
+  if (n.t === 'I') return -240;
+  return -55;
+}
+function linkDistance(l) {
+  const k = l.k;
+  if (k === 'mp' || k === 'ip') return 80;
+  if (k === 'hm' || k === 'im' || k === 'ih') return 56;
+  if (k === 'hh') return 92;
+  return 28;
+}
+
+const sim = d3.forceSimulation(nodes)
+  .force('charge',  d3.forceManyBody().strength(chargeStrength).distanceMax(440))
+  .force('link',    d3.forceLink(links).id(d => d.id)
+                      .distance(linkDistance)
+                      .strength(l => 0.15 + l.w * 0.4))
+  .force('center',  d3.forceCenter(0, 0))
+  .force('collide', d3.forceCollide().radius(d => d.s + 1.6).strength(0.85))
+  .alpha(1).alphaDecay(0.012).velocityDecay(0.55)
+  .on('tick', () => {});
+
+// ── view (pan + zoom) ──────────────────────────────────────────────
+let scale = 1.0, ox = 0, oy = 0;
+let targetScale = 1.0, targetOx = 0, targetOy = 0;
+let dragStart = null;
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const k = Math.exp(-e.deltaY * 0.0015);
+  targetScale = Math.max(0.3, Math.min(4, targetScale * k));
+  lastUserAction = performance.now();
+}, { passive: false });
+canvas.addEventListener('mousedown', (e) => {
+  dragStart = { x: e.clientX, y: e.clientY, ox: targetOx, oy: targetOy };
+  lastUserAction = performance.now();
+});
+window.addEventListener('mousemove', (e) => {
+  if (dragStart) {
+    targetOx = dragStart.ox + (e.clientX - dragStart.x);
+    targetOy = dragStart.oy + (e.clientY - dragStart.y);
+  }
+});
+window.addEventListener('mouseup', () => dragStart = null);
+
+// ── profile + search state ─────────────────────────────────────────
+let activeBit = -1;             // -1 = no profile
+let searchTerm = '';
+let searchHits = new Set();     // ids matching search
+let activeMask = null;          // function(node) -> boolean
+let isFiltering = false;
+
+function recomputeFilter() {
+  if (searchTerm) {
+    searchHits.clear();
+    const tokens = searchTerm.toLowerCase().split(/\s+/).filter(Boolean);
+    for (const n of nodes) {
+      if (tokens.every(t => n.ll.indexOf(t) >= 0)) searchHits.add(n.id);
+    }
+    isFiltering = searchHits.size > 0;
+  } else if (activeBit >= 0) {
+    isFiltering = true;
+  } else {
+    isFiltering = false;
+  }
+}
+
+function inActive(n) {
+  if (searchTerm) {
+    if (searchHits.has(n.id)) return true;
+    // one-hop bridge: light up neighbors of matched nodes too
+    for (const l of links) {
+      if (l.source.id && (
+          (l.source.id === n.id && searchHits.has(l.target.id)) ||
+          (l.target.id === n.id && searchHits.has(l.source.id))
+      )) return true;
+    }
+    return false;
+  }
+  if (activeBit >= 0) return !!(n.m & (1 << activeBit));
+  return true;
+}
+
+// ── pulses ─────────────────────────────────────────────────────────
+const pulses = [];
+const particles = [];                  // flowing along edges
+let lastUserAction = performance.now();
+let autoFitDone = false;
+
+function neighborsOf(node) {
+  const out = [];
+  for (const l of links) {
+    if (l.source === node) out.push(l.target);
+    else if (l.target === node) out.push(l.source);
+  }
+  return out;
+}
+
+function propagatePulse(node, depth) {
+  if (depth > 1) return;
+  const nbs = neighborsOf(node);
+  // sample up to 4 neighbors for the propagation step
+  const k = Math.min(4, nbs.length);
+  for (let i = 0; i < k; i++) {
+    const nb = nbs[(Math.random() * nbs.length) | 0];
+    if (!nb || nb.x === undefined) continue;
+    setTimeout(() => {
+      pulses.push({ node: nb, t: 0, dur: 850 - depth*200 });
+      if (depth === 0 && Math.random() < 0.45) propagatePulse(nb, depth + 1);
+    }, 220 + Math.random() * 180);
+  }
+}
+
+function spawnPulse() {
+  const candidates = isFiltering
+    ? nodes.filter(n => inActive(n) && n.t !== 'G')
+    : nodes.filter(n => n.t !== 'G');
+  if (!candidates.length) return;
+  const n = candidates[(Math.random() * candidates.length) | 0];
+  pulses.push({ node: n, t: 0, dur: 1200 });
+  propagatePulse(n, 0);
+}
+setInterval(spawnPulse, 1900);
+
+function spawnParticle() {
+  if (!links.length) return;
+  // prefer edges within active filter when filtering
+  let pool = links;
+  if (isFiltering) {
+    pool = links.filter(l => l.source && l.target &&
+                             inActive(l.source) && inActive(l.target));
+    if (!pool.length) pool = links;
+  }
+  const l = pool[(Math.random() * pool.length) | 0];
+  if (!l || !l.source || !l.target || l.source.x === undefined) return;
+  particles.push({ link: l, t: 0, dur: 1300 + Math.random() * 900 });
+}
+setInterval(spawnParticle, 180);   // ~5/sec — visible flow without overload
+
+// ── ingestion events ──────────────────────────────────────────────
+// Periodic "new evidence" comets fly in from off-screen, land on a
+// hypothesis/mechanism/intervention node, trigger a pulse + propagation.
+// This is the visual signature of an always-processing system.
+const ingestEvents = [];
+let papersCount   = 1462;      // baseline; ticks up per ingestion
+let lastIngestAgo = 0;                    // ms since last ingest
+let ingestStartT  = performance.now();
+
+function spawnIngestEvent() {
+  const pool = isFiltering
+    ? nodes.filter(n => inActive(n) && (n.t === 'H' || n.t === 'M' || n.t === 'I'))
+    : nodes.filter(n => n.t === 'H' || n.t === 'M' || n.t === 'I');
+  if (!pool.length) return;
+  const target = pool[(Math.random() * pool.length) | 0];
+  // entry point: a long way outside the current viewport, in world coords
+  const angle  = Math.random() * Math.PI * 2;
+  const dist   = (Math.max(W, H) / Math.max(0.25, scale)) * 0.65;
+  const sx = target.x + Math.cos(angle) * dist;
+  const sy = target.y + Math.sin(angle) * dist;
+  ingestEvents.push({ target, sx, sy, t: 0, dur: 1700, landed: false });
+  papersCount += 1;
+  ingestStartT = performance.now();
+}
+setInterval(spawnIngestEvent, 5800);
+// fire one shortly after load so the user sees it within ~3 seconds
+setTimeout(spawnIngestEvent, 2800);
+
+// ── hover ──────────────────────────────────────────────────────────
+let hover = null;
+const hoverEl = document.getElementById('hover');
+canvas.addEventListener('mousemove', (e) => {
+  if (dragStart) { hoverEl.style.opacity = 0; return; }
+  const mx = (e.clientX - W/2 - ox) / scale;
+  const my = (e.clientY - H/2 - oy) / scale;
+  let best = null, bd = 15*15;
+  for (const n of nodes) {
+    const dx = n.x - mx, dy = n.y - my;
+    const r = n.s + 4, d2 = dx*dx + dy*dy;
+    if (d2 < r*r + 14 && d2 < bd) { bd = d2; best = n; }
+  }
+  hover = best;
+  if (best && best.t !== 'G') {
+    const typeLabel = ({H:'Hypothesis', M:'Mechanism', I:'Intervention',
+                        P:'Phenotype'})[best.t] || '';
+    hoverEl.innerHTML = best.l + '<span class="meta">' + best.id +
+                        ' · ' + typeLabel + '</span>';
+    hoverEl.style.left = (e.clientX + 14) + 'px';
+    hoverEl.style.top  = (e.clientY + 14) + 'px';
+    hoverEl.style.opacity = 1;
+  } else {
+    hoverEl.style.opacity = 0;
+  }
+});
+canvas.addEventListener('mouseleave', () => {
+  hover = null; hoverEl.style.opacity = 0;
+});
+
+// ── dock interactions ──────────────────────────────────────────────
+const dock      = document.getElementById('dock');
+const presetsEl = document.getElementById('presets');
+const toggle    = document.getElementById('toggle');
+const search    = document.getElementById('search');
+
+PROFILES.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'preset';
+  b.textContent = p.label;
+  b.dataset.bit = i;
+  b.addEventListener('click', () => selectProfile(i));
+  presetsEl.appendChild(b);
+});
+const resetBtn = document.createElement('button');
+resetBtn.className = 'preset';
+resetBtn.textContent = '— reset —';
+resetBtn.addEventListener('click', () => selectProfile(-1));
+presetsEl.appendChild(resetBtn);
+
+toggle.addEventListener('click', () => {
+  dock.classList.toggle('open');
+});
+
+function selectProfile(bit) {
+  activeBit = bit;
+  searchTerm = ''; search.value = ''; searchHits.clear();
+  recomputeFilter();
+  // recenter on subgraph centroid
+  if (bit >= 0) {
+    // bounding box of subgraph
+    let xmin=Infinity, xmax=-Infinity, ymin=Infinity, ymax=-Infinity, n=0;
+    for (const node of nodes) if (node.m & (1 << bit)) {
+      if (node.x < xmin) xmin = node.x;
+      if (node.x > xmax) xmax = node.x;
+      if (node.y < ymin) ymin = node.y;
+      if (node.y > ymax) ymax = node.y;
+      n++;
+    }
+    if (n > 0) {
+      const gw = Math.max(60, xmax - xmin), gh = Math.max(60, ymax - ymin);
+      const pad = 0.62;
+      targetScale = Math.min((W*pad)/gw, (H*pad)/gh, 2.2);
+      targetOx = -((xmin + xmax)/2) * targetScale;
+      targetOy = -((ymin + ymax)/2) * targetScale;
+    }
+    toggle.classList.add('on');
+    toggle.textContent = PROFILES[bit].label.toLowerCase();
+  } else {
+    autoFitDone = false;        // re-run autoFit on reset
+    toggle.classList.remove('on');
+    toggle.textContent = 'load susceptibility profile';
+  }
+  // close menu
+  dock.classList.remove('open');
+  // update preset visuals
+  presetsEl.querySelectorAll('.preset').forEach((el, i) => {
+    el.classList.toggle('on', i === bit);
+  });
+}
+
+search.addEventListener('input', () => {
+  searchTerm = search.value.trim();
+  if (searchTerm) {
+    activeBit = -1;
+    toggle.classList.remove('on');
+    toggle.textContent = 'searching · ' + searchTerm;
+    presetsEl.querySelectorAll('.preset').forEach(el => el.classList.remove('on'));
+  } else {
+    toggle.textContent = 'load susceptibility profile';
+  }
+  recomputeFilter();
+  // soft recenter on search centroid
+  if (searchHits.size > 0) {
+    let sx = 0, sy = 0, n = 0;
+    for (const id of searchHits) {
+      const node = idIdx.get(id);
+      if (node) { sx += node.x; sy += node.y; n++; }
+    }
+    if (n > 0) { targetOx = -sx/n; targetOy = -sy/n; targetScale = 1.35; }
+  } else if (!searchTerm) {
+    targetOx = 0; targetOy = 0; targetScale = 1.0;
+  }
+});
+search.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    search.value = ''; searchTerm = ''; searchHits.clear();
+    recomputeFilter();
+    toggle.textContent = 'load susceptibility profile';
+    targetOx = 0; targetOy = 0; targetScale = 1.0;
+  }
+});
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    selectProfile(-1);
+    search.value = ''; searchTerm = ''; searchHits.clear();
+    recomputeFilter();
+  }
+});
+
+// ── render loop ────────────────────────────────────────────────────
+let last = performance.now();
+let startTime = performance.now();
+
+function autoFit() {
+  let xmin = Infinity, xmax = -Infinity, ymin = Infinity, ymax = -Infinity;
+  for (const n of nodes) {
+    if (n.x < xmin) xmin = n.x;
+    if (n.x > xmax) xmax = n.x;
+    if (n.y < ymin) ymin = n.y;
+    if (n.y > ymax) ymax = n.y;
+  }
+  const gw = xmax - xmin, gh = ymax - ymin;
+  if (gw < 50 || gh < 50) return;
+  const pad = 0.78;            // fill ~78% of viewport
+  const sx = (W * pad) / gw;
+  const sy = (H * pad) / gh;
+  targetScale = Math.min(sx, sy, 1.3);
+  targetOx = -((xmin + xmax) / 2) * targetScale;
+  targetOy = -((ymin + ymax) / 2) * targetScale;
+}
+
+function draw(now) {
+  const dt = now - last; last = now;
+
+  // auto-fit once after the sim has had time to relax
+  if (!autoFitDone && (now - startTime) > 1600) {
+    autoFit();
+    autoFitDone = true;
+  }
+
+  // camera drift — slow Ken Burns oscillation when idle
+  const idleMs = now - lastUserAction;
+  if (idleMs > 4000 && !dragStart) {
+    const t = (now - startTime) * 0.00012;
+    const drift = Math.min(1, (idleMs - 4000) / 1500);   // ease-in
+    targetOx += Math.sin(t) * 0.18 * drift;
+    targetOy += Math.cos(t * 0.73) * 0.14 * drift;
+  }
+
+  scale += (targetScale - scale) * 0.06;
+  ox    += (targetOx    - ox)    * 0.06;
+  oy    += (targetOy    - oy)    * 0.06;
+
+  if (sim.alpha() < 0.06) sim.alpha(0.06);    // keep it breathing
+  sim.tick();
+
+  // motion-blur fill — gentle trail
+  ctx.fillStyle = 'rgba(5,8,16,0.94)';
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.save();
+  ctx.translate(W/2 + ox, H/2 + oy);
+  ctx.scale(scale, scale);
+
+  // ── edges ──
+  ctx.lineWidth = 0.7 / scale;
+  for (const l of links) {
+    const s = l.source, t = l.target;
+    if (!s || !t || s.x === undefined) continue;
+    const sa = inActive(s), ta = inActive(t);
+    let alpha;
+    if (isFiltering) {
+      if (sa && ta)        alpha = 0.16 + l.w * 0.55;
+      else if (sa || ta)   alpha = 0.04 + l.w * 0.06;
+      else                 alpha = 0.012 + l.w * 0.03;
+    } else {
+      alpha = 0.04 + l.w * 0.32;
+    }
+    // edges inside filtered set are warm gold; outside are cool/dim white
+    if (isFiltering && sa && ta) {
+      ctx.strokeStyle = `rgba(232,196,110,${alpha})`;
+    } else {
+      ctx.strokeStyle = `rgba(240,235,220,${alpha})`;
+    }
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(t.x, t.y);
+    ctx.stroke();
+  }
+
+  // ── particles flowing along edges ──
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.t += dt;
+    const k = p.t / p.dur;
+    if (k >= 1) { particles.splice(i, 1); continue; }
+    const s = p.link.source, t = p.link.target;
+    if (!s || !t || s.x === undefined) continue;
+    // ease-in-out for a natural flow
+    const e = k < 0.5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2)/2;
+    const px = s.x + (t.x - s.x) * e;
+    const py = s.y + (t.y - s.y) * e;
+    const headA = Math.sin(k * Math.PI) * 0.85;
+    const sa = inActive(s), ta = inActive(t);
+    const col = (isFiltering && sa && ta) ? [232,196,110]
+              : (isFiltering && !sa && !ta) ? [240,235,220]
+              : [240,235,220];
+    // soft glowing head
+    const r = 4.5 / scale;
+    const grad = ctx.createRadialGradient(px, py, 0, px, py, r*2.2);
+    grad.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},${headA})`);
+    grad.addColorStop(0.45, `rgba(${col[0]},${col[1]},${col[2]},${headA*0.35})`);
+    grad.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath(); ctx.arc(px, py, r*2.2, 0, Math.PI*2); ctx.fill();
+    // trailing line
+    const tx = s.x + (t.x - s.x) * Math.max(0, e - 0.08);
+    const ty = s.y + (t.y - s.y) * Math.max(0, e - 0.08);
+    ctx.strokeStyle = `rgba(${col[0]},${col[1]},${col[2]},${headA*0.55})`;
+    ctx.lineWidth = 1.1 / scale;
+    ctx.beginPath();
+    ctx.moveTo(tx, ty); ctx.lineTo(px, py); ctx.stroke();
+  }
+
+  // ── ingestion comets (new evidence landing) ──
+  for (let i = ingestEvents.length - 1; i >= 0; i--) {
+    const ev = ingestEvents[i];
+    ev.t += dt;
+    const k = ev.t / ev.dur;
+    if (k >= 1) {
+      // landing — pulse the target and propagate
+      pulses.push({ node: ev.target, t: 0, dur: 1200 });
+      propagatePulse(ev.target, 0);
+      ingestEvents.splice(i, 1);
+      continue;
+    }
+    // ease-out into landing
+    const e = 1 - Math.pow(1 - k, 3);
+    const px = ev.sx + (ev.target.x - ev.sx) * e;
+    const py = ev.sy + (ev.target.y - ev.sy) * e;
+    const headA = Math.min(1, k * 3) * (1 - Math.pow(k, 4));
+    // gold comet head
+    const headR = 13 / scale;
+    const grad = ctx.createRadialGradient(px, py, 0, px, py, headR);
+    grad.addColorStop(0,   `rgba(248,222,150,${headA*0.95})`);
+    grad.addColorStop(0.4, `rgba(232,196,110,${headA*0.45})`);
+    grad.addColorStop(1,   `rgba(232,196,110,0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath(); ctx.arc(px, py, headR, 0, Math.PI*2); ctx.fill();
+    // trail behind comet — fade along k
+    const trailSteps = 8;
+    for (let j = 1; j <= trailSteps; j++) {
+      const tk = Math.max(0, e - j * 0.04);
+      const tx = ev.sx + (ev.target.x - ev.sx) * tk;
+      const ty = ev.sy + (ev.target.y - ev.sy) * tk;
+      const a = headA * (1 - j / trailSteps) * 0.35;
+      ctx.strokeStyle = `rgba(232,196,110,${a})`;
+      ctx.lineWidth = (3 - j*0.25) / scale;
+      ctx.beginPath();
+      ctx.moveTo(tx, ty);
+      const ntk = Math.max(0, e - (j-1) * 0.04);
+      const ntx = ev.sx + (ev.target.x - ev.sx) * ntk;
+      const nty = ev.sy + (ev.target.y - ev.sy) * ntk;
+      ctx.lineTo(ntx, nty);
+      ctx.stroke();
+    }
+  }
+
+  // ── pulses (halos) ──
+  for (let i = pulses.length - 1; i >= 0; i--) {
+    const p = pulses[i];
+    p.t += dt;
+    const k = p.t / p.dur;
+    if (k >= 1) { pulses.splice(i, 1); continue; }
+    const n = p.node;
+    const r = n.s + 6 + k * 28;
+    const a = (1 - k) * 0.55;
+    const col = TYPE_COLOR[n.t] || TYPE_COLOR.H;
+    const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r);
+    grad.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},${a*0.7})`);
+    grad.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI*2); ctx.fill();
+  }
+
+  // ── nodes ──
+  for (const n of nodes) {
+    const col = TYPE_COLOR[n.t] || TYPE_COLOR.H;
+    const active = inActive(n);
+    let alpha;
+    if (isFiltering) alpha = active ? 1.0 : 0.08;
+    else             alpha = (n.t === 'G' ? 0.58 : 0.96);
+    if (hover === n) alpha = 1.0;
+
+    if (n.t !== 'G') {
+      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.s + 5);
+      g.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},${alpha*0.32})`);
+      g.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.s+5, 0, Math.PI*2); ctx.fill();
+    }
+
+    ctx.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},${alpha})`;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.s, 0, Math.PI*2);
+    ctx.fill();
+
+    // gold ring on INT-0001 — the calibration anchor, always findable
+    if (n.k === 'INT-0001') {
+      ctx.strokeStyle = `rgba(232,196,110,${0.55 + alpha*0.35})`;
+      ctx.lineWidth = 0.9/scale;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.s + 4, 0, Math.PI*2);
+      ctx.stroke();
+    }
+
+    // hover — silent edge highlight
+    if (hover === n) {
+      ctx.strokeStyle = 'rgba(240,235,220,0.6)';
+      ctx.lineWidth = 0.5/scale;
+      for (const l of links) {
+        if (l.source === n || l.target === n) {
+          ctx.beginPath();
+          ctx.moveTo(l.source.x, l.source.y);
+          ctx.lineTo(l.target.x, l.target.y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  ctx.restore();
+
+  requestAnimationFrame(draw);
+}
+
+// kickoff — manifesto fades in shortly after first paint
+setTimeout(() => {
+  document.querySelector('.manifesto-inner').classList.add('ready');
+}, 750);
+requestAnimationFrame(draw);
+
+// ── status counter loop (counts seconds since last ingest, formats nicely) ──
+const papersEl = document.getElementById('papers');
+const lastEl   = document.getElementById('last-ingest');
+function fmtAgo(ms) {
+  const s = Math.floor(ms / 1000);
+  if (s < 5)    return 'just now';
+  if (s < 60)   return s + 's ago';
+  const m = Math.floor(s / 60);
+  if (m < 60)   return m + 'm ' + (s % 60) + 's ago';
+  return Math.floor(m / 60) + 'h ago';
+}
+setInterval(() => {
+  papersEl.textContent = papersCount.toLocaleString();
+  lastEl.textContent   = fmtAgo(performance.now() - ingestStartT);
+}, 500);
+</script>
+</body>
+</html>
