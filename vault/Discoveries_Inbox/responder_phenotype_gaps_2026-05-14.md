@@ -1,4 +1,4 @@
-# Responder phenotype gaps — 2026-05-13
+# Responder phenotype gaps — 2026-05-14
 
 Pattern miner #4: surfaces interventions with mixed published evidence that have **not yet** been tagged with a responder-phenotype profile. Per `CLAUDE.md` §9: mixed evidence is almost always effect heterogeneity, not absence of effect.
 
@@ -42,4 +42,4 @@ For each candidate above:
 ## Provenance
 
 - Pipeline: `scripts/find_responder_phenotype_gaps.py`
-- Run timestamp: 2026-05-13T09:38:03.529744Z
+- Run timestamp: 2026-05-14T09:29:01.590275Z

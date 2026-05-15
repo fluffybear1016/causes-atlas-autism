@@ -1,0 +1,8 @@
+{
+  "candidate_gene_mechanism_edges": [],
+  "candidate_gene_phenotype_edges": [],
+  "min_cooccurrence_threshold": 3,
+  "scan_window_days": 365,
+  "sources_scanned": 1462,
+  "total_fragments_scanned": 1462
+}

@@ -1,4 +1,4 @@
-# Combination gaps report — 2026-05-13
+# Combination gaps report — 2026-05-14
 
 **Eligible interventions** (CSRS ≥ 50.0): 44
 **Existing combinations:** 24
@@ -108,4 +108,4 @@ Pattern miner #2 of the autonomous discovery pipeline. These are intervention pa
 ## Provenance
 
 - Pipeline: `scripts/find_combination_gaps.py`
-- Run timestamp: 2026-05-13T09:38:03.459588Z
+- Run timestamp: 2026-05-14T09:29:01.511347Z

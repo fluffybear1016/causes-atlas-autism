@@ -1,4 +1,4 @@
-# Higher-order hypothesis chains — 2026-05-13
+# Higher-order hypothesis chains — 2026-05-14
 
 Pattern miner #3: walks the atlas graph for 2nd-order chains (intervention→mechanism→phenotype) and flags pairs where the direct edge does NOT yet exist. These are implied causal claims the atlas already supports indirectly.
 
@@ -93,4 +93,4 @@ Hypotheses with intervention targeting + mechanism path to phenotype.
 ## Provenance
 
 - Pipeline: `scripts/find_higher_order_hypotheses.py`
-- Run timestamp: 2026-05-13T09:38:03.496453Z
+- Run timestamp: 2026-05-14T09:29:01.553008Z

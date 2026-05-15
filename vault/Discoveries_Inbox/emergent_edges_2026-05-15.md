@@ -1,4 +1,4 @@
-# Emergent edges report — 2026-05-13
+# Emergent edges report — 2026-05-15
 
 **Scan window:** last 365 days
 **Sources scanned:** 1462
@@ -33,5 +33,5 @@ Pattern miner #1 of the autonomous discovery pipeline. These are co-mention cand
 ## Provenance
 
 - Pipeline: `scripts/find_emergent_edges.py`
-- Run timestamp: 2026-05-13T09:38:03.417446Z
+- Run timestamp: 2026-05-15T09:41:20.582198Z
 - Determinism guarantee: byte-identical output for byte-identical inputs.
