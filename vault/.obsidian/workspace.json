@@ -213,8 +213,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "1d6f3b3b59b088bd",
+  "active": "052c88de01690455",
   "lastOpenFiles": [
+    "Discoveries_Inbox/pubmed_intake_2026-05-15.md",
+    "Discoveries_Inbox/pubmed_intake_2026-05-15.json",
+    "peptides/humanin.md",
+    "peptides/epitalon.md",
+    "genes/INDEX.md",
     "sources/SRC-001467 22152641.md",
     "sources/SRC-001466 26370672.md",
     "sources/SRC-001465 28099978.md",
@@ -238,10 +243,6 @@
     "sources/SRC-001397 25893671.md",
     "sources/SRC-001392 28523171.md",
     "sources/SRC-001390 38972485.md",
-    "sources/SRC-001387 22095324.md",
-    "sources/SRC-001385 36746353.md",
-    "sources/SRC-001384 39936727.md",
-    "sources/SRC-001383 29302482.md",
     "Discoveries_Inbox/responder_phenotype_gaps_2026-05-13.json",
     "Discoveries_Inbox/higher_order_hypotheses_2026-05-13.json",
     "Discoveries_Inbox/combination_gaps_2026-05-13.json",
@@ -251,7 +252,6 @@
     "_quarantine_obsidian_artifacts/Untitled.base",
     "_quarantine_obsidian_artifacts/Untitled",
     "_quarantine_obsidian_artifacts",
-    "peptides",
     "Untitled.canvas"
   ]
 }

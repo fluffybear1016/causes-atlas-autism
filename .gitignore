@@ -21,3 +21,11 @@ delta_squared_v1/reflexivity_status.txt
 
 # Copyrighted source PDFs — do not redistribute publicly
 validation/responder_rate_calibration/papers/
+
+# Obsidian UI state — churns on every vault open/close + every
+# build_vault rebuild. Was causing recurring `.git/index.lock` conflicts
+# and merge-resolution noise. The vault content stays under version
+# control; only the workspace layout state is excluded.
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace-mobile.json
+vault/.obsidian/graph.json

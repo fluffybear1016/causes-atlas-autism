@@ -1,0 +1,336 @@
+{
+  "scan_date": "2026-05-15",
+  "since": "2026/05/08",
+  "until": "2026-05-15",
+  "queries_run": 12,
+  "candidates_total": 32,
+  "candidates_by_tag": {
+    "P": 3,
+    "M": 6,
+    "E": 15,
+    "SYNTHESIS": 4,
+    "PHI": 4
+  },
+  "candidates": [
+    {
+      "pmid": "42097524",
+      "title": "Risk for Autism Across Generations.",
+      "first_author": "Reichenberg A",
+      "journal": "Biological psychiatry",
+      "pubdate": "2026 May 5",
+      "doi": "10.1016/j.biopsych.2026.04.023",
+      "intake_tag": "P",
+      "intake_focus": "advanced_parental_age"
+    },
+    {
+      "pmid": "42098401",
+      "title": "Mitochondrial Gene Signature Reveals Novel Diagnostic Biomarkers for Autism Spectrum Disorder.",
+      "first_author": "Wang J",
+      "journal": "Molecular neurobiology",
+      "pubdate": "2026 May 7",
+      "doi": "10.1007/s12035-026-05911-y",
+      "intake_tag": "M",
+      "intake_focus": "mitochondrial_mechanism"
+    },
+    {
+      "pmid": "42101085",
+      "title": "Personalized Medicine in Autism Spectrum Disorder: Integrating Epigenomics, Microbiome Research and Early Diagnostics.",
+      "first_author": "El Sehrawy AAMA",
+      "journal": "International journal of developmental neuroscience : the official journal of the International Society for Developmental Neuroscience",
+      "pubdate": "2026 May",
+      "doi": "10.1002/jdn.70128",
+      "intake_tag": "E",
+      "intake_focus": "maternal_immune_activation"
+    },
+    {
+      "pmid": "42101598",
+      "title": "Vaccine Adverse Effects: An Overview.",
+      "first_author": "Coles S MD, FAAFP",
+      "journal": "American family physician",
+      "pubdate": "2026 Apr",
+      "doi": "",
+      "intake_tag": "E",
+      "intake_focus": "vaccine_axis"
+    },
+    {
+      "pmid": "42102652",
+      "title": "Toward an immunological classification of autism spectrum disorder: A PRISMA-ScR-compliant scoping review.",
+      "first_author": "Al-Salihy AAS",
+      "journal": "Journal of neuroimmunology",
+      "pubdate": "2026 May 5",
+      "doi": "10.1016/j.jneuroim.2026.578962",
+      "intake_tag": "E",
+      "intake_focus": "maternal_immune_activation"
+    },
+    {
+      "pmid": "42104823",
+      "title": "[Valproate\u2011Associated Acute Pancreatitis in a Child with Autism Spectrum Disorder].",
+      "first_author": "Nascimento CM",
+      "journal": "Acta medica portuguesa",
+      "pubdate": "2026 May 4",
+      "doi": "10.20344/amp.24269",
+      "intake_tag": "E",
+      "intake_focus": "in_utero_drug"
+    },
+    {
+      "pmid": "42105161",
+      "title": "rTMS Modulates Static and Dynamic Brain Functional Networks in Children with Autism Spectrum Disorder: An EEG Microstate Study.",
+      "first_author": "Kang J",
+      "journal": "Brain topography",
+      "pubdate": "2026 May 9",
+      "doi": "10.1007/s10548-026-01209-3",
+      "intake_tag": "SYNTHESIS",
+      "intake_focus": "responder_subgroup_RCT"
+    },
+    {
+      "pmid": "42106060",
+      "title": "Child-onset Hepatic Glycogenosis and Steatosis in PTEN-related Disorder.",
+      "first_author": "Sihaklang B",
+      "journal": "European journal of medical genetics",
+      "pubdate": "2026 May 7",
+      "doi": "10.1016/j.ejmg.2026.105082",
+      "intake_tag": "P",
+      "intake_focus": "advanced_parental_age"
+    },
+    {
+      "pmid": "42107183",
+      "title": "Reduced IL-10 in the early postnatal period contributes to pro-inflammatory phenotype and autism-like behavior in offspring mice induced by maternal hypothyroidism during pregnancy.",
+      "first_author": "Li M",
+      "journal": "Cytokine",
+      "pubdate": "2026 May 9",
+      "doi": "10.1016/j.cyto.2026.157167",
+      "intake_tag": "E",
+      "intake_focus": "maternal_immune_activation"
+    },
+    {
+      "pmid": "42110197",
+      "title": "Vagus nerve stimulation as an anti-inflammatory therapy for maternal immune activation-induced alterations in offspring microglia and neurodevelopment.",
+      "first_author": "Gargus M",
+      "journal": "Frontiers in neuroscience",
+      "pubdate": "2026",
+      "doi": "10.3389/fnins.2026.1827714",
+      "intake_tag": "E",
+      "intake_focus": "maternal_immune_activation"
+    },
+    {
+      "pmid": "42113260",
+      "title": "Multi-strain Bacillus Probiotics has Advantages in Improving Abnormal Behavior and Intestinal Flora in Rats of Autism Spectrum Disorder.",
+      "first_author": "Bai QQ",
+      "journal": "Current microbiology",
+      "pubdate": "2026 May 11",
+      "doi": "10.1007/s00284-026-04903-4",
+      "intake_tag": "E",
+      "intake_focus": "in_utero_drug"
+    },
+    {
+      "pmid": "42113313",
+      "title": "Genetic-Environmental Programming of Microglial Identity: Shaping Spatiotemporal Dynamics in Neurodevelopment and Neurodevelopmental Diseases.",
+      "first_author": "Zhang Y",
+      "journal": "Cellular and molecular neurobiology",
+      "pubdate": "2026 May 11",
+      "doi": "10.1007/s10571-026-01741-7",
+      "intake_tag": "E",
+      "intake_focus": "maternal_immune_activation"
+    },
+    {
+      "pmid": "42116138",
+      "title": "Heterogeneous neurocognitive signatures in early childhood autism: a combined analysis of pharmacological treatment and gender.",
+      "first_author": "\u00d6zcan \u00d6\u00d6",
+      "journal": "BMC psychology",
+      "pubdate": "2026 May 11",
+      "doi": "10.1186/s40359-026-04747-4",
+      "intake_tag": "PHI",
+      "intake_focus": "phenotype_subtyping"
+    },
+    {
+      "pmid": "42116390",
+      "title": "Trampoline exercise reduces anxiety and improves motor skills in children with autism spectrum disorder: A randomized controlled trial.",
+      "first_author": "Luo B",
+      "journal": "Medicine",
+      "pubdate": "2026 May 8",
+      "doi": "10.1097/MD.0000000000048616",
+      "intake_tag": "SYNTHESIS",
+      "intake_focus": "responder_subgroup_RCT"
+    },
+    {
+      "pmid": "42119985",
+      "title": "Trends in the age-standardized prevalence of neurodevelopmental disorders in South America, 1990-2023.",
+      "first_author": "Lopez-Espejo M",
+      "journal": "Arquivos de neuro-psiquiatria",
+      "pubdate": "2026 May",
+      "doi": "10.1055/s-0046-1820532",
+      "intake_tag": "PHI",
+      "intake_focus": "phenotype_subtyping"
+    },
+    {
+      "pmid": "42120904",
+      "title": "Social functioning in autism: a systematic review and meta-analysis.",
+      "first_author": "Li S",
+      "journal": "Nature human behaviour",
+      "pubdate": "2026 May 12",
+      "doi": "10.1038/s41562-026-02457-w",
+      "intake_tag": "PHI",
+      "intake_focus": "phenotype_subtyping"
+    },
+    {
+      "pmid": "42123457",
+      "title": "Mitochondria as an Integrative Hub of Cellular Homeostasis and Stress Response.",
+      "first_author": "Mihaylova V",
+      "journal": "International journal of molecular sciences",
+      "pubdate": "2026 Apr 27",
+      "doi": "10.3390/ijms27093871",
+      "intake_tag": "M",
+      "intake_focus": "mitochondrial_mechanism"
+    },
+    {
+      "pmid": "42123569",
+      "title": "Microbiome-Derived Short-Chain Fatty Acids and Tryptophan Metabolites in Children with Autism Spectrum Disorder: A Stool-Urine Multi-Omics Analysis.",
+      "first_author": "Osredkar J",
+      "journal": "International journal of molecular sciences",
+      "pubdate": "2026 Apr 29",
+      "doi": "10.3390/ijms27093988",
+      "intake_tag": "M",
+      "intake_focus": "gut_brain_axis"
+    },
+    {
+      "pmid": "42123681",
+      "title": "Characterization of Three Distinct Loss-of-Function Cav2.3 Variants.",
+      "first_author": "Souza IA",
+      "journal": "International journal of molecular sciences",
+      "pubdate": "2026 May 3",
+      "doi": "10.3390/ijms27094103",
+      "intake_tag": "P",
+      "intake_focus": "advanced_parental_age"
+    },
+    {
+      "pmid": "42124041",
+      "title": "Gut-Derived Metabolic Imbalance in Autism Spectrum Disorder: Toward the Concept of a Metabolic Subtype.",
+      "first_author": "Son JY",
+      "journal": "Nutrients",
+      "pubdate": "2026 Apr 30",
+      "doi": "10.3390/nu18091442",
+      "intake_tag": "M",
+      "intake_focus": "mitochondrial_mechanism"
+    },
+    {
+      "pmid": "42125782",
+      "title": "Assessment of differences in urinary heavy metal concentrations and environmental factors between children with autism spectrum disorder and neurotypical controls.",
+      "first_author": "Elkady NK",
+      "journal": "Drug and chemical toxicology",
+      "pubdate": "2026 May 13",
+      "doi": "10.1080/01480545.2026.2669776",
+      "intake_tag": "E",
+      "intake_focus": "environmental_toxicants"
+    },
+    {
+      "pmid": "42127326",
+      "title": "Drug development in autism spectrum disorder: genetic heterogeneity, failed trials, and the case for stratified pharmacotherapy.",
+      "first_author": "Bortoletto R",
+      "journal": "International clinical psychopharmacology",
+      "pubdate": "2026 Apr 10",
+      "doi": "10.1097/YIC.0000000000000627",
+      "intake_tag": "E",
+      "intake_focus": "in_utero_drug"
+    },
+    {
+      "pmid": "42128602",
+      "title": "My Autistic Sister Deserves a Pap Smear Too: Closing the Reproductive Care Gap for Neurodiverse Patients.",
+      "first_author": "Iqbal R",
+      "journal": "Journal of the American Board of Family Medicine : JABFM",
+      "pubdate": "2026 Jan",
+      "doi": "10.3122/jabfm.2025.250241R1",
+      "intake_tag": "E",
+      "intake_focus": "vaccine_axis"
+    },
+    {
+      "pmid": "42129135",
+      "title": "Perineuronal nets in cerebellar nuclei neurons orchestrate social behaviour via regulation of neuronal activity in circuits innervated by the cerebellum.",
+      "first_author": "Fujita K",
+      "journal": "Translational psychiatry",
+      "pubdate": "2026 May 13",
+      "doi": "10.1038/s41398-026-03952-4",
+      "intake_tag": "E",
+      "intake_focus": "in_utero_drug"
+    },
+    {
+      "pmid": "42129557",
+      "title": "An X-linked long non-coding RNA, PTCHD1-AS, and the core features of autism.",
+      "first_author": "Bradley CA",
+      "journal": "Nature",
+      "pubdate": "2026 May 13",
+      "doi": "10.1038/s41586-026-10515-6",
+      "intake_tag": "M",
+      "intake_focus": "mitochondrial_mechanism"
+    },
+    {
+      "pmid": "42131345",
+      "title": "Microglia in autism spectrum disorder: heterogeneity, immunometabolism, and synapse-related pathways.",
+      "first_author": "Lian A",
+      "journal": "Frontiers in immunology",
+      "pubdate": "2026",
+      "doi": "10.3389/fimmu.2026.1783755",
+      "intake_tag": "E",
+      "intake_focus": "maternal_immune_activation"
+    },
+    {
+      "pmid": "42134364",
+      "title": "Maternal and paternal antidepressant use before and during pregnancy and offspring risk of neurodevelopmental disorders: a systematic review and meta-analysis.",
+      "first_author": "Chan JKN",
+      "journal": "The lancet. Psychiatry",
+      "pubdate": "2026 Jun",
+      "doi": "10.1016/S2215-0366(26)00089-1",
+      "intake_tag": "E",
+      "intake_focus": "in_utero_drug"
+    },
+    {
+      "pmid": "42135262",
+      "title": "Paracetamol in Pregnancy: Uncertain Evidence, Certain Consequences.",
+      "first_author": "Tunnicliffe DJ",
+      "journal": "The Medical journal of Australia",
+      "pubdate": "2026 May",
+      "doi": "10.5694/mja2.70203",
+      "intake_tag": "E",
+      "intake_focus": "in_utero_drug"
+    },
+    {
+      "pmid": "42136057",
+      "title": "Metabotropic Glutamate Receptor-Dependent Synaptic Plasticity in Age-Related Neurodegenerative Disorders.",
+      "first_author": "Basha S",
+      "journal": "Neural plasticity",
+      "pubdate": "2026",
+      "doi": "10.1155/np/3455379",
+      "intake_tag": "PHI",
+      "intake_focus": "phenotype_subtyping"
+    },
+    {
+      "pmid": "42136303",
+      "title": "From Microbes to Minds: The Impact of Gut Bacteria on Infant Cognitive Growth.",
+      "first_author": "Rahimkhani M",
+      "journal": "CNS & neurological disorders drug targets",
+      "pubdate": "2026 May 7",
+      "doi": "10.2174/0118715273391751251125075624",
+      "intake_tag": "M",
+      "intake_focus": "gut_brain_axis"
+    },
+    {
+      "pmid": "42137376",
+      "title": "Understanding Practice Intentions and Barriers Following Pediatric Mental Health ECHO Participation.",
+      "first_author": "James M",
+      "journal": "Kansas journal of medicine",
+      "pubdate": "2026 Mar-Apr",
+      "doi": "10.17161/kjm.vol19.25365",
+      "intake_tag": "SYNTHESIS",
+      "intake_focus": "responder_subgroup_RCT"
+    },
+    {
+      "pmid": "42138030",
+      "title": "The emotion dysregulation inventory - self-report: development and psychometric evaluation.",
+      "first_author": "Conner CM",
+      "journal": "Psychological medicine",
+      "pubdate": "2026 May 15",
+      "doi": "10.1017/S0033291726103857",
+      "intake_tag": "SYNTHESIS",
+      "intake_focus": "responder_subgroup_RCT"
+    }
+  ]
+}

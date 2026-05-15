@@ -637,6 +637,39 @@ This rule applies to:
 
 Full protocol documented in `SESSION_4_HANNAH_POLING_SPEC.md` §24.
 
+## Field outcomes firewall (post-2026-05-15)
+
+The atlas's published calibration anchors — cohort MAE = 0.0665 (n=8),
+within-driver-coverage MAE = 0.049 (n=7), and INT-0001 Leucovorin
+CSRS = 83.35 — are defended by PMID-verified RCT evidence only.
+Parent-submitted outcome data ("field outcomes") would introduce
+selection bias (parents preferentially report positive outcomes) and
+could silently drift the published metrics. Once that drift begins, the
+methodology becomes unsupportable to a federal evaluator.
+
+**Hard rule:** `v2.0_scored/field_outcomes.csv` is curator-write,
+scoring-engine-read-never. The firewall is code-enforced via
+`scripts/precommit_field_outcomes_firewall.py`:
+
+- Scoring-engine files (`run_scoring*.py`, `compute_responder_mae.py`,
+  `validate_v02_calibration.py`, `compute_delta_squared.py`,
+  `compute_formulation_scores.py`, `personalized_risk*.py`) must NOT
+  reference `field_outcomes.csv`.
+- `v2.0_scored/` CSVs other than `field_outcomes.csv` itself must NOT
+  reference `field_outcomes`.
+- Files that DO read field outcomes must be in the explicit ALLOWLIST
+  (currently: planned future parent-community report surfaces only).
+
+This mirrors the §24 PMID-verification firewall in structure: instead
+of preventing PMID fabrication, it prevents outcome-feedback drift.
+Both protect the atlas's published methodology from systematic bias
+patterns the underlying epistemic principles couldn't catch via human
+review alone.
+
+See `ACTIONABLE_REPORT_PRODUCT_SPEC.md` §"Mitigation 2" for product-
+level context and `SIX_MONTH_FAILURE_MODES.md` for the failure-mode
+analysis that motivated this firewall.
+
 ## Design system & cinematic GTM layer
 
 The atlas has **two communication surfaces with different brand languages.**

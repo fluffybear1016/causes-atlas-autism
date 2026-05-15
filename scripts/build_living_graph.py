@@ -155,6 +155,81 @@ bie   = read_csv("biomarker_intervention_edges.csv")
 bme   = read_csv("biomarker_mechanism_edges.csv")
 bpe   = read_csv("biomarker_phenotype_edges.csv")
 bhe   = read_csv("biomarker_hypothesis_edges.csv")
+tests = read_csv("tests_catalog.csv")  # 2026-05-15: FM actionable test catalog
+
+# ── plain-English phenotype descriptions for the action card ───────────
+# These are mom-language one-liners used in the click-reveal card.
+# Curator-written, not auto-generated, so the framing stays warm and
+# non-clinical.
+PHENOTYPE_PLAIN_ENGLISH = {
+    "PHE-0001": "Antibodies block folate from reaching the brain. "
+                 "The fix when this is the driver is dramatic.",
+    "PHE-0002": "The cell's energy factories aren't keeping up. "
+                 "Stressors hit harder than they would otherwise.",
+    "PHE-0003": "The immune system is fighting the wrong fight, "
+                 "and brain inflammation follows.",
+    "PHE-0004": "Gut imbalance is sending the wrong signals to the brain. "
+                 "Repair the gut, the signals normalize.",
+    "PHE-0005": "Growth-signaling pathway running too hot. Often syndromic.",
+    "PHE-0006": "Fragile X / FMR1 silencing. Targeted protein cascades "
+                 "can be addressed directly.",
+    "PHE-0007": "GABA hasn't matured from excitatory to inhibitory. "
+                 "Brain stays over-aroused.",
+    "PHE-0008": "Mast cells releasing histamine and inflammatory mediators "
+                 "without an obvious trigger.",
+    "PHE-0009": "Sudden-onset OCD / tics / regression after a strep or "
+                 "viral infection — autoimmune attack on basal ganglia.",
+    "PHE-0010": "Walsh undermethylator: methylation cycle running cold. "
+                 "Common in autism; check before starting methyl-donors.",
+    "PHE-0011": "Walsh metallothionein-deficient: copper:zinc imbalance "
+                 "+ heavy-metal handling compromised.",
+}
+
+# Avoid / track guidance per phenotype (mom-actionable)
+PHENOTYPE_AVOID = {
+    "PHE-0001": "Synthetic folic acid (fortified foods, generic prenatals). "
+                 "Methylated folate before FRAA testing in COMT++ kids.",
+    "PHE-0002": "Mitochondrial toxins: fluoroquinolones, statins, valproate. "
+                 "Avoid fasting in young children with mito-flag profile.",
+    "PHE-0003": "NSAIDs during acute inflammation; high-histamine foods "
+                 "until inflammation is settled.",
+    "PHE-0004": "Sugar, alcohol-derived antibiotics (kids), unnecessary "
+                 "antibiotic courses, glyphosate-treated grains.",
+    "PHE-0005": "Most mTOR pathway agonists; consult specialist before "
+                 "introducing new growth-signaling supplements.",
+    "PHE-0006": "Sensory overload; check fragile-X-specific medication "
+                 "considerations with geneticist.",
+    "PHE-0007": "Glutamate-rich foods (MSG, hydrolyzed proteins, aged "
+                 "cheeses) until GABA tone improves.",
+    "PHE-0008": "High-histamine foods (aged, fermented, leftover); "
+                 "trigger foods identified via elimination.",
+    "PHE-0009": "Don't watch and wait if onset was sudden — treat "
+                 "underlying infection + immune dysregulation.",
+    "PHE-0010": "Folic acid (synthetic). Folate-fortified foods. "
+                 "Start methyl donors LOW to avoid over-methylation.",
+    "PHE-0011": "Copper-rich water (old plumbing); copper IUDs; "
+                 "supplements containing copper.",
+}
+
+PHENOTYPE_TRACK = {
+    "PHE-0001": "Re-check FRAA + behavior at 6 months. If responder, "
+                 "speech / language milestones at 3-month intervals.",
+    "PHE-0002": "Lactate + acylcarnitine at 6 months. Sleep, fatigue, "
+                 "exercise tolerance weekly.",
+    "PHE-0003": "Cytokines + CRP at 8-12 weeks. Sleep quality + GI + "
+                 "behavior daily log.",
+    "PHE-0004": "Repeat GI-MAP at 6 months. Stool consistency, food "
+                 "tolerance, regression episodes weekly.",
+    "PHE-0005": "Specialist follow-up. Imaging if indicated.",
+    "PHE-0006": "Genetic counseling check-in. Targeted symptom tracking.",
+    "PHE-0007": "EEG / qEEG if sleep-disturbed. Anxiety, agitation, "
+                 "irritability daily.",
+    "PHE-0008": "Histamine, tryptase at 3 months. Food-reaction diary daily.",
+    "PHE-0009": "Cunningham Panel + behavior at 3 months. Tic frequency, "
+                 "OCD severity, mood daily.",
+    "PHE-0010": "SAM/SAH ratio at 8 weeks. Anxiety, sleep, behavior weekly.",
+    "PHE-0011": "Cu:Zn ratio at 8 weeks. Behavior, sensory sensitivity weekly.",
+}
 
 # ── nodes ──────────────────────────────────────────────────────────────
 nodes: list[dict] = []
@@ -213,8 +288,57 @@ for m in sorted(mecs, key=lambda r: r["id"]):
     centrality = mec_edge_count.get(m["id"], 0) / max_mec_edges
     add_node(m["id"], "M", m.get("name") or m["id"], 5 + centrality * 7)
 
+# Build best-test lookup per phenotype from tests_catalog.csv.
+# For each phenotype, pick the lowest-cost direct-to-consumer-friendly
+# Tier 1 or Tier 2 test that maps to it. This is what mom should order.
+best_test_for_phe: dict[str, dict] = {}
+for t in tests:
+    phe_field = t.get("maps_to_phenotype_ids", "") or ""
+    if not phe_field:
+        continue
+    # Phenotype IDs may be ; or , separated
+    phe_ids = [x.strip() for x in phe_field.replace(";", ",").split(",") if x.strip()]
+    # Skip emerging / contested for the top recommendation; we want a
+    # confident first-line test, not a frontier suggestion
+    tier = (t.get("evidence_tier") or "").lower()
+    if "tier3" in tier or "tier4" in tier or "tier5" in tier:
+        continue
+    for pid in phe_ids:
+        # Pick lowest-cost test (proxy for accessibility)
+        try:
+            cost = float(t.get("cost_usd_low") or 9999)
+        except ValueError:
+            cost = 9999
+        if pid not in best_test_for_phe or cost < best_test_for_phe[pid].get("_cost", 9999):
+            best_test_for_phe[pid] = {
+                "name": t.get("test_name", ""),
+                "provider": t.get("provider", ""),
+                "sample": t.get("sample_type", ""),
+                "cost_lo": t.get("cost_usd_low", ""),
+                "cost_hi": t.get("cost_usd_high", ""),
+                "turnaround": t.get("turnaround_days", ""),
+                "dtc": (t.get("direct_to_consumer", "") or "").upper() == "TRUE",
+                "rx_required": (t.get("clinician_required", "") or "").upper() == "TRUE",
+                "tier": t.get("evidence_tier", ""),
+                "_cost": cost,
+            }
+
 for p in sorted(phes, key=lambda r: r["id"]):
-    add_node(p["id"], "P", p.get("name") or p["id"], 13)
+    extra = {
+        "pe": PHENOTYPE_PLAIN_ENGLISH.get(p["id"], ""),
+        "av": PHENOTYPE_AVOID.get(p["id"], ""),
+        "tk": PHENOTYPE_TRACK.get(p["id"], ""),
+    }
+    bt = best_test_for_phe.get(p["id"])
+    if bt:
+        extra["bt"] = {
+            "name": bt["name"], "provider": bt["provider"],
+            "sample": bt["sample"],
+            "lo": bt["cost_lo"], "hi": bt["cost_hi"],
+            "td": bt["turnaround"],
+            "dtc": bt["dtc"], "rx": bt["rx_required"],
+        }
+    add_node(p["id"], "P", p.get("name") or p["id"], 13, extra=extra)
 
 def int_size(row):
     for k in ("csrs_score", "csrs", "score"):
@@ -230,7 +354,15 @@ for i in sorted(ints_sorted, key=lambda r: r["id"]):
     # their own visual treatment downstream.
     if any(k in name_l for k in INTERVENTION_PEPTIDE_KEYWORDS):
         cat = "peptide"
-    extra: dict = {"c": cat or "supplement"}
+    extra: dict = {
+        "c": cat or "supplement",
+        # FM-actionable card metadata
+        "do": (i.get("dose_typical") or "")[:120],
+        "co": (i.get("cost_estimate") or ""),
+        "rg": (i.get("regulatory") or ""),  # rx | otc | rx_specialist
+        "sf": (i.get("safety") or ""),       # yes | uncertain | monitored | no
+        "sc": (i.get("csrs_score") or ""),   # atlas signal
+    }
     if i["id"] == "INT-0001":
         extra["k"] = "INT-0001"
     add_node(i["id"], "I", i.get("name") or i["id"], 3 + int_size(i) * 8,
@@ -299,7 +431,18 @@ bios_sorted = sorted(bios, key=lambda r: -bio_deg.get(r["id"], 0))[:CAP_BIOMARKE
 max_bio_deg = max(bio_deg.values()) if bio_deg else 1
 for b in sorted(bios_sorted, key=lambda r: r["id"]):
     centrality = bio_deg.get(b["id"], 0) / max_bio_deg
-    add_node(b["id"], "B", b.get("name") or b["id"], 2 + centrality * 5)
+    extra = {
+        # FM-actionable card metadata
+        "wt": (b.get("what_it_measures") or "")[:140],
+        "em": (b.get("elevated_means") or "")[:160],
+        "la": (b.get("lab_options") or "")[:120],
+        "cl": (b.get("test_cost_usd_low") or ""),
+        "ch": (b.get("test_cost_usd_high") or ""),
+        "td": (b.get("turnaround_days") or ""),
+        "st": (b.get("sample_type") or ""),
+    }
+    add_node(b["id"], "B", b.get("name") or b["id"], 2 + centrality * 5,
+             extra=extra)
 
 # biomarker edges (only to nodes already in the graph)
 for e in bie:
@@ -528,6 +671,86 @@ HTML = r"""<!doctype html>
   .dock .toggle:hover { color: var(--text); border-color: var(--line-hi); }
   .dock .toggle.on   { color: var(--gold); border-color: var(--gold-dim); }
 
+  /* ── ACTION CARD — FM-actionable phenotype reveal ──────────────── */
+  /* Appears bottom-center when a phenotype is clicked. The substrate's
+     value made visible: TEST · DO · AVOID · TRACK. Mom-language. */
+  .action-card {
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+    z-index: 12; pointer-events: auto;
+    width: clamp(640px, 70vw, 880px);
+    background: rgba(8, 11, 18, 0.92); backdrop-filter: blur(12px);
+    border: 1px solid var(--gold-dim);
+    color: var(--text);
+    font-family: ui-serif, "Iowan Old Style", Garamond, serif;
+    opacity: 0; transform: translateX(-50%) translateY(20px);
+    transition: opacity 600ms ease, transform 600ms ease;
+    padding: 22px 28px 24px;
+  }
+  .action-card.on {
+    opacity: 1; transform: translateX(-50%) translateY(0);
+  }
+  .action-card .ac-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--line-hi);
+    padding-bottom: 9px; margin-bottom: 14px;
+  }
+  .action-card .ac-name {
+    font-size: 18px; letter-spacing: 0.02em; color: var(--node);
+  }
+  .action-card .ac-id {
+    font-family: ui-monospace, monospace; font-size: 10px;
+    letter-spacing: 0.22em; color: var(--text-mute);
+    text-transform: uppercase;
+  }
+  .action-card .ac-pe {
+    font-style: italic; font-size: 13.5px; color: var(--text);
+    line-height: 1.45; margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .action-card .ac-row {
+    display: grid; grid-template-columns: 88px 1fr;
+    gap: 14px; padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 12.5px; line-height: 1.5;
+  }
+  .action-card .ac-row:last-child { border-bottom: none; }
+  .action-card .ac-label {
+    font-family: ui-monospace, monospace; font-size: 9.5px;
+    letter-spacing: 0.24em; color: var(--gold);
+    text-transform: uppercase; padding-top: 2px;
+  }
+  .action-card .ac-content { color: var(--text); }
+  .action-card .ac-content .meta {
+    color: var(--text-mute); font-size: 11px;
+    margin-left: 6px;
+  }
+  .action-card .ac-content .pill {
+    display: inline-block; padding: 1px 6px;
+    border: 1px solid var(--line-hi); border-radius: 3px;
+    font-family: ui-monospace, monospace; font-size: 9.5px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-mute); margin-left: 4px;
+  }
+  .action-card .ac-content .pill.gold { color: var(--gold); border-color: var(--gold-dim); }
+  .action-card .ac-content .item {
+    margin-bottom: 6px;
+  }
+  .action-card .ac-content .item:last-child { margin-bottom: 0; }
+  .action-card .ac-close {
+    position: absolute; top: 12px; right: 16px;
+    background: transparent; border: none;
+    color: var(--text-mute); font-size: 18px;
+    cursor: pointer; padding: 4px 8px;
+    line-height: 1;
+  }
+  .action-card .ac-close:hover { color: var(--text); }
+  .action-card .ac-footer {
+    margin-top: 14px; padding-top: 10px;
+    border-top: 1px solid var(--line);
+    font-size: 10.5px; letter-spacing: 0.14em;
+    color: var(--text-vmute); text-transform: uppercase;
+  }
+
   /* ── hover label ───────────────────────────────────────────────── */
   .hover-label {
     position: fixed; pointer-events: none; z-index: 8;
@@ -580,7 +803,7 @@ HTML = r"""<!doctype html>
   </div>
   <div class="vmute" style="margin-top:8px;">n=7 mae 0.049 · 4 sub-3% errors</div>
   <div class="vmute" style="margin-top:8px;">
-    intake feed · __INTAKE_TICKER__
+    intake feed · <span id="intake-ticker">__INTAKE_TICKER__</span>
   </div>
 </div>
 
@@ -598,6 +821,9 @@ HTML = r"""<!doctype html>
 
 <div class="hover-label" id="hover"></div>
 
+<!-- FM-actionable card: bottom-center reveal on phenotype-click -->
+<div class="action-card" id="ac"></div>
+
 <div class="err" id="err"></div>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"
         crossorigin="anonymous"></script>
@@ -614,6 +840,7 @@ window.addEventListener('error', (e) => {
 
 const DATA     = __DATA__;
 const PROFILES = __PROFILES__;        // [{k, label}, ...] index = bit
+const INTAKE   = __INTAKE_FEED__;     // recent PubMed candidates from cron
 
 // ── canvas + DPR ───────────────────────────────────────────────────
 const canvas = document.getElementById('c');
@@ -743,7 +970,9 @@ let activeMask = null;          // function(node) -> boolean
 let isFiltering = false;
 
 function recomputeFilter() {
-  if (searchTerm) {
+  if (revealedPhenotype) {
+    isFiltering = true;
+  } else if (searchTerm) {
     searchHits.clear();
     const tokens = searchTerm.toLowerCase().split(/\s+/).filter(Boolean);
     for (const n of nodes) {
@@ -758,6 +987,13 @@ function recomputeFilter() {
 }
 
 function inActive(n) {
+  // Phenotype-click reveal takes precedence: ONLY the phenotype + its
+  // top-5 evidence-weighted interventions + top-3 stratifying biomarkers
+  // remain lit. Everything else fades to ghost. This is the "what to do /
+  // what to test" answer in visual form.
+  if (revealedPhenotype) {
+    return revealedSet.has(n.id);
+  }
   if (searchTerm) {
     if (searchHits.has(n.id)) return true;
     // one-hop bridge: light up neighbors of matched nodes too
@@ -872,10 +1108,17 @@ canvas.addEventListener('mousemove', (e) => {
   }
   hover = best;
   if (best && best.t !== 'G') {
-    const typeLabel = ({H:'Hypothesis', M:'Mechanism', I:'Intervention',
-                        P:'Phenotype'})[best.t] || '';
+    const typeLabel = ({
+      H:'Hypothesis', M:'Mechanism', I:'Intervention',
+      P:'Phenotype',  B:'Biomarker · what to test',
+      C:'Combination · the typed stack',
+    })[best.t] || '';
+    // Sub-category hint for interventions (drug/supplement/peptide/etc.)
+    const subCat = (best.t === 'I' && best.c)
+      ? ' · ' + best.c.toUpperCase()
+      : '';
     hoverEl.innerHTML = best.l + '<span class="meta">' + best.id +
-                        ' · ' + typeLabel + '</span>';
+                        ' · ' + typeLabel + subCat + '</span>';
     hoverEl.style.left = (e.clientX + 14) + 'px';
     hoverEl.style.top  = (e.clientY + 14) + 'px';
     hoverEl.style.opacity = 1;
@@ -885,6 +1128,200 @@ canvas.addEventListener('mousemove', (e) => {
 });
 canvas.addEventListener('mouseleave', () => {
   hover = null; hoverEl.style.opacity = 0;
+});
+
+// ── phenotype-click reveal: "what would help" + "what to test" ───────
+// Click on a phenotype node → the top-5 atlas-signal-weighted interventions
+// AND the top-3 biomarkers that stratify it become the only highlighted
+// nodes (everything else fades). Particles flow from those interventions
+// toward the phenotype. This is the "what to do / what to test" visual
+// answer — the most actionable interaction in the cinematic surface.
+let revealedPhenotype = null;
+let revealedSet = new Set();
+const acEl = document.getElementById('ac');
+
+function fmtRange(lo, hi, prefix) {
+  if (!lo && !hi) return '';
+  prefix = prefix || '';
+  if (lo && hi && lo !== hi) return prefix + lo + '–' + hi;
+  return prefix + (lo || hi);
+}
+
+function rxBadge(rg) {
+  if (!rg) return '';
+  if (rg.indexOf('rx') === 0) return '<span class="pill">rx</span>';
+  if (rg === 'otc')      return '<span class="pill">otc</span>';
+  if (rg === 'lifestyle')return '<span class="pill">lifestyle</span>';
+  return '<span class="pill">' + rg + '</span>';
+}
+
+function tierBadge(sc) {
+  if (!sc) return '';
+  const v = parseFloat(sc);
+  if (isNaN(v)) return '';
+  if (v >= 75) return '<span class="pill gold">strong evidence</span>';
+  if (v >= 55) return '<span class="pill">moderate</span>';
+  return '<span class="pill">emerging</span>';
+}
+
+function renderActionCard(phe, topBios, topInts) {
+  if (!phe) { acEl.classList.remove('on'); return; }
+  const pe = phe.pe || '';
+  const av = phe.av || '';
+  const tk = phe.tk || '';
+  const bt = phe.bt;
+
+  // TEST section: best test from tests_catalog + top 2 biomarkers
+  let testHtml = '';
+  if (bt) {
+    const rxStr = bt.rx ? '<span class="pill">rx</span>' :
+                  (bt.dtc ? '<span class="pill gold">direct-to-consumer</span>' : '');
+    testHtml += '<div class="item"><strong>' + bt.name + '</strong>' + rxStr +
+                '<span class="meta">' + bt.provider +
+                ' · ' + bt.sample +
+                (bt.lo ? ' · $' + fmtRange(bt.lo, bt.hi) : '') +
+                (bt.td ? ' · ' + bt.td + 'd' : '') + '</span></div>';
+  }
+  for (const b of topBios.slice(0, 2)) {
+    const wt = b.wt ? ' — ' + b.wt.substring(0, 80) : '';
+    const lab = b.la ? ' <span class="meta">' + b.la.substring(0, 60) +
+                (b.cl ? ' · $' + fmtRange(b.cl, b.ch) : '') + '</span>' : '';
+    testHtml += '<div class="item"><strong>' + b.l + '</strong>' +
+                wt + lab + '</div>';
+  }
+  if (!testHtml) testHtml = '<div class="meta">No mapped tests in atlas yet — pending curation</div>';
+
+  // DO section: top 3 interventions
+  let doHtml = '';
+  for (const i of topInts.slice(0, 3)) {
+    const dose = i.do ? '<span class="meta">' + i.do + '</span>' : '';
+    const cost = i.co ? '<span class="meta">$' + i.co + '/mo</span>' : '';
+    const cat = i.c ? '<span class="pill">' + i.c + '</span>' : '';
+    doHtml += '<div class="item"><strong>' + i.l + '</strong>' +
+              rxBadge(i.rg) + cat + tierBadge(i.sc) +
+              (dose ? ' ' + dose : '') +
+              (cost ? ' ' + cost : '') + '</div>';
+  }
+  if (!doHtml) doHtml = '<div class="meta">No mapped interventions in atlas yet</div>';
+
+  const html = '' +
+    '<button class="ac-close" onclick="clearReveal();">×</button>' +
+    '<div class="ac-head">' +
+      '<div class="ac-name">' + phe.l + '</div>' +
+      '<div class="ac-id">' + phe.id + ' · phenotype</div>' +
+    '</div>' +
+    (pe ? '<div class="ac-pe">"' + pe + '"</div>' : '') +
+    '<div class="ac-row">' +
+      '<div class="ac-label">Test</div>' +
+      '<div class="ac-content">' + testHtml + '</div>' +
+    '</div>' +
+    '<div class="ac-row">' +
+      '<div class="ac-label">Do</div>' +
+      '<div class="ac-content">' + doHtml + '</div>' +
+    '</div>' +
+    (av ? '<div class="ac-row">' +
+      '<div class="ac-label">Avoid</div>' +
+      '<div class="ac-content">' + av + '</div>' +
+    '</div>' : '') +
+    (tk ? '<div class="ac-row">' +
+      '<div class="ac-label">Track</div>' +
+      '<div class="ac-content">' + tk + '</div>' +
+    '</div>' : '') +
+    '<div class="ac-footer">' +
+      'Not medical advice. Discuss with a functional / integrative ' +
+      'pediatrics clinician before acting.' +
+    '</div>';
+  acEl.innerHTML = html;
+  acEl.classList.add('on');
+}
+
+function revealForPhenotype(phe) {
+  // Collect all incoming intervention edges and biomarker edges
+  const intCandidates = [];
+  const bioCandidates = [];
+  for (const l of links) {
+    if (l.target.id === phe.id) {
+      if (l.source.t === 'I') intCandidates.push({n: l.source, w: l.w});
+      if (l.source.t === 'B') bioCandidates.push({n: l.source, w: l.w});
+    }
+    if (l.source.id === phe.id) {
+      if (l.target.t === 'I') intCandidates.push({n: l.target, w: l.w});
+      if (l.target.t === 'B') bioCandidates.push({n: l.target, w: l.w});
+    }
+  }
+  // Rank by atlas-signal-weight (link weight; falls back to node size
+  // which encodes CSRS / centrality)
+  intCandidates.sort((a, b) => (b.w * b.n.s) - (a.w * a.n.s));
+  bioCandidates.sort((a, b) => (b.w * b.n.s) - (a.w * a.n.s));
+  const topInts = intCandidates.slice(0, 5).map(c => c.n);
+  const topBios = bioCandidates.slice(0, 3).map(c => c.n);
+  // Emergent 2-hop: walk through mechanisms to find indirect connections
+  // when direct edges are sparse. Add up to 4 mechanism nodes that bridge
+  // the phenotype to the top interventions/biomarkers.
+  const emergent = new Set();
+  if (topInts.length + topBios.length < 5) {
+    for (const l of links) {
+      const ph_is_target = l.target.id === phe.id;
+      const ph_is_source = l.source.id === phe.id;
+      if (ph_is_target && l.source.t === 'M') emergent.add(l.source.id);
+      if (ph_is_source && l.target.t === 'M') emergent.add(l.target.id);
+    }
+  }
+  revealedSet = new Set([phe.id, ...topInts.map(n => n.id),
+                                 ...topBios.map(n => n.id),
+                                 ...Array.from(emergent).slice(0, 4)]);
+  revealedPhenotype = phe;
+  // Spawn particles from each top intervention toward the phenotype
+  for (const ints of topInts) {
+    for (const l of links) {
+      if ((l.source.id === ints.id && l.target.id === phe.id) ||
+          (l.target.id === ints.id && l.source.id === phe.id)) {
+        for (let k = 0; k < 3; k++) {
+          particles.push({
+            link: l,
+            t: k * 0.3,
+            speed: 0.18 + Math.random() * 0.1,
+            rev: l.source.id === phe.id,
+          });
+        }
+      }
+    }
+  }
+  // Pulse the phenotype itself
+  pulses.push({node: phe, t: 0, dur: 1.8});
+  renderActionCard(phe, topBios, topInts);
+}
+
+function clearReveal() {
+  revealedPhenotype = null;
+  revealedSet = new Set();
+  acEl.classList.remove('on');
+}
+window.clearReveal = clearReveal;
+
+canvas.addEventListener('click', (e) => {
+  // Bail if we're in the middle of a drag (don't conflate pan-end with click)
+  if (dragStart && (Math.abs(e.clientX - dragStart.startX) > 4 ||
+                    Math.abs(e.clientY - dragStart.startY) > 4)) {
+    return;
+  }
+  const mx = (e.clientX - W/2 - ox) / scale;
+  const my = (e.clientY - H/2 - oy) / scale;
+  let best = null, bd = 18*18;
+  for (const n of nodes) {
+    const dx = n.x - mx, dy = n.y - my;
+    const d2 = dx*dx + dy*dy;
+    if (d2 < bd) { bd = d2; best = n; }
+  }
+  if (best && best.t === 'P') {
+    if (revealedPhenotype && revealedPhenotype.id === best.id) {
+      clearReveal();   // click same phenotype again to dismiss
+    } else {
+      revealForPhenotype(best);
+    }
+  } else if (!best) {
+    clearReveal();   // click empty space to dismiss
+  }
 });
 
 // ── dock interactions ──────────────────────────────────────────────
@@ -1239,6 +1676,30 @@ setInterval(() => {
   papersEl.textContent = papersCount.toLocaleString();
   lastEl.textContent   = fmtAgo(performance.now() - ingestStartT);
 }, 500);
+
+// ── intake ticker rotation — cycles through the actual PubMed scanner
+// output every 8 seconds. Real liveness, not theatre.
+const tickerEl = document.getElementById('intake-ticker');
+if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
+  let tickerIdx = 0;
+  function rotateTicker() {
+    if (!INTAKE.candidates.length) return;
+    const c = INTAKE.candidates[tickerIdx % INTAKE.candidates.length];
+    tickerIdx++;
+    const title = (c.title || '').slice(0, 72);
+    const author = c.first_author || '';
+    const tag = c.intake_tag || '?';
+    tickerEl.style.opacity = '0.2';
+    setTimeout(() => {
+      tickerEl.innerHTML = '[' + tag + '] ' + title +
+        (author ? ' · <span style="color:var(--text-vmute);">' + author + '</span>' : '');
+      tickerEl.style.transition = 'opacity 600ms';
+      tickerEl.style.opacity = '1';
+    }, 600);
+  }
+  rotateTicker();
+  setInterval(rotateTicker, 8200);
+}
 </script>
 </body>
 </html>
@@ -1262,6 +1723,27 @@ elif intake.get("last_run"):
 else:
     intake_ticker = 'pubmed scanner standing by'
 
+# Build the intake-feed candidates for the rotating ticker
+intake_feed_for_js = {"candidates": []}
+intake_jsons = sorted(inbox_dir.glob("pubmed_intake_*.json"),
+                      reverse=True) if inbox_dir.exists() else []
+if intake_jsons:
+    try:
+        latest = json.loads(intake_jsons[0].read_text())
+        # Compact: only the fields the ticker needs
+        intake_feed_for_js["candidates"] = [
+            {
+                "pmid": c.get("pmid", ""),
+                "title": (c.get("title") or "")[:140],
+                "first_author": c.get("first_author") or "",
+                "intake_tag": c.get("intake_tag") or "",
+                "intake_focus": c.get("intake_focus") or "",
+            }
+            for c in latest.get("candidates", [])[:40]
+        ]
+    except Exception:
+        pass
+
 html = (HTML
         .replace("__N_NODES__", str(stats["n_nodes"]))
         .replace("__N_LINKS__", str(stats["n_links"]))
@@ -1279,7 +1761,9 @@ html = (HTML
                  json.dumps({"nodes": nodes, "links": links},
                             separators=(",", ":")))
         .replace("__PROFILES__",
-                 json.dumps(profile_info, separators=(",", ":"))))
+                 json.dumps(profile_info, separators=(",", ":")))
+        .replace("__INTAKE_FEED__",
+                 json.dumps(intake_feed_for_js, separators=(",", ":"))))
 
 OUT.write_text(html)
 print(f"wrote {OUT} ({OUT.stat().st_size//1024} KB)")
