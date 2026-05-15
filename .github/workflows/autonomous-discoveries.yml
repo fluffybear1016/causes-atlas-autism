@@ -39,6 +39,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyyaml
 
+      - name: Run PubMed intake scanner (new papers since last run)
+        run: |
+          # Daily scan for new autism / ASD / neurodev papers via PubMed
+          # E-utilities. Writes candidates to vault/Discoveries_Inbox/.
+          # NOTHING is auto-promoted; curator-gated per CLAUDE.md §24.
+          python scripts/intake/pubmed_rss_scanner.py --max-per-query 8 || true
+
       - name: Run autonomous-discoveries orchestrator (run 1)
         run: |
           python scripts/run_autonomous_discoveries.py

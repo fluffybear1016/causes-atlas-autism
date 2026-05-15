@@ -1,0 +1,97 @@
+id,biomarker_id,phenotype_id,relationship_type,evidence_strength,created_at,notes
+BPE-00001,BIO-0001,PHE-0001,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,S-adenosylmethionine (SAM) stratifies PHE-0001
+BPE-00002,BIO-0003,PHE-0001,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,SAM/SAH ratio stratifies PHE-0001
+BPE-00003,BIO-0015,PHE-0001,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,FRAA (folate receptor alpha autoantibody) — blocking stratifies PHE-0001
+BPE-00004,BIO-0016,PHE-0001,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,FRAA (folate receptor alpha autoantibody) — binding stratifies PHE-0001
+BPE-00005,BIO-0017,PHE-0001,stratifies,0.70,2026-04-30T14:23:27.613008+00:00,CSF 5-MTHF stratifies PHE-0001
+BPE-00006,BIO-0011,PHE-0001,supports,0.35,2026-04-30T14:23:27.613008+00:00,Plasma folate supports PHE-0001
+BPE-00007,BIO-0005,PHE-0001,supports,0.35,2026-04-30T14:23:27.613008+00:00,Homocysteine supports PHE-0001
+BPE-00008,BIO-0046,PHE-0001,supports,0.45,2026-04-30T14:23:27.613008+00:00,Homovanillic acid (HVA) supports PHE-0001
+BPE-00009,BIO-0048,PHE-0001,supports,0.45,2026-04-30T14:23:27.613008+00:00,5-hydroxyindoleacetic acid (5-HIAA) supports PHE-0001
+BPE-00010,BIO-0089,PHE-0001,modifies_risk,0.40,2026-04-30T14:23:27.613008+00:00,Maternal MTHFR genotype modifies_risk PHE-0001
+BPE-00011,BIO-0018,PHE-0002,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,Lactate stratifies PHE-0002
+BPE-00012,BIO-0019,PHE-0002,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Pyruvate stratifies PHE-0002
+BPE-00013,BIO-0020,PHE-0002,stratifies,0.70,2026-04-30T14:23:27.613008+00:00,Lactate-to-pyruvate ratio (L:P) stratifies PHE-0002
+BPE-00014,BIO-0021,PHE-0002,stratifies,0.60,2026-04-30T14:23:27.613008+00:00,Acylcarnitine profile stratifies PHE-0002
+BPE-00015,BIO-0022,PHE-0002,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Free + total carnitine stratifies PHE-0002
+BPE-00016,BIO-0023,PHE-0002,supports,0.40,2026-04-30T14:23:27.613008+00:00,Plasma ammonia supports PHE-0002
+BPE-00017,BIO-0024,PHE-0002,supports,0.40,2026-04-30T14:23:27.613008+00:00,Creatine kinase (CK) supports PHE-0002
+BPE-00018,BIO-0025,PHE-0002,supports,0.45,2026-04-30T14:23:27.613008+00:00,CoQ10 (ubiquinone) supports PHE-0002
+BPE-00019,BIO-0026,PHE-0002,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,mtDNA copy number stratifies PHE-0002
+BPE-00020,BIO-0027,PHE-0002,supports,0.40,2026-04-30T14:23:27.613008+00:00,Krebs cycle metabolites (citrate/succinate/fumarate/malate) supports PHE-0002
+BPE-00021,BIO-0028,PHE-0002,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Reduced glutathione (GSH) stratifies PHE-0002
+BPE-00022,BIO-0029,PHE-0002,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Oxidized glutathione (GSSG) stratifies PHE-0002
+BPE-00023,BIO-0030,PHE-0002,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,GSH/GSSG ratio stratifies PHE-0002
+BPE-00024,BIO-0031,PHE-0002,supports,0.40,2026-04-30T14:23:27.613008+00:00,8-hydroxy-2-deoxyguanosine (8-OHdG) supports PHE-0002
+BPE-00025,BIO-0032,PHE-0002,supports,0.40,2026-04-30T14:23:27.613008+00:00,F2-isoprostanes supports PHE-0002
+BPE-00026,BIO-0141,PHE-0002,supports,0.45,2026-04-30T14:23:27.613008+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA supports PHE-0002
+BPE-00027,BIO-0052,PHE-0003,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,High-sensitivity CRP (hs-CRP) stratifies PHE-0003
+BPE-00028,BIO-0053,PHE-0003,supports,0.40,2026-04-30T14:23:27.613008+00:00,ESR (erythrocyte sedimentation rate) supports PHE-0003
+BPE-00029,BIO-0054,PHE-0003,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,IL-6 (interleukin-6) stratifies PHE-0003
+BPE-00030,BIO-0055,PHE-0003,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,TNF-α (tumor necrosis factor alpha) stratifies PHE-0003
+BPE-00031,BIO-0056,PHE-0003,stratifies,0.60,2026-04-30T14:23:27.613008+00:00,IL-1β (interleukin-1 beta) stratifies PHE-0003
+BPE-00032,BIO-0057,PHE-0003,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,IL-17 stratifies PHE-0003
+BPE-00033,BIO-0058,PHE-0003,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,IL-10 stratifies PHE-0003
+BPE-00034,BIO-0059,PHE-0003,supports,0.45,2026-04-30T14:23:27.613008+00:00,IFN-γ (interferon gamma) supports PHE-0003
+BPE-00035,BIO-0060,PHE-0003,supports,0.50,2026-04-30T14:23:27.613008+00:00,"Complement C3, C4 supports PHE-0003"
+BPE-00036,BIO-0061,PHE-0003,supports,0.45,2026-04-30T14:23:27.613008+00:00,Total IgG / IgA / IgM / IgE + IgG subclasses supports PHE-0003
+BPE-00037,BIO-0088,PHE-0003,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,Maternal anti-fetal-brain antibodies (MAR Antibodies) stratifies PHE-0003
+BPE-00038,BIO-0091,PHE-0003,modifies_risk,0.55,2026-04-30T14:23:27.613008+00:00,Maternal CRP during pregnancy modifies_risk PHE-0003
+BPE-00039,BIO-0092,PHE-0003,modifies_risk,0.45,2026-04-30T14:23:27.613008+00:00,Maternal thyroid panel during pregnancy modifies_risk PHE-0003
+BPE-00040,BIO-0142,PHE-0003,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,PET-TSPO (translocator protein — microglial activation) stratifies PHE-0003
+BPE-00041,BIO-0151,PHE-0003,stratifies,0.60,2026-04-30T14:23:27.613008+00:00,CSF cytokines stratifies PHE-0003
+BPE-00042,BIO-0154,PHE-0003,supports,0.45,2026-04-30T14:23:27.613008+00:00,Serum S100β (astrocyte marker / BBB disruption) supports PHE-0003
+BPE-00043,BIO-0155,PHE-0003,supports,0.45,2026-04-30T14:23:27.613008+00:00,Serum GFAP (glial fibrillary acidic protein) supports PHE-0003
+BPE-00044,BIO-0156,PHE-0003,supports,0.40,2026-04-30T14:23:27.613008+00:00,Serum neurofilament light chain (NfL) supports PHE-0003
+BPE-00045,BIO-0172,PHE-0003,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Anti-NMDA receptor antibodies stratifies PHE-0003
+BPE-00046,BIO-0173,PHE-0003,supports,0.45,2026-04-30T14:23:27.613008+00:00,Anti-MOG (myelin oligodendrocyte glycoprotein) supports PHE-0003
+BPE-00047,BIO-0133,PHE-0003,supports,0.45,2026-04-30T14:23:27.613008+00:00,ANA + extractable nuclear antigens supports PHE-0003
+BPE-00048,BIO-0135,PHE-0003,supports,0.40,2026-04-30T14:23:27.613008+00:00,Thyroid antibodies (TPO + Tg) supports PHE-0003
+BPE-00049,BIO-0036,PHE-0004,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,Arabinose stratifies PHE-0004
+BPE-00050,BIO-0037,PHE-0004,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid) stratifies PHE-0004
+BPE-00051,BIO-0038,PHE-0004,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,4-cresol (p-cresol) stratifies PHE-0004
+BPE-00052,BIO-0039,PHE-0004,supports,0.45,2026-04-30T14:23:27.613008+00:00,Tartaric acid supports PHE-0004
+BPE-00053,BIO-0040,PHE-0004,supports,0.45,2026-04-30T14:23:27.613008+00:00,Citramalic acid supports PHE-0004
+BPE-00054,BIO-0041,PHE-0004,supports,0.40,2026-04-30T14:23:27.613008+00:00,Indican supports PHE-0004
+BPE-00055,BIO-0042,PHE-0004,supports,0.45,2026-04-30T14:23:27.613008+00:00,Hippuric acid supports PHE-0004
+BPE-00056,BIO-0043,PHE-0004,supports,0.40,2026-04-30T14:23:27.613008+00:00,Indol-3-acetic acid (IAA) supports PHE-0004
+BPE-00057,BIO-0044,PHE-0004,supports,0.40,2026-04-30T14:23:27.613008+00:00,"3,4-dihydroxyphenylpropionic acid (DHPPA) supports PHE-0004"
+BPE-00058,BIO-0045,PHE-0004,supports,0.40,2026-04-30T14:23:27.613008+00:00,3-Hydroxy-2-methylbutyric acid supports PHE-0004
+BPE-00059,BIO-0049,PHE-0004,supports,0.45,2026-04-30T14:23:27.613008+00:00,Quinolinic acid supports PHE-0004
+BPE-00060,BIO-0050,PHE-0004,supports,0.45,2026-04-30T14:23:27.613008+00:00,Kynurenic acid supports PHE-0004
+BPE-00061,BIO-0051,PHE-0004,supports,0.50,2026-04-30T14:23:27.613008+00:00,Kynurenine/tryptophan ratio supports PHE-0004
+BPE-00062,BIO-0109,PHE-0004,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Zonulin stratifies PHE-0004
+BPE-00063,BIO-0110,PHE-0004,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Lipopolysaccharide (LPS) / endotoxin stratifies PHE-0004
+BPE-00064,BIO-0111,PHE-0004,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Calprotectin (fecal) stratifies PHE-0004
+BPE-00065,BIO-0112,PHE-0004,stratifies,0.50,2026-04-30T14:23:27.613008+00:00,Secretory IgA (sIgA) stratifies PHE-0004
+BPE-00066,BIO-0113,PHE-0004,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Lactulose:mannitol ratio stratifies PHE-0004
+BPE-00067,BIO-0131,PHE-0004,supports,0.45,2026-04-30T14:23:27.613008+00:00,C. difficile toxin (stool) supports PHE-0004
+BPE-00068,BIO-0132,PHE-0004,supports,0.45,2026-04-30T14:23:27.613008+00:00,Candida IgG + IgA supports PHE-0004
+BPE-00069,BIO-0167,PHE-0004,modifies_risk,0.40,2026-04-30T14:23:27.613008+00:00,FUT2 secretor status genotype modifies_risk PHE-0004
+BPE-00070,BIO-0178,PHE-0004,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) stratifies PHE-0004
+BPE-00071,BIO-0137,PHE-0005,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,MRI cortical thickness (region-specific) stratifies PHE-0005
+BPE-00072,BIO-0138,PHE-0005,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,Total brain volume / amygdala / cerebellar vermis volumetry stratifies PHE-0005
+BPE-00073,BIO-0139,PHE-0005,supports,0.50,2026-04-30T14:23:27.613008+00:00,DTI fractional anisotropy (white matter tracts) supports PHE-0005
+BPE-00074,BIO-0140,PHE-0005,supports,0.50,2026-04-30T14:23:27.613008+00:00,Resting-state fMRI default mode network connectivity supports PHE-0005
+BPE-00075,BIO-0141,PHE-0005,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA stratifies PHE-0005
+BPE-00076,BIO-0143,PHE-0005,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,EEG resting-state spectral power (gamma/beta/alpha) stratifies PHE-0005
+BPE-00077,BIO-0144,PHE-0005,supports,0.40,2026-04-30T14:23:27.613008+00:00,ERP P300 amplitude / latency supports PHE-0005
+BPE-00078,BIO-0137,PHE-0006,supports,0.45,2026-04-30T14:23:27.613008+00:00,MRI cortical thickness (region-specific) supports PHE-0006
+BPE-00079,BIO-0138,PHE-0006,supports,0.50,2026-04-30T14:23:27.613008+00:00,Total brain volume / amygdala / cerebellar vermis volumetry supports PHE-0006
+BPE-00080,BIO-0141,PHE-0006,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA stratifies PHE-0006
+BPE-00081,BIO-0143,PHE-0006,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,EEG resting-state spectral power (gamma/beta/alpha) stratifies PHE-0006
+BPE-00082,BIO-0144,PHE-0006,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,ERP P300 amplitude / latency stratifies PHE-0006
+BPE-00083,BIO-0145,PHE-0006,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,ERP MMN (mismatch negativity) stratifies PHE-0006
+BPE-00084,BIO-0146,PHE-0006,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,ERP N170 (face processing) stratifies PHE-0006
+BPE-00085,BIO-0147,PHE-0006,supports,0.50,2026-04-30T14:23:27.613008+00:00,qEEG coherence pattern supports PHE-0006
+BPE-00086,BIO-0149,PHE-0006,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,Pupillometry / pupil response stratifies PHE-0006
+BPE-00087,BIO-0150,PHE-0006,supports,0.45,2026-04-30T14:23:27.613008+00:00,Heart rate variability (HRV) supports PHE-0006
+BPE-00088,BIO-0153,PHE-0006,supports,0.45,2026-04-30T14:23:27.613008+00:00,Serum BDNF (brain-derived neurotrophic factor) supports PHE-0006
+BPE-00089,BIO-0013,PHE-0007,supports,0.45,2026-04-30T14:23:27.613008+00:00,Pyridoxal-5-phosphate (P5P / active B6) supports PHE-0007
+BPE-00090,BIO-0141,PHE-0007,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,1H-MRS NAA / choline / creatine / glutamate-GABA stratifies PHE-0007
+BPE-00091,BIO-0143,PHE-0007,stratifies,0.65,2026-04-30T14:23:27.613008+00:00,EEG resting-state spectral power (gamma/beta/alpha) stratifies PHE-0007
+BPE-00092,BIO-0145,PHE-0007,stratifies,0.60,2026-04-30T14:23:27.613008+00:00,ERP MMN (mismatch negativity) stratifies PHE-0007
+BPE-00093,BIO-0147,PHE-0007,stratifies,0.55,2026-04-30T14:23:27.613008+00:00,qEEG coherence pattern stratifies PHE-0007
+BPE-00094,BIO-0149,PHE-0007,supports,0.50,2026-04-30T14:23:27.613008+00:00,Pupillometry / pupil response supports PHE-0007
+BPE-00095,BIO-0150,PHE-0007,supports,0.45,2026-04-30T14:23:27.613008+00:00,Heart rate variability (HRV) supports PHE-0007
+BPE-00096,BIO-0174,PHE-0007,supports,0.45,2026-04-30T14:23:27.613008+00:00,Anti-GAD65 antibodies supports PHE-0007

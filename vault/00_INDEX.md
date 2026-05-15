@@ -9,13 +9,13 @@ Generated from `v2.0_scored/`. One markdown note per entity (except genes, which
 
 ## Counts
 
-- Hypotheses: **75**
+- Hypotheses: **76**
 - Mechanisms: **34**
 - Interventions: **140**
 - Combinations: **25**
 - Phenotypes: **11**
 - Genes: **1564** (see [[INDEX|genes/INDEX]])
-- Sources: **1462**
+- Sources: **1467**
 - Evidence fragments: **1462**
 - Evidence links: **1747**
 - Hypothesis→hypothesis edges: **33**

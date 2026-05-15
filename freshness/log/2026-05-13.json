@@ -1,9 +1,21 @@
 {
   "atlas_pmid_count": 1068,
+<<<<<<< HEAD
   "candidates_found": 1,
   "queries_run": 9,
   "run_at_utc": "2026-05-13T08:33:58+00:00",
   "since": "2026-05-12T08:26:00+00:00",
   "verified_added_to_queue": 0,
   "verified_pmids": []
+=======
+  "candidates_found": 3,
+  "queries_run": 9,
+  "run_at_utc": "2026-05-13T17:42:34+00:00",
+  "since": "2026-05-12T08:26:00+00:00",
+  "verified_added_to_queue": 2,
+  "verified_pmids": [
+    "42123569",
+    "42124041"
+  ]
+>>>>>>> 2cfa69a (ship: living graph v0.5 + autonomous loop)
 }
