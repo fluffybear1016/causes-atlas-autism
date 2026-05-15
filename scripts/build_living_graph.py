@@ -169,15 +169,35 @@ def add_node(nid, ntype, label, size, extra=None):
     if not nid or nid in node_ids:
         return
     node_ids.add(nid)
+    extra = extra or {}
+    # Build the searchable text. Include the label plus any classification
+    # fields so that typing "peptide" lights up all I nodes whose category
+    # is "peptide" even when the actual molecule name (e.g. "Cerebrolysin",
+    # "Selank") doesn't contain that word. Same for "drug", "lifestyle", etc.
+    search_parts = [(label or "").lower(), nid.lower()]
+    if "c" in extra and extra["c"]:
+        search_parts.append(str(extra["c"]).lower())
+    # Type-class keywords so typing "biomarker", "combination", "hypothesis"
+    # etc. surfaces the right nodes
+    TYPE_KEYWORDS = {
+        "H": "hypothesis cause exposure",
+        "M": "mechanism pathway",
+        "I": "intervention treatment",
+        "P": "phenotype",
+        "G": "gene variant",
+        "B": "biomarker test marker lab",
+        "C": "combination protocol stack",
+    }
+    search_parts.append(TYPE_KEYWORDS.get(ntype, ""))
     n = {
         "id": nid,
         "t":  ntype,
         "l":  (label or "")[:80],
-        "ll": (label or "").lower(),     # for free-text search
+        "ll": " ".join(search_parts),    # for free-text search (richer index)
         "s":  round(size, 3),
         "m":  0,                          # profile membership bitmask
     }
-    if extra: n.update(extra)
+    n.update(extra)
     nodes.append(n)
     nodes_by_type[ntype].append(n)
 
