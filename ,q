@@ -1,0 +1,74 @@
+Atlas: Hulscher 2026 ingestion + perinatal hypoxia expansion + prenatal screening hypothesis + automated intake pipeline
+
+# Conflicts:
+#	freshness/queue/42123569.json
+#	freshness/queue/42124041.json
+#
+# It looks like you may be committing a cherry-pick.
+# If this is not correct, please run
+#	git update-ref -d CHERRY_PICK_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu May 14 20:03:36 2026 -0400
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# You are currently cherry-picking commit a9a463f.
+#
+# Changes to be committed:
+#	modified:   .github/workflows/autonomous-discoveries.yml
+#	new file:   INGESTION_SCHEMA.md
+#	modified:   freshness/log/2026-05-13.json
+#	new file:   scripts/ingest_2026_05_14_hulscher_perinatal_prenatal.py
+#	new file:   scripts/intake/browser_social_scanner.py
+#	new file:   scripts/intake/intake_orchestrator.py
+#	new file:   scripts/intake/pubmed_rss_scanner.py
+#	new file:   v2.0.1_expanded/baseline_phenotype_prevalence.csv
+#	new file:   v2.0.1_expanded/genes_phase0_additions.csv
+#	new file:   v2.0.1_expanded/genetic_id_aliases.csv
+#	new file:   v2.0.1_expanded/iatrogenic_exposure_priors.csv
+#	new file:   v2.0.1_expanded/intervention_formulations.csv
+#	new file:   v2.0.1_expanded/intervention_formulations_scored.csv
+#	new file:   v2.0.1_expanded/pgx_drug_gene_table.csv
+#	new file:   v2.0.1_expanded/physiological_state_normalization_table.csv
+#	new file:   v2.0.1_expanded/rare_syndrome_screening_gate.csv
+#	new file:   v2.0.1_proposed/hypothesis_phenotype_proposed.csv
+#	new file:   v2.0_scored.before_v201/baseline_phenotype_prevalence.csv
+#	new file:   v2.0_scored.before_v201/biomarker_hypothesis_edges.csv
+#	new file:   v2.0_scored.before_v201/biomarker_intervention_edges.csv
+#	new file:   v2.0_scored.before_v201/biomarker_mechanism_edges.csv
+#	new file:   v2.0_scored.before_v201/biomarker_phenotype_edges.csv
+#	new file:   v2.0_scored.before_v201/biomarkers.csv
+#	new file:   v2.0_scored.before_v201/genes_phase0_additions.csv
+#	new file:   v2.0_scored.before_v201/genetic_id_aliases.csv
+#	new file:   v2.0_scored.before_v201/iatrogenic_exposure_priors.csv
+#	new file:   v2.0_scored.before_v201/intervention_formulations.csv
+#	new file:   v2.0_scored.before_v201/intervention_formulations_scored.csv
+#	new file:   v2.0_scored.before_v201/pgx_drug_gene_table.csv
+#	new file:   v2.0_scored.before_v201/physiological_state_normalization_table.csv
+#	new file:   v2.0_scored.before_v201/protocols.csv
+#	new file:   v2.0_scored.before_v201/rare_syndrome_screening_gate.csv
+#	modified:   v2.0_scored/biomarkers.csv
+#	modified:   v2.0_scored/hypotheses.csv
+#	modified:   v2.0_scored/sources.csv
+#	modified:   vault/.obsidian/workspace.json
+#	modified:   vault/00_INDEX.md
+#	new file:   vault/Discoveries_Inbox/.pubmed_last_run.json
+#	new file:   vault/Discoveries_Inbox/pubmed_intake_2026-05-14.json
+#	new file:   vault/Discoveries_Inbox/pubmed_intake_2026-05-14.md
+#	modified:   vault/hypotheses/HYP-0040 Birth complications (hypoxia, instrumental delivery).md
+#	new file:   vault/hypotheses/HYP-0076 Prenatal screening marker anomaly (placental dysfunction signal).md
+#	new file:   vault/sources/SRC-001463 Determinants of Autism Spectrum Disorder (Hulscher, Leake, Troupe, Rogers, Cosgr.md
+#	new file:   vault/sources/SRC-001464 26820632.md
+#	new file:   vault/sources/SRC-001465 28099978.md
+#	new file:   vault/sources/SRC-001466 26370672.md
+#	new file:   vault/sources/SRC-001467 22152641.md
+#
+# Changes not staged for commit:
+#	modified:   vault/.obsidian/workspace.json
+#

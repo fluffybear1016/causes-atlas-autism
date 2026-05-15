@@ -25,6 +25,21 @@ OUT   = _REPO / "living_graph.html"
 CAP_GENES         = 320
 CAP_GENE_EDGES    = 260
 CAP_INTERVENTIONS = 90
+CAP_BIOMARKERS    = 80   # by edge-degree (how often referenced by other nodes)
+CAP_COMBINATIONS  = 30   # all 25 fit; cap is defensive
+
+# Sub-categorize interventions visually. Each I node gets a `c` field
+# (category, drawn from interventions.csv `category` column). Peptides are
+# flagged separately via the `p` field because they are the "next frontier"
+# class — semantically a sub-type of supplement/drug, visually distinct.
+INTERVENTION_PEPTIDE_KEYWORDS = (
+    "peptide", "cerebrolysin", "selank", "semax", "oxytocin",
+    "vasopressin", "bpc", "tb-500", "kpv", "ll-37", "thymosin",
+    "igf-1", "sermorelin", "ipamorelin", "cjc-1295", "pacap",
+    "vip", "epitalon", "carbetocin", "humanin", "mots-c", "p21",
+    "dihexa", "ss-31", "tesamorelin", "elamipretide", "cortexin",
+    "mecasermin",
+)
 
 # ── susceptibility profiles ───────────────────────────────────────────
 # Each profile = keyword sets per node type. Seed nodes are matched by
@@ -83,6 +98,21 @@ PROFILES = [
               "gfcf", "low-fodmap"),
         "P": ("gi", "constipa", "diarrh"),
     }),
+    ("hulscher", "Hulscher 9-factor framework · the full causation manifold", {
+        "H": ("paternal age", "maternal age", "advanced", "preterm",
+              "premature", "polygenic", "sfari", "sibling", "maternal immune",
+              "MIA", "in utero", "valproate", "SSRI pregnancy", "pesticide",
+              "phthalate", "BPA", "glyphosate", "PFAS", "heavy metal",
+              "gut", "microbiome", "vaccine", "MMR", "thimerosal", "hep",
+              "aluminum", "hypoxia", "asphyxia", "perinatal",
+              "prenatal screening", "PAPP-A", "AFP"),
+        "M": ("mitochondri", "neuroinflam", "oxidative", "methylation",
+              "microbiome", "endotox", "placent"),
+        "I": ("leucovorin", "methylcobalamin", "coq10", "carnitine",
+              "omega-3", "DHA", "5-mthf", "folate", "ldn", "naltrexone",
+              "sulforaphane", "ivig", "creatine"),
+        "P": (),  # all phenotypes
+    }),
 ]
 
 # ── helpers ────────────────────────────────────────────────────────────
@@ -113,10 +143,27 @@ mp   = read_csv("mechanism_phenotype_edges.csv")
 gh   = read_csv("gene_hypothesis_edges.csv")
 gm   = read_csv("gene_mechanism_edges.csv")
 
+# 2026-05-14: extend living-graph layer with biomarkers + combinations.
+# Adds two new node types (B, C) and their connecting edges. Makes the
+# graph render the full causation manifold the user described —
+# gene/variant -> mechanism/phenotype -> biomarker (what to test) ->
+# intervention (what to do) -> combination (the actual stack).
+bios = read_csv("biomarkers.csv")
+combs = read_csv("combinations.csv")
+cmms  = read_csv("combination_members.csv")
+bie   = read_csv("biomarker_intervention_edges.csv")
+bme   = read_csv("biomarker_mechanism_edges.csv")
+bpe   = read_csv("biomarker_phenotype_edges.csv")
+bhe   = read_csv("biomarker_hypothesis_edges.csv")
+
 # ── nodes ──────────────────────────────────────────────────────────────
 nodes: list[dict] = []
 node_ids: set[str] = set()
-nodes_by_type: dict[str, list[dict]] = {"H": [], "M": [], "I": [], "P": [], "G": []}
+nodes_by_type: dict[str, list[dict]] = {
+    "H": [], "M": [], "I": [], "P": [], "G": [],
+    "B": [],   # biomarkers — "what to test"
+    "C": [],   # combinations — typed protocol stacks
+}
 
 def add_node(nid, ntype, label, size, extra=None):
     if not nid or nid in node_ids:
@@ -156,8 +203,18 @@ def int_size(row):
     return f(row.get("confidence_score", "0.4"))
 ints_sorted = sorted(ints_, key=lambda r: -int_size(r))[:CAP_INTERVENTIONS]
 for i in sorted(ints_sorted, key=lambda r: r["id"]):
+    cat = (i.get("category") or "").lower().strip()
+    name_l = (i.get("name") or "").lower()
+    # Override category with "peptide" if the intervention is a peptide
+    # (matched by name) — peptides are the "next frontier" class, given
+    # their own visual treatment downstream.
+    if any(k in name_l for k in INTERVENTION_PEPTIDE_KEYWORDS):
+        cat = "peptide"
+    extra: dict = {"c": cat or "supplement"}
+    if i["id"] == "INT-0001":
+        extra["k"] = "INT-0001"
     add_node(i["id"], "I", i.get("name") or i["id"], 3 + int_size(i) * 8,
-             extra={"k": "INT-0001"} if i["id"] == "INT-0001" else None)
+             extra=extra)
 
 def gene_priority(row):
     for k in ("sfari_score", "tier", "confidence_score"):
@@ -206,6 +263,48 @@ for e in gm:
     add_link(gid, e["mechanism_id"],
              f(e.get("evidence_strength_aggregate", "0.5")), "gm")
 
+# ── biomarkers (top-N by edge degree) ──────────────────────────────────
+# "what to test" layer. Rank by total edge count across all biomarker_*
+# tables, take top N so the graph stays legible.
+bio_deg: dict[str, int] = {}
+for e in bie:
+    bio_deg[e["biomarker_id"]] = bio_deg.get(e["biomarker_id"], 0) + 1
+for e in bme:
+    bio_deg[e["biomarker_id"]] = bio_deg.get(e["biomarker_id"], 0) + 1
+for e in bpe:
+    bio_deg[e["biomarker_id"]] = bio_deg.get(e["biomarker_id"], 0) + 1
+for e in bhe:
+    bio_deg[e["biomarker_id"]] = bio_deg.get(e["biomarker_id"], 0) + 1
+bios_sorted = sorted(bios, key=lambda r: -bio_deg.get(r["id"], 0))[:CAP_BIOMARKERS]
+max_bio_deg = max(bio_deg.values()) if bio_deg else 1
+for b in sorted(bios_sorted, key=lambda r: r["id"]):
+    centrality = bio_deg.get(b["id"], 0) / max_bio_deg
+    add_node(b["id"], "B", b.get("name") or b["id"], 2 + centrality * 5)
+
+# biomarker edges (only to nodes already in the graph)
+for e in bie:
+    add_link(e["biomarker_id"], e["intervention_id"],
+             f(e.get("evidence_strength", "0.5")), "bi")
+for e in bme:
+    add_link(e["biomarker_id"], e["mechanism_id"],
+             f(e.get("evidence_strength", "0.5")), "bm")
+for e in bpe:
+    add_link(e["biomarker_id"], e["phenotype_id"],
+             f(e.get("evidence_strength", "0.5")), "bp")
+for e in bhe:
+    add_link(e["biomarker_id"], e["hypothesis_id"],
+             f(e.get("evidence_strength", "0.5")), "bh")
+
+# ── combinations (typed protocol stacks) ───────────────────────────────
+# Each combination is a node; its member interventions connect to it.
+for c in sorted(combs, key=lambda r: r["id"])[:CAP_COMBINATIONS]:
+    csrs = f(c.get("csrs_score") or c.get("csrs_treatment_score", "0.5"))
+    size = 4 + (csrs / 100.0 if csrs > 1 else csrs) * 6
+    add_node(c["id"], "C", c.get("name") or c["id"], size)
+
+for m in cmms:
+    add_link(m["combination_id"], m["intervention_id"], 0.7, "ci")
+
 # adjacency for 1-hop profile expansion
 adj: dict[str, set[str]] = {}
 for l in links:
@@ -243,10 +342,37 @@ stats = {
     "n_int": sum(1 for n in nodes if n["t"] == "I"),
     "n_phe": sum(1 for n in nodes if n["t"] == "P"),
     "n_gen": sum(1 for n in nodes if n["t"] == "G"),
+    "n_bio": sum(1 for n in nodes if n["t"] == "B"),
+    "n_com": sum(1 for n in nodes if n["t"] == "C"),
     "profiles": {p["k"]: sum(1 for n in nodes if n["m"] & (1<<i))
                  for i, p in enumerate(profile_info)},
 }
 print(json.dumps(stats, indent=2), file=sys.stderr)
+
+# ── live intake feed (read by JS for the "X new in last Yh" ticker) ────
+# The PubMed intake scanner writes vault/Discoveries_Inbox/.pubmed_last_run.json
+# on every successful run + pubmed_intake_<YYYY-MM-DD>.json with the candidate
+# list. The living graph reads these to display real liveness, not theatre.
+intake = {"last_run": None, "latest_count": 0, "by_tag": {}}
+inbox_dir = _REPO / "vault" / "Discoveries_Inbox"
+last_run_file = inbox_dir / ".pubmed_last_run.json"
+if last_run_file.exists():
+    try:
+        intake["last_run"] = json.loads(last_run_file.read_text()).get("last_run")
+    except Exception:
+        pass
+
+# pick the most recent pubmed_intake_*.json
+intake_jsons = sorted(inbox_dir.glob("pubmed_intake_*.json"),
+                      reverse=True) if inbox_dir.exists() else []
+if intake_jsons:
+    try:
+        latest = json.loads(intake_jsons[0].read_text())
+        intake["latest_count"] = latest.get("candidates_total", 0)
+        intake["by_tag"] = latest.get("candidates_by_tag", {})
+        intake["scan_date"] = latest.get("scan_date")
+    except Exception:
+        pass
 
 # ── HTML template ──────────────────────────────────────────────────────
 HTML = r"""<!doctype html>
@@ -428,7 +554,14 @@ HTML = r"""<!doctype html>
 
 <div class="overlay tr">
   <div class="num">__N_NODES__ nodes · __N_LINKS__ edges</div>
-  <div class="vmute" style="margin-top:5px;">n=7 mae 0.049 · 4 sub-3% errors</div>
+  <div class="vmute" style="margin-top:5px;">
+    __N_HYP__ hyp · __N_MEC__ mec · __N_INT__ int · __N_PHE__ phe ·
+    __N_BIO__ bio · __N_COM__ com · __N_GEN__ gen
+  </div>
+  <div class="vmute" style="margin-top:8px;">n=7 mae 0.049 · 4 sub-3% errors</div>
+  <div class="vmute" style="margin-top:8px;">
+    intake feed · __INTAKE_TICKER__
+  </div>
 </div>
 
 <div class="overlay bl">
@@ -479,12 +612,32 @@ function resize() {
 window.addEventListener('resize', resize); resize();
 
 // ── color per type ─────────────────────────────────────────────────
+// Off-white base palette with sparing color encoding. Restraint: every
+// node lives in the same warm-grey spectrum; only category and centrality
+// shift the hue. Cathedral palette, not consumer dashboard.
 const TYPE_COLOR = {
-  H: [240, 235, 220],
-  M: [180, 200, 232],
-  I: [232, 196, 110],
-  P: [216, 184, 148],
-  G: [122, 119, 112],
+  H: [240, 235, 220],   // hypotheses — bone-white
+  M: [180, 200, 232],   // mechanisms — cool blue
+  I: [232, 196, 110],   // interventions — warm gold (default)
+  P: [216, 184, 148],   // phenotypes — warm tan, the destination
+  G: [122, 119, 112],   // genes — deep grey, the substrate
+  B: [165, 195, 200],   // biomarkers — pale cyan, the "what to test"
+  C: [255, 215, 130],   // combinations — saturated gold, the "what to do"
+};
+
+// Intervention sub-category hue shifts (within the warm-gold spectrum,
+// except peptides which get a distinct cool tint to read as "frontier").
+// Applied only when a node's t === 'I' and a `c` field is present.
+const INT_CATEGORY_COLOR = {
+  drug:         [232, 196, 110],  // default gold
+  supplement:   [240, 210, 145],  // softer cream-gold
+  herb:         [200, 180, 110],  // muted olive-gold
+  food:         [220, 200, 155],  // wheat
+  lifestyle:    [205, 195, 165],  // pale parchment
+  environmental:[185, 175, 150],  // dusk
+  combo:        [255, 215, 130],  // bright gold (parent combos look like C)
+  peptide:      [200, 220, 235],  // cool pale blue — the frontier
+  endogenous:   [235, 215, 175],  // honey
 };
 
 // ── d3 check ───────────────────────────────────────────────────────
@@ -513,15 +666,19 @@ const links = DATA.links
 
 function chargeStrength(n) {
   if (n.t === 'P') return -1800;
+  if (n.t === 'C') return -700;   // combinations — gravitate apart, they're protocols
   if (n.t === 'H') return -520;
   if (n.t === 'M') return -440;
   if (n.t === 'I') return -240;
+  if (n.t === 'B') return -180;   // biomarkers — tighter cluster around their phenotype
   return -55;
 }
 function linkDistance(l) {
   const k = l.k;
-  if (k === 'mp' || k === 'ip') return 80;
+  if (k === 'mp' || k === 'ip' || k === 'bp') return 80;
   if (k === 'hm' || k === 'im' || k === 'ih') return 56;
+  if (k === 'bi' || k === 'bm' || k === 'bh') return 44;  // biomarker links are tighter
+  if (k === 'ci') return 38;       // combo → member intervention — pulls members close
   if (k === 'hh') return 92;
   return 28;
 }
@@ -978,7 +1135,9 @@ function draw(now) {
     const n = p.node;
     const r = n.s + 6 + k * 28;
     const a = (1 - k) * 0.55;
-    const col = TYPE_COLOR[n.t] || TYPE_COLOR.H;
+    const col = (n.t === 'I' && n.c && INT_CATEGORY_COLOR[n.c])
+                  ? INT_CATEGORY_COLOR[n.c]
+                  : (TYPE_COLOR[n.t] || TYPE_COLOR.H);
     const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r);
     grad.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},${a*0.7})`);
     grad.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
@@ -988,7 +1147,9 @@ function draw(now) {
 
   // ── nodes ──
   for (const n of nodes) {
-    const col = TYPE_COLOR[n.t] || TYPE_COLOR.H;
+    const col = (n.t === 'I' && n.c && INT_CATEGORY_COLOR[n.c])
+                  ? INT_CATEGORY_COLOR[n.c]
+                  : (TYPE_COLOR[n.t] || TYPE_COLOR.H);
     const active = inActive(n);
     let alpha;
     if (isFiltering) alpha = active ? 1.0 : 0.08;
@@ -1066,9 +1227,32 @@ setInterval(() => {
 # sources.csv row-count = the "papers" headline number; falls back to 1420
 sources_count = len(read_csv("sources.csv")) or 1420
 
+# Format intake ticker line
+if intake.get("latest_count"):
+    by_tag = intake.get("by_tag") or {}
+    tag_str = " · ".join(
+        f'{n} {t.lower()}' for t, n in sorted(by_tag.items(), key=lambda x: -x[1])[:3]
+    )
+    intake_ticker = (
+        f'{intake["latest_count"]} candidates last scan · {tag_str}'
+        if tag_str else f'{intake["latest_count"]} candidates last scan'
+    )
+elif intake.get("last_run"):
+    intake_ticker = f'last scan {intake["last_run"]}'
+else:
+    intake_ticker = 'pubmed scanner standing by'
+
 html = (HTML
         .replace("__N_NODES__", str(stats["n_nodes"]))
         .replace("__N_LINKS__", str(stats["n_links"]))
+        .replace("__N_HYP__", str(stats["n_hyp"]))
+        .replace("__N_MEC__", str(stats["n_mec"]))
+        .replace("__N_INT__", str(stats["n_int"]))
+        .replace("__N_PHE__", str(stats["n_phe"]))
+        .replace("__N_BIO__", str(stats["n_bio"]))
+        .replace("__N_COM__", str(stats["n_com"]))
+        .replace("__N_GEN__", str(stats["n_gen"]))
+        .replace("__INTAKE_TICKER__", intake_ticker)
         .replace("__N_PAPERS__", f"{sources_count:,}")
         .replace("__PAPERS_BASE__", str(sources_count))
         .replace("__DATA__",
