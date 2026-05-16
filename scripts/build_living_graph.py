@@ -597,6 +597,12 @@ for t in sorted(tests_sorted, key=lambda r: r.get("test_id", "")):
         continue
     tier_raw = (t.get("evidence_tier") or "").lower()
     size = 3.5 if "tier1" in tier_raw else 2.8 if "tier2" in tier_raw else 2.2
+    # Walk maps_to_intervention_ids so the test card can render the
+    # actionable downstream: "if this test shows X, consider these
+    # interventions." Mom's "what do I DO with this result" answer.
+    mi_field = t.get("maps_to_intervention_ids", "") or ""
+    mi_list = [x.strip() for x in mi_field.replace(";", ",").split(",")
+               if x.strip()][:6]
     add_node(tid, "T", t.get("test_name", "") or tid, size, extra={
         "pr": (t.get("provider", "") or "")[:48],
         "sm": (t.get("sample_type", "") or "")[:20],
@@ -608,6 +614,8 @@ for t in sorted(tests_sorted, key=lambda r: r.get("test_id", "")):
         "rx": (t.get("clinician_required", "") or "").upper() == "TRUE",
         "wm": (t.get("what_it_measures", "") or "")[:140],
         "uc": (t.get("specific_use_cases", "") or "")[:120],
+        "wr": (t.get("what_results_indicate", "") or "")[:160],
+        "mi": mi_list,   # mapped intervention IDs for "what to do" rendering
     })
 
 # Test → phenotype, test → biomarker, test → mechanism edges
@@ -1430,6 +1438,132 @@ canvas.addEventListener('mouseleave', () => {
   hover = null; hoverEl.style.opacity = 0;
 });
 
+// ── TEST-CLICK ACTION CARD ───────────────────────────────────────────
+// When mom clicks a test (either on the map or in the left dock), render
+// a test-centric action card: what the test is, what results indicate,
+// and the SPECIFIC interventions / combinations / lifestyle items linked
+// to that test. The actionable bridge from "ordered a test" → "got result"
+// → "now what do I actually DO." This is the high-agency-mom path.
+function renderActionCardForTest(test) {
+  if (!test) { acEl.classList.remove('on'); return; }
+  const dtcPill = test.dtc
+    ? '<span class="pill gold">direct-to-consumer</span>'
+    : (test.rx ? '<span class="pill">rx required</span>' : '');
+  const tierPill = test.tr ? '<span class="pill">' + test.tr + '</span>' : '';
+  const cost = test.cl
+    ? '$' + test.cl + (test.ch && test.ch !== test.cl ? '–' + test.ch : '')
+    : 'cost varies';
+  const provider = test.pr || 'multiple providers';
+  const sample = test.sm || '';
+  const turnaround = test.td ? test.td + ' days' : '';
+  const wm = test.wm || '';
+  const wr = test.wr || '';
+
+  // Mapped interventions: walk node.mi for direct test→intervention
+  // links, plus walk test→phenotype→intervention as fallback if direct
+  // list is sparse.
+  const ints = [];
+  const seenInts = new Set();
+  if (test.mi && test.mi.length) {
+    for (const iid of test.mi) {
+      const i = nodes.find(n => n.id === iid);
+      if (i && !seenInts.has(i.id)) { ints.push(i); seenInts.add(i.id); }
+    }
+  }
+  // Fallback: walk test→phenotype→intervention if direct map is thin
+  if (ints.length < 3) {
+    for (const l of links) {
+      if (l.source.id !== test.id && l.target.id !== test.id) continue;
+      const other = (l.source.id === test.id) ? l.target : l.source;
+      if (other.t !== 'P') continue;
+      for (const l2 of links) {
+        const isLinkToPhe = (l2.target.id === other.id || l2.source.id === other.id);
+        if (!isLinkToPhe) continue;
+        const candidate = (l2.source.id === other.id) ? l2.target : l2.source;
+        if (candidate.t === 'I' && !seenInts.has(candidate.id)) {
+          ints.push(candidate);
+          seenInts.add(candidate.id);
+        }
+        if (ints.length >= 5) break;
+      }
+      if (ints.length >= 5) break;
+    }
+  }
+  ints.sort((a, b) => b.s - a.s);
+  const topInts = ints.slice(0, 4);
+
+  // Universal foundation (always-applies regardless of result)
+  const foundationIds = STARTERS.foundation || [];
+  const foundationNodes = foundationIds
+    .map(id => nodes.find(n => n.id === id))
+    .filter(Boolean);
+
+  let interventionsHtml = '';
+  for (const i of topInts) {
+    const dose = i.do ? '<span class="meta">' + i.do + '</span>' : '';
+    const cst = i.co ? '<span class="meta">$' + i.co + '/mo</span>' : '';
+    const rg = i.rg ? '<span class="pill">' + i.rg + '</span>' : '';
+    const c  = i.c  ? '<span class="pill">' + i.c + '</span>' : '';
+    interventionsHtml += '<div class="item"><strong>' + i.l + '</strong>' +
+                         rg + c + (dose ? ' ' + dose : '') +
+                         (cst ? ' ' + cst : '') + '</div>';
+  }
+  if (!interventionsHtml) {
+    interventionsHtml = '<div class="meta">No direct intervention mapping; ' +
+                        'see phenotype-specific action cards via the map.</div>';
+  }
+
+  let foundationHtml = '';
+  for (const f of foundationNodes.slice(0, 3)) {
+    foundationHtml += '<div class="item"><strong>' + f.l + '</strong>' +
+                      (f.co ? '<span class="meta">$' + f.co + '/mo</span>' : '') +
+                      '</div>';
+  }
+
+  const html = '' +
+    '<button class="ac-close" onclick="clearReveal();">×</button>' +
+    '<div class="ac-head">' +
+      '<div class="ac-name">' + test.l + '</div>' +
+      '<div class="ac-id">' + test.id + ' · test panel</div>' +
+    '</div>' +
+    '<div class="ac-pe">' +
+      provider + ' · ' + sample + ' · ' + cost +
+      (turnaround ? ' · ' + turnaround : '') +
+      '  ' + dtcPill + tierPill +
+    '</div>' +
+    (wm ? '<div class="ac-row">' +
+      '<div class="ac-label">Measures</div>' +
+      '<div class="ac-content">' + wm + '</div>' +
+    '</div>' : '') +
+    (wr ? '<div class="ac-row">' +
+      '<div class="ac-label">Results mean</div>' +
+      '<div class="ac-content">' + wr + '</div>' +
+    '</div>' : '') +
+    '<div class="ac-row">' +
+      '<div class="ac-label">If positive · do</div>' +
+      '<div class="ac-content">' + interventionsHtml + '</div>' +
+    '</div>' +
+    (foundationHtml ? '<div class="ac-row">' +
+      '<div class="ac-label">Always · regardless</div>' +
+      '<div class="ac-content">' + foundationHtml + '</div>' +
+    '</div>' : '') +
+    '<div class="ac-footer">' +
+      '<a href="TESTING_STRATEGY.md" target="_blank" ' +
+      'style="color:var(--gold);text-decoration:none;letter-spacing:0.14em;">' +
+      'full testing strategy →</a>' +
+      ' &nbsp;·&nbsp; ' +
+      'not medical advice. discuss with a functional / integrative ' +
+      'pediatrics clinician before acting.' +
+    '</div>';
+
+  acEl.innerHTML = html;
+  acEl.classList.add('on');
+  // Mark this as a test-reveal so the existing clearReveal() works.
+  revealedPhenotype = test;
+  revealedSet = new Set([test.id, ...topInts.map(n => n.id),
+                                  ...foundationNodes.slice(0,3).map(n => n.id)]);
+}
+
 // ── phenotype-click reveal: "what would help" + "what to test" ───────
 // Click on a phenotype node → the top-5 atlas-signal-weighted interventions
 // AND the top-3 biomarkers that stratify it become the only highlighted
@@ -1656,6 +1790,14 @@ canvas.addEventListener('click', (e) => {
       clearReveal();   // click same phenotype again to dismiss
     } else {
       revealForPhenotype(best);
+    }
+  } else if (best && best.t === 'T') {
+    // Click a test node on the map → open test action card (interventions,
+    // foundation, what-to-do-with-result)
+    if (revealedPhenotype && revealedPhenotype.id === best.id) {
+      clearReveal();
+    } else {
+      renderActionCardForTest(best);
     }
   } else if (!best) {
     clearReveal();   // click empty space to dismiss
@@ -2059,7 +2201,9 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     pulses.push({node: node, t: 0, dur: 2.2});
   }
 
-  // Helper: render a list of test nodes into a container
+  // Helper: render a list of test nodes into a container.
+  // Click → pan to the test on the map + open its action card showing
+  // what to do with the result.
   function renderTestList(containerId, ids) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -2079,7 +2223,12 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       item.innerHTML =
         '<div class="sd-test-name">' + t.l + dtcPill + tierPill + '</div>' +
         '<span class="sd-test-meta">' + meta + '</span>';
-      item.addEventListener('click', () => focusNode(t.id));
+      item.addEventListener('click', () => {
+        focusNode(t.id);
+        // Pan completes ~320ms; defer reveal so motion + card don't collide
+        const liveNode = nodes.find(n => n.id === t.id);
+        setTimeout(() => renderActionCardForTest(liveNode || t), 320);
+      });
       container.appendChild(item);
     }
   }
