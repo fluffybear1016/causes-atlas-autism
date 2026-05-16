@@ -691,11 +691,23 @@ honestly comes back because she's tired of being condescended to.
    are not constraints on the product, they are *features* mom comes
    back for. Honesty is rare in this market; honesty compounds.
 
-**What to measure.** Day-1, day-7, day-30 return rate. Time-to-first-
-action-card-open per session. Depth per session (number of
-phenotypes/tests/interventions/biomarkers explored). Profile-upload
-rate. Re-test-result upload rate (the ultimate retention signal — she
-came back, with new data, because the path worked enough to keep going).
+**What to measure.** **Daily return rate is the primary metric** — a
+high-agency mom should have a reason to open the atlas every day,
+because every day there should be something new worth knowing for her
+child specifically. Secondary metrics: day-7 and day-30 retention,
+time-to-first-action-card-open per session, depth per session (number
+of phenotypes/tests/interventions/biomarkers explored), profile-upload
+rate, re-test-result upload rate (the ultimate retention signal — she
+came back, with new data, because the path worked enough to keep
+going).
+
+**Why daily, not weekly.** The intake feed delivers ~30-40 new papers
+per day across 12 query categories. Δ² shifts trajectory weights
+nightly. New combinations get promoted from the discoveries inbox on
+the curator's cadence. The substrate is doing real work every day —
+the consumer surface must reflect that. The "Today's literature" panel
+in the start-dock must show new content every visit; if it shows the
+same content as yesterday, the substrate has failed to feed the loop.
 
 **What NOT to do to retention.** Dark patterns. Notification spam.
 Engagement-hacking. The atlas is an individual-level diagnostic

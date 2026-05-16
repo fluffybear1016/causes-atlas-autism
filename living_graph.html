@@ -131,6 +131,88 @@
   .dock .toggle:hover { color: var(--text); border-color: var(--line-hi); }
   .dock .toggle.on   { color: var(--gold); border-color: var(--gold-dim); }
 
+  /* ── LEFT START-HERE DOCK — always visible, idiot-proof entry ──── */
+  /* What a mom sees the moment she lands. Three sections: where to
+     start (1-line), the 5 starter tests with prices, what's emerged
+     since yesterday. Click any test to jump to it on the map. The map
+     is for exploration; this dock is for action. */
+  .start-dock {
+    position: fixed; left: 30px; top: 50%;
+    transform: translateY(-50%);
+    width: 320px; max-height: 78vh; overflow-y: auto;
+    background: rgba(8, 11, 18, 0.78); backdrop-filter: blur(10px);
+    border: 1px solid var(--line);
+    z-index: 9;
+    padding: 20px 22px 22px;
+    font-family: ui-serif, "Iowan Old Style", Garamond, serif;
+    pointer-events: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-hi) transparent;
+  }
+  .start-dock::-webkit-scrollbar { width: 4px; }
+  .start-dock::-webkit-scrollbar-thumb { background: var(--line-hi); }
+  .start-dock .sd-section { margin-bottom: 22px; }
+  .start-dock .sd-section:last-child { margin-bottom: 0; }
+  .start-dock .sd-label {
+    font-family: ui-monospace, monospace;
+    font-size: 9.5px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .start-dock .sd-intro {
+    font-size: 12.5px; color: var(--text); line-height: 1.55;
+    font-style: italic;
+  }
+  .start-dock .sd-test {
+    font-size: 12px; line-height: 1.4;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--line);
+    cursor: pointer;
+    transition: color 200ms;
+  }
+  .start-dock .sd-test:last-child { border-bottom: none; }
+  .start-dock .sd-test:hover .sd-test-name { color: var(--gold); }
+  .start-dock .sd-test-name {
+    color: var(--text);
+    transition: color 200ms;
+  }
+  .start-dock .sd-test-meta {
+    display: block; color: var(--text-mute);
+    font-size: 10.5px; margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
+  .start-dock .sd-pill {
+    display: inline-block; padding: 1px 5px;
+    border: 1px solid var(--line-hi); border-radius: 3px;
+    font-family: ui-monospace, monospace; font-size: 9px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-mute); margin-left: 4px;
+  }
+  .start-dock .sd-pill.gold { color: var(--gold); border-color: var(--gold-dim); }
+  .start-dock .sd-feed {
+    font-size: 11.5px; line-height: 1.5;
+    padding: 6px 0; color: var(--text-mute);
+  }
+  .start-dock .sd-feed-tag {
+    color: var(--gold); font-family: ui-monospace, monospace;
+    font-size: 9.5px; margin-right: 6px;
+    letter-spacing: 0.12em;
+  }
+  .start-dock .sd-footer {
+    margin-top: 18px; padding-top: 12px;
+    border-top: 1px solid var(--line);
+    font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-vmute);
+  }
+  .start-dock .sd-footer a {
+    color: var(--gold); text-decoration: none;
+  }
+  /* On narrower windows, collapse to a toggle button instead of always-open */
+  @media (max-width: 1100px) {
+    .start-dock { display: none; }
+  }
+
   /* ── ACTION CARD — FM-actionable phenotype reveal ──────────────── */
   /* Appears bottom-center when a phenotype is clicked. The substrate's
      value made visible: TEST · DO · AVOID · TRACK. Mom-language. */
@@ -283,6 +365,29 @@
 
 <!-- FM-actionable card: bottom-center reveal on phenotype-click -->
 <div class="action-card" id="ac"></div>
+
+<!-- LEFT START-HERE DOCK: always-visible action surface for high-agency moms -->
+<div class="start-dock" id="sd">
+  <div class="sd-section">
+    <div class="sd-label">Start here</div>
+    <div class="sd-intro">
+      Click any phenotype on the map to see TEST · DO · AVOID · TRACK
+      for your child's profile. Or order one of these starter tests below.
+    </div>
+  </div>
+  <div class="sd-section">
+    <div class="sd-label">Your first 5 tests</div>
+    <div id="sd-tests"></div>
+  </div>
+  <div class="sd-section">
+    <div class="sd-label">Today's literature</div>
+    <div id="sd-feed"></div>
+  </div>
+  <div class="sd-footer">
+    <a href="TESTING_STRATEGY.md" target="_blank">full strategy →</a>
+    &nbsp;·&nbsp; 11 phenotypes · 50 tests · daily-refreshed feed
+  </div>
+</div>
 
 <div class="err" id="err"></div>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"
@@ -1215,6 +1320,85 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
   rotateTicker();
   setInterval(rotateTicker, 8200);
 }
+
+// ── START-HERE LEFT DOCK ─────────────────────────────────────────────
+// Populate the always-visible action surface: top 5 starter tests
+// (cheapest direct-to-consumer Tier 1 first) + today's literature feed.
+// Clicking a test pans the graph to that node + opens its hover detail.
+(function() {
+  const sdTests = document.getElementById('sd-tests');
+  const sdFeed  = document.getElementById('sd-feed');
+  if (!sdTests || !sdFeed) return;
+
+  // Score tests by leverage: T1 > T2 > T3; DTC-friendly first;
+  // low-cost first within tier.
+  const tierWeight = (tr) => (
+    tr === 'T1' ? 4 : tr === 'T2' ? 3 : tr === 'T3' ? 1 : tr === 'T4' ? 0.5 : 2
+  );
+  const starters = DATA.nodes
+    .filter(n => n.t === 'T')
+    .map(n => ({
+      n,
+      score: tierWeight(n.tr) * 100 + (n.dtc ? 20 : 0) -
+             (parseFloat(n.cl) || 9999) / 100,
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5)
+    .map(x => x.n);
+
+  for (const t of starters) {
+    const dtcPill = t.dtc
+      ? '<span class="sd-pill gold">DTC</span>'
+      : (t.rx ? '<span class="sd-pill">Rx</span>' : '');
+    const tierPill = t.tr ? '<span class="sd-pill">' + t.tr + '</span>' : '';
+    const cost = t.cl
+      ? '$' + t.cl + (t.ch && t.ch !== t.cl ? '-' + t.ch : '')
+      : '';
+    const meta = [t.pr, t.sm, cost, t.td ? t.td + 'd' : '']
+                 .filter(Boolean).join(' · ');
+    const item = document.createElement('div');
+    item.className = 'sd-test';
+    item.innerHTML =
+      '<div class="sd-test-name">' + t.l + dtcPill + tierPill + '</div>' +
+      '<span class="sd-test-meta">' + meta + '</span>';
+    // Click to focus this test node on the map
+    item.addEventListener('click', () => {
+      const node = nodes.find(x => x.id === t.id);
+      if (node) {
+        targetOx = -node.x * scale;
+        targetOy = -node.y * scale;
+        targetScale = 1.8;
+        pulses.push({node: node, t: 0, dur: 2.2});
+      }
+    });
+    sdTests.appendChild(item);
+  }
+
+  // Today's literature feed — pull from the same intake JSON
+  if (INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
+    const tagLabels = {
+      'P': 'predisposition', 'E': 'exposure', 'M': 'mechanism',
+      'PHI': 'phenotype', 'SYNTHESIS': 'RCT/meta',
+    };
+    for (const c of INTAKE.candidates.slice(0, 5)) {
+      const tagShort = (c.intake_tag || '?').substring(0, 3);
+      const tagFull = tagLabels[c.intake_tag] || c.intake_tag;
+      const item = document.createElement('div');
+      item.className = 'sd-feed';
+      item.innerHTML =
+        '<span class="sd-feed-tag" title="' + tagFull + '">' +
+        '[' + tagShort + ']' + '</span>' +
+        (c.title || '').substring(0, 80) +
+        (c.first_author ? ' <span style="color:var(--text-vmute);">· ' +
+                          c.first_author + '</span>' : '');
+      sdFeed.appendChild(item);
+    }
+  } else {
+    sdFeed.innerHTML = '<div class="sd-feed">' +
+      '<span class="sd-feed-tag">[ — ]</span>' +
+      'Intake feed refreshing. Daily scan runs at 07:00 UTC.</div>';
+  }
+})();
 </script>
 </body>
 </html>
