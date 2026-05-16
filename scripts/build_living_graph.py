@@ -249,6 +249,12 @@ bme   = read_csv("biomarker_mechanism_edges.csv")
 bpe   = read_csv("biomarker_phenotype_edges.csv")
 bhe   = read_csv("biomarker_hypothesis_edges.csv")
 tests = read_csv("tests_catalog.csv")  # 2026-05-15: FM actionable test catalog
+billing = read_csv("billing_codes.csv")  # 2026-05-16: insurance + HSA/FSA scalability
+billing_by_entity: dict[str, dict] = {}
+for b in billing:
+    eid = b.get("entity_id", "") or ""
+    if eid:
+        billing_by_entity[eid] = b
 
 # ── plain-English phenotype descriptions for the action card ───────────
 # These are mom-language one-liners used in the click-reveal card.
@@ -603,6 +609,10 @@ for t in sorted(tests_sorted, key=lambda r: r.get("test_id", "")):
     mi_field = t.get("maps_to_intervention_ids", "") or ""
     mi_list = [x.strip() for x in mi_field.replace(";", ",").split(",")
                if x.strip()][:6]
+    # Pull billing metadata: CPT codes, ICD-10 anchor, insurance posture,
+    # HSA/FSA eligibility, self-pay range. This is how families
+    # actually pay for FM-autism care at scale.
+    bill = billing_by_entity.get(tid, {})
     add_node(tid, "T", t.get("test_name", "") or tid, size, extra={
         "pr": (t.get("provider", "") or "")[:48],
         "sm": (t.get("sample_type", "") or "")[:20],
@@ -615,7 +625,14 @@ for t in sorted(tests_sorted, key=lambda r: r.get("test_id", "")):
         "wm": (t.get("what_it_measures", "") or "")[:140],
         "uc": (t.get("specific_use_cases", "") or "")[:120],
         "wr": (t.get("what_results_indicate", "") or "")[:160],
-        "mi": mi_list,   # mapped intervention IDs for "what to do" rendering
+        "mi": mi_list,   # mapped intervention IDs
+        # Billing
+        "cpt": (bill.get("cpt_codes") or "")[:80],
+        "icd": (bill.get("icd10_anchor") or "")[:30],
+        "ins": (bill.get("insurance_tier") or "")[:40],
+        "pa":  (bill.get("prior_auth_typical") or "")[:20],
+        "hsa": (bill.get("hsa_fsa_eligible") or "")[:12],
+        "cn":  (bill.get("coverage_notes") or "")[:200],
     })
 
 # Test → phenotype, test → biomarker, test → mechanism edges
@@ -1547,10 +1564,14 @@ function renderActionCardForTest(test) {
       '<div class="ac-label">Always · regardless</div>' +
       '<div class="ac-content">' + foundationHtml + '</div>' +
     '</div>' : '') +
+    renderBillingRow(test) +
     '<div class="ac-footer">' +
       '<a href="TESTING_STRATEGY.md" target="_blank" ' +
       'style="color:var(--gold);text-decoration:none;letter-spacing:0.14em;">' +
       'full testing strategy →</a>' +
+      ' &nbsp; <a href="BILLING_STRATEGY.md" target="_blank" ' +
+      'style="color:var(--gold);text-decoration:none;letter-spacing:0.14em;">' +
+      'billing strategy →</a>' +
       ' &nbsp;·&nbsp; ' +
       'not medical advice. discuss with a functional / integrative ' +
       'pediatrics clinician before acting.' +
@@ -1562,6 +1583,44 @@ function renderActionCardForTest(test) {
   revealedPhenotype = test;
   revealedSet = new Set([test.id, ...topInts.map(n => n.id),
                                   ...foundationNodes.slice(0,3).map(n => n.id)]);
+}
+
+// Helper: render the insurance/HSA-FSA billing row for a test action card.
+// Honest framing — for most FM-autism tests insurance is "rarely_covered";
+// HSA/FSA with Letter of Medical Necessity is the scalable path.
+function renderBillingRow(test) {
+  const cpt = test.cpt || '';
+  const icd = test.icd || '';
+  const ins = (test.ins || '').toLowerCase();
+  const pa  = test.pa || '';
+  const hsa = (test.hsa || '').toLowerCase();
+  if (!cpt && !icd && !ins) return '';
+
+  const insLabel = {
+    'always_covered':   '<span class="pill gold">covered</span>',
+    'usually_covered':  '<span class="pill gold">usually covered</span>',
+    'sometimes_covered':'<span class="pill">sometimes covered</span>',
+    'rarely_covered':   '<span class="pill">rarely covered</span>',
+    'never_covered':    '<span class="pill">never covered</span>',
+  }[ins] || '';
+  const hsaLabel = (hsa === 'yes' || hsa === 'yes_with_lmn')
+    ? '<span class="pill gold">HSA/FSA</span>' : '';
+
+  const billStr = [];
+  if (cpt) billStr.push('CPT&nbsp;' + cpt);
+  if (icd) billStr.push('ICD-10&nbsp;' + icd);
+  if (pa && pa !== 'no') billStr.push('prior auth ' + pa);
+
+  return '<div class="ac-row">' +
+    '<div class="ac-label">Insurance</div>' +
+    '<div class="ac-content">' +
+      insLabel + hsaLabel +
+      (billStr.length ? '<div class="meta" style="margin-top:6px;display:block;">' +
+                         billStr.join(' · ') + '</div>' : '') +
+      (test.cn ? '<div class="meta" style="margin-top:4px;display:block;">' +
+                 test.cn + '</div>' : '') +
+    '</div>' +
+  '</div>';
 }
 
 // ── phenotype-click reveal: "what would help" + "what to test" ───────
@@ -2180,6 +2239,77 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
   rotateTicker();
   setInterval(rotateTicker, 8200);
 }
+
+// ── RETENTION via localStorage ───────────────────────────────────────
+// Daily-return metric is the primary measure of consumer-surface success
+// (per CLAUDE.md). The substrate updates daily — the intake feed brings
+// 30-40 new papers, Δ² shifts trajectory weights, combinations get
+// promoted. The retention layer makes mom AWARE of that motion when she
+// returns. localStorage stores: last_visit timestamp, count of papers
+// she last saw, set of tests she's marked "ordered" or "result-in".
+(function() {
+  if (typeof localStorage === 'undefined') return;
+  const NS = 'causes_atlas_v1.';
+  const now = Date.now();
+  const lastVisit = parseInt(localStorage.getItem(NS + 'last_visit') || '0', 10);
+  const lastFeedCount = parseInt(localStorage.getItem(NS + 'last_feed') || '0', 10);
+  const currentFeedCount = (INTAKE && INTAKE.candidates) ? INTAKE.candidates.length : 0;
+
+  // First-visit banner suppressed; only show on day-2+ return
+  if (lastVisit && now - lastVisit > 60 * 60 * 1000) {
+    const daysSince = Math.max(1, Math.floor((now - lastVisit) / (24 * 60 * 60 * 1000)));
+    const newPapers = Math.max(0, currentFeedCount - lastFeedCount);
+    const banner = document.createElement('div');
+    banner.style.cssText =
+      'position:fixed; top:78px; left:30px; z-index:11; ' +
+      'background:rgba(8,11,18,0.92); backdrop-filter:blur(8px); ' +
+      'border:1px solid var(--gold-dim); padding:10px 16px; ' +
+      'font-family:ui-serif,Garamond,serif; font-size:12px; ' +
+      'color:var(--text); max-width:300px; line-height:1.5; ' +
+      'opacity:0; transition:opacity 1200ms ease 600ms; ' +
+      'pointer-events:auto;';
+    const dayLabel = daysSince === 1 ? '1 day' : daysSince + ' days';
+    const paperLabel = newPapers === 0 ? 'no new papers'
+                     : newPapers === 1 ? '1 new paper'
+                     : newPapers + ' new papers';
+    banner.innerHTML =
+      '<div style="color:var(--gold);font-family:ui-monospace,monospace;' +
+      'font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;' +
+      'margin-bottom:4px;">Welcome back</div>' +
+      'Last visit: ' + dayLabel + ' ago.<br>' +
+      paperLabel + ' since.<br>' +
+      '<span style="color:var(--text-mute);font-size:11px;">' +
+      'The substrate is doing daily work. Check today\'s literature ' +
+      'in the dock.</span>';
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => { banner.style.opacity = '1'; });
+    setTimeout(() => {
+      banner.style.opacity = '0';
+      setTimeout(() => banner.remove(), 1500);
+    }, 9000);
+  }
+
+  // Update on every visit so daily-return tracking works
+  localStorage.setItem(NS + 'last_visit', String(now));
+  localStorage.setItem(NS + 'last_feed', String(currentFeedCount));
+
+  // Expose helpers for clicking "I ordered" / "Result in" on test cards
+  // (UI for these is future work; the storage layer is ready)
+  window.markTestOrdered = function(testId) {
+    const key = NS + 'test_ordered_' + testId;
+    localStorage.setItem(key, String(Date.now()));
+  };
+  window.markResultIn = function(testId) {
+    const key = NS + 'test_result_' + testId;
+    localStorage.setItem(key, String(Date.now()));
+  };
+  window.getTestStatus = function(testId) {
+    return {
+      ordered: parseInt(localStorage.getItem(NS + 'test_ordered_' + testId) || '0', 10),
+      result_in: parseInt(localStorage.getItem(NS + 'test_result_' + testId) || '0', 10),
+    };
+  };
+})();
 
 // ── START-HERE LEFT DOCK ─────────────────────────────────────────────
 // Always-visible action surface. Curated sections in priority order:
