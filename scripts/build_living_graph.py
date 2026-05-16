@@ -35,21 +35,34 @@ CAP_TESTS         = 50   # top tests by leverage (Tier 1-2 DTC-friendly first)
 # grade pediatric panel" — it stays in the catalog as a budget option
 # but is not what we lead with). The must-haves are the panels every
 # FM-trained pediatrician orders before considering subtype-specific work.
+# MUST-HAVE — AUTISM-SPECIFIC tests. Each maps to an autism phenotype
+# or has autism-specific responder data. NOT generic FM workup.
 MUST_HAVE_TEST_IDS = [
-    "TEST-0014",  # FRAA panel — maps to INT-0001 calibration anchor (Frye 2018)
-    "TEST-0008",  # Fragile X (FMR1 CGG repeat) — pediatric standard of care
-    "TEST-0007",  # Chromosomal microarray (CMA / SNP array) — standard of care
-    "TEST-0013",  # Quest/LabCorp methylation labs (standard, insurance-covered)
-    "TEST-0043",  # Vitamin D 25-OH — autism deficiency near-universal
+    "TEST-0014",  # FRAA panel — autism-specific (Frye 2018 RCT, 78% FRAA+ responder rate)
+    "TEST-0015",  # Plasma lactate / pyruvate / L:P ratio — autism mito overlap 30-80% (Rossignol 2011 meta)
+    "TEST-0010",  # Mosaic OAT — autism-specific metabolites (arabinose, HPHPA, quinolinic acid)
+    "TEST-0020",  # Cunningham Panel — autism-regressive subset (PANS overlap)
+    "TEST-0008",  # Fragile X (FMR1 CGG repeat) — autism-syndromic 2-6% of cases
+]
+
+# EPIGENETIC METHYLATION — DNA methylation + biological age. Distinct from
+# the biochemical methylation cycle (SAM/SAH/homocysteine) which lives in
+# the foundation tier. This section is emerging-tier (mostly T4) but
+# autism-relevant: maternal stress + nutrient methylation patterns + the
+# specific autism-saliva-RNA biomarker panel.
+EPIGENETIC_TEST_IDS = [
+    "TEST-0090",  # Quadrant Biosciences Clarifi ASD — autism-specific salivary RNA panel (T4 emerging)
+    "TEST-0012",  # Doctor's Data Methylation Profile — methylation cycle SNPs + biochemistry (T2)
+    "TEST-0089",  # TruDiagnostic TruAge + DunedinPACE — epigenetic biological age (T4 emerging)
 ]
 
 # Aspirational / high-end tier — for moms who can afford the full workup
 HIGH_END_TEST_IDS = [
-    "TEST-0006",  # IntellxxDNA NeuroGenomic — Frye-aligned premium panel
+    "TEST-0006",  # IntellxxDNA NeuroGenomic — Frye-aligned premium nutrigenomic
     "TEST-0009",  # Whole exome sequencing (WES) — full clinical genome
-    "TEST-0020",  # Cunningham Panel — Moleculera — PANS/PANDAS
-    "TEST-0010",  # Mosaic Diagnostics OAT — comprehensive metabolic panel
+    "TEST-0016",  # Mayo Acylcarnitine profile — mitochondrial deep-dive
     "TEST-0025",  # GI-MAP — Diagnostic Solutions comprehensive stool
+    "TEST-0018",  # Plasma amino acids panel — methylation + neurotransmitter substrate
 ]
 
 # Budget entry tier — DTC, lowest cost, useful starting point
@@ -572,7 +585,8 @@ def test_priority(t):
 
 # Curated IDs are ALWAYS included regardless of CAP_TESTS — these are
 # the ones the start-dock references, so they must render no matter what.
-curated_ids = set(MUST_HAVE_TEST_IDS) | set(HIGH_END_TEST_IDS) | set(BUDGET_TEST_IDS)
+curated_ids = (set(MUST_HAVE_TEST_IDS) | set(HIGH_END_TEST_IDS) |
+               set(BUDGET_TEST_IDS) | set(EPIGENETIC_TEST_IDS))
 tests_ranked = sorted(tests, key=test_priority, reverse=True)
 tests_curated = [t for t in tests_ranked if t.get("test_id") in curated_ids]
 tests_other   = [t for t in tests_ranked if t.get("test_id") not in curated_ids]
@@ -1059,8 +1073,12 @@ HTML = r"""<!doctype html>
     <div id="sd-types"></div>
   </div>
   <div class="sd-section">
-    <div class="sd-label">Must-have tests</div>
+    <div class="sd-label">Must-have tests · autism-specific</div>
     <div id="sd-musthave"></div>
+  </div>
+  <div class="sd-section">
+    <div class="sd-label">Epigenetic methylation</div>
+    <div id="sd-epigenetic"></div>
   </div>
   <div class="sd-section">
     <div class="sd-label">Universal foundation</div>
@@ -2086,8 +2104,11 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     }
   }
 
-  // (2) Must-have tests
+  // (2) Must-have tests — autism-specific
   renderTestList('sd-musthave', STARTERS.must_have);
+
+  // (2b) Epigenetic methylation
+  renderTestList('sd-epigenetic', STARTERS.epigenetic);
 
   // (3) Universal foundation — interventions across all phenotypes
   const foundEl = document.getElementById('sd-foundation');
@@ -2206,6 +2227,7 @@ if intake_jsons:
 # Build the STARTERS payload — curated lists + autism-type labels
 starters_payload = {
     "must_have": MUST_HAVE_TEST_IDS,
+    "epigenetic": EPIGENETIC_TEST_IDS,
     "high_end":  HIGH_END_TEST_IDS,
     "budget":    BUDGET_TEST_IDS,
     "foundation": UNIVERSAL_FOUNDATION_INT_IDS,
