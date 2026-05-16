@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Causes Atlas — Autism</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Reproducible substrate for condition-specific causal inference. Autism is the proof-of-concept condition. 686 nodes, 1183 edges, daily-refreshed PubMed intake, calibration anchor INT-0001 Leucovorin CSRS = 83.35.">
+<meta property="og:title" content="Causes Atlas — Autism">
+<meta property="og:description" content="A breathing knowledge graph of every known and speculated cause, mechanism, phenotype, gene, intervention, test, and combination relevant to autism — individual-level, not population-level.">
+<meta property="og:type" content="website">
+<meta http-equiv="refresh" content="2; url=living_graph.html">
+<link rel="canonical" href="living_graph.html">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background: #050810; color: #d8d2c4;
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Garamond,
+                 "Times New Roman", serif;
+    overflow: hidden;
+  }
+  .wrap {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fade 1600ms ease forwards;
+  }
+  @keyframes fade { to { opacity: 1; } }
+  .title {
+    font-size: 24px; color: #e8c46e;
+    letter-spacing: 0.34em; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .sub {
+    font-size: 13px; color: #5a574e;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .opening {
+    font-size: 15px; color: #d8d2c4;
+    font-style: italic; max-width: 480px; line-height: 1.6;
+  }
+  .dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: #e8c46e;
+    box-shadow: 0 0 10px #e8c46e;
+    margin: 28px 0 0; opacity: 0.4;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.85); }
+    50%      { opacity: 1.0; transform: scale(1.2); }
+  }
+  noscript {
+    display: block; max-width: 480px; margin: 24px auto;
+    text-align: center; color: #d8d2c4;
+  }
+  a { color: #e8c46e; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="title">Causes Atlas</div>
+  <div class="sub">Autism · v2.0 · reproducible</div>
+  <div class="opening">
+    Population average is not your child. Loading the living map…
+  </div>
+  <div class="dot"></div>
+  <noscript>
+    <p>Atlas requires JavaScript.<br>
+    <a href="living_graph.html">→ Continue to the living graph</a></p>
+  </noscript>
+</div>
+</body>
+</html>
