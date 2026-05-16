@@ -637,6 +637,78 @@ This rule applies to:
 
 Full protocol documented in `SESSION_4_HANNAH_POLING_SPEC.md` §24.
 
+## Retention as a first-class design principle (post-2026-05-15)
+
+**Retention is the load-bearing metric for the consumer surface.** A
+high-agency mom comes back to the atlas iff every visit produces a
+new actionable insight — a new test to consider, a new intervention to
+discuss with her clinician, a new connection between her child's
+profile and emerging literature, a new "what changed since last week."
+If a visit doesn't move her forward, she doesn't return. The substrate
+quality is invisible to her until it shows up as something she can do
+Monday morning.
+
+**This is not engagement metrics for engagement's sake.** It is the
+single behavioral proxy for whether the substrate's value is reaching
+the individual. Per the atlas mission — individual-level, not
+population-level — retention is the only way to know the
+individual-level promise is being kept across time. A mom whose child
+is improving comes back to track. A mom whose path forward gained
+clarity comes back to act. A mom who reads contested-evidence framing
+honestly comes back because she's tired of being condescended to.
+
+**Design choices that serve retention** (in order of leverage):
+
+1. **Actionable on every visit.** The action card surfaces the
+   TEST·DO·AVOID·TRACK answer for any phenotype in one click. The full
+   115-row test catalog is visible in the graph as T-nodes. The
+   substrate's value is one click away every visit, not buried under
+   navigation.
+
+2. **Fresh content via the live intake feed.** The PubMed scanner runs
+   daily; the top-right ticker cycles real new candidates. Mom sees
+   "this thing is breathing" without our hand on the scale. Δ² gives
+   us trajectory, not just truth-strength — and the trajectory is
+   visible.
+
+3. **Personal profile saved across visits.** [Future build] Mom
+   uploads her child's profile once (genetic + biomarker + history);
+   the graph + action card adapt to that profile on subsequent visits.
+   The atlas remembers what her child is.
+
+4. **Biomarker re-testing schedule with comparison.** [Future build]
+   The action card's TRACK row becomes a calendar reminder + a
+   "what changed" diff when she returns to upload re-test results.
+
+5. **"What's new since your last visit"** [Future build] A diff layer
+   that surfaces: new papers in her child's phenotype cluster, new
+   atlas entries, new responder-rate data, new combinations promoted
+   from the discovery pipeline.
+
+6. **Honest framing as a retention driver.** Functional medicine moms
+   are sophisticated. The contested-status discipline, the §24
+   verification, the firewall against outcome-feedback drift — these
+   are not constraints on the product, they are *features* mom comes
+   back for. Honesty is rare in this market; honesty compounds.
+
+**What to measure.** Day-1, day-7, day-30 return rate. Time-to-first-
+action-card-open per session. Depth per session (number of
+phenotypes/tests/interventions/biomarkers explored). Profile-upload
+rate. Re-test-result upload rate (the ultimate retention signal — she
+came back, with new data, because the path worked enough to keep going).
+
+**What NOT to do to retention.** Dark patterns. Notification spam.
+Engagement-hacking. The atlas is an individual-level diagnostic
+substrate, not a wellness-influencer feed. Retention earned by
+honesty + actionability + accuracy. Anything else collapses the
+methodology and the trust at the same time.
+
+**The high-value rule:** every design and engineering decision
+downstream of this is evaluated against "does it serve retention via
+actionability, freshness, personalization, and honesty?" If it does,
+ship it. If it doesn't, it's lower priority than something that does.
+Retention as the proxy. Truth as the substrate. Both, not either.
+
 ## Field outcomes firewall (post-2026-05-15)
 
 The atlas's published calibration anchors — cohort MAE = 0.0665 (n=8),

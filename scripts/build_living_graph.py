@@ -27,6 +27,7 @@ CAP_GENE_EDGES    = 260
 CAP_INTERVENTIONS = 90
 CAP_BIOMARKERS    = 80   # by edge-degree (how often referenced by other nodes)
 CAP_COMBINATIONS  = 30   # all 25 fit; cap is defensive
+CAP_TESTS         = 50   # top tests by leverage (Tier 1-2 DTC-friendly first)
 
 # Sub-categorize interventions visually. Each I node gets a `c` field
 # (category, drawn from interventions.csv `category` column). Peptides are
@@ -236,8 +237,9 @@ nodes: list[dict] = []
 node_ids: set[str] = set()
 nodes_by_type: dict[str, list[dict]] = {
     "H": [], "M": [], "I": [], "P": [], "G": [],
-    "B": [],   # biomarkers — "what to test"
+    "B": [],   # biomarkers — "what to test" (marker level)
     "C": [],   # combinations — typed protocol stacks
+    "T": [],   # tests — the FM-actionable diagnostic surface (panel level)
 }
 
 def add_node(nid, ntype, label, size, extra=None):
@@ -260,8 +262,9 @@ def add_node(nid, ntype, label, size, extra=None):
         "I": "intervention treatment",
         "P": "phenotype",
         "G": "gene variant",
-        "B": "biomarker test marker lab",
+        "B": "biomarker marker individual analyte",
         "C": "combination protocol stack",
+        "T": "test panel diagnostic order labwork bloodwork saliva urine stool genetic",
     }
     search_parts.append(TYPE_KEYWORDS.get(ntype, ""))
     n = {
@@ -468,6 +471,63 @@ for c in sorted(combs, key=lambda r: r["id"])[:CAP_COMBINATIONS]:
 for m in cmms:
     add_link(m["combination_id"], m["intervention_id"], 0.7, "ci")
 
+# ── tests (FM-actionable diagnostic panels) ────────────────────────────
+# Render the top tests from tests_catalog.csv as TEAL T-nodes so the
+# "what to test" surface is VISIBLE in the graph, not just in the action
+# card. Ranking: Tier 1 > Tier 2; DTC-friendly first; lowest cost first
+# within tier. This is the retention surface — the more obviously mom
+# can find her actionable next step, the more she comes back.
+def test_priority(t):
+    tier_raw = (t.get("evidence_tier") or "").lower()
+    if "tier1" in tier_raw:   tier_score = 4
+    elif "tier2" in tier_raw: tier_score = 3
+    elif "tier3" in tier_raw: tier_score = 1
+    elif "tier4" in tier_raw: tier_score = 0.5
+    else:                       tier_score = 2
+    dtc = 1 if (t.get("direct_to_consumer") or "").upper() == "TRUE" else 0
+    try:
+        cost = float(t.get("cost_usd_low") or 9999)
+    except ValueError:
+        cost = 9999
+    return (tier_score, dtc, -cost)
+
+tests_sorted = sorted(tests, key=test_priority, reverse=True)[:CAP_TESTS]
+for t in sorted(tests_sorted, key=lambda r: r.get("test_id", "")):
+    tid = t.get("test_id", "")
+    if not tid:
+        continue
+    tier_raw = (t.get("evidence_tier") or "").lower()
+    size = 3.5 if "tier1" in tier_raw else 2.8 if "tier2" in tier_raw else 2.2
+    add_node(tid, "T", t.get("test_name", "") or tid, size, extra={
+        "pr": (t.get("provider", "") or "")[:48],
+        "sm": (t.get("sample_type", "") or "")[:20],
+        "cl": t.get("cost_usd_low", ""),
+        "ch": t.get("cost_usd_high", ""),
+        "td": t.get("turnaround_days", ""),
+        "tr": (t.get("evidence_tier") or "").replace("Tier", "T").strip()[:5],
+        "dtc": (t.get("direct_to_consumer", "") or "").upper() == "TRUE",
+        "rx": (t.get("clinician_required", "") or "").upper() == "TRUE",
+        "wm": (t.get("what_it_measures", "") or "")[:140],
+        "uc": (t.get("specific_use_cases", "") or "")[:120],
+    })
+
+# Test → phenotype, test → biomarker, test → mechanism edges
+def split_ids(s):
+    if not s:
+        return []
+    return [x.strip() for x in s.replace(";", ",").split(",") if x.strip()]
+
+for t in tests_sorted:
+    tid = t.get("test_id", "")
+    if not tid:
+        continue
+    for pid in split_ids(t.get("maps_to_phenotype_ids", "")):
+        add_link(tid, pid, 0.7, "tp")
+    for bid in split_ids(t.get("maps_to_biomarker_ids", "")):
+        add_link(tid, bid, 0.6, "tb")
+    for mid in split_ids(t.get("maps_to_mechanism_ids", "")):
+        add_link(tid, mid, 0.5, "tm")
+
 # adjacency for 1-hop profile expansion
 adj: dict[str, set[str]] = {}
 for l in links:
@@ -507,6 +567,7 @@ stats = {
     "n_gen": sum(1 for n in nodes if n["t"] == "G"),
     "n_bio": sum(1 for n in nodes if n["t"] == "B"),
     "n_com": sum(1 for n in nodes if n["t"] == "C"),
+    "n_test": sum(1 for n in nodes if n["t"] == "T"),
     "profiles": {p["k"]: sum(1 for n in nodes if n["m"] & (1<<i))
                  for i, p in enumerate(profile_info)},
 }
@@ -799,7 +860,7 @@ HTML = r"""<!doctype html>
   <div class="num">__N_NODES__ nodes · __N_LINKS__ edges</div>
   <div class="vmute" style="margin-top:5px;">
     __N_HYP__ hyp · __N_MEC__ mec · __N_INT__ int · __N_PHE__ phe ·
-    __N_BIO__ bio · __N_COM__ com · __N_GEN__ gen
+    __N_BIO__ bio · __N_COM__ com · __N_TEST__ test · __N_GEN__ gen
   </div>
   <div class="vmute" style="margin-top:8px;">n=7 mae 0.049 · 4 sub-3% errors</div>
   <div class="vmute" style="margin-top:8px;">
@@ -868,8 +929,9 @@ const TYPE_COLOR = {
   I: [232, 196, 110],   // interventions — warm gold (default)
   P: [216, 184, 148],   // phenotypes — warm tan, the destination
   G: [122, 119, 112],   // genes — deep grey, the substrate
-  B: [165, 195, 200],   // biomarkers — pale cyan, the "what to test"
-  C: [255, 215, 130],   // combinations — saturated gold, the "what to do"
+  B: [165, 195, 200],   // biomarkers — pale cyan, individual markers
+  C: [255, 215, 130],   // combinations — saturated gold, the typed stack
+  T: [120, 220, 200],   // tests — vivid teal, the FM-actionable layer
 };
 
 // Intervention sub-category hue shifts (within the warm-gold spectrum,
@@ -918,14 +980,16 @@ function chargeStrength(n) {
   if (n.t === 'M') return -440;
   if (n.t === 'I') return -240;
   if (n.t === 'B') return -180;   // biomarkers — tighter cluster around their phenotype
+  if (n.t === 'T') return -260;   // tests — slightly looser than biomarkers
   return -55;
 }
 function linkDistance(l) {
   const k = l.k;
-  if (k === 'mp' || k === 'ip' || k === 'bp') return 80;
+  if (k === 'mp' || k === 'ip' || k === 'bp' || k === 'tp') return 80;
   if (k === 'hm' || k === 'im' || k === 'ih') return 56;
-  if (k === 'bi' || k === 'bm' || k === 'bh') return 44;  // biomarker links are tighter
-  if (k === 'ci') return 38;       // combo → member intervention — pulls members close
+  if (k === 'bi' || k === 'bm' || k === 'bh') return 44;
+  if (k === 'tb' || k === 'tm') return 52;  // test → biomarker / mechanism
+  if (k === 'ci') return 38;
   if (k === 'hh') return 92;
   return 28;
 }
@@ -1110,15 +1174,29 @@ canvas.addEventListener('mousemove', (e) => {
   if (best && best.t !== 'G') {
     const typeLabel = ({
       H:'Hypothesis', M:'Mechanism', I:'Intervention',
-      P:'Phenotype',  B:'Biomarker · what to test',
-      C:'Combination · the typed stack',
+      P:'Phenotype',  B:'Biomarker',
+      C:'Combination · typed stack',
+      T:'Test · order this',
     })[best.t] || '';
     // Sub-category hint for interventions (drug/supplement/peptide/etc.)
     const subCat = (best.t === 'I' && best.c)
       ? ' · ' + best.c.toUpperCase()
       : '';
-    hoverEl.innerHTML = best.l + '<span class="meta">' + best.id +
-                        ' · ' + typeLabel + subCat + '</span>';
+    // Tests get richer hover detail — provider + cost + sample + turnaround
+    let meta = best.id + ' · ' + typeLabel + subCat;
+    if (best.t === 'T') {
+      const bits = [];
+      if (best.pr) bits.push(best.pr);
+      if (best.sm) bits.push(best.sm);
+      if (best.cl && best.ch) bits.push('$' + best.cl + '-' + best.ch);
+      else if (best.cl) bits.push('$' + best.cl);
+      if (best.td) bits.push(best.td + 'd');
+      if (best.dtc) bits.push('DTC');
+      else if (best.rx) bits.push('Rx');
+      if (best.tr) bits.push(best.tr);
+      if (bits.length) meta += '<br>' + bits.join(' · ');
+    }
+    hoverEl.innerHTML = best.l + '<span class="meta">' + meta + '</span>';
     hoverEl.style.left = (e.clientX + 14) + 'px';
     hoverEl.style.top  = (e.clientY + 14) + 'px';
     hoverEl.style.opacity = 1;
@@ -1164,16 +1242,34 @@ function tierBadge(sc) {
   return '<span class="pill">emerging</span>';
 }
 
-function renderActionCard(phe, topBios, topInts) {
+function renderActionCard(phe, topBios, topInts, topTests) {
   if (!phe) { acEl.classList.remove('on'); return; }
   const pe = phe.pe || '';
   const av = phe.av || '';
   const tk = phe.tk || '';
   const bt = phe.bt;
+  topTests = topTests || [];
 
-  // TEST section: best test from tests_catalog + top 2 biomarkers
+  // TEST section: top-3 actual test panels (T nodes) — these are the
+  // FM-actionable panels mom can order. If none mapped, fall back to the
+  // best-test field on the phenotype + top biomarkers.
   let testHtml = '';
-  if (bt) {
+  if (topTests.length) {
+    for (const t of topTests) {
+      const dtcStr = t.dtc ? '<span class="pill gold">direct-to-consumer</span>' :
+                     t.rx ? '<span class="pill">rx</span>' : '';
+      const tierStr = t.tr ? '<span class="pill">' + t.tr + '</span>' : '';
+      const provider = t.pr ? t.pr : '';
+      const sample = t.sm ? ' · ' + t.sm : '';
+      const cost = t.cl ? ' · $' + fmtRange(t.cl, t.ch) : '';
+      const td = t.td ? ' · ' + t.td + 'd' : '';
+      const wm = t.wm ? '<br><span class="meta" style="margin-left:0;">' + t.wm + '</span>' : '';
+      testHtml += '<div class="item"><strong>' + t.l + '</strong>' +
+                  dtcStr + tierStr +
+                  '<span class="meta">' + provider + sample + cost + td + '</span>' +
+                  wm + '</div>';
+    }
+  } else if (bt) {
     const rxStr = bt.rx ? '<span class="pill">rx</span>' :
                   (bt.dtc ? '<span class="pill gold">direct-to-consumer</span>' : '');
     testHtml += '<div class="item"><strong>' + bt.name + '</strong>' + rxStr +
@@ -1181,13 +1277,13 @@ function renderActionCard(phe, topBios, topInts) {
                 ' · ' + bt.sample +
                 (bt.lo ? ' · $' + fmtRange(bt.lo, bt.hi) : '') +
                 (bt.td ? ' · ' + bt.td + 'd' : '') + '</span></div>';
-  }
-  for (const b of topBios.slice(0, 2)) {
-    const wt = b.wt ? ' — ' + b.wt.substring(0, 80) : '';
-    const lab = b.la ? ' <span class="meta">' + b.la.substring(0, 60) +
-                (b.cl ? ' · $' + fmtRange(b.cl, b.ch) : '') + '</span>' : '';
-    testHtml += '<div class="item"><strong>' + b.l + '</strong>' +
-                wt + lab + '</div>';
+    for (const b of topBios.slice(0, 2)) {
+      const wt = b.wt ? ' — ' + b.wt.substring(0, 80) : '';
+      const lab = b.la ? ' <span class="meta">' + b.la.substring(0, 60) +
+                  (b.cl ? ' · $' + fmtRange(b.cl, b.ch) : '') + '</span>' : '';
+      testHtml += '<div class="item"><strong>' + b.l + '</strong>' +
+                  wt + lab + '</div>';
+    }
   }
   if (!testHtml) testHtml = '<div class="meta">No mapped tests in atlas yet — pending curation</div>';
 
@@ -1228,7 +1324,11 @@ function renderActionCard(phe, topBios, topInts) {
       '<div class="ac-content">' + tk + '</div>' +
     '</div>' : '') +
     '<div class="ac-footer">' +
-      'Not medical advice. Discuss with a functional / integrative ' +
+      '<a href="TESTING_STRATEGY.md" target="_blank" ' +
+      'style="color:var(--gold);text-decoration:none;letter-spacing:0.14em;">' +
+      'full testing strategy →</a>' +
+      ' &nbsp;·&nbsp; ' +
+      'not medical advice. discuss with a functional / integrative ' +
       'pediatrics clinician before acting.' +
     '</div>';
   acEl.innerHTML = html;
@@ -1236,25 +1336,39 @@ function renderActionCard(phe, topBios, topInts) {
 }
 
 function revealForPhenotype(phe) {
-  // Collect all incoming intervention edges and biomarker edges
+  // Collect intervention, biomarker, AND test candidates connected to this phenotype
   const intCandidates = [];
   const bioCandidates = [];
+  const testCandidates = [];
   for (const l of links) {
     if (l.target.id === phe.id) {
       if (l.source.t === 'I') intCandidates.push({n: l.source, w: l.w});
       if (l.source.t === 'B') bioCandidates.push({n: l.source, w: l.w});
+      if (l.source.t === 'T') testCandidates.push({n: l.source, w: l.w});
     }
     if (l.source.id === phe.id) {
       if (l.target.t === 'I') intCandidates.push({n: l.target, w: l.w});
       if (l.target.t === 'B') bioCandidates.push({n: l.target, w: l.w});
+      if (l.target.t === 'T') testCandidates.push({n: l.target, w: l.w});
     }
   }
   // Rank by atlas-signal-weight (link weight; falls back to node size
   // which encodes CSRS / centrality)
   intCandidates.sort((a, b) => (b.w * b.n.s) - (a.w * a.n.s));
   bioCandidates.sort((a, b) => (b.w * b.n.s) - (a.w * a.n.s));
+  // Tests: prefer Tier 1 + DTC-friendly + low cost (encoded in node.s
+  // already; tier-1 tests sized 3.5, tier-2 2.8, tier-3 2.2)
+  testCandidates.sort((a, b) => {
+    const ts = b.n.s - a.n.s;
+    if (Math.abs(ts) > 0.1) return ts;
+    // tiebreak by lower cost (test.cl)
+    const aCost = parseFloat(a.n.cl) || 9999;
+    const bCost = parseFloat(b.n.cl) || 9999;
+    return aCost - bCost;
+  });
   const topInts = intCandidates.slice(0, 5).map(c => c.n);
   const topBios = bioCandidates.slice(0, 3).map(c => c.n);
+  const topTests = testCandidates.slice(0, 3).map(c => c.n);
   // Emergent 2-hop: walk through mechanisms to find indirect connections
   // when direct edges are sparse. Add up to 4 mechanism nodes that bridge
   // the phenotype to the top interventions/biomarkers.
@@ -1267,9 +1381,11 @@ function revealForPhenotype(phe) {
       if (ph_is_source && l.target.t === 'M') emergent.add(l.target.id);
     }
   }
-  revealedSet = new Set([phe.id, ...topInts.map(n => n.id),
-                                 ...topBios.map(n => n.id),
-                                 ...Array.from(emergent).slice(0, 4)]);
+  revealedSet = new Set([phe.id,
+                         ...topInts.map(n => n.id),
+                         ...topBios.map(n => n.id),
+                         ...topTests.map(n => n.id),
+                         ...Array.from(emergent).slice(0, 4)]);
   revealedPhenotype = phe;
   // Spawn particles from each top intervention toward the phenotype
   for (const ints of topInts) {
@@ -1289,7 +1405,7 @@ function revealForPhenotype(phe) {
   }
   // Pulse the phenotype itself
   pulses.push({node: phe, t: 0, dur: 1.8});
-  renderActionCard(phe, topBios, topInts);
+  renderActionCard(phe, topBios, topInts, topTests);
 }
 
 function clearReveal() {
@@ -1753,6 +1869,7 @@ html = (HTML
         .replace("__N_PHE__", str(stats["n_phe"]))
         .replace("__N_BIO__", str(stats["n_bio"]))
         .replace("__N_COM__", str(stats["n_com"]))
+        .replace("__N_TEST__", str(stats["n_test"]))
         .replace("__N_GEN__", str(stats["n_gen"]))
         .replace("__INTAKE_TICKER__", intake_ticker)
         .replace("__N_PAPERS__", f"{sources_count:,}")

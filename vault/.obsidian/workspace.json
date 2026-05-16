@@ -11,10 +11,14 @@
             "id": "052c88de01690455",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Hannah Poling framework.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Hannah Poling framework"
             }
           },
           {
@@ -215,6 +219,9 @@
   },
   "active": "052c88de01690455",
   "lastOpenFiles": [
+    "sources/SRC-000937 reddit.md",
+    "sources/SRC-000445 30792181.md",
+    "sources/SRC-000220 32082196.md",
     "Discoveries_Inbox/pubmed_intake_2026-05-15.md",
     "Discoveries_Inbox/pubmed_intake_2026-05-15.json",
     "peptides/humanin.md",
@@ -240,9 +247,6 @@
     "sources/SRC-001404 29936517.md",
     "sources/SRC-001403 30258461.md",
     "sources/SRC-001401 15145965.md",
-    "sources/SRC-001397 25893671.md",
-    "sources/SRC-001392 28523171.md",
-    "sources/SRC-001390 38972485.md",
     "Discoveries_Inbox/responder_phenotype_gaps_2026-05-13.json",
     "Discoveries_Inbox/higher_order_hypotheses_2026-05-13.json",
     "Discoveries_Inbox/combination_gaps_2026-05-13.json",
