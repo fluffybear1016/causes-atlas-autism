@@ -29,6 +29,85 @@ CAP_BIOMARKERS    = 80   # by edge-degree (how often referenced by other nodes)
 CAP_COMBINATIONS  = 30   # all 25 fit; cap is defensive
 CAP_TESTS         = 50   # top tests by leverage (Tier 1-2 DTC-friendly first)
 
+# ── Curated must-have starter set ──────────────────────────────────────
+# Hand-picked by curator priority, NOT auto-ranked. 23andMe is removed
+# from this list (it communicates "consumer health kit", not "clinical-
+# grade pediatric panel" — it stays in the catalog as a budget option
+# but is not what we lead with). The must-haves are the panels every
+# FM-trained pediatrician orders before considering subtype-specific work.
+MUST_HAVE_TEST_IDS = [
+    "TEST-0014",  # FRAA panel — maps to INT-0001 calibration anchor (Frye 2018)
+    "TEST-0008",  # Fragile X (FMR1 CGG repeat) — pediatric standard of care
+    "TEST-0007",  # Chromosomal microarray (CMA / SNP array) — standard of care
+    "TEST-0013",  # Quest/LabCorp methylation labs (standard, insurance-covered)
+    "TEST-0043",  # Vitamin D 25-OH — autism deficiency near-universal
+]
+
+# Aspirational / high-end tier — for moms who can afford the full workup
+HIGH_END_TEST_IDS = [
+    "TEST-0006",  # IntellxxDNA NeuroGenomic — Frye-aligned premium panel
+    "TEST-0009",  # Whole exome sequencing (WES) — full clinical genome
+    "TEST-0020",  # Cunningham Panel — Moleculera — PANS/PANDAS
+    "TEST-0010",  # Mosaic Diagnostics OAT — comprehensive metabolic panel
+    "TEST-0025",  # GI-MAP — Diagnostic Solutions comprehensive stool
+]
+
+# Budget entry tier — DTC, lowest cost, useful starting point
+BUDGET_TEST_IDS = [
+    "TEST-0001",  # 23andMe raw genotyping ($99-199) — analyze via StrateGene
+    "TEST-0005",  # StrateGene — free + Sequencing.com upload of raw data
+    "TEST-0046",  # CBC + CMP + lipid panel — baseline insurance-covered
+    "TEST-0043",  # Vitamin D 25-OH — cheap and universal
+    "TEST-0112",  # Biomesight gut microbiome — DTC budget option
+]
+
+# ── Cross-phenotype universal foundation interventions ─────────────────
+# Things almost every FM-trained doc starts with regardless of phenotype.
+# These are OTC, low-cost, broadly safe, evidence-supported across multiple
+# atlas phenotypes. ~$50-100/mo total. Cited so mom can see why each.
+UNIVERSAL_FOUNDATION_INT_IDS = [
+    "INT-0014",  # Omega-3 (EPA + DHA) — neuroinflammation, neurodev support
+    "INT-0013",  # Vitamin D3 — autism cohort deficiency near-universal
+    "INT-0015",  # Magnesium glycinate — calming, NMDA/GABA
+    "INT-0046",  # Sleep architecture + melatonin — broad benefit
+    "INT-0041",  # GFCF diet trial — large responder subset
+]
+
+# ── Mom-language "types of autism" labels ──────────────────────────────
+# Same 11 phenotypes that already live in phenotypes.csv, surfaced with
+# warmer naming so a non-technical parent can identify her child's
+# presentation without needing to know the technical term.
+AUTISM_TYPE_LABELS = {
+    "PHE-0001": "Cerebral folate deficiency",
+    "PHE-0002": "Mitochondrial-vulnerable",
+    "PHE-0003": "Immune-inflammatory · regressive",
+    "PHE-0004": "Gut–brain axis",
+    "PHE-0005": "mTOR-syndromic",
+    "PHE-0006": "Fragile X · FMR1",
+    "PHE-0007": "GABA-imbalance",
+    "PHE-0008": "MCAS overlap · mast-cell",
+    "PHE-0009": "PANS / PANDAS · post-infectious",
+    "PHE-0010": "Walsh undermethylator",
+    "PHE-0011": "Walsh metallothionein-deficient",
+}
+
+# ── Functional-medicine resources for the footer ───────────────────────
+# Curator-tier annotated. Tier 1 = scientific-clinical lineage; Tier 2 =
+# parent-community; Tier 3 = activist-oriented (still useful but framing
+# differs). Mom should know the tier of what she's reading.
+FM_RESOURCES = [
+    {"name": "MAPS doctor directory", "url": "https://medmaps.org",
+     "tier": "T1", "what": "find a trained FM pediatrics clinician"},
+    {"name": "Autism Research Institute", "url": "https://autism.org",
+     "tier": "T1", "what": "Bernie Rimland's lineage; biomedical research"},
+    {"name": "Walsh Research Institute", "url": "https://walshinstitute.org",
+     "tier": "T1", "what": "methylation / metallothionein phenotypes; Walsh"},
+    {"name": "Documenting Hope", "url": "https://documentinghope.com",
+     "tier": "T2", "what": "parent-recovery project; protocols + outcomes"},
+    {"name": "TACA", "url": "https://tacanow.org",
+     "tier": "T2", "what": "parent community + practical resource library"},
+]
+
 # Sub-categorize interventions visually. Each I node gets a `c` field
 # (category, drawn from interventions.csv `category` column). Peptides are
 # flagged separately via the `p` field because they are the "next frontier"
@@ -491,7 +570,13 @@ def test_priority(t):
         cost = 9999
     return (tier_score, dtc, -cost)
 
-tests_sorted = sorted(tests, key=test_priority, reverse=True)[:CAP_TESTS]
+# Curated IDs are ALWAYS included regardless of CAP_TESTS — these are
+# the ones the start-dock references, so they must render no matter what.
+curated_ids = set(MUST_HAVE_TEST_IDS) | set(HIGH_END_TEST_IDS) | set(BUDGET_TEST_IDS)
+tests_ranked = sorted(tests, key=test_priority, reverse=True)
+tests_curated = [t for t in tests_ranked if t.get("test_id") in curated_ids]
+tests_other   = [t for t in tests_ranked if t.get("test_id") not in curated_ids]
+tests_sorted  = tests_curated + tests_other[:max(0, CAP_TESTS - len(tests_curated))]
 for t in sorted(tests_sorted, key=lambda r: r.get("test_id", "")):
     tid = t.get("test_id", "")
     if not tid:
@@ -970,23 +1055,36 @@ HTML = r"""<!doctype html>
 <!-- LEFT START-HERE DOCK: always-visible action surface for high-agency moms -->
 <div class="start-dock" id="sd">
   <div class="sd-section">
-    <div class="sd-label">Start here</div>
-    <div class="sd-intro">
-      Click any phenotype on the map to see TEST · DO · AVOID · TRACK
-      for your child's profile. Or order one of these starter tests below.
-    </div>
+    <div class="sd-label">Types of autism</div>
+    <div id="sd-types"></div>
   </div>
   <div class="sd-section">
-    <div class="sd-label">Your first 5 tests</div>
-    <div id="sd-tests"></div>
+    <div class="sd-label">Must-have tests</div>
+    <div id="sd-musthave"></div>
+  </div>
+  <div class="sd-section">
+    <div class="sd-label">Universal foundation</div>
+    <div id="sd-foundation"></div>
+  </div>
+  <div class="sd-section">
+    <div class="sd-label">High-end · full workup</div>
+    <div id="sd-highend"></div>
+  </div>
+  <div class="sd-section">
+    <div class="sd-label">Budget entry</div>
+    <div id="sd-budget"></div>
   </div>
   <div class="sd-section">
     <div class="sd-label">Today's literature</div>
     <div id="sd-feed"></div>
   </div>
+  <div class="sd-section">
+    <div class="sd-label">Functional medicine</div>
+    <div id="sd-resources"></div>
+  </div>
   <div class="sd-footer">
     <a href="TESTING_STRATEGY.md" target="_blank">full strategy →</a>
-    &nbsp;·&nbsp; 11 phenotypes · 50 tests · daily-refreshed feed
+    &nbsp;·&nbsp; 11 types · 50 tests · daily feed
   </div>
 </div>
 
@@ -1007,6 +1105,7 @@ window.addEventListener('error', (e) => {
 const DATA     = __DATA__;
 const PROFILES = __PROFILES__;        // [{k, label}, ...] index = bit
 const INTAKE   = __INTAKE_FEED__;     // recent PubMed candidates from cron
+const STARTERS = __STARTERS__;        // curated must-have/high-end/budget + foundation + types + resources
 
 // ── canvas + DPR ───────────────────────────────────────────────────
 const canvas = document.getElementById('c');
@@ -1923,81 +2022,141 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
 }
 
 // ── START-HERE LEFT DOCK ─────────────────────────────────────────────
-// Populate the always-visible action surface: top 5 starter tests
-// (cheapest direct-to-consumer Tier 1 first) + today's literature feed.
-// Clicking a test pans the graph to that node + opens its hover detail.
+// Always-visible action surface. Curated sections in priority order:
+// (1) Types of autism — click any to open its action card
+// (2) Must-have tests — the 5 panels every FM doc orders first
+// (3) Universal foundation — 5 interventions that cross all phenotypes
+// (4) High-end full workup — for moms who can afford the premium tier
+// (5) Budget entry — DTC affordable starting point
+// (6) Today's literature — daily-refreshed PubMed scanner output
+// (7) Functional medicine resources — MAPS / ARI / Walsh
 (function() {
-  const sdTests = document.getElementById('sd-tests');
-  const sdFeed  = document.getElementById('sd-feed');
-  if (!sdTests || !sdFeed) return;
-
-  // Score tests by leverage: T1 > T2 > T3; DTC-friendly first;
-  // low-cost first within tier.
-  const tierWeight = (tr) => (
-    tr === 'T1' ? 4 : tr === 'T2' ? 3 : tr === 'T3' ? 1 : tr === 'T4' ? 0.5 : 2
-  );
-  const starters = DATA.nodes
-    .filter(n => n.t === 'T')
-    .map(n => ({
-      n,
-      score: tierWeight(n.tr) * 100 + (n.dtc ? 20 : 0) -
-             (parseFloat(n.cl) || 9999) / 100,
-    }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 5)
-    .map(x => x.n);
-
-  for (const t of starters) {
-    const dtcPill = t.dtc
-      ? '<span class="sd-pill gold">DTC</span>'
-      : (t.rx ? '<span class="sd-pill">Rx</span>' : '');
-    const tierPill = t.tr ? '<span class="sd-pill">' + t.tr + '</span>' : '';
-    const cost = t.cl
-      ? '$' + t.cl + (t.ch && t.ch !== t.cl ? '-' + t.ch : '')
-      : '';
-    const meta = [t.pr, t.sm, cost, t.td ? t.td + 'd' : '']
-                 .filter(Boolean).join(' · ');
-    const item = document.createElement('div');
-    item.className = 'sd-test';
-    item.innerHTML =
-      '<div class="sd-test-name">' + t.l + dtcPill + tierPill + '</div>' +
-      '<span class="sd-test-meta">' + meta + '</span>';
-    // Click to focus this test node on the map
-    item.addEventListener('click', () => {
-      const node = nodes.find(x => x.id === t.id);
-      if (node) {
-        targetOx = -node.x * scale;
-        targetOy = -node.y * scale;
-        targetScale = 1.8;
-        pulses.push({node: node, t: 0, dur: 2.2});
-      }
-    });
-    sdTests.appendChild(item);
+  // Helper: focus the map on a node (pan + zoom + pulse it)
+  function focusNode(id) {
+    const node = nodes.find(x => x.id === id);
+    if (!node) return;
+    targetOx = -node.x * scale;
+    targetOy = -node.y * scale;
+    targetScale = 1.8;
+    pulses.push({node: node, t: 0, dur: 2.2});
   }
 
-  // Today's literature feed — pull from the same intake JSON
-  if (INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
-    const tagLabels = {
-      'P': 'predisposition', 'E': 'exposure', 'M': 'mechanism',
-      'PHI': 'phenotype', 'SYNTHESIS': 'RCT/meta',
-    };
-    for (const c of INTAKE.candidates.slice(0, 5)) {
-      const tagShort = (c.intake_tag || '?').substring(0, 3);
-      const tagFull = tagLabels[c.intake_tag] || c.intake_tag;
+  // Helper: render a list of test nodes into a container
+  function renderTestList(containerId, ids) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    for (const tid of ids) {
+      const t = DATA.nodes.find(n => n.id === tid);
+      if (!t) continue;
+      const dtcPill = t.dtc ? '<span class="sd-pill gold">DTC</span>' :
+                      (t.rx ? '<span class="sd-pill">Rx</span>' : '');
+      const tierPill = t.tr ? '<span class="sd-pill">' + t.tr + '</span>' : '';
+      const cost = t.cl
+        ? '$' + t.cl + (t.ch && t.ch !== t.cl ? '-' + t.ch : '')
+        : '';
+      const meta = [t.pr, t.sm, cost, t.td ? t.td + 'd' : '']
+                   .filter(Boolean).join(' · ');
       const item = document.createElement('div');
-      item.className = 'sd-feed';
+      item.className = 'sd-test';
       item.innerHTML =
-        '<span class="sd-feed-tag" title="' + tagFull + '">' +
-        '[' + tagShort + ']' + '</span>' +
-        (c.title || '').substring(0, 80) +
-        (c.first_author ? ' <span style="color:var(--text-vmute);">· ' +
-                          c.first_author + '</span>' : '');
-      sdFeed.appendChild(item);
+        '<div class="sd-test-name">' + t.l + dtcPill + tierPill + '</div>' +
+        '<span class="sd-test-meta">' + meta + '</span>';
+      item.addEventListener('click', () => focusNode(t.id));
+      container.appendChild(item);
     }
-  } else {
-    sdFeed.innerHTML = '<div class="sd-feed">' +
-      '<span class="sd-feed-tag">[ — ]</span>' +
-      'Intake feed refreshing. Daily scan runs at 07:00 UTC.</div>';
+  }
+
+  // (1) Types of autism — clickable list opens phenotype action card
+  const typesEl = document.getElementById('sd-types');
+  if (typesEl) {
+    for (const pid of STARTERS.types) {
+      const phe = DATA.nodes.find(n => n.id === pid.id);
+      if (!phe) continue;
+      const item = document.createElement('div');
+      item.className = 'sd-test';
+      item.innerHTML = '<div class="sd-test-name">' + pid.label + '</div>' +
+                       '<span class="sd-test-meta">' + pid.id + '</span>';
+      item.addEventListener('click', () => {
+        // Pan to phenotype + open action card
+        focusNode(pid.id);
+        // Defer reveal so the pan completes first
+        setTimeout(() => revealForPhenotype(phe), 320);
+      });
+      typesEl.appendChild(item);
+    }
+  }
+
+  // (2) Must-have tests
+  renderTestList('sd-musthave', STARTERS.must_have);
+
+  // (3) Universal foundation — interventions across all phenotypes
+  const foundEl = document.getElementById('sd-foundation');
+  if (foundEl) {
+    for (const iid of STARTERS.foundation) {
+      const i = DATA.nodes.find(n => n.id === iid);
+      if (!i) continue;
+      const dosePill = i.rg ? '<span class="sd-pill">' + i.rg + '</span>' : '';
+      const cost = i.co ? '$' + i.co + '/mo' : '';
+      const meta = [i.c, i.do, cost].filter(Boolean).join(' · ');
+      const item = document.createElement('div');
+      item.className = 'sd-test';
+      item.innerHTML =
+        '<div class="sd-test-name">' + i.l + dosePill + '</div>' +
+        '<span class="sd-test-meta">' + meta + '</span>';
+      item.addEventListener('click', () => focusNode(i.id));
+      foundEl.appendChild(item);
+    }
+  }
+
+  // (4) High-end full workup
+  renderTestList('sd-highend', STARTERS.high_end);
+
+  // (5) Budget entry
+  renderTestList('sd-budget', STARTERS.budget);
+
+  // (6) Today's literature feed
+  const sdFeed = document.getElementById('sd-feed');
+  if (sdFeed) {
+    if (INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
+      const tagLabels = {
+        'P': 'predisposition', 'E': 'exposure', 'M': 'mechanism',
+        'PHI': 'phenotype', 'SYNTHESIS': 'RCT/meta',
+      };
+      for (const c of INTAKE.candidates.slice(0, 5)) {
+        const tagShort = (c.intake_tag || '?').substring(0, 3);
+        const tagFull = tagLabels[c.intake_tag] || c.intake_tag;
+        const item = document.createElement('div');
+        item.className = 'sd-feed';
+        item.innerHTML =
+          '<span class="sd-feed-tag" title="' + tagFull + '">' +
+          '[' + tagShort + ']' + '</span>' +
+          (c.title || '').substring(0, 80) +
+          (c.first_author ? ' <span style="color:var(--text-vmute);">· ' +
+                            c.first_author + '</span>' : '');
+        sdFeed.appendChild(item);
+      }
+    } else {
+      sdFeed.innerHTML = '<div class="sd-feed">' +
+        '<span class="sd-feed-tag">[ — ]</span>' +
+        'Intake feed refreshing. Daily scan runs at 07:00 UTC.</div>';
+    }
+  }
+
+  // (7) FM resources — external links to credible canon
+  const sdRes = document.getElementById('sd-resources');
+  if (sdRes && STARTERS.resources) {
+    for (const r of STARTERS.resources) {
+      const tierPill = r.tier ? '<span class="sd-pill">' + r.tier + '</span>' : '';
+      const item = document.createElement('div');
+      item.className = 'sd-test';
+      item.innerHTML =
+        '<div class="sd-test-name">' +
+        '<a href="' + r.url + '" target="_blank" rel="noopener" ' +
+        'style="color:var(--text);text-decoration:none;">' + r.name + '</a>' +
+        tierPill + '</div>' +
+        '<span class="sd-test-meta">' + r.what + '</span>';
+      sdRes.appendChild(item);
+    }
   }
 })();
 </script>
@@ -2044,6 +2203,17 @@ if intake_jsons:
     except Exception:
         pass
 
+# Build the STARTERS payload — curated lists + autism-type labels
+starters_payload = {
+    "must_have": MUST_HAVE_TEST_IDS,
+    "high_end":  HIGH_END_TEST_IDS,
+    "budget":    BUDGET_TEST_IDS,
+    "foundation": UNIVERSAL_FOUNDATION_INT_IDS,
+    "types": [{"id": pid, "label": label}
+              for pid, label in AUTISM_TYPE_LABELS.items()],
+    "resources": FM_RESOURCES,
+}
+
 html = (HTML
         .replace("__N_NODES__", str(stats["n_nodes"]))
         .replace("__N_LINKS__", str(stats["n_links"]))
@@ -2064,7 +2234,9 @@ html = (HTML
         .replace("__PROFILES__",
                  json.dumps(profile_info, separators=(",", ":")))
         .replace("__INTAKE_FEED__",
-                 json.dumps(intake_feed_for_js, separators=(",", ":"))))
+                 json.dumps(intake_feed_for_js, separators=(",", ":")))
+        .replace("__STARTERS__",
+                 json.dumps(starters_payload, separators=(",", ":"))))
 
 OUT.write_text(html)
 print(f"wrote {OUT} ({OUT.stat().st_size//1024} KB)")
