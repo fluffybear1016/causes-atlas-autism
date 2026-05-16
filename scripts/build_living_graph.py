@@ -613,9 +613,31 @@ for t in sorted(tests_sorted, key=lambda r: r.get("test_id", "")):
     # HSA/FSA eligibility, self-pay range. This is how families
     # actually pay for FM-autism care at scale.
     bill = billing_by_entity.get(tid, {})
+
+    # Classify collection mode: at-home (mouth swab, finger prick, urine,
+    # stool, hair, dried-blood-spot) vs clinic (venipuncture). High-agency
+    # moms strongly prefer at-home — comfort + scientific integrity at scale.
+    sm_raw = (t.get("sample_type", "") or "").lower()
+    AT_HOME_SAMPLES = (
+        "saliva", "urine", "stool", "hair", "buccal", "swab",
+        "dried_blood_spot", "dried_urine", "breath", "wearable",
+        "upload",
+    )
+    CLINIC_SAMPLES = (
+        "serum", "plasma", "blood", "marrow", "eeg",
+    )
+    is_at_home = any(k in sm_raw for k in AT_HOME_SAMPLES) and \
+                 not any(k in sm_raw for k in CLINIC_SAMPLES)
+    # Hybrid (e.g. "blood_or_saliva") → mark hybrid so mom sees "at-home option available"
+    is_hybrid = (
+        any(k in sm_raw for k in AT_HOME_SAMPLES) and
+        any(k in sm_raw for k in CLINIC_SAMPLES)
+    )
+    collection_mode = "at-home" if is_at_home else ("hybrid" if is_hybrid else "clinic")
+
     add_node(tid, "T", t.get("test_name", "") or tid, size, extra={
         "pr": (t.get("provider", "") or "")[:48],
-        "sm": (t.get("sample_type", "") or "")[:20],
+        "sm": (t.get("sample_type", "") or "")[:24],
         "cl": t.get("cost_usd_low", ""),
         "ch": t.get("cost_usd_high", ""),
         "td": t.get("turnaround_days", ""),
@@ -625,7 +647,10 @@ for t in sorted(tests_sorted, key=lambda r: r.get("test_id", "")):
         "wm": (t.get("what_it_measures", "") or "")[:140],
         "uc": (t.get("specific_use_cases", "") or "")[:120],
         "wr": (t.get("what_results_indicate", "") or "")[:160],
-        "mi": mi_list,   # mapped intervention IDs
+        "mi": mi_list,
+        # Order + collection mode
+        "or": (t.get("source_url", "") or "")[:200],
+        "cm": collection_mode,
         # Billing
         "cpt": (bill.get("cpt_codes") or "")[:80],
         "icd": (bill.get("icd10_anchor") or "")[:30],
@@ -1547,7 +1572,16 @@ function renderActionCardForTest(test) {
       provider + ' · ' + sample + ' · ' + cost +
       (turnaround ? ' · ' + turnaround : '') +
       '  ' + dtcPill + tierPill +
+      // Collection mode badge — at-home / hybrid / clinic
+      (test.cm === 'at-home'
+        ? '<span class="pill gold" style="margin-left:6px;">at-home</span>'
+        : test.cm === 'hybrid'
+          ? '<span class="pill gold" style="margin-left:6px;">at-home option</span>'
+          : '<span class="pill" style="margin-left:6px;">clinic draw</span>') +
     '</div>' +
+    // Action row — ORDER + BILL links. The actionable bridge from
+    // "I see this test" to "I'm ordering it now."
+    renderOrderRow(test) +
     (wm ? '<div class="ac-row">' +
       '<div class="ac-label">Measures</div>' +
       '<div class="ac-content">' + wm + '</div>' +
@@ -1583,6 +1617,49 @@ function renderActionCardForTest(test) {
   revealedPhenotype = test;
   revealedSet = new Set([test.id, ...topInts.map(n => n.id),
                                   ...foundationNodes.slice(0,3).map(n => n.id)]);
+}
+
+// Helper: render the action row — ORDER button + BILL-via-insurance link.
+// Makes the test card fully transactional: see it, order it, bill it.
+function renderOrderRow(test) {
+  const orderUrl = test.or || '';
+  const ins = (test.ins || '').toLowerCase();
+  const cpt = test.cpt || '';
+  const insuranceFriendly = ins.indexOf('covered') >= 0 &&
+                            ins.indexOf('never') < 0 &&
+                            ins.indexOf('rarely') < 0;
+  let html = '<div class="ac-row">' +
+    '<div class="ac-label">Get it</div>' +
+    '<div class="ac-content" style="display:flex;flex-wrap:wrap;gap:8px;">';
+  if (orderUrl) {
+    const ctaLabel = test.dtc ? 'order direct →' : 'provider page →';
+    html += '<a href="' + orderUrl + '" target="_blank" rel="noopener" ' +
+            'style="display:inline-block;padding:7px 14px;' +
+            'background:var(--gold);color:var(--void);' +
+            'font-family:ui-monospace,monospace;font-size:10.5px;' +
+            'letter-spacing:0.18em;text-transform:uppercase;' +
+            'text-decoration:none;border-radius:2px;">' + ctaLabel + '</a>';
+  }
+  if (insuranceFriendly && cpt) {
+    html += '<a href="BILLING_STRATEGY.md" target="_blank" rel="noopener" ' +
+            'style="display:inline-block;padding:7px 14px;' +
+            'background:transparent;border:1px solid var(--gold-dim);' +
+            'color:var(--gold);font-family:ui-monospace,monospace;' +
+            'font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;' +
+            'text-decoration:none;border-radius:2px;">' +
+            'bill via insurance →</a>';
+  }
+  if ((test.hsa || '').toLowerCase().startsWith('yes')) {
+    html += '<a href="BILLING_STRATEGY.md#path-2-hsa-fsa" target="_blank" ' +
+            'rel="noopener" style="display:inline-block;padding:7px 14px;' +
+            'background:transparent;border:1px solid var(--gold-dim);' +
+            'color:var(--gold);font-family:ui-monospace,monospace;' +
+            'font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;' +
+            'text-decoration:none;border-radius:2px;">' +
+            'pay with HSA/FSA →</a>';
+  }
+  html += '</div></div>';
+  return html;
 }
 
 // Helper: render the insurance/HSA-FSA billing row for a test action card.
@@ -2343,6 +2420,11 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       const dtcPill = t.dtc ? '<span class="sd-pill gold">DTC</span>' :
                       (t.rx ? '<span class="sd-pill">Rx</span>' : '');
       const tierPill = t.tr ? '<span class="sd-pill">' + t.tr + '</span>' : '';
+      const homePill = t.cm === 'at-home'
+        ? '<span class="sd-pill gold">at-home</span>'
+        : t.cm === 'hybrid'
+          ? '<span class="sd-pill">at-home option</span>'
+          : '';
       const cost = t.cl
         ? '$' + t.cl + (t.ch && t.ch !== t.cl ? '-' + t.ch : '')
         : '';
@@ -2351,11 +2433,10 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       const item = document.createElement('div');
       item.className = 'sd-test';
       item.innerHTML =
-        '<div class="sd-test-name">' + t.l + dtcPill + tierPill + '</div>' +
+        '<div class="sd-test-name">' + t.l + homePill + dtcPill + tierPill + '</div>' +
         '<span class="sd-test-meta">' + meta + '</span>';
       item.addEventListener('click', () => {
         focusNode(t.id);
-        // Pan completes ~320ms; defer reveal so motion + card don't collide
         const liveNode = nodes.find(n => n.id === t.id);
         setTimeout(() => renderActionCardForTest(liveNode || t), 320);
       });
