@@ -4122,6 +4122,13 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
         const zygPill = v.zygosity === 'hom'
           ? 'homozygous'
           : v.zygosity === 'het' ? 'heterozygous' : v.zygosity;
+        // Source attribution: IntellxxDNA variants get OR + provenance
+        const srcLine = v.source
+          ? '<div style="font-family:ui-monospace,monospace;font-size:9.5px;letter-spacing:0.18em;color:var(--text-vmute);text-transform:uppercase;margin-top:6px;">source: ' + v.source +
+            (v.oddsRatio ? ' · OR ' + v.oddsRatio.toFixed(2) : '') +
+            (v.prevalence ? ' · prevalence ' + v.prevalence : '') +
+            '</div>'
+          : '';
         return (
           '<div class="r-variant ' + sev + '">' +
             '<div class="r-var-head">' +
@@ -4135,6 +4142,7 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
             rowFor('Consider', consider, 'atlas') +
             rowFor('Avoid', v.avoid) +
             rowFor('Lifestyle', v.lifestyle) +
+            srcLine +
           '</div>'
         );
       }).join('');
@@ -4526,8 +4534,10 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
   }
 
   bwSave.addEventListener('click', () => {
-    const out = {};
-    let any = false;
+    // Preserve any biomarkers extracted from PDFs that aren't in the form
+    // (e.g. OAT organic acids, raw Ulta labels). Merge form values on top.
+    const out = JSON.parse(localStorage.getItem('cwa_biomarkers_v1') || '{}');
+    let any = Object.keys(out).length > 0;
     for (const f of BIOMARKER_FIELDS) {
       const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
       if (!input || !input.value) continue;
@@ -4539,6 +4549,8 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       flagInput(input, flag);
       out[f.k] = {
         value: v, unit: f.u, flag, label: f.l,
+        refRange: f.rL + '-' + f.rH,
+        source: 'manual entry',
         nodeId: findBiomarkerNodeId(f)
       };
       any = true;
@@ -4634,46 +4646,81 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
         return;
       }
       const result = extractFromText(allText);
+      // Pretty doc-type label for the status line
+      const docTypeLabel = ({
+        intellxx: 'IntellxxDNA genomics report',
+        truhealth: 'TruHealth epigenetic report',
+        metabolomics: 'Diagnostic Solutions OMX metabolomics',
+        ulta: 'Ulta Lab Tests / Quest blood work',
+        quest_or_labcorp: 'Quest / LabCorp blood work',
+        '23andme_report': '23andMe health report',
+        galleri: 'Galleri (cfDNA methylation)',
+        generic: 'general PDF'
+      })[result.docType] || result.docType;
       const summary = [
+        'detected: ' + docTypeLabel,
         files.length + ' PDF' + (files.length>1?'s':''),
         totalPages + ' pages',
         result.bioCount + ' biomarker' + (result.bioCount===1?'':'s'),
-        result.geneCount + ' gene mention' + (result.geneCount===1?'':'s'),
+        result.geneCount + ' gene' + (result.geneCount===1?'':'s'),
+        result.matchedVariants.length + ' variant' + (result.matchedVariants.length===1?'':'s')
       ].join(' · ');
-      pdfStatus.textContent = summary +
-        (result.bioCount || result.geneCount ? ' · generating your report…' : '');
-      // If genes were found in the PDF, merge into genetics store
-      if (result.geneCount > 0) {
+      pdfStatus.textContent = summary;
+
+      // TruHealth fallback — empty extraction means font-encoding bug
+      if (result.docType === 'truhealth' && result.bioCount === 0) {
+        pdfStatus.classList.add('err');
+        pdfStatus.textContent = 'TruHealth PDFs use font-subset encoding that this parser can\'t fully read. We detected the format but couldn\'t extract values automatically. Please enter your key markers (Vitamin A, B-vitamins, Toxins, Stress, etc.) manually in the Blood Work tab.';
+        return;
+      }
+
+      // Merge matched genes into genetics store
+      if (result.geneCount > 0 || result.matchedVariants.length > 0) {
         const existing = JSON.parse(localStorage.getItem('cwa_genetics_v1') || 'null') || {
-          format: 'PDF report', uploadedAt: Date.now(), variantCount: 0, matchedGenes: []
+          format: docTypeLabel, uploadedAt: Date.now(),
+          variantCount: 0, matchedGenes: [], matchedVariants: []
         };
-        const set = new Set(existing.matchedGenes);
-        for (const gid of result.matchedGenes) set.add(gid);
-        existing.matchedGenes = Array.from(set);
-        existing.format = existing.format === 'PDF report'
-          ? 'PDF report' : existing.format + ' + PDF report';
+        const gset = new Set(existing.matchedGenes);
+        for (const gid of result.matchedGenes) gset.add(gid);
+        existing.matchedGenes = Array.from(gset);
+        // Dedup variants by gene+effect signature
+        const vSeen = new Set(
+          (existing.matchedVariants || []).map(v => v.gene + '|' + v.genotype + '|' + (v.oddsRatio || ''))
+        );
+        const merged = (existing.matchedVariants || []).slice();
+        for (const v of result.matchedVariants) {
+          const sig = v.gene + '|' + v.genotype + '|' + (v.oddsRatio || '');
+          if (vSeen.has(sig)) continue;
+          vSeen.add(sig);
+          merged.push(v);
+        }
+        merged.sort((a, b) =>
+          (b.severity || 0) - (a.severity || 0) ||
+          (b.oddsRatio || 0) - (a.oddsRatio || 0));
+        existing.matchedVariants = merged;
         existing.uploadedAt = Date.now();
+        existing.format = docTypeLabel;
         saveGenetics(existing);
       }
-      // If biomarkers were extracted, auto-save them (use form values that were just pre-filled)
+
+      // Auto-save extracted biomarkers (both form-mapped and arbitrary)
       if (result.bioCount > 0) {
-        // collect values from the now-pre-filled form
-        const out = {};
-        for (const f of BIOMARKER_FIELDS) {
-          const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
-          if (!input || !input.value) continue;
-          const v = parseFloat(input.value);
-          if (Number.isNaN(v)) continue;
-          let flag = 'normal';
-          if (v < f.rL) flag = 'low';
-          else if (v > f.rH) flag = 'high';
-          flagInput(input, flag);
-          out[f.k] = { value: v, unit: f.u, flag, label: f.l, nodeId: findBiomarkerNodeId(f) };
+        const out = JSON.parse(localStorage.getItem('cwa_biomarkers_v1') || '{}');
+        for (const b of result.biomarkers) {
+          out[b.key] = {
+            value: b.value, unit: b.unit, flag: b.flag,
+            label: b.label, refRange: b.refRange,
+            source: b.source,
+            nodeId: findBiomarkerNodeIdByLabel(b.label)
+          };
         }
         saveBiomarkers(out);
       }
-      if (result.bioCount > 0 || result.geneCount > 0) {
+      if (result.bioCount > 0 || result.geneCount > 0 || result.matchedVariants.length > 0) {
         setTimeout(() => window.__showReportAfterSave && window.__showReportAfterSave(), 1100);
+      } else {
+        pdfStatus.classList.add('err');
+        pdfStatus.textContent = summary + ' — nothing matched. Try a different file or use the blood-work form.';
       }
     } catch (err) {
       pdfStatus.classList.add('err');
@@ -4681,33 +4728,435 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     }
   }
 
-  // Shared extraction logic — runs against any text blob.
-  // Returns: { bioCount, geneCount, matchedGenes }
-  function extractFromText(text) {
-    let bioCount = 0;
+  // Helper: find biomarker node by free-text label (handles arbitrary
+  // extracted labels like "Hydroxykynurenine" that aren't in the curated form)
+  function findBiomarkerNodeIdByLabel(label) {
+    if (!label) return null;
+    const lc = label.toLowerCase();
+    if (bioByLabel[lc]) return bioByLabel[lc];
+    // try substring match
+    for (const bk of Object.keys(bioByLabel)) {
+      if (bk.indexOf(lc) >= 0 || lc.indexOf(bk) >= 0) return bioByLabel[bk];
+    }
+    return null;
+  }
+
+  // ── DOCUMENT-TYPE CLASSIFIER ────────────────────────────────────
+  // Detects the report provider from text signatures and dispatches
+  // to a format-specific parser. Critical because one regex on
+  // everything produces nonsense readings ("Copper 2000 μg/dL").
+  function detectDocType(text) {
+    const head = text.slice(0, 4000);
+    if (/IntellxxDNA|Intelligent\s+Science\.\s+Intelligent\s+Living|IXXD/i.test(head)) return 'intellxx';
+    if (/TruHealth|TruDiagnostic|trudiagnostic\.com/i.test(head)) return 'truhealth';
+    if (/Diagnostic\s+Solutions\s+Laboratory|nmol\/mg\s+Creatinine|METABOLOMIC\s+SIGNATURE|OMX\s+Urine/i.test(text.slice(0, 8000))) return 'metabolomics';
+    if (/Ulta\s+Lab\s+Tests|UltaLabTests\.com/i.test(head)) return 'ulta';
+    if (/Quest\s+Diagnostics|LabCorp|Laboratory\s+Corporation/i.test(head)) return 'quest_or_labcorp';
+    if (/23andMe|raw\s+genetic\s+data/i.test(head)) return '23andme_report';
+    if (/Galleri|methylated\s+cfDNA/i.test(head)) return 'galleri';
+    return 'generic';
+  }
+
+  // ── INTELLXXDNA PARSER ──────────────────────────────────────────
+  // Pattern: GENE  ALLELE  PREVALENCE%  N_VARIANTS  ODDS_RATIO
+  // Sample/template genes shown in the intro pages are skipped.
+  // Each real variant becomes a matchedVariant with the OR translated
+  // into severity (OR >= 2 = sev 3, 1.5-2 = sev 2, 1-1.5 = sev 1, <1 = benefit).
+  const INTELLXX_SAMPLE_GENES = new Set(['TIMP2','FGG','CETP','5HT2A','GABRA2']);
+  // Curated interpretations for IntellxxDNA's high-impact variants.
+  // Where the source PDF has its own recommendations we surface them
+  // alongside our atlas-based notes. Conservative claims; clinician-bound.
+  const INTELLXX_NOTES = {
+    'F5':   { name:'Factor V Leiden', role:'Coagulation',
+              detail:'Heritable hypercoagulability. Significantly increased clotting risk; affects surgical and pregnancy management.',
+              consider:['Nattokinase','Lumbrokinase','Pycnogenol','Discuss anticoagulation w/ clinician'],
+              avoid:['Estrogen / oral contraceptives (contraindicated)','Corticosteroids without clinician oversight','Prolonged immobility'],
+              lifestyle:['Compression stockings on long flights','Hydration','Surgical prophylaxis required'] },
+    'F11':  { name:'Factor XI', role:'Coagulation',
+              detail:'Modulates thrombin generation. Elevation increases clotting risk; protective allele exists.',
+              consider:['Nattokinase, lumbrokinase, bromelain','Curcumin','Vitamin E'] },
+    'IL6':  { name:'Interleukin-6', role:'Pro-inflammatory cytokine',
+              detail:'IL-6 upregulation phenotype; platelet activation and inflammatory load.',
+              consider:['Curcumin','Resveratrol','Omega-3 DHA','Pycnogenol','Berberine'],
+              lifestyle:['Anti-inflammatory diet','Stress regulation','Quality sleep'] },
+    'ABO':  { name:'ABO Blood Group', role:'Hematology',
+              detail:'Non-O blood types associate with higher Von Willebrand factor and stickier platelets.',
+              consider:['Pycnogenol, curcumin, bromelain, rutin, luteolin','Nattokinase'] },
+    'SERPINC1':{ name:'Antithrombin III', role:'Coagulation',
+              detail:'Lower antithrombin → higher fibrin and clotting tendency.',
+              consider:['Pycnogenol','Nattokinase','Quercetin','Curcumin'] },
+    'TNF':  { name:'TNF-α', role:'Pro-inflammatory cytokine',
+              detail:'Materially higher inflammatory cytokine output.',
+              consider:['Curcumin','Resveratrol','Omega-3','Boswellia'],
+              avoid:['Heavy seed oil intake'] },
+    'IL1A': { name:'Interleukin-1α', role:'Inflammation',
+              detail:'Higher IL-1α expression; relevant for chronic inflammatory states.',
+              consider:['Curcumin','Quercetin','Omega-3'] },
+    'IL1B': { name:'Interleukin-1β', role:'Inflammation',
+              detail:'Higher IL-1β; NLRP3 inflammasome relevance.',
+              consider:['Curcumin','Sulforaphane','Quercetin'] },
+    'IL33': { name:'Interleukin-33', role:'Alarmin / mucosal immunity',
+              detail:'IL-33 modulation; allergic/asthma + tissue-repair relevance.' },
+    'IL1RL1':{ name:'IL-33 receptor (ST2)', role:'Inflammation receptor' },
+    'ICAM1':{ name:'ICAM-1', role:'Vascular adhesion',
+              detail:'Endothelial adhesion molecule; cardiovascular and inflammatory.' },
+    'TOMM40':{ name:'TOMM40', role:'Mitochondrial import + APOE-linked',
+              detail:'Tightly linked to APOE locus; relevant for cognitive aging.',
+              consider:['DHA-rich omega-3','Mediterranean-leaning diet','Aerobic exercise'] },
+    'GCLC': { name:'Glutamate-cysteine ligase', role:'Glutathione synthesis',
+              detail:'Rate-limiting for glutathione synthesis. Variants impair detox + redox.',
+              consider:['NAC 600-1200 mg','Liposomal glutathione','Sulforaphane (broccoli sprouts)','Glycine + cysteine + glutamine'] },
+    'GPX1': { name:'Glutathione peroxidase 1', role:'Antioxidant · selenium-dependent',
+              detail:'Variants reduce peroxide clearance.',
+              consider:['Selenium 100-200 mcg (brazil nuts)','NAC','Vitamin E mixed tocopherols'] },
+    'CFH':  { name:'Complement Factor H', role:'AMD / complement regulation',
+              detail:'Y402H variant raises age-related macular degeneration risk substantially.',
+              consider:['Lutein 10 mg + Zeaxanthin 2 mg','Omega-3 DHA','Zinc 25 mg + copper 2 mg'],
+              lifestyle:['UV-protective eyewear','Smoking cessation','Annual eye exam'] },
+    'STAT3':{ name:'STAT3', role:'JAK-STAT inflammatory signaling' },
+    'CYP1A2':{ name:'CYP1A2', role:'Caffeine + xenobiotic metabolism',
+              detail:'Slow metabolizer phenotype; caffeine half-life extended.',
+              avoid:['Excess caffeine','High char-grilled meat'] },
+    'CYP19A1':{ name:'Aromatase', role:'Estrogen biosynthesis' },
+    'NOS3': { name:'Endothelial NOS', role:'Nitric oxide / vascular',
+              detail:'Reduced eNOS activity; cardiovascular endothelial relevance.',
+              consider:['Beetroot / dietary nitrate','L-arginine + L-citrulline','Pycnogenol'] },
+    'TCF7L2':{ name:'TCF7L2', role:'Wnt / insulin secretion',
+              detail:'Strong T2D risk variant. Insulin sensitivity matters more than usual.',
+              consider:['Berberine 500 mg 2-3x','Inositol','Cinnamon'],
+              lifestyle:['Continuous glucose monitoring trial','Resistance training','Low-glycemic eating'] },
+    'KCNJ11':{ name:'KCNJ11', role:'Pancreatic K-ATP channel · diabetes' },
+    'KCNQ1':{ name:'KCNQ1', role:'Cardiac K+ channel · long-QT / diabetes' },
+    'ADIPOQ':{ name:'Adiponectin', role:'Insulin sensitivity adipokine' },
+    'PPARGC1A':{ name:'PGC-1α', role:'Mitochondrial biogenesis',
+              detail:'Master regulator of mitochondrial biogenesis. Variants reduce mito quality + endurance capacity.',
+              consider:['CoQ10 100-200 mg','PQQ 20 mg','Resveratrol','Cold exposure (mito biogenesis cue)'],
+              lifestyle:['Zone-2 cardio (mito biogenesis)','Resistance training','Adequate sleep'] },
+    'IGF1': { name:'IGF-1', role:'Growth factor / longevity tradeoff' },
+    'SLC30A8':{ name:'Zinc transporter 8', role:'Pancreatic β-cell zinc handling' },
+    'LEPR': { name:'Leptin receptor', role:'Satiety / energy balance' },
+    'MC1R': { name:'Melanocortin-1 receptor', role:'Pigment + sun sensitivity',
+              detail:'Variants associated with fair skin, melanoma risk, anesthesia sensitivity.',
+              consider:['Vitamin D (sun-conscious)','Polypodium leucotomos'],
+              lifestyle:['Strict sun protection','Annual skin check'] },
+    'ZFHX3':{ name:'ZFHX3', role:'Atrial fibrillation / cardiac' },
+    'PEMT': { name:'PEMT', role:'Choline / phosphatidylcholine synthesis',
+              detail:'Variants increase choline requirements; relevant for liver and brain.',
+              consider:['Choline 425-550 mg','Phosphatidylcholine','Eggs'] },
+    'PICALM':{ name:'PICALM', role:'Endocytosis · cognitive aging' },
+    'CLPTM1L':{ name:'CLPTM1L', role:'Telomerase / lung cancer risk' },
+    'ENPP1':{ name:'ENPP1', role:'Insulin signaling' },
+    'FOXO3':{ name:'FOXO3', role:'Longevity transcription factor' },
+    'GCLM': { name:'Glutamate-cysteine ligase modifier', role:'Glutathione synthesis cofactor' },
+    'PON1': { name:'Paraoxonase 1', role:'Organophosphate detox',
+              detail:'Variants alter pesticide and lipid-peroxide clearance.',
+              avoid:['Pesticide-treated produce (EWG dirty dozen)','Lawn chemicals'],
+              consider:['Mediterranean diet','Quercetin'] },
+    'STAT1':{ name:'STAT1', role:'Interferon signaling' },
+    'C677T':{ name:'MTHFR C677T', role:'Folate cycle (alias label, see MTHFR)' },
+    'V158M':{ name:'COMT V158M', role:'Catecholamine clearance (alias label)' },
+    'A16V': { name:'SOD2 A16V', role:'Mitochondrial SOD2 (alias label)' },
+    'Y402H':{ name:'CFH Y402H', role:'AMD complement (alias label)' },
+    'I405V':{ name:'CETP I405V', role:'HDL / longevity (alias label)' }
+  };
+
+  function parseIntellxxDNA(text) {
+    const variants = [];
+    const matchedGenes = new Set();
+    // Strict table-row pattern: GENE_TOKEN  ALLELE  PREVALENCE%  N_VARIANTS  ODDS_RATIO
+    const re = /\b([A-Z][A-Z0-9]{1,9})\s+([ACGT])\s+(\d+(?:\.\d+)?\s*%?)\s+(\d+)\s+(\d+\.\d+)\b/g;
+    const seen = new Set();
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      const gene = m[1];
+      const allele = m[2];
+      const prevalence = m[3];
+      const nVars = parseInt(m[4], 10);
+      const odds = parseFloat(m[5]);
+      if (INTELLXX_SAMPLE_GENES.has(gene)) continue;
+      if (odds < 0 || odds > 50) continue;       // sanity
+      if (nVars > 4 || nVars < 1) continue;
+      const key = gene + ':' + allele + ':' + odds.toFixed(2);
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      // gene → atlas match
+      const gid = geneByLabel[gene];
+      if (gid) matchedGenes.add(gid);
+
+      // severity from odds ratio
+      let severity;
+      if (odds >= 2.5)      severity = 3;
+      else if (odds >= 1.5) severity = 2;
+      else if (odds >= 1.0) severity = 1;
+      else                  severity = 0; // benefit (skip from report unless we want to show)
+
+      const interp = INTELLXX_NOTES[gene] || null;
+      // Build variant object — preserve OR for transparency
+      variants.push({
+        rsid: '',
+        gene: gene,
+        name: (interp && interp.name) || gene,
+        role: (interp && interp.role) || '',
+        genotype: allele + ' allele',
+        zygosity: nVars === 2 ? 'hom' : nVars === 1 ? 'het' : '',
+        severity: severity,
+        effect: 'Odds ratio ' + odds.toFixed(2) + ' · ' + (
+          odds >= 2.5 ? 'significantly elevated risk' :
+          odds >= 1.5 ? 'moderately elevated risk' :
+          odds >= 1.0 ? 'mildly elevated risk' :
+                        'protective variant'),
+        detail: (interp && interp.detail) || '',
+        consider: (interp && interp.consider) || [],
+        avoid:    (interp && interp.avoid) || [],
+        lifestyle:(interp && interp.lifestyle) || [],
+        atlasInts:(interp && interp.atlasInts) || [],
+        source: 'IntellxxDNA',
+        oddsRatio: odds,
+        prevalence: prevalence,
+        variantCount: nVars
+      });
+    }
+    // Sort by severity desc, then by OR desc
+    variants.sort((a, b) =>
+      b.severity - a.severity ||
+      (b.oddsRatio || 0) - (a.oddsRatio || 0));
+    return { matchedGenes: Array.from(matchedGenes), matchedVariants: variants };
+  }
+
+  // ── ULTA / QUEST CLIA PARSER ───────────────────────────────────
+  // Pattern (per text extraction):
+  //   [BIOMARKER NAME] [VALUE] [optional L|H]
+  //   [date][ref range with units] [lab code]
+  // The L/H flag is EXPLICIT in the source — no need to invent heuristic flags.
+  const ULTA_LABEL_TO_FIELD = {
+    'cholesterol, total': 'cholesterol_total',
+    'triglycerides': 'trig',
+    'hdl cholesterol': 'hdl',
+    'ldl-cholesterol': 'ldl', 'ldl cholesterol': 'ldl',
+    'hs crp': 'crp', 'hs-crp': 'crp',
+    'glucose': 'glucose_f', 'fasting glucose': 'glucose_f',
+    'ast': 'ast', 'alt': 'alt',
+    'vitamin b6, plasma': 'b6', 'vitamin b6': 'b6',
+    'vitamin b12': 'b12',
+    'folate, serum': 'folate_rbc',
+    'immunoglobulin g': 'igg',
+    'interleukin 6 (il 6), serum': 'il6', 'il-6': 'il6',
+    'tnf alpha, highly sensitive': 'tnfa', 'tnf-alpha': 'tnfa',
+    'hemoglobin': 'hgb',
+    'mcv': 'mcv','mch':'mch','mchc':'mchc',
+    'rdw':'rdw','mpv':'mpv','platelet count':'plt',
+    'white blood cell count':'wbc','red blood cell count':'rbc',
+    'sodium':'na','potassium':'k','chloride':'cl','carbon dioxide':'co2',
+    'calcium':'ca','urea nitrogen (bun)':'bun','creatinine':'creat',
+    'egfr':'egfr','protein, total':'protein','albumin':'alb',
+    'globulin':'glb','bilirubin, total':'tbili','alkaline phosphatase':'alp'
+  };
+
+  // Map fields to display labels + units (so we can render any extracted
+  // biomarker even if it's not in the curated form list).
+  function parseUltaCLIA(text) {
+    const biomarkers = [];
+    // Match: LABEL VALUE [L|H]\n date REF_RANGE units
+    // Greedy LABEL up to value, value is digits[.digits], then optional flag, then newline
+    const re = /([A-Z][A-Z0-9, ()/\-]+?)\s+([<>]?\s*\d+\.?\d*)\s*([LH])?\s*\n\s*\d{2}\/\d{2}\/\d{2}\s*([^a-z\n]*?)\s*(mg\/dL|ng\/mL|pg\/mL|μg\/dL|ug\/dL|mcg\/dL|U\/L|mmol\/L|mIU\/L|μIU\/mL|fL|pg|%|g\/dL|Thousand\/uL|Million\/uL|cells\/uL|nmol\/L|μmol\/L|umol\/L)/g;
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      const rawLabel = m[1].trim();
+      const valStr = m[2].replace(/\s+/g, '');
+      const flag = (m[3] || '').toLowerCase();
+      const refRange = (m[4] || '').trim();
+      const unit = m[5];
+      // Skip commentary lines that accidentally match
+      if (rawLabel.length < 3 || rawLabel.length > 50) continue;
+      if (/COMMENT|REFERENCE|LEGEND|FASTING:|REPORTED/i.test(rawLabel)) continue;
+      const v = parseFloat(valStr.replace(/^[<>]/, ''));
+      if (Number.isNaN(v)) continue;
+      // Skip implausible values
+      if (v < 0 || v > 1e6) continue;
+      // Normalize label
+      const lcLabel = rawLabel.toLowerCase().replace(/\s+/g, ' ').trim();
+      const fieldKey = ULTA_LABEL_TO_FIELD[lcLabel] || null;
+      let flagFinal = flag === 'h' ? 'high' : flag === 'l' ? 'low' : 'normal';
+      biomarkers.push({
+        key: fieldKey || ('ulta_' + lcLabel.replace(/[^a-z0-9]/g, '_').slice(0, 40)),
+        label: rawLabel.replace(/\b\w/g, c => c.toUpperCase()),
+        value: v,
+        unit: unit,
+        flag: flagFinal,
+        refRange: refRange,
+        source: 'Ulta Labs / Quest'
+      });
+    }
+    return { biomarkers };
+  }
+
+  // ── DIAGNOSTIC SOLUTIONS METABOLOMICS (OMX Urine) PARSER ───────
+  // Each marker block in the text is roughly:
+  //   [VALUE] [optional H]
+  //   [REFERENCE: "< X" or "X - Y"]
+  //   nmol/mg Creatinine
+  //   [Marker Name]
+  //   [Enzyme + cofactor]
+  // Values flagged "H" or beyond reference upper bound are surfaced.
+  function parseMetabolomicsOAT(text) {
+    const biomarkers = [];
+    // Pattern: value [optional H] \n reference \n nmol/mg... \n marker name
+    const re = /(?:^|\n)\s*(<DL|\d+\.?\d*)\s*(H|L)?\s*\n\s*([<>]?\s*\d+\.?\d*\s*(?:-\s*\d+\.?\d*)?)\s*\n\s*nmol\/mg Creatinine\s*\n\s*([A-Za-z][A-Za-z0-9\-,'\s]+?)\s*\n/g;
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      const valStr = m[1];
+      const flag = (m[2] || '').toUpperCase();
+      const refRaw = m[3].trim();
+      const marker = m[4].trim();
+      if (valStr === '<DL') continue;  // below detection limit — skip
+      const v = parseFloat(valStr);
+      if (Number.isNaN(v)) continue;
+      // Parse ref range
+      let refLow = null, refHigh = null;
+      const m1 = refRaw.match(/^<\s*(\d+\.?\d*)/);
+      const m2 = refRaw.match(/^(\d+\.?\d*)\s*-\s*(\d+\.?\d*)/);
+      if (m1) refHigh = parseFloat(m1[1]);
+      else if (m2) { refLow = parseFloat(m2[1]); refHigh = parseFloat(m2[2]); }
+      let flagFinal = 'normal';
+      if (flag === 'H') flagFinal = 'high';
+      else if (flag === 'L') flagFinal = 'low';
+      else if (refHigh !== null && v > refHigh) flagFinal = 'high';
+      else if (refLow !== null && v < refLow) flagFinal = 'low';
+
+      biomarkers.push({
+        key: 'oat_' + marker.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 40),
+        label: marker,
+        value: v,
+        unit: 'nmol/mg Cr',
+        flag: flagFinal,
+        refRange: refRaw,
+        source: 'OMX / Organic Acids'
+      });
+    }
+    return { biomarkers };
+  }
+
+  // ── TRUHEALTH (epigenetic percentile) parser ───────────────────
+  // TruDiagnostic PDFs often use font-subset encoding that breaks
+  // simple text extraction. We detect the format and surface a
+  // warning + a manual-entry path rather than fabricate readings.
+  function parseTruHealth(text) {
+    // Try to extract any visible "Name ... XX%" pairs.
+    const biomarkers = [];
+    const re = /([A-Z][A-Za-z0-9 +\(\)\-]{2,30})\s+(\d{1,3})\s*%/g;
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      const label = m[1].trim();
+      const pct = parseInt(m[2], 10);
+      if (pct < 0 || pct > 100) continue;
+      if (label.length < 3 || /page|http|reference|score|range/i.test(label)) continue;
+      const flag = pct < 20 ? 'low' : pct > 80 ? 'high' : 'normal';
+      biomarkers.push({
+        key: 'tru_' + label.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 40),
+        label: label,
+        value: pct,
+        unit: 'percentile',
+        flag: flag,
+        refRange: '20-80 normal',
+        source: 'TruHealth epigenetic'
+      });
+    }
+    return { biomarkers };
+  }
+
+  // ── GENERIC FALLBACK with physiological-plausibility gates ─────
+  // For PDFs we don't recognize. The killer fix: REJECT any extracted
+  // value outside 0.1× refLow to 5× refHigh as a probable extraction
+  // error rather than an extreme reading. Atlas previously fabricated
+  // "Copper 2000 μg/dL" from a misplaced odds ratio — never again.
+  function parseGenericBloodwork(text) {
+    const biomarkers = [];
     for (const f of BIOMARKER_FIELDS) {
       const aliases = (f.a || []).concat([f.l]);
       let matched = null;
       for (const alias of aliases) {
         const esc = alias.replace(/[\s\-\/\(\)\.]/g, '\\s*');
-        const re = new RegExp(esc + '[^\\d\\-\\.]{0,80}?(\\d+\\.?\\d*)', 'i');
+        // Require value to be CLOSE to the label (≤40 chars), AND require
+        // the surrounding context to NOT be an odds-ratio pattern.
+        const re = new RegExp(esc + '[^\\d\\-\\.]{0,40}?(\\d+\\.?\\d*)', 'i');
         const m = text.match(re);
-        if (m) { matched = m[1]; break; }
+        if (m) { matched = parseFloat(m[1]); break; }
       }
-      if (matched) {
-        const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
-        if (input && !input.value) { input.value = matched; bioCount++; }
+      if (matched == null || Number.isNaN(matched)) continue;
+      // PHYSIOLOGICAL-PLAUSIBILITY GATE — reject extreme outliers.
+      const minPlaus = f.rL * 0.1;
+      const maxPlaus = f.rH * 5;
+      if (matched < minPlaus || matched > maxPlaus) continue;
+      let flag = 'normal';
+      if (matched < f.rL) flag = 'low';
+      else if (matched > f.rH) flag = 'high';
+      biomarkers.push({
+        key: f.k, label: f.l, value: matched, unit: f.u,
+        flag, refRange: f.rL + '-' + f.rH, source: 'generic'
+      });
+    }
+    return { biomarkers };
+  }
+
+  // ── MAIN EXTRACTION DISPATCHER ─────────────────────────────────
+  // Returns: { docType, biomarkers, matchedGenes, matchedVariants, geneCount, bioCount }
+  function extractFromText(text) {
+    const docType = detectDocType(text);
+    let result = {
+      docType,
+      biomarkers: [],
+      matchedGenes: [],
+      matchedVariants: [],
+      geneCount: 0,
+      bioCount: 0
+    };
+
+    if (docType === 'intellxx') {
+      const { matchedGenes, matchedVariants } = parseIntellxxDNA(text);
+      result.matchedGenes = matchedGenes;
+      result.matchedVariants = matchedVariants;
+      // Do NOT run biomarker extraction on a pure-genomics PDF
+    } else if (docType === 'ulta' || docType === 'quest_or_labcorp') {
+      const { biomarkers } = parseUltaCLIA(text);
+      result.biomarkers = biomarkers;
+    } else if (docType === 'metabolomics') {
+      const { biomarkers } = parseMetabolomicsOAT(text);
+      result.biomarkers = biomarkers;
+    } else if (docType === 'truhealth') {
+      const { biomarkers } = parseTruHealth(text);
+      result.biomarkers = biomarkers;
+      // If empty (font issue), caller surfaces a manual-entry hint
+    } else {
+      // Generic / unknown — try both biomarker and gene extraction with gates
+      const { biomarkers } = parseGenericBloodwork(text);
+      result.biomarkers = biomarkers;
+      // Generic gene detection — strict uppercase whole-word + atlas-set check
+      const seen = new Set();
+      const reGene = /\b([A-Z][A-Z0-9]{1,8}(?:-[A-Z0-9]{1,4})?)\b/g;
+      let g;
+      while ((g = reGene.exec(text)) !== null) {
+        const sym = g[1];
+        if (ATLAS_GENE_SYMBOLS.has(sym)) seen.add(geneByLabel[sym]);
+      }
+      result.matchedGenes = Array.from(seen);
+    }
+
+    // Sync extracted biomarkers into the form so they're savable
+    // and also auto-saveable from the caller. Apply form values for
+    // any field that maps to a known BIOMARKER_FIELDS key.
+    for (const b of result.biomarkers) {
+      const input = bwForm.querySelector('input[data-k="' + b.key + '"]');
+      if (input && !input.value && b.value != null) {
+        input.value = b.value;
+        if (b.flag === 'high') input.classList.add('high');
+        else if (b.flag === 'low') input.classList.add('low');
       }
     }
-    // gene-symbol detection: whole-word uppercase tokens matching atlas labels
-    const seen = new Set();
-    const reGene = /\b([A-Z][A-Z0-9]{1,8}(?:-[A-Z0-9]{1,4})?)\b/g;
-    let g;
-    while ((g = reGene.exec(text)) !== null) {
-      const sym = g[1];
-      if (ATLAS_GENE_SYMBOLS.has(sym)) seen.add(geneByLabel[sym]);
-    }
-    return { bioCount, geneCount: seen.size, matchedGenes: Array.from(seen) };
+
+    result.bioCount = result.biomarkers.length;
+    result.geneCount = result.matchedGenes.length;
+    return result;
   }
 
   pdfExtract.addEventListener('click', () => {
@@ -4718,36 +5167,45 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       return;
     }
     const result = extractFromText(text);
-    if (result.geneCount > 0) {
+    // Merge matched genes + variants into genetics store
+    if (result.geneCount > 0 || result.matchedVariants.length > 0) {
       const existing = JSON.parse(localStorage.getItem('cwa_genetics_v1') || 'null') || {
-        format: 'pasted text', uploadedAt: Date.now(), variantCount: 0, matchedGenes: []
+        format: 'pasted text', uploadedAt: Date.now(),
+        variantCount: 0, matchedGenes: [], matchedVariants: []
       };
-      const set = new Set(existing.matchedGenes);
-      for (const gid of result.matchedGenes) set.add(gid);
-      existing.matchedGenes = Array.from(set);
+      const gset = new Set(existing.matchedGenes);
+      for (const gid of result.matchedGenes) gset.add(gid);
+      existing.matchedGenes = Array.from(gset);
+      const vSeen = new Set((existing.matchedVariants || []).map(v =>
+        v.gene + '|' + v.genotype + '|' + (v.oddsRatio || '')));
+      const merged = (existing.matchedVariants || []).slice();
+      for (const v of result.matchedVariants) {
+        const sig = v.gene + '|' + v.genotype + '|' + (v.oddsRatio || '');
+        if (vSeen.has(sig)) continue;
+        vSeen.add(sig); merged.push(v);
+      }
+      merged.sort((a, b) => (b.severity || 0) - (a.severity || 0)
+                          || (b.oddsRatio || 0) - (a.oddsRatio || 0));
+      existing.matchedVariants = merged;
       existing.uploadedAt = Date.now();
       saveGenetics(existing);
     }
-    // Auto-save extracted biomarkers from form values
+    // Auto-save extracted biomarkers directly from result.biomarkers
     if (result.bioCount > 0) {
-      const out = {};
-      for (const f of BIOMARKER_FIELDS) {
-        const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
-        if (!input || !input.value) continue;
-        const v = parseFloat(input.value);
-        if (Number.isNaN(v)) continue;
-        let flag = 'normal';
-        if (v < f.rL) flag = 'low';
-        else if (v > f.rH) flag = 'high';
-        flagInput(input, flag);
-        out[f.k] = { value: v, unit: f.u, flag, label: f.l, nodeId: findBiomarkerNodeId(f) };
+      const out = JSON.parse(localStorage.getItem('cwa_biomarkers_v1') || '{}');
+      for (const b of result.biomarkers) {
+        out[b.key] = {
+          value: b.value, unit: b.unit, flag: b.flag, label: b.label,
+          refRange: b.refRange, source: b.source,
+          nodeId: findBiomarkerNodeIdByLabel(b.label)
+        };
       }
       saveBiomarkers(out);
     }
     pdfStatus.classList.add('on'); pdfStatus.classList.remove('err');
     pdfStatus.textContent = 'extracted ' + result.bioCount + ' biomarkers · ' +
-      result.geneCount + ' gene mentions · generating your report…';
-    if (result.bioCount > 0 || result.geneCount > 0) {
+      result.geneCount + ' genes · ' + result.matchedVariants.length + ' variants · generating your report…';
+    if (result.bioCount > 0 || result.geneCount > 0 || result.matchedVariants.length > 0) {
       setTimeout(() => window.__showReportAfterSave && window.__showReportAfterSave(), 1100);
     }
   });
