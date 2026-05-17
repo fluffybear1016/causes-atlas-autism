@@ -610,6 +610,67 @@
     animation: r-bar 1200ms ease forwards;
   }
   @keyframes r-bar { to { transform: scaleX(var(--r-fill, 1)); } }
+  .r-variant {
+    padding: 16px 18px; margin-bottom: 12px;
+    background: rgba(8,11,18,0.55);
+    border-left: 2px solid var(--line-hi);
+  }
+  .r-variant.sev-1 { border-left-color: var(--gold-dim); }
+  .r-variant.sev-2 { border-left-color: var(--gold); }
+  .r-variant.sev-3 { border-left-color: var(--gold);
+                      background: rgba(232,196,110,0.06); }
+  .r-var-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 6px; gap: 12px;
+  }
+  .r-var-gene {
+    font-size: 15px; color: var(--node);
+    letter-spacing: 0.01em;
+  }
+  .r-var-name {
+    font-size: 12px; color: var(--text-mute);
+    margin-left: 8px; letter-spacing: 0.04em;
+  }
+  .r-var-geno {
+    font-family: ui-monospace, monospace;
+    font-size: 12.5px; letter-spacing: 0.12em;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 2px 10px;
+    white-space: nowrap;
+  }
+  .r-var-effect {
+    font-size: 13px; color: var(--text);
+    margin-bottom: 4px;
+  }
+  .r-var-detail {
+    font-size: 12px; color: var(--text-mute);
+    line-height: 1.55; margin-bottom: 10px;
+    font-style: italic;
+  }
+  .r-var-row {
+    display: grid; grid-template-columns: 86px 1fr;
+    gap: 12px; padding: 4px 0;
+    font-size: 12.5px; line-height: 1.5;
+  }
+  .r-var-row-label {
+    font-family: ui-monospace, monospace; font-size: 9.5px;
+    letter-spacing: 0.22em; color: var(--gold);
+    text-transform: uppercase; padding-top: 3px;
+  }
+  .r-var-row-content { color: var(--text); }
+  .r-var-row-content .pill {
+    display: inline-block;
+    font-family: ui-monospace, monospace; font-size: 9px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-mute);
+    border: 1px solid var(--line-hi);
+    padding: 1px 6px; margin: 0 4px 4px 0;
+  }
+  .r-var-row-content .pill.atlas {
+    color: var(--gold); border-color: var(--gold-dim);
+  }
+
   .r-oor {
     display: grid;
     grid-template-columns: 1fr auto auto;
@@ -970,6 +1031,11 @@
     <div class="r-section">
       <div class="r-section-label">Best phenotype matches</div>
       <div id="r-phenotypes"></div>
+    </div>
+
+    <div class="r-section" id="r-section-variants" style="display:none;">
+      <div class="r-section-label">Your gene variants</div>
+      <div id="r-variants"></div>
     </div>
 
     <div class="r-section" id="r-section-oor">
@@ -2509,45 +2575,373 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     { k:'wbc', l:'WBC', u:'×10³/μL', rL:4.5, rH:11, a:['WBC','white blood']}
   ];
 
-  // Curated rsID → gene-symbol lookup. Covers the high-leverage variants
-  // for SNP-array-based consumer genetics. Atlas matches via gene symbol.
-  const RSID_TO_GENE = {
-    'rs1801133':'MTHFR','rs1801131':'MTHFR',
-    'rs1805087':'MTR','rs1801394':'MTRR',
-    'rs4880':'SOD2','rs1051266':'SLC19A1','rs2236225':'MTHFD1',
-    'rs4680':'COMT','rs4633':'COMT','rs6347':'SLC6A3',
-    'rs6313':'HTR2A','rs6311':'HTR2A','rs7997012':'HTR2A',
-    'rs1800497':'DRD2','rs1799732':'DRD2',
-    'rs25531':'SLC6A4','rs4795541':'SLC6A4','rs6321':'SLC6A4',
-    'rs6265':'BDNF','rs56164415':'BDNF',
-    'rs53576':'OXTR','rs2254298':'OXTR','rs2230197':'OXT',
-    'rs1695':'GSTP1','rs1138272':'GSTP1','rs366631':'GSTM1',
-    'rs1801280':'NAT2','rs1799930':'NAT2','rs1799931':'NAT2',
-    'rs4148323':'UGT1A1',
-    'rs1056827':'CYP1B1','rs1056836':'CYP1B1',
-    'rs1048943':'CYP1A1','rs4646903':'CYP1A1',
-    'rs1799853':'CYP2C9','rs1057910':'CYP2C9',
-    'rs4244285':'CYP2C19','rs4986893':'CYP2C19',
-    'rs3892097':'CYP2D6','rs1065852':'CYP2D6',
-    'rs2032582':'ABCB1',
-    'rs769407':'GAD1','rs2058725':'GAD1','rs10491734':'GRIK2',
-    'rs2073837':'HNMT','rs11558538':'HNMT','rs1801105':'DAO',
-    'rs2228570':'VDR','rs1544410':'VDR','rs7975232':'VDR','rs731236':'VDR',
-    'rs234706':'CBS','rs5742905':'CBS',
-    'rs2298444':'FOLR1','rs3736771':'SHANK3',
-    'rs6766410':'SCN1A','rs1057079':'MTOR',
-    'rs662':'PON1','rs854560':'PON1',
-    'rs13266634':'SLC30A8',
-    'rs2070424':'SOD1','rs1050450':'GPX1',
-    'rs17856199':'GCLC','rs17883901':'GCLC',
-    'rs1799945':'HFE','rs1800562':'HFE',
-    'rs7873784':'TLR4',
-    'rs6214':'IGF1','rs5742612':'IGF1',
-    'rs2228145':'IL6R','rs1800629':'TNF','rs1800795':'IL6',
-    'rs7501331':'BCMO1',
-    'rs429358':'APOE','rs7412':'APOE',
-    'rs193922753':'RYR1'
+  // ── VARIANT KNOWLEDGE BASE ────────────────────────────────────
+  // Per-variant, per-genotype interpretation curated from clinical
+  // genetics / functional medicine literature. Genotype letters are
+  // sorted alphabetically before lookup (so "TC" is queried as "CT").
+  // Severity: 0 = wild type, 1 = heterozygous mild, 2 = homozygous
+  // significant, 3 = compound/high-impact.
+  // do = consider · av = avoid · li = lifestyle · ai = atlas intervention IDs
+  // to weight up in ranking.
+  const VARIANT_DB = {
+    'rs1801133': { g:'MTHFR', n:'C677T (A222V)', r:'Folate-cycle methylation',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Normal enzyme activity' },
+        CT: { f:'het',  sev:1, msg:'~35% reduced enzyme activity',
+              d:'Mild folate-cycle impairment under stress, alcohol, or low B-vitamin intake.',
+              do:['Methylfolate (5-MTHF) over folic acid','Methyl-B12'],
+              av:['High-dose synthetic folic acid'],
+              li:['Daily leafy greens','Limit alcohol','Monitor homocysteine'],
+              ai:['INT-0001','INT-0008'] },
+        TT: { f:'hom',  sev:2, msg:'~70% reduced enzyme activity',
+              d:'Substantially impaired methylation. Homocysteine often elevated; B12 cycle strained.',
+              do:['Methylfolate at therapeutic dose','Methyl-B12 sublingual or sub-Q','TMG (trimethylglycine) backup'],
+              av:['Folic acid in any supplement','High alcohol intake'],
+              li:['Heavy emphasis on leafy greens','Monitor homocysteine 6-month','Stress is methylation-draining'],
+              ai:['INT-0001','INT-0008'] }
+      } },
+    'rs1801131': { g:'MTHFR', n:'A1298C (E429A)', r:'Folate cycle (BH4 branch)',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Normal activity' },
+        AC: { f:'het',  sev:1, msg:'~20% reduced activity',
+              d:'Affects BH4 regeneration → may impact neurotransmitter synthesis and nitric oxide.',
+              do:['Methylfolate','BH4 cofactor support (folate + B-vitamins)'],
+              li:['Mood and dopamine stability with green vegetables']},
+        CC: { f:'hom',  sev:2, msg:'~40% reduced activity',
+              d:'BH4 cycle impacted. Combined with C677T het = compound impairment.',
+              do:['Methylfolate at higher dose','Consider BH4 supplementation under FM guidance'],
+              av:['Synthetic folic acid'],
+              li:['Adequate magnesium and B6','Stress management']}
+      } },
+    'rs1805087': { g:'MTR', n:'A2756G (D919G)', r:'Methionine synthase · B12 utilization',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Normal activity' },
+        AG: { f:'het',  sev:1, msg:'Mildly reduced methionine synthesis',
+              d:'Slower B12-dependent recycling of homocysteine to methionine.',
+              do:['Methylcobalamin (methyl-B12) preferentially'],
+              li:['B12-rich foods: eggs, fish, organ meats']},
+        GG: { f:'hom',  sev:2, msg:'Reduced methionine synthase activity',
+              d:'B12-mediated methylation downstream of folate is impaired.',
+              do:['Methyl-B12 sublingual or sub-Q','Methylfolate paired'],
+              li:['Regular B12 monitoring']}
+      } },
+    'rs1801394': { g:'MTRR', n:'A66G (I22M)', r:'MS reductase · B12 regeneration',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Normal activity' },
+        AG: { f:'het',  sev:1, msg:'Mildly impaired MTR recycling',
+              d:'Slower regeneration of methionine synthase; functional B12 deficiency risk.',
+              do:['Methyl-B12','Riboflavin (B2) as cofactor']},
+        GG: { f:'hom',  sev:2, msg:'Significantly impaired MTR recycling',
+              d:'Common in autism and Down syndrome cohorts; pairs poorly with MTHFR TT.',
+              do:['Higher-dose methyl-B12','Riboflavin cofactor','Methylfolate'],
+              li:['Avoid nitrous oxide (depletes B12)']}
+      } },
+    'rs234706': { g:'CBS', n:'C699T', r:'Sulfation pathway · upregulation',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Normal activity' },
+        CT: { f:'het',  sev:1, msg:'Mildly upregulated CBS',
+              d:'Faster conversion of homocysteine to cystathionine → can raise ammonia and sulfite.',
+              do:['Molybdenum (sulfite oxidase cofactor)','Taurine'],
+              av:['Very high methyl donor doses (drives cycle harder)'],
+              li:['Limit sulfur-heavy foods if symptomatic (eggs, brassicas)']},
+        TT: { f:'hom',  sev:2, msg:'Upregulated CBS activity',
+              d:'Common driver of \'overmethylator-like\' symptoms; sulfite/ammonia accumulation possible.',
+              do:['Molybdenum 200–500 mcg','Taurine 500–1000 mg','BH4 support'],
+              av:['Aggressive methyl-B12 or methylfolate without monitoring'],
+              li:['Sulfur-food awareness','Ammonia-clearance support (yucca, ornithine)']}
+      } },
+    'rs4680': { g:'COMT', n:'V158M (rs4680)', r:'Catecholamine clearance',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Fast COMT ("warrior") · Val/Val',
+              d:'Rapid dopamine clearance. May benefit from extra catecholamine support.',
+              li:['Tyrosine-containing foods','Adequate magnesium','Stress can transiently boost performance'] },
+        AG: { f:'het',  sev:1, msg:'Moderate COMT ("mixed") · Val/Met',
+              d:'Balanced catecholamine handling.',
+              li:['Standard balanced approach to methyl donors'] },
+        AA: { f:'hom',  sev:2, msg:'Slow COMT ("worrier") · Met/Met',
+              d:'Slow catecholamine breakdown; dopamine + estrogen + adrenaline linger longer. Methyl donors can over-rev anxiety in this subset.',
+              do:['SAMe cautiously, start low','Magnesium 400 mg','Vitamin C as catecholamine support'],
+              av:['High-dose methylfolate + methyl-B12 without titration','Excess caffeine'],
+              li:['Stress management is high-leverage','Sleep regularity']}
+      } },
+    'rs4633': { g:'COMT', n:'H62H (rs4633)', r:'COMT silent variant (linked to rs4680)',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Linked to fast COMT' },
+        CT: { f:'het',  sev:1, msg:'Linked to moderate COMT' },
+        TT: { f:'hom',  sev:2, msg:'Linked to slow COMT (Met/Met haplotype)',
+              d:'Reinforces interpretation of rs4680 in same direction.',
+              li:['See rs4680 lifestyle notes']}
+      } },
+    'rs4880': { g:'SOD2', n:'A16V (rs4880)', r:'Mitochondrial superoxide dismutase',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Higher mitochondrial targeting (Ala/Ala)' },
+        AG: { f:'het',  sev:1, msg:'Mixed mitochondrial SOD2 import',
+              li:['Antioxidant-rich diet']},
+        GG: { f:'hom',  sev:2, msg:'Reduced mito SOD2 (Val/Val)',
+              d:'Lower mitochondrial superoxide clearance → higher oxidative stress, mito vulnerability.',
+              do:['Mito antioxidants (CoQ10, alpha-lipoic acid, NAC)','Methylene blue under guidance'],
+              av:['Glyphosate / pesticide exposure (mito stress)'],
+              li:['Colorful plant polyphenols','Resistance + zone-2 cardio for mito biogenesis'],
+              ai:['INT-0042','INT-0008']}
+      } },
+    'rs1695':   { g:'GSTP1', n:'I105V (rs1695)', r:'Glutathione conjugation',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Higher GSTP1 activity (Ile/Ile)' },
+        AG: { f:'het',  sev:1, msg:'Moderately reduced GSTP1',
+              li:['Sulforaphane-rich foods (broccoli sprouts)','NAC 600 mg']},
+        GG: { f:'hom',  sev:2, msg:'Significantly reduced GSTP1 (Val/Val)',
+              d:'Impaired phase-II detoxification — slower clearance of xenobiotics and oxidants.',
+              do:['NAC 600–1200 mg','Liposomal glutathione','Sulforaphane (BroccoMax) daily'],
+              av:['Heavy chemical exposures (paints, solvents, smoke)'],
+              li:['Filtered water and air','Choose organic produce on the EWG dirty list']}
+      } },
+    'rs1138272': { g:'GSTP1', n:'A114V', r:'Glutathione conjugation',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Normal activity' },
+        CT: { f:'het',  sev:1, msg:'Mildly reduced GSTP1 activity',
+              li:['Cruciferous vegetables daily']},
+        TT: { f:'hom',  sev:2, msg:'Significantly reduced',
+              d:'Compound with rs1695 → more pronounced detox impairment.',
+              do:['NAC + sulforaphane','Glutathione precursors']}
+      } },
+    'rs6265':   { g:'BDNF', n:'V66M (Val66Met)', r:'Neurotrophic · learning',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Val/Val · normal BDNF secretion' },
+        AG: { f:'het',  sev:1, msg:'Val/Met · reduced activity-dependent BDNF secretion',
+              d:'Lower neurotrophic support for synaptic plasticity. Exercise and learning load drive BDNF more important.',
+              do:['7-keto DHEA','Lion\'s Mane mushroom','Omega-3 DHA'],
+              li:['Zone-2 aerobic exercise (BDNF inducer)','Cognitive load via learning','Adequate sleep']},
+        AA: { f:'hom',  sev:2, msg:'Met/Met · materially reduced activity-dependent secretion',
+              d:'Stronger phenotype: associated with anxiety, depression risk, slower implicit learning.',
+              do:['Lion\'s Mane','High-DHA omega-3','Curcumin','Cocoa flavanols'],
+              li:['Daily aerobic exercise is high-leverage','Novel learning weekly','Cold exposure (mild BDNF inducer)']}
+      } },
+    'rs53576':  { g:'OXTR', n:'rs53576', r:'Oxytocin receptor · social bonding',
+      e: {
+        AA: { f:'hom', sev:1, msg:'A/A · less sensitive OXT receptor',
+              d:'Associated with lower trust and empathy scores on average; effect size modest.',
+              do:['Oxytocin nasal spray under clinician guidance','Touch and bonding routines']},
+        AG: { f:'het', sev:0, msg:'A/G · intermediate' },
+        GG: { f:'wild', sev:0, msg:'G/G · standard OXTR sensitivity' }
+      } },
+    'rs2298444': { g:'FOLR1', n:'rs2298444', r:'Folate receptor alpha',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Normal FOLR1' },
+        CT: { f:'het', sev:1, msg:'Mildly altered FOLR1 expression',
+              do:['Methylfolate; consider leucovorin if FRAA antibody positive']},
+        TT: { f:'hom', sev:2, msg:'Altered FOLR1 expression',
+              d:'Cerebral folate handling may be impacted; test FRAA antibodies.',
+              do:['Leucovorin (folinic acid) per Frye protocol if FRAA+'],
+              ai:['INT-0001']}
+      } },
+    'rs1051266': { g:'SLC19A1', n:'H27R (rs1051266)', r:'Reduced folate carrier',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Normal RFC1' },
+        AG: { f:'het', sev:1, msg:'Mildly reduced folate cellular uptake',
+              do:['Methylfolate']},
+        GG: { f:'hom', sev:2, msg:'Reduced folate uptake',
+              d:'Lower cellular folate availability; relevant alongside MTHFR variants.',
+              do:['Methylfolate at higher dose'],
+              ai:['INT-0001']}
+      } },
+    'rs2228570': { g:'VDR', n:'FokI (rs2228570)', r:'Vitamin D receptor',
+      e: {
+        AA: { f:'hom', sev:1, msg:'f/f · shorter VDR protein, lower activity',
+              do:['Vitamin D3 5000 IU + K2 100 mcg','Target 25-OH-D 50-80 ng/mL']},
+        AG: { f:'het', sev:0, msg:'F/f · intermediate' },
+        GG: { f:'wild', sev:0, msg:'F/F · longer VDR protein' }
+      } },
+    'rs731236':  { g:'VDR', n:'TaqI (rs731236)', r:'Vitamin D receptor',
+      e: {
+        AA: { f:'hom', sev:1, msg:'tt · altered VDR activity',
+              do:['Vitamin D3 + magnesium + K2 stack']},
+        AG: { f:'het', sev:0, msg:'Tt · intermediate' },
+        GG: { f:'wild', sev:0, msg:'TT · standard VDR activity' }
+      } },
+    'rs1544410': { g:'VDR', n:'BsmI (rs1544410)', r:'Vitamin D receptor',
+      e: {
+        AA: { f:'hom', sev:1, msg:'bb · associated with lower BMD and immune effects',
+              do:['Adequate vitamin D3 + magnesium']},
+        AG: { f:'het', sev:0, msg:'Bb · intermediate' },
+        GG: { f:'wild', sev:0, msg:'BB · standard' }
+      } },
+    'rs429358': { g:'APOE', n:'rs429358 (combined with rs7412)', r:'Lipid handling · neuroinflammation',
+      e: {
+        TT: { f:'wild', sev:0, msg:'No e4 from this SNP (need rs7412 to determine ε2/ε3)' },
+        CT: { f:'het', sev:2, msg:'One e4 allele',
+              d:'APOE ε4 carrier: increased Alzheimer risk, altered fatty acid trafficking, higher saturated-fat sensitivity.',
+              do:['DHA-rich omega-3 (algae or fish)','Monitor lipids and ApoB','Mediterranean-leaning diet'],
+              av:['Saturated fat in excess','Smoking'],
+              li:['Aerobic exercise reduces APOE4-related cognitive decline','Quality sleep critical']},
+        CC: { f:'hom', sev:3, msg:'Two e4 alleles (ε4/ε4)',
+              d:'Strongest hereditary signal for late-onset Alzheimer. Strong response to lifestyle intervention.',
+              do:['DHA daily','ApoB-targeted lipid management','Resistance + aerobic exercise'],
+              av:['Saturated fat','Alcohol','Poor sleep'],
+              li:['Strict cardiometabolic discipline','Annual cognitive baseline testing']}
+      } },
+    'rs7412':   { g:'APOE', n:'rs7412 (combined with rs429358)', r:'Lipid handling',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Standard ApoE (no e2 from this SNP)' },
+        CT: { f:'het', sev:1, msg:'One e2 allele (lower LDL receptor binding)',
+              li:['Mixed metabolic effects depending on rs429358 status']},
+        TT: { f:'hom', sev:2, msg:'Two e2 alleles (ε2/ε2)',
+              d:'Reduced LDL receptor binding; rare cardiometabolic patterns.'}
+      } },
+    'rs3892097': { g:'CYP2D6', n:'*4 (rs3892097)', r:'Phase-I drug metabolism',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Normal CYP2D6' },
+        AG: { f:'het', sev:1, msg:'Intermediate metabolizer',
+              d:'Affects metabolism of ~25% of common drugs (SSRIs, opioids, antipsychotics).',
+              do:['PGx-aware prescribing — share with prescriber']},
+        AA: { f:'hom', sev:2, msg:'Poor metabolizer (CYP2D6 *4/*4)',
+              d:'Significantly reduced metabolism — many psychiatric meds need dose adjustment.',
+              do:['Full PGx panel before starting psychiatric meds','Disclose to all prescribers'],
+              av:['Codeine (not converted to morphine in poor metabolizers)']}
+      } },
+    'rs4244285': { g:'CYP2C19', n:'*2 (rs4244285)', r:'Phase-I drug metabolism',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Normal CYP2C19' },
+        AG: { f:'het', sev:1, msg:'Intermediate metabolizer',
+              do:['PGx awareness for PPI, clopidogrel, SSRIs']},
+        AA: { f:'hom', sev:2, msg:'Poor metabolizer',
+              d:'Slow clearance of PPIs, clopidogrel (Plavix), citalopram. Higher exposure → side effects more likely.',
+              do:['Disclose to prescribers','Lower starting doses on relevant meds']}
+      } },
+    'rs1801105': { g:'DAO', n:'rs1801105', r:'Histamine degradation',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Normal DAO activity' },
+        AG: { f:'het', sev:1, msg:'Mildly reduced histamine clearance',
+              li:['Low-histamine diet trial if symptomatic']},
+        AA: { f:'hom', sev:2, msg:'Significantly reduced DAO activity',
+              d:'Higher histamine load → flushing, headaches, gut symptoms, mast-cell features.',
+              do:['DAO enzyme supplements with meals','Quercetin','Vitamin C 1g'],
+              av:['Aged cheese, fermented foods, leftover meat, alcohol, vinegar'],
+              li:['Low-histamine diet trial']}
+      } },
+    'rs2073837': { g:'HNMT', n:'rs2073837', r:'Histamine N-methylation',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Normal HNMT' },
+        AG: { f:'het', sev:1, msg:'Mildly reduced HNMT activity' },
+        GG: { f:'hom', sev:2, msg:'Reduced HNMT activity',
+              d:'Slower secondary histamine clearance.',
+              do:['Quercetin','SAMe (provides methyl donors)']}
+      } },
+    'rs1800562': { g:'HFE', n:'C282Y', r:'Iron absorption (hemochromatosis)',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Normal iron handling' },
+        AG: { f:'het', sev:1, msg:'Hemochromatosis carrier',
+              d:'Modestly elevated iron-storage risk. Monitor ferritin annually if symptomatic.',
+              li:['Don\'t routinely take iron supplements without testing']},
+        AA: { f:'hom', sev:3, msg:'Hereditary hemochromatosis (C282Y/C282Y)',
+              d:'Risk of iron overload. Genetic counselor consult and annual ferritin + transferrin saturation.',
+              do:['Annual iron panel','Therapeutic phlebotomy if ferritin elevated'],
+              av:['Iron supplements','High-vitamin-C with iron-rich meals','Heavy red meat + alcohol combinations']}
+      } },
+    'rs1799945': { g:'HFE', n:'H63D', r:'Iron absorption',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Normal' },
+        CG: { f:'het', sev:1, msg:'H63D carrier' },
+        GG: { f:'hom', sev:2, msg:'H63D homozygous · mild iron-overload risk',
+              do:['Periodic iron panel (especially if combined with C282Y)']}
+      } },
+    'rs1800629': { g:'TNF', n:'-308 G>A (rs1800629)', r:'Pro-inflammatory cytokine',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Standard TNF expression' },
+        AG: { f:'het', sev:1, msg:'Higher TNF expression on stimulation',
+              li:['Anti-inflammatory diet','Curcumin','Omega-3']},
+        AA: { f:'hom', sev:2, msg:'Materially higher inflammatory response',
+              d:'Stronger inflammatory cytokine output; auto-immune and inflammation risk.',
+              do:['Curcumin','Resveratrol','Omega-3 DHA','LDN (under FM guidance) if symptomatic'],
+              av:['Heavy seed oil intake','Chronic sleep deprivation'],
+              li:['Mediterranean-style diet','Regular exercise']}
+      } },
+    'rs1800795': { g:'IL6', n:'-174 G>C (rs1800795)', r:'Pro-inflammatory cytokine',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Standard IL-6 expression' },
+        CG: { f:'het', sev:1, msg:'Modified IL-6 induction' },
+        CC: { f:'hom', sev:2, msg:'Altered IL-6 expression',
+              d:'Inflammatory signaling phenotype; relevant for autoimmunity and metabolic risk.',
+              do:['Curcumin','Resveratrol','Omega-3'],
+              li:['Sleep hygiene','Stress regulation']}
+      } },
+    'rs662':    { g:'PON1', n:'Q192R (rs662)', r:'Organophosphate detox',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Q/Q · slow paraoxonase' },
+        AG: { f:'het', sev:1, msg:'Q/R · intermediate paraoxonase',
+              li:['Avoid pesticide exposure']},
+        GG: { f:'hom', sev:2, msg:'R/R · altered organophosphate handling',
+              d:'Different specificity for organophosphate detox; environmental exposure matters more.',
+              av:['Pesticide-treated produce (use EWG dirty dozen list)','Lawn chemicals'],
+              li:['Choose organic on dirty-list produce','Filter water']}
+      } },
+    'rs1799853': { g:'CYP2C9', n:'*2 (rs1799853)', r:'Drug metabolism (warfarin, NSAIDs)',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Normal' },
+        CT: { f:'het', sev:1, msg:'Intermediate metabolizer',
+              do:['PGx-aware NSAID and warfarin dosing']},
+        TT: { f:'hom', sev:2, msg:'Poor metabolizer',
+              d:'Lower warfarin requirement; higher GI-bleed risk on NSAIDs.',
+              do:['Disclose to prescribers','Lower starting doses on warfarin']}
+      } },
+    'rs1799930': { g:'NAT2', n:'R197Q (NAT2 *6)', r:'Acetylation phase-II',
+      e: {
+        GG: { f:'wild', sev:0, msg:'Rapid acetylator' },
+        AG: { f:'het', sev:1, msg:'Intermediate acetylator' },
+        AA: { f:'hom', sev:2, msg:'Slow acetylator',
+              d:'Slower clearance of aromatic amines and certain drugs; bladder cancer risk modestly elevated with smoking exposure.',
+              av:['Smoking (especially)','Char-grilled meats in excess']}
+      } },
+    'rs1800497': { g:'DRD2', n:'Taq1A (rs1800497)', r:'Dopamine D2 receptor',
+      e: {
+        GG: { f:'wild', sev:0, msg:'A2/A2 · normal D2 receptor density' },
+        AG: { f:'het', sev:1, msg:'A1/A2 · ~30% lower D2 receptor density',
+              li:['Adequate tyrosine intake','Exercise as dopamine inducer']},
+        AA: { f:'hom', sev:2, msg:'A1/A1 · ~40% lower D2 receptor density',
+              d:'Lower dopamine receptor availability; reward sensitivity and addiction risk may differ.',
+              do:['Tyrosine 500 mg','Mucuna pruriens (L-DOPA precursor) under guidance'],
+              li:['Structured reward (don\'t rely on novelty)','Quality sleep']}
+      } },
+    'rs6313':   { g:'HTR2A', n:'T102C (rs6313)', r:'Serotonin 2A receptor',
+      e: {
+        AA: { f:'wild', sev:0, msg:'Standard 5-HT2A expression' },
+        AG: { f:'het', sev:1, msg:'Modified 5-HT2A density' },
+        GG: { f:'hom', sev:2, msg:'Altered 5-HT2A density',
+              d:'Associated with differential response to SSRIs and mood phenotypes.',
+              do:['PGx-aware SSRI selection']}
+      } },
+    'rs6311':   { g:'HTR2A', n:'C1438T (rs6311)', r:'5-HT2A promoter',
+      e: {
+        CC: { f:'wild', sev:0, msg:'Standard expression' },
+        CT: { f:'het', sev:1, msg:'Intermediate expression' },
+        TT: { f:'hom', sev:1, msg:'Higher 5-HT2A expression',
+              d:'May affect anxiety and SSRI response trajectory.'}
+      } }
   };
+
+  // Build rsID → gene fallback for matches not in VARIANT_DB
+  const RSID_TO_GENE = {};
+  for (const rsid of Object.keys(VARIANT_DB)) {
+    RSID_TO_GENE[rsid] = VARIANT_DB[rsid].g;
+  }
+  // Extra rsIDs that have a gene but no curated variant interpretation yet
+  Object.assign(RSID_TO_GENE, {
+    'rs2236225':'MTHFD1','rs6347':'SLC6A3',
+    'rs7997012':'HTR2A','rs1799732':'DRD2',
+    'rs25531':'SLC6A4','rs4795541':'SLC6A4','rs6321':'SLC6A4',
+    'rs56164415':'BDNF','rs2254298':'OXTR','rs2230197':'OXT',
+    'rs366631':'GSTM1','rs1801280':'NAT2','rs1799931':'NAT2',
+    'rs4148323':'UGT1A1','rs1056827':'CYP1B1','rs1056836':'CYP1B1',
+    'rs1048943':'CYP1A1','rs4646903':'CYP1A1','rs1057910':'CYP2C9',
+    'rs4986893':'CYP2C19','rs1065852':'CYP2D6','rs2032582':'ABCB1',
+    'rs769407':'GAD1','rs2058725':'GAD1','rs10491734':'GRIK2',
+    'rs11558538':'HNMT','rs7975232':'VDR','rs5742905':'CBS',
+    'rs3736771':'SHANK3','rs6766410':'SCN1A','rs1057079':'MTOR',
+    'rs854560':'PON1','rs13266634':'SLC30A8','rs2070424':'SOD1',
+    'rs1050450':'GPX1','rs17856199':'GCLC','rs17883901':'GCLC',
+    'rs7873784':'TLR4','rs6214':'IGF1','rs5742612':'IGF1',
+    'rs2228145':'IL6R','rs7501331':'BCMO1','rs193922753':'RYR1',
+    'rs3733890':'BHMT'
+  });
 
   // DOM refs
   const btnUpload = document.getElementById('upload-btn');
@@ -2833,10 +3227,33 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     const oor = Object.values(s.biomarkers || {})
       .filter(v => v.flag === 'high' || v.flag === 'low');
 
+    // Variants flagged by the curated VARIANT_DB (only those with sev > 0)
+    const matchedVariants = (s.genetics && s.genetics.matchedVariants) || [];
+
+    // Atlas-intervention boost from variant recommendations.
+    // If a variant recommends an atlas intervention (e.g., INT-0001 leucovorin
+    // for MTHFR TT), push that intervention to the top of the actions list.
+    const variantBoostedInts = new Set();
+    for (const v of matchedVariants) {
+      for (const aiId of (v.atlasInts || [])) variantBoostedInts.add(aiId);
+    }
+    // Re-order topInts so variant-boosted ones float to the top
+    if (variantBoostedInts.size > 0) {
+      const boosted = [], rest = [];
+      for (const it of topInts) {
+        if (variantBoostedInts.has(it.node.id)) boosted.push(it);
+        else rest.push(it);
+      }
+      topInts.length = 0;
+      for (const it of boosted) topInts.push(it);
+      for (const it of rest) topInts.push(it);
+    }
+
     return {
       genetics: s.genetics,
       biomarkers: s.biomarkers,
       matchedGeneCount: matchedGenes.size,
+      matchedVariants,
       bioCount: Object.keys(s.biomarkers || {}).length,
       topPhenotypes,
       topInterventions: topInts,
@@ -2862,6 +3279,9 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     const summary = [];
     if (rep.matchedGeneCount > 0) {
       summary.push('<span class="pill">' + rep.matchedGeneCount + ' genes matched</span>');
+    }
+    if (rep.matchedVariants && rep.matchedVariants.length > 0) {
+      summary.push('<span class="pill">' + rep.matchedVariants.length + ' actionable variants</span>');
     }
     if (rep.bioCount > 0) {
       summary.push('<span class="pill">' + rep.bioCount + ' biomarkers</span>');
@@ -2909,6 +3329,62 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
             '</div>' +
             '<div class="r-phe-evidence">Matches: ' + top.join(' · ') + '</div>' +
             '<div class="r-phe-bar"><div class="r-phe-bar-fill" style="--r-fill:' + fill + '"></div></div>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    // ── Gene variants (curated effect interpretations)
+    const varHost = document.getElementById('r-variants');
+    const varSection = document.getElementById('r-section-variants');
+    if (!rep.matchedVariants || rep.matchedVariants.length === 0) {
+      varSection.style.display = 'none';
+    } else {
+      varSection.style.display = '';
+      varHost.innerHTML = rep.matchedVariants.map(v => {
+        const sev = 'sev-' + v.severity;
+        function rowFor(label, items, pillClass) {
+          if (!items || !items.length) return '';
+          const pills = items.map(it =>
+            '<span class="pill' + (pillClass ? ' ' + pillClass : '') + '">' + it + '</span>'
+          ).join('');
+          return (
+            '<div class="r-var-row">' +
+              '<div class="r-var-row-label">' + label + '</div>' +
+              '<div class="r-var-row-content">' + pills + '</div>' +
+            '</div>'
+          );
+        }
+        // atlasInts → atlas-intervention pills labeled by lookup
+        const atlasIntLabels = (v.atlasInts || []).map(id => {
+          const n = nodeMap.get(id);
+          return n ? n.l + ' (' + id + ')' : id;
+        });
+        const consider = (v.consider || []).slice();
+        if (atlasIntLabels.length) {
+          for (const lbl of atlasIntLabels) consider.unshift(lbl);
+        }
+        const detailLine = v.detail
+          ? '<div class="r-var-detail">' + v.detail + '</div>' : '';
+        const roleLine = v.role
+          ? '<div class="r-var-name" style="margin:0 0 8px 0;display:block;">' + v.role + '</div>'
+          : '';
+        const zygPill = v.zygosity === 'hom'
+          ? 'homozygous'
+          : v.zygosity === 'het' ? 'heterozygous' : v.zygosity;
+        return (
+          '<div class="r-variant ' + sev + '">' +
+            '<div class="r-var-head">' +
+              '<div class="r-var-gene">' + v.gene +
+                '<span class="r-var-name">' + v.name + '</span></div>' +
+              '<div class="r-var-geno">' + v.genotype + ' · ' + zygPill + '</div>' +
+            '</div>' +
+            roleLine +
+            '<div class="r-var-effect">' + v.effect + '</div>' +
+            detailLine +
+            rowFor('Consider', consider, 'atlas') +
+            rowFor('Avoid', v.avoid) +
+            rowFor('Lifestyle', v.lifestyle) +
           '</div>'
         );
       }).join('');
@@ -3100,22 +3576,23 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
           gStatus.textContent = 'could not recognize this file format. supported: 23andMe, AncestryDNA, MyHeritage, VCF';
           return;
         }
-        const matched = matchVariantsToGenes(res.variants);
-        if (matched.length === 0) {
+        const { matchedGenes, matchedVariants } = matchVariantsToAtlas(res.variants);
+        if (matchedGenes.length === 0 && matchedVariants.length === 0) {
           gStatus.classList.add('err');
           gStatus.textContent = res.format + ' · ' +
-            res.variants.length.toLocaleString() + ' variants read · 0 matched to atlas genes. ' +
-            'This file may use a chip that excludes the rsIDs the atlas tracks — try uploading a PDF report from the same provider for richer gene-symbol detection.';
+            res.variants.length.toLocaleString() + ' variants read · 0 matched. ' +
+            'This file may use a chip that excludes the rsIDs the atlas tracks — try uploading a PDF report from the same provider.';
           return;
         }
         gStatus.textContent = res.format + ' · ' +
           res.variants.length.toLocaleString() + ' variants read · ' +
-          matched.length + ' matched to atlas genes · generating your report…';
+          matchedGenes.length + ' genes · ' + matchedVariants.length + ' actionable variants · generating your report…';
         saveGenetics({
           format: res.format,
           uploadedAt: Date.now(),
           variantCount: res.variants.length,
-          matchedGenes: matched
+          matchedGenes: matchedGenes,
+          matchedVariants: matchedVariants
         });
         gClear.style.display = 'inline-block';
         setTimeout(() => window.__showReportAfterSave && window.__showReportAfterSave(), 900);
@@ -3139,12 +3616,23 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     const variants = [];
     const lines = text.split('\n');
 
+    function normGenotype(gt) {
+      // Strip non-letter chars, uppercase, sort letters alphabetically so
+      // "TC" → "CT", "CT" → "CT", "T C" → "CT".
+      if (!gt) return '';
+      const letters = gt.replace(/[^ACGT]/gi, '').toUpperCase().split('');
+      if (letters.length < 2) return letters.join('');
+      return letters.sort().join('').slice(0, 2);
+    }
+
     if (format === 'VCF') {
       for (const line of lines) {
         if (!line || line.startsWith('#')) continue;
         const parts = line.split('\t');
         if (parts.length < 8) continue;
         const rsid = parts[2] || '';
+        const ref = (parts[3] || '').toUpperCase();
+        const alt = (parts[4] || '').toUpperCase();
         const info = parts[7] || '';
         let gene = '';
         const m = info.match(/(?:^|;)(?:GENE|GENEINFO|gene_symbol|Gene)=([A-Z0-9\-]+)/i);
@@ -3153,14 +3641,30 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
           const a = info.match(/ANN=[^|]*\|[^|]*\|[^|]*\|([A-Z0-9\-]+)/i);
           if (a) gene = a[1].toUpperCase();
         }
-        variants.push({ rsid, gene });
+        // VCF GT field — parts[8] is FORMAT, parts[9..] are samples
+        let gt = '';
+        if (parts[8] && parts[9]) {
+          const formatFields = parts[8].split(':');
+          const sampleFields = parts[9].split(':');
+          const gtIdx = formatFields.indexOf('GT');
+          if (gtIdx >= 0) {
+            const gtStr = sampleFields[gtIdx] || '';
+            // 0/0 = wild homo, 0/1 = het, 1/1 = alt homo
+            if (gtStr.includes('0/0') || gtStr.includes('0|0')) gt = ref + ref;
+            else if (gtStr.includes('1/1') || gtStr.includes('1|1')) gt = alt + alt;
+            else if (/[01][\/|][01]/.test(gtStr)) gt = ref + alt;
+          }
+        }
+        variants.push({ rsid, gene, genotype: normGenotype(gt) });
       }
     } else if (format === 'MyHeritage') {
       for (const line of lines) {
         if (!line || line.startsWith('#') || /^"?RSID/i.test(line)) continue;
         const parts = line.replace(/"/g,'').split(',');
-        if (parts.length < 4) continue;
-        variants.push({ rsid: parts[0] });
+        if (parts.length < 5) continue;
+        const a1 = (parts[3] || '').toUpperCase();
+        const a2 = (parts[4] || '').toUpperCase();
+        variants.push({ rsid: parts[0], genotype: normGenotype(a1 + a2) });
       }
     } else {
       for (const line of lines) {
@@ -3168,27 +3672,72 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
         const parts = line.split(/\s+/);
         if (parts.length < 4) continue;
         if (parts[0] === 'rsid' || parts[0] === 'RSID') continue;
-        variants.push({ rsid: parts[0] });
+        // 23andMe: rsid chrom pos genotype (2-letter)
+        // AncestryDNA: rsid chrom pos allele1 allele2
+        let gt;
+        if (parts.length >= 5 && parts[3].length === 1 && parts[4].length === 1) {
+          gt = parts[3] + parts[4];
+        } else {
+          gt = parts[3];
+        }
+        variants.push({ rsid: parts[0], genotype: normGenotype(gt) });
       }
     }
     return { format, variants };
   }
 
-  function matchVariantsToGenes(variants) {
-    const ids = new Set();
+  // Returns { matchedGenes: [id, ...], matchedVariants: [{rsid, gene, name, role,
+  // genotype, severity, effect, detail, do, av, li, atlasInts}, ...] }
+  function matchVariantsToAtlas(variants) {
+    const geneIds = new Set();
+    const matchedVariants = [];
+    const seenRsids = new Set();
     for (const v of variants) {
+      // Avoid duplicates (some files list rsIDs more than once)
+      if (v.rsid && seenRsids.has(v.rsid)) continue;
+      if (v.rsid) seenRsids.add(v.rsid);
+
+      // VCF gene= header
       if (v.gene) {
         const gid = geneByLabel[v.gene];
-        if (gid) ids.add(gid);
-        continue;
+        if (gid) geneIds.add(gid);
       }
+
+      // rsid → gene
+      let sym = null;
       if (v.rsid && RSID_TO_GENE[v.rsid]) {
-        const sym = RSID_TO_GENE[v.rsid];
+        sym = RSID_TO_GENE[v.rsid];
         const gid = geneByLabel[sym];
-        if (gid) ids.add(gid);
+        if (gid) geneIds.add(gid);
+      }
+
+      // rsid + genotype → curated variant interpretation
+      if (v.rsid && v.genotype && VARIANT_DB[v.rsid]) {
+        const def = VARIANT_DB[v.rsid];
+        const effects = def.e || {};
+        const eff = effects[v.genotype];
+        if (eff && eff.sev > 0) {     // only report variants of any effect
+          matchedVariants.push({
+            rsid:     v.rsid,
+            gene:     def.g,
+            name:     def.n,
+            role:     def.r || '',
+            genotype: v.genotype,
+            zygosity: eff.f,
+            severity: eff.sev,
+            effect:   eff.msg,
+            detail:   eff.d || '',
+            consider: eff.do || [],
+            avoid:    eff.av || [],
+            lifestyle:eff.li || [],
+            atlasInts:eff.ai || []
+          });
+        }
       }
     }
-    return Array.from(ids);
+    // Sort variants by severity (high first), then gene name
+    matchedVariants.sort((a, b) => b.severity - a.severity || a.gene.localeCompare(b.gene));
+    return { matchedGenes: Array.from(geneIds), matchedVariants };
   }
 
   // ── BLOOD-WORK FORM ────────────────────────────────────────────
