@@ -1057,6 +1057,270 @@ HTML = r"""<!doctype html>
     color: var(--text-mute); text-transform: uppercase;
     margin-top: 3px;
   }
+
+  /* ── DATA UPLOAD UI ────────────────────────────────────────────── */
+  .upload-btn {
+    position: fixed; top: 26px; left: 50%; transform: translateX(-50%);
+    z-index: 15;
+    background: rgba(8,11,18,0.78); backdrop-filter: blur(8px);
+    border: 1px solid var(--gold-dim); color: var(--gold);
+    font: inherit; font-size: 10.5px; letter-spacing: 0.22em;
+    padding: 9px 18px; cursor: pointer; text-transform: uppercase;
+    transition: color 300ms, border-color 300ms, background 300ms;
+  }
+  .upload-btn:hover {
+    color: var(--text); border-color: var(--gold);
+    background: rgba(12,14,22,0.9);
+  }
+  .upload-btn.has-data {
+    color: var(--gold); border-color: var(--gold);
+    background: rgba(232,196,110,0.07);
+  }
+  .upload-btn .dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold);
+    box-shadow: 0 0 6px var(--gold);
+    margin-right: 8px; vertical-align: middle;
+  }
+  .user-data {
+    position: fixed; top: 68px; left: 50%; transform: translateX(-50%);
+    z-index: 14;
+    background: rgba(8,11,18,0.85); backdrop-filter: blur(8px);
+    border: 1px solid var(--gold-dim);
+    padding: 6px 16px;
+    font-size: 10.5px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text); pointer-events: none;
+    display: none; white-space: nowrap;
+  }
+  .user-data.on { display: block; }
+  .user-data .gold { color: var(--gold); }
+
+  .modal-backdrop {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(5,8,16,0.88); backdrop-filter: blur(12px);
+    display: none; align-items: flex-start; justify-content: center;
+    padding: 40px 24px;
+    overflow-y: auto;
+  }
+  .modal-backdrop.on { display: flex; }
+  .modal {
+    width: clamp(320px, 90vw, 720px);
+    background: rgba(12,14,22,0.98);
+    border: 1px solid var(--gold-dim);
+    color: var(--text);
+    padding: 28px 32px 32px;
+    position: relative;
+  }
+  .modal .m-close {
+    position: absolute; top: 14px; right: 18px;
+    background: transparent; border: none;
+    color: var(--text-mute); font-size: 24px;
+    cursor: pointer; padding: 4px 10px; line-height: 1;
+  }
+  .modal .m-close:hover { color: var(--text); }
+  .modal .m-title {
+    font-size: 18px; letter-spacing: 0.04em;
+    color: var(--node); margin-bottom: 4px;
+  }
+  .modal .m-sub {
+    font-size: 11px; letter-spacing: 0.18em;
+    color: var(--text-mute); text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .modal .m-privacy {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 14px; margin-bottom: 18px;
+    background: rgba(232,196,110,0.06);
+    border: 1px solid var(--gold-dim);
+    font-size: 11.5px; line-height: 1.55; color: var(--text);
+  }
+  .modal .m-privacy .pdot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); margin-top: 6px; flex-shrink: 0;
+  }
+  .modal .m-tabs {
+    display: flex; gap: 0;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 22px;
+    overflow-x: auto;
+  }
+  .modal .m-tab {
+    background: transparent; border: none;
+    color: var(--text-mute); font: inherit;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; white-space: nowrap;
+    padding: 11px 18px; cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 200ms, border-color 200ms;
+  }
+  .modal .m-tab:hover { color: var(--text); }
+  .modal .m-tab.on { color: var(--gold); border-bottom-color: var(--gold); }
+  .modal .m-pane { display: none; }
+  .modal .m-pane.on { display: block; }
+  .modal .m-drop {
+    border: 1px dashed var(--line-hi);
+    padding: 36px 24px; text-align: center;
+    cursor: pointer; transition: border-color 200ms, background 200ms;
+    margin-bottom: 12px;
+  }
+  .modal .m-drop:hover, .modal .m-drop.drag {
+    border-color: var(--gold); background: rgba(232,196,110,0.04);
+  }
+  .modal .m-drop-title {
+    font-size: 13px; letter-spacing: 0.04em; color: var(--text);
+    margin-bottom: 6px;
+  }
+  .modal .m-drop-sub {
+    font-size: 11px; letter-spacing: 0.14em; color: var(--text-mute);
+    text-transform: uppercase;
+  }
+  .modal .m-status {
+    font-family: ui-monospace, monospace; font-size: 11px;
+    color: var(--gold); padding: 8px 12px;
+    border: 1px solid var(--gold-dim);
+    margin-bottom: 14px; display: none;
+    line-height: 1.5;
+  }
+  .modal .m-status.on { display: block; }
+  .modal .m-status.err { color: #f0a090; border-color: #6e2222; }
+  .modal .m-help {
+    font-size: 11.5px; color: var(--text-mute);
+    line-height: 1.6; margin-bottom: 14px;
+  }
+  .modal .m-paste {
+    width: 100%; min-height: 120px;
+    background: rgba(8,11,18,0.6);
+    border: 1px solid var(--line);
+    color: var(--text); font: inherit;
+    font-family: ui-monospace, monospace; font-size: 11.5px;
+    padding: 10px 12px; resize: vertical; margin-bottom: 12px;
+  }
+  .modal .m-paste:focus { outline: none; border-color: var(--gold-dim); }
+  .modal .m-form-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px 18px;
+  }
+  .modal .m-field { display: flex; flex-direction: column; font-size: 12px; }
+  .modal .m-field label {
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--text-mute);
+    margin-bottom: 4px;
+  }
+  .modal .m-field .units {
+    color: var(--text-vmute); font-size: 9.5px;
+    text-transform: none; letter-spacing: 0.04em; margin-left: 6px;
+  }
+  .modal .m-field input {
+    background: rgba(8,11,18,0.5);
+    border: 1px solid var(--line);
+    color: var(--text); font: inherit; font-size: 12.5px;
+    padding: 7px 10px; outline: none;
+  }
+  .modal .m-field input:focus { border-color: var(--gold-dim); }
+  .modal .m-field input.high { color: #f0a890; border-color: #6e3a22; }
+  .modal .m-field input.low  { color: #b4c8e8; border-color: #2a4060; }
+  .modal .m-field .ref {
+    font-size: 9.5px; color: var(--text-vmute);
+    margin-top: 3px; letter-spacing: 0.04em;
+  }
+  .modal .m-save {
+    background: var(--gold); border: none; color: var(--void);
+    font: inherit; font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; padding: 12px 28px;
+    cursor: pointer; margin-top: 18px;
+    transition: background 200ms;
+  }
+  .modal .m-save:hover { background: #f0d080; }
+  .modal .m-clear {
+    background: transparent; border: 1px solid var(--line);
+    color: var(--text-mute); font: inherit; font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 9px 14px; cursor: pointer; margin-top: 18px;
+    margin-left: 10px;
+    transition: color 200ms, border-color 200ms;
+  }
+  .modal .m-clear:hover { color: var(--text); border-color: var(--line-hi); }
+
+  /* mobile bottom-dock toggle button */
+  .mobile-dock-btn {
+    display: none;
+    position: fixed; bottom: 78px; left: 14px;
+    z-index: 13;
+    background: rgba(8,11,18,0.85); backdrop-filter: blur(8px);
+    border: 1px solid var(--line-hi); color: var(--text);
+    font: inherit; font-size: 9.5px; letter-spacing: 0.2em;
+    padding: 9px 14px; cursor: pointer; text-transform: uppercase;
+  }
+  .mobile-dock-btn.on { color: var(--gold); border-color: var(--gold-dim); }
+
+  /* ── MOBILE RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .overlay.tl { top: 12px; left: 14px; font-size: 9px; }
+    .overlay.tl .title { font-size: 11px; letter-spacing: 0.24em; }
+    .overlay.tr { top: 12px; right: 14px; font-size: 8.5px; max-width: 42vw; }
+    .overlay.tr .num { font-size: 9px; }
+    .overlay.bl { bottom: 14px; left: 14px; font-size: 9px; }
+
+    .upload-btn {
+      top: auto; bottom: 144px; left: 14px; transform: none;
+      padding: 8px 14px; font-size: 9.5px; letter-spacing: 0.18em;
+    }
+    .user-data {
+      top: auto; bottom: 178px; left: 14px; right: 14px; transform: none;
+      font-size: 9px; letter-spacing: 0.12em; padding: 6px 12px;
+      white-space: normal; text-align: center;
+    }
+
+    .manifesto-inner { font-size: clamp(34px, 11vw, 64px); }
+
+    /* dock becomes a bottom strip */
+    .dock {
+      bottom: 14px; right: 14px; left: 14px;
+      align-items: stretch;
+    }
+    .dock .input { width: 100%; font-size: 12px; padding: 10px 12px; }
+    .dock .toggle { font-size: 9.5px; padding: 9px 12px; letter-spacing: 0.18em; }
+    .dock .presets { max-width: 100%; }
+    .dock.open .presets { max-height: 240px; }
+
+    /* left start-dock becomes a full-screen overlay opened by a button */
+    .start-dock {
+      display: none !important;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh; max-height: none; transform: none;
+      padding: 58px 22px 110px;
+      z-index: 11;
+    }
+    .start-dock.mobile-on { display: block !important; }
+    .mobile-dock-btn { display: block; }
+
+    /* action card slides up from bottom, full width */
+    .action-card {
+      width: 100%; left: 0; right: 0; bottom: 0;
+      transform: translateY(20px);
+      padding: 18px 22px 28px;
+      max-height: 65vh; overflow-y: auto;
+      border-left: none; border-right: none; border-bottom: none;
+    }
+    .action-card.on { transform: translateY(0); }
+    .action-card .ac-name { font-size: 15px; }
+    .action-card .ac-pe { font-size: 12.5px; line-height: 1.5; }
+    .action-card .ac-row {
+      grid-template-columns: 1fr;
+      gap: 4px; padding: 8px 0; font-size: 12px;
+    }
+    .action-card .ac-label { font-size: 9px; padding-top: 0; }
+
+    .modal-backdrop { padding: 20px 12px; }
+    .modal { padding: 22px 20px 26px; }
+    .modal .m-form-grid { grid-template-columns: 1fr; gap: 10px; }
+    .modal .m-tab { padding: 10px 14px; font-size: 10px; }
+
+    /* hover label hidden on touch */
+    .hover-label { display: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -1112,6 +1376,61 @@ HTML = r"""<!doctype html>
 </div>
 
 <div class="hover-label" id="hover"></div>
+
+<!-- Upload-my-data button (top-center) + your-data summary banner -->
+<button class="upload-btn" id="upload-btn">upload my data</button>
+<div class="user-data" id="user-data"></div>
+
+<!-- Mobile bottom-left starter-dock toggle -->
+<button class="mobile-dock-btn" id="mobile-dock-btn">starter tests</button>
+
+<!-- Upload modal -->
+<div class="modal-backdrop" id="upload-modal">
+  <div class="modal">
+    <button class="m-close" id="m-close">×</button>
+    <div class="m-title">Bring your data into the map</div>
+    <div class="m-sub">private · client-side only · stays in your browser</div>
+    <div class="m-privacy">
+      <div class="pdot"></div>
+      <div>
+        Files parsed entirely in your browser. Nothing is sent to any server. Your data is saved in this browser's local storage on this device only. Clear it any time below.
+      </div>
+    </div>
+    <div class="m-tabs">
+      <button class="m-tab on" data-pane="genetics">genetics</button>
+      <button class="m-tab" data-pane="bloodwork">blood work</button>
+      <button class="m-tab" data-pane="pdf">paste lab pdf</button>
+    </div>
+    <div class="m-pane on" id="pane-genetics">
+      <div class="m-drop" id="g-drop">
+        <input type="file" id="g-file" style="display:none" accept=".txt,.csv,.vcf,.tsv" />
+        <div class="m-drop-title">Drop your raw DNA file or click to choose</div>
+        <div class="m-drop-sub">23andMe · AncestryDNA · MyHeritage · VCF</div>
+      </div>
+      <div class="m-status" id="g-status"></div>
+      <div class="m-help">
+        On 23andMe: Settings → Browse Raw Data → Download. On AncestryDNA: Settings → DNA → Download Raw DNA Data. We match your variants against the curated rsID set covering MTHFR, COMT, BDNF, OXTR, FOLR1, GST, CYP, VDR, APOE, and the rest of the atlas's gene layer, and light up the ones connected to your child's phenotype.
+      </div>
+      <button class="m-clear" id="g-clear" style="margin-left:0;display:none;">clear my genetics</button>
+    </div>
+    <div class="m-pane" id="pane-bloodwork">
+      <div class="m-help">
+        Type values from your most recent lab work. Skip what you don't have. The graph lights up matching biomarker nodes and the phenotypes they stratify. Values outside reference range are color-flagged.
+      </div>
+      <div class="m-form-grid" id="bw-form"></div>
+      <button class="m-save" id="bw-save">save &amp; light up the map</button>
+      <button class="m-clear" id="bw-clear">clear</button>
+    </div>
+    <div class="m-pane" id="pane-pdf">
+      <div class="m-help">
+        Open your lab PDF, select all (Cmd/Ctrl-A), copy, and paste below. We scan for biomarker names + values and pre-fill the blood-work form for you to review.
+      </div>
+      <textarea class="m-paste" id="pdf-paste" rows="9" placeholder="Paste lab PDF text here…"></textarea>
+      <div class="m-status" id="pdf-status"></div>
+      <button class="m-save" id="pdf-extract">extract values →</button>
+    </div>
+  </div>
+</div>
 
 <!-- FM-actionable card: bottom-center reveal on phenotype-click -->
 <div class="action-card" id="ac"></div>
@@ -2251,6 +2570,23 @@ function draw(now) {
       ctx.stroke();
     }
 
+    // user-data ring — any gene or biomarker the family has uploaded.
+    // Always rendered at full strength regardless of filter so mom can
+    // visually find "her child's nodes" anywhere on the map.
+    if (window.userMatchedIds && window.userMatchedIds.has(n.id)) {
+      ctx.strokeStyle = `rgba(232,196,110,0.95)`;
+      ctx.lineWidth = 1.4/scale;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.s + 3.2, 0, Math.PI*2);
+      ctx.stroke();
+      // soft halo
+      const halo = ctx.createRadialGradient(n.x, n.y, n.s + 2, n.x, n.y, n.s + 9);
+      halo.addColorStop(0, 'rgba(232,196,110,0.32)');
+      halo.addColorStop(1, 'rgba(232,196,110,0)');
+      ctx.fillStyle = halo;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.s + 9, 0, Math.PI*2); ctx.fill();
+    }
+
     // hover — silent edge highlight
     if (hover === n) {
       ctx.strokeStyle = 'rgba(240,235,220,0.6)';
@@ -2539,6 +2875,483 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       sdRes.appendChild(item);
     }
   }
+})();
+
+// ── DATA UPLOAD + MOBILE TOUCH ──────────────────────────────────────
+// Client-side genetics + blood work upload. Files never leave the
+// browser. Stored in localStorage. Matched gene + biomarker nodes get
+// a persistent gold ring on the map regardless of active filter.
+(function setupUpload() {
+  'use strict';
+
+  // gene_symbol → node_id lookup
+  const geneByLabel = {};
+  for (const n of nodes) {
+    if (n.t === 'G' && n.l) geneByLabel[n.l.toUpperCase()] = n.id;
+  }
+  // biomarker_label (lowercased) → node_id lookup
+  const bioByLabel = {};
+  for (const n of nodes) {
+    if (n.t === 'B' && n.l) bioByLabel[n.l.toLowerCase()] = n.id;
+  }
+
+  // Curated biomarker form fields. Each label is matched against the
+  // atlas biomarker layer with aliases. Reference ranges follow the
+  // optimal-range conventions from the biomarkers.csv where available.
+  const BIOMARKER_FIELDS = [
+    { k:'vitd25', l:'25-OH Vitamin D', u:'ng/mL', rL:30, rH:80,
+      a:['25-hydroxy','vitamin d','25-OH','25(OH)D','vitamin d, 25']},
+    { k:'ferritin', l:'Ferritin', u:'ng/mL', rL:30, rH:200, a:['ferritin']},
+    { k:'homocysteine', l:'Homocysteine', u:'μmol/L', rL:4, rH:8, a:['homocysteine']},
+    { k:'mma', l:'Methylmalonic acid', u:'nmol/L', rL:0, rH:270, a:['methylmalonic','MMA']},
+    { k:'b12', l:'Vitamin B12', u:'pg/mL', rL:500, rH:1200, a:['B12','cobalamin']},
+    { k:'folate_rbc', l:'RBC Folate', u:'ng/mL', rL:400, rH:800, a:['RBC folate','red cell folate']},
+    { k:'tsh', l:'TSH', u:'mIU/L', rL:0.5, rH:2.5, a:['TSH','thyroid stimulating']},
+    { k:'ft4', l:'Free T4', u:'ng/dL', rL:1.0, rH:1.5, a:['free T4','FT4']},
+    { k:'ft3', l:'Free T3', u:'pg/mL', rL:3.0, rH:4.5, a:['free T3','FT3']},
+    { k:'zinc', l:'Zinc, plasma', u:'μg/dL', rL:70, rH:110, a:['zinc']},
+    { k:'copper', l:'Copper, plasma', u:'μg/dL', rL:70, rH:140, a:['copper']},
+    { k:'ceruloplasmin', l:'Ceruloplasmin', u:'mg/dL', rL:20, rH:35, a:['ceruloplasmin']},
+    { k:'mag_rbc', l:'Magnesium, RBC', u:'mg/dL', rL:4.2, rH:6.8, a:['magnesium RBC','red cell magnesium']},
+    { k:'lactate', l:'Lactate', u:'mmol/L', rL:0.5, rH:2.0, a:['lactate','lactic acid']},
+    { k:'pyruvate', l:'Pyruvate', u:'mg/dL', rL:0.3, rH:0.9, a:['pyruvate']},
+    { k:'ammonia', l:'Ammonia', u:'μmol/L', rL:15, rH:45, a:['ammonia']},
+    { k:'igg', l:'Immunoglobulin G', u:'mg/dL', rL:700, rH:1600, a:['IgG','immunoglobulin G']},
+    { k:'iga', l:'Immunoglobulin A', u:'mg/dL', rL:70, rH:400, a:['IgA','immunoglobulin A']},
+    { k:'igm', l:'Immunoglobulin M', u:'mg/dL', rL:40, rH:230, a:['IgM','immunoglobulin M']},
+    { k:'crp', l:'hs-CRP', u:'mg/L', rL:0, rH:1.0, a:['hs-CRP','C-reactive','CRP']},
+    { k:'igf1', l:'IGF-1', u:'ng/mL', rL:90, rH:280, a:['IGF-1','IGF1','somatomedin']},
+    { k:'cortisol_am', l:'Cortisol (AM serum)', u:'μg/dL', rL:8, rH:22, a:['cortisol','AM cortisol']},
+    { k:'glucose_f', l:'Fasting glucose', u:'mg/dL', rL:70, rH:99, a:['glucose','fasting glucose']},
+    { k:'insulin_f', l:'Fasting insulin', u:'μIU/mL', rL:2, rH:10, a:['insulin']},
+    { k:'hba1c', l:'HbA1c', u:'%', rL:4.5, rH:5.6, a:['HbA1c','hemoglobin A1c','A1c']},
+    { k:'lead', l:'Lead, blood', u:'μg/dL', rL:0, rH:3.5, a:['lead','Pb']},
+    { k:'mercury', l:'Mercury, blood', u:'μg/L', rL:0, rH:5, a:['mercury','Hg']},
+    { k:'arsenic', l:'Arsenic', u:'μg/L', rL:0, rH:50, a:['arsenic']},
+    { k:'tryptase', l:'Tryptase', u:'ng/mL', rL:0, rH:11, a:['tryptase']},
+    { k:'fraa_block', l:'FRAA blocking', u:'units', rL:0, rH:0.21, a:['FRAA blocking','folate receptor blocking']},
+    { k:'fraa_bind', l:'FRAA binding', u:'pmol', rL:0, rH:0.5, a:['FRAA binding','folate receptor binding']},
+    { k:'sam', l:'S-adenosylmethionine', u:'nmol/L', rL:70, rH:125, a:['SAM','adenosylmethionine']},
+    { k:'sah', l:'S-adenosylhomocysteine', u:'nmol/L', rL:10, rH:30, a:['SAH','adenosylhomocysteine']},
+    { k:'gsh_gssg', l:'GSH/GSSG ratio', u:'', rL:10, rH:100, a:['GSH/GSSG','glutathione ratio']},
+    { k:'ldl', l:'LDL cholesterol', u:'mg/dL', rL:0, rH:100, a:['LDL','low density']},
+    { k:'hdl', l:'HDL cholesterol', u:'mg/dL', rL:40, rH:100, a:['HDL','high density']},
+    { k:'trig', l:'Triglycerides', u:'mg/dL', rL:0, rH:150, a:['triglycerides']},
+    { k:'ast', l:'AST', u:'U/L', rL:10, rH:40, a:['AST','aspartate']},
+    { k:'alt', l:'ALT', u:'U/L', rL:7, rH:40, a:['ALT','alanine']},
+    { k:'wbc', l:'WBC', u:'×10³/μL', rL:4.5, rH:11, a:['WBC','white blood']}
+  ];
+
+  // Curated rsID → gene-symbol lookup. Covers the high-leverage variants
+  // for SNP-array-based consumer genetics. Atlas matches via gene symbol.
+  const RSID_TO_GENE = {
+    'rs1801133':'MTHFR','rs1801131':'MTHFR',
+    'rs1805087':'MTR','rs1801394':'MTRR',
+    'rs4880':'SOD2','rs1051266':'SLC19A1','rs2236225':'MTHFD1',
+    'rs4680':'COMT','rs4633':'COMT','rs6347':'SLC6A3',
+    'rs6313':'HTR2A','rs6311':'HTR2A','rs7997012':'HTR2A',
+    'rs1800497':'DRD2','rs1799732':'DRD2',
+    'rs25531':'SLC6A4','rs4795541':'SLC6A4','rs6321':'SLC6A4',
+    'rs6265':'BDNF','rs56164415':'BDNF',
+    'rs53576':'OXTR','rs2254298':'OXTR','rs2230197':'OXT',
+    'rs1695':'GSTP1','rs1138272':'GSTP1','rs366631':'GSTM1',
+    'rs1801280':'NAT2','rs1799930':'NAT2','rs1799931':'NAT2',
+    'rs4148323':'UGT1A1',
+    'rs1056827':'CYP1B1','rs1056836':'CYP1B1',
+    'rs1048943':'CYP1A1','rs4646903':'CYP1A1',
+    'rs1799853':'CYP2C9','rs1057910':'CYP2C9',
+    'rs4244285':'CYP2C19','rs4986893':'CYP2C19',
+    'rs3892097':'CYP2D6','rs1065852':'CYP2D6',
+    'rs2032582':'ABCB1',
+    'rs769407':'GAD1','rs2058725':'GAD1','rs10491734':'GRIK2',
+    'rs2073837':'HNMT','rs11558538':'HNMT','rs1801105':'DAO',
+    'rs2228570':'VDR','rs1544410':'VDR','rs7975232':'VDR','rs731236':'VDR',
+    'rs234706':'CBS','rs5742905':'CBS',
+    'rs2298444':'FOLR1','rs3736771':'SHANK3',
+    'rs6766410':'SCN1A','rs1057079':'MTOR',
+    'rs662':'PON1','rs854560':'PON1',
+    'rs13266634':'SLC30A8',
+    'rs2070424':'SOD1','rs1050450':'GPX1',
+    'rs17856199':'GCLC','rs17883901':'GCLC',
+    'rs1799945':'HFE','rs1800562':'HFE',
+    'rs7873784':'TLR4',
+    'rs6214':'IGF1','rs5742612':'IGF1',
+    'rs2228145':'IL6R','rs1800629':'TNF','rs1800795':'IL6',
+    'rs7501331':'BCMO1',
+    'rs429358':'APOE','rs7412':'APOE',
+    'rs193922753':'RYR1'
+  };
+
+  // DOM refs
+  const btnUpload = document.getElementById('upload-btn');
+  const modal     = document.getElementById('upload-modal');
+  const mClose    = document.getElementById('m-close');
+  const userData  = document.getElementById('user-data');
+  const bwForm    = document.getElementById('bw-form');
+
+  // build the blood-work form
+  for (const f of BIOMARKER_FIELDS) {
+    const w = document.createElement('div');
+    w.className = 'm-field';
+    const unit = f.u ? '<span class="units">' + f.u + '</span>' : '';
+    w.innerHTML =
+      '<label>' + f.l + unit + '</label>' +
+      '<input type="number" step="any" data-k="' + f.k + '" />' +
+      '<div class="ref">ref: ' + f.rL + '–' + f.rH + (f.u ? ' ' + f.u : '') + '</div>';
+    bwForm.appendChild(w);
+  }
+
+  // storage helpers
+  function getStored() {
+    try {
+      return {
+        genetics:   JSON.parse(localStorage.getItem('cwa_genetics_v1')   || 'null'),
+        biomarkers: JSON.parse(localStorage.getItem('cwa_biomarkers_v1') || 'null')
+      };
+    } catch (e) { return { genetics:null, biomarkers:null }; }
+  }
+  function saveGenetics(data) {
+    localStorage.setItem('cwa_genetics_v1', JSON.stringify(data));
+    updateBanner(); applyUserData();
+  }
+  function saveBiomarkers(values) {
+    localStorage.setItem('cwa_biomarkers_v1', JSON.stringify(values));
+    updateBanner(); applyUserData();
+  }
+
+  function updateBanner() {
+    const s = getStored();
+    const parts = [];
+    if (s.genetics) {
+      parts.push('<span class="gold">' + s.genetics.matchedGenes.length + '</span> genes matched');
+    }
+    if (s.biomarkers) {
+      const flag = Object.values(s.biomarkers)
+        .filter(v => v.flag === 'high' || v.flag === 'low').length;
+      parts.push('<span class="gold">' + Object.keys(s.biomarkers).length + '</span> biomarkers'
+                 + (flag ? ' · <span class="gold">' + flag + '</span> out of range' : ''));
+    }
+    if (parts.length) {
+      userData.innerHTML = 'your data · ' + parts.join(' · ');
+      userData.classList.add('on');
+      btnUpload.classList.add('has-data');
+      btnUpload.innerHTML = '<span class="dot"></span>my data';
+    } else {
+      userData.classList.remove('on');
+      btnUpload.classList.remove('has-data');
+      btnUpload.innerHTML = 'upload my data';
+    }
+  }
+
+  function applyUserData() {
+    const s = getStored();
+    window.userMatchedIds = new Set();
+    if (s.genetics) {
+      for (const gid of s.genetics.matchedGenes) window.userMatchedIds.add(gid);
+    }
+    if (s.biomarkers) {
+      for (const k of Object.keys(s.biomarkers)) {
+        const v = s.biomarkers[k];
+        if (v.nodeId) window.userMatchedIds.add(v.nodeId);
+      }
+    }
+  }
+
+  // tabs
+  for (const t of document.querySelectorAll('.m-tab')) {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.m-tab').forEach(x => x.classList.remove('on'));
+      document.querySelectorAll('.m-pane').forEach(p => p.classList.remove('on'));
+      t.classList.add('on');
+      document.getElementById('pane-' + t.dataset.pane).classList.add('on');
+    });
+  }
+
+  // modal open/close
+  btnUpload.addEventListener('click', () => modal.classList.add('on'));
+  mClose.addEventListener('click', () => modal.classList.remove('on'));
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('on');
+  });
+  // ESC closes
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('on')) {
+      modal.classList.remove('on');
+    }
+  });
+
+  // ── GENETICS UPLOAD ────────────────────────────────────────────
+  const gDrop   = document.getElementById('g-drop');
+  const gFile   = document.getElementById('g-file');
+  const gStatus = document.getElementById('g-status');
+  const gClear  = document.getElementById('g-clear');
+
+  gDrop.addEventListener('click', () => gFile.click());
+  gDrop.addEventListener('dragover', e => { e.preventDefault(); gDrop.classList.add('drag'); });
+  gDrop.addEventListener('dragleave', () => gDrop.classList.remove('drag'));
+  gDrop.addEventListener('drop', e => {
+    e.preventDefault(); gDrop.classList.remove('drag');
+    if (e.dataTransfer.files.length) handleGeneticsFile(e.dataTransfer.files[0]);
+  });
+  gFile.addEventListener('change', e => {
+    if (e.target.files.length) handleGeneticsFile(e.target.files[0]);
+  });
+  gClear.addEventListener('click', () => {
+    localStorage.removeItem('cwa_genetics_v1');
+    updateBanner(); applyUserData();
+    gStatus.classList.remove('on');
+    gClear.style.display = 'none';
+  });
+
+  function handleGeneticsFile(file) {
+    gStatus.classList.remove('err');
+    gStatus.classList.add('on');
+    gStatus.textContent = 'parsing ' + file.name + ' (' + Math.round(file.size/1024) + ' KB)…';
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const res = parseGenetics(e.target.result);
+        if (!res.variants.length) {
+          gStatus.classList.add('err');
+          gStatus.textContent = 'could not recognize this file format. supported: 23andMe, AncestryDNA, MyHeritage, VCF';
+          return;
+        }
+        const matched = matchVariantsToGenes(res.variants);
+        gStatus.textContent = res.format + ' · ' +
+          res.variants.length.toLocaleString() + ' variants read · ' +
+          matched.length + ' matched to atlas genes';
+        saveGenetics({
+          format: res.format,
+          uploadedAt: Date.now(),
+          variantCount: res.variants.length,
+          matchedGenes: matched
+        });
+        gClear.style.display = 'inline-block';
+      } catch (err) {
+        gStatus.classList.add('err');
+        gStatus.textContent = 'parse error: ' + (err.message || err);
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  function parseGenetics(text) {
+    const head = text.slice(0, 3000);
+    let format = 'unknown';
+    if (/23andMe/i.test(head))                       format = '23andMe';
+    else if (/AncestryDNA/i.test(head))              format = 'AncestryDNA';
+    else if (/MyHeritage/i.test(head))               format = 'MyHeritage';
+    else if (/^##fileformat=VCF/im.test(head))       format = 'VCF';
+    else if (/^#?\s*rsid\b/im.test(head))            format = '23andMe-like';
+
+    const variants = [];
+    const lines = text.split('\n');
+
+    if (format === 'VCF') {
+      for (const line of lines) {
+        if (!line || line.startsWith('#')) continue;
+        const parts = line.split('\t');
+        if (parts.length < 8) continue;
+        const rsid = parts[2] || '';
+        const info = parts[7] || '';
+        let gene = '';
+        const m = info.match(/(?:^|;)(?:GENE|GENEINFO|gene_symbol|Gene)=([A-Z0-9\-]+)/i);
+        if (m) gene = m[1].toUpperCase();
+        if (!gene) {
+          const a = info.match(/ANN=[^|]*\|[^|]*\|[^|]*\|([A-Z0-9\-]+)/i);
+          if (a) gene = a[1].toUpperCase();
+        }
+        variants.push({ rsid, gene });
+      }
+    } else if (format === 'MyHeritage') {
+      for (const line of lines) {
+        if (!line || line.startsWith('#') || /^"?RSID/i.test(line)) continue;
+        const parts = line.replace(/"/g,'').split(',');
+        if (parts.length < 4) continue;
+        variants.push({ rsid: parts[0] });
+      }
+    } else {
+      for (const line of lines) {
+        if (!line || line.startsWith('#')) continue;
+        const parts = line.split(/\s+/);
+        if (parts.length < 4) continue;
+        if (parts[0] === 'rsid' || parts[0] === 'RSID') continue;
+        variants.push({ rsid: parts[0] });
+      }
+    }
+    return { format, variants };
+  }
+
+  function matchVariantsToGenes(variants) {
+    const ids = new Set();
+    for (const v of variants) {
+      if (v.gene) {
+        const gid = geneByLabel[v.gene];
+        if (gid) ids.add(gid);
+        continue;
+      }
+      if (v.rsid && RSID_TO_GENE[v.rsid]) {
+        const sym = RSID_TO_GENE[v.rsid];
+        const gid = geneByLabel[sym];
+        if (gid) ids.add(gid);
+      }
+    }
+    return Array.from(ids);
+  }
+
+  // ── BLOOD-WORK FORM ────────────────────────────────────────────
+  const bwSave  = document.getElementById('bw-save');
+  const bwClear = document.getElementById('bw-clear');
+
+  function loadStoredBiomarkers() {
+    const s = getStored();
+    if (s.biomarkers) {
+      for (const k of Object.keys(s.biomarkers)) {
+        const input = bwForm.querySelector('input[data-k="' + k + '"]');
+        if (input) {
+          input.value = s.biomarkers[k].value;
+          flagInput(input, s.biomarkers[k].flag);
+        }
+      }
+    }
+  }
+  function flagInput(input, flag) {
+    input.classList.remove('high', 'low');
+    if (flag === 'high') input.classList.add('high');
+    else if (flag === 'low') input.classList.add('low');
+  }
+  loadStoredBiomarkers();
+
+  function findBiomarkerNodeId(field) {
+    const lcLabel = field.l.toLowerCase();
+    if (bioByLabel[lcLabel]) return bioByLabel[lcLabel];
+    for (const alias of (field.a || [])) {
+      const lcAlias = alias.toLowerCase();
+      for (const bk of Object.keys(bioByLabel)) {
+        if (bk.indexOf(lcAlias) >= 0) return bioByLabel[bk];
+      }
+    }
+    return null;
+  }
+
+  bwSave.addEventListener('click', () => {
+    const out = {};
+    for (const f of BIOMARKER_FIELDS) {
+      const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
+      if (!input || !input.value) continue;
+      const v = parseFloat(input.value);
+      if (Number.isNaN(v)) continue;
+      let flag = 'normal';
+      if (v < f.rL) flag = 'low';
+      else if (v > f.rH) flag = 'high';
+      flagInput(input, flag);
+      out[f.k] = {
+        value: v, unit: f.u, flag, label: f.l,
+        nodeId: findBiomarkerNodeId(f)
+      };
+    }
+    saveBiomarkers(out);
+    const orig = bwSave.textContent;
+    bwSave.textContent = '✓ saved';
+    setTimeout(() => bwSave.textContent = orig, 1500);
+  });
+
+  bwClear.addEventListener('click', () => {
+    localStorage.removeItem('cwa_biomarkers_v1');
+    for (const input of bwForm.querySelectorAll('input')) {
+      input.value = '';
+      input.classList.remove('high', 'low');
+    }
+    updateBanner(); applyUserData();
+  });
+
+  // ── PDF PASTE EXTRACTION ───────────────────────────────────────
+  const pdfPaste   = document.getElementById('pdf-paste');
+  const pdfExtract = document.getElementById('pdf-extract');
+  const pdfStatus  = document.getElementById('pdf-status');
+
+  pdfExtract.addEventListener('click', () => {
+    const text = pdfPaste.value;
+    if (!text || text.length < 50) {
+      pdfStatus.classList.add('on'); pdfStatus.classList.add('err');
+      pdfStatus.textContent = 'paste some lab text first';
+      return;
+    }
+    let found = 0;
+    for (const f of BIOMARKER_FIELDS) {
+      const aliases = (f.a || []).concat([f.l]);
+      let matched = null;
+      for (const alias of aliases) {
+        const esc = alias.replace(/[\s\-\/\(\)\.]/g, '\\s*');
+        const re = new RegExp(esc + '[^\\d\\-\\.]{0,80}?(\\d+\\.?\\d*)', 'i');
+        const m = text.match(re);
+        if (m) { matched = m[1]; break; }
+      }
+      if (matched) {
+        const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
+        if (input && !input.value) { input.value = matched; found++; }
+      }
+    }
+    pdfStatus.classList.add('on'); pdfStatus.classList.remove('err');
+    pdfStatus.textContent = 'extracted ' + found + ' values · switch to blood-work tab to review &amp; save';
+    setTimeout(() => {
+      document.querySelectorAll('.m-tab').forEach(x => x.classList.remove('on'));
+      document.querySelectorAll('.m-pane').forEach(p => p.classList.remove('on'));
+      document.querySelector('.m-tab[data-pane="bloodwork"]').classList.add('on');
+      document.getElementById('pane-bloodwork').classList.add('on');
+    }, 1100);
+  });
+
+  // ── MOBILE START-DOCK TOGGLE ──────────────────────────────────
+  const mobileDockBtn = document.getElementById('mobile-dock-btn');
+  const startDock     = document.getElementById('sd');
+  if (mobileDockBtn && startDock) {
+    mobileDockBtn.addEventListener('click', () => {
+      startDock.classList.toggle('mobile-on');
+      mobileDockBtn.classList.toggle('on');
+      mobileDockBtn.textContent =
+        startDock.classList.contains('mobile-on') ? 'close' : 'starter tests';
+    });
+  }
+
+  // ── TOUCH HANDLERS FOR CANVAS (pan + pinch zoom) ──────────────
+  let tStart = null;
+  let lastTDist = null;
+  canvas.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      tStart = {
+        x: e.touches[0].clientX, y: e.touches[0].clientY,
+        ox: targetOx, oy: targetOy
+      };
+    } else if (e.touches.length === 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      lastTDist = Math.hypot(dx, dy);
+    }
+    lastUserAction = performance.now();
+  }, { passive: true });
+  canvas.addEventListener('touchmove', e => {
+    if (e.touches.length === 1 && tStart) {
+      targetOx = tStart.ox + (e.touches[0].clientX - tStart.x);
+      targetOy = tStart.oy + (e.touches[0].clientY - tStart.y);
+    } else if (e.touches.length === 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const dist = Math.hypot(dx, dy);
+      if (lastTDist) {
+        const k = dist / lastTDist;
+        targetScale = Math.max(0.3, Math.min(4, targetScale * k));
+      }
+      lastTDist = dist;
+    }
+  }, { passive: true });
+  canvas.addEventListener('touchend', () => {
+    tStart = null; lastTDist = null;
+  });
+
+  // initialize
+  updateBanner();
+  applyUserData();
 })();
 </script>
 </body>
