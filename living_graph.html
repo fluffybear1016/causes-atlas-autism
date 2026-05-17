@@ -1058,8 +1058,9 @@
     </div>
 
     <div class="r-footer">
-      <button class="r-btn primary" id="r-graph">View on graph</button>
-      <button class="r-btn" id="r-download">Download as PDF</button>
+      <button class="r-btn primary" id="r-obsidian">Download Obsidian profile (.md)</button>
+      <button class="r-btn" id="r-graph">View on graph</button>
+      <button class="r-btn" id="r-download">Print / save as PDF</button>
       <button class="r-btn" id="r-reupload">Re-upload labs</button>
     </div>
   </div>
@@ -1126,6 +1127,7 @@ const DATA     = {"nodes":[{"id":"HYP-0001","t":"H","l":"FOLR1 autoantibodies / 
 const PROFILES = [{"k":"hp","label":"Hannah Poling \u00b7 mito + immune + contested-vaccine cluster"},{"k":"folr1","label":"FOLR1+ \u00b7 cerebral folate \u00b7 leucovorin responder"},{"k":"mcas","label":"MCAS \u00b7 mast cell activation \u00b7 histamine"},{"k":"pans","label":"PANS / PANDAS \u00b7 post-infectious autoimmune"},{"k":"methyl","label":"Undermethylator \u00b7 methylation cycle \u00b7 Walsh phenotype"},{"k":"mito","label":"Mitochondrial-vulnerable"},{"k":"gut","label":"Gut\u2013brain \u00b7 microbiome \u00b7 GI inflammation"},{"k":"hulscher","label":"Hulscher 9-factor framework \u00b7 the full causation manifold"}];        // [{k, label}, ...] index = bit
 const INTAKE   = {"candidates":[{"pmid":"42097524","title":"Risk for Autism Across Generations.","first_author":"Reichenberg A","intake_tag":"P","intake_focus":"advanced_parental_age"},{"pmid":"42098401","title":"Mitochondrial Gene Signature Reveals Novel Diagnostic Biomarkers for Autism Spectrum Disorder.","first_author":"Wang J","intake_tag":"M","intake_focus":"mitochondrial_mechanism"},{"pmid":"42101085","title":"Personalized Medicine in Autism Spectrum Disorder: Integrating Epigenomics, Microbiome Research and Early Diagnostics.","first_author":"El Sehrawy AAMA","intake_tag":"E","intake_focus":"maternal_immune_activation"},{"pmid":"42101598","title":"Vaccine Adverse Effects: An Overview.","first_author":"Coles S MD, FAAFP","intake_tag":"E","intake_focus":"vaccine_axis"},{"pmid":"42102652","title":"Toward an immunological classification of autism spectrum disorder: A PRISMA-ScR-compliant scoping review.","first_author":"Al-Salihy AAS","intake_tag":"E","intake_focus":"maternal_immune_activation"},{"pmid":"42104823","title":"[Valproate\u2011Associated Acute Pancreatitis in a Child with Autism Spectrum Disorder].","first_author":"Nascimento CM","intake_tag":"E","intake_focus":"in_utero_drug"},{"pmid":"42105161","title":"rTMS Modulates Static and Dynamic Brain Functional Networks in Children with Autism Spectrum Disorder: An EEG Microstate Study.","first_author":"Kang J","intake_tag":"SYNTHESIS","intake_focus":"responder_subgroup_RCT"},{"pmid":"42106060","title":"Child-onset Hepatic Glycogenosis and Steatosis in PTEN-related Disorder.","first_author":"Sihaklang B","intake_tag":"P","intake_focus":"advanced_parental_age"},{"pmid":"42107183","title":"Reduced IL-10 in the early postnatal period contributes to pro-inflammatory phenotype and autism-like behavior in offspring mice induced by ","first_author":"Li M","intake_tag":"E","intake_focus":"maternal_immune_activation"},{"pmid":"42110197","title":"Vagus nerve stimulation as an anti-inflammatory therapy for maternal immune activation-induced alterations in offspring microglia and neurod","first_author":"Gargus M","intake_tag":"E","intake_focus":"maternal_immune_activation"},{"pmid":"42113260","title":"Multi-strain Bacillus Probiotics has Advantages in Improving Abnormal Behavior and Intestinal Flora in Rats of Autism Spectrum Disorder.","first_author":"Bai QQ","intake_tag":"E","intake_focus":"in_utero_drug"},{"pmid":"42113313","title":"Genetic-Environmental Programming of Microglial Identity: Shaping Spatiotemporal Dynamics in Neurodevelopment and Neurodevelopmental Disease","first_author":"Zhang Y","intake_tag":"E","intake_focus":"maternal_immune_activation"},{"pmid":"42116138","title":"Heterogeneous neurocognitive signatures in early childhood autism: a combined analysis of pharmacological treatment and gender.","first_author":"\u00d6zcan \u00d6\u00d6","intake_tag":"PHI","intake_focus":"phenotype_subtyping"},{"pmid":"42116390","title":"Trampoline exercise reduces anxiety and improves motor skills in children with autism spectrum disorder: A randomized controlled trial.","first_author":"Luo B","intake_tag":"SYNTHESIS","intake_focus":"responder_subgroup_RCT"},{"pmid":"42119985","title":"Trends in the age-standardized prevalence of neurodevelopmental disorders in South America, 1990-2023.","first_author":"Lopez-Espejo M","intake_tag":"PHI","intake_focus":"phenotype_subtyping"},{"pmid":"42120904","title":"Social functioning in autism: a systematic review and meta-analysis.","first_author":"Li S","intake_tag":"PHI","intake_focus":"phenotype_subtyping"},{"pmid":"42123457","title":"Mitochondria as an Integrative Hub of Cellular Homeostasis and Stress Response.","first_author":"Mihaylova V","intake_tag":"M","intake_focus":"mitochondrial_mechanism"},{"pmid":"42123569","title":"Microbiome-Derived Short-Chain Fatty Acids and Tryptophan Metabolites in Children with Autism Spectrum Disorder: A Stool-Urine Multi-Omics A","first_author":"Osredkar J","intake_tag":"M","intake_focus":"gut_brain_axis"},{"pmid":"42123681","title":"Characterization of Three Distinct Loss-of-Function Cav2.3 Variants.","first_author":"Souza IA","intake_tag":"P","intake_focus":"advanced_parental_age"},{"pmid":"42124041","title":"Gut-Derived Metabolic Imbalance in Autism Spectrum Disorder: Toward the Concept of a Metabolic Subtype.","first_author":"Son JY","intake_tag":"M","intake_focus":"mitochondrial_mechanism"},{"pmid":"42125782","title":"Assessment of differences in urinary heavy metal concentrations and environmental factors between children with autism spectrum disorder and","first_author":"Elkady NK","intake_tag":"E","intake_focus":"environmental_toxicants"},{"pmid":"42127326","title":"Drug development in autism spectrum disorder: genetic heterogeneity, failed trials, and the case for stratified pharmacotherapy.","first_author":"Bortoletto R","intake_tag":"E","intake_focus":"in_utero_drug"},{"pmid":"42128602","title":"My Autistic Sister Deserves a Pap Smear Too: Closing the Reproductive Care Gap for Neurodiverse Patients.","first_author":"Iqbal R","intake_tag":"E","intake_focus":"vaccine_axis"},{"pmid":"42129135","title":"Perineuronal nets in cerebellar nuclei neurons orchestrate social behaviour via regulation of neuronal activity in circuits innervated by th","first_author":"Fujita K","intake_tag":"E","intake_focus":"in_utero_drug"},{"pmid":"42129557","title":"An X-linked long non-coding RNA, PTCHD1-AS, and the core features of autism.","first_author":"Bradley CA","intake_tag":"M","intake_focus":"mitochondrial_mechanism"},{"pmid":"42131345","title":"Microglia in autism spectrum disorder: heterogeneity, immunometabolism, and synapse-related pathways.","first_author":"Lian A","intake_tag":"E","intake_focus":"maternal_immune_activation"},{"pmid":"42134364","title":"Maternal and paternal antidepressant use before and during pregnancy and offspring risk of neurodevelopmental disorders: a systematic review","first_author":"Chan JKN","intake_tag":"E","intake_focus":"in_utero_drug"},{"pmid":"42135262","title":"Paracetamol in Pregnancy: Uncertain Evidence, Certain Consequences.","first_author":"Tunnicliffe DJ","intake_tag":"E","intake_focus":"in_utero_drug"},{"pmid":"42136057","title":"Metabotropic Glutamate Receptor-Dependent Synaptic Plasticity in Age-Related Neurodegenerative Disorders.","first_author":"Basha S","intake_tag":"PHI","intake_focus":"phenotype_subtyping"},{"pmid":"42136303","title":"From Microbes to Minds: The Impact of Gut Bacteria on Infant Cognitive Growth.","first_author":"Rahimkhani M","intake_tag":"M","intake_focus":"gut_brain_axis"},{"pmid":"42137376","title":"Understanding Practice Intentions and Barriers Following Pediatric Mental Health ECHO Participation.","first_author":"James M","intake_tag":"SYNTHESIS","intake_focus":"responder_subgroup_RCT"},{"pmid":"42138030","title":"The emotion dysregulation inventory - self-report: development and psychometric evaluation.","first_author":"Conner CM","intake_tag":"SYNTHESIS","intake_focus":"responder_subgroup_RCT"}]};     // recent PubMed candidates from cron
 const STARTERS = {"must_have":["TEST-0014","TEST-0015","TEST-0010","TEST-0020","TEST-0008"],"epigenetic":["TEST-0090","TEST-0012","TEST-0089"],"high_end":["TEST-0006","TEST-0009","TEST-0016","TEST-0025","TEST-0018"],"budget":["TEST-0001","TEST-0005","TEST-0046","TEST-0043","TEST-0112"],"foundation":["INT-0014","INT-0013","INT-0015","INT-0046","INT-0041"],"types":[{"id":"PHE-0001","label":"Cerebral folate deficiency"},{"id":"PHE-0002","label":"Mitochondrial-vulnerable"},{"id":"PHE-0003","label":"Immune-inflammatory \u00b7 regressive"},{"id":"PHE-0004","label":"Gut\u2013brain axis"},{"id":"PHE-0005","label":"mTOR-syndromic"},{"id":"PHE-0006","label":"Fragile X \u00b7 FMR1"},{"id":"PHE-0007","label":"GABA-imbalance"},{"id":"PHE-0008","label":"MCAS overlap \u00b7 mast-cell"},{"id":"PHE-0009","label":"PANS / PANDAS \u00b7 post-infectious"},{"id":"PHE-0010","label":"Walsh undermethylator"},{"id":"PHE-0011","label":"Walsh metallothionein-deficient"}],"resources":[{"name":"MAPS doctor directory","url":"https://medmaps.org","tier":"T1","what":"find a trained FM pediatrics clinician"},{"name":"Autism Research Institute","url":"https://autism.org","tier":"T1","what":"Bernie Rimland's lineage; biomedical research"},{"name":"Walsh Research Institute","url":"https://walshinstitute.org","tier":"T1","what":"methylation / metallothionein phenotypes; Walsh"},{"name":"Documenting Hope","url":"https://documentinghope.com","tier":"T2","what":"parent-recovery project; protocols + outcomes"},{"name":"TACA","url":"https://tacanow.org","tier":"T2","what":"parent community + practical resource library"}]};        // curated must-have/high-end/budget + foundation + types + resources
+const VAULT_PATHS = {"PHE-0001":"PHE-0001 Cerebral folate deficiency phenotype","PHE-0003":"PHE-0003 Regressive immune-inflammatory phenotype","PHE-0011":"PHE-0011 Copper zinc imbalance phenotype","PHE-0008":"PHE-0008 Undermethylator phenotype (Walsh)","PHE-0007":"PHE-0007 GABA Cl- imbalance phenotype","PHE-0006":"PHE-0006 Fragile X (FMR1)","PHE-0009":"PHE-0009 Overmethylator phenotype (Walsh)","PHE-0002":"PHE-0002 Mitochondrial dysfunction phenotype","PHE-0010":"PHE-0010 Pyroluria kryptopyrroluria phenotype","PHE-0005":"PHE-0005 mTOR pathway syndromic (TSC, PTEN)","PHE-0004":"PHE-0004 Autism + GI microbiome phenotype","INT-0063":"INT-0063 Selank (peptide)","INT-0102":"INT-0102 Stem cell therapy (UC-MSC cord blood cord tissue MSC, IV infusion)","INT-0014":"INT-0014 Omega-3 (EPA + DHA)","INT-0136":"INT-0136 Pregnenolone (low-dose)","INT-0095":"INT-0095 Niacinamide nicotinamide","INT-0142":"INT-0142 Vitamin mineral multinutrient supplement (Adams 2011 formulation)","INT-0035":"INT-0035 Cannabidiol (CBD)","INT-0065":"INT-0065 Cerebrolysin","INT-0036":"INT-0036 Rapamycin (sirolimus)","INT-0092":"INT-0092 Hyperbaric oxygen therapy (HBOT)","INT-0039":"INT-0039 Riluzole","INT-0057":"INT-0057 Anti-inflammatory combo (sulforaphane + omega-3 + vitamin D)","INT-0066":"INT-0066 Iodine (potassium iodide kelp)","INT-0108":"INT-0108 Nystatin (oral non-systemic)","INT-0031":"INT-0031 Bacopa monnieri","INT-0074":"INT-0074 Breathwork vagal toning practices","INT-0072":"INT-0072 Screen time reduction (structured)","INT-0135":"INT-0135 MOTS-c (mito-derived peptide)","INT-0025":"INT-0025 Probiotics (multi-strain)","INT-0125":"INT-0125 Pioglitazone (PPAR-\u03b3 agonist)","INT-0022":"INT-0022 Inositol (myo-inositol)","INT-0026":"INT-0026 Berberine","INT-0012":"INT-0012 Coenzyme Q10 (ubiquinol)","INT-0122":"INT-0122 Methylene blue (low-dose)","INT-0043":"INT-0043 Low-glutamate diet","INT-0117":"INT-0117 Betaine TMG (trimethylglycine)","INT-0103":"INT-0103 Cromolyn sodium (oral)","INT-0018":"INT-0018 Trimethylglycine (TMG betaine)","INT-0060":"INT-0060 Extended exclusive breastfeeding ( =6mo)","INT-0056":"INT-0056 Gut healing combo (GFCF + L-glutamine + probiotics)","INT-0034":"INT-0034 Saffron","INT-0115":"INT-0115 Methyl-B12 (subcutaneous Neubrander protocol)","INT-0054":"INT-0054 Mold remediation","INT-0119":"INT-0119 PQQ (pyrroloquinoline quinone)","INT-0098":"INT-0098 Vitamin A megadose (single 200,000 IU)","INT-0113":"INT-0113 Saccharomyces boulardii","INT-0096":"INT-0096 Preconception mitochondrial optimization combo (parental)","INT-0075":"INT-0075 MBSR stress reduction (parent + child)","INT-0079":"INT-0079 Saccharomyces boulardii (yeast probiotic)","INT-0023":"INT-0023 Taurine","INT-0015":"INT-0015 Magnesium glycinate","INT-0120":"INT-0120 MitoQ (mito-targeted CoQ10)","INT-0126":"INT-0126 Minocycline (microglial modulator)","INT-0051":"INT-0051 HEPA air filtration","INT-0137":"INT-0137 Vitamin D high-dose (deficiency-correction)","INT-0040":"INT-0040 D-cycloserine","INT-0069":"INT-0069 Pregnenolone (low-dose)","INT-0041":"INT-0041 GFCF diet","INT-0094":"INT-0094 D-ribose","INT-0133":"INT-0133 Antimicrobial peptides (cathelicidin LL-37)","INT-0020":"INT-0020 Glutathione (liposomal or precursors)","INT-0112":"INT-0112 Vancomycin (oral, non-absorbable)","INT-0016":"INT-0016 Zinc (zinc picolinate)","INT-0029":"INT-0029 Quercetin","INT-0030":"INT-0030 Choline (CDP-choline Alpha-GPC)","INT-0084":"INT-0084 Vancomycin (oral, transient pre-FMT)","INT-0003":"INT-0003 Methyl-B12 (methylcobalamin) injection","INT-0033":"INT-0033 Lion's mane (Hericium erinaceus)","INT-0006":"INT-0006 Low-dose naltrexone (LDN)","INT-0045":"INT-0045 Low-oxalate diet","INT-0062":"INT-0062 BPC-157 (peptide)","INT-0131":"INT-0131 Vasopressin (intranasal)","INT-0028":"INT-0028 Resveratrol","INT-0001":"INT-0001 Leucovorin (folinic acid)","INT-0061":"INT-0061 Intranasal oxytocin","INT-0052":"INT-0052 Glass stainless replacement of plastic","INT-0082":"INT-0082 Galactooligosaccharides (GOS) fructooligosaccharides (FOS)","INT-0111":"INT-0111 Biofilm disruptors (lumbrokinase NAC lactoferrin)","INT-0024":"INT-0024 Glycine","INT-0127":"INT-0127 Allopregnanolone ganaxolone","INT-0085":"INT-0085 Antifungal protocol (nystatin fluconazole, targeted)","INT-0099":"INT-0099 Chelation therapy (DMSA EDTA)","INT-0011":"INT-0011 L-carnitine","INT-0037":"INT-0037 Metformin","INT-0124":"INT-0124 Suramin (low-dose, antipurinergic)","INT-0083":"INT-0083 Sodium butyrate (postbiotic)","INT-0068":"INT-0068 NAD+ precursors (NMN NR)","INT-0078":"INT-0078 Lactobacillus rhamnosus GG","INT-0021":"INT-0021 Lithium orotate (low-dose)","INT-0107":"INT-0107 H1+H2 antihistamine combination","INT-0090":"INT-0090 HIIT (high-intensity interval training)","INT-0123":"INT-0123 Bumetanide (NKCC1 inhibitor for autism)","INT-0019":"INT-0019 S-adenosylmethionine (SAMe)","INT-0050":"INT-0050 EMF reduction (bedroom)","INT-0129":"INT-0129 Lovastatin (low-dose)","INT-0047":"INT-0047 Aerobic exercise (structured)","INT-0071":"INT-0071 Vagal nerve stimulation (transcutaneous)","INT-0116":"INT-0116 SAM-e (S-adenosylmethionine)","INT-0038":"INT-0038 Memantine","INT-0076":"INT-0076 Fecal microbiota transplantation (FMT)","INT-0100":"INT-0100 Cod liver oil (fermented preferred)","INT-0104":"INT-0104 Ketotifen","INT-0049":"INT-0049 Sunlight exposure","INT-0101":"INT-0101 L-glutamine (free amino acid)","INT-0097":"INT-0097 Red light photobiomodulation therapy (635 nm)","INT-0048":"INT-0048 Sauna heat therapy","INT-0134":"INT-0134 Humanin (mito-derived peptide)","INT-0093":"INT-0093 Alpha-lipoic acid (ALA)","INT-0081":"INT-0081 Human milk oligosaccharides (HMOs)","INT-0140":"INT-0140 L-carnosine (oral dipeptide)","INT-0143":"INT-0143 IVIG (intravenous immunoglobulin)","INT-0008":"INT-0008 Methylated folate (5-MTHF) \u2014 preconception prenatal","INT-0032":"INT-0032 Ashwagandha","INT-0091":"INT-0091 Whole-body hyperthermia (clinical)","INT-0141":"INT-0141 Aripiprazole","INT-0046":"INT-0046 Sleep architecture optimization + melatonin","INT-0106":"INT-0106 Luteolin (BBB-crossing formulation)","INT-0042":"INT-0042 GAPS diet","INT-0130":"INT-0130 Valacyclovir acyclovir (HHV-6 EBV reactivation)","INT-0017":"INT-0017 Pyridoxal-5-phosphate (active B6)","INT-0121":"INT-0121 NAD+ precursors (NMN NR)","INT-0009":"INT-0009 Reverse osmosis water filtration","INT-0002":"INT-0002 Sulforaphane (broccoli sprout extract)","INT-0114":"INT-0114 Berberine","INT-0086":"INT-0086 Phospholipid DHA (krill oil salmon roe)","INT-0088":"INT-0088 Creatine monohydrate","INT-0064":"INT-0064 Semax (peptide)","INT-0007":"INT-0007 Ketogenic diet","INT-0010":"INT-0010 Leucovorin + methyl-B12 + sulforaphane (combo)","INT-0070":"INT-0070 Levothyroxine (T4) replacement","INT-0013":"INT-0013 Vitamin D3","INT-0073":"INT-0073 Cold exposure cold plunge","INT-0044":"INT-0044 Cruciferous vegetable-rich diet","INT-0089":"INT-0089 Time-restricted eating 16 8 fasting","INT-0145":"INT-0145 L-theanine","INT-0059":"INT-0059 Vaginal microbiome seeding at C-section","INT-0087":"INT-0087 Tryptophan supplementation (with vitamin D)","INT-0027":"INT-0027 Curcumin (high-bioavailability)","INT-0077":"INT-0077 Bifidobacterium infantis longum probiotic","INT-0080":"INT-0080 Akkermansia muciniphila (live)","INT-0005":"INT-0005 Bumetanide","INT-0132":"INT-0132 IGF-1 (mecasermin)","INT-0110":"INT-0110 Undecylenic acid","INT-0004":"INT-0004 N-Acetylcysteine (NAC)","INT-0067":"INT-0067 Selenium (selenomethionine)","INT-0058":"INT-0058 Preconception methylation panel + targeted nutrient repletion","INT-0055":"INT-0055 Mitochondrial cocktail (CoQ10+L-carnitine+B-complex)","INT-0053":"INT-0053 Organic produce","INT-0109":"INT-0109 Caprylic acid (C8 fatty acid)","INT-0128":"INT-0128 Trehalose (autophagy promoter)","BIO-0086":"BIO-0086 Mycotoxin panel (aflatoxin, ochratoxin, gliotoxin, trichothecenes)","BIO-0165":"BIO-0165 Vitamin D 25-OH (child _ direct)","BIO-0005":"BIO-0005 Homocysteine","BIO-0029":"BIO-0029 Oxidized glutathione (GSSG)","BIO-0057":"BIO-0057 IL-17","BIO-0075":"BIO-0075 Hair lead","BIO-0008":"BIO-0008 Methylmalonic acid (MMA)","BIO-0142":"BIO-0142 PET-TSPO (translocator protein \u2014 microglial activation)","BIO-0091":"BIO-0091 Maternal CRP during pregnancy","BIO-0014":"BIO-0014 Whole-blood histamine","BIO-0150":"BIO-0150 Heart rate variability (HRV)","BIO-0137":"BIO-0137 MRI cortical thickness (region-specific)","BIO-0101":"BIO-0101 Urinary iodine","BIO-0033":"BIO-0033 Malondialdehyde (MDA)","BIO-0138":"BIO-0138 Total brain volume _ amygdala _ cerebellar vermis volumetry","BIO-0178":"BIO-0178 Comprehensive Stool Analysis (GI-MAP _ CDSA composite)","BIO-0015":"BIO-0015 FRAA (folate receptor alpha autoantibody) \u2014 blocking","BIO-0099":"BIO-0099 Cu_Zn ratio","BIO-0085":"BIO-0085 Organophosphate metabolites (DAPs)","BIO-0130":"BIO-0130 Rubella IgG (immune status _ maternal exposure history)","BIO-0125":"BIO-0125 Babesia + Bartonella (tick-borne co-infections)","BIO-0072":"BIO-0072 ASO (antistreptolysin O)","BIO-0102":"BIO-0102 Selenium","BIO-0090":"BIO-0090 Maternal serum vitamin D (during pregnancy)","BIO-0100":"BIO-0100 RBC magnesium","BIO-0071":"BIO-0071 CaMKII activation","BIO-0118":"BIO-0118 Vasopressin (AVP)","BIO-0131":"BIO-0131 C. difficile toxin (stool)","BIO-0049":"BIO-0049 Quinolinic acid","BIO-0094":"BIO-0094 Cord-blood methylation signature","BIO-0039":"BIO-0039 Tartaric acid","BIO-0060":"BIO-0060 Complement C3, C4","BIO-0044":"BIO-0044 3,4-dihydroxyphenylpropionic acid (DHPPA)","BIO-0002":"BIO-0002 S-adenosylhomocysteine (SAH)","BIO-0145":"BIO-0145 ERP MMN (mismatch negativity)","BIO-0048":"BIO-0048 5-hydroxyindoleacetic acid (5-HIAA)","BIO-0088":"BIO-0088 Maternal anti-fetal-brain antibodies (MAR Antibodies)","BIO-0070":"BIO-0070 Anti-dopamine D2 receptor antibody","BIO-0111":"BIO-0111 Calprotectin (fecal)","BIO-0107":"BIO-0107 Trans-fatty acid fraction","BIO-0042":"BIO-0042 Hippuric acid","BIO-0140":"BIO-0140 Resting-state fMRI default mode network connectivity","BIO-0019":"BIO-0019 Pyruvate","BIO-0007":"BIO-0007 Taurine","BIO-0058":"BIO-0058 IL-10","BIO-0119":"BIO-0119 Oxytocin","BIO-0098":"BIO-0098 Plasma copper + ceruloplasmin","BIO-0020":"BIO-0020 Lactate-to-pyruvate ratio (L_P)","BIO-0059":"BIO-0059 IFN-\u03b3 (interferon gamma)","BIO-0134":"BIO-0134 Anti-tTG IgA + Anti-DGP IgA_IgG","BIO-0135":"BIO-0135 Thyroid antibodies (TPO + Tg)","BIO-0170":"BIO-0170 CYP3A4 _ CYP3A5 genotype","BIO-0079":"BIO-0079 Urine arsenic","BIO-0163":"BIO-0163 COMT V158M (Val_Met) genotype","BIO-0040":"BIO-0040 Citramalic acid","BIO-0122":"BIO-0122 IGF-1 + IGFBP-3","BIO-0148":"BIO-0148 Gaze fixation pattern (eye-tracking)","BIO-0127":"BIO-0127 EBV panel (VCA-IgG, VCA-IgM, EA, EBNA)","BIO-0025":"BIO-0025 CoQ10 (ubiquinone)","BIO-0152":"BIO-0152 CSF tau _ NfL","BIO-0076":"BIO-0076 Urine mercury (provoked or unprovoked)","BIO-0010":"BIO-0010 Holotranscobalamin (active B12)","BIO-0074":"BIO-0074 Hair mercury","BIO-0009":"BIO-0009 Plasma B12 (cobalamin)","BIO-0172":"BIO-0172 Anti-NMDA receptor antibodies","BIO-0050":"BIO-0050 Kynurenic acid","BIO-0164":"BIO-0164 CBS upregulation variants","BIO-0161":"BIO-0161 MTHFR C677T genotype","BIO-0024":"BIO-0024 Creatine kinase (CK)","BIO-0151":"BIO-0151 CSF cytokines","BIO-0167":"BIO-0167 FUT2 secretor status genotype","BIO-0155":"BIO-0155 Serum GFAP (glial fibrillary acidic protein)","BIO-0016":"BIO-0016 FRAA (folate receptor alpha autoantibody) \u2014 binding","BIO-0017":"BIO-0017 CSF 5-MTHF","BIO-0177":"BIO-0177 ApoE genotype","BIO-0056":"BIO-0056 IL-1\u03b2 (interleukin-1 beta)","BIO-0143":"BIO-0143 EEG resting-state spectral power (gamma_beta_alpha)","BIO-0052":"BIO-0052 High-sensitivity CRP (hs-CRP)","BIO-0136":"BIO-0136 Anti-cardiolipin _ anti-phospholipid","BIO-0041":"BIO-0041 Indican","BIO-0045":"BIO-0045 3-Hydroxy-2-methylbutyric acid","BIO-0043":"BIO-0043 Indol-3-acetic acid (IAA)","BIO-0028":"BIO-0028 Reduced glutathione (GSH)","BIO-0108":"BIO-0108 Mead acid (essential FA deficiency marker)","BIO-0006":"BIO-0006 Cysteine","BIO-0023":"BIO-0023 Plasma ammonia","BIO-0089":"BIO-0089 Maternal MTHFR genotype","BIO-0117":"BIO-0117 Sex hormones (estradiol, progesterone, testosterone \u2014 DUTCH metabolites)","BIO-0106":"BIO-0106 Omega-6_omega-3 ratio","BIO-0065":"BIO-0065 Chromogranin A","BIO-0066":"BIO-0066 Heparin (mast cell)","BIO-0097":"BIO-0097 RBC zinc","BIO-0149":"BIO-0149 Pupillometry _ pupil response","BIO-0027":"BIO-0027 Krebs cycle metabolites (citrate_succinate_fumarate_malate)","BIO-0083":"BIO-0083 Bisphenol A (BPA)","BIO-0080":"BIO-0080 Urine aluminum","BIO-0092":"BIO-0092 Maternal thyroid panel during pregnancy","BIO-0034":"BIO-0034 Superoxide dismutase (SOD) activity","BIO-0123":"BIO-0123 Mycoplasma pneumoniae IgM_IgG","BIO-0109":"BIO-0109 Zonulin","BIO-0011":"BIO-0011 Plasma folate","BIO-0103":"BIO-0103 Ferritin","BIO-0021":"BIO-0021 Acylcarnitine profile","BIO-0053":"BIO-0053 ESR (erythrocyte sedimentation rate)","BIO-0078":"BIO-0078 Urine cadmium","BIO-0175":"BIO-0175 Salivary cortisol awakening response (CAR)","BIO-0012":"BIO-0012 RBC folate","BIO-0141":"BIO-0141 1H-MRS NAA _ choline _ creatine _ glutamate-GABA","BIO-0026":"BIO-0026 mtDNA copy number","BIO-0139":"BIO-0139 DTI fractional anisotropy (white matter tracts)","BIO-0001":"BIO-0001 S-adenosylmethionine (SAM)","BIO-0105":"BIO-0105 RBC omega-3 index (EPA + DHA)","BIO-0146":"BIO-0146 ERP N170 (face processing)","BIO-0046":"BIO-0046 Homovanillic acid (HVA)","BIO-0081":"BIO-0081 Urine glyphosate + AMPA","BIO-0096":"BIO-0096 Plasma zinc","BIO-0116":"BIO-0116 DHEA-S","BIO-0158":"BIO-0158 HSP70 _ HSP90 plasma levels","BIO-0154":"BIO-0154 Serum S100\u03b2 (astrocyte marker _ BBB disruption)","BIO-0156":"BIO-0156 Serum neurofilament light chain (NfL)","BIO-0069":"BIO-0069 Anti-dopamine D1 receptor antibody","BIO-0168":"BIO-0168 Urinary oxalate","BIO-0133":"BIO-0133 ANA + extractable nuclear antigens","BIO-0035":"BIO-0035 Total antioxidant capacity (TEAC_TAC)","BIO-0121":"BIO-0121 Insulin _ HOMA-IR","BIO-0166":"BIO-0166 Urinary porphyrins (heavy metal body burden surrogate)","BIO-0055":"BIO-0055 TNF-\u03b1 (tumor necrosis factor alpha)","BIO-0153":"BIO-0153 Serum BDNF (brain-derived neurotrophic factor)","BIO-0173":"BIO-0173 Anti-MOG (myelin oligodendrocyte glycoprotein)","BIO-0030":"BIO-0030 GSH_GSSG ratio","BIO-0144":"BIO-0144 ERP P300 amplitude _ latency","BIO-0061":"BIO-0061 Total IgG _ IgA _ IgM _ IgE + IgG subclasses","BIO-0128":"BIO-0128 CMV IgG_IgM","BIO-0160":"BIO-0160 2-arachidonoylglycerol (2-AG)","BIO-0038":"BIO-0038 4-cresol (p-cresol)","BIO-0124":"BIO-0124 Borrelia burgdorferi (Lyme) panel","BIO-0162":"BIO-0162 MTHFR A1298C genotype","BIO-0171":"BIO-0171 CYP2C19 genotype","BIO-0104":"BIO-0104 Urinary kryptopyrroles","BIO-0073":"BIO-0073 Anti-DNase B","BIO-0084":"BIO-0084 PFAS _ PFOA composite","BIO-0120":"BIO-0120 Melatonin (saliva or urinary 6-sulfatoxymelatonin)","BIO-0037":"BIO-0037 HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid)","BIO-0077":"BIO-0077 Urine lead","BIO-0087":"BIO-0087 Volatile solvents (composite)","BIO-0157":"BIO-0157 Serum tau","BIO-0051":"BIO-0051 Kynurenine_tryptophan ratio","BIO-0013":"BIO-0013 Pyridoxal-5-phosphate (P5P _ active B6)","BIO-0169":"BIO-0169 CYP2D6 genotype","BIO-0062":"BIO-0062 Tryptase (baseline)","BIO-0064":"BIO-0064 Prostaglandin D2 metabolite (11\u03b2-PGF2\u03b1)","BIO-0036":"BIO-0036 Arabinose","BIO-0004":"BIO-0004 Plasma methionine","BIO-0068":"BIO-0068 Anti-lysoganglioside-GM1 antibody","BIO-0113":"BIO-0113 Lactulose_mannitol ratio","BIO-0126":"BIO-0126 HHV-6 IgG_IgM + PCR","BIO-0093":"BIO-0093 Cord blood acetaminophen _ acetaminophen-protein adducts","BIO-0032":"BIO-0032 F2-isoprostanes","BIO-0047":"BIO-0047 Vanillylmandelic acid (VMA)","BIO-0063":"BIO-0063 N-methylhistamine (urinary)","BIO-0129":"BIO-0129 Toxoplasma IgG_IgM","BIO-0018":"BIO-0018 Lactate","BIO-0031":"BIO-0031 8-hydroxy-2-deoxyguanosine (8-OHdG)","BIO-0147":"BIO-0147 qEEG coherence pattern","BIO-0132":"BIO-0132 Candida IgG + IgA","BIO-0082":"BIO-0082 Phthalate metabolites (composite \u2014 MEP, MBP, MEHP, others)","BIO-0174":"BIO-0174 Anti-GAD65 antibodies","BIO-0114":"BIO-0114 Full thyroid panel (TSH, FT3, FT4, rT3, TPO, TgAb)","BIO-0112":"BIO-0112 Secretory IgA (sIgA)","BIO-0022":"BIO-0022 Free + total carnitine","BIO-0003":"BIO-0003 SAM_SAH ratio","BIO-0067":"BIO-0067 Anti-tubulin antibody (Cunningham Panel)","BIO-0095":"BIO-0095 Paternal age","BIO-0159":"BIO-0159 Anandamide (AEA)","BIO-0176":"BIO-0176 Lipid panel (TC, LDL, HDL, triglycerides)","BIO-0110":"BIO-0110 Lipopolysaccharide (LPS) _ endotoxin","BIO-0054":"BIO-0054 IL-6 (interleukin-6)","BIO-0115":"BIO-0115 DUTCH cortisol (4-point + free + total)","MEC-0025":"MEC-0025 Bile acid metabolism FXR signaling","MEC-0019":"MEC-0019 Vagus nerve autonomic regulation","MEC-0013":"MEC-0013 FOXO transcription factors","MEC-0033":"MEC-0033 Photobiomodulation cytochrome c oxidase activation","MEC-0005":"MEC-0005 Microglial activation","MEC-0004":"MEC-0004 BBB dysfunction","MEC-0009":"MEC-0009 mTOR pathway dysregulation","MEC-0031":"MEC-0031 DHA membrane phospholipid composition","MEC-0014":"MEC-0014 SIRTUIN NAD+ metabolism","MEC-0027":"MEC-0027 Heat shock protein (HSF1 HSP70 HSP90) response","MEC-0011":"MEC-0011 AMPK signaling","MEC-0007":"MEC-0007 GABA glutamate imbalance","MEC-0001":"MEC-0001 Oxidative stress","MEC-0022":"MEC-0022 Lipopolysaccharide (LPS) endotoxemia leaky gut","MEC-0018":"MEC-0018 Endocannabinoid system","MEC-0002":"MEC-0002 Neuroinflammation","MEC-0032":"MEC-0032 Aluminum adjuvant accumulation TLR-mediated neuroinflammation","MEC-0034":"MEC-0034 GABA developmental polarity switch (NKCC1 KCC2)","MEC-0026":"MEC-0026 Microbial GABA neurotransmitter synthesis","MEC-0015":"MEC-0015 PI3K AKT signaling","MEC-0017":"MEC-0017 Mast cell activation","MEC-0024":"MEC-0024 p-cresol 4-EPS aromatic metabolite production","MEC-0030":"MEC-0030 Autophagy proteostasis","MEC-0012":"MEC-0012 IGF-1 insulin signaling","MEC-0021":"MEC-0021 Short-chain fatty acid (SCFA) signaling","MEC-0006":"MEC-0006 Synaptic pruning abnormalities","MEC-0008":"MEC-0008 Gut-brain axis disruption","MEC-0003":"MEC-0003 Impaired methylation","MEC-0023":"MEC-0023 Tryptophan-kynurenine metabolism","MEC-0010":"MEC-0010 Mitochondrial dysfunction","MEC-0029":"MEC-0029 Vitamin-D-regulated serotonin synthesis (TPH2)","MEC-0028":"MEC-0028 BDNF neurotrophin signaling","MEC-0016":"MEC-0016 HPA axis dysregulation","MEC-0020":"MEC-0020 Calcium glutamate-NMDA homeostasis","HYP-0030":"HYP-0030 PTEN hamartoma syndrome","HYP-0009":"HYP-0009 Advanced parental age (especially paternal)","HYP-0055":"HYP-0055 Endocannabinoid system dysregulation","HYP-0066":"HYP-0066 Hepatitis B vaccine (neonatal birth-dose)","HYP-0073":"HYP-0073 Developmental timing state-transition disorder","HYP-0071":"HYP-0071 Brainstem pons hypoplasia + GABA developmental switch failure","HYP-0070":"HYP-0070 Lactate pyruvate ratio elevation (bioenergetic biomarker)","HYP-0064":"HYP-0064 DHA membrane phospholipid insufficiency","HYP-0061":"HYP-0061 Fungal dysbiosis candida overgrowth","HYP-0037":"HYP-0037 Childhood family emotional stress","HYP-0033":"HYP-0033 SIRTUIN NAD+ depletion","HYP-0015":"HYP-0015 Heavy metal exposure (Pb, Hg, Al)","HYP-0056":"HYP-0056 Bifidobacterium depletion (autism-specific)","HYP-0026":"HYP-0026 PANDAS PANS triggers (strep, mycoplasma)","HYP-0002":"HYP-0002 Prenatal acetaminophen (paracetamol) exposure","HYP-0060":"HYP-0060 Microbial p-cresol 4-EPS metabolite excess","HYP-0020":"HYP-0020 Maternal vitamin D deficiency","HYP-0067":"HYP-0067 Aluminum adjuvant cumulative exposure (vaccines)","HYP-0036":"HYP-0036 Maternal psychological stress (prenatal)","HYP-0013":"HYP-0013 Air pollution (PM2.5, traffic)","HYP-0074":"HYP-0074 PANS PANDAS \u2014 post-infectious autoimmune neuropsychiatric syndrome","HYP-0043":"HYP-0043 Endocrine-disruptor exposure (personal care, cleaning)","HYP-0011":"HYP-0011 Phthalate exposure (prenatal+postnatal)","HYP-0044":"HYP-0044 Childhood vaccine exposure (contested)","HYP-0019":"HYP-0019 Maternal obesity","HYP-0004":"HYP-0004 PFAS forever-chemical drinking-water exposure","HYP-0007":"HYP-0007 Gut microbiome dysbiosis dysbiotic fermentation","HYP-0063":"HYP-0063 Brain glutathione depletion","HYP-0025":"HYP-0025 Prenatal viral infection (rubella, CMV, flu)","HYP-0040":"HYP-0040 Birth complications (hypoxia, instrumental delivery)","HYP-0072":"HYP-0072 Epigenetic canalization failure","HYP-0018":"HYP-0018 Maternal diabetes (GDM, T2)","HYP-0046":"HYP-0046 Zinc deficiency copper zinc imbalance","HYP-0006":"HYP-0006 Mitochondrial dysfunction (acquired or inherited)","HYP-0024":"HYP-0024 Maternal SSRI in pregnancy","HYP-0023":"HYP-0023 Cesarean section delivery","HYP-0022":"HYP-0022 Early-life antibiotics (especially first year)","HYP-0014":"HYP-0014 Pesticide exposure (organophosphates, glyphosate)","HYP-0045":"HYP-0045 Vitamin D deficiency (maternal + child)","HYP-0042":"HYP-0042 Ultra-processed food Western diet pattern","HYP-0032":"HYP-0032 IGF-1 axis insufficiency","HYP-0075":"HYP-0075 Mast Cell Activation Syndrome (MCAS) in autism","HYP-0065":"HYP-0065 Heat shock response insufficiency 'fever effect' subtype","HYP-0017":"HYP-0017 EMF exposure (controversial)","HYP-0047":"HYP-0047 Magnesium deficiency","HYP-0076":"HYP-0076 Prenatal screening marker anomaly (placental dysfunction signal)","HYP-0003":"HYP-0003 Maternal folate deficiency during preconception pregnancy","HYP-0054":"HYP-0054 Acetaminophen postnatal use (contested)","HYP-0059":"HYP-0059 Intestinal barrier permeability ('leaky gut')","HYP-0031":"HYP-0031 AMPK pathway dysregulation","HYP-0021":"HYP-0021 Maternal omega-3 deficiency","HYP-0010":"HYP-0010 Prenatal valproate (sodium valproate) exposure","HYP-0012":"HYP-0012 BPA bisphenol exposure","HYP-0051":"HYP-0051 Maternal autoimmune comorbidity","HYP-0053":"HYP-0053 AGE acrylamide cooking exposures","HYP-0028":"HYP-0028 Inherited polygenic risk","HYP-0049":"HYP-0049 Selenium deficiency","HYP-0035":"HYP-0035 Maternal prenatal thyroid hypofunction","HYP-0027":"HYP-0027 De novo mutations in synaptic genes","HYP-0052":"HYP-0052 Iron metabolism dysregulation","HYP-0050":"HYP-0050 Choline insufficiency (postnatal)","HYP-0029":"HYP-0029 Tuberous sclerosis (TSC1 TSC2)","HYP-0062":"HYP-0062 Brain serotonin synthesis dysregulation (TPH2 vitamin D)","HYP-0038":"HYP-0038 Excessive screen smartphone exposure (early life)","HYP-0048":"HYP-0048 Iodine deficiency thyroid hypofunction","HYP-0008":"HYP-0008 Maternal immune activation (prenatal infection or autoimmune)","HYP-0005":"HYP-0005 Glyphosate exposure (food + water)","HYP-0041":"HYP-0041 Preterm birth NICU exposure","HYP-0058":"HYP-0058 Akkermansia Faecalibacterium depletion","HYP-0034":"HYP-0034 Oxytocin system dysregulation","HYP-0069":"HYP-0069 Thimerosal exposure (contested, largely removed)","HYP-0016":"HYP-0016 Mold mycotoxin exposure","HYP-0068":"HYP-0068 MMR vaccine specifically (contested)","HYP-0057":"HYP-0057 Clostridia overgrowth dysbiotic fermentation","HYP-0039":"HYP-0039 Sleep disruption circadian misalignment","HYP-0001":"HYP-0001 FOLR1 autoantibodies cerebral folate deficiency","COM-0008":"COM-0008 Mito-CNS stack ALCAR + CoQ10 ubiquinol + Alpha-lipoic acid","COM-0025":"COM-0025 Maternal preconception methylation + mito stack","COM-0007":"COM-0007 5-MTHF + P5P (B6) + TMG Betaine","COM-0017":"COM-0017 L-carnosine + L-taurine + Magnesium threonate (GABA-axis stack)","COM-0003":"COM-0003 GFCF diet + L-glutamine + Probiotics (gut-axis combo)","COM-0019":"COM-0019 PANS-overlap stack LDN + Cromolyn + Quercetin","COM-0015":"COM-0015 Microbiota repair + immune-modulation MTT + Bifidobacterium infantis + LDN","COM-0012":"COM-0012 Mast-cell stabilizer stack Luteolin + Quercetin + Rutin (NeuroProtek-style)","COM-0023":"COM-0023 Cold exposure + sauna + omega-3 (anti-inflammatory lifestyle stack)","COM-0016":"COM-0016 Calm-axis stack L-theanine + Magnesium glycinate + Saffron","COM-0004":"COM-0004 Reverse-osmosis water + Organic produce + Glass storage (environmental remediati","COM-0002":"COM-0002 Methylated folate + Choline + Omega-3 (preconception prenatal)","COM-0005":"COM-0005 Preconception mitochondrial optimization combo (parental)","COM-0020":"COM-0020 Recurrent-infection + immune stack Thymosin \u03b1-1 + Vitamin D + Zinc","COM-0011":"COM-0011 Glutathione regeneration stack Sulforaphane + Liposomal glutathione + NAC","COM-0021":"COM-0021 Choline + DHA + Methylfolate (preconception prenatal cognitive-development stack","COM-0006":"COM-0006 Leucovorin + Methyl-B12 + Vitamin D","COM-0014":"COM-0014 VSL 3 Visbiome + Bovine colostrum + L-glutamine (intensive gut-repair)","COM-0024":"COM-0024 Paternal preconception stack CoQ10 ubiquinol + Zinc + Selenium + L-carnitine + A","COM-0001":"COM-0001 Leucovorin + Methyl-B12 + Sulforaphane","COM-0013":"COM-0013 Gut-repair stack Bifidobacterium infantis EVC001 + L-glutamine + Zinc carnosine","COM-0010":"COM-0010 Anti-inflammatory polyphenol stack Liposomal curcumin + Quercetin phytosome + Om","COM-0022":"COM-0022 Detox + binder stack Liposomal glutathione + Modified citrus pectin + Activated","COM-0009":"COM-0009 Energy-substrate stack D-ribose + Creatine + L-carnitine","COM-0018":"COM-0018 Sleep-architecture stack Melatonin (ext-release) + Magnesium glycinate + L-thean","GENE:INDEX":"INDEX"};  // atlas_id → canonical Obsidian filename stem
 
 // ── canvas + DPR ───────────────────────────────────────────────────
 const canvas = document.getElementById('c');
@@ -3321,6 +3323,8 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
           if (top.length >= 5) break;
         }
         const fill = Math.min(1, Math.max(0.06, p.score / Math.max(1, rep.topPhenotypes[0].score)));
+        const atlasIdLine =
+          '<div style="font-family:ui-monospace,monospace;font-size:9px;letter-spacing:0.22em;color:var(--text-vmute);text-transform:uppercase;margin-top:4px;">atlas · ' + p.id + '</div>';
         return (
           '<div class="r-phe">' +
             '<div class="r-phe-head">' +
@@ -3328,6 +3332,7 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
               '<div class="r-phe-pct">' + p.pct + '%</div>' +
             '</div>' +
             '<div class="r-phe-evidence">Matches: ' + top.join(' · ') + '</div>' +
+            atlasIdLine +
             '<div class="r-phe-bar"><div class="r-phe-bar-fill" style="--r-fill:' + fill + '"></div></div>' +
           '</div>'
         );
@@ -3405,11 +3410,17 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       oorSection.style.display = 'none';
     } else {
       oorSection.style.display = '';
-      oorHost.innerHTML = rep.outOfRange.map(v => (
-        '<div class="r-oor-name">' + v.label + '</div>' +
-        '<div class="r-oor-val">' + v.value + ' ' + (v.unit || '') + '</div>' +
-        '<div class="r-oor-flag ' + v.flag + '">' + v.flag + '</div>'
-      )).join('');
+      oorHost.innerHTML = rep.outOfRange.map(v => {
+        const idLine = v.nodeId
+          ? '<div style="grid-column:1/-1;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:0.22em;color:var(--text-vmute);text-transform:uppercase;margin-top:-4px;margin-bottom:6px;">atlas · ' + v.nodeId + (v.source ? ' · ' + v.source : '') + '</div>'
+          : (v.source ? '<div style="grid-column:1/-1;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:0.22em;color:var(--text-vmute);text-transform:uppercase;margin-top:-4px;margin-bottom:6px;">source · ' + v.source + '</div>' : '');
+        return (
+          '<div class="r-oor-name">' + v.label + '</div>' +
+          '<div class="r-oor-val">' + v.value + ' ' + (v.unit || '') + '</div>' +
+          '<div class="r-oor-flag ' + v.flag + '">' + v.flag + '</div>' +
+          idLine
+        );
+      }).join('');
     }
 
     // ── Top interventions
@@ -3470,12 +3481,195 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     return true;
   }
 
+  // ── OBSIDIAN PROFILE EXPORTER ───────────────────────────────────
+  // Generate a markdown profile that, when dropped into the vault,
+  // produces a clickable patient sub-graph in Obsidian. Every match
+  // becomes a wikilink to the canonical vault page name.
+
+  // Build wikilink text. If the atlas ID resolves to a real vault page
+  // (via VAULT_PATHS), use that filename so Obsidian opens the right page.
+  // Falls back to a friendly stub link.
+  function wlByID(id, friendlyLabel) {
+    if (!id) return friendlyLabel || '';
+    if (VAULT_PATHS[id]) {
+      return '[[' + VAULT_PATHS[id] + ']]';
+    }
+    // Unresolved — use ID + label as a friendly stub
+    if (friendlyLabel) {
+      return '[[' + id + '|' + friendlyLabel + ']]';
+    }
+    return '[[' + id + ']]';
+  }
+  function wlGene(symbol) {
+    if (!symbol) return '';
+    const key = 'GENE:' + symbol.toUpperCase();
+    if (VAULT_PATHS[key]) return '[[' + VAULT_PATHS[key] + ']]';
+    return '[[' + symbol + ']]';
+  }
+
+  function generateObsidianProfile() {
+    const rep = generateReport();
+    if (!rep) return null;
+    const now = new Date();
+    const dateISO = now.toISOString().slice(0, 10);
+    const lines = [];
+    lines.push('---');
+    lines.push('atlas-profile: causes-atlas');
+    lines.push('generated: ' + now.toISOString());
+    lines.push('source: client-side · localStorage');
+    lines.push('tags: [patient-profile, atlas-derived]');
+    lines.push('---');
+    lines.push('');
+    lines.push('# Patient profile · ' + dateISO);
+    lines.push('');
+    lines.push('> Generated by reading uploaded data against the Causes Atlas.');
+    lines.push('> Every wikilink resolves to its atlas vault page. Open in Obsidian → graph view shows this patient\'s sub-network. Not medical advice.');
+    lines.push('');
+    lines.push('## Summary');
+    lines.push('');
+    if (rep.matchedGeneCount) lines.push('- **' + rep.matchedGeneCount + ' atlas genes matched**');
+    if (rep.matchedVariants && rep.matchedVariants.length) lines.push('- **' + rep.matchedVariants.length + ' actionable variants**');
+    if (rep.bioCount) lines.push('- **' + rep.bioCount + ' biomarkers measured**');
+    if (rep.outOfRange.length) lines.push('- **' + rep.outOfRange.length + ' out of optimal range**');
+    if (rep.genetics && rep.genetics.format) lines.push('- Genomics source: ' + rep.genetics.format);
+    lines.push('');
+
+    if (rep.topPhenotypes.length) {
+      lines.push('## Top phenotype matches');
+      lines.push('');
+      for (const p of rep.topPhenotypes) {
+        lines.push('### ' + wlByID(p.id, p.node.l) + ' · **' + p.pct + '%**');
+        const contribs = p.contribs.slice(0, 6).map(c => c.label).join(' · ');
+        if (contribs) lines.push('Matches: ' + contribs);
+        lines.push('');
+      }
+    }
+
+    if (rep.matchedVariants && rep.matchedVariants.length) {
+      lines.push('## Gene variants');
+      lines.push('');
+      for (const v of rep.matchedVariants) {
+        let header = '### ' + wlGene(v.gene) + ' · ' + v.name;
+        if (v.zygosity) header += ' (' + v.zygosity + ')';
+        if (v.oddsRatio) header += ' · OR ' + v.oddsRatio.toFixed(2);
+        lines.push(header.trim());
+        if (v.role) lines.push('*' + v.role + '*');
+        lines.push('');
+        lines.push('**Effect:** ' + v.effect);
+        if (v.detail) { lines.push(''); lines.push(v.detail); }
+        if (v.consider && v.consider.length) {
+          lines.push(''); lines.push('**Consider:** ' + v.consider.join(' · '));
+        }
+        if (v.avoid && v.avoid.length) {
+          lines.push('**Avoid:** ' + v.avoid.join(' · '));
+        }
+        if (v.lifestyle && v.lifestyle.length) {
+          lines.push('**Lifestyle:** ' + v.lifestyle.join(' · '));
+        }
+        if (v.atlasInts && v.atlasInts.length) {
+          const atlasInts = v.atlasInts.map(id => {
+            const n = nodeMap.get(id);
+            return wlByID(id, n ? n.l : id);
+          }).join(' · ');
+          lines.push('**Atlas interventions:** ' + atlasInts);
+        }
+        if (v.source) {
+          lines.push('');
+          lines.push('— source: ' + v.source +
+            (v.prevalence ? ' · prevalence ' + v.prevalence : ''));
+        }
+        lines.push('');
+      }
+    }
+
+    if (rep.outOfRange.length) {
+      lines.push('## Out of optimal range');
+      lines.push('');
+      lines.push('| Biomarker | Value | Range | Flag | Source |');
+      lines.push('|---|---|---|---|---|');
+      for (const b of rep.outOfRange) {
+        const link = b.nodeId ? wlByID(b.nodeId, b.label) : b.label;
+        lines.push('| ' + link +
+          ' | ' + b.value + ' ' + (b.unit || '') +
+          ' | ' + (b.refRange || '') +
+          ' | **' + (b.flag || '').toUpperCase() + '**' +
+          ' | ' + (b.source || '') + ' |');
+      }
+      lines.push('');
+    }
+
+    if (rep.topInterventions.length) {
+      lines.push('## What to discuss with your functional medicine doctor');
+      lines.push('');
+      for (const it of rep.topInterventions) {
+        const i = it.node;
+        let line = '- ' + wlByID(i.id, i.l);
+        if (i.sc && parseFloat(i.sc) > 0) line += ' · **CSRS ' + parseFloat(i.sc).toFixed(1) + '**';
+        line += ' · for ' + it.forPhenotype;
+        if (i.do) line += '\n  · dose: ' + i.do;
+        if (i.co) line += '\n  · cost: ~$' + i.co + '/mo';
+        if (i.rg) line += '\n  · ' + i.rg.toUpperCase();
+        lines.push(line);
+      }
+      lines.push('');
+    }
+
+    if (rep.topTests.length) {
+      lines.push('## Tests to consider next');
+      lines.push('');
+      for (const tc of rep.topTests) {
+        const t = tc.node;
+        let line = '- ' + wlByID(t.id, t.l);
+        if (t.cl) line += ' · $' + t.cl + (t.ch && t.ch !== t.cl ? '–' + t.ch : '');
+        if (t.tr) line += ' · ' + t.tr;
+        if (t.sm) line += ' · ' + t.sm;
+        if (t.td) line += ' · ' + t.td + 'd turnaround';
+        line += ' · for ' + tc.forPhenotype;
+        lines.push(line);
+      }
+      lines.push('');
+    }
+
+    lines.push('## Atlas connection');
+    lines.push('');
+    lines.push('This profile was generated by reading uploaded data against the [[00_INDEX|Causes Atlas]] graph. Every wikilink above resolves to its atlas vault page.');
+    lines.push('');
+    lines.push('Calibration anchor: ' + wlByID('INT-0001', 'Leucovorin (folinic acid)') + ' · **CSRS 83.35** (non-drifted across major revisions).');
+    lines.push('');
+    lines.push('To explore in Obsidian:');
+    lines.push('1. Drop this file into `vault/profiles/`');
+    lines.push('2. Open in Obsidian → the graph view shows this patient\'s sub-network');
+    lines.push('3. Click any wikilink to drill into the corresponding atlas page');
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+    lines.push('*Not medical advice. Discuss with a licensed functional medicine practitioner familiar with the full clinical history. The atlas is for individual-level decisions, not population policy.*');
+    lines.push('');
+    return lines.join('\n');
+  }
+
+  function downloadObsidianProfile() {
+    const md = generateObsidianProfile();
+    if (!md) return;
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const dateISO = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = 'atlas-profile-' + dateISO + '.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 500);
+  }
+
   // ── REPORT MODAL OPEN / CLOSE WIRING ────────────────────────────
   const reportOverlay = document.getElementById('report-overlay');
   const rClose       = document.getElementById('r-close');
   const rGraphBtn    = document.getElementById('r-graph');
   const rDownloadBtn = document.getElementById('r-download');
   const rReupBtn     = document.getElementById('r-reupload');
+  const rObsidianBtn = document.getElementById('r-obsidian');
   const viewReportBtn = document.getElementById('view-report');
 
   function openReport() {
@@ -3490,6 +3684,14 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
   rClose.addEventListener('click', closeReport);
   rGraphBtn.addEventListener('click', closeReport);
   rDownloadBtn.addEventListener('click', () => window.print());
+  rObsidianBtn.addEventListener('click', () => {
+    rObsidianBtn.textContent = 'generating…';
+    setTimeout(() => {
+      downloadObsidianProfile();
+      rObsidianBtn.textContent = 'Downloaded ✓';
+      setTimeout(() => rObsidianBtn.textContent = 'Download Obsidian profile (.md)', 1800);
+    }, 150);
+  });
   rReupBtn.addEventListener('click', () => {
     closeReport();
     modal.classList.add('on');

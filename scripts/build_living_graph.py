@@ -1808,8 +1808,9 @@ HTML = r"""<!doctype html>
     </div>
 
     <div class="r-footer">
-      <button class="r-btn primary" id="r-graph">View on graph</button>
-      <button class="r-btn" id="r-download">Download as PDF</button>
+      <button class="r-btn primary" id="r-obsidian">Download Obsidian profile (.md)</button>
+      <button class="r-btn" id="r-graph">View on graph</button>
+      <button class="r-btn" id="r-download">Print / save as PDF</button>
       <button class="r-btn" id="r-reupload">Re-upload labs</button>
     </div>
   </div>
@@ -1876,6 +1877,7 @@ const DATA     = __DATA__;
 const PROFILES = __PROFILES__;        // [{k, label}, ...] index = bit
 const INTAKE   = __INTAKE_FEED__;     // recent PubMed candidates from cron
 const STARTERS = __STARTERS__;        // curated must-have/high-end/budget + foundation + types + resources
+const VAULT_PATHS = __VAULT_PATHS__;  // atlas_id → canonical Obsidian filename stem
 
 // ── canvas + DPR ───────────────────────────────────────────────────
 const canvas = document.getElementById('c');
@@ -4071,6 +4073,8 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
           if (top.length >= 5) break;
         }
         const fill = Math.min(1, Math.max(0.06, p.score / Math.max(1, rep.topPhenotypes[0].score)));
+        const atlasIdLine =
+          '<div style="font-family:ui-monospace,monospace;font-size:9px;letter-spacing:0.22em;color:var(--text-vmute);text-transform:uppercase;margin-top:4px;">atlas · ' + p.id + '</div>';
         return (
           '<div class="r-phe">' +
             '<div class="r-phe-head">' +
@@ -4078,6 +4082,7 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
               '<div class="r-phe-pct">' + p.pct + '%</div>' +
             '</div>' +
             '<div class="r-phe-evidence">Matches: ' + top.join(' · ') + '</div>' +
+            atlasIdLine +
             '<div class="r-phe-bar"><div class="r-phe-bar-fill" style="--r-fill:' + fill + '"></div></div>' +
           '</div>'
         );
@@ -4155,11 +4160,17 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       oorSection.style.display = 'none';
     } else {
       oorSection.style.display = '';
-      oorHost.innerHTML = rep.outOfRange.map(v => (
-        '<div class="r-oor-name">' + v.label + '</div>' +
-        '<div class="r-oor-val">' + v.value + ' ' + (v.unit || '') + '</div>' +
-        '<div class="r-oor-flag ' + v.flag + '">' + v.flag + '</div>'
-      )).join('');
+      oorHost.innerHTML = rep.outOfRange.map(v => {
+        const idLine = v.nodeId
+          ? '<div style="grid-column:1/-1;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:0.22em;color:var(--text-vmute);text-transform:uppercase;margin-top:-4px;margin-bottom:6px;">atlas · ' + v.nodeId + (v.source ? ' · ' + v.source : '') + '</div>'
+          : (v.source ? '<div style="grid-column:1/-1;font-family:ui-monospace,monospace;font-size:9px;letter-spacing:0.22em;color:var(--text-vmute);text-transform:uppercase;margin-top:-4px;margin-bottom:6px;">source · ' + v.source + '</div>' : '');
+        return (
+          '<div class="r-oor-name">' + v.label + '</div>' +
+          '<div class="r-oor-val">' + v.value + ' ' + (v.unit || '') + '</div>' +
+          '<div class="r-oor-flag ' + v.flag + '">' + v.flag + '</div>' +
+          idLine
+        );
+      }).join('');
     }
 
     // ── Top interventions
@@ -4220,12 +4231,195 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     return true;
   }
 
+  // ── OBSIDIAN PROFILE EXPORTER ───────────────────────────────────
+  // Generate a markdown profile that, when dropped into the vault,
+  // produces a clickable patient sub-graph in Obsidian. Every match
+  // becomes a wikilink to the canonical vault page name.
+
+  // Build wikilink text. If the atlas ID resolves to a real vault page
+  // (via VAULT_PATHS), use that filename so Obsidian opens the right page.
+  // Falls back to a friendly stub link.
+  function wlByID(id, friendlyLabel) {
+    if (!id) return friendlyLabel || '';
+    if (VAULT_PATHS[id]) {
+      return '[[' + VAULT_PATHS[id] + ']]';
+    }
+    // Unresolved — use ID + label as a friendly stub
+    if (friendlyLabel) {
+      return '[[' + id + '|' + friendlyLabel + ']]';
+    }
+    return '[[' + id + ']]';
+  }
+  function wlGene(symbol) {
+    if (!symbol) return '';
+    const key = 'GENE:' + symbol.toUpperCase();
+    if (VAULT_PATHS[key]) return '[[' + VAULT_PATHS[key] + ']]';
+    return '[[' + symbol + ']]';
+  }
+
+  function generateObsidianProfile() {
+    const rep = generateReport();
+    if (!rep) return null;
+    const now = new Date();
+    const dateISO = now.toISOString().slice(0, 10);
+    const lines = [];
+    lines.push('---');
+    lines.push('atlas-profile: causes-atlas');
+    lines.push('generated: ' + now.toISOString());
+    lines.push('source: client-side · localStorage');
+    lines.push('tags: [patient-profile, atlas-derived]');
+    lines.push('---');
+    lines.push('');
+    lines.push('# Patient profile · ' + dateISO);
+    lines.push('');
+    lines.push('> Generated by reading uploaded data against the Causes Atlas.');
+    lines.push('> Every wikilink resolves to its atlas vault page. Open in Obsidian → graph view shows this patient\'s sub-network. Not medical advice.');
+    lines.push('');
+    lines.push('## Summary');
+    lines.push('');
+    if (rep.matchedGeneCount) lines.push('- **' + rep.matchedGeneCount + ' atlas genes matched**');
+    if (rep.matchedVariants && rep.matchedVariants.length) lines.push('- **' + rep.matchedVariants.length + ' actionable variants**');
+    if (rep.bioCount) lines.push('- **' + rep.bioCount + ' biomarkers measured**');
+    if (rep.outOfRange.length) lines.push('- **' + rep.outOfRange.length + ' out of optimal range**');
+    if (rep.genetics && rep.genetics.format) lines.push('- Genomics source: ' + rep.genetics.format);
+    lines.push('');
+
+    if (rep.topPhenotypes.length) {
+      lines.push('## Top phenotype matches');
+      lines.push('');
+      for (const p of rep.topPhenotypes) {
+        lines.push('### ' + wlByID(p.id, p.node.l) + ' · **' + p.pct + '%**');
+        const contribs = p.contribs.slice(0, 6).map(c => c.label).join(' · ');
+        if (contribs) lines.push('Matches: ' + contribs);
+        lines.push('');
+      }
+    }
+
+    if (rep.matchedVariants && rep.matchedVariants.length) {
+      lines.push('## Gene variants');
+      lines.push('');
+      for (const v of rep.matchedVariants) {
+        let header = '### ' + wlGene(v.gene) + ' · ' + v.name;
+        if (v.zygosity) header += ' (' + v.zygosity + ')';
+        if (v.oddsRatio) header += ' · OR ' + v.oddsRatio.toFixed(2);
+        lines.push(header.trim());
+        if (v.role) lines.push('*' + v.role + '*');
+        lines.push('');
+        lines.push('**Effect:** ' + v.effect);
+        if (v.detail) { lines.push(''); lines.push(v.detail); }
+        if (v.consider && v.consider.length) {
+          lines.push(''); lines.push('**Consider:** ' + v.consider.join(' · '));
+        }
+        if (v.avoid && v.avoid.length) {
+          lines.push('**Avoid:** ' + v.avoid.join(' · '));
+        }
+        if (v.lifestyle && v.lifestyle.length) {
+          lines.push('**Lifestyle:** ' + v.lifestyle.join(' · '));
+        }
+        if (v.atlasInts && v.atlasInts.length) {
+          const atlasInts = v.atlasInts.map(id => {
+            const n = nodeMap.get(id);
+            return wlByID(id, n ? n.l : id);
+          }).join(' · ');
+          lines.push('**Atlas interventions:** ' + atlasInts);
+        }
+        if (v.source) {
+          lines.push('');
+          lines.push('— source: ' + v.source +
+            (v.prevalence ? ' · prevalence ' + v.prevalence : ''));
+        }
+        lines.push('');
+      }
+    }
+
+    if (rep.outOfRange.length) {
+      lines.push('## Out of optimal range');
+      lines.push('');
+      lines.push('| Biomarker | Value | Range | Flag | Source |');
+      lines.push('|---|---|---|---|---|');
+      for (const b of rep.outOfRange) {
+        const link = b.nodeId ? wlByID(b.nodeId, b.label) : b.label;
+        lines.push('| ' + link +
+          ' | ' + b.value + ' ' + (b.unit || '') +
+          ' | ' + (b.refRange || '') +
+          ' | **' + (b.flag || '').toUpperCase() + '**' +
+          ' | ' + (b.source || '') + ' |');
+      }
+      lines.push('');
+    }
+
+    if (rep.topInterventions.length) {
+      lines.push('## What to discuss with your functional medicine doctor');
+      lines.push('');
+      for (const it of rep.topInterventions) {
+        const i = it.node;
+        let line = '- ' + wlByID(i.id, i.l);
+        if (i.sc && parseFloat(i.sc) > 0) line += ' · **CSRS ' + parseFloat(i.sc).toFixed(1) + '**';
+        line += ' · for ' + it.forPhenotype;
+        if (i.do) line += '\n  · dose: ' + i.do;
+        if (i.co) line += '\n  · cost: ~$' + i.co + '/mo';
+        if (i.rg) line += '\n  · ' + i.rg.toUpperCase();
+        lines.push(line);
+      }
+      lines.push('');
+    }
+
+    if (rep.topTests.length) {
+      lines.push('## Tests to consider next');
+      lines.push('');
+      for (const tc of rep.topTests) {
+        const t = tc.node;
+        let line = '- ' + wlByID(t.id, t.l);
+        if (t.cl) line += ' · $' + t.cl + (t.ch && t.ch !== t.cl ? '–' + t.ch : '');
+        if (t.tr) line += ' · ' + t.tr;
+        if (t.sm) line += ' · ' + t.sm;
+        if (t.td) line += ' · ' + t.td + 'd turnaround';
+        line += ' · for ' + tc.forPhenotype;
+        lines.push(line);
+      }
+      lines.push('');
+    }
+
+    lines.push('## Atlas connection');
+    lines.push('');
+    lines.push('This profile was generated by reading uploaded data against the [[00_INDEX|Causes Atlas]] graph. Every wikilink above resolves to its atlas vault page.');
+    lines.push('');
+    lines.push('Calibration anchor: ' + wlByID('INT-0001', 'Leucovorin (folinic acid)') + ' · **CSRS 83.35** (non-drifted across major revisions).');
+    lines.push('');
+    lines.push('To explore in Obsidian:');
+    lines.push('1. Drop this file into `vault/profiles/`');
+    lines.push('2. Open in Obsidian → the graph view shows this patient\'s sub-network');
+    lines.push('3. Click any wikilink to drill into the corresponding atlas page');
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+    lines.push('*Not medical advice. Discuss with a licensed functional medicine practitioner familiar with the full clinical history. The atlas is for individual-level decisions, not population policy.*');
+    lines.push('');
+    return lines.join('\n');
+  }
+
+  function downloadObsidianProfile() {
+    const md = generateObsidianProfile();
+    if (!md) return;
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const dateISO = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = 'atlas-profile-' + dateISO + '.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 500);
+  }
+
   // ── REPORT MODAL OPEN / CLOSE WIRING ────────────────────────────
   const reportOverlay = document.getElementById('report-overlay');
   const rClose       = document.getElementById('r-close');
   const rGraphBtn    = document.getElementById('r-graph');
   const rDownloadBtn = document.getElementById('r-download');
   const rReupBtn     = document.getElementById('r-reupload');
+  const rObsidianBtn = document.getElementById('r-obsidian');
   const viewReportBtn = document.getElementById('view-report');
 
   function openReport() {
@@ -4240,6 +4434,14 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
   rClose.addEventListener('click', closeReport);
   rGraphBtn.addEventListener('click', closeReport);
   rDownloadBtn.addEventListener('click', () => window.print());
+  rObsidianBtn.addEventListener('click', () => {
+    rObsidianBtn.textContent = 'generating…';
+    setTimeout(() => {
+      downloadObsidianProfile();
+      rObsidianBtn.textContent = 'Downloaded ✓';
+      setTimeout(() => rObsidianBtn.textContent = 'Download Obsidian profile (.md)', 1800);
+    }, 150);
+  });
   rReupBtn.addEventListener('click', () => {
     closeReport();
     modal.classList.add('on');
@@ -5317,6 +5519,33 @@ starters_payload = {
     "resources": FM_RESOURCES,
 }
 
+# ── VAULT PATH LOOKUP ──────────────────────────────────────────────
+# Scan the vault directory and map atlas_id → canonical filename (stem).
+# Used at runtime in the Obsidian profile exporter to produce wikilinks
+# that resolve when the user drops the exported .md into their vault.
+import re as _re_vault
+vault_paths: dict = {}
+vault_dir = _REPO / "vault"
+if vault_dir.exists():
+    for subdir in ("phenotypes", "interventions", "biomarkers",
+                   "mechanisms", "hypotheses", "combinations",
+                   "genes", "peptides", "tests", "researchers", "topics"):
+        d = vault_dir / subdir
+        if not d.exists(): continue
+        for f in d.iterdir():
+            if not f.suffix == ".md": continue
+            stem = f.stem
+            # IDs at start of filename
+            m = _re_vault.match(r"^([A-Z]+-\d+)\b", stem)
+            if m:
+                vault_paths[m.group(1)] = stem
+            # Gene-symbol named pages (currently sparse but auto-picks-up
+            # any future gene .md files added to vault/genes/)
+            elif subdir == "genes":
+                vault_paths["GENE:" + stem.upper()] = stem
+            # (Researcher / topic / peptide pages are not currently linked
+            # from the patient profile export; add a wlDoc helper if/when needed.)
+
 html = (HTML
         .replace("__N_NODES__", str(stats["n_nodes"]))
         .replace("__N_LINKS__", str(stats["n_links"]))
@@ -5339,7 +5568,9 @@ html = (HTML
         .replace("__INTAKE_FEED__",
                  json.dumps(intake_feed_for_js, separators=(",", ":")))
         .replace("__STARTERS__",
-                 json.dumps(starters_payload, separators=(",", ":"))))
+                 json.dumps(starters_payload, separators=(",", ":")))
+        .replace("__VAULT_PATHS__",
+                 json.dumps(vault_paths, separators=(",", ":"))))
 
 OUT.write_text(html)
 print(f"wrote {OUT} ({OUT.stat().st_size//1024} KB)")
