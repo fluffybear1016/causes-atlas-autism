@@ -1060,22 +1060,35 @@ HTML = r"""<!doctype html>
 
   /* ── DATA UPLOAD UI ────────────────────────────────────────────── */
   .upload-btn {
-    position: fixed; top: 26px; left: 50%; transform: translateX(-50%);
+    position: fixed; top: 22px; left: 50%; transform: translateX(-50%);
     z-index: 15;
     background: rgba(8,11,18,0.78); backdrop-filter: blur(8px);
     border: 1px solid var(--gold-dim); color: var(--gold);
-    font: inherit; font-size: 10.5px; letter-spacing: 0.22em;
-    padding: 9px 18px; cursor: pointer; text-transform: uppercase;
+    font: inherit; cursor: pointer; text-align: center;
+    padding: 8px 22px; line-height: 1.45;
     transition: color 300ms, border-color 300ms, background 300ms;
   }
   .upload-btn:hover {
     color: var(--text); border-color: var(--gold);
-    background: rgba(12,14,22,0.9);
+    background: rgba(12,14,22,0.92);
   }
   .upload-btn.has-data {
     color: var(--gold); border-color: var(--gold);
-    background: rgba(232,196,110,0.07);
+    background: rgba(232,196,110,0.08);
   }
+  .upload-btn .ub-main {
+    display: block;
+    font-size: 10.5px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .upload-btn .ub-sub {
+    display: block;
+    font-size: 9px; letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--text-vmute);
+    margin-top: 2px;
+  }
+  .upload-btn:hover .ub-sub { color: var(--text-mute); }
   .upload-btn .dot {
     display: inline-block; width: 6px; height: 6px;
     border-radius: 50%; background: var(--gold);
@@ -1265,10 +1278,12 @@ HTML = r"""<!doctype html>
 
     .upload-btn {
       top: auto; bottom: 144px; left: 14px; transform: none;
-      padding: 8px 14px; font-size: 9.5px; letter-spacing: 0.18em;
+      padding: 7px 14px;
     }
+    .upload-btn .ub-main { font-size: 9.5px; letter-spacing: 0.16em; }
+    .upload-btn .ub-sub  { font-size: 8.5px; letter-spacing: 0.18em; }
     .user-data {
-      top: auto; bottom: 178px; left: 14px; right: 14px; transform: none;
+      top: auto; bottom: 184px; left: 14px; right: 14px; transform: none;
       font-size: 9px; letter-spacing: 0.12em; padding: 6px 12px;
       white-space: normal; text-align: center;
     }
@@ -1378,7 +1393,10 @@ HTML = r"""<!doctype html>
 <div class="hover-label" id="hover"></div>
 
 <!-- Upload-my-data button (top-center) + your-data summary banner -->
-<button class="upload-btn" id="upload-btn">upload my data</button>
+<button class="upload-btn" id="upload-btn">
+  <span class="ub-main">Upload my Genetics · Bloodwork · Health Reports</span>
+  <span class="ub-sub">Private · stays in your browser</span>
+</button>
 <div class="user-data" id="user-data"></div>
 
 <!-- Mobile bottom-left starter-dock toggle -->
@@ -1397,11 +1415,27 @@ HTML = r"""<!doctype html>
       </div>
     </div>
     <div class="m-tabs">
-      <button class="m-tab on" data-pane="genetics">genetics</button>
-      <button class="m-tab" data-pane="bloodwork">blood work</button>
-      <button class="m-tab" data-pane="pdf">paste lab pdf</button>
+      <button class="m-tab on" data-pane="pdf">lab pdf</button>
+      <button class="m-tab" data-pane="genetics">raw dna file</button>
+      <button class="m-tab" data-pane="bloodwork">blood work form</button>
     </div>
-    <div class="m-pane on" id="pane-genetics">
+    <div class="m-pane on" id="pane-pdf">
+      <div class="m-drop" id="pdf-drop">
+        <input type="file" id="pdf-file" style="display:none" accept=".pdf,application/pdf" multiple />
+        <div class="m-drop-title">Drop your lab PDFs here or click to choose</div>
+        <div class="m-drop-sub">Quest · LabCorp · Genova · Mosaic · Invitae · GeneDx · 23andMe report · any PDF</div>
+      </div>
+      <div class="m-status" id="pdf-status"></div>
+      <div class="m-help">
+        We read the PDF in your browser and scan for both biomarker values (vitamin D, ferritin, homocysteine, IGF-1, …) and gene mentions (MTHFR, FOLR1, MTR, …). Anything found lights up its node on the map and pre-fills the blood-work form. Multiple PDFs at once is fine. <strong>For scanned PDFs without a text layer</strong>, use the paste box below as a fallback.
+      </div>
+      <details style="margin-top:14px;">
+        <summary style="cursor:pointer;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-mute);">or paste lab text directly</summary>
+        <textarea class="m-paste" id="pdf-paste" rows="8" placeholder="Paste lab text here…" style="margin-top:10px;"></textarea>
+        <button class="m-save" id="pdf-extract" style="margin-top:0;">extract from pasted text →</button>
+      </details>
+    </div>
+    <div class="m-pane" id="pane-genetics">
       <div class="m-drop" id="g-drop">
         <input type="file" id="g-file" style="display:none" accept=".txt,.csv,.vcf,.tsv" />
         <div class="m-drop-title">Drop your raw DNA file or click to choose</div>
@@ -1409,7 +1443,7 @@ HTML = r"""<!doctype html>
       </div>
       <div class="m-status" id="g-status"></div>
       <div class="m-help">
-        On 23andMe: Settings → Browse Raw Data → Download. On AncestryDNA: Settings → DNA → Download Raw DNA Data. We match your variants against the curated rsID set covering MTHFR, COMT, BDNF, OXTR, FOLR1, GST, CYP, VDR, APOE, and the rest of the atlas's gene layer, and light up the ones connected to your child's phenotype.
+        Raw genotype file (the big .txt file from your DNA-test provider, not the report PDF — for PDF reports use the Lab PDF tab). On 23andMe: Settings → Browse Raw Data → Download. On AncestryDNA: Settings → DNA → Download Raw DNA Data.
       </div>
       <button class="m-clear" id="g-clear" style="margin-left:0;display:none;">clear my genetics</button>
     </div>
@@ -1420,14 +1454,6 @@ HTML = r"""<!doctype html>
       <div class="m-form-grid" id="bw-form"></div>
       <button class="m-save" id="bw-save">save &amp; light up the map</button>
       <button class="m-clear" id="bw-clear">clear</button>
-    </div>
-    <div class="m-pane" id="pane-pdf">
-      <div class="m-help">
-        Open your lab PDF, select all (Cmd/Ctrl-A), copy, and paste below. We scan for biomarker names + values and pre-fill the blood-work form for you to review.
-      </div>
-      <textarea class="m-paste" id="pdf-paste" rows="9" placeholder="Paste lab PDF text here…"></textarea>
-      <div class="m-status" id="pdf-status"></div>
-      <button class="m-save" id="pdf-extract">extract values →</button>
     </div>
   </div>
 </div>
@@ -3265,19 +3291,122 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     updateBanner(); applyUserData();
   });
 
-  // ── PDF PASTE EXTRACTION ───────────────────────────────────────
+  // ── PDF UPLOAD + PASTE EXTRACTION ──────────────────────────────
   const pdfPaste   = document.getElementById('pdf-paste');
   const pdfExtract = document.getElementById('pdf-extract');
   const pdfStatus  = document.getElementById('pdf-status');
+  const pdfDrop    = document.getElementById('pdf-drop');
+  const pdfFile    = document.getElementById('pdf-file');
 
-  pdfExtract.addEventListener('click', () => {
-    const text = pdfPaste.value;
-    if (!text || text.length < 50) {
-      pdfStatus.classList.add('on'); pdfStatus.classList.add('err');
-      pdfStatus.textContent = 'paste some lab text first';
-      return;
+  // Build a gene-symbol set for matching gene mentions in PDF text.
+  // Strict word-boundary, uppercase-only — gene symbols look like
+  // [A-Z][A-Z0-9-]{1,8}. This keeps false positives near zero.
+  const ATLAS_GENE_SYMBOLS = new Set(Object.keys(geneByLabel));
+
+  // PDF.js is lazy-loaded only when the user actually uploads a PDF
+  let _pdfJsLoading = null;
+  function ensurePdfJs() {
+    if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+    if (_pdfJsLoading)   return _pdfJsLoading;
+    _pdfJsLoading = new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+      s.crossOrigin = 'anonymous';
+      s.onload = () => {
+        try {
+          window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+            'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          resolve(window.pdfjsLib);
+        } catch (e) { reject(e); }
+      };
+      s.onerror = () => reject(new Error('failed to load PDF parser from CDN'));
+      document.head.appendChild(s);
+    });
+    return _pdfJsLoading;
+  }
+
+  pdfDrop.addEventListener('click', () => pdfFile.click());
+  pdfDrop.addEventListener('dragover', e => { e.preventDefault(); pdfDrop.classList.add('drag'); });
+  pdfDrop.addEventListener('dragleave', () => pdfDrop.classList.remove('drag'));
+  pdfDrop.addEventListener('drop', e => {
+    e.preventDefault(); pdfDrop.classList.remove('drag');
+    if (e.dataTransfer.files.length) handlePdfFiles(Array.from(e.dataTransfer.files));
+  });
+  pdfFile.addEventListener('change', e => {
+    if (e.target.files.length) handlePdfFiles(Array.from(e.target.files));
+  });
+
+  async function handlePdfFiles(files) {
+    pdfStatus.classList.add('on');
+    pdfStatus.classList.remove('err');
+    pdfStatus.textContent = 'loading PDF parser…';
+    try {
+      const pdfjs = await ensurePdfJs();
+      let allText = '';
+      let totalPages = 0;
+      for (let fi = 0; fi < files.length; fi++) {
+        const file = files[fi];
+        pdfStatus.textContent = 'reading ' + file.name + ' (' + Math.round(file.size/1024) + ' KB)…';
+        const buf = await file.arrayBuffer();
+        const pdf = await pdfjs.getDocument({ data: buf }).promise;
+        for (let p = 1; p <= pdf.numPages; p++) {
+          pdfStatus.textContent = 'file ' + (fi+1) + '/' + files.length +
+            ' · page ' + p + '/' + pdf.numPages + ' · ' + file.name;
+          const page = await pdf.getPage(p);
+          const content = await page.getTextContent();
+          allText += content.items.map(it => it.str).join(' ') + '\n';
+          totalPages++;
+        }
+      }
+      if (!allText || allText.length < 50) {
+        pdfStatus.classList.add('err');
+        pdfStatus.textContent = 'this PDF has no extractable text layer (probably a scan). Paste the lab text manually using the box below.';
+        return;
+      }
+      const result = extractFromText(allText);
+      const summary = [
+        files.length + ' PDF' + (files.length>1?'s':''),
+        totalPages + ' pages',
+        result.bioCount + ' biomarker' + (result.bioCount===1?'':'s'),
+        result.geneCount + ' gene mention' + (result.geneCount===1?'':'s'),
+      ].join(' · ');
+      pdfStatus.textContent = summary +
+        (result.bioCount ? ' · switching to blood-work tab to review' : '');
+      // If genes were found in the PDF, save them to genetics store as a separate "pdf_genes" set
+      if (result.geneCount > 0) {
+        const existing = JSON.parse(localStorage.getItem('cwa_genetics_v1') || 'null') || {
+          format: 'PDF report', uploadedAt: Date.now(), variantCount: 0, matchedGenes: []
+        };
+        const set = new Set(existing.matchedGenes);
+        for (const gid of result.matchedGenes) set.add(gid);
+        existing.matchedGenes = Array.from(set);
+        existing.format = existing.format === 'PDF report'
+          ? 'PDF report' : existing.format + ' + PDF report';
+        existing.uploadedAt = Date.now();
+        saveGenetics(existing);
+      }
+      // If biomarkers were found, switch to blood-work tab for confirmation
+      if (result.bioCount > 0) {
+        setTimeout(() => {
+          document.querySelectorAll('.m-tab').forEach(x => x.classList.remove('on'));
+          document.querySelectorAll('.m-pane').forEach(p => p.classList.remove('on'));
+          document.querySelector('.m-tab[data-pane="bloodwork"]').classList.add('on');
+          document.getElementById('pane-bloodwork').classList.add('on');
+        }, 1500);
+      } else if (result.geneCount > 0) {
+        // genes-only PDF — keep modal open, banner already updated
+        applyUserData();
+      }
+    } catch (err) {
+      pdfStatus.classList.add('err');
+      pdfStatus.textContent = 'parse error: ' + (err.message || err);
     }
-    let found = 0;
+  }
+
+  // Shared extraction logic — runs against any text blob.
+  // Returns: { bioCount, geneCount, matchedGenes }
+  function extractFromText(text) {
+    let bioCount = 0;
     for (const f of BIOMARKER_FIELDS) {
       const aliases = (f.a || []).concat([f.l]);
       let matched = null;
@@ -3289,11 +3418,41 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       }
       if (matched) {
         const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
-        if (input && !input.value) { input.value = matched; found++; }
+        if (input && !input.value) { input.value = matched; bioCount++; }
       }
     }
+    // gene-symbol detection: whole-word uppercase tokens matching atlas labels
+    const seen = new Set();
+    const reGene = /\b([A-Z][A-Z0-9]{1,8}(?:-[A-Z0-9]{1,4})?)\b/g;
+    let g;
+    while ((g = reGene.exec(text)) !== null) {
+      const sym = g[1];
+      if (ATLAS_GENE_SYMBOLS.has(sym)) seen.add(geneByLabel[sym]);
+    }
+    return { bioCount, geneCount: seen.size, matchedGenes: Array.from(seen) };
+  }
+
+  pdfExtract.addEventListener('click', () => {
+    const text = pdfPaste.value;
+    if (!text || text.length < 50) {
+      pdfStatus.classList.add('on'); pdfStatus.classList.add('err');
+      pdfStatus.textContent = 'paste some lab text first';
+      return;
+    }
+    const result = extractFromText(text);
+    if (result.geneCount > 0) {
+      const existing = JSON.parse(localStorage.getItem('cwa_genetics_v1') || 'null') || {
+        format: 'pasted text', uploadedAt: Date.now(), variantCount: 0, matchedGenes: []
+      };
+      const set = new Set(existing.matchedGenes);
+      for (const gid of result.matchedGenes) set.add(gid);
+      existing.matchedGenes = Array.from(set);
+      existing.uploadedAt = Date.now();
+      saveGenetics(existing);
+    }
     pdfStatus.classList.add('on'); pdfStatus.classList.remove('err');
-    pdfStatus.textContent = 'extracted ' + found + ' values · switch to blood-work tab to review &amp; save';
+    pdfStatus.textContent = 'extracted ' + result.bioCount + ' biomarkers · ' +
+      result.geneCount + ' gene mentions · review and save in blood-work tab';
     setTimeout(() => {
       document.querySelectorAll('.m-tab').forEach(x => x.classList.remove('on'));
       document.querySelectorAll('.m-pane').forEach(p => p.classList.remove('on'));
