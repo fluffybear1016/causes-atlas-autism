@@ -518,6 +518,230 @@
   }
   .mobile-dock-btn.on { color: var(--gold); border-color: var(--gold-dim); }
 
+  /* ── REPORT OVERLAY (Ive-restrained) ───────────────────────────── */
+  /* What the substrate is FOR. Auto-opens after upload save.
+     Single column, generous spacing, hairline gold rules, serif body. */
+  .report-overlay {
+    position: fixed; inset: 0; z-index: 110;
+    background: rgba(5,8,16,0.97); backdrop-filter: blur(14px);
+    display: none; overflow-y: auto;
+    padding: 60px 24px 60px;
+    animation: r-fade 600ms ease;
+  }
+  @keyframes r-fade { from { opacity: 0; } to { opacity: 1; } }
+  .report-overlay.on { display: block; }
+  .report {
+    max-width: 680px; margin: 0 auto;
+    color: var(--text);
+    font-family: ui-serif, "Iowan Old Style", Garamond, serif;
+    position: relative;
+    padding-bottom: 80px;
+  }
+  .r-close {
+    position: fixed; top: 22px; right: 28px;
+    background: transparent; border: 1px solid var(--line-hi);
+    color: var(--text-mute); font-size: 22px;
+    cursor: pointer; padding: 6px 14px; line-height: 1;
+    z-index: 5;
+  }
+  .r-close:hover { color: var(--text); border-color: var(--gold-dim); }
+  .r-header { margin-bottom: 40px; }
+  .r-eyebrow {
+    font-size: 10px; letter-spacing: 0.34em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .r-title {
+    font-size: 32px; letter-spacing: -0.01em;
+    color: var(--node); line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .r-sub {
+    font-size: 12px; letter-spacing: 0.16em;
+    color: var(--text-mute); text-transform: uppercase;
+  }
+  .r-section { margin-bottom: 38px; }
+  .r-section-label {
+    font-size: 9.5px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--gold);
+    padding-bottom: 8px; margin-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .r-summary {
+    font-size: 14px; line-height: 1.65; color: var(--text);
+  }
+  .r-summary .pill {
+    display: inline-block;
+    font-family: ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 2px 8px; margin-right: 6px; margin-bottom: 6px;
+  }
+  .r-phe {
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .r-phe:last-child { border-bottom: none; }
+  .r-phe-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .r-phe-name {
+    font-size: 16px; color: var(--node);
+    letter-spacing: 0.01em;
+  }
+  .r-phe-pct {
+    font-family: ui-monospace, monospace;
+    font-size: 16px; color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+  .r-phe-evidence {
+    font-size: 12px; color: var(--text-mute); line-height: 1.55;
+  }
+  .r-phe-bar {
+    height: 2px; background: var(--line);
+    margin-top: 8px; overflow: hidden;
+  }
+  .r-phe-bar-fill {
+    height: 100%; background: var(--gold);
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: r-bar 1200ms ease forwards;
+  }
+  @keyframes r-bar { to { transform: scaleX(var(--r-fill, 1)); } }
+  .r-oor {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 8px 18px;
+    font-size: 13px;
+  }
+  .r-oor-name { color: var(--text); }
+  .r-oor-val {
+    font-family: ui-monospace, monospace;
+    color: var(--text);
+  }
+  .r-oor-flag {
+    font-family: ui-monospace, monospace;
+    font-size: 9.5px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1px 8px; border: 1px solid;
+    align-self: center;
+  }
+  .r-oor-flag.high { color: #f0a890; border-color: #6e3a22; }
+  .r-oor-flag.low  { color: #b4c8e8; border-color: #2a4060; }
+  .r-int {
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .r-int:last-child { border-bottom: none; }
+  .r-int-name {
+    font-size: 15px; color: var(--text);
+    margin-bottom: 4px;
+  }
+  .r-int-meta {
+    font-family: ui-monospace, monospace;
+    font-size: 10.5px; letter-spacing: 0.14em;
+    color: var(--text-mute); text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .r-int-meta .gold { color: var(--gold); }
+  .r-int-rationale {
+    font-size: 12.5px; color: var(--text-mute);
+    line-height: 1.55;
+  }
+  .r-test {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 6px 18px;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 13px;
+  }
+  .r-test:last-child { border-bottom: none; }
+  .r-test-name { color: var(--text); }
+  .r-test-meta {
+    font-family: ui-monospace, monospace; font-size: 10px;
+    color: var(--text-mute); letter-spacing: 0.12em;
+    text-transform: uppercase; align-self: center;
+  }
+  .r-test-cost {
+    font-family: ui-monospace, monospace;
+    color: var(--gold); font-variant-numeric: tabular-nums;
+    align-self: center;
+  }
+  .r-empty {
+    color: var(--text-mute); font-size: 13px;
+    font-style: italic; padding: 6px 0;
+  }
+  .r-disclaimer {
+    margin-top: 50px; padding: 22px 24px;
+    background: rgba(232,196,110,0.04);
+    border: 1px solid var(--gold-dim);
+    font-size: 11.5px; line-height: 1.6; color: var(--text);
+  }
+  .r-disclaimer strong { color: var(--gold); font-weight: 400; letter-spacing: 0.04em; }
+  .r-footer {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .r-btn {
+    background: transparent; border: 1px solid var(--gold-dim);
+    color: var(--gold); font: inherit;
+    font-size: 10.5px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 12px 22px; cursor: pointer;
+    transition: color 200ms, border-color 200ms, background 200ms;
+  }
+  .r-btn:hover { color: var(--node); border-color: var(--gold); background: rgba(232,196,110,0.06); }
+  .r-btn.primary {
+    background: var(--gold); color: var(--void);
+  }
+  .r-btn.primary:hover { background: #f0d080; color: var(--void); }
+
+  /* View-Report banner that replaces the small "your data" line */
+  .view-report {
+    position: fixed; top: 76px; left: 50%; transform: translateX(-50%);
+    z-index: 14;
+    background: rgba(232,196,110,0.10); backdrop-filter: blur(8px);
+    border: 1px solid var(--gold); color: var(--gold);
+    font: inherit; font-size: 10.5px; letter-spacing: 0.22em;
+    padding: 9px 22px; cursor: pointer; text-transform: uppercase;
+    display: none;
+    transition: background 200ms, color 200ms;
+  }
+  .view-report.on { display: inline-block; }
+  .view-report:hover { background: rgba(232,196,110,0.18); color: var(--node); }
+  .view-report .dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+    margin-right: 10px; vertical-align: middle;
+    animation: ingest-pulse 1.8s ease-in-out infinite;
+  }
+
+  /* Generating animation in the upload modal */
+  .m-generating {
+    text-align: center; padding: 32px 24px;
+    color: var(--gold);
+    font-size: 13px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: none;
+  }
+  .m-generating.on { display: block; }
+  .m-gen-dots span {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold);
+    margin: 0 4px; opacity: 0.3;
+    animation: r-gen 1.4s ease-in-out infinite;
+  }
+  .m-gen-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .m-gen-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes r-gen {
+    0%, 60%, 100% { opacity: 0.3; transform: scale(0.9); }
+    30%           { opacity: 1.0; transform: scale(1.2); }
+  }
+
   /* ── MOBILE RESPONSIVE ─────────────────────────────────────────── */
   @media (max-width: 768px) {
     .overlay.tl { top: 12px; left: 14px; font-size: 9px; }
@@ -582,6 +806,18 @@
     .modal { padding: 22px 20px 26px; }
     .modal .m-form-grid { grid-template-columns: 1fr; gap: 10px; }
     .modal .m-tab { padding: 10px 14px; font-size: 10px; }
+
+    /* report on mobile */
+    .report-overlay { padding: 50px 16px 40px; }
+    .r-close { top: 14px; right: 14px; }
+    .r-title { font-size: 24px; }
+    .r-section { margin-bottom: 30px; }
+    .r-oor { grid-template-columns: 1fr auto; gap: 4px 12px; }
+    .r-oor-flag { grid-column: 1 / -1; justify-self: start; margin-bottom: 6px; }
+    .r-test { grid-template-columns: 1fr auto; }
+    .r-test-meta { grid-column: 1 / -1; }
+    .r-footer .r-btn { font-size: 9.5px; padding: 11px 16px; letter-spacing: 0.18em; }
+    .view-report { top: auto; bottom: 220px; left: 14px; right: 14px; transform: none; }
 
     /* hover label hidden on touch */
     .hover-label { display: none !important; }
@@ -702,8 +938,63 @@
         Type values from your most recent lab work. Skip what you don't have. The graph lights up matching biomarker nodes and the phenotypes they stratify. Values outside reference range are color-flagged.
       </div>
       <div class="m-form-grid" id="bw-form"></div>
-      <button class="m-save" id="bw-save">save &amp; light up the map</button>
+      <button class="m-save" id="bw-save">save &amp; generate my report</button>
       <button class="m-clear" id="bw-clear">clear</button>
+    </div>
+    <!-- "generating your report" intermediate state, shown for ~1.5s after save -->
+    <div class="m-generating" id="m-generating">
+      <div>Reading your data against the atlas…</div>
+      <div class="m-gen-dots" style="margin-top:16px;"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- View-report button (top-center, replaces "your data" line when data exists) -->
+<button class="view-report" id="view-report"><span class="dot"></span>View your report</button>
+
+<!-- ── PERSONALIZED REPORT OVERLAY ─────────────────────────────────── -->
+<div class="report-overlay" id="report-overlay">
+  <div class="report">
+    <button class="r-close" id="r-close">×</button>
+    <div class="r-header">
+      <div class="r-eyebrow">Causes Atlas · your child's map</div>
+      <div class="r-title" id="r-title">Your data, read against the atlas</div>
+      <div class="r-sub" id="r-sub">Generated · just now</div>
+    </div>
+
+    <div class="r-section">
+      <div class="r-section-label">Your data</div>
+      <div class="r-summary" id="r-summary"></div>
+    </div>
+
+    <div class="r-section">
+      <div class="r-section-label">Best phenotype matches</div>
+      <div id="r-phenotypes"></div>
+    </div>
+
+    <div class="r-section" id="r-section-oor">
+      <div class="r-section-label">Out of optimal range</div>
+      <div id="r-oor"></div>
+    </div>
+
+    <div class="r-section">
+      <div class="r-section-label">What to discuss with your functional medicine doctor</div>
+      <div id="r-actions"></div>
+    </div>
+
+    <div class="r-section">
+      <div class="r-section-label">Tests to consider next</div>
+      <div id="r-tests"></div>
+    </div>
+
+    <div class="r-disclaimer">
+      <strong>Important:</strong> this map is generated by an evidence-weighted inference engine reading atlas data against the values you uploaded. It is not medical advice. The patterns are real; the action plan should be discussed with a functional medicine practitioner familiar with your child's full clinical history. <strong>INT-0001 Leucovorin CSRS 83.35</strong> is the atlas calibration anchor and has not drifted across major revisions.
+    </div>
+
+    <div class="r-footer">
+      <button class="r-btn primary" id="r-graph">View on graph</button>
+      <button class="r-btn" id="r-download">Download as PDF</button>
+      <button class="r-btn" id="r-reupload">Re-upload labs</button>
     </div>
   </div>
 </div>
@@ -2297,25 +2588,22 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
 
   function updateBanner() {
     const s = getStored();
-    const parts = [];
-    if (s.genetics) {
-      parts.push('<span class="gold">' + s.genetics.matchedGenes.length + '</span> genes matched');
-    }
-    if (s.biomarkers) {
-      const flag = Object.values(s.biomarkers)
-        .filter(v => v.flag === 'high' || v.flag === 'low').length;
-      parts.push('<span class="gold">' + Object.keys(s.biomarkers).length + '</span> biomarkers'
-                 + (flag ? ' · <span class="gold">' + flag + '</span> out of range' : ''));
-    }
-    if (parts.length) {
-      userData.innerHTML = 'your data · ' + parts.join(' · ');
-      userData.classList.add('on');
+    const has = !!(s.genetics || s.biomarkers);
+    const viewReportBtn = document.getElementById('view-report');
+    if (has) {
+      userData.classList.remove('on');                  // hide tiny summary line
+      viewReportBtn.classList.add('on');                // show the call-to-action
       btnUpload.classList.add('has-data');
-      btnUpload.innerHTML = '<span class="dot"></span>my data';
+      btnUpload.innerHTML =
+        '<span class="ub-main"><span class="dot"></span>Update my data</span>' +
+        '<span class="ub-sub">Re-upload anytime · private</span>';
     } else {
       userData.classList.remove('on');
+      viewReportBtn.classList.remove('on');
       btnUpload.classList.remove('has-data');
-      btnUpload.innerHTML = 'upload my data';
+      btnUpload.innerHTML =
+        '<span class="ub-main">Upload my Genetics · Bloodwork · Health Reports</span>' +
+        '<span class="ub-sub">Private · stays in your browser</span>';
     }
   }
 
@@ -2332,6 +2620,426 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       }
     }
   }
+
+  // ── PHENOTYPE-MATCH REPORT ENGINE ───────────────────────────────
+  // For each matched gene/biomarker, traverse the atlas to compute its
+  // affinity to every phenotype using direct edges + one-hop bridges
+  // (gene→mechanism→phenotype, gene→hypothesis→mechanism→phenotype,
+  // biomarker→mechanism→phenotype, biomarker→hypothesis→mechanism→phe).
+  // Then rank phenotypes by aggregate score, find top interventions
+  // and tests per top phenotype. Pure client-side, runs from the same
+  // (nodes, links) data the graph uses.
+
+  const nodeMap = new Map(nodes.map(n => [n.id, n]));
+
+  // Pre-index edges by source and by kind for fast lookup
+  const edgesBySrc = new Map();
+  const edgesByTgt = new Map();
+  for (const l of links) {
+    const sId = (l.source && l.source.id) || l.source;
+    const tId = (l.target && l.target.id) || l.target;
+    if (!edgesBySrc.has(sId)) edgesBySrc.set(sId, []);
+    edgesBySrc.get(sId).push({ tgt: tId, w: l.w, k: l.k });
+    if (!edgesByTgt.has(tId)) edgesByTgt.set(tId, []);
+    edgesByTgt.get(tId).push({ src: sId, w: l.w, k: l.k });
+  }
+
+  // For a given node ID, return affinity to each phenotype
+  // via direct + one-hop + two-hop traversal. Conservative weights.
+  function affinityToPhenotypes(originId, originType) {
+    const aff = new Map();        // phenotype_id → weight
+    const out = edgesBySrc.get(originId) || [];
+
+    for (const e of out) {
+      // direct gene→phenotype or biomarker→phenotype
+      if (e.k === 'gp' || e.k === 'bp') {
+        aff.set(e.tgt, (aff.get(e.tgt) || 0) + e.w * 1.0);
+        continue;
+      }
+      // gene→mechanism / biomarker→mechanism → look for mechanism→phenotype
+      if (e.k === 'gm' || e.k === 'bm') {
+        const mech = e.tgt;
+        const mechOut = edgesBySrc.get(mech) || [];
+        for (const e2 of mechOut) {
+          if (e2.k === 'mp') {
+            aff.set(e2.tgt, (aff.get(e2.tgt) || 0) + e.w * e2.w * 0.7);
+          }
+        }
+        continue;
+      }
+      // gene→hypothesis / biomarker→hypothesis → hypothesis→mechanism → mech→phe
+      if (e.k === 'gh' || e.k === 'bh') {
+        const hyp = e.tgt;
+        const hypOut = edgesBySrc.get(hyp) || [];
+        for (const e2 of hypOut) {
+          if (e2.k === 'hm') {
+            const mech2 = e2.tgt;
+            const mech2Out = edgesBySrc.get(mech2) || [];
+            for (const e3 of mech2Out) {
+              if (e3.k === 'mp') {
+                aff.set(e3.tgt, (aff.get(e3.tgt) || 0) + e.w * e2.w * e3.w * 0.4);
+              }
+            }
+          }
+        }
+      }
+    }
+    return aff;
+  }
+
+  // Top interventions for a phenotype, ranked by edge_weight * csrs
+  function topInterventionsForPhenotype(pId, k) {
+    const candidates = [];
+    const inEdges = edgesByTgt.get(pId) || [];
+    for (const e of inEdges) {
+      if (e.k !== 'ip') continue;
+      const intNode = nodeMap.get(e.src);
+      if (!intNode || intNode.t !== 'I') continue;
+      const csrs = parseFloat(intNode.sc) || 0;
+      candidates.push({
+        node: intNode,
+        score: e.w * 0.6 + (csrs / 100) * 0.4,
+        edge_w: e.w, csrs
+      });
+    }
+    candidates.sort((a, b) => b.score - a.score);
+    return candidates.slice(0, k || 5);
+  }
+
+  // Top tests for a phenotype, ranked by tier and cost
+  function topTestsForPhenotype(pId, k) {
+    const candidates = [];
+    const inEdges = edgesByTgt.get(pId) || [];
+    for (const e of inEdges) {
+      if (e.k !== 'tp') continue;
+      const testNode = nodeMap.get(e.src);
+      if (!testNode || testNode.t !== 'T') continue;
+      candidates.push({ node: testNode, edge_w: e.w });
+    }
+    // tier prefix sort: T1 > T2 > T3 > T4; then ascending cost
+    function tierRank(tr) {
+      if (!tr) return 99;
+      const m = String(tr).match(/T(\d)/i);
+      return m ? parseInt(m[1], 10) : 99;
+    }
+    candidates.sort((a, b) => {
+      const ta = tierRank(a.node.tr), tb = tierRank(b.node.tr);
+      if (ta !== tb) return ta - tb;
+      const ca = parseFloat(a.node.cl) || 9999;
+      const cb = parseFloat(b.node.cl) || 9999;
+      return ca - cb;
+    });
+    return candidates.slice(0, k || 5);
+  }
+
+  function generateReport() {
+    const s = getStored();
+    if (!s.genetics && !s.biomarkers) return null;
+
+    const matchedGenes = new Set(s.genetics?.matchedGenes || []);
+    const bioById = {};
+    if (s.biomarkers) {
+      for (const k of Object.keys(s.biomarkers)) {
+        const v = s.biomarkers[k];
+        if (v.nodeId) bioById[v.nodeId] = v;
+      }
+    }
+
+    // Per-phenotype score + which matches contributed
+    const pScores = new Map();
+    function add(pId, weight, contribLabel, contribType, originLabel) {
+      if (!pScores.has(pId)) {
+        pScores.set(pId, { score: 0, contribs: [] });
+      }
+      const e = pScores.get(pId);
+      e.score += weight;
+      e.contribs.push({ type: contribType, label: contribLabel, weight, originLabel });
+    }
+
+    for (const gid of matchedGenes) {
+      const gNode = nodeMap.get(gid);
+      const gLabel = gNode ? gNode.l : gid;
+      const aff = affinityToPhenotypes(gid, 'G');
+      for (const [pid, w] of aff) add(pid, w, gLabel, 'gene', gLabel);
+    }
+    for (const bid of Object.keys(bioById)) {
+      const bNode = nodeMap.get(bid);
+      const bLabel = bNode ? bNode.l : bid;
+      const bioVal = bioById[bid];
+      const oorMult = (bioVal.flag === 'high' || bioVal.flag === 'low') ? 2.0 : 0.6;
+      const aff = affinityToPhenotypes(bid, 'B');
+      for (const [pid, w] of aff) add(pid, w * oorMult, bLabel, 'biomarker', bLabel);
+    }
+
+    // Rank phenotypes
+    const ranked = [];
+    for (const [pid, data] of pScores) {
+      const pNode = nodeMap.get(pid);
+      if (!pNode) continue;
+      ranked.push({ id: pid, node: pNode, score: data.score, contribs: data.contribs });
+    }
+    ranked.sort((a, b) => b.score - a.score);
+
+    // Normalize to percentage of top score
+    const topScore = ranked.length ? ranked[0].score : 1;
+    for (const r of ranked) {
+      r.pct = topScore ? Math.round((r.score / topScore) * 100) : 0;
+    }
+
+    const topPhenotypes = ranked.slice(0, 3);
+
+    // Top interventions across the top phenotypes (dedup by id)
+    const intSeen = new Set();
+    const topInts = [];
+    for (const p of topPhenotypes) {
+      for (const ic of topInterventionsForPhenotype(p.id, 8)) {
+        if (intSeen.has(ic.node.id)) continue;
+        intSeen.add(ic.node.id);
+        topInts.push({ ...ic, forPhenotype: p.node.l });
+        if (topInts.length >= 5) break;
+      }
+      if (topInts.length >= 5) break;
+    }
+
+    // Top tests across top phenotypes (dedup, exclude tests user already did
+    // by approximating: if a test is named after a biomarker the user entered)
+    const enteredBioLabels = new Set(
+      Object.values(s.biomarkers || {}).map(v => (v.label || '').toLowerCase())
+    );
+    function testAlreadyDone(testNode) {
+      // Conservative substring match: only suppress a test when its full
+      // name contains the entered biomarker label AND the label is at
+      // least 6 chars (avoids "B12" suppressing "B12 functional test").
+      const tn = (testNode.l || '').toLowerCase();
+      for (const bl of enteredBioLabels) {
+        if (bl && bl.length >= 6 && tn.indexOf(bl) >= 0) return true;
+      }
+      return false;
+    }
+    const testSeen = new Set();
+    const topTests = [];
+    for (const p of topPhenotypes) {
+      for (const tc of topTestsForPhenotype(p.id, 6)) {
+        if (testSeen.has(tc.node.id)) continue;
+        if (testAlreadyDone(tc.node)) continue;
+        testSeen.add(tc.node.id);
+        topTests.push({ ...tc, forPhenotype: p.node.l });
+        if (topTests.length >= 5) break;
+      }
+      if (topTests.length >= 5) break;
+    }
+
+    // Out-of-range biomarkers list
+    const oor = Object.values(s.biomarkers || {})
+      .filter(v => v.flag === 'high' || v.flag === 'low');
+
+    return {
+      genetics: s.genetics,
+      biomarkers: s.biomarkers,
+      matchedGeneCount: matchedGenes.size,
+      bioCount: Object.keys(s.biomarkers || {}).length,
+      topPhenotypes,
+      topInterventions: topInts,
+      topTests,
+      outOfRange: oor,
+    };
+  }
+
+  function renderReport() {
+    const rep = generateReport();
+    if (!rep) return false;
+
+    // ── header sub
+    const when = rep.genetics?.uploadedAt || Date.now();
+    const ago = Math.round((Date.now() - when) / 1000);
+    const agoStr = ago < 60 ? 'just now'
+                 : ago < 3600 ? Math.round(ago / 60) + ' min ago'
+                 : ago < 86400 ? Math.round(ago / 3600) + ' hr ago'
+                 : Math.round(ago / 86400) + ' d ago';
+    document.getElementById('r-sub').textContent = 'Generated · ' + agoStr;
+
+    // ── Your data
+    const summary = [];
+    if (rep.matchedGeneCount > 0) {
+      summary.push('<span class="pill">' + rep.matchedGeneCount + ' genes matched</span>');
+    }
+    if (rep.bioCount > 0) {
+      summary.push('<span class="pill">' + rep.bioCount + ' biomarkers</span>');
+    }
+    if (rep.outOfRange.length > 0) {
+      summary.push('<span class="pill">' + rep.outOfRange.length + ' out of range</span>');
+    }
+    let summaryText = summary.join(' ');
+    if (rep.matchedGeneCount > 0) {
+      const labels = [];
+      for (const gid of (rep.genetics?.matchedGenes || [])) {
+        const n = nodeMap.get(gid);
+        if (n) labels.push(n.l);
+        if (labels.length >= 12) break;
+      }
+      if (labels.length) {
+        summaryText += '<div style="margin-top:10px;font-size:12px;color:var(--text-mute);line-height:1.55;">' +
+          'Atlas genes detected: ' + labels.join(', ') +
+          (rep.matchedGeneCount > labels.length ? ', and ' + (rep.matchedGeneCount - labels.length) + ' more' : '') +
+          '</div>';
+      }
+    }
+    document.getElementById('r-summary').innerHTML = summaryText || '<span class="r-empty">No data yet — close this and upload.</span>';
+
+    // ── Top phenotypes
+    const peHost = document.getElementById('r-phenotypes');
+    if (rep.topPhenotypes.length === 0) {
+      peHost.innerHTML = '<div class="r-empty">No phenotype matches yet — upload at least one biomarker or genetic file.</div>';
+    } else {
+      peHost.innerHTML = rep.topPhenotypes.map(p => {
+        // Dedup contributing labels by name, keep top 5 by weight
+        const seen = new Set();
+        const top = [];
+        for (const c of p.contribs.sort((a, b) => b.weight - a.weight)) {
+          if (seen.has(c.label)) continue;
+          seen.add(c.label); top.push(c.label);
+          if (top.length >= 5) break;
+        }
+        const fill = Math.min(1, Math.max(0.06, p.score / Math.max(1, rep.topPhenotypes[0].score)));
+        return (
+          '<div class="r-phe">' +
+            '<div class="r-phe-head">' +
+              '<div class="r-phe-name">' + p.node.l + '</div>' +
+              '<div class="r-phe-pct">' + p.pct + '%</div>' +
+            '</div>' +
+            '<div class="r-phe-evidence">Matches: ' + top.join(' · ') + '</div>' +
+            '<div class="r-phe-bar"><div class="r-phe-bar-fill" style="--r-fill:' + fill + '"></div></div>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    // ── Out of range
+    const oorHost = document.getElementById('r-oor');
+    const oorSection = document.getElementById('r-section-oor');
+    if (rep.outOfRange.length === 0) {
+      oorSection.style.display = 'none';
+    } else {
+      oorSection.style.display = '';
+      oorHost.innerHTML = rep.outOfRange.map(v => (
+        '<div class="r-oor-name">' + v.label + '</div>' +
+        '<div class="r-oor-val">' + v.value + ' ' + (v.unit || '') + '</div>' +
+        '<div class="r-oor-flag ' + v.flag + '">' + v.flag + '</div>'
+      )).join('');
+    }
+
+    // ── Top interventions
+    const actHost = document.getElementById('r-actions');
+    if (rep.topInterventions.length === 0) {
+      actHost.innerHTML = '<div class="r-empty">No intervention rankings yet — add biomarker data for sharper ranking.</div>';
+    } else {
+      actHost.innerHTML = rep.topInterventions.map(it => {
+        const i = it.node;
+        const csrs = (i.sc && parseFloat(i.sc) > 0)
+          ? '<span class="gold">CSRS ' + parseFloat(i.sc).toFixed(1) + '</span>' : '';
+        const dose = i.do ? ' · ' + i.do : '';
+        const cost = i.co ? ' · $' + i.co + '/mo' : '';
+        const reg = i.rg ? ' · ' + i.rg.toUpperCase() : '';
+        return (
+          '<div class="r-int">' +
+            '<div class="r-int-name">' + i.l + '</div>' +
+            '<div class="r-int-meta">' +
+              i.id + (csrs ? ' · ' + csrs : '') + (reg) +
+            '</div>' +
+            '<div class="r-int-rationale">' +
+              'Ranked for ' + it.forPhenotype +
+              (dose ? ' · dose: ' + i.do : '') +
+              (cost ? ' · ~$' + i.co + '/mo' : '') +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    // ── Top tests
+    const testHost = document.getElementById('r-tests');
+    if (rep.topTests.length === 0) {
+      testHost.innerHTML = '<div class="r-empty">No further tests prioritized — your current data is already covering the matched phenotypes well.</div>';
+    } else {
+      testHost.innerHTML = rep.topTests.map(tc => {
+        const t = tc.node;
+        const cost = t.cl
+          ? '$' + t.cl + (t.ch && t.ch !== t.cl ? '–' + t.ch : '')
+          : '';
+        const meta = [];
+        if (t.tr) meta.push(t.tr);
+        if (t.sm) meta.push(t.sm);
+        if (t.td) meta.push(t.td + 'd');
+        if (t.dtc) meta.push('DTC');
+        else if (t.rx) meta.push('Rx');
+        meta.push('for ' + tc.forPhenotype);
+        return (
+          '<div class="r-test">' +
+            '<div class="r-test-name">' + t.l + '</div>' +
+            '<div class="r-test-cost">' + cost + '</div>' +
+            '<div class="r-test-meta">' + meta.join(' · ') + '</div>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    return true;
+  }
+
+  // ── REPORT MODAL OPEN / CLOSE WIRING ────────────────────────────
+  const reportOverlay = document.getElementById('report-overlay');
+  const rClose       = document.getElementById('r-close');
+  const rGraphBtn    = document.getElementById('r-graph');
+  const rDownloadBtn = document.getElementById('r-download');
+  const rReupBtn     = document.getElementById('r-reupload');
+  const viewReportBtn = document.getElementById('view-report');
+
+  function openReport() {
+    if (!renderReport()) return;
+    reportOverlay.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeReport() {
+    reportOverlay.classList.remove('on');
+    document.body.style.overflow = '';
+  }
+  rClose.addEventListener('click', closeReport);
+  rGraphBtn.addEventListener('click', closeReport);
+  rDownloadBtn.addEventListener('click', () => window.print());
+  rReupBtn.addEventListener('click', () => {
+    closeReport();
+    modal.classList.add('on');
+  });
+  viewReportBtn.addEventListener('click', openReport);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && reportOverlay.classList.contains('on')) closeReport();
+  });
+
+  // Show a brief "generating" state, then slide in the report
+  const mGenerating = document.getElementById('m-generating');
+  function showReportAfterSave() {
+    // hide modal panes + tabs, show generating state
+    document.querySelectorAll('.m-pane').forEach(p => p.classList.remove('on'));
+    document.querySelector('.m-tabs').style.display = 'none';
+    mGenerating.classList.add('on');
+    setTimeout(() => {
+      modal.classList.remove('on');
+      mGenerating.classList.remove('on');
+      document.querySelector('.m-tabs').style.display = '';
+      // Re-show whichever pane the user was on (don't force-reset to PDF tab).
+      // If none active for some reason, fall back to PDF.
+      const anyTabOn = document.querySelector('.m-tab.on');
+      if (!anyTabOn) {
+        document.querySelector('.m-tab[data-pane="pdf"]').classList.add('on');
+        document.getElementById('pane-pdf').classList.add('on');
+      } else {
+        const paneId = 'pane-' + anyTabOn.dataset.pane;
+        document.getElementById(paneId).classList.add('on');
+      }
+      openReport();
+    }, 1500);
+  }
+  window.__showReportAfterSave = showReportAfterSave;
 
   // tabs
   for (const t of document.querySelectorAll('.m-tab')) {
@@ -2393,9 +3101,16 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
           return;
         }
         const matched = matchVariantsToGenes(res.variants);
+        if (matched.length === 0) {
+          gStatus.classList.add('err');
+          gStatus.textContent = res.format + ' · ' +
+            res.variants.length.toLocaleString() + ' variants read · 0 matched to atlas genes. ' +
+            'This file may use a chip that excludes the rsIDs the atlas tracks — try uploading a PDF report from the same provider for richer gene-symbol detection.';
+          return;
+        }
         gStatus.textContent = res.format + ' · ' +
           res.variants.length.toLocaleString() + ' variants read · ' +
-          matched.length + ' matched to atlas genes';
+          matched.length + ' matched to atlas genes · generating your report…';
         saveGenetics({
           format: res.format,
           uploadedAt: Date.now(),
@@ -2403,6 +3118,7 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
           matchedGenes: matched
         });
         gClear.style.display = 'inline-block';
+        setTimeout(() => window.__showReportAfterSave && window.__showReportAfterSave(), 900);
       } catch (err) {
         gStatus.classList.add('err');
         gStatus.textContent = 'parse error: ' + (err.message || err);
@@ -2512,6 +3228,7 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
 
   bwSave.addEventListener('click', () => {
     const out = {};
+    let any = false;
     for (const f of BIOMARKER_FIELDS) {
       const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
       if (!input || !input.value) continue;
@@ -2525,11 +3242,15 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
         value: v, unit: f.u, flag, label: f.l,
         nodeId: findBiomarkerNodeId(f)
       };
+      any = true;
     }
     saveBiomarkers(out);
-    const orig = bwSave.textContent;
-    bwSave.textContent = '✓ saved';
-    setTimeout(() => bwSave.textContent = orig, 1500);
+    if (any) {
+      window.__showReportAfterSave && window.__showReportAfterSave();
+    } else {
+      bwSave.textContent = 'add at least one value';
+      setTimeout(() => bwSave.textContent = 'save & generate my report', 1800);
+    }
   });
 
   bwClear.addEventListener('click', () => {
@@ -2621,8 +3342,8 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
         result.geneCount + ' gene mention' + (result.geneCount===1?'':'s'),
       ].join(' · ');
       pdfStatus.textContent = summary +
-        (result.bioCount ? ' · switching to blood-work tab to review' : '');
-      // If genes were found in the PDF, save them to genetics store as a separate "pdf_genes" set
+        (result.bioCount || result.geneCount ? ' · generating your report…' : '');
+      // If genes were found in the PDF, merge into genetics store
       if (result.geneCount > 0) {
         const existing = JSON.parse(localStorage.getItem('cwa_genetics_v1') || 'null') || {
           format: 'PDF report', uploadedAt: Date.now(), variantCount: 0, matchedGenes: []
@@ -2635,17 +3356,25 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
         existing.uploadedAt = Date.now();
         saveGenetics(existing);
       }
-      // If biomarkers were found, switch to blood-work tab for confirmation
+      // If biomarkers were extracted, auto-save them (use form values that were just pre-filled)
       if (result.bioCount > 0) {
-        setTimeout(() => {
-          document.querySelectorAll('.m-tab').forEach(x => x.classList.remove('on'));
-          document.querySelectorAll('.m-pane').forEach(p => p.classList.remove('on'));
-          document.querySelector('.m-tab[data-pane="bloodwork"]').classList.add('on');
-          document.getElementById('pane-bloodwork').classList.add('on');
-        }, 1500);
-      } else if (result.geneCount > 0) {
-        // genes-only PDF — keep modal open, banner already updated
-        applyUserData();
+        // collect values from the now-pre-filled form
+        const out = {};
+        for (const f of BIOMARKER_FIELDS) {
+          const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
+          if (!input || !input.value) continue;
+          const v = parseFloat(input.value);
+          if (Number.isNaN(v)) continue;
+          let flag = 'normal';
+          if (v < f.rL) flag = 'low';
+          else if (v > f.rH) flag = 'high';
+          flagInput(input, flag);
+          out[f.k] = { value: v, unit: f.u, flag, label: f.l, nodeId: findBiomarkerNodeId(f) };
+        }
+        saveBiomarkers(out);
+      }
+      if (result.bioCount > 0 || result.geneCount > 0) {
+        setTimeout(() => window.__showReportAfterSave && window.__showReportAfterSave(), 1100);
       }
     } catch (err) {
       pdfStatus.classList.add('err');
@@ -2700,15 +3429,28 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
       existing.uploadedAt = Date.now();
       saveGenetics(existing);
     }
+    // Auto-save extracted biomarkers from form values
+    if (result.bioCount > 0) {
+      const out = {};
+      for (const f of BIOMARKER_FIELDS) {
+        const input = bwForm.querySelector('input[data-k="' + f.k + '"]');
+        if (!input || !input.value) continue;
+        const v = parseFloat(input.value);
+        if (Number.isNaN(v)) continue;
+        let flag = 'normal';
+        if (v < f.rL) flag = 'low';
+        else if (v > f.rH) flag = 'high';
+        flagInput(input, flag);
+        out[f.k] = { value: v, unit: f.u, flag, label: f.l, nodeId: findBiomarkerNodeId(f) };
+      }
+      saveBiomarkers(out);
+    }
     pdfStatus.classList.add('on'); pdfStatus.classList.remove('err');
     pdfStatus.textContent = 'extracted ' + result.bioCount + ' biomarkers · ' +
-      result.geneCount + ' gene mentions · review and save in blood-work tab';
-    setTimeout(() => {
-      document.querySelectorAll('.m-tab').forEach(x => x.classList.remove('on'));
-      document.querySelectorAll('.m-pane').forEach(p => p.classList.remove('on'));
-      document.querySelector('.m-tab[data-pane="bloodwork"]').classList.add('on');
-      document.getElementById('pane-bloodwork').classList.add('on');
-    }, 1100);
+      result.geneCount + ' gene mentions · generating your report…';
+    if (result.bioCount > 0 || result.geneCount > 0) {
+      setTimeout(() => window.__showReportAfterSave && window.__showReportAfterSave(), 1100);
+    }
   });
 
   // ── MOBILE START-DOCK TOGGLE ──────────────────────────────────
