@@ -1268,6 +1268,109 @@ HTML = r"""<!doctype html>
   }
   .mobile-dock-btn.on { color: var(--gold); border-color: var(--gold-dim); }
 
+  /* ── TOP FINDINGS SYNTHESIS (executive summary panel) ──────────── */
+  /* Sits at the top of the report. Prioritized, clustered, mom-actionable. */
+  .r-synth {
+    background: rgba(232,196,110,0.04);
+    border: 1px solid var(--gold-dim);
+    padding: 24px 28px 26px;
+    margin-bottom: 36px;
+  }
+  .r-synth-eyebrow {
+    font-size: 9.5px; letter-spacing: 0.34em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .r-synth-headline {
+    font-size: 20px; color: var(--node); line-height: 1.3;
+    letter-spacing: -0.005em; margin-bottom: 18px;
+  }
+  .r-synth-section {
+    margin-top: 22px;
+  }
+  .r-synth-label {
+    font-size: 9px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .r-synth-action {
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 13px; line-height: 1.55;
+  }
+  .r-synth-action:last-child { border-bottom: none; }
+  .r-synth-action .num {
+    display: inline-block; width: 18px;
+    color: var(--gold); font-family: ui-monospace, monospace;
+    font-size: 11px; vertical-align: top;
+  }
+  .r-synth-action .body { display: inline-block; width: calc(100% - 22px); }
+  .r-synth-action .head {
+    color: var(--node); font-size: 14px; margin-bottom: 3px;
+  }
+  .r-synth-action .why {
+    color: var(--text-mute); font-size: 12px; line-height: 1.5;
+  }
+  .r-synth-cluster {
+    padding: 12px 14px;
+    background: rgba(8,11,18,0.4);
+    border-left: 2px solid var(--line-hi);
+    margin-bottom: 10px;
+    font-size: 12.5px; line-height: 1.55;
+  }
+  .r-synth-cluster.sev-2 { border-left-color: var(--gold-dim); }
+  .r-synth-cluster.sev-3 { border-left-color: var(--gold); }
+  .r-synth-cluster-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 5px;
+  }
+  .r-synth-cluster-name {
+    color: var(--node); font-size: 13.5px;
+    letter-spacing: 0.01em;
+  }
+  .r-synth-cluster-load {
+    font-family: ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.14em;
+    color: var(--gold); text-transform: uppercase;
+  }
+  .r-synth-cluster-genes {
+    font-family: ui-monospace, monospace;
+    color: var(--text-mute); font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .r-synth-avoid {
+    font-size: 12.5px; line-height: 1.55;
+    color: var(--text);
+  }
+  .r-synth-avoid li {
+    margin-bottom: 5px; padding-left: 12px;
+    text-indent: -12px; list-style: none;
+  }
+  .r-synth-avoid li:before {
+    content: "·"; color: var(--gold); margin-right: 10px; font-weight: bold;
+  }
+  .r-synth-sources {
+    margin-top: 22px; padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 10px; letter-spacing: 0.06em;
+    color: var(--text-vmute); line-height: 1.55;
+  }
+
+  /* "see all 52 variants" toggle for the detail section */
+  .r-collapse-toggle {
+    background: transparent; border: 1px solid var(--line-hi);
+    color: var(--text-mute); font: inherit;
+    font-size: 10.5px; letter-spacing: 0.2em;
+    text-transform: uppercase; padding: 9px 16px;
+    cursor: pointer; margin-bottom: 14px;
+    transition: color 200ms, border-color 200ms;
+  }
+  .r-collapse-toggle:hover {
+    color: var(--text); border-color: var(--gold-dim);
+  }
+  .r-collapsed { display: none; }
+
   /* ── REPORT OVERLAY (Ive-restrained) ───────────────────────────── */
   /* What the substrate is FOR. Auto-opens after upload save.
      Single column, generous spacing, hairline gold rules, serif body. */
@@ -1709,6 +1812,8 @@ HTML = r"""<!doctype html>
       <div class="pdot"></div>
       <div>
         Files parsed entirely in your browser. Nothing is sent to any server. Your data is saved in this browser's local storage on this device only. Clear it any time below.
+        <div id="m-freshness" style="margin-top:8px;font-family:ui-monospace,monospace;font-size:10px;letter-spacing:0.14em;color:var(--text-mute);text-transform:uppercase;"></div>
+        <button id="m-reset-all" style="display:none;margin-top:10px;background:transparent;border:1px solid #6e3a22;color:#f0a890;font:inherit;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;padding:6px 12px;cursor:pointer;">Reset ALL my data (start fresh)</button>
       </div>
     </div>
     <div class="m-tabs">
@@ -1773,6 +1878,34 @@ HTML = r"""<!doctype html>
       <div class="r-sub" id="r-sub">Generated · just now</div>
     </div>
 
+    <!-- TOP-OF-REPORT EXECUTIVE SYNTHESIS — clusters, top actions, top tests, what to avoid -->
+    <div class="r-synth" id="r-synth" style="display:none;">
+      <div class="r-synth-eyebrow">Top findings · prioritized</div>
+      <div class="r-synth-headline" id="r-synth-headline"></div>
+
+      <div class="r-synth-section">
+        <div class="r-synth-label">Top 5 actions, prioritized</div>
+        <div id="r-synth-actions"></div>
+      </div>
+
+      <div class="r-synth-section">
+        <div class="r-synth-label">Gene clusters · highest load first</div>
+        <div id="r-synth-clusters"></div>
+      </div>
+
+      <div class="r-synth-section">
+        <div class="r-synth-label">Top 5 tests to order next</div>
+        <div id="r-synth-tests"></div>
+      </div>
+
+      <div class="r-synth-section">
+        <div class="r-synth-label">What to avoid · safety filters</div>
+        <ul class="r-synth-avoid" id="r-synth-avoid"></ul>
+      </div>
+
+      <div class="r-synth-sources" id="r-synth-sources"></div>
+    </div>
+
     <div class="r-section">
       <div class="r-section-label">Your data</div>
       <div class="r-summary" id="r-summary"></div>
@@ -1784,8 +1917,9 @@ HTML = r"""<!doctype html>
     </div>
 
     <div class="r-section" id="r-section-variants" style="display:none;">
-      <div class="r-section-label">Your gene variants</div>
-      <div id="r-variants"></div>
+      <div class="r-section-label">Your gene variants · full detail</div>
+      <button class="r-collapse-toggle" id="r-variants-toggle">Show all variants (detail view)</button>
+      <div id="r-variants" class="r-collapsed"></div>
     </div>
 
     <div class="r-section" id="r-section-oor">
@@ -3355,14 +3489,14 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     'rs1801131': { g:'MTHFR', n:'A1298C (E429A)', r:'Folate cycle (BH4 branch)',
       e: {
         AA: { f:'wild', sev:0, msg:'Normal activity' },
-        AC: { f:'het',  sev:1, msg:'~20% reduced activity',
+        AC: { f:'het',  sev:1, msg:'~15–20% reduced activity',
               d:'Affects BH4 regeneration → may impact neurotransmitter synthesis and nitric oxide.',
-              do:['Methylfolate','BH4 cofactor support (folate + B-vitamins)'],
+              do:['Methylfolate (5-MTHF) 400–800 mcg standard','BH4 cofactor support (folate + B-vitamins)'],
               li:['Mood and dopamine stability with green vegetables']},
-        CC: { f:'hom',  sev:2, msg:'~40% reduced activity',
-              d:'BH4 cycle impacted. Combined with C677T het = compound impairment.',
-              do:['Methylfolate at higher dose','Consider BH4 supplementation under FM guidance'],
-              av:['Synthetic folic acid'],
+        CC: { f:'hom',  sev:2, msg:'~30–40% reduced activity (estimates vary by study)',
+              d:'BH4 cycle impacted. Compound C677T+/A1298C+ heterozygote = 50–60% reduction.',
+              do:['Methylfolate 400–800 mcg standard; 1–5 mg under clinician care if compound-het','Consider BH4 cofactor support under FM guidance'],
+              av:['Synthetic folic acid in supplements'],
               li:['Adequate magnesium and B6','Stress management']}
       } },
     'rs1805087': { g:'MTR', n:'A2756G (D919G)', r:'Methionine synthase · B12 utilization',
@@ -3388,32 +3522,31 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
               do:['Higher-dose methyl-B12','Riboflavin cofactor','Methylfolate'],
               li:['Avoid nitrous oxide (depletes B12)']}
       } },
-    'rs234706': { g:'CBS', n:'C699T', r:'Sulfation pathway · upregulation',
+    'rs234706': { g:'CBS', n:'C699T', r:'Sulfation pathway',
       e: {
         CC: { f:'wild', sev:0, msg:'Normal activity' },
-        CT: { f:'het',  sev:1, msg:'Mildly upregulated CBS',
-              d:'Faster conversion of homocysteine to cystathionine → can raise ammonia and sulfite.',
-              do:['Molybdenum (sulfite oxidase cofactor)','Taurine'],
-              av:['Very high methyl donor doses (drives cycle harder)'],
-              li:['Limit sulfur-heavy foods if symptomatic (eggs, brassicas)']},
-        TT: { f:'hom',  sev:2, msg:'Upregulated CBS activity',
-              d:'Common driver of \'overmethylator-like\' symptoms; sulfite/ammonia accumulation possible.',
-              do:['Molybdenum 200–500 mcg','Taurine 500–1000 mg','BH4 support'],
-              av:['Aggressive methyl-B12 or methylfolate without monitoring'],
-              li:['Sulfur-food awareness','Ammonia-clearance support (yucca, ornithine)']}
+        CT: { f:'het',  sev:1, msg:'Variant present (clinical significance contested)',
+              d:'The Yasko CBS "upregulation" framework is contested in the primary literature — early studies suggested increased activity, later replication has been mixed. Symptomatic-only intervention.',
+              do:['If symptomatic with ammonia/sulfur intolerance: molybdenum 200–500 mcg, taurine 500–1000 mg trial under clinician guidance'],
+              li:['No restrictions if asymptomatic']},
+        TT: { f:'hom',  sev:1, msg:'Variant present (clinical significance contested)',
+              d:'Contested in primary literature. The Yasko functional-medicine framework around sulfur restriction is widely used in practice but not RCT-validated. If symptomatic, molybdenum + taurine support may help.',
+              do:['Symptomatic-only: molybdenum 200–500 mcg, taurine 500–1000 mg, under clinician guidance'],
+              av:['Aggressive methyl-B12 or methylfolate without symptom monitoring'],
+              li:['Sulfur-food trial-and-elimination only if symptomatic']}
       } },
     'rs4680': { g:'COMT', n:'V158M (rs4680)', r:'Catecholamine clearance',
       e: {
-        GG: { f:'wild', sev:0, msg:'Fast COMT ("warrior") · Val/Val',
+        GG: { f:'wild', sev:0, msg:'Fast COMT ("warrior") · Val/Val · 3–4× higher enzyme activity',
               d:'Rapid dopamine clearance. May benefit from extra catecholamine support.',
               li:['Tyrosine-containing foods','Adequate magnesium','Stress can transiently boost performance'] },
         AG: { f:'het',  sev:1, msg:'Moderate COMT ("mixed") · Val/Met',
               d:'Balanced catecholamine handling.',
               li:['Standard balanced approach to methyl donors'] },
-        AA: { f:'hom',  sev:2, msg:'Slow COMT ("worrier") · Met/Met',
-              d:'Slow catecholamine breakdown; dopamine + estrogen + adrenaline linger longer. Methyl donors can over-rev anxiety in this subset.',
-              do:['SAMe cautiously, start low','Magnesium 400 mg','Vitamin C as catecholamine support'],
-              av:['High-dose methylfolate + methyl-B12 without titration','Excess caffeine'],
+        AA: { f:'hom',  sev:2, msg:'Slow COMT ("worrier") · Met/Met · 3–4× slower enzyme activity',
+              d:'Slow catecholamine breakdown; dopamine + adrenaline linger longer. Practitioner-reported (not RCT-evidenced) sensitivity to high-dose methyl donors — start low and titrate slowly if used.',
+              do:['Methyl donors (SAMe, methyl-B12, methylfolate): start low, titrate slowly','Magnesium 400 mg','Vitamin C'],
+              av:['Excess caffeine'],
               li:['Stress management is high-leverage','Sleep regularity']}
       } },
     'rs4633': { g:'COMT', n:'H62H (rs4633)', r:'COMT silent variant (linked to rs4680)',
@@ -3471,8 +3604,8 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     'rs53576':  { g:'OXTR', n:'rs53576', r:'Oxytocin receptor · social bonding',
       e: {
         AA: { f:'hom', sev:1, msg:'A/A · less sensitive OXT receptor',
-              d:'Associated with lower trust and empathy scores on average; effect size modest.',
-              do:['Oxytocin nasal spray under clinician guidance','Touch and bonding routines']},
+              d:'Meta-analysis effect size for sociality is small (Cohen\'s d ≈ 0.11). Behavioral interventions and bonding routines are evidence-supported; intranasal oxytocin trials in autism have shown mixed results (SOARS-B 2021 negative).',
+              do:['Behavioral interventions','Touch and bonding routines','Intranasal oxytocin only under specialist guidance with realistic expectations']},
         AG: { f:'het', sev:0, msg:'A/G · intermediate' },
         GG: { f:'wild', sev:0, msg:'G/G · standard OXTR sensitivity' }
       } },
@@ -3539,16 +3672,16 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
         TT: { f:'hom', sev:2, msg:'Two e2 alleles (ε2/ε2)',
               d:'Reduced LDL receptor binding; rare cardiometabolic patterns.'}
       } },
-    'rs3892097': { g:'CYP2D6', n:'*4 (rs3892097)', r:'Phase-I drug metabolism',
+    'rs3892097': { g:'CYP2D6', n:'*4 (rs3892097)', r:'Phase-I drug metabolism · CPIC-guided',
       e: {
         GG: { f:'wild', sev:0, msg:'Normal CYP2D6' },
         AG: { f:'het', sev:1, msg:'Intermediate metabolizer',
-              d:'Affects metabolism of ~25% of common drugs (SSRIs, opioids, antipsychotics).',
-              do:['PGx-aware prescribing — share with prescriber']},
+              d:'Affects metabolism of ~25% of common drugs (SSRIs, opioids, antipsychotics). Per CPIC guidelines.',
+              do:['PGx-aware prescribing — share with prescriber','Lower starting doses on CYP2D6-substrate meds']},
         AA: { f:'hom', sev:2, msg:'Poor metabolizer (CYP2D6 *4/*4)',
-              d:'Significantly reduced metabolism — many psychiatric meds need dose adjustment.',
+              d:'Significantly reduced metabolism. Per CPIC: psychiatric meds (paroxetine, fluoxetine, venlafaxine, tricyclics, several antipsychotics) need dose adjustment or alternatives.',
               do:['Full PGx panel before starting psychiatric meds','Disclose to all prescribers'],
-              av:['Codeine (not converted to morphine in poor metabolizers)']}
+              av:['Codeine: poor metabolizers get INSUFFICIENT pain relief (not toxicity) — request a non-codeine analgesic. (Codeine toxicity risk is the separate ultra-rapid metabolizer phenotype.)']}
       } },
     'rs4244285': { g:'CYP2C19', n:'*2 (rs4244285)', r:'Phase-I drug metabolism',
       e: {
@@ -3578,16 +3711,16 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
               d:'Slower secondary histamine clearance.',
               do:['Quercetin','SAMe (provides methyl donors)']}
       } },
-    'rs1800562': { g:'HFE', n:'C282Y', r:'Iron absorption (hemochromatosis)',
+    'rs1800562': { g:'HFE', n:'C282Y', r:'Iron handling · hemochromatosis',
       e: {
         GG: { f:'wild', sev:0, msg:'Normal iron handling' },
         AG: { f:'het', sev:1, msg:'Hemochromatosis carrier',
-              d:'Modestly elevated iron-storage risk. Monitor ferritin annually if symptomatic.',
+              d:'Modestly elevated iron-storage tendency. Most carriers don\'t develop overload — monitor if symptomatic.',
               li:['Don\'t routinely take iron supplements without testing']},
-        AA: { f:'hom', sev:3, msg:'Hereditary hemochromatosis (C282Y/C282Y)',
-              d:'Risk of iron overload. Genetic counselor consult and annual ferritin + transferrin saturation.',
-              do:['Annual iron panel','Therapeutic phlebotomy if ferritin elevated'],
-              av:['Iron supplements','High-vitamin-C with iron-rich meals','Heavy red meat + alcohol combinations']}
+        AA: { f:'hom', sev:2, msg:'Genotype consistent with hereditary hemochromatosis risk',
+              d:'Clinical penetrance is incomplete: ~1 in 4 male homozygotes and ~1 in 10 female homozygotes develop iron-overload disease. Many remain asymptomatic lifelong. Confirm with annual ferritin + transferrin saturation.',
+              do:['Annual ferritin + transferrin saturation','Therapeutic phlebotomy ONLY if ferritin elevated (typically >300 ng/mL men, >200 women) or transferrin sat >45%','Genetic counselor consult'],
+              av:['Iron supplements without testing','Heavy red meat + alcohol combinations']}
       } },
     'rs1799945': { g:'HFE', n:'H63D', r:'Iron absorption',
       e: {
@@ -4014,9 +4147,242 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     };
   }
 
+  // ── GENE-CLUSTER TAXONOMY ───────────────────────────────────────
+  // Based on Walsh Research Institute + Lynch "Dirty Genes" + Yasko +
+  // Frye + MAPS for Autism framework. 8 functional axes plus a 9th
+  // cross-cutting "nutrient handling" axis. Each gene maps to ≥1 cluster.
+  const CLUSTERS = [
+    { id:'methylation', name:'Methylation cycle',
+      desc:'Folate / B12 / SAMe handling',
+      genes:['MTHFR','MTR','MTRR','BHMT','AHCY','SHMT1','MTHFD1','SLC19A1','FOLR1','C677T','A1298C','V158M'] },
+    { id:'redox', name:'Glutathione & redox',
+      desc:'Master antioxidant + oxidative-stress defense',
+      genes:['GCLC','GCLM','GPX1','GSTP1','GSTM1','GSTT1','SOD1','SOD2','CAT','NQO1','A16V'] },
+    { id:'mito', name:'Mitochondrial function',
+      desc:'Energy + biogenesis + cellular powerhouse',
+      genes:['TOMM40','PPARGC1A','SOD2','NDUFS7','MFN2','OPA1','POLG','A16V'] },
+    { id:'sulfation', name:'Sulfation & sulfur handling',
+      desc:'CBS pathway · sulfite / sulfate / taurine',
+      genes:['CBS','SUOX','MOCS1','MOCS2','SULT1A1'] },
+    { id:'coag', name:'Coagulation',
+      desc:'Clotting cascade · hypercoagulability axis',
+      genes:['F5','F2','F11','F13A1','SERPINC1','SERPIND1','ABO','VWF','PROC','PROS1','THBD','MTHFR'] },
+    { id:'detox', name:'Phase I / II detoxification',
+      desc:'Drug + xenobiotic + estrogen metabolism',
+      genes:['CYP1A1','CYP1A2','CYP1B1','CYP2C9','CYP2C19','CYP2D6','CYP3A4','CYP19A1','NAT2','PON1','UGT1A1','ABCB1','GSTP1','GSTM1'] },
+    { id:'inflam', name:'Inflammation & immune',
+      desc:'Cytokines · NF-κB · vascular adhesion',
+      genes:['TNF','IL6','IL1A','IL1B','IL10','IL17A','IL33','IL1RL1','STAT1','STAT3','ICAM1','VCAM1','NFKB1','CRP','TLR2','TLR4','IL6R'] },
+    { id:'neuro', name:'Neurotransmitter & behavior',
+      desc:'Dopamine · serotonin · BDNF · oxytocin',
+      genes:['BDNF','DRD2','DRD4','HTR2A','HTR1A','SLC6A3','SLC6A4','MAOA','MAOB','COMT','OXTR','OXT','GAD1','GRIK2','SHANK3','NRXN1','NLGN3','NLGN4X','CNTNAP2','MECP2','FMR1'] },
+    { id:'nutr', name:'Nutrient handling',
+      desc:'Vitamin D · iron · glucose · choline · lipids',
+      genes:['VDR','HFE','TCF7L2','KCNJ11','KCNQ1','ENPP1','LEPR','PEMT','APOE','MC1R','BCMO1','SLC30A8','IGF1','ADIPOQ','I405V','Y402H','CFH','CETP'] }
+  ];
+
+  // Build reverse index: gene → array of cluster ids
+  const geneToClusters = new Map();
+  for (const c of CLUSTERS) {
+    for (const g of c.genes) {
+      if (!geneToClusters.has(g)) geneToClusters.set(g, []);
+      geneToClusters.get(g).push(c.id);
+    }
+  }
+  // Quick lookup of cluster meta by id
+  const clusterById = Object.fromEntries(CLUSTERS.map(c => [c.id, c]));
+
+  // Severity-load math: for each cluster, aggregate severity points
+  // from matched variants. Variant severity 3 = 4 pts, 2 = 2 pts, 1 = 1 pt.
+  // Protective variants subtract 0.5 pts (capped at floor 0).
+  function clusterLoads(variants) {
+    const loads = {};
+    for (const c of CLUSTERS) loads[c.id] = {
+      cluster: c, score: 0, variants: [], topActions: new Set(),
+      topAvoid: new Set(), topLifestyle: new Set()
+    };
+    for (const v of (variants || [])) {
+      const clusterIds = geneToClusters.get(v.gene) || [];
+      const sev = v.severity || 0;
+      const points = sev === 3 ? 4 : sev === 2 ? 2 : sev === 1 ? 1 : -0.5;
+      for (const cid of clusterIds) {
+        if (!loads[cid]) continue;
+        loads[cid].score += points;
+        loads[cid].variants.push(v);
+        for (const x of (v.consider || [])) loads[cid].topActions.add(x);
+        for (const x of (v.avoid || []))    loads[cid].topAvoid.add(x);
+        for (const x of (v.lifestyle || [])) loads[cid].topLifestyle.add(x);
+      }
+    }
+    // Cap and rank
+    const ranked = Object.values(loads)
+      .filter(l => l.score > 0)
+      .sort((a, b) => b.score - a.score);
+    return ranked;
+  }
+
+  // Top-5 priority actions, derived from highest-severity variants.
+  // Each action carries: action text, which gene(s) it serves, why.
+  function topPriorityActions(rep) {
+    if (!rep.matchedVariants || !rep.matchedVariants.length) return [];
+
+    const actions = [];
+    // Bucket 1: severity-3 variants get their own dedicated action
+    for (const v of rep.matchedVariants) {
+      if (v.severity < 3) continue;
+      if (actions.length >= 5) break;
+      const first = (v.consider && v.consider[0]) || 'discuss with FM clinician';
+      actions.push({
+        head: v.gene + (v.oddsRatio ? ' (OR ' + v.oddsRatio.toFixed(2) + ')' : '') + ' — ' + first,
+        why: v.detail || v.effect,
+        gene: v.gene,
+        priority: 100 - actions.length
+      });
+    }
+    // Bucket 2: phenotype-ranked top atlas intervention (one per phenotype)
+    if (actions.length < 5 && rep.topInterventions && rep.topInterventions.length) {
+      for (const it of rep.topInterventions) {
+        if (actions.length >= 5) break;
+        const csrs = (it.node.sc && parseFloat(it.node.sc) > 0)
+          ? ' (CSRS ' + parseFloat(it.node.sc).toFixed(1) + ')' : '';
+        actions.push({
+          head: it.node.l + csrs,
+          why: 'Ranked for ' + it.forPhenotype,
+          gene: '',
+          priority: 50 - actions.length
+        });
+      }
+    }
+    return actions.slice(0, 5);
+  }
+
+  // What to avoid — collect from variants + add safety filters
+  function topAvoidItems(rep) {
+    const seen = new Set();
+    const items = [];
+    for (const v of (rep.matchedVariants || [])) {
+      if (v.severity < 2) continue;
+      for (const a of (v.avoid || [])) {
+        const key = a.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 30);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        items.push({ text: a, gene: v.gene });
+        if (items.length >= 8) break;
+      }
+      if (items.length >= 8) break;
+    }
+    return items;
+  }
+
+  function renderSynthesis(rep) {
+    const synthEl = document.getElementById('r-synth');
+    // Only show synthesis if there's meaningful variant data
+    if (!rep.matchedVariants || rep.matchedVariants.length < 3) {
+      synthEl.style.display = 'none';
+      return;
+    }
+    synthEl.style.display = 'block';
+
+    // Headline
+    const sev3 = rep.matchedVariants.filter(v => v.severity === 3).length;
+    const sev2 = rep.matchedVariants.filter(v => v.severity === 2).length;
+    const sev1 = rep.matchedVariants.filter(v => v.severity === 1).length;
+    const prot = rep.matchedVariants.filter(v => v.severity === 0).length;
+    const oor = rep.outOfRange.length;
+    let headline;
+    if (sev3 >= 3) {
+      headline = 'Several high-impact variants surfaced — prioritize the top items below and bring the .md profile to your FM doctor.';
+    } else if (sev3 >= 1) {
+      headline = 'One or more high-impact variants surfaced — discuss the top items below with a functional medicine clinician.';
+    } else if (sev2 >= 5) {
+      headline = 'A cluster of moderately-elevated variants — lifestyle and supplement strategy below.';
+    } else {
+      headline = 'Most variants are mildly elevated. The atlas-ranked items below have the most defensible evidence base.';
+    }
+    document.getElementById('r-synth-headline').textContent = headline;
+
+    // Top actions
+    const actions = topPriorityActions(rep);
+    document.getElementById('r-synth-actions').innerHTML = actions.length
+      ? actions.map((a, i) => (
+          '<div class="r-synth-action">' +
+            '<span class="num">' + (i + 1) + '.</span>' +
+            '<span class="body">' +
+              '<div class="head">' + a.head + '</div>' +
+              '<div class="why">' + (a.why || '') + '</div>' +
+            '</span>' +
+          '</div>'
+        )).join('')
+      : '<div class="r-empty">Not enough data to rank actions yet — upload more biomarkers or genetics.</div>';
+
+    // Clusters
+    const loads = clusterLoads(rep.matchedVariants);
+    const topClusters = loads.slice(0, 6);
+    document.getElementById('r-synth-clusters').innerHTML = topClusters.length
+      ? topClusters.map(l => {
+          const sevClass = l.score >= 6 ? 'sev-3' : l.score >= 3 ? 'sev-2' : '';
+          const loadLabel = l.score >= 6 ? 'HIGH LOAD' : l.score >= 3 ? 'MODERATE' : 'mild';
+          // Surface unique genes contributing
+          const genes = Array.from(new Set(l.variants.map(v => v.gene))).join(' · ');
+          return (
+            '<div class="r-synth-cluster ' + sevClass + '">' +
+              '<div class="r-synth-cluster-head">' +
+                '<div class="r-synth-cluster-name">' + l.cluster.name + '</div>' +
+                '<div class="r-synth-cluster-load">' + loadLabel + ' · ' + l.variants.length + ' var</div>' +
+              '</div>' +
+              '<div class="r-synth-cluster-genes">' + l.cluster.desc + ' · ' + genes + '</div>' +
+            '</div>'
+          );
+        }).join('')
+      : '<div class="r-empty">No clusters identified.</div>';
+
+    // Tests
+    const tests = (rep.topTests || []).slice(0, 5);
+    document.getElementById('r-synth-tests').innerHTML = tests.length
+      ? tests.map(tc => {
+          const t = tc.node;
+          const cost = t.cl ? '$' + t.cl + (t.ch && t.ch !== t.cl ? '–' + t.ch : '') : '';
+          return (
+            '<div class="r-synth-action">' +
+              '<span class="body">' +
+                '<div class="head">' + t.l + (cost ? '<span style="float:right;color:var(--gold);font-family:ui-monospace,monospace;font-size:12px;">' + cost + '</span>' : '') + '</div>' +
+                '<div class="why">' +
+                  (t.tr ? t.tr + ' · ' : '') +
+                  (t.sm ? t.sm + ' · ' : '') +
+                  'for ' + tc.forPhenotype +
+                '</div>' +
+              '</span>' +
+            '</div>'
+          );
+        }).join('')
+      : '<div class="r-empty">No tests ranked yet.</div>';
+
+    // What to avoid
+    const avoids = topAvoidItems(rep);
+    document.getElementById('r-synth-avoid').innerHTML = avoids.length
+      ? avoids.map(a =>
+          '<li><strong>' + a.gene + ':</strong> ' + a.text + '</li>'
+        ).join('')
+      : '<li>No specific avoid items flagged from current variants.</li>';
+
+    // Sources / verification stamp
+    document.getElementById('r-synth-sources').innerHTML =
+      'Verified against: ClinVar · PharmGKB / CPIC guidelines · GeneReviews (NCBI) · ' +
+      'AAO Preferred Practice Patterns · MAPS for Autism Physicians framework · ' +
+      'Walsh Research · Frye protocols (cerebral folate / leucovorin / mito) · ' +
+      'Lynch \"Dirty Genes\" framework. ' +
+      '<br>Cluster taxonomy: Walsh + Lynch + Yasko + Frye + MAPS · 9 functional axes. ' +
+      '<br><br><strong>Allele encoding caveat:</strong> Some variants (e.g., SOD2 A16V, HFE) ' +
+      'are reported on different strands by different platforms. If a result here seems opposite to your ' +
+      'IntellxxDNA or 23andMe interpretation, verify the platform\'s strand convention.';
+  }
+
   function renderReport() {
     const rep = generateReport();
     if (!rep) return false;
+
+    // ── synthesis panel at top
+    renderSynthesis(rep);
 
     // ── header sub
     const when = rep.genetics?.uploadedAt || Date.now();
@@ -4451,6 +4817,18 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     if (e.key === 'Escape' && reportOverlay.classList.contains('on')) closeReport();
   });
 
+  // Wire the "see all variants" toggle for the detail section
+  const variantsToggle = document.getElementById('r-variants-toggle');
+  if (variantsToggle) {
+    variantsToggle.addEventListener('click', () => {
+      const detail = document.getElementById('r-variants');
+      const hidden = detail.classList.toggle('r-collapsed');
+      variantsToggle.textContent = hidden
+        ? 'Show all variants (detail view)'
+        : 'Hide variant detail';
+    });
+  }
+
   // Show a brief "generating" state, then slide in the report
   const mGenerating = document.getElementById('m-generating');
   function showReportAfterSave() {
@@ -4487,8 +4865,49 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
     });
   }
 
+  // Freshness display + full-reset wiring
+  const freshnessEl = document.getElementById('m-freshness');
+  const resetAllBtn = document.getElementById('m-reset-all');
+  function updateFreshness() {
+    const s = getStored();
+    if (!s.genetics && !s.biomarkers) {
+      freshnessEl.textContent = 'no data uploaded yet';
+      resetAllBtn.style.display = 'none';
+      return;
+    }
+    const parts = [];
+    if (s.genetics && s.genetics.uploadedAt) {
+      const ago = Math.round((Date.now() - s.genetics.uploadedAt) / 86400000);
+      parts.push('genetics · ' + (ago < 1 ? 'today' : ago + 'd ago'));
+    }
+    if (s.biomarkers) {
+      parts.push('biomarkers · ' + Object.keys(s.biomarkers).length + ' entries');
+    }
+    freshnessEl.textContent = 'your stored data: ' + parts.join(' · ');
+    resetAllBtn.style.display = 'inline-block';
+  }
+  resetAllBtn.addEventListener('click', () => {
+    if (!confirm('Erase all uploaded data (genetics + biomarkers + variants)? This cannot be undone — the report will be empty until you upload again.')) return;
+    localStorage.removeItem('cwa_genetics_v1');
+    localStorage.removeItem('cwa_biomarkers_v1');
+    // Reset form
+    for (const input of bwForm.querySelectorAll('input')) {
+      input.value = '';
+      input.classList.remove('high', 'low');
+    }
+    if (pdfPaste) pdfPaste.value = '';
+    pdfStatus.classList.remove('on');
+    gStatus.classList.remove('on');
+    if (gClear) gClear.style.display = 'none';
+    updateBanner();
+    applyUserData();
+    updateFreshness();
+    resetAllBtn.textContent = '✓ all data erased';
+    setTimeout(() => resetAllBtn.textContent = 'Reset ALL my data (start fresh)', 2000);
+  });
+
   // modal open/close
-  btnUpload.addEventListener('click', () => modal.classList.add('on'));
+  btnUpload.addEventListener('click', () => { updateFreshness(); modal.classList.add('on'); });
   mClose.addEventListener('click', () => modal.classList.remove('on'));
   modal.addEventListener('click', e => {
     if (e.target === modal) modal.classList.remove('on');
@@ -4969,11 +5388,11 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
   // Where the source PDF has its own recommendations we surface them
   // alongside our atlas-based notes. Conservative claims; clinician-bound.
   const INTELLXX_NOTES = {
-    'F5':   { name:'Factor V Leiden', role:'Coagulation',
-              detail:'Heritable hypercoagulability. Significantly increased clotting risk; affects surgical and pregnancy management.',
-              consider:['Nattokinase','Lumbrokinase','Pycnogenol','Discuss anticoagulation w/ clinician'],
-              avoid:['Estrogen / oral contraceptives (contraindicated)','Corticosteroids without clinician oversight','Prolonged immobility'],
-              lifestyle:['Compression stockings on long flights','Hydration','Surgical prophylaxis required'] },
+    'F5':   { name:'Factor V Leiden', role:'Coagulation · heritable hypercoagulability',
+              detail:'Heterozygote VTE risk roughly 4–7× baseline; on combined estrogen OCs/HRT, VTE risk jumps to 11–41× baseline. ACOG considers estrogen-containing contraceptives contraindicated in F5 carriers WITH prior VTE or strong family history; asymptomatic heterozygotes should make informed-choice decisions with their clinician (progestin-only, IUD, or non-hormonal options are preferred).',
+              consider:['HEMATOLOGY CONSULTATION before surgery or pregnancy','Discuss anticoagulation prophylaxis around surgery / long-haul travel with clinician','Pycnogenol may have modest platelet-aggregation benefit (adjunct only)','Nattokinase / lumbrokinase NOT validated as clinical anticoagulants — adjunct discussion only with clinician'],
+              avoid:['Combined estrogen-containing OCs / HRT without hematology guidance','Corticosteroids without clinician oversight','Prolonged immobility'],
+              lifestyle:['Compression stockings on long flights','Adequate hydration','Surgical / pregnancy prophylaxis discussion mandatory'] },
     'F11':  { name:'Factor XI', role:'Coagulation',
               detail:'Modulates thrombin generation. Elevation increases clotting risk; protective allele exists.',
               consider:['Nattokinase, lumbrokinase, bromelain','Curcumin','Vitamin E'] },
