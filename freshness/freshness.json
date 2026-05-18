@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-05-17T08:09:48+00:00",
+  "generated_at_utc": "2026-05-18T09:39:49+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -225,6 +225,17 @@
       "since": "2026-05-16T07:50:00+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1078,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-18T09:39:49+00:00",
+      "since": "2026-05-17T08:09:48+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42034943"
+      ]
     }
   ],
   "queue_preview": [
@@ -485,6 +496,14 @@
       "title": "The gut-brain axis: role of gut microbiota in neurological disease pathogenesis and pharmacotherapeutics."
     },
     {
+      "first_author": "Chatzinikolaou R",
+      "journal": "Nutrition",
+      "matched_queries_count": 1,
+      "pmid": "42034943",
+      "pubdate": "2026 Aug",
+      "title": "Exploring the links between nutrition, gut microbiome, and neurodevelopmental disorders."
+    },
+    {
       "first_author": "Rehman AU",
       "journal": "Rev Recent Clin Trials",
       "matched_queries_count": 1,
@@ -619,15 +638,7 @@
       "pmid": "41010403",
       "pubdate": "2025 Sep 17",
       "title": "Chloride Homeostasis in Neuronal Disorders: Bridging Measurement to Therapy."
-    },
-    {
-      "first_author": "Priego-Gonz\u00e1lez L",
-      "journal": "Neurosci Biobehav Rev",
-      "matched_queries_count": 1,
-      "pmid": "40523550",
-      "pubdate": "2025 Sep",
-      "title": "The role of mast cells in Autism Spectrum Disorder."
     }
   ],
-  "queue_size": 143
+  "queue_size": 144
 }
