@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Liu Z; Wu C; Li X; Wang H; Majid M; Basnet R; Li Z",
+  "doi": "pii: 275. doi: 10.1038/s41398-026-03841-w",
+  "first_author": "Liu Z",
+  "journal": "Transl Psychiatry",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "41922322",
+  "pubdate": "2026 Apr 1",
+  "title": "Non-gene-edited neural stem cells reverse neuroinflammation and microbiota dysbiosis in a sprague-dawley rat model of autism spectrum disorder.",
+  "verified_at": "2026-05-19T08:58:25+00:00"
+}

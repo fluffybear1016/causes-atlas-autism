@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-05-18T09:39:49+00:00",
+  "generated_at_utc": "2026-05-19T08:58:25+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -236,6 +236,18 @@
       "verified_pmids": [
         "42034943"
       ]
+    },
+    {
+      "atlas_pmid_count": 1078,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-19T08:58:25+00:00",
+      "since": "2026-05-18T09:39:49+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "41922322",
+        "42149597"
+      ]
     }
   ],
   "queue_preview": [
@@ -254,6 +266,14 @@
       "pmid": "42115306",
       "pubdate": "2026 May 11",
       "title": "Offspring genetic diversity regulates rearing experiences that predict differential susceptibility to Chd8 haploinsufficiency."
+    },
+    {
+      "first_author": "Rothman JM",
+      "journal": "JAMA Netw Open",
+      "matched_queries_count": 1,
+      "pmid": "42149597",
+      "pubdate": "2026 May 1",
+      "title": "Rates of Leucovorin Prescriptions for Children With Autism."
     },
     {
       "first_author": "Liao W",
@@ -600,6 +620,14 @@
       "title": "[Clinical practice consensus on dietary interventions for autism spectrum disorder (2025 edition)]."
     },
     {
+      "first_author": "Liu Z",
+      "journal": "Transl Psychiatry",
+      "matched_queries_count": 1,
+      "pmid": "41922322",
+      "pubdate": "2026 Apr 1",
+      "title": "Non-gene-edited neural stem cells reverse neuroinflammation and microbiota dysbiosis in a sprague-dawley rat model of autism spectrum disorder."
+    },
+    {
       "first_author": "Sotelo-Orozco J",
       "journal": "Autism Res",
       "matched_queries_count": 1,
@@ -622,23 +650,7 @@
       "pmid": "42137259",
       "pubdate": "2026",
       "title": "Unbiased autoantibody screening using nucleic acid protein programmable array in pediatric autoimmune neuropsychiatric disorder associated with streptococcal in"
-    },
-    {
-      "first_author": "Scenna MS",
-      "journal": "Front Pharmacol",
-      "matched_queries_count": 1,
-      "pmid": "42064796",
-      "pubdate": "2026",
-      "title": "Mitochondrial dysfunction and oxidative stress in autism spectrum disorder: pharmacological insights into natural antioxidants."
-    },
-    {
-      "first_author": "Arosio D",
-      "journal": "Life (Basel)",
-      "matched_queries_count": 1,
-      "pmid": "41010403",
-      "pubdate": "2025 Sep 17",
-      "title": "Chloride Homeostasis in Neuronal Disorders: Bridging Measurement to Therapy."
     }
   ],
-  "queue_size": 144
+  "queue_size": 146
 }
