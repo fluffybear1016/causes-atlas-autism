@@ -43,6 +43,8 @@ MUST_HAVE_TEST_IDS = [
     "TEST-0010",  # Mosaic OAT — autism-specific metabolites (arabinose, HPHPA, quinolinic acid)
     "TEST-0020",  # Cunningham Panel — autism-regressive subset (PANS overlap)
     "TEST-0008",  # Fragile X (FMR1 CGG repeat) — autism-syndromic 2-6% of cases
+    "TEST-0116",  # MitoSwab buccal mito enzymes — non-invasive mito dysfunction confirmation
+    "TEST-0117",  # CSF 5-MTHF — definitive cerebral folate deficiency test (anchor to INT-0001)
 ]
 
 # EPIGENETIC METHYLATION — DNA methylation + biological age. Distinct from
@@ -54,6 +56,8 @@ EPIGENETIC_TEST_IDS = [
     "TEST-0090",  # Quadrant Biosciences Clarifi ASD — autism-specific salivary RNA panel (T4 emerging)
     "TEST-0012",  # Doctor's Data Methylation Profile — methylation cycle SNPs + biochemistry (T2)
     "TEST-0089",  # TruDiagnostic TruAge + DunedinPACE — epigenetic biological age (T4 emerging)
+    "TEST-0119",  # EarliPoint FDA-cleared eye-tracking aid-in-diagnosis
+    "TEST-0120",  # LinusBio ClearStrand-ASD hair-strand exposure profiling
 ]
 
 # Aspirational / high-end tier — for moms who can afford the full workup
@@ -61,8 +65,10 @@ HIGH_END_TEST_IDS = [
     "TEST-0006",  # IntellxxDNA NeuroGenomic — Frye-aligned premium nutrigenomic
     "TEST-0009",  # Whole exome sequencing (WES) — full clinical genome
     "TEST-0016",  # Mayo Acylcarnitine profile — mitochondrial deep-dive
-    "TEST-0025",  # GI-MAP — Diagnostic Solutions comprehensive stool
-    "TEST-0018",  # Plasma amino acids panel — methylation + neurotransmitter substrate
+    "TEST-0122",  # Genova NutrEval — consolidated FM panel (replaces 5+ orders)
+    "TEST-0129",  # Mayo mtDNA whole-genome sequencing
+    "TEST-0118",  # CSF neurotransmitter metabolites — catches treatable AADC / sepiapterin defects
+    "TEST-0131",  # Anti-neural autoimmune encephalitis panel — anti-NMDAR + GAD65 + VGKC
 ]
 
 # Budget entry tier — DTC, lowest cost, useful starting point
@@ -71,7 +77,8 @@ BUDGET_TEST_IDS = [
     "TEST-0005",  # StrateGene — free + Sequencing.com upload of raw data
     "TEST-0046",  # CBC + CMP + lipid panel — baseline insurance-covered
     "TEST-0043",  # Vitamin D 25-OH — cheap and universal
-    "TEST-0112",  # Biomesight gut microbiome — DTC budget option
+    "TEST-0121",  # Tiny Health pediatric microbiome — best 0-4 yr option
+    "TEST-0127",  # Plasma vitamin A — restricted-eater phenotype
 ]
 
 # ── Cross-phenotype universal foundation interventions ─────────────────
