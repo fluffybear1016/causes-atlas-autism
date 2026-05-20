@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-05-19T08:58:25+00:00",
+  "generated_at_utc": "2026-05-20T08:53:22+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -248,9 +248,28 @@
         "41922322",
         "42149597"
       ]
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-20T08:53:22+00:00",
+      "since": "2026-05-19T08:58:25+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42049031"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "Wong O",
+      "journal": "Cell Rep Med",
+      "matched_queries_count": 1,
+      "pmid": "42049031",
+      "pubdate": "2026 May 19",
+      "title": "Microbiome biomarkers in autism spectrum disorder: Toward prediction, diagnosis, and prognosis."
+    },
     {
       "first_author": "Kong AX",
       "journal": "J Hazard Mater",
@@ -642,15 +661,7 @@
       "pmid": "41478424",
       "pubdate": "2026 Apr",
       "title": "Therapeutic application of fecal microbiota transplantation for neurological diseases: Exploring novel mechanisms and perspectives."
-    },
-    {
-      "first_author": "Eremija J",
-      "journal": "Front Behav Neurosci",
-      "matched_queries_count": 1,
-      "pmid": "42137259",
-      "pubdate": "2026",
-      "title": "Unbiased autoantibody screening using nucleic acid protein programmable array in pediatric autoimmune neuropsychiatric disorder associated with streptococcal in"
     }
   ],
-  "queue_size": 146
+  "queue_size": 147
 }
