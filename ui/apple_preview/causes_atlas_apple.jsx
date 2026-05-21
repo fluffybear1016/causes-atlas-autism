@@ -1,0 +1,664 @@
+/*
+ * Causes Atlas — Apple-version concept
+ * ------------------------------------
+ * A standalone React component exploring the Jony-Ive reading of the
+ * cinematic Causes Atlas surface: radical reduction, gesture over chrome,
+ * typographic moments, the report-IS-the-graph. Pure ideation made
+ * concrete — not the production build.
+ *
+ * Five scenes, click or arrow-key to move:
+ *   0  Emergence   — the constellation weaves itself, manifesto fades in
+ *   1  Drop        — the whole screen is the upload affordance
+ *   2  Graph       — your data ignites nodes; the report is the graph re-lit
+ *   3  Findings    — each top action as a full-screen typographic moment
+ *   4  Synthesis   — the clustered summary rises as a sheet
+ *
+ * No build step needed to view — see index.html in this folder.
+ */
+import React, { useState, useRef, useEffect, useCallback } from "react";
+
+const VOID = "#050810";
+const GOLD = "#e8c46e";
+const NODE = "#f0ebdc";
+const COOL = "#b4c8e8";
+const MUTE = "#5a574e";
+const VMUTE = "#33312c";
+
+const PHI = Math.PI * (3 - Math.sqrt(5));
+const N_NODES = 70;
+const LIT_INDEX = new Set([3, 7, 11, 16, 21, 26, 31, 37, 42, 48, 53, 59]);
+
+function buildNodes(w, h) {
+  const nodes = [];
+  for (let i = 0; i < N_NODES; i++) {
+    const r = 16 * Math.sqrt(i + 1);
+    const a = i * PHI;
+    nodes.push({
+      x: w / 2 + r * Math.cos(a) * 0.9,
+      y: h / 2 + r * Math.sin(a) * 0.76,
+      base: 1.6 + Math.random() * 3.4,
+      lit: LIT_INDEX.has(i),
+      seed: Math.random() * 6.28,
+    });
+  }
+  return nodes;
+}
+function buildEdges() {
+  const edges = [];
+  for (let i = 0; i < N_NODES; i++) {
+    for (let k = 0; k < 2; k++) edges.push([i, (i + 3 + k * 5) % N_NODES]);
+  }
+  return edges;
+}
+
+const FINDINGS = [
+  {
+    n: "1",
+    gene: "F5 · Factor V Leiden",
+    act: "Discuss anticoagulation prophylaxis with your hematologist before any surgery or pregnancy.",
+    src: "ACOG 2017 · GeneReviews",
+  },
+  {
+    n: "2",
+    gene: "GCLC · Glutathione synthesis",
+    act: "Begin NAC and sulforaphane. This variant slows production of your child’s master antioxidant.",
+    src: "ClinVar · PubMed",
+  },
+  {
+    n: "3",
+    gene: "Mitochondrial cluster",
+    act: "CoQ10, PQQ, and zone-2 movement. Two variants point at mitochondrial biogenesis.",
+    src: "CPIC · Frye protocols",
+  },
+  {
+    n: "4",
+    gene: "Insulin-resistance cluster",
+    act: "Berberine and a continuous glucose monitor trial. Six variants raise type-2 diabetes risk.",
+    src: "PharmGKB",
+  },
+  {
+    n: "5",
+    gene: "CFH · Y402H",
+    act: "Lutein, zeaxanthin, UV-protective eyewear, an annual eye exam.",
+    src: "AAO · AREDS2",
+  },
+];
+
+const CLUSTERS = [
+  { name: "Inflammation", load: "HIGH", w: 0.95 },
+  { name: "Coagulation", load: "HIGH", w: 0.88 },
+  { name: "Detoxification", load: "HIGH", w: 0.8 },
+  { name: "Methylation", load: "MODERATE", w: 0.55 },
+  { name: "Mitochondrial", load: "MODERATE", w: 0.48 },
+];
+
+/* ── the animated constellation ─────────────────────────────────────── */
+function Constellation({ sceneRef, sceneStartRef }) {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let raf;
+    let nodes = [];
+    let edges = buildEdges();
+    let W = 0, H = 0;
+    const DPR = window.devicePixelRatio || 1;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      W = rect.width;
+      H = rect.height;
+      canvas.width = W * DPR;
+      canvas.height = H * DPR;
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      nodes = buildNodes(W, H);
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    function frame(now) {
+      const scene = sceneRef.current;
+      const sceneT = now - sceneStartRef.current;
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = VOID;
+      ctx.fillRect(0, 0, W, H);
+
+      const reveal = scene === 0 ? Math.min(1, sceneT / 2800) : 1;
+      const dim = scene >= 3 ? 0.15 : scene === 1 ? 0.32 : 1;
+
+      ctx.lineWidth = 0.5;
+      for (const [a, b] of edges) {
+        if (a / N_NODES >= reveal || b / N_NODES >= reveal) continue;
+        const na = nodes[a], nb = nodes[b];
+        const lit = scene >= 2 && na.lit && nb.lit;
+        ctx.strokeStyle = lit
+          ? `rgba(232,196,110,${0.34 * dim + 0.12})`
+          : `rgba(120,130,150,${0.1 * dim})`;
+        ctx.beginPath();
+        ctx.moveTo(na.x, na.y);
+        ctx.lineTo(nb.x, nb.y);
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        if (i / N_NODES >= reveal) continue;
+        const n = nodes[i];
+        const lit = scene >= 2 && n.lit;
+        const pulse = 1 + 0.12 * Math.sin(now / 620 + n.seed);
+        const rad = n.base * pulse;
+        if (lit) {
+          const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, rad + 12);
+          g.addColorStop(0, "rgba(232,196,110,0.42)");
+          g.addColorStop(1, "rgba(232,196,110,0)");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, rad + 12, 0, 7);
+          ctx.fill();
+          ctx.fillStyle = "rgba(240,228,196,0.97)";
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, rad, 0, 7);
+          ctx.fill();
+          ctx.strokeStyle = "rgba(232,196,110,0.9)";
+          ctx.lineWidth = 1.1;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, rad + 3, 0, 7);
+          ctx.stroke();
+        } else {
+          ctx.fillStyle = `rgba(216,210,196,${0.55 * dim + 0.05})`;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, rad, 0, 7);
+          ctx.fill();
+        }
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    raf = requestAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
+  }, [sceneRef, sceneStartRef]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+    />
+  );
+}
+
+/* ── scene overlays ─────────────────────────────────────────────────── */
+function EmergenceOverlay({ sceneStartRef }) {
+  const [op, setOp] = useState(0);
+  useEffect(() => {
+    let raf;
+    const tick = () => {
+      const t = performance.now() - sceneStartRef.current;
+      setOp(Math.max(0, Math.min(1, (t - 2600) / 1400)));
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [sceneStartRef]);
+  return (
+    <>
+      <div
+        style={{
+          position: "absolute",
+          top: 26,
+          left: 30,
+          fontSize: 11,
+          letterSpacing: "0.34em",
+          textTransform: "uppercase",
+          color: GOLD,
+          opacity: op,
+        }}
+      >
+        Causes Atlas
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: 0,
+          right: 0,
+          transform: "translateY(-50%)",
+          textAlign: "center",
+          opacity: op,
+          transition: "opacity 0.7s ease",
+        }}
+      >
+        <div style={{ fontSize: 34, color: NODE, lineHeight: 1.24 }}>
+          Population&nbsp;average
+          <br />
+          <em style={{ color: GOLD }}>is&nbsp;not</em>
+          <br />
+          your&nbsp;child
+        </div>
+      </div>
+    </>
+  );
+}
+
+function DropOverlay({ dragOver }) {
+  return (
+    <>
+      <div
+        style={{
+          position: "absolute",
+          inset: 18,
+          border: `1.5px dashed rgba(232,196,110,${dragOver ? 0.95 : 0.4})`,
+          borderRadius: 10,
+          transition: "border-color 0.3s",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: 0,
+          right: 0,
+          transform: "translateY(-50%)",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            fontSize: 12,
+            letterSpacing: "0.26em",
+            textTransform: "uppercase",
+            color: MUTE,
+            marginBottom: 16,
+          }}
+        >
+          the whole screen is the drop zone
+        </div>
+        <div style={{ fontSize: 26, color: NODE, lineHeight: 1.4 }}>
+          {dragOver ? (
+            <span style={{ color: GOLD }}>Release.</span>
+          ) : (
+            <>
+              Drop your genetics, labs,
+              <br />
+              or health reports
+            </>
+          )}
+        </div>
+        <div
+          style={{
+            fontSize: 12,
+            color: VMUTE,
+            marginTop: 18,
+            letterSpacing: "0.16em",
+          }}
+        >
+          parsed in your browser · nothing leaves this device
+        </div>
+      </div>
+    </>
+  );
+}
+
+function GraphOverlay() {
+  return (
+    <>
+      <div
+        style={{
+          position: "absolute",
+          top: 26,
+          left: 30,
+          fontSize: 11,
+          letterSpacing: "0.3em",
+          textTransform: "uppercase",
+          color: GOLD,
+        }}
+      >
+        your data, lit in the graph
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: "52%",
+          top: "36%",
+          transform: "translateY(-50%)",
+          maxWidth: 230,
+          fontSize: 13.5,
+          color: "rgba(240,235,220,0.95)",
+          lineHeight: 1.5,
+        }}
+      >
+        <span style={{ color: GOLD }}>MTHFR C677T</span> — homozygous.
+        <br />
+        Methylfolate, not folic acid.
+        <span
+          style={{
+            display: "block",
+            fontSize: 10,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: MUTE,
+            marginTop: 7,
+          }}
+        >
+          hover any node · one line, no card
+        </span>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 38,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          fontSize: 12,
+          color: MUTE,
+          letterSpacing: "0.14em",
+        }}
+      >
+        52 variants · 12 ignited · the report is the graph, re-lit
+      </div>
+    </>
+  );
+}
+
+function FindingsOverlay({ index }) {
+  const f = FINDINGS[Math.min(index, FINDINGS.length - 1)];
+  const [op, setOp] = useState(0);
+  useEffect(() => {
+    setOp(0);
+    const id = setTimeout(() => setOp(1), 30);
+    return () => clearTimeout(id);
+  }, [index]);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: "0 58px",
+        opacity: op,
+        transition: "opacity 0.5s ease",
+      }}
+    >
+      <div style={{ fontSize: 66, color: GOLD, lineHeight: 1 }}>{f.n}</div>
+      <div
+        style={{
+          fontSize: 13,
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
+          color: COOL,
+          marginTop: 20,
+        }}
+      >
+        {f.gene}
+      </div>
+      <div
+        style={{
+          fontSize: 22,
+          color: NODE,
+          lineHeight: 1.5,
+          marginTop: 15,
+          maxWidth: 540,
+        }}
+      >
+        {f.act}
+      </div>
+      <div
+        style={{
+          fontSize: 11,
+          fontFamily: "ui-monospace, monospace",
+          letterSpacing: "0.14em",
+          color: MUTE,
+          marginTop: 22,
+        }}
+      >
+        source · {f.src}
+      </div>
+      <div style={{ display: "flex", gap: 6, marginTop: 30 }}>
+        {FINDINGS.map((_, i) => (
+          <div
+            key={i}
+            style={{
+              width: i === index ? 24 : 8,
+              height: 3,
+              background: i <= index ? GOLD : "#2e3540",
+              transition: "all 0.3s",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SynthesisOverlay({ sceneStartRef, onRestart }) {
+  const [sh, setSh] = useState(0);
+  useEffect(() => {
+    let raf;
+    const tick = () => {
+      const t = performance.now() - sceneStartRef.current;
+      setSh(Math.min(1, t / 580));
+      if (t < 600) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [sceneStartRef]);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        height: "80%",
+        background: "rgba(8,11,18,0.97)",
+        borderTop: "1px solid #7a6230",
+        transform: `translateY(${(1 - sh) * 100}%)`,
+        padding: "24px 34px",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          fontSize: 10,
+          letterSpacing: "0.3em",
+          textTransform: "uppercase",
+          color: GOLD,
+          marginBottom: 5,
+        }}
+      >
+        Top findings · prioritized
+      </div>
+      <div style={{ fontSize: 18, color: NODE, lineHeight: 1.35, marginBottom: 20 }}>
+        Several high-impact variants surfaced —
+        <br />
+        here is what to do, in order.
+      </div>
+      {CLUSTERS.map((c) => (
+        <div key={c.name} style={{ marginBottom: 12 }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              fontSize: 12.5,
+              color: "#d8d2c4",
+              marginBottom: 4,
+            }}
+          >
+            <span>{c.name}</span>
+            <span
+              style={{
+                fontFamily: "ui-monospace, monospace",
+                fontSize: 10,
+                letterSpacing: "0.12em",
+                color: GOLD,
+              }}
+            >
+              {c.load}
+            </span>
+          </div>
+          <div style={{ height: 3, background: "#1a1d24" }}>
+            <div
+              style={{ height: "100%", width: `${c.w * 100}%`, background: GOLD }}
+            />
+          </div>
+        </div>
+      ))}
+      <div
+        style={{
+          fontSize: 10,
+          fontFamily: "ui-monospace, monospace",
+          letterSpacing: "0.06em",
+          color: VMUTE,
+          marginTop: 16,
+          lineHeight: 1.5,
+        }}
+      >
+        verified · ClinVar · CPIC · GeneReviews · AAO · MAPS · Walsh · Frye
+      </div>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onRestart();
+        }}
+        style={{
+          marginTop: 16,
+          background: "transparent",
+          border: `1px solid ${MUTE}`,
+          color: GOLD,
+          fontSize: 10,
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+          padding: "8px 16px",
+          cursor: "pointer",
+          fontFamily: "inherit",
+        }}
+      >
+        Start over
+      </button>
+    </div>
+  );
+}
+
+/* ── root component ─────────────────────────────────────────────────── */
+export default function CausesAtlasApple() {
+  const [scene, setScene] = useState(0);
+  const [findIdx, setFindIdx] = useState(0);
+  const [dragOver, setDragOver] = useState(false);
+  const sceneRef = useRef(0);
+  const sceneStartRef = useRef(performance.now());
+
+  const goScene = useCallback((s) => {
+    setScene(s);
+    sceneRef.current = s;
+    sceneStartRef.current = performance.now();
+    setFindIdx(0);
+  }, []);
+
+  const advance = useCallback(() => {
+    if (scene === 3) {
+      if (findIdx + 1 >= FINDINGS.length) goScene(4);
+      else setFindIdx((i) => i + 1);
+    } else {
+      goScene((scene + 1) % 5);
+    }
+  }, [scene, findIdx, goScene]);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") advance();
+      if (e.key === "ArrowLeft") goScene((scene + 4) % 5);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [advance, goScene, scene]);
+
+  const hint =
+    scene === 3
+      ? "click to move through the five findings"
+      : scene === 4
+      ? "the synthesis sheet — your child's map, in order"
+      : "click the screen to advance · or use arrow keys";
+
+  return (
+    <div style={{ maxWidth: 880, margin: "0 auto", padding: 24, fontFamily: "ui-sans-serif, system-ui, sans-serif" }}>
+      <div
+        onClick={advance}
+        onDragOver={(e) => {
+          e.preventDefault();
+          if (scene === 1) setDragOver(true);
+        }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDragOver(false);
+          if (scene === 1) goScene(2);
+        }}
+        style={{
+          position: "relative",
+          width: "100%",
+          height: 520,
+          background: VOID,
+          borderRadius: 10,
+          overflow: "hidden",
+          cursor: "pointer",
+          fontFamily: "Georgia, 'Times New Roman', serif",
+          userSelect: "none",
+        }}
+      >
+        <Constellation sceneRef={sceneRef} sceneStartRef={sceneStartRef} />
+        {scene === 0 && <EmergenceOverlay sceneStartRef={sceneStartRef} />}
+        {scene === 1 && <DropOverlay dragOver={dragOver} />}
+        {scene === 2 && <GraphOverlay />}
+        {scene === 3 && <FindingsOverlay index={findIdx} />}
+        {scene === 4 && (
+          <SynthesisOverlay sceneStartRef={sceneStartRef} onRestart={() => goScene(0)} />
+        )}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 10,
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            fontSize: 10,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: VMUTE,
+            fontFamily: "ui-monospace, monospace",
+            pointerEvents: "none",
+          }}
+        >
+          {hint}
+        </div>
+      </div>
+
+      <div style={{ display: "flex", gap: 8, marginTop: 14 }}>
+        {["emergence", "drop", "the graph reacts", "findings", "synthesis"].map(
+          (label, i) => (
+            <button
+              key={label}
+              onClick={() => goScene(i)}
+              style={{
+                flex: 1,
+                background: "transparent",
+                border: `0.5px solid ${i === scene ? GOLD : "rgba(120,120,120,0.4)"}`,
+                color: i === scene ? "#1a1a1a" : "#888",
+                fontSize: 11,
+                padding: "8px 6px",
+                borderRadius: 8,
+                cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              {i + 1} · {label}
+            </button>
+          )
+        )}
+      </div>
+    </div>
+  );
+}
