@@ -1,0 +1,53 @@
+# Causes Atlas — Science & Data License
+
+The **science and data** in this repository — the Obsidian vault under
+`vault/`, the CSV datasets (under `v2.0_scored/` and the versioned
+snapshots), the specifications and `*.md` writing, the deep-dive pages,
+the validation cases, and the knowledge graph itself — are licensed
+under:
+
+  **Creative Commons Attribution-NonCommercial 4.0 International**
+  **(CC BY-NC 4.0)**
+
+  Canonical legal text: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+  Human-readable summary: https://creativecommons.org/licenses/by-nc/4.0/
+
+(The code is licensed separately under the PolyForm Noncommercial
+License 1.0.0 — see `LICENSE`.)
+
+## What this means
+
+You are free to:
+
+  - **Share** — copy and redistribute the material in any medium or format
+  - **Adapt** — remix, transform, and build upon the material
+
+Under these terms:
+
+  - **Attribution** — You must give appropriate credit to the Causes
+    Atlas project, provide a link to this license, and indicate if
+    changes were made. You may do so in any reasonable manner, but not
+    in any way that suggests the licensor endorses you or your use.
+
+  - **NonCommercial** — You may not use the material for commercial
+    purposes. Commercial use — anything you monetize — requires a
+    separate paid license. See `COMMERCIAL.md`.
+
+  - **No additional restrictions** — You may not apply legal terms or
+    technological measures that legally restrict others from doing
+    anything the license permits.
+
+## Attribution format
+
+When you use or build on the science, credit it like this:
+
+  > Causes Atlas — https://github.com/fluffybear1016/causes-atlas-autism
+  > Licensed CC BY-NC 4.0. Indicate if changes were made.
+
+## Disclaimer
+
+The science and data are provided "as is." The Causes Atlas is an
+evidence-mapping research substrate for individual-level inquiry. It is
+**not medical advice** and is not a substitute for a qualified clinician.
+The licensors make no warranty and accept no liability for use of the
+material, to the extent the law allows.

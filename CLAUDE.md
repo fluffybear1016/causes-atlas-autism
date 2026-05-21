@@ -871,6 +871,29 @@ is itself the argument.
 - `ui/components/atlas_explorer.py` — explorer
 - Open data-team questions → §10 of `DESIGN_TEAM_HANDOFF.md`
 
+## License & distribution (post-2026-05-20)
+
+The repository is **source-available**, not OSI open-source. As of
+2026-05-20 the project is published publicly under a free-but-gated
+model:
+
+- **Code** — PolyForm Noncommercial License 1.0.0 (`LICENSE`)
+- **Science / data / vault / specs** — CC BY-NC 4.0 (`LICENSE-DATA`)
+- **Commercial use** — requires a separate paid license (`COMMERCIAL.md`)
+
+The three rules: free to use, credit required, pay to monetize. Free for
+families, clinicians, researchers, charities, schools, public
+institutions. Commercial use funds further research.
+
+Implications for future sessions:
+- Don't relicense or add OSI "open source" framing — commercial use is
+  intentionally gated.
+- Don't commit anything that would contradict the licenses.
+- The secrets rule below is now doubly important — the repo is public.
+- New top-level files: `README.md` (public front door), `LICENSE`,
+  `LICENSE-DATA`, `COMMERCIAL.md`. `MASTER_README.md` remains the
+  engineering entry point.
+
 ## What not to do
 
 - Don't edit `v2.0_scored/` CSVs by hand — re-run the scoring pipeline.
