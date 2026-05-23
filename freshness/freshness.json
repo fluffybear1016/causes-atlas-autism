@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-05-22T08:48:57+00:00",
+  "generated_at_utc": "2026-05-23T08:06:19+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -277,9 +277,28 @@
       "since": "2026-05-21T08:56:04+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-23T08:06:19+00:00",
+      "since": "2026-05-22T08:48:57+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42161225"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "McNamara O",
+      "journal": "Biomed Pharmacother",
+      "matched_queries_count": 1,
+      "pmid": "42161225",
+      "pubdate": "2026 May 20",
+      "title": "Bumetanide as a potential treatment for neurodegenerative and neurodevelopmental disorders: A systematic review."
+    },
     {
       "first_author": "Wong O",
       "journal": "Cell Rep Med",
@@ -671,15 +690,7 @@
       "pmid": "41724596",
       "pubdate": "2026 Apr",
       "title": "Mixed Evidence for Impact of Early Infant Gut Microbiome and Later Development of Autism Spectrum Disorder in the MARBLES Prospective Cohort Study."
-    },
-    {
-      "first_author": "Zhang Y",
-      "journal": "Exp Neurol",
-      "matched_queries_count": 1,
-      "pmid": "41478424",
-      "pubdate": "2026 Apr",
-      "title": "Therapeutic application of fecal microbiota transplantation for neurological diseases: Exploring novel mechanisms and perspectives."
     }
   ],
-  "queue_size": 147
+  "queue_size": 148
 }
