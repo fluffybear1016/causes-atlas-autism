@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-05-25T09:47:48+00:00",
+  "generated_at_utc": "2026-05-26T09:35:32+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -306,6 +306,17 @@
       "since": "2026-05-24T08:16:32+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-26T09:35:32+00:00",
+      "since": "2026-05-25T09:47:48+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42102652"
+      ]
     }
   ],
   "queue_preview": [
@@ -590,6 +601,14 @@
       "title": "The gut-brain axis: role of gut microbiota in neurological disease pathogenesis and pharmacotherapeutics."
     },
     {
+      "first_author": "Al-Salihy AAS",
+      "journal": "J Neuroimmunol",
+      "matched_queries_count": 1,
+      "pmid": "42102652",
+      "pubdate": "2026 Aug",
+      "title": "Toward an immunological classification of autism spectrum disorder: A PRISMA-ScR-compliant scoping review."
+    },
+    {
       "first_author": "Chatzinikolaou R",
       "journal": "Nutrition",
       "matched_queries_count": 1,
@@ -700,15 +719,7 @@
       "pmid": "41922322",
       "pubdate": "2026 Apr 1",
       "title": "Non-gene-edited neural stem cells reverse neuroinflammation and microbiota dysbiosis in a sprague-dawley rat model of autism spectrum disorder."
-    },
-    {
-      "first_author": "Sotelo-Orozco J",
-      "journal": "Autism Res",
-      "matched_queries_count": 1,
-      "pmid": "41724596",
-      "pubdate": "2026 Apr",
-      "title": "Mixed Evidence for Impact of Early Infant Gut Microbiome and Later Development of Autism Spectrum Disorder in the MARBLES Prospective Cohort Study."
     }
   ],
-  "queue_size": 148
+  "queue_size": 149
 }
