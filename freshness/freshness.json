@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-05-27T09:00:51+00:00",
+  "generated_at_utc": "2026-05-28T09:44:34+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -326,6 +326,17 @@
       "since": "2026-05-26T09:35:32+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-28T09:44:34+00:00",
+      "since": "2026-05-27T09:00:51+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42196321"
+      ]
     }
   ],
   "queue_preview": [
@@ -352,6 +363,14 @@
       "pmid": "41990651",
       "pubdate": "2026 May 15",
       "title": "Proteome-wide reverse molecular docking reveals folate receptor as a mediator of PFAS-induced neurodevelopmental toxicity."
+    },
+    {
+      "first_author": "Venetsanaki V",
+      "journal": "Int J Mol Sci",
+      "matched_queries_count": 1,
+      "pmid": "42196321",
+      "pubdate": "2026 May 13",
+      "title": "Natural Molecules for Brain Health and Resilience."
     },
     {
       "first_author": "Tabbaa M",
@@ -720,15 +739,7 @@
       "pmid": "41942318",
       "pubdate": "2026 Apr 1",
       "title": "[Clinical practice consensus on dietary interventions for autism spectrum disorder (2025 edition)]."
-    },
-    {
-      "first_author": "Liu Z",
-      "journal": "Transl Psychiatry",
-      "matched_queries_count": 1,
-      "pmid": "41922322",
-      "pubdate": "2026 Apr 1",
-      "title": "Non-gene-edited neural stem cells reverse neuroinflammation and microbiota dysbiosis in a sprague-dawley rat model of autism spectrum disorder."
     }
   ],
-  "queue_size": 149
+  "queue_size": 150
 }
