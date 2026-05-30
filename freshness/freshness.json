@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-05-29T09:34:58+00:00",
+  "generated_at_utc": "2026-05-30T08:15:58+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -346,6 +346,17 @@
       "since": "2026-05-28T09:44:34+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-05-30T08:15:58+00:00",
+      "since": "2026-05-29T09:34:58+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "41914215"
+      ]
     }
   ],
   "queue_preview": [
@@ -412,6 +423,14 @@
       "pmid": "42101085",
       "pubdate": "2026 May",
       "title": "Personalized Medicine in Autism Spectrum Disorder: Integrating Epigenomics, Microbiome Research and Early Diagnostics."
+    },
+    {
+      "first_author": "Sandoni L",
+      "journal": "Autism Res",
+      "matched_queries_count": 1,
+      "pmid": "41914215",
+      "pubdate": "2026 May",
+      "title": "The Role of Microbiota Metabolites Propionic Acid, p-Cresol, and 4-Ethylphenyl Sulfate in Autism Susceptibility: A Systematic Review."
     },
     {
       "first_author": "Ghahari AA",
@@ -740,15 +759,7 @@
       "pmid": "41944793",
       "pubdate": "2026 Apr 1",
       "title": "Prevalence, Expression, Assessment, Mechanisms, and Management of Pain in Autistic Children: A Scoping Review."
-    },
-    {
-      "first_author": "Chinese Nutrition Society Branch of Developmental Disorders and Nutritional Therapy",
-      "journal": "Zhonghua Nei Ke Za Zhi",
-      "matched_queries_count": 1,
-      "pmid": "41942318",
-      "pubdate": "2026 Apr 1",
-      "title": "[Clinical practice consensus on dietary interventions for autism spectrum disorder (2025 edition)]."
     }
   ],
-  "queue_size": 150
+  "queue_size": 151
 }
