@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-01T11:08:24+00:00",
+  "generated_at_utc": "2026-06-02T10:03:23+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -375,6 +375,17 @@
       "since": "2026-05-31T08:34:11+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-02T10:03:23+00:00",
+      "since": "2026-06-01T11:08:23+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42220936"
+      ]
     }
   ],
   "queue_preview": [
@@ -529,6 +540,14 @@
       "pmid": "39417900",
       "pubdate": "2026 Mar",
       "title": "Gastrointestinal, Behaviour and Anxiety Outcomes in Autistic Children Following an Open Label, Randomised Pilot Study of Synbiotics vs Synbiotics and Gut-Direct"
+    },
+    {
+      "first_author": "Elbeltagi YM",
+      "journal": "World J Clin Pediatr",
+      "matched_queries_count": 2,
+      "pmid": "42220936",
+      "pubdate": "2026 Jun 9",
+      "title": "Medical treatment of autism spectrum disorder in children: Current evidence, controversies, and clinical challenges."
     },
     {
       "first_author": "Burch K",
@@ -769,15 +788,7 @@
       "pmid": "41966707",
       "pubdate": "2026 Apr 10",
       "title": "Microenvironment dysregulation in autism spectrum disorder: Immune, epigenetic, synaptic, and gut-brain mechanisms."
-    },
-    {
-      "first_author": "Kumar J",
-      "journal": "A A Pract",
-      "matched_queries_count": 1,
-      "pmid": "41944793",
-      "pubdate": "2026 Apr 1",
-      "title": "Prevalence, Expression, Assessment, Mechanisms, and Management of Pain in Autistic Children: A Scoping Review."
     }
   ],
-  "queue_size": 151
+  "queue_size": 152
 }
