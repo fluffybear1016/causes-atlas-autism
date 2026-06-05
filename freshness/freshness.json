@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-04T09:42:53+00:00",
+  "generated_at_utc": "2026-06-05T09:30:13+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1068,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-05-06T08:08:42+00:00",
-      "since": "2026-05-05T14:46:26+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1068,
       "candidates_found": 2,
@@ -293,6 +284,17 @@
       "since": "2026-06-03T10:42:40+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-05T09:30:13+00:00",
+      "since": "2026-06-04T09:42:53+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42240702"
+      ]
     }
   ],
   "queue_preview": [
@@ -455,6 +457,14 @@
       "pmid": "42220936",
       "pubdate": "2026 Jun 9",
       "title": "Medical treatment of autism spectrum disorder in children: Current evidence, controversies, and clinical challenges."
+    },
+    {
+      "first_author": "Adak P",
+      "journal": "Mol Biol Rep",
+      "matched_queries_count": 1,
+      "pmid": "42240702",
+      "pubdate": "2026 Jun 4",
+      "title": "Role of GABA(A) receptors and chloride transporters in autism - An explorative analysis using peripheral blood as a model."
     },
     {
       "first_author": "Burch K",
@@ -687,15 +697,7 @@
       "pmid": "41975112",
       "pubdate": "2026 Apr 14",
       "title": "Clinical response and risk factors of fecal microbiota transplantation in children: a systematic review and meta-analysis."
-    },
-    {
-      "first_author": "Zhao Y",
-      "journal": "Med",
-      "matched_queries_count": 1,
-      "pmid": "41966707",
-      "pubdate": "2026 Apr 10",
-      "title": "Microenvironment dysregulation in autism spectrum disorder: Immune, epigenetic, synaptic, and gut-brain mechanisms."
     }
   ],
-  "queue_size": 152
+  "queue_size": 153
 }
