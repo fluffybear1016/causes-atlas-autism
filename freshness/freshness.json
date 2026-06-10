@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-09T08:59:53+00:00",
+  "generated_at_utc": "2026-06-10T09:39:52+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1068,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-05-11T08:58:27+00:00",
-      "since": "2026-05-10T07:56:30+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42019703"
-      ]
-    },
     {
       "atlas_pmid_count": 1068,
       "candidates_found": 2,
@@ -293,6 +282,17 @@
       "verified_pmids": [
         "41670197"
       ]
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-10T09:39:52+00:00",
+      "since": "2026-06-09T08:59:53+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42260633"
+      ]
     }
   ],
   "queue_preview": [
@@ -455,6 +455,14 @@
       "pmid": "39417900",
       "pubdate": "2026 Mar",
       "title": "Gastrointestinal, Behaviour and Anxiety Outcomes in Autistic Children Following an Open Label, Randomised Pilot Study of Synbiotics vs Synbiotics and Gut-Direct"
+    },
+    {
+      "first_author": "Rome BN",
+      "journal": "Pediatrics",
+      "matched_queries_count": 2,
+      "pmid": "42260633",
+      "pubdate": "2026 Jun 9",
+      "title": "Use of Leucovorin After the FDA Announcement of Its Use for Autism Spectrum Disorders."
     },
     {
       "first_author": "Elbeltagi YM",
@@ -687,15 +695,7 @@
       "pmid": "42072651",
       "pubdate": "2026 Apr 2",
       "title": "Role of Mast Cells and Neuroinflammation in Neuropsychiatric Disorders of the Developmental Period."
-    },
-    {
-      "first_author": "Ding HB",
-      "journal": "Zhongguo Dang Dai Er Ke Za Zhi",
-      "matched_queries_count": 1,
-      "pmid": "42015710",
-      "pubdate": "2026 Apr 15",
-      "title": "[Research progress on maternal factors influencing the risk of autism spectrum disorder in offspring from a gut-brain axis perspective]."
     }
   ],
-  "queue_size": 154
+  "queue_size": 155
 }

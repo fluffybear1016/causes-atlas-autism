@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Rome BN; Kim J; Figueroa JF; Kesselheim AS",
+  "doi": "doi: 10.1542/peds.2026-076794",
+  "first_author": "Rome BN",
+  "journal": "Pediatrics",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42260633",
+  "pubdate": "2026 Jun 9",
+  "title": "Use of Leucovorin After the FDA Announcement of Its Use for Autism Spectrum Disorders.",
+  "verified_at": "2026-06-10T09:39:51+00:00"
+}
