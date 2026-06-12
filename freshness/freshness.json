@@ -1,6 +1,6 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-11T10:05:09+00:00",
+  "generated_at_utc": "2026-06-12T09:56:16+00:00",
   "last_30_daily_logs": [
     {
       "atlas_pmid_count": 1068,
@@ -291,6 +291,19 @@
       "since": "2026-06-10T09:39:52+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 4,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-12T09:56:15+00:00",
+      "since": "2026-06-11T10:05:09+00:00",
+      "verified_added_to_queue": 3,
+      "verified_pmids": [
+        "42172709",
+        "42275066",
+        "42277537"
+      ]
     }
   ],
   "queue_preview": [
@@ -477,6 +490,30 @@
       "pmid": "42240702",
       "pubdate": "2026 Jun 4",
       "title": "Role of GABA(A) receptors and chloride transporters in autism - An explorative analysis using peripheral blood as a model."
+    },
+    {
+      "first_author": "Ma C",
+      "journal": "Child Psychiatry Hum Dev",
+      "matched_queries_count": 1,
+      "pmid": "42277537",
+      "pubdate": "2026 Jun 12",
+      "title": "Comparative Efficacy and Acceptability of Non-pharmacological Therapies and Novel Pharmacotherapies for Autism: A Systematic Review and Network Meta-Analysis."
+    },
+    {
+      "first_author": "Patel NG",
+      "journal": "JAMA Netw Open",
+      "matched_queries_count": 1,
+      "pmid": "42275066",
+      "pubdate": "2026 Jun 1",
+      "title": "Internet Searches for Leucovorin, Folate, and Acetaminophen After a White House Autism Announcement."
+    },
+    {
+      "first_author": "Jing W",
+      "journal": "Ecotoxicol Environ Saf",
+      "matched_queries_count": 1,
+      "pmid": "42172709",
+      "pubdate": "2026 Jul 1",
+      "title": "Micro- and nanoplastics in the central nervous system: Transport pathways, neurotoxicity, and implications for brain disorders."
     },
     {
       "first_author": "Burch K",
@@ -669,31 +706,7 @@
       "pmid": "42123569",
       "pubdate": "2026 Apr 29",
       "title": "Microbiome-Derived Short-Chain Fatty Acids and Tryptophan Metabolites in Children with Autism Spectrum Disorder: A Stool-Urine Multi-Omics Analysis."
-    },
-    {
-      "first_author": "Wadhwani D",
-      "journal": "Behav Brain Res",
-      "matched_queries_count": 1,
-      "pmid": "41687927",
-      "pubdate": "2026 Apr 27",
-      "title": "Gestational hyperglycemia and autism spectrum disorder: Mechanistic pathways and emerging preventive strategies."
-    },
-    {
-      "first_author": "Byun AS",
-      "journal": "Front Biosci (Landmark Ed)",
-      "matched_queries_count": 1,
-      "pmid": "42052832",
-      "pubdate": "2026 Apr 22",
-      "title": "The Gut-Lung Axis, Epigenetics and Respiratory Disease."
-    },
-    {
-      "first_author": "Aitella E",
-      "journal": "Biomolecules",
-      "matched_queries_count": 1,
-      "pmid": "42072651",
-      "pubdate": "2026 Apr 2",
-      "title": "Role of Mast Cells and Neuroinflammation in Neuropsychiatric Disorders of the Developmental Period."
     }
   ],
-  "queue_size": 155
+  "queue_size": 158
 }
