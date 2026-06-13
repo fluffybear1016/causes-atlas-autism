@@ -1,19 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-12T09:56:16+00:00",
+  "generated_at_utc": "2026-06-13T08:46:22+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1068,
-      "candidates_found": 3,
-      "queries_run": 9,
-      "run_at_utc": "2026-05-14T08:27:42+00:00",
-      "since": "2026-05-13T08:33:58+00:00",
-      "verified_added_to_queue": 2,
-      "verified_pmids": [
-        "42123569",
-        "42124041"
-      ]
-    },
     {
       "atlas_pmid_count": 1068,
       "candidates_found": 1,
@@ -304,9 +292,30 @@
         "42275066",
         "42277537"
       ]
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 4,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-13T08:46:22+00:00",
+      "since": "2026-06-12T09:56:15+00:00",
+      "verified_added_to_queue": 3,
+      "verified_pmids": [
+        "42176766",
+        "42280338",
+        "42281150"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "Zhang S",
+      "journal": "Nutrients",
+      "matched_queries_count": 1,
+      "pmid": "42280338",
+      "pubdate": "2026 May 26",
+      "title": "Development of a Metagenomics-Guided Personalized Synbiotic Protocol for Children with Autism Spectrum Disorder: An Exploratory Case Series."
+    },
     {
       "first_author": "McNamara O",
       "journal": "Biomed Pharmacother",
@@ -516,6 +525,14 @@
       "title": "Micro- and nanoplastics in the central nervous system: Transport pathways, neurotoxicity, and implications for brain disorders."
     },
     {
+      "first_author": "Yin D",
+      "journal": "Dev Neurobiol",
+      "matched_queries_count": 1,
+      "pmid": "42281150",
+      "pubdate": "2026 Jul",
+      "title": "A Randomized Controlled Trial of Yizhi Kaiqiao Formula Combined With Repetitive Transcranial Magnetic Stimulation on Neurocognitive and Social Outcomes in Presc"
+    },
+    {
       "first_author": "Burch K",
       "journal": "Neurosci Biobehav Rev",
       "matched_queries_count": 1,
@@ -660,6 +677,14 @@
       "title": "The gut-brain axis: role of gut microbiota in neurological disease pathogenesis and pharmacotherapeutics."
     },
     {
+      "first_author": "Avolio E",
+      "journal": "Neurosci Biobehav Rev",
+      "matched_queries_count": 1,
+      "pmid": "42176766",
+      "pubdate": "2026 Aug",
+      "title": "Neuronutrition in ASD: Involvement of gut microbiota, oxidative stress and inflammatory markers."
+    },
+    {
       "first_author": "Al-Salihy AAS",
       "journal": "J Neuroimmunol",
       "matched_queries_count": 1,
@@ -682,31 +707,7 @@
       "pmid": "41968733",
       "pubdate": "2026 Apr 7",
       "title": "Efficacy and Safety of Bumetanide in Children with Autism Spectrum Disorder: A Systematic Review and Meta-Analysis."
-    },
-    {
-      "first_author": "Liu W",
-      "journal": "Gut",
-      "matched_queries_count": 1,
-      "pmid": "41748159",
-      "pubdate": "2026 Apr 7",
-      "title": "Bacterial genomic structural variations in children with autism serve as diagnostic biomarkers."
-    },
-    {
-      "first_author": "Son JY",
-      "journal": "Nutrients",
-      "matched_queries_count": 1,
-      "pmid": "42124041",
-      "pubdate": "2026 Apr 30",
-      "title": "Gut-Derived Metabolic Imbalance in Autism Spectrum Disorder: Toward the Concept of a Metabolic Subtype."
-    },
-    {
-      "first_author": "Osredkar J",
-      "journal": "Int J Mol Sci",
-      "matched_queries_count": 1,
-      "pmid": "42123569",
-      "pubdate": "2026 Apr 29",
-      "title": "Microbiome-Derived Short-Chain Fatty Acids and Tryptophan Metabolites in Children with Autism Spectrum Disorder: A Stool-Urine Multi-Omics Analysis."
     }
   ],
-  "queue_size": 158
+  "queue_size": 161
 }
