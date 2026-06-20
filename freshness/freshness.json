@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-19T10:11:42+00:00",
+  "generated_at_utc": "2026-06-20T08:40:01+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-05-21T08:56:04+00:00",
-      "since": "2026-05-20T08:53:22+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 1,
@@ -297,6 +288,17 @@
       "since": "2026-06-18T10:04:16+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1091,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-20T08:40:01+00:00",
+      "since": "2026-06-19T10:11:42+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42176627"
+      ]
     }
   ],
   "queue_preview": [
@@ -509,6 +511,14 @@
       "title": "Internet Searches for Leucovorin, Folate, and Acetaminophen After a White House Autism Announcement."
     },
     {
+      "first_author": "Lee J",
+      "journal": "J Hazard Mater",
+      "matched_queries_count": 1,
+      "pmid": "42176627",
+      "pubdate": "2026 Jul 15",
+      "title": "Prenatal and early-life exposure to micro- and nanoplastics and autism-relevant neurodevelopment: An integrated review of human, experimental, and mechanistic e"
+    },
+    {
       "first_author": "Jing W",
       "journal": "Ecotoxicol Environ Saf",
       "matched_queries_count": 1,
@@ -691,15 +701,7 @@
       "pmid": "42034943",
       "pubdate": "2026 Aug",
       "title": "Exploring the links between nutrition, gut microbiome, and neurodevelopmental disorders."
-    },
-    {
-      "first_author": "Rehman AU",
-      "journal": "Rev Recent Clin Trials",
-      "matched_queries_count": 1,
-      "pmid": "41968733",
-      "pubdate": "2026 Apr 7",
-      "title": "Efficacy and Safety of Bumetanide in Children with Autism Spectrum Disorder: A Systematic Review and Meta-Analysis."
     }
   ],
-  "queue_size": 162
+  "queue_size": 163
 }
