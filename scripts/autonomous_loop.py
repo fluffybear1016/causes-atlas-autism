@@ -136,6 +136,21 @@ def step_drain_queue(dry: bool, max_papers: int) -> int:
             q.rename(archive / q.name)
     return 0
 
+def step_sfari(dry: bool) -> int:
+    """Run the SFARI integration suite on cadence (genes quarterly,
+    publications weekly, RSS daily, cohorts quarterly).
+
+    Per CLAUDE.md §24 verification protocol: this step only QUEUES verified
+    PMIDs and writes proposed CSVs to v2.0.1_proposed/. Nothing auto-promotes
+    to v2.0_scored/ — promotion gate is the human-approved --apply path on
+    integrate_genes.py / integrate_cohorts.py, run after diffing the deltas.
+    """
+    return run(
+        ["python3", "scripts/sfari/run_all.py"] + (["--dry-run"] if dry else []),
+        dry=False,  # run_all handles its own --dry-run flag
+        label="SFARI integration (genes / pubs / rss / cohorts on cadence)",
+    )
+
 def step_rescore(dry: bool) -> int:
     """Run the canonical scoring + Δ² pipeline."""
     return run(
@@ -168,7 +183,9 @@ def step_deploy(dry: bool) -> int:
 def one_cycle(args) -> int:
     log("─── cycle start ───")
     rc = step_discover(args.dry_run)
-    if rc != 0: log("discovery failed; continuing to drain whatever's queued")
+    if rc != 0: log("PubMed discovery failed; continuing to SFARI step")
+    rc = step_sfari(args.dry_run)
+    if rc != 0: log("SFARI step had errors; continuing to drain")
     rc = step_drain_queue(args.dry_run, args.max_papers)
     if rc != 0: log("queue drain had errors; continuing")
     rc = step_rescore(args.dry_run)

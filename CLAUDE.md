@@ -637,6 +637,74 @@ This rule applies to:
 
 Full protocol documented in `SESSION_4_HANNAH_POLING_SPEC.md` §24.
 
+## SFARI integration as tier-1 gene-layer backbone (post-2026-06-23)
+
+The atlas's gene layer is now backed by **SFARI Gene** (Simons Foundation
+Autism Research Initiative) as a canonical, autonomously-refreshed
+substrate. SFARI is Jim Simons' decades-long investment in autism
+genetics curation — the atlas builds on top of his infrastructure.
+
+**Four-script integration suite at `scripts/sfari/`:**
+
+| Script | Cadence | Source | What it does |
+|---|---|---|---|
+| `integrate_genes.py` | quarterly | `gene.sfari.org` CSV | Refresh sfari_score, ensembl_id, chromosome, genetic_category, syndromic flag, EAGLE score, n_reports per gene. Delta detection. Inbox stubs for new SFARI genes. |
+| `integrate_publications.py` | weekly | `/research/funded-publications/` | Scrape 2,288 SFARI-funded paper PMIDs, §24-verify, queue for ingestion. |
+| `integrate_rss.py` | daily | `thetransmitter.org/feed/` + `sfari.org/feed/` | Pull RSS, extract PMIDs from article bodies, §24-verify, queue. GUID-stable so WordPress slug edits don't re-ingest. |
+| `integrate_cohorts.py` | quarterly | curated Searchlight community list | Boost `confidence_score` by 0.03–0.05 for genes with active Simons Searchlight communities (~55 of 68 communities matched). Backlink Searchlight URL. |
+| `run_all.py` | daily entry | (orchestrator) | Cadence-aware dispatcher; called once per day from `autonomous_loop.py`. |
+
+**Verification protocol respected:** every PMID surfaced lands in
+`freshness/queue/` and gets §24-verified (PubMed esummary check) before
+`run_ingest.py` writes anything to `sources.csv`. Nothing auto-promotes
+to `v2.0_scored/` without human review — gene CSV refreshes write to
+`v2.0.1_proposed/sfari_genes_proposed.csv` and require explicit
+`--apply` to promote.
+
+**Calibration anchor preservation:** when SFARI score changes ripple
+(initial run found **218 changed scores** + 8 new genes between the
+atlas's 2026-04 snapshot and SFARI Q1+Q2 2026), `densify_gene_layer.py`
+re-runs the SFARI Tier 1+2 → HYP-0028 polygenic edges. Then
+`apply_patches_and_score.py` confirms INT-0001 Leucovorin CSRS ≥ 80
+before the pipeline continues. If calibration drifts, the autonomous
+loop halts and surfaces the regression.
+
+**Epistemic principle — SFARI silence is not a downweight signal.**
+SFARI's funding gradient concentrates on genetics + circuits + basic
+mechanism. Functional-medicine names central to the atlas (Frye,
+Naviaux, Adams, Rossignol, Walsh) are conspicuously absent from
+SFARI's funded-investigator list. Per CLAUDE.md §1 (mainstream
+consensus is one input, not authoritative): weight SFARI-funded papers
+tier-1 for their stated topics (rare-variant genetics, polygenic
+architecture, structural variation, sex differences, behavioral
+phenotyping) but **never use SFARI silence as a downweight** on
+contested hypotheses or the functional-medicine layer. SFARI's
+non-coverage of vaccines / microbiome / cerebral folate / mito
+biomarkers reflects institutional priorities and funding asymmetries,
+not the underlying biology. The atlas integrates SFARI as a tier-1
+gene layer while preserving Hannah Poling framework primacy.
+
+**Cohort scale brought into play:** SPARK (157,771 autistic individuals
+phenotyped, 106K WES, 12K WGS), Simons Searchlight (10,166 registered
+across 184 genes + 24 CNV loci, 83K surveys), SSC (the Simons Simplex
+Collection) — all behind credentialed-researcher access at SFARI Base,
+but publication corpus (~312 PMIDs from SPARK + Searchlight + 2,288
+total SFARI-funded) is fully ingestable through `integrate_publications.py`.
+
+**Δ² trajectory signals from SFARI's stated priorities:** quantitative
+behavioral phenotyping that survives heterogeneity, polygenic +
+structural genetic architecture with AI multi-modal integration (the
+2025 SFARI Director Award is literally called "AutismAtlas"), sex-
+differences biology + rare-NDD gene-first deep phenotyping. The atlas's
+Δ² engine should treat new SFARI-funded RFAs as advance trajectory
+indicators.
+
+**License:** SFARI declares underlying data public-domain with attribution
+requested for the curation layer. No CC license tag, no commercial-use
+restriction. Compatible with the atlas's PolyForm-NC + CC-BY-NC posture.
+Attribution string: `"SFARI Gene © Simons Foundation Autism Research
+Initiative. Source data public-domain; curation attributed."`
+
 ## Retention as a first-class design principle (post-2026-05-15)
 
 **Retention is the load-bearing metric for the consumer surface.** A
