@@ -1,0 +1,48 @@
+name: Deploy living graph to Pages
+
+# Replaces the legacy "Deploy from a branch" path, which fails because
+# the repo has thousands of files (versioned snapshots + vault/sources)
+# and the tar artifact exceeds Pages' size limit. This workflow uploads
+# ONLY the cinematic surface — living_graph.html — keeping the canonical
+# repo private structure-wise and the public deployment minimal.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'living_graph.html'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stage minimal _site
+        run: |
+          mkdir -p _site
+          cp living_graph.html _site/index.html
+          cp living_graph.html _site/living_graph.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
