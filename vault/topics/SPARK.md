@@ -3,115 +3,73 @@ id: TOPIC-SPARK
 type: research_cohort
 sponsor: simons_foundation
 url: https://sparkforautism.org
-cost: free
 last_updated: 2026-06-23
-audience: parent, clinician
+audience: parent, clinician, researcher
 ---
 
-# SPARK — Simons Foundation Powering Autism Research
+# SPARK
 
-**SPARK is the largest autism cohort study in the world.** It is free for
-any family with an autistic child to enroll, and the value proposition for
-the family is concrete: free Whole Exome Sequencing with clinical-grade
-variant interpretation returned by a board-certified genetic counselor.
+SPARK is the participant cohort of [[SFARI]]. As of mid-2026 it
+contains genotype and phenotype data from 157,771 autistic individuals
+plus 222,906 family members. Whole exome sequencing has been performed
+on 106,000+ samples; whole genome sequencing on 12,000+.
 
-## Why this is the lead test the atlas recommends
+## Structure
 
-- **Free.** WES costs $200–$1,000+ commercially. SPARK eats the cost
-  because they want the data for the cohort.
-- **Comprehensive.** ~20,000 protein-coding genes sequenced — including
-  every [[SFARI]] Tier 1 and Tier 2 autism-associated gene. Catches rare
-  and de novo variants where the bulk of monogenic autism signal lives.
-- **Clinical-grade.** CLIA-certified lab, ACMG variant classification,
-  genetic counselor consult included for any clinically actionable finding.
-- **Cohort-scale re-analysis.** When new gene associations are published
-  (which happens regularly via [[SFARI]] funded research and
-  [[The Transmitter]] coverage), your child's already-sequenced data is
-  re-analyzed against the new finding without additional cost or sample.
-- **Pipeline to [[Simons Searchlight]].** If your child's variant is in
-  one of the 184 Searchlight gene communities or 24 CNV loci, SPARK
-  connects you to the natural-history study and clinical-trial pipeline
-  for gene-targeted therapies (antisense oligos, AAV gene replacement,
-  selective small molecules).
-- **Trial matching.** Phase 1/2 gene-targeted trials are increasingly
-  using SPARK enrollment as a prerequisite. Enrolling now opens optionality
-  later.
+SPARK collects:
+- Saliva sample for genotyping
+- Standardized phenotype questionnaires (developmental history, medical
+  history, behavior measures)
+- Longitudinal follow-up surveys at family-defined intervals
 
-## Scale (verified 2026-06-23)
+Participants receive variant interpretation from a board-certified
+genetic counselor when a clinically actionable finding is identified
+(~10–15% diagnostic yield in autism cohorts of comparable design).
 
-- 157,771 autistic individuals enrolled
-- 222,906 family members participating
-- 424,819 individuals phenotyped
-- 106,000+ Whole Exome Sequencing samples
-- 12,000+ Whole Genome Sequencing samples (subset)
-- ~173 SPARK-driven publications to date
+## Eligibility
 
-## What the atlas does with SPARK results
+Any family with a child who has a professional autism diagnosis. The
+participant cost is zero; SFARI funds the sequencing, analysis, and
+counselor consult from the research budget.
 
-When you upload SPARK WES results to the atlas's intake (UPDATE MY DATA
-modal):
+Turnaround from sample submission to results is approximately 6–12 months
+— consistent with research-cohort sequencing timelines.
 
-1. Every gene with a variant is cross-referenced against the atlas's
-   1,564-gene SFARI-backed knowledge graph.
-2. Variants in [[SFARI]] Tier 1 or Tier 2 genes trigger weighted phenotype
-   matching against the 11 atlas phenotype subtypes.
-3. Active [[Simons Searchlight]] community matches are surfaced with direct
-   community URLs in the report.
-4. Atlas interventions ([[INT-0001]] Leucovorin through INT-0145) are
-   ranked by CSRS × phenotype match × gene-cluster overlap.
-5. The report flags safety contraindications (e.g. F5 carriers + estrogen
-   contraindication, MTHFR + folic acid caution).
-6. Generates an Obsidian-compatible markdown profile of your child.
+## How the atlas uses SPARK-returned results
 
-## The honest tradeoff
+When a SPARK report is uploaded to the atlas intake, the variants are
+cross-walked against the [[SFARI]] Gene database (refreshed quarterly
+via `scripts/sfari/integrate_genes.py`). Variants in SFARI Tier 1 or
+Tier 2 genes contribute to phenotype matching across the 11 atlas
+phenotype subtypes. Variants in genes with active [[Simons Searchlight]]
+communities surface the community URL in the report.
 
-SPARK is **slow** — 6 to 12 months from sample submission to results.
-For a family wanting the atlas's report immediately, the recommendation
-is to:
+The atlas does not run the sequencing pipeline; SPARK does. The atlas
+reads the result.
 
-1. **Enroll in SPARK today.** Sample collection happens at home; ship the
-   kit. Set it up and move on.
-2. **In parallel, order a fast test.** Either:
-   - Invitae Autism Spectrum Disorder panel ($250–400, insurance often
-     covers) — clinical-grade WES on the ~100 highest-confidence SFARI
-     genes, results in 2–4 weeks.
-   - Or 23andMe Health ($199, results in 4–6 weeks) for the
-     functional-medicine methylation panel (MTHFR, COMT, MAOA, GST)
-     while waiting for SPARK.
-3. **Order the FRAA test** ([[TEST-0014]]) — $200–400 from Religious
-   Sisters of Mercy / Iliad Neurosciences. Independent of any DNA test,
-   this is THE biomarker for predicting [[INT-0001]] Leucovorin response.
+## How the atlas uses SPARK as a research source
 
-When SPARK results return, re-upload to the atlas. The report updates.
+SPARK-driven publications (~173 to date) are cross-walked into
+`sources.csv` via `scripts/sfari/integrate_publications.py`. PMIDs are
+verified per the §24 PubMed esummary protocol before any source row is
+written. SPARK summary statistics are public; participant-level data is
+behind credentialed-researcher access at SFARI Base.
 
-## Enrollment process
+## Position in the atlas's test catalog
 
-1. Visit `sparkforautism.org`
-2. Confirm eligibility (autistic child with professional diagnosis)
-3. Complete online registration + electronic consent
-4. Receive saliva collection kit by mail
-5. Ship sample back
-6. Receive results 6–12 months later
-
-## Researcher-side note (for clinicians and FM doctors)
-
-SPARK data is also accessible to credentialed researchers via SFARI Base
-(institutional affiliation + IRB required; no solo-researcher path). For
-a functional medicine clinician, this means:
-
-- You cannot pull individual SPARK records.
-- But you CAN reference SPARK's published summary statistics for your
-  patient's gene cluster — most SPARK papers are cited in this atlas's
-  `sources.csv` via the [[SFARI integration]].
-- The atlas's autonomous SFARI integration pipeline pulls new SPARK
-  publications weekly and cross-walks PMIDs.
+SPARK is recorded as [[TEST-0134]] in the test catalog with cost field
+zeroed and turnaround of 180 days. It is one of multiple paths to whole
+exome sequencing data; clinical-grade WES via the [[TEST-0009]] path
+returns faster but at consumer or insurance cost. The atlas does not
+rank these against each other — both are categorized as comprehensive
+gene-level sequencing.
 
 ## Related vault pages
 
-- [[autism_testing_priority_ladder]] — full test ladder
-- [[SFARI]] — overview of the Simons Foundation Autism Research Initiative
-- [[Simons Searchlight]] — gene-specific communities + natural history
-- [[TEST-0009]] — Whole Exome Sequencing (clinical-grade paid path)
+- [[autism_testing_priority_ladder]] — tests grouped by what they reveal
+- [[SFARI]] — the parent research initiative
+- [[Simons Searchlight]] — gene-community natural history program
+- [[TEST-0009]] — clinical-grade whole exome sequencing
 - [[TEST-0014]] — FRAA test (the calibration-critical biomarker)
-- [[INT-0001]] — Leucovorin (the calibration anchor intervention)
+- [[INT-0001]] — Leucovorin (calibration anchor intervention)
 - [[Hannah Poling framework]] — central organizing principle

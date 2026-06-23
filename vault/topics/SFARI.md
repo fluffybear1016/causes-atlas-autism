@@ -1,7 +1,6 @@
 ---
 id: TOPIC-SFARI
 type: research_initiative
-founder: Jim Simons / Simons Foundation
 url: https://www.sfari.org
 integration_status: tier_1_backbone
 last_updated: 2026-06-23
@@ -10,118 +9,118 @@ audience: parent, clinician, researcher
 
 # SFARI — Simons Foundation Autism Research Initiative
 
-**SFARI is Jim Simons' decades-long investment in autism research.** The
-Causes Atlas integrates SFARI as a tier-1 gene-layer backbone — the
-1,277-gene curated database is auto-refreshed quarterly and forms the
-canonical genetic-evidence substrate for atlas reports.
+SFARI is a research initiative founded 2005 under the Simons Foundation,
+funded at approximately $78M/year, with $525M+ committed since inception.
+The atlas integrates SFARI as a tier-1 gene-evidence backbone. This page
+documents the integration, scope, and the epistemic constraints that
+apply.
 
-## The Simons thesis (and why it matters here)
+## SFARI Gene database
 
-Jim Simons founded Renaissance Technologies, widely considered the
-most successful quantitative hedge fund in history. He then turned the
-same systematic-evidence-aggregation discipline toward autism research
-through the Simons Foundation, founded 2003. SFARI launched 2005,
-funded at ~$78M/year, with $525M+ committed to date.
+A curated database of 1,277 genes graded for autism-association
+evidence (verified Q2 2026):
 
-The atlas builds *on top of* his infrastructure, not in competition with
-it. SFARI handles the gene-curation problem at scale; the atlas adds the
-individual-level functional-medicine layer SFARI institutionally doesn't
-cover.
-
-## What the atlas integrates from SFARI
-
-### Quarterly: SFARI Gene database
-1,277 genes graded for autism-association evidence:
-- **Tier 1:** High-confidence autism genes — clinical-grade evidence
-- **Tier 2:** Strong evidence — multiple replicating studies
-- **Tier 3:** Suggestive — emerging evidence
-- **Syndromic (S):** Genes whose disruption causes a syndromic disorder
-  that includes autism (e.g. [[SHANK3]] → Phelan-McDermid, [[MECP2]] →
-  Rett, [[TSC1]]/[[TSC2]] → tuberous sclerosis)
-
-New columns refreshed each quarter:
-- Ensembl ID (canonical)
-- Chromosome
-- Genetic category (multi-valued: rare single-gene; CNV; etc.)
-- Syndromic flag (separated from numeric tier)
-- **EAGLE score** (new Schaaf 2020 ClinGen-derived metric;
-  Limited <7 / Moderate 7–11 / Strong ≥12 / Definitive ≥12+replicated)
-- Number of reports (publication-count signal)
-
-Refresh script: `scripts/sfari/integrate_genes.py` — runs quarterly via
-the autonomous loop, surfaces deltas, gates on `--apply` for human review.
-
-### Weekly: SFARI-funded publications
-~2,288 SFARI-funded papers in the canonical publications database.
-Each new paper goes through §24 PubMed verification before landing in
-`sources.csv`. Script: `scripts/sfari/integrate_publications.py`.
-
-### Daily: The Transmitter + SFARI News RSS
-[[The Transmitter]] (rebranded from Spectrum News, 2024) covers autism
-research journalism. Daily ingestion extracts PMIDs from article bodies,
-§24-verifies, queues for atlas ingestion. Script: `scripts/sfari/integrate_rss.py`.
-
-### Quarterly: Simons Searchlight community map
-68 gene-specific and CNV-specific patient communities (~55 mapped to atlas
-genes). For each: NHS active status, approximate community size, partner
-foundation (when external). Boosts atlas `confidence_score` for genes
-with active community infrastructure. Script: `scripts/sfari/integrate_cohorts.py`.
-
-## Scale at a glance (verified 2026-06-23)
-
-| Resource | Size |
+| Tier | Meaning |
 |---|---|
-| SFARI Gene database | 1,277 graded genes (Q2 2026) |
-| SPARK enrollment | 157,771 autistic + 222,906 family members |
-| SPARK WES samples | 106,000+ |
-| SPARK WGS samples | 12,000+ |
-| Simons Searchlight | 10,166 registered across 184 genes + 24 CNVs |
-| SFARI-funded publications | 2,288 |
-| SFARI annual research budget | ~$78M |
-| SFARI total committed since 2006 | $525M+ |
-| Current SFARI investigators | 250+ |
+| 1 | High-confidence — multiple independent lines of evidence |
+| 2 | Strong — well-replicated |
+| 3 | Suggestive — emerging evidence |
+| S (Syndromic) | Disruption causes a syndromic disorder that includes autism (e.g. [[SHANK3]] → Phelan-McDermid, [[MECP2]] → Rett, [[TSC1]]/[[TSC2]] → tuberous sclerosis) |
 
-## Where SFARI focuses (and where it doesn't)
+The Q2 2026 release introduced the EAGLE scoring system — a Schaaf 2020
+ClinGen-derived metric with thresholds Limited <7, Moderate 7–11, Strong
+≥12, Definitive ≥12+replicated. Captured in the atlas as an orthogonal
+evidence axis.
 
-SFARI funds aggressively in: rare-variant genetics, polygenic
-architecture, structural variation, sex differences, quantitative
-behavioral phenotyping, basic circuit mechanism. The 2025 Director Award
-is literally called "AutismAtlas" — they are building genetic-atlas
-infrastructure adjacent to ours.
+Refresh cadence: quarterly. Script: `scripts/sfari/integrate_genes.py`.
 
-SFARI's funding gradient does **not** cover (and the atlas's CLAUDE.md §1
-explicitly handles this asymmetry): cerebral folate deficiency,
-mitochondrial biomarkers, methylation cycle interventions, microbiome
-treatments, contested-hypothesis territories (vaccines, aluminum
-adjuvants, hep B birth-dose), functional medicine clinicians like Frye,
-Naviaux, Walsh, Adams, Rossignol.
+## SFARI-funded publications
 
-**Critical epistemic principle:** SFARI silence on a topic is NOT a
-downweight signal. SFARI's non-coverage of leucovorin / mito cocktails /
-MTHFR functional impact reflects institutional priorities and funding
-asymmetries — not the underlying biology. The atlas integrates SFARI as
-a tier-1 gene-evidence backbone while preserving the [[Hannah Poling framework]]
-primacy for individual-level decisions.
+A canonical database of approximately 2,288 papers funded by SFARI
+grants. The atlas's autonomous loop scrapes the index weekly, extracts
+PMIDs, verifies each via PubMed esummary (per §24), and queues for
+ingestion into `sources.csv`. Script:
+`scripts/sfari/integrate_publications.py`.
 
-## What this means for a family
+## The Transmitter
 
-A child with a SFARI Tier 1 gene variant (e.g. SYNGAP1, SCN2A, STXBP1,
-CHD8, ADNP) likely has access to:
-1. A specific [[Simons Searchlight]] community
-2. An active gene-specific natural-history study
-3. A potential Phase 1/2 gene-targeted trial in the pipeline
-4. Higher-confidence atlas intervention recommendations
+[[The Transmitter]] (rebranded from Spectrum News, 2024) is SFARI's
+science journalism arm. The atlas pulls the sitewide RSS feed daily,
+filters for the `/spectrum/` autism vertical, and extracts PMIDs from
+article bodies for verification + ingestion. Script:
+`scripts/sfari/integrate_rss.py`.
 
-A child with a SFARI Tier 2 gene gets the same atlas weighting boost but
-may not yet have an active community. A child with no SFARI-graded
-variants still gets the atlas's phenotype-stratified intervention
-recommendations — the genetics layer is one input, not the only input.
+## SFARI participant cohorts
+
+| Cohort | Scope |
+|---|---|
+| [[SPARK]] | 157,771 autistic individuals + family; broadest enrollment |
+| Simons Simplex Collection (SSC) | Smaller, deeply phenotyped families; dbGaP companion phs000298 |
+| [[Simons Searchlight]] | 10,166 registered across 184 specific genes + 24 CNV loci; gene-specific natural-history program |
+
+Participant-level data sits behind credentialed-researcher access at
+SFARI Base. Public summary statistics and the publication corpus are
+fully ingestable.
+
+## Epistemic constraint: SFARI silence is not a downweight signal
+
+SFARI funds genetics, circuits, and basic mechanism aggressively. Per
+the funded-investigator audit (`outputs/sfari_publications_map.md`),
+functional-medicine researchers central to the atlas — Frye, Naviaux,
+Adams, Rossignol, Walsh — are absent from SFARI's investigator list.
+SFARI does not fund work on cerebral folate deficiency, mitochondrial
+biomarkers, methylation cycle interventions, microbiome treatments, or
+contested hypotheses (vaccines, aluminum adjuvants, hep B birth-dose).
+
+Per CLAUDE.md §1 (mainstream consensus is one input, not authoritative)
+and §2 (primary documents > secondary literature): SFARI-funded papers
+are weighted tier-1 for their stated topics (rare-variant genetics,
+polygenic architecture, structural variation, sex differences,
+quantitative behavioral phenotyping). SFARI silence on a topic — vaccine
+safety in mitochondrially-vulnerable subsets, leucovorin response in
+FOLR1-AA-positive children, mast cell activation, glutathione status —
+does NOT downweight that topic. Funding asymmetries are not evidence.
+
+The atlas integrates SFARI as a tier-1 gene layer while preserving the
+[[Hannah Poling framework]] as the central organizing principle for
+individual-level decisions.
+
+## SFARI's stated research priorities (Δ² trajectory signals)
+
+Per the funded-RFA audit (Q2 2026):
+1. Quantitative behavioral and circuit phenotyping that survives
+   heterogeneity
+2. Polygenic and structural genetic architecture with AI-integrated
+   multi-modal analysis (the 2025 SFARI Director Award is titled
+   "AutismAtlas")
+3. Sex-differences biology and rare-NDD gene-first deep phenotyping
+
+These are forward indicators for where SFARI-funded evidence will
+accelerate. The atlas's Δ² engine treats RFA-aligned topics as
+trajectory-positive even before the publications land.
+
+## Integration scripts
+
+| Script | Cadence | What it does |
+|---|---|---|
+| `scripts/sfari/integrate_genes.py` | quarterly | Refreshes SFARI Gene database; delta detection; Discoveries_Inbox stubs for new genes |
+| `scripts/sfari/integrate_publications.py` | weekly | Scrapes funded-publications index; verifies PMIDs; queues for ingestion |
+| `scripts/sfari/integrate_rss.py` | daily | Pulls Transmitter + SFARI feeds; extracts PMIDs; verifies; queues |
+| `scripts/sfari/integrate_cohorts.py` | quarterly | Cross-walks [[Simons Searchlight]] community list to gene confidence weighting |
+| `scripts/sfari/run_all.py` | daily entry point | Cadence-aware orchestrator invoked by `autonomous_loop.py` |
+
+## License and attribution
+
+SFARI declares underlying data public-domain with attribution requested
+for the curation layer. Compatible with the atlas's PolyForm-NC + CC-BY-NC
+licensing. Attribution string: `"SFARI Gene © Simons Foundation Autism
+Research Initiative. Source data public-domain; curation attributed."`
 
 ## Related vault pages
 
-- [[autism_testing_priority_ladder]] — recommended test sequence
-- [[SPARK]] — the free WES enrollment program
-- [[Simons Searchlight]] — gene-community / natural history overview
-- [[The Transmitter]] — SFARI's journalism arm (research news)
-- [[Hannah Poling framework]] — atlas's central organizing principle
-- [[CLAUDE]] — the 11 epistemic principles
+- [[autism_testing_priority_ladder]]
+- [[SPARK]]
+- [[Simons Searchlight]]
+- [[The Transmitter]]
+- [[Hannah Poling framework]]
+- [[CLAUDE]]
