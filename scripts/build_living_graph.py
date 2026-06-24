@@ -1899,7 +1899,7 @@ HTML = r"""<!doctype html>
 
 <div class="map-caption" id="map-caption">
   <div class="map-caption-text">
-    Every peer-reviewed paper, every gene mapped to autism, every federal record, every clinical trial, every parent observation — weighted, connected, scored, refreshed daily.
+    Every peer-reviewed paper, every gene mapped to autism, every federal record, every clinical trial, every Reddit thread, every X post — weighted, connected, scored, refreshed daily.
   </div>
 </div>
 
