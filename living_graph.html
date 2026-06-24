@@ -29,6 +29,83 @@
   canvas { display: block; position: absolute; inset: 0;
            width: 100%; height: 100%; cursor: crosshair; }
 
+  /* ── WELCOME STATE — one sentence, one button, nothing else ──── */
+  .welcome {
+    position: fixed; inset: 0; z-index: 30;
+    background: radial-gradient(ellipse at center,
+                  rgba(8,11,18,0.92) 0%, rgba(5,8,16,0.98) 100%);
+    backdrop-filter: blur(2px);
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: auto;
+    opacity: 1; transition: opacity 800ms ease;
+  }
+  .welcome.off { opacity: 0; pointer-events: none; }
+  .welcome-inner {
+    text-align: center; max-width: 620px;
+    padding: 0 28px;
+    transform: translateY(-3vh);
+  }
+  .welcome-eyebrow {
+    font-family: ui-serif, "Iowan Old Style", Garamond, serif;
+    font-size: 11px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--text-mute);
+    margin-bottom: 36px;
+    animation: fadeUp 1200ms ease 200ms backwards;
+  }
+  .welcome-hero {
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Garamond, serif;
+    font-size: clamp(26px, 4.2vw, 46px);
+    line-height: 1.22; letter-spacing: -0.012em;
+    color: var(--text);
+    margin-bottom: 52px;
+    animation: fadeUp 1400ms ease 500ms backwards;
+  }
+  .welcome-cta {
+    background: transparent;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-family: ui-serif, Garamond, serif;
+    font-size: 13px; letter-spacing: 0.34em;
+    text-transform: uppercase;
+    padding: 16px 42px; cursor: pointer;
+    transition: background 400ms, color 400ms, border-color 400ms,
+                padding 400ms;
+    animation: fadeUp 1500ms ease 900ms backwards;
+  }
+  .welcome-cta:hover {
+    background: rgba(232, 196, 110, 0.06);
+    color: var(--text);
+    border-color: var(--gold);
+    padding: 16px 52px;
+  }
+  .welcome-cta:focus { outline: none; border-color: var(--gold); }
+  .welcome-skip {
+    display: block; margin-top: 28px;
+    font-family: ui-serif, Garamond, serif; font-size: 12px;
+    color: var(--text-vmute); font-style: italic;
+    text-decoration: none; cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: color 300ms;
+    animation: fadeUp 1700ms ease 1200ms backwards;
+  }
+  .welcome-skip:hover { color: var(--text-mute); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  /* When welcome is on, hide all the chrome so the parent sees one thing */
+  body.welcome-active .overlay,
+  body.welcome-active .dock,
+  body.welcome-active .start-dock,
+  body.welcome-active .view-report,
+  body.welcome-active .upload-btn,
+  body.welcome-active #upload-btn,
+  body.welcome-active .mobile-dock-btn,
+  body.welcome-active .legend,
+  body.welcome-active .manifesto { display: none !important; }
+  /* Canvas still renders but dimmer behind the welcome */
+  body.welcome-active canvas { opacity: 0.30; }
+
   /* error overlay — only shown if something throws */
   .err { position: fixed; top: 50%; left: 50%;
          transform: translate(-50%, -50%); z-index: 100;
@@ -990,6 +1067,24 @@
 </head>
 <body>
 
+<!-- ── WELCOME STATE — first-visit only ────────────────────────────
+     Honors the Jobs/Ive principle of one thing per moment. A parent
+     opening this on a 10-minute break sees one sentence and one button,
+     not 15 competing UI elements. Dismissed by Begin (opens intake) or
+     by Skip (reveals the full atlas). Auto-dismissed if the user has
+     prior data in localStorage. -->
+<div class="welcome on" id="welcome">
+  <div class="welcome-inner">
+    <div class="welcome-eyebrow">Causes Atlas · Autism</div>
+    <div class="welcome-hero">
+      A second opinion for your child,<br>
+      drawn from the evidence.
+    </div>
+    <button class="welcome-cta" id="welcome-begin">Begin</button>
+    <a class="welcome-skip" id="welcome-skip" tabindex="0">or explore the map →</a>
+  </div>
+</div>
+
 <!-- ghost manifesto behind the graph -->
 <div class="manifesto">
   <div class="manifesto-inner">
@@ -1247,6 +1342,50 @@
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"
         crossorigin="anonymous"></script>
 <script>
+// ── WELCOME STATE — first-visit gate ─────────────────────────────
+// Activate welcome ONLY if the user has no prior data uploaded AND
+// hasn't explicitly chosen to explore the map before. Otherwise skip
+// straight to the atlas — returning users don't see the welcome again.
+(function () {
+  const hasGenetics  = !!localStorage.getItem('cwa_genetics_v1');
+  const hasBiomarker = !!localStorage.getItem('cwa_biomarkers_v1');
+  const dismissed    = !!localStorage.getItem('cwa_welcome_dismissed_v1');
+  const welcomeEl    = document.getElementById('welcome');
+  if (!welcomeEl) return;
+  if (hasGenetics || hasBiomarker || dismissed) {
+    // returning user — skip welcome immediately
+    welcomeEl.classList.add('off');
+    welcomeEl.style.display = 'none';
+    document.body.classList.remove('welcome-active');
+    return;
+  }
+  document.body.classList.add('welcome-active');
+  function dismiss(openIntake) {
+    welcomeEl.classList.add('off');
+    document.body.classList.remove('welcome-active');
+    localStorage.setItem('cwa_welcome_dismissed_v1', '1');
+    setTimeout(() => { welcomeEl.style.display = 'none'; }, 850);
+    if (openIntake) {
+      // give the transition a beat, then open the UPDATE MY DATA intake
+      setTimeout(() => {
+        const intakeBtn = document.getElementById('upload-btn');
+        if (intakeBtn) intakeBtn.click();
+      }, 900);
+    }
+  }
+  document.getElementById('welcome-begin').addEventListener('click', () => dismiss(true));
+  document.getElementById('welcome-skip').addEventListener('click', () => dismiss(false));
+  document.getElementById('welcome-skip').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dismiss(false); }
+  });
+  // Allow Escape to skip
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('welcome-active')) {
+      dismiss(false);
+    }
+  });
+})();
+
 window.addEventListener('error', (e) => {
   const el = document.getElementById('err');
   el.textContent = '⚠ ' + (e.message || e.error || 'script error') +
