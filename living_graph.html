@@ -47,9 +47,10 @@
   .map-caption.hidden{ opacity: 0;    transition-delay: 0ms; pointer-events: none; }
   .map-caption-text {
     font-family: ui-serif, "Iowan Old Style", Garamond, serif;
-    font-size: 13px; line-height: 1.55;
-    color: var(--text-mute); font-style: italic;
-    letter-spacing: 0.01em;
+    font-size: 15px; line-height: 1.55;
+    color: var(--text); font-style: italic;
+    letter-spacing: 0.005em;
+    text-shadow: 0 0 14px rgba(5,8,16,0.85);
   }
   .map-caption-action {
     color: var(--gold); font-style: normal;
@@ -1529,11 +1530,10 @@
   });
 })();
 
-// ── MAP CAPTION — fades in after welcome dismissed; dims on engagement ──
+// ── MAP CAPTION — fades in after welcome dismissed, stays visible ──
 (function () {
   const cap = document.getElementById('map-caption');
   if (!cap) return;
-  // Show after welcome state dismisses (delayed via CSS transition)
   const showCaption = () => {
     if (!document.body.classList.contains('welcome-active')) {
       cap.classList.add('ready');
@@ -1542,21 +1542,6 @@
     }
   };
   setTimeout(showCaption, 200);
-  // Hide on meaningful user interaction
-  const dim = () => {
-    cap.classList.add('dim');
-    setTimeout(() => cap.classList.add('hidden'), 3000);
-  };
-  ['click', 'wheel', 'touchstart', 'keydown'].forEach(ev => {
-    document.addEventListener(ev, function dimOnce() {
-      // Don't dim if the welcome state is still active
-      if (document.body.classList.contains('welcome-active')) return;
-      dim();
-      document.removeEventListener(ev, dimOnce);
-    }, { once: false, passive: true });
-  });
-  // Auto-dim after 12 seconds even without interaction
-  setTimeout(() => { if (!cap.classList.contains('hidden')) dim(); }, 12000);
 })();
 
 window.addEventListener('error', (e) => {
