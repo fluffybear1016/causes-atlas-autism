@@ -1050,6 +1050,30 @@ HTML = r"""<!doctype html>
     margin-bottom: 6px;
   }
   .action-card .ac-content .item:last-child { margin-bottom: 0; }
+  /* Connected-node chips inside the generic node card —
+     teach the user the navigation pattern: click a chip to jump. */
+  .action-card .ac-rowval {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    align-items: flex-start;
+  }
+  .action-card .ac-chip {
+    background: transparent;
+    border: 1px solid var(--line-hi);
+    color: var(--text);
+    font: inherit; font-size: 12px; line-height: 1.3;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: color 180ms, border-color 180ms, background 180ms;
+    text-align: left;
+  }
+  .action-card .ac-chip:hover {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+    background: rgba(232,196,110,0.06);
+  }
+  .action-card .ac-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
   .action-card .ac-close {
     position: absolute; top: 12px; right: 16px;
     background: transparent; border: none;
@@ -2405,18 +2429,33 @@ setTimeout(spawnIngestEvent, 2800);
 
 // ── hover ──────────────────────────────────────────────────────────
 let hover = null;
+let hoverNeighborIds = new Set();   // 1-hop neighbor IDs of currently-hovered node
 const hoverEl = document.getElementById('hover');
 canvas.addEventListener('mousemove', (e) => {
   if (dragStart) { hoverEl.style.opacity = 0; return; }
   const mx = (e.clientX - W/2 - ox) / scale;
   const my = (e.clientY - H/2 - oy) / scale;
-  let best = null, bd = 15*15;
+  // Larger hover hit-radius (28px) — was 15px which made dots feel unhittable
+  let best = null, bd = 28*28;
   for (const n of nodes) {
+    if (n.t === 'S') continue;
     const dx = n.x - mx, dy = n.y - my;
     const r = n.s + 4, d2 = dx*dx + dy*dy;
-    if (d2 < r*r + 14 && d2 < bd) { bd = d2; best = n; }
+    if (d2 < r*r + 60 && d2 < bd) { bd = d2; best = n; }
   }
-  hover = best;
+  // Recompute neighbor set only when hover target changes
+  if (best !== hover) {
+    hover = best;
+    hoverNeighborIds = new Set();
+    if (best) {
+      for (const l of links) {
+        if (l.source === best) hoverNeighborIds.add(l.target.id);
+        else if (l.target === best) hoverNeighborIds.add(l.source.id);
+      }
+    }
+    // Pointer cursor when over a clickable node — teaches affordance
+    canvas.style.cursor = best ? 'pointer' : 'crosshair';
+  }
   if (best && best.t !== 'G') {
     const typeLabel = ({
       H:'Hypothesis', M:'Mechanism', I:'Intervention',
@@ -2881,6 +2920,93 @@ function clearReveal() {
 }
 window.clearReveal = clearReveal;
 
+// Generic action card for any non-phenotype/non-test node — surfaces the
+// node's identity + a list of 1-hop neighbors as clickable chips so the
+// parent learns the navigation pattern by example.
+function revealForNode(node) {
+  if (!node) { acEl.classList.remove('on'); return; }
+  const TYPE_LABEL = {H:'Hypothesis', M:'Mechanism', I:'Intervention',
+                      B:'Biomarker', P:'Phenotype', G:'Gene',
+                      C:'Combination', R:'Peptide', T:'Test', S:'Source'};
+  const typeLabel = TYPE_LABEL[node.t] || 'Node';
+
+  // 1-hop neighbors, sorted by atlas signal weight × neighbor centrality
+  const neighbors = [];
+  const seen = new Set();
+  for (const l of links) {
+    let other = null;
+    if (l.source === node || (l.source && l.source.id === node.id)) other = l.target;
+    else if (l.target === node || (l.target && l.target.id === node.id)) other = l.source;
+    if (!other || seen.has(other.id) || other.t === 'G' || other.t === 'S') continue;
+    seen.add(other.id);
+    neighbors.push({n: other, w: (l.w || 0.5)});
+  }
+  neighbors.sort((a, b) => (b.w * (b.n.s || 1)) - (a.w * (a.n.s || 1)));
+  const top = neighbors.slice(0, 14);
+
+  // Group connected nodes by type so the card has structure
+  const byType = {};
+  for (const {n} of top) {
+    const t = TYPE_LABEL[n.t] || 'Other';
+    if (!byType[t]) byType[t] = [];
+    byType[t].push(n);
+  }
+
+  // Build the card HTML
+  let html = '<button class="ac-close" onclick="clearReveal();">×</button>';
+  html += '<div class="ac-name">' + (node.l || node.id) + '</div>';
+  html += '<div class="ac-pe"><span class="ac-pe-id">' + node.id + '</span>' +
+          ' · ' + typeLabel + '</div>';
+
+  // Per-type extras: CSRS for interventions, etc.
+  if (node.t === 'I') {
+    const csrs = (node.sc !== undefined && parseFloat(node.sc) > 0)
+      ? '<span class="pill gold">CSRS ' + parseFloat(node.sc).toFixed(1) + '</span>' : '';
+    const cat = node.c ? '<span class="pill">' + node.c + '</span>' : '';
+    if (csrs || cat) html += '<div class="ac-tags" style="margin:8px 0 6px;">' + csrs + cat + '</div>';
+  }
+
+  // Connected nodes grouped by type, each is a clickable chip
+  const order = ['Hypothesis', 'Mechanism', 'Intervention', 'Phenotype',
+                 'Biomarker', 'Combination', 'Test', 'Peptide'];
+  let hasChips = false;
+  for (const t of order) {
+    const list = byType[t];
+    if (!list || !list.length) continue;
+    hasChips = true;
+    html += '<div class="ac-row"><div class="ac-label">' + t + '</div>' +
+            '<div class="ac-rowval">';
+    for (const nb of list) {
+      html += '<button class="ac-chip" data-nid="' + nb.id + '">' +
+              (nb.l || nb.id) + '</button>';
+    }
+    html += '</div></div>';
+  }
+  if (!hasChips) {
+    html += '<div class="ac-pe" style="opacity:0.7;margin-top:12px;">' +
+            'No direct atlas connections from this node yet.</div>';
+  }
+
+  acEl.innerHTML = html;
+  acEl.classList.add('on');
+  revealedPhenotype = node;  // reuse the dismiss state
+
+  // Wire chip clicks → jump + open that node's card
+  acEl.querySelectorAll('.ac-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const nid = btn.getAttribute('data-nid');
+      const target = nodes.find(n => n.id === nid);
+      if (!target) return;
+      focusNode(nid);
+      setTimeout(() => {
+        if (target.t === 'P')      revealForPhenotype(target);
+        else if (target.t === 'T') renderActionCardForTest(target);
+        else                       revealForNode(target);
+      }, 320);
+    });
+  });
+}
+
 canvas.addEventListener('click', (e) => {
   // Bail if we're in the middle of a drag (don't conflate pan-end with click)
   if (dragStart && (Math.abs(e.clientX - dragStart.startX) > 4 ||
@@ -2889,28 +3015,31 @@ canvas.addEventListener('click', (e) => {
   }
   const mx = (e.clientX - W/2 - ox) / scale;
   const my = (e.clientY - H/2 - oy) / scale;
-  let best = null, bd = 18*18;
+  // Bigger hit target (30px) — was 18px which was too small for confident clicks
+  let best = null, bd = 30*30;
   for (const n of nodes) {
+    if (n.t === 'S') continue;  // sources aren't clickable atoms
     const dx = n.x - mx, dy = n.y - my;
     const d2 = dx*dx + dy*dy;
     if (d2 < bd) { bd = d2; best = n; }
   }
-  if (best && best.t === 'P') {
-    if (revealedPhenotype && revealedPhenotype.id === best.id) {
-      clearReveal();   // click same phenotype again to dismiss
-    } else {
-      revealForPhenotype(best);
-    }
-  } else if (best && best.t === 'T') {
-    // Click a test node on the map → open test action card (interventions,
-    // foundation, what-to-do-with-result)
-    if (revealedPhenotype && revealedPhenotype.id === best.id) {
-      clearReveal();
-    } else {
-      renderActionCardForTest(best);
-    }
-  } else if (!best) {
-    clearReveal();   // click empty space to dismiss
+  if (!best) {
+    clearReveal();
+    return;
+  }
+  // Click same node twice to dismiss
+  if (revealedPhenotype && revealedPhenotype.id === best.id) {
+    clearReveal();
+    return;
+  }
+  if (best.t === 'P') {
+    revealForPhenotype(best);
+  } else if (best.t === 'T') {
+    renderActionCardForTest(best);
+  } else {
+    // Every other node type — hypothesis, mechanism, intervention, biomarker,
+    // combination, peptide, gene — now opens a generic card with neighbors.
+    revealForNode(best);
   }
 });
 
@@ -3083,10 +3212,23 @@ function draw(now) {
     } else {
       alpha = 0.04 + l.w * 0.32;
     }
+    // Hover state: brighten the 1-hop edges of the hovered node, dim others
+    const touchesHover = hover && (s === hover || t === hover);
+    if (hover && !touchesHover) {
+      alpha *= 0.20;
+    } else if (touchesHover) {
+      alpha = Math.max(alpha, 0.85);
+    }
     // edges inside filtered set are warm gold; outside are cool/dim white
-    if (isFiltering && sa && ta) {
+    // hovered edges are warm gold to match the focus signal
+    if (touchesHover) {
+      ctx.lineWidth = 1.4 / scale;
+      ctx.strokeStyle = `rgba(232,196,110,${alpha})`;
+    } else if (isFiltering && sa && ta) {
+      ctx.lineWidth = 0.7 / scale;
       ctx.strokeStyle = `rgba(232,196,110,${alpha})`;
     } else {
+      ctx.lineWidth = 0.7 / scale;
       ctx.strokeStyle = `rgba(240,235,220,${alpha})`;
     }
     ctx.beginPath();
@@ -3203,18 +3345,38 @@ function draw(now) {
     else             alpha = (n.t === 'G' ? 0.58 : 0.96);
     if (hover === n) alpha = 1.0;
 
+    // Dramatic hover: if anything is hovered, dim every non-neighbor node.
+    // The eye instantly sees the focused node + its 1-hop connections.
+    if (hover && hover !== n && !hoverNeighborIds.has(n.id)) {
+      alpha *= 0.18;
+    } else if (hover && hoverNeighborIds.has(n.id)) {
+      alpha = Math.max(alpha, 1.0);
+    }
+
+    // Hovered node grows visibly so the parent SEES which one they're on.
+    const drawR = (hover === n) ? n.s * 1.85 + 1.5 : n.s;
+
     if (n.t !== 'G') {
-      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.s + 5);
+      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, drawR + 6);
       g.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},${alpha*0.32})`);
       g.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
       ctx.fillStyle = g;
-      ctx.beginPath(); ctx.arc(n.x, n.y, n.s+5, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(n.x, n.y, drawR+6, 0, Math.PI*2); ctx.fill();
     }
 
     ctx.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},${alpha})`;
     ctx.beginPath();
-    ctx.arc(n.x, n.y, n.s, 0, Math.PI*2);
+    ctx.arc(n.x, n.y, drawR, 0, Math.PI*2);
     ctx.fill();
+
+    // White stroke ring around the hovered node for unmissable focus
+    if (hover === n) {
+      ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+      ctx.lineWidth = 1.6/scale;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, drawR + 2.5, 0, Math.PI*2);
+      ctx.stroke();
+    }
 
     // gold ring on INT-0001 — the calibration anchor, always findable
     if (n.k === 'INT-0001') {
