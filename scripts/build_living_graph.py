@@ -1759,91 +1759,34 @@ HTML = r"""<!doctype html>
     .hover-label { display: none !important; }
   }
 
-  /* ─── Welcome state overlay (first-visit gate) ───────────────────── */
-  .welcome {
-    position: fixed; inset: 0; z-index: 9000;
-    display: none;
-    background: radial-gradient(ellipse at center,
-      rgba(8,11,18,0.92) 0%,
-      rgba(5,8,16,0.98) 100%);
-    align-items: center; justify-content: center;
-    opacity: 0;
-    transition: opacity 700ms ease;
-  }
-  .welcome.on {
-    display: flex;
-    opacity: 1;
-  }
-  .welcome.fading {
-    opacity: 0;
-    pointer-events: none;
-  }
-  .welcome-inner {
+  /* ─── Persistent top-of-page hero header ─────────────────────────── */
+  .page-hero {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 25; pointer-events: none;
+    padding: 36px 24px 22px;
     text-align: center;
-    max-width: 640px;
-    padding: 0 32px;
+    background: linear-gradient(to bottom,
+      rgba(5,8,16,0.78) 0%,
+      rgba(5,8,16,0.55) 60%,
+      rgba(5,8,16,0) 100%);
   }
-  .welcome-eyebrow {
-    font-family: ui-monospace, monospace;
-    font-size: 10px; letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: w-fadeUp 1100ms ease 200ms forwards;
-  }
-  .welcome-hero {
+  .page-hero-text {
     font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, serif;
-    font-size: 34px; line-height: 1.32;
+    font-size: clamp(20px, 2.4vw, 30px);
+    line-height: 1.30; letter-spacing: -0.005em;
     color: var(--text);
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: w-fadeUp 1300ms ease 500ms forwards;
+    text-shadow: 0 0 18px rgba(5,8,16,0.85);
+    max-width: 880px; margin: 0 auto;
+    animation: ph-fadeIn 1100ms ease 200ms backwards;
   }
-  .welcome-cta {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--text);
-    font: inherit;
-    font-size: 12px; letter-spacing: 0.32em;
-    text-transform: uppercase;
-    padding: 13px 38px;
-    cursor: pointer;
-    transition: background 200ms, color 200ms, border-color 200ms;
-    opacity: 0;
-    animation: w-fadeUp 1100ms ease 900ms forwards;
-  }
-  .welcome-cta:hover {
-    background: rgba(207, 168, 87, 0.06);
-    color: var(--gold);
-  }
-  .welcome-skip {
-    display: block;
-    margin-top: 22px;
-    color: var(--text-mute);
-    font-size: 11px; letter-spacing: 0.16em;
-    text-decoration: none;
-    cursor: pointer;
-    opacity: 0;
-    animation: w-fadeUp 1100ms ease 1200ms forwards;
-    transition: color 200ms;
-  }
-  .welcome-skip:hover { color: var(--text); }
-  @keyframes w-fadeUp {
-    from { opacity: 0; transform: translateY(8px); }
+  @keyframes ph-fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  body.welcome-active .overlay,
-  body.welcome-active .dock,
-  body.welcome-active .start-dock,
-  body.welcome-active .view-report,
-  body.welcome-active .upload-btn,
-  body.welcome-active #upload-btn,
-  body.welcome-active .mobile-dock-btn,
-  body.welcome-active .legend,
-  body.welcome-active .manifesto,
-  body.welcome-active .map-caption { display: none !important; }
-  body.welcome-active canvas { opacity: 0.30; }
+  @media (max-width: 720px) {
+    .page-hero { padding: 22px 16px 16px; }
+    .page-hero-text { font-size: 16px; }
+  }
 
   /* ─── Map caption (post-welcome single-line) ──────────────────────── */
   .map-caption {
@@ -1876,14 +1819,11 @@ HTML = r"""<!doctype html>
 </head>
 <body>
 
-<!-- Welcome state overlay: first-visit gate -->
-<div class="welcome on" id="welcome">
-  <div class="welcome-inner">
-    <div class="welcome-eyebrow">Causes Atlas · Autism</div>
-    <div class="welcome-hero">A second opinion for your child,<br>drawn from the evidence.</div>
-    <button class="welcome-cta" id="welcome-begin">Begin</button>
-    <a class="welcome-skip" id="welcome-skip" tabindex="0">or explore the map →</a>
-  </div>
+<!-- Persistent hero header at top of homepage. No gate, no Begin button —
+     the parent lands directly on the map and reads this once at the top.
+     The hero stays for the session as ambient context. -->
+<div class="page-hero" id="page-hero">
+  <div class="page-hero-text">A second opinion for your child, drawn from the evidence.</div>
 </div>
 
 <!-- ghost manifesto behind the graph -->
@@ -6081,69 +6021,17 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
 </script>
 
 <script>
-// Welcome state + map caption — runs after main IIFE; preserved by build script.
+// Map caption — no gate, no Begin, no auto-modal. The parent lands on
+// the map directly. The persistent page-hero header at the top of the
+// page is the first thing they read.
 (function () {
   'use strict';
-
-  const welcomeEl = document.getElementById('welcome');
-  const beginBtn  = document.getElementById('welcome-begin');
-  const skipBtn   = document.getElementById('welcome-skip');
-
-  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-
-  const HAS_GEN  = !!lsGet('cwa_genetics_v1');
-  const HAS_BIO  = !!lsGet('cwa_biomarkers_v1');
-  const HAS_DISM = !!lsGet('cwa_welcome_dismissed_v1');
-  const isFirstVisit = !HAS_GEN && !HAS_BIO && !HAS_DISM;
-
   function startMapCaption(delay) {
     const cap = document.getElementById('map-caption');
     if (!cap) return;
-    // Fade in and stay — no auto-dim, no auto-hide. The caption holds
-    // for the entire session.
     setTimeout(() => cap.classList.add('ready'), delay || 200);
   }
-
-  function dismissWelcome(setDismissedFlag) {
-    if (!welcomeEl) return;
-    welcomeEl.classList.add('fading');
-    welcomeEl.classList.remove('on');
-    document.body.classList.remove('welcome-active');
-    if (setDismissedFlag) lsSet('cwa_welcome_dismissed_v1', '1');
-    setTimeout(() => { welcomeEl.style.display = 'none'; }, 700);
-    startMapCaption(200);
-  }
-
-  if (isFirstVisit && welcomeEl) {
-    document.body.classList.add('welcome-active');
-
-    if (beginBtn) {
-      beginBtn.addEventListener('click', () => {
-        dismissWelcome(true);
-        setTimeout(() => {
-          const ub = document.getElementById('upload-btn');
-          if (ub && typeof ub.click === 'function') ub.click();
-        }, 900);
-      });
-    }
-
-    if (skipBtn) {
-      skipBtn.addEventListener('click', () => dismissWelcome(true));
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && welcomeEl.classList.contains('on')) {
-        dismissWelcome(true);
-      }
-    });
-  } else if (welcomeEl) {
-    welcomeEl.classList.remove('on');
-    welcomeEl.style.display = 'none';
-    startMapCaption(200);
-  } else {
-    startMapCaption(200);
-  }
+  startMapCaption(200);
 })();
 </script>
 </body>
