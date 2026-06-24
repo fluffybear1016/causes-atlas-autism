@@ -203,6 +203,7 @@ def write_proposed_csv(atlas_rows: list[dict], atlas_fields: list[str],
         "searchlight_community", "searchlight_url",
         "searchlight_size_bucket", "searchlight_nhs_active",
         "searchlight_partner_foundation",
+        "searchlight_confidence_boost",
     ]
     out_fields = list(atlas_fields)
     for f in extra_fields:
@@ -225,13 +226,13 @@ def write_proposed_csv(atlas_rows: list[dict], atlas_fields: list[str],
                 row["searchlight_size_bucket"] = c.get("size_bucket", "")
                 row["searchlight_nhs_active"]  = "TRUE" if c.get("nhs") else "FALSE"
                 row["searchlight_partner_foundation"] = c.get("note", "")
-                # Confidence boost (capped, additive, idempotent)
-                try:
-                    cur = float(row.get("confidence_score", "0") or 0)
-                    boost = confidence_boost(c)
-                    row["confidence_score"] = f"{min(0.95, cur + boost):.4f}"
-                except (ValueError, TypeError):
-                    pass
+                # Record the Searchlight presence boost as an auxiliary column.
+                # genes.csv doesn't carry a `confidence_score` column, so the
+                # boost is informational here — downstream code can consume
+                # `searchlight_confidence_boost` to weight gene confidence by
+                # Searchlight community presence without us mutating a column
+                # the canonical schema doesn't have.
+                row["searchlight_confidence_boost"] = f"{confidence_boost(c):.4f}"
                 row["last_updated"] = datetime.now(timezone.utc).isoformat()
             else:
                 row["searchlight_community"] = "FALSE"
