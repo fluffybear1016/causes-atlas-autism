@@ -770,9 +770,9 @@ HTML = r"""<!doctype html>
     --cool:    #b4c8e8;
     --warm:    #d8b894;
     --gene:    #7a7770;
-    --text:    #d8d2c4;
-    --text-mute:#5a574e;
-    --text-vmute:#33312c;
+    --text:    #e3ddcd;
+    --text-mute:#9c968a;
+    --text-vmute:#6b6760;
     --line:    #1a1d24;
     --line-hi: #2e3540;
   }
@@ -920,6 +920,21 @@ HTML = r"""<!doctype html>
   .start-dock .sd-intro {
     font-size: 12.5px; color: var(--text); line-height: 1.55;
     font-style: italic;
+  }
+  .start-dock .sd-intro-block {
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .start-dock .sd-welcome {
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, serif;
+    font-size: 18px; letter-spacing: 0.01em;
+    color: var(--text); line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .start-dock .sd-tag {
+    font-size: 12px; line-height: 1.55;
+    color: var(--text-mute); font-style: italic;
   }
   .start-dock .sd-test {
     font-size: 12px; line-height: 1.4;
@@ -1743,9 +1758,133 @@ HTML = r"""<!doctype html>
     /* hover label hidden on touch */
     .hover-label { display: none !important; }
   }
+
+  /* ─── Welcome state overlay (first-visit gate) ───────────────────── */
+  .welcome {
+    position: fixed; inset: 0; z-index: 9000;
+    display: none;
+    background: radial-gradient(ellipse at center,
+      rgba(8,11,18,0.92) 0%,
+      rgba(5,8,16,0.98) 100%);
+    align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+  .welcome.on {
+    display: flex;
+    opacity: 1;
+  }
+  .welcome.fading {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .welcome-inner {
+    text-align: center;
+    max-width: 640px;
+    padding: 0 32px;
+  }
+  .welcome-eyebrow {
+    font-family: ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: w-fadeUp 1100ms ease 200ms forwards;
+  }
+  .welcome-hero {
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, serif;
+    font-size: 34px; line-height: 1.32;
+    color: var(--text);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: w-fadeUp 1300ms ease 500ms forwards;
+  }
+  .welcome-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--text);
+    font: inherit;
+    font-size: 12px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    padding: 13px 38px;
+    cursor: pointer;
+    transition: background 200ms, color 200ms, border-color 200ms;
+    opacity: 0;
+    animation: w-fadeUp 1100ms ease 900ms forwards;
+  }
+  .welcome-cta:hover {
+    background: rgba(207, 168, 87, 0.06);
+    color: var(--gold);
+  }
+  .welcome-skip {
+    display: block;
+    margin-top: 22px;
+    color: var(--text-mute);
+    font-size: 11px; letter-spacing: 0.16em;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: w-fadeUp 1100ms ease 1200ms forwards;
+    transition: color 200ms;
+  }
+  .welcome-skip:hover { color: var(--text); }
+  @keyframes w-fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  body.welcome-active .overlay,
+  body.welcome-active .dock,
+  body.welcome-active .start-dock,
+  body.welcome-active .view-report,
+  body.welcome-active .upload-btn,
+  body.welcome-active #upload-btn,
+  body.welcome-active .mobile-dock-btn,
+  body.welcome-active .legend,
+  body.welcome-active .manifesto,
+  body.welcome-active .map-caption { display: none !important; }
+  body.welcome-active canvas { opacity: 0.30; }
+
+  /* ─── Map caption (post-welcome single-line) ──────────────────────── */
+  .map-caption {
+    position: fixed;
+    left: 50%; bottom: 84px;
+    transform: translateX(-50%);
+    max-width: 640px;
+    width: calc(100% - 64px);
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1400ms ease 1800ms;
+    z-index: 50;
+  }
+  .map-caption.ready { opacity: 1; }
+  .map-caption.dim   { opacity: 0.20; transition: opacity 700ms ease; }
+  .map-caption.hidden { opacity: 0; transition: opacity 700ms ease; }
+  .map-caption .map-caption-text {
+    font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-mute);
+  }
+  @media (max-width: 720px) {
+    .map-caption { bottom: 96px; }
+    .map-caption .map-caption-text { font-size: 12px; }
+  }
 </style>
 </head>
 <body>
+
+<!-- Welcome state overlay: first-visit gate -->
+<div class="welcome on" id="welcome">
+  <div class="welcome-inner">
+    <div class="welcome-eyebrow">Causes Atlas · Autism</div>
+    <div class="welcome-hero">A second opinion for your child,<br>drawn from the evidence.</div>
+    <button class="welcome-cta" id="welcome-begin">Begin</button>
+    <a class="welcome-skip" id="welcome-skip" tabindex="0">or explore the map →</a>
+  </div>
+</div>
 
 <!-- ghost manifesto behind the graph -->
 <div class="manifesto">
@@ -1758,9 +1897,15 @@ HTML = r"""<!doctype html>
 
 <canvas id="c"></canvas>
 
+<div class="map-caption" id="map-caption">
+  <div class="map-caption-text">
+    Every peer-reviewed paper, every gene mapped to autism, every federal record, every clinical trial, every parent observation — weighted, connected, scored, refreshed daily.
+  </div>
+</div>
+
 <div class="overlay tl">
   <div class="title">Causes Atlas</div>
-  <div class="vmute" style="margin-top:5px;">Autism · v2.0 · reproducible</div>
+  <div class="vmute" style="margin-top:5px;">Autism</div>
   <div style="margin-top:14px;">
     <span class="ingest-dot"></span>
     <span class="vmute" style="letter-spacing:0.26em;">ingesting</span>
@@ -1775,10 +1920,6 @@ HTML = r"""<!doctype html>
 
 <div class="overlay tr">
   <div class="num">__N_NODES__ nodes · __N_LINKS__ edges</div>
-  <div class="vmute" style="margin-top:5px;">
-    __N_HYP__ hyp · __N_MEC__ mec · __N_INT__ int · __N_PHE__ phe ·
-    __N_BIO__ bio · __N_COM__ com · __N_TEST__ test · __N_GEN__ gen
-  </div>
   <div class="vmute" style="margin-top:8px;">n=7 mae 0.049 · 4 sub-3% errors</div>
   <div class="vmute" style="margin-top:8px;">
     intake feed · <span id="intake-ticker">__INTAKE_TICKER__</span>
@@ -1794,7 +1935,7 @@ HTML = r"""<!doctype html>
   <div class="presets" id="presets"></div>
   <input class="input" id="search" type="text" autocomplete="off"
          spellcheck="false" placeholder="describe your child · a gene · a symptom" />
-  <button class="toggle" id="toggle">load susceptibility profile</button>
+  <button class="toggle" id="toggle">see an example</button>
 </div>
 
 <div class="hover-label" id="hover"></div>
@@ -1962,6 +2103,10 @@ HTML = r"""<!doctype html>
 
 <!-- LEFT START-HERE DOCK: always-visible action surface for high-agency moms -->
 <div class="start-dock" id="sd">
+  <div class="sd-intro-block">
+    <div class="sd-welcome">Your child's map.</div>
+    <div class="sd-tag">An evidence-based second opinion — built one child at a time, not from population averages.</div>
+  </div>
   <div class="sd-section">
     <div class="sd-label">Types of autism</div>
     <div id="sd-types"></div>
@@ -2023,6 +2168,31 @@ const VAULT_PATHS = __VAULT_PATHS__;  // atlas_id → canonical Obsidian filenam
 // ── canvas + DPR ───────────────────────────────────────────────────
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
+
+// Guard createRadialGradient against non-finite values. d3-force can
+// transiently emit NaN positions while the simulation is settling, and
+// 1/scale can blow up if scale ever reaches 0 during a pinch-zoom. Any
+// of those propagating to a gradient throws a hard browser error and
+// kills the render loop. Replace bad inputs with a no-op gradient.
+(function () {
+  const _orig = ctx.createRadialGradient.bind(ctx);
+  ctx.createRadialGradient = function (x0, y0, r0, x1, y1, r1) {
+    if (!Number.isFinite(x0) || !Number.isFinite(y0) || !Number.isFinite(r0) ||
+        !Number.isFinite(x1) || !Number.isFinite(y1) || !Number.isFinite(r1) ||
+        r0 < 0 || r1 < 0) {
+      return _orig(0, 0, 0, 0, 0, 1);
+    }
+    return _orig(x0, y0, r0, x1, y1, r1);
+  };
+  const _origLin = ctx.createLinearGradient.bind(ctx);
+  ctx.createLinearGradient = function (x0, y0, x1, y1) {
+    if (!Number.isFinite(x0) || !Number.isFinite(y0) ||
+        !Number.isFinite(x1) || !Number.isFinite(y1)) {
+      return _origLin(0, 0, 1, 0);
+    }
+    return _origLin(x0, y0, x1, y1);
+  };
+})();
 let W = 0, H = 0, DPR = 1;
 function resize() {
   DPR = window.devicePixelRatio || 1;
@@ -2836,7 +3006,7 @@ function selectProfile(bit) {
   } else {
     autoFitDone = false;        // re-run autoFit on reset
     toggle.classList.remove('on');
-    toggle.textContent = 'load susceptibility profile';
+    toggle.textContent = 'see an example';
   }
   // close menu
   dock.classList.remove('open');
@@ -2854,7 +3024,7 @@ search.addEventListener('input', () => {
     toggle.textContent = 'searching · ' + searchTerm;
     presetsEl.querySelectorAll('.preset').forEach(el => el.classList.remove('on'));
   } else {
-    toggle.textContent = 'load susceptibility profile';
+    toggle.textContent = 'see an example';
   }
   recomputeFilter();
   // soft recenter on search centroid
@@ -2873,7 +3043,7 @@ search.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     search.value = ''; searchTerm = ''; searchHits.clear();
     recomputeFilter();
-    toggle.textContent = 'load susceptibility profile';
+    toggle.textContent = 'see an example';
     targetOx = 0; targetOy = 0; targetScale = 1.0;
   }
 });
@@ -5888,6 +6058,83 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
   // initialize
   updateBanner();
   applyUserData();
+})();
+</script>
+
+<script>
+// Welcome state + map caption — runs after main IIFE; preserved by build script.
+(function () {
+  'use strict';
+
+  const welcomeEl = document.getElementById('welcome');
+  const beginBtn  = document.getElementById('welcome-begin');
+  const skipBtn   = document.getElementById('welcome-skip');
+
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+  const HAS_GEN  = !!lsGet('cwa_genetics_v1');
+  const HAS_BIO  = !!lsGet('cwa_biomarkers_v1');
+  const HAS_DISM = !!lsGet('cwa_welcome_dismissed_v1');
+  const isFirstVisit = !HAS_GEN && !HAS_BIO && !HAS_DISM;
+
+  function startMapCaption(delay) {
+    const cap = document.getElementById('map-caption');
+    if (!cap) return;
+    setTimeout(() => cap.classList.add('ready'), delay || 200);
+
+    let dimmed = false;
+    function dim() {
+      if (dimmed) return;
+      dimmed = true;
+      cap.classList.add('dim');
+      setTimeout(() => cap.classList.add('hidden'), 3000);
+    }
+    ['click', 'wheel', 'touchstart', 'keydown'].forEach(ev =>
+      window.addEventListener(ev, dim, { once: true, passive: true })
+    );
+    setTimeout(dim, 12000);
+  }
+
+  function dismissWelcome(setDismissedFlag) {
+    if (!welcomeEl) return;
+    welcomeEl.classList.add('fading');
+    welcomeEl.classList.remove('on');
+    document.body.classList.remove('welcome-active');
+    if (setDismissedFlag) lsSet('cwa_welcome_dismissed_v1', '1');
+    setTimeout(() => { welcomeEl.style.display = 'none'; }, 700);
+    startMapCaption(200);
+  }
+
+  if (isFirstVisit && welcomeEl) {
+    document.body.classList.add('welcome-active');
+
+    if (beginBtn) {
+      beginBtn.addEventListener('click', () => {
+        dismissWelcome(true);
+        setTimeout(() => {
+          const ub = document.getElementById('upload-btn');
+          if (ub && typeof ub.click === 'function') ub.click();
+        }, 900);
+      });
+    }
+
+    if (skipBtn) {
+      skipBtn.addEventListener('click', () => dismissWelcome(true));
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && welcomeEl.classList.contains('on')) {
+        dismissWelcome(true);
+      }
+    });
+  } else if (welcomeEl) {
+    welcomeEl.classList.remove('on');
+    welcomeEl.style.display = 'none';
+    startMapCaption(200);
+  } else {
+    startMapCaption(200);
+  }
 })();
 </script>
 </body>
