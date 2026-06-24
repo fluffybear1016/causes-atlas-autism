@@ -2,12 +2,12 @@
 id: 'COM-0023'
 type: 'combination'
 name: 'Cold exposure + sauna + omega-3 (anti-inflammatory lifestyle stack)'
-csrs_score: ""
+csrs_score: 48.46
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0014', 'INT-0048', 'INT-0073']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0023 Cold exposure + sauna + omega-3 (anti-inflammatory lifestyle stack)

@@ -13,7 +13,7 @@ otc_or_rx: 'otc'
 pediatric_safe: 'yes'
 cost_per_month_usd: 8
 dose_range: '150-220 mcg/day prenatal; 90 mcg child'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0066 Iodine (potassium iodide kelp)

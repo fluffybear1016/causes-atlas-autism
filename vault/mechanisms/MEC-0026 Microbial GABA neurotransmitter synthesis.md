@@ -7,7 +7,7 @@ kegg_ids: ['hsa00410']
 reactome_ids: []
 evidence_strength: 0.8701
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0026 Microbial GABA neurotransmitter synthesis

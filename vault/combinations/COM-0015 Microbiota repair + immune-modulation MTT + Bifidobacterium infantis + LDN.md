@@ -2,12 +2,12 @@
 id: 'COM-0015'
 type: 'combination'
 name: 'Microbiota repair + immune-modulation: MTT + Bifidobacterium infantis + LDN'
-csrs_score: ""
+csrs_score: 51.92
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0006', 'INT-0076', 'INT-0077']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0015 Microbiota repair + immune-modulation MTT + Bifidobacterium infantis + LDN

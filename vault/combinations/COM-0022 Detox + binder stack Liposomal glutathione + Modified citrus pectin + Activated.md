@@ -2,12 +2,12 @@
 id: 'COM-0022'
 type: 'combination'
 name: 'Detox + binder stack: Liposomal glutathione + Modified citrus pectin + Activated charcoal'
-csrs_score: ""
+csrs_score: 51.17
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0020']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0022 Detox + binder stack Liposomal glutathione + Modified citrus pectin + Activated

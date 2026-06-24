@@ -7,7 +7,7 @@ kegg_ids: ['hsa00592']
 reactome_ids: ['R-HSA-1483115']
 evidence_strength: 0.4389
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0031 DHA membrane phospholipid composition

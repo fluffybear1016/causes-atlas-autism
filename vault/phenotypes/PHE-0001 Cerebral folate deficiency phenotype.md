@@ -24,11 +24,6 @@ Subset of autism with documented blockade of folate transport into the brain via
 **Notes:** Calibration target phenotype
 
 
-## Summary
-
-This phenotype identifies the autism subset whose folate transport into the brain is blocked by folate-receptor-alpha autoantibodies, confirmed by positive [[BIO-0015 FRAA (folate receptor alpha autoantibody) — blocking]] and low [[BIO-0017 CSF 5-MTHF]]. It is the atlas's calibration-anchor phenotype: the FOLR1-positive subset responds at high rates to high-dose folinic acid ([[INT-0001 Leucovorin (folinic acid)]], CSRS 83.35) per the stratified Frye 2018 RCT, while FOLR1-negative children show little response. It sits mechanistically on [[MEC-0003 Impaired methylation]] and [[MEC-0004 BBB dysfunction]], and exemplifies the [[Hannah Poling framework]] principle that a measurable susceptibility marker, not the population average, selects the responder.
-
-
 ## Mechanisms
 
 - [[MEC-0003 Impaired methylation]]

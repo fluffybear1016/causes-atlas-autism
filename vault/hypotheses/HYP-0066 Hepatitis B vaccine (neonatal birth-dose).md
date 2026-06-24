@@ -10,7 +10,7 @@ evidence_count: 11
 evidence_quality_index: 0.7903
 consistency_index: 0.1914
 polarity: ""
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # HYP-0066 Hepatitis B vaccine (neonatal birth-dose)

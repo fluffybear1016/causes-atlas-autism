@@ -5,15 +5,15 @@ name: 'Inositol (myo-inositol)'
 category: 'supplement'
 modality: 'supplement'
 directionality: 'treatment'
-csrs_score: 42.59
-csrs_prevention_score: 56.25
-csrs_treatment_score: 34.52
+csrs_score: 43.04
+csrs_prevention_score: 56.55
+csrs_treatment_score: 35.12
 status: 'active'
 otc_or_rx: 'otc'
 pediatric_safe: 'yes'
 cost_per_month_usd: 20
 dose_range: '1-4 g/day'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0022 Inositol (myo-inositol)

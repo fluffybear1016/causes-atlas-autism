@@ -7,7 +7,7 @@ kegg_ids: ['hsa04722']
 reactome_ids: ['R-HSA-209560']
 evidence_strength: 0.4834
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0028 BDNF neurotrophin signaling

@@ -2,12 +2,12 @@
 id: 'COM-0009'
 type: 'combination'
 name: 'Energy-substrate stack: D-ribose + Creatine + L-carnitine'
-csrs_score: ""
+csrs_score: 53.52
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0011', 'INT-0088', 'INT-0094']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0009 Energy-substrate stack D-ribose + Creatine + L-carnitine

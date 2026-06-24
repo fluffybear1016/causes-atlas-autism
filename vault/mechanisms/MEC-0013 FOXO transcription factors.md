@@ -5,9 +5,9 @@ name: 'FOXO transcription factors'
 category: 'metabolic'
 kegg_ids: ['hsa04068']
 reactome_ids: ['R-HSA-9614085']
-evidence_strength: 0.1200
+evidence_strength: 0.1500
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0013 FOXO transcription factors

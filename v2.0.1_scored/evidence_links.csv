@@ -1695,3 +1695,54 @@ EVL-001699,EVD-001446,,hypothesis,HYP-0044,unknown,,,2026-04-29T17:07:45+00:00,E
 EVL-001700,EVD-001447,,hypothesis,HYP-0044,positive,,,2026-04-29T17:07:45+00:00,Comment — CLAUDE.md §2 down-weights to 0.05.
 EVL-001701,EVD-001447,,hypothesis,HYP-0068,positive,,,2026-04-29T17:07:45+00:00,Comment — CLAUDE.md §2 down-weights to 0.05.
 EVL-001702,EVD-001448,,hypothesis,HYP-0044,positive,,,2026-04-29T17:07:45+00:00,Tripedia insert lists autism as post-approval adverse event
+EVL-001703,EVD-001450,,hypothesis,HYP-0006,positive,,,2026-04-29T19:21:14+00:00,Hit-1 mitochondrial vulnerability
+EVL-001704,EVD-001450,,hypothesis,HYP-0008,positive,,,2026-04-29T19:21:14+00:00,Hit-2 maternal immune activation = CDR trigger
+EVL-001705,EVD-001450,,hypothesis,HYP-0028,positive,,,2026-04-29T19:21:14+00:00,Hit-1 inherited genetic substrate = polygenic risk
+EVL-001706,EVD-001450,,hypothesis,HYP-0073,positive,,,2026-04-29T19:21:14+00:00,3-6mo CDR trigger window = developmental timing principle
+EVL-001707,EVD-001450,,phenotype,PHE-0002,positive,,,2026-04-29T19:21:14+00:00,Mitochondrial dysfunction phenotype = direct CDR signature
+EVL-001708,EVD-001449,,hypothesis,HYP-0044,positive,,,2026-04-29T19:21:14+00:00,136-study review with 107 positive inferences
+EVL-001709,EVD-001449,,hypothesis,HYP-0066,positive,,,2026-04-29T19:21:14+00:00,Hep B birth-dose subset signal
+EVL-001710,EVD-001449,,hypothesis,HYP-0067,positive,,,2026-04-29T19:21:14+00:00,Aluminum adjuvant subset signal
+EVL-001711,EVD-001449,,hypothesis,HYP-0068,positive,,,2026-04-29T19:21:14+00:00,MMR subset signal
+EVL-001712,EVD-001449,,hypothesis,HYP-0069,positive,,,2026-04-29T19:21:14+00:00,Thimerosal subset signal
+EVL-001713,EVD-001450,,mechanism,MEC-0010,positive,,,2026-04-29T19:23:13+00:00,Mitochondrial dysfunction is hit-1 substrate
+EVL-001714,EVD-001450,,mechanism,MEC-0014,positive,,,2026-04-29T19:23:13+00:00,SIRTUIN/NAD+ purinergic signaling = CDR mechanism
+EVL-001715,EVD-001450,,mechanism,MEC-0020,positive,,,2026-04-29T19:23:13+00:00,Calcium handling = hit-1 substrate
+EVL-001716,EVD-001451,,intervention,INT-0102,positive,,,2026-04-29T20:44:17+00:00,Phase 1 safety + behavioral signal
+EVL-001717,EVD-001451,,phenotype,PHE-0003,positive,,,2026-04-29T20:44:17+00:00,Regressive immune-inflammatory subset response
+EVL-001718,EVD-001451,,hypothesis,HYP-0008,positive,,,2026-04-29T20:44:17+00:00,Immune modulation mechanism
+EVL-001719,EVD-001452,,intervention,INT-0102,positive,,,2026-04-29T20:44:17+00:00,Phase 2 subgroup-stratified positive in non-anxious / normal-IQ / inflammatory subset
+EVL-001720,EVD-001452,,phenotype,PHE-0003,positive,,,2026-04-29T20:44:17+00:00,Inflammatory subgroup response
+EVL-001721,EVD-001452,,hypothesis,HYP-0008,positive,,,2026-04-29T20:44:17+00:00,Maternal immune activation / immune-dysregulation subset
+EVL-001722,EVD-001452,,hypothesis,HYP-0006,positive,,,2026-04-29T20:44:17+00:00,Mitochondrial dysfunction subgroup may respond via MSC mitochondrial transfer
+EVL-001723,EVD-001453,,intervention,INT-0102,positive,,,2026-04-29T20:44:17+00:00,Allogeneic cord blood safety + immune mechanism markers
+EVL-001724,EVD-001453,,mechanism,MEC-0010,positive,,,2026-04-29T20:44:17+00:00,Immune-mitochondrial interface
+EVL-001725,EVD-001453,,hypothesis,HYP-0008,positive,,,2026-04-29T20:44:17+00:00,Immune modulation mechanism markers
+EVL-001726,EVD-001454,,intervention,INT-0102,positive,,,2026-04-29T20:44:17+00:00,Cord blood + UC-MSC combined improved CARS/ABC
+EVL-001727,EVD-001454,,phenotype,PHE-0003,positive,,,2026-04-29T20:44:17+00:00,Inflammatory subset signal
+EVL-001728,EVD-001455,,intervention,INT-0102,positive,,,2026-04-29T20:44:17+00:00,Bone marrow MSC intrathecal: lower-tier methodology
+EVL-001740,EVD-001456,,hypothesis,HYP-0008,positive,,,2026-04-29T22:13:28+00:00,Maternal/early immune activation downstream signature
+EVL-001741,EVD-001456,,hypothesis,HYP-0044,positive,,,2026-04-29T22:13:28+00:00,Multi-omics framing relevant to vaccine-immune cluster as one possible Hit-2 trigger
+EVL-001742,EVD-001456,,phenotype,PHE-0004,positive,,,2026-04-29T22:13:28+00:00,GI microbiome dysbiosis phenotype primary
+EVL-001743,EVD-001456,,mechanism,MEC-0010,positive,,,2026-04-29T22:13:28+00:00,Mitochondrial / metabolic mechanism mapping
+EVL-001744,EVD-001456,,intervention,INT-0076,positive,,,2026-04-29T22:13:28+00:00,FMT modifies the entire upstream layer
+EVL-001745,EVD-001456,,intervention,INT-0025,positive,,,2026-04-29T22:13:28+00:00,Probiotic restoration of upstream layer
+EVL-001746,EVD-001457,,hypothesis,HYP-0008,positive,,,2026-04-29T22:13:28+00:00,Microbiota-immune-CDR axis
+EVL-001747,EVD-001457,,hypothesis,HYP-0028,positive,,,2026-04-29T22:13:28+00:00,Genetic-instrument anchored
+EVL-001748,EVD-001457,,phenotype,PHE-0004,positive,,,2026-04-29T22:13:28+00:00,GI microbiome dysbiosis directly causal
+EVL-001749,EVD-001457,,intervention,INT-0076,positive,,,2026-04-29T22:13:28+00:00,FMT alters microbiota in causally-identified taxa
+EVL-001750,EVD-001458,,hypothesis,HYP-0028,positive,,,2026-04-29T22:13:28+00:00,Inherited polygenic + cross-tissue regulatory chain
+EVL-001751,EVD-001458,,hypothesis,HYP-0008,positive,,,2026-04-29T22:13:28+00:00,Tight junction barrier-immune mechanism
+EVL-001752,EVD-001458,,phenotype,PHE-0004,positive,,,2026-04-29T22:13:28+00:00,GI dysbiosis MR-causal
+EVL-001753,EVD-001458,,mechanism,MEC-0010,positive,,,2026-04-29T22:13:28+00:00,Mitochondrial cross-tissue convergence
+EVL-001754,EVD-001459,,hypothesis,HYP-0028,positive,,,2026-04-29T22:13:28+00:00,Specific causal gene identified via multi-omics replication
+EVL-001755,EVD-001459,,mechanism,MEC-0020,positive,,,2026-04-29T22:13:28+00:00,Wnt signaling intersects with synaptic / NMDA layer
+EVL-001756,EVD-001460,,hypothesis,HYP-0008,positive,,,2026-04-29T22:13:28+00:00,Strain-genetic basis for individual-level susceptibility
+EVL-001757,EVD-001460,,phenotype,PHE-0004,positive,,,2026-04-29T22:13:28+00:00,Strain-resolved microbiome dysbiosis
+EVL-001758,EVD-001460,,intervention,INT-0076,positive,,,2026-04-29T22:13:28+00:00,FMT targets strain-level microbiome
+EVL-001759,EVD-001460,,intervention,INT-0025,positive,,,2026-04-29T22:13:28+00:00,Probiotic strain selection requires strain-level data
+EVL-001760,EVD-001461,,hypothesis,HYP-0028,positive,,,2026-04-29T22:13:28+00:00,SFARI-anchored network framework
+EVL-001761,EVD-001462,,hypothesis,HYP-0028,positive,,,2026-04-29T22:13:28+00:00,Field-level synthesis
+EVL-001762,EVD-001462,,hypothesis,HYP-0006,positive,,,2026-04-29T22:13:28+00:00,Mitochondrial theme recurrence in multi-omics literature
+EVL-001763,EVD-001462,,hypothesis,HYP-0008,positive,,,2026-04-29T22:13:28+00:00,Immune theme recurrence
+EVL-001764,EVD-001463,,hypothesis,HYP-0028,positive,,,2026-04-29T22:13:28+00:00,Methodology constraint on multi-omics ASD claims

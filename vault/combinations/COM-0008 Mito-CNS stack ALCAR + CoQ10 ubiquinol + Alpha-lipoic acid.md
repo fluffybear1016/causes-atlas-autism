@@ -2,12 +2,12 @@
 id: 'COM-0008'
 type: 'combination'
 name: 'Mito-CNS stack: ALCAR + CoQ10 ubiquinol + Alpha-lipoic acid'
-csrs_score: ""
+csrs_score: 51.64
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0011', 'INT-0012', 'INT-0093']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0008 Mito-CNS stack ALCAR + CoQ10 ubiquinol + Alpha-lipoic acid

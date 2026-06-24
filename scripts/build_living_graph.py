@@ -2192,6 +2192,25 @@ const ctx = canvas.getContext('2d');
     }
     return _origLin(x0, y0, x1, y1);
   };
+  // Also guard addColorStop — if any interpolated alpha goes NaN
+  // (e.g. a pulse t value reads from a node that's been removed),
+  // the resulting rgba string fails the browser's color parser and
+  // throws a hard SyntaxError that kills the render loop. Clamp any
+  // non-finite numeric component to 0.
+  const _origACS = CanvasGradient.prototype.addColorStop;
+  CanvasGradient.prototype.addColorStop = function (offset, color) {
+    if (!Number.isFinite(offset)) offset = 0;
+    if (offset < 0) offset = 0;
+    if (offset > 1) offset = 1;
+    if (typeof color === 'string' && color.indexOf('NaN') !== -1) {
+      color = color.replace(/NaN/g, '0').replace(/Infinity/g, '1').replace(/-Infinity/g, '0');
+    }
+    try {
+      return _origACS.call(this, offset, color);
+    } catch (e) {
+      return _origACS.call(this, 0, 'rgba(0,0,0,0)');
+    }
+  };
 })();
 let W = 0, H = 0, DPR = 1;
 function resize() {

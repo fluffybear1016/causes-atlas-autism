@@ -5,15 +5,15 @@ name: 'L-carnosine (oral dipeptide)'
 category: 'supplement'
 modality: 'supplement'
 directionality: 'treatment'
-csrs_score: ""
-csrs_prevention_score: ""
-csrs_treatment_score: ""
+csrs_score: 20.24
+csrs_prevention_score: 38.07
+csrs_treatment_score: 14.33
 status: 'active'
 otc_or_rx: 'otc'
 pediatric_safe: 'yes'
 cost_per_month_usd: 20
 dose_range: '800 mg/day (Chez 2002 dose)'
-last_updated: '2026-05-13T00:14:44.186956+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0140 L-carnosine (oral dipeptide)

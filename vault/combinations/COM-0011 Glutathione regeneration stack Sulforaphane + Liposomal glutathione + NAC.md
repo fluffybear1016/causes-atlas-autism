@@ -2,12 +2,12 @@
 id: 'COM-0011'
 type: 'combination'
 name: 'Glutathione regeneration stack: Sulforaphane + Liposomal glutathione + NAC'
-csrs_score: ""
+csrs_score: 55.09
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0002', 'INT-0004', 'INT-0020']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0011 Glutathione regeneration stack Sulforaphane + Liposomal glutathione + NAC

@@ -2,12 +2,12 @@
 id: 'COM-0017'
 type: 'combination'
 name: 'L-carnosine + L-taurine + Magnesium threonate (GABA-axis stack)'
-csrs_score: ""
+csrs_score: 46.65
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0015', 'INT-0023', 'INT-0140']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0017 L-carnosine + L-taurine + Magnesium threonate (GABA-axis stack)

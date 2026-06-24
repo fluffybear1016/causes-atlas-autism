@@ -5,15 +5,15 @@ name: 'L-theanine'
 category: 'supplement'
 modality: 'supplement'
 directionality: 'treatment'
-csrs_score: ""
-csrs_prevention_score: ""
-csrs_treatment_score: ""
+csrs_score: 20.24
+csrs_prevention_score: 38.07
+csrs_treatment_score: 14.33
 status: 'active'
 otc_or_rx: 'otc'
 pediatric_safe: 'yes'
 cost_per_month_usd: 15
 dose_range: '100-400 mg/day divided'
-last_updated: '2026-05-13T00:19:55.094947+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0145 L-theanine

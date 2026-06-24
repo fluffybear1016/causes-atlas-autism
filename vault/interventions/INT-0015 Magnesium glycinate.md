@@ -5,15 +5,15 @@ name: 'Magnesium glycinate'
 category: 'supplement'
 modality: 'supplement'
 directionality: 'treatment'
-csrs_score: 64.73
-csrs_prevention_score: 72.99
-csrs_treatment_score: 63.96
+csrs_score: 65.01
+csrs_prevention_score: 73.17
+csrs_treatment_score: 64.31
 status: 'active'
 otc_or_rx: 'otc'
 pediatric_safe: 'yes'
 cost_per_month_usd: 15
 dose_range: '200-400 mg elemental/day'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0015 Magnesium glycinate

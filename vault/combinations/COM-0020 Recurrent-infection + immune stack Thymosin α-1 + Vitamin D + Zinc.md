@@ -2,12 +2,12 @@
 id: 'COM-0020'
 type: 'combination'
 name: 'Recurrent-infection + immune stack: Thymosin α-1 + Vitamin D + Zinc'
-csrs_score: ""
+csrs_score: 51.40
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0013', 'INT-0016']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0020 Recurrent-infection + immune stack Thymosin α-1 + Vitamin D + Zinc

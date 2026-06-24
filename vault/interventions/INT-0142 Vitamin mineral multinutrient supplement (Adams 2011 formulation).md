@@ -5,15 +5,15 @@ name: 'Vitamin/mineral multinutrient supplement (Adams 2011 formulation)'
 category: 'supplement'
 modality: 'supplement'
 directionality: 'treatment'
-csrs_score: ""
-csrs_prevention_score: ""
-csrs_treatment_score: ""
+csrs_score: 18.22
+csrs_prevention_score: 31.70
+csrs_treatment_score: 12.98
 status: 'active'
 otc_or_rx: 'otc'
 pediatric_safe: 'yes'
 cost_per_month_usd: 80
 dose_range: 'Adams 2011 protocol — full multinutrient daily'
-last_updated: '2026-05-13T00:14:44.186956+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0142 Vitamin mineral multinutrient supplement (Adams 2011 formulation)

@@ -1,7 +1,7 @@
 {
   "engine_version": "scoring-engine/1.0",
   "config_hash": "06a680acf7d9ee5b",
-  "run_timestamp": "2026-04-30T15:35:55+00:00",
+  "run_timestamp": "2026-06-24T18:46:42+00:00",
   "tables_written": [
     "evidence_fragments",
     "hypotheses",
@@ -27,9 +27,9 @@
     "hypothesis_hypothesis_edges"
   ],
   "calibration_passed": true,
-  "calibration_score": 83.3473917526503,
-  "n_hypotheses_scored": 75,
+  "calibration_score": 83.34739175265031,
+  "n_hypotheses_scored": 76,
   "n_mechanisms_scored": 34,
-  "n_interventions_scored": 137,
-  "n_combinations_scored": 5
+  "n_interventions_scored": 140,
+  "n_combinations_scored": 25
 }

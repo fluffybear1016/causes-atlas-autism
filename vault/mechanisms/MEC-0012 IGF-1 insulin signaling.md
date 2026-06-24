@@ -7,7 +7,7 @@ kegg_ids: ['hsa04150']
 reactome_ids: ['R-HSA-422085']
 evidence_strength: 0.4508
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0012 IGF-1 insulin signaling

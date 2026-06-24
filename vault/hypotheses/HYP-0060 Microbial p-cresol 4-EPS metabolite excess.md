@@ -5,12 +5,12 @@ name: 'Microbial p-cresol / 4-EPS metabolite excess'
 category: 'microbial'
 status: 'active'
 contested: false
-confidence_score: 0.5189
+confidence_score: 0.5200
 evidence_count: 3
 evidence_quality_index: 0.4119
 consistency_index: 1.0000
 polarity: ""
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # HYP-0060 Microbial p-cresol 4-EPS metabolite excess

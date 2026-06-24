@@ -2,12 +2,12 @@
 id: 'COM-0016'
 type: 'combination'
 name: 'Calm-axis stack: L-theanine + Magnesium glycinate + Saffron'
-csrs_score: ""
+csrs_score: 46.07
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0015', 'INT-0034', 'INT-0145']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0016 Calm-axis stack L-theanine + Magnesium glycinate + Saffron

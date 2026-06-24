@@ -2,12 +2,12 @@
 id: 'COM-0025'
 type: 'combination'
 name: 'Maternal preconception methylation + mito stack'
-csrs_score: ""
+csrs_score: 53.73
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0008', 'INT-0014', 'INT-0017', 'INT-0030']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0025 Maternal preconception methylation + mito stack

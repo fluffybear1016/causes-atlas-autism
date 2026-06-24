@@ -2,12 +2,12 @@
 id: 'COM-0010'
 type: 'combination'
 name: 'Anti-inflammatory polyphenol stack: Liposomal curcumin + Quercetin phytosome + Omega-3'
-csrs_score: ""
+csrs_score: 50.85
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0014', 'INT-0027', 'INT-0029']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0010 Anti-inflammatory polyphenol stack Liposomal curcumin + Quercetin phytosome + Om

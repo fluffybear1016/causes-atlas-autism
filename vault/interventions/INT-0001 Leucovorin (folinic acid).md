@@ -13,7 +13,7 @@ otc_or_rx: 'rx'
 pediatric_safe: 'yes'
 cost_per_month_usd: 60
 dose_range: '0.5–2 mg/kg/day (max 50 mg/day)'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0001 Leucovorin (folinic acid)

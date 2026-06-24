@@ -7,7 +7,7 @@ kegg_ids: ['hsa00190']
 reactome_ids: ['R-HSA-611105']
 evidence_strength: 0.2036
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0033 Photobiomodulation cytochrome c oxidase activation

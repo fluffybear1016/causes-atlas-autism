@@ -5,15 +5,15 @@ name: 'Rapamycin (sirolimus)'
 category: 'drug'
 modality: 'drug'
 directionality: 'treatment'
-csrs_score: 67.02
-csrs_prevention_score: 65.29
-csrs_treatment_score: 68.85
+csrs_score: 67.05
+csrs_prevention_score: 65.31
+csrs_treatment_score: 68.87
 status: 'active'
 otc_or_rx: 'rx'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 200
 dose_range: '0.5-2 mg twice weekly'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0036 Rapamycin (sirolimus)

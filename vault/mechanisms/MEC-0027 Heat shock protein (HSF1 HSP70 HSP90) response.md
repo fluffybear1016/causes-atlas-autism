@@ -7,7 +7,7 @@ kegg_ids: ['hsa04141']
 reactome_ids: ['R-HSA-3371556']
 evidence_strength: 0.8324
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0027 Heat shock protein (HSF1 HSP70 HSP90) response

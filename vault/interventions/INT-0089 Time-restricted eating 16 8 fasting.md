@@ -13,7 +13,7 @@ otc_or_rx: 'lifestyle'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 0
 dose_range: '16h fast / 8h eating window'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0089 Time-restricted eating 16 8 fasting

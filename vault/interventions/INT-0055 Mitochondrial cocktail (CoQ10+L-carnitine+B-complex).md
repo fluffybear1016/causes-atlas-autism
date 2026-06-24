@@ -13,7 +13,7 @@ otc_or_rx: 'otc'
 pediatric_safe: 'yes'
 cost_per_month_usd: 80
 dose_range: 'per components'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0055 Mitochondrial cocktail (CoQ10+L-carnitine+B-complex)

@@ -2,12 +2,12 @@
 id: 'COM-0001'
 type: 'combination'
 name: 'Leucovorin + Methyl-B12 + Sulforaphane'
-csrs_score: 53.96
+csrs_score: 54.02
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'active'
 member_intervention_ids: ['INT-0001', 'INT-0003', 'INT-0004']
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0001 Leucovorin + Methyl-B12 + Sulforaphane

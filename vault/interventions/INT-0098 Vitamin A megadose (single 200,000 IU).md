@@ -13,7 +13,7 @@ otc_or_rx: 'rx'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 30
 dose_range: 'Single 200,000 IU under clinician supervision, only if documented deficiency'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0098 Vitamin A megadose (single 200,000 IU)

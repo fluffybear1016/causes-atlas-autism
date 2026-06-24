@@ -5,12 +5,12 @@ name: 'Magnesium deficiency'
 category: 'metabolic'
 status: 'active'
 contested: false
-confidence_score: 0.4785
+confidence_score: 0.4796
 evidence_count: 2
 evidence_quality_index: 0.4039
 consistency_index: 1.0000
 polarity: ""
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # HYP-0047 Magnesium deficiency

@@ -1,0 +1,1276 @@
+{
+  "run_at_utc": "2026-06-23T22:16:11.305885+00:00",
+  "sfari_quarter": "2026-Q2",
+  "raw_sha256": "6d9dee3f5c6d0620",
+  "n_changed": 218,
+  "n_new": 8,
+  "n_atlas_only": 2,
+  "n_unchanged": 1051,
+  "n_atlas": 1564,
+  "n_sfari": 1277,
+  "changed": [
+    {
+      "symbol": "ACTB",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0021"
+    },
+    {
+      "symbol": "ADGRL1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0030"
+    },
+    {
+      "symbol": "ADNP",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0032"
+    },
+    {
+      "symbol": "ADSL",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0034"
+    },
+    {
+      "symbol": "AGO2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0043"
+    },
+    {
+      "symbol": "AHDC1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0047"
+    },
+    {
+      "symbol": "ALDH5A1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0053"
+    },
+    {
+      "symbol": "ANKRD11",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0059"
+    },
+    {
+      "symbol": "ANKRD17",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0061"
+    },
+    {
+      "symbol": "ANKS1B",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0062"
+    },
+    {
+      "symbol": "ARHGEF9",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0080"
+    },
+    {
+      "symbol": "ARID1A",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0081"
+    },
+    {
+      "symbol": "ARID1B",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0082"
+    },
+    {
+      "symbol": "ARID2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0083"
+    },
+    {
+      "symbol": "ARX",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0085"
+    },
+    {
+      "symbol": "ASTN1",
+      "old": "",
+      "new": "1",
+      "atlas_id": "GEN-1468"
+    },
+    {
+      "symbol": "ASXL3",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0093"
+    },
+    {
+      "symbol": "ATP1A1",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0095"
+    },
+    {
+      "symbol": "ATP1A3",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0096"
+    },
+    {
+      "symbol": "ATP2B1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0097"
+    },
+    {
+      "symbol": "ATP9A",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0100"
+    },
+    {
+      "symbol": "BCL11A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0112"
+    },
+    {
+      "symbol": "BICRA",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0115"
+    },
+    {
+      "symbol": "BRAF",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0117"
+    },
+    {
+      "symbol": "BRSK2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0121"
+    },
+    {
+      "symbol": "CACNA1A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0131"
+    },
+    {
+      "symbol": "CACNA1C",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0136"
+    },
+    {
+      "symbol": "CAMK2A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0152"
+    },
+    {
+      "symbol": "CAMK2D",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0154"
+    },
+    {
+      "symbol": "CBX1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0165"
+    },
+    {
+      "symbol": "CDH2",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0181"
+    },
+    {
+      "symbol": "CDK19",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0187"
+    },
+    {
+      "symbol": "CDKL5",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0190"
+    },
+    {
+      "symbol": "CELF2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0193"
+    },
+    {
+      "symbol": "CEP290",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0197"
+    },
+    {
+      "symbol": "CERT1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0199"
+    },
+    {
+      "symbol": "CHAMP1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0201"
+    },
+    {
+      "symbol": "CHD1",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0202"
+    },
+    {
+      "symbol": "CHD2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0203"
+    },
+    {
+      "symbol": "CHD3",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0205"
+    },
+    {
+      "symbol": "CHD4",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0206"
+    },
+    {
+      "symbol": "CHD7",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0207"
+    },
+    {
+      "symbol": "CLCN4",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0219"
+    },
+    {
+      "symbol": "CNKSR2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0227"
+    },
+    {
+      "symbol": "CNOT1",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0228"
+    },
+    {
+      "symbol": "CNOT3",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0229"
+    },
+    {
+      "symbol": "CNTNAP2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0235"
+    },
+    {
+      "symbol": "CREBBP",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0246"
+    },
+    {
+      "symbol": "CSDE1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0248"
+    },
+    {
+      "symbol": "CSNK1G1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0253"
+    },
+    {
+      "symbol": "CSNK2A1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0254"
+    },
+    {
+      "symbol": "CTCF",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0256"
+    },
+    {
+      "symbol": "CTR9",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0263"
+    },
+    {
+      "symbol": "CUL4B",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0267"
+    },
+    {
+      "symbol": "CUX2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0270"
+    },
+    {
+      "symbol": "DDX3X",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0284"
+    },
+    {
+      "symbol": "DEAF1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0286"
+    },
+    {
+      "symbol": "DENND2B",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0287"
+    },
+    {
+      "symbol": "DHCR7",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0291"
+    },
+    {
+      "symbol": "DHX9",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0293"
+    },
+    {
+      "symbol": "DLL1",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0305"
+    },
+    {
+      "symbol": "DMPK",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0309"
+    },
+    {
+      "symbol": "DNMT3A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0318"
+    },
+    {
+      "symbol": "DOT1L",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0323"
+    },
+    {
+      "symbol": "DYRK1A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0341"
+    },
+    {
+      "symbol": "EBF3",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0344"
+    },
+    {
+      "symbol": "EHMT1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0349"
+    },
+    {
+      "symbol": "ELP2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0358"
+    },
+    {
+      "symbol": "EP300",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0364"
+    },
+    {
+      "symbol": "FBXO11",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0390"
+    },
+    {
+      "symbol": "FGF13",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0396"
+    },
+    {
+      "symbol": "FMR1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0005"
+    },
+    {
+      "symbol": "FOXG1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0402"
+    },
+    {
+      "symbol": "FOXP1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0403"
+    },
+    {
+      "symbol": "FRMD5",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0407"
+    },
+    {
+      "symbol": "FRYL",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0410"
+    },
+    {
+      "symbol": "GABBR2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0413"
+    },
+    {
+      "symbol": "GNAI1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0438"
+    },
+    {
+      "symbol": "GSPT2",
+      "old": "",
+      "new": "3",
+      "atlas_id": "GEN-1352"
+    },
+    {
+      "symbol": "H3-3B",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0472"
+    },
+    {
+      "symbol": "HDAC4",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0479"
+    },
+    {
+      "symbol": "HERC1",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0486"
+    },
+    {
+      "symbol": "HIVEP2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0488"
+    },
+    {
+      "symbol": "HNRNPD",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0491"
+    },
+    {
+      "symbol": "HNRNPK",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0494"
+    },
+    {
+      "symbol": "HNRNPR",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0496"
+    },
+    {
+      "symbol": "HNRNPU",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0497"
+    },
+    {
+      "symbol": "HNRNPUL2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0498"
+    },
+    {
+      "symbol": "IQSEC2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0528"
+    },
+    {
+      "symbol": "IRF2BPL",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0529"
+    },
+    {
+      "symbol": "IRX5",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0530"
+    },
+    {
+      "symbol": "KANSL1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0538"
+    },
+    {
+      "symbol": "KAT6A",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0540"
+    },
+    {
+      "symbol": "KCNB1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0546"
+    },
+    {
+      "symbol": "KCNH1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0551"
+    },
+    {
+      "symbol": "KDM3B",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0568"
+    },
+    {
+      "symbol": "KIF1A",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0581"
+    },
+    {
+      "symbol": "KIF5C",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0582"
+    },
+    {
+      "symbol": "KMT2A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0588"
+    },
+    {
+      "symbol": "KMT2C",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0590"
+    },
+    {
+      "symbol": "KMT2E",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0592"
+    },
+    {
+      "symbol": "MACF1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0622"
+    },
+    {
+      "symbol": "MAGEL2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0625"
+    },
+    {
+      "symbol": "MAPK8IP3",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0634"
+    },
+    {
+      "symbol": "MBD5",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0643"
+    },
+    {
+      "symbol": "MBOAT7",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0645"
+    },
+    {
+      "symbol": "MECP2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0004"
+    },
+    {
+      "symbol": "MED12L",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0652"
+    },
+    {
+      "symbol": "MED13",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0653"
+    },
+    {
+      "symbol": "MED13L",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0654"
+    },
+    {
+      "symbol": "MEF2C",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0656"
+    },
+    {
+      "symbol": "MEIS2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0659"
+    },
+    {
+      "symbol": "MSL3",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0674"
+    },
+    {
+      "symbol": "MSX2",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0677"
+    },
+    {
+      "symbol": "MTHFR",
+      "old": "3",
+      "new": "2",
+      "atlas_id": "GEN-0002"
+    },
+    {
+      "symbol": "MTOR",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0679"
+    },
+    {
+      "symbol": "NAA10",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0697"
+    },
+    {
+      "symbol": "NAA15",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0698"
+    },
+    {
+      "symbol": "NACC1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0700"
+    },
+    {
+      "symbol": "NBEA",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0705"
+    },
+    {
+      "symbol": "NF1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0716"
+    },
+    {
+      "symbol": "NFIB",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0719"
+    },
+    {
+      "symbol": "NIPBL",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0724"
+    },
+    {
+      "symbol": "NR2F1",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0738"
+    },
+    {
+      "symbol": "NR3C2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0739"
+    },
+    {
+      "symbol": "NSD1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0746"
+    },
+    {
+      "symbol": "NSD2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0747"
+    },
+    {
+      "symbol": "NTNG1",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0749"
+    },
+    {
+      "symbol": "PABPC1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0774"
+    },
+    {
+      "symbol": "PACS1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0775"
+    },
+    {
+      "symbol": "PCCB",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0789"
+    },
+    {
+      "symbol": "PCDH19",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0793"
+    },
+    {
+      "symbol": "PHF21A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0825"
+    },
+    {
+      "symbol": "PHIP",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0829"
+    },
+    {
+      "symbol": "PJA1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0836"
+    },
+    {
+      "symbol": "POGZ",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0849"
+    },
+    {
+      "symbol": "POLR2A",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0852"
+    },
+    {
+      "symbol": "POLR3A",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0853"
+    },
+    {
+      "symbol": "POMGNT1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0854"
+    },
+    {
+      "symbol": "PPFIA3",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0860"
+    },
+    {
+      "symbol": "PPM1D",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0861"
+    },
+    {
+      "symbol": "PPP2R5C",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0866"
+    },
+    {
+      "symbol": "PPP2R5D",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0867"
+    },
+    {
+      "symbol": "PPP3CA",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0868"
+    },
+    {
+      "symbol": "PRODH",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0881"
+    },
+    {
+      "symbol": "PRPF8",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0884"
+    },
+    {
+      "symbol": "PRR12",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0885"
+    },
+    {
+      "symbol": "PSMD12",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0892"
+    },
+    {
+      "symbol": "PTPN11",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0901"
+    },
+    {
+      "symbol": "PUF60",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0908"
+    },
+    {
+      "symbol": "RAI1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0920"
+    },
+    {
+      "symbol": "RERE",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0932"
+    },
+    {
+      "symbol": "RFX4",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0934"
+    },
+    {
+      "symbol": "RFX7",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0935"
+    },
+    {
+      "symbol": "RIMS2",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-0941"
+    },
+    {
+      "symbol": "RNF135",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0945"
+    },
+    {
+      "symbol": "RNU2-2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0948"
+    },
+    {
+      "symbol": "RNU4-2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0949"
+    },
+    {
+      "symbol": "RNU5B-1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0950"
+    },
+    {
+      "symbol": "RORB",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0953"
+    },
+    {
+      "symbol": "RPS6KA3",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0958"
+    },
+    {
+      "symbol": "SATB1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0966"
+    },
+    {
+      "symbol": "SATB2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0967"
+    },
+    {
+      "symbol": "SCAF4",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0970"
+    },
+    {
+      "symbol": "SCN1A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0973"
+    },
+    {
+      "symbol": "SETD1A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0987"
+    },
+    {
+      "symbol": "SETD1B",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-0988"
+    },
+    {
+      "symbol": "SETD5",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0990"
+    },
+    {
+      "symbol": "SIN3A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1004"
+    },
+    {
+      "symbol": "SIN3B",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-1005"
+    },
+    {
+      "symbol": "SLC6A1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1021"
+    },
+    {
+      "symbol": "SLC9A1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-1028"
+    },
+    {
+      "symbol": "SLC9A6",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1029"
+    },
+    {
+      "symbol": "SMARCA2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1038"
+    },
+    {
+      "symbol": "SMARCC2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1040"
+    },
+    {
+      "symbol": "SMC3",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-1042"
+    },
+    {
+      "symbol": "SON",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1052"
+    },
+    {
+      "symbol": "SOX5",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1055"
+    },
+    {
+      "symbol": "SPTBN1",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-1063"
+    },
+    {
+      "symbol": "SRRM2",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-1067"
+    },
+    {
+      "symbol": "SRSF1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-1068"
+    },
+    {
+      "symbol": "STXBP1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1076"
+    },
+    {
+      "symbol": "SUPT16H",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-1083"
+    },
+    {
+      "symbol": "SYNGAP1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1091"
+    },
+    {
+      "symbol": "TAF4",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-1098"
+    },
+    {
+      "symbol": "TANC2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1100"
+    },
+    {
+      "symbol": "TAOK1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1101"
+    },
+    {
+      "symbol": "TBCK",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1108"
+    },
+    {
+      "symbol": "TCEAL1",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-1113"
+    },
+    {
+      "symbol": "TCF20",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1115"
+    },
+    {
+      "symbol": "TCF4",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1116"
+    },
+    {
+      "symbol": "TLK2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1130"
+    },
+    {
+      "symbol": "TRAF7",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1145"
+    },
+    {
+      "symbol": "TRIM8",
+      "old": "S",
+      "new": "3",
+      "atlas_id": "GEN-1153"
+    },
+    {
+      "symbol": "TRIP12",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1155"
+    },
+    {
+      "symbol": "TRRAP",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1163"
+    },
+    {
+      "symbol": "TSC1",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0006"
+    },
+    {
+      "symbol": "TSC2",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-0007"
+    },
+    {
+      "symbol": "TTN",
+      "old": "S",
+      "new": "2",
+      "atlas_id": "GEN-1174"
+    },
+    {
+      "symbol": "UBE3A",
+      "old": "S",
+      "new": "1",
+      "atlas_id": "GEN-1178"
+    }
+  ],
+  "new": [
+    {
+      "symbol": "BPTF",
+      "score": "3",
+      "name": "bromodomain PHD finger transcription factor",
+      "n_reports": 10
+    },
+    {
+      "symbol": "DLG3",
+      "score": "2",
+      "name": "discs large MAGUK scaffold protein 3",
+      "n_reports": 15
+    },
+    {
+      "symbol": "MAN1B1",
+      "score": "3",
+      "name": "mannosidase alpha class 1B member 1",
+      "n_reports": 8
+    },
+    {
+      "symbol": "PPP2R1A",
+      "score": "3",
+      "name": "protein phosphatase 2 scaffold subunit Aalpha",
+      "n_reports": 6
+    },
+    {
+      "symbol": "RALGAPA1",
+      "score": "3",
+      "name": "Ral GTPase activating protein catalytic subunit alpha 1",
+      "n_reports": 7
+    },
+    {
+      "symbol": "RAPGEF2",
+      "score": "3",
+      "name": "Rap guanine nucleotide exchange factor 2",
+      "n_reports": 5
+    },
+    {
+      "symbol": "RSF1",
+      "score": "3",
+      "name": "remodeling and spacing factor 1",
+      "n_reports": 5
+    },
+    {
+      "symbol": "SF3B3",
+      "score": "2",
+      "name": "splicing factor 3b subunit 3",
+      "n_reports": 6
+    }
+  ],
+  "atlas_only": [
+    {
+      "symbol": "FOLR1",
+      "had_score": "S",
+      "atlas_id": "GEN-0001"
+    },
+    {
+      "symbol": "NRF2 (NFE2L2)",
+      "had_score": "Not in SFARI",
+      "atlas_id": "GEN-0010"
+    }
+  ],
+  "attribution": "SFARI Gene \u00a9 Simons Foundation Autism Research Initiative. Source data public-domain; curation attributed."
+}

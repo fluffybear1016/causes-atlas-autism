@@ -7,7 +7,7 @@ kegg_ids: ['hsa00640']
 reactome_ids: ['R-HSA-1430728']
 evidence_strength: 0.8194
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0021 Short-chain fatty acid (SCFA) signaling

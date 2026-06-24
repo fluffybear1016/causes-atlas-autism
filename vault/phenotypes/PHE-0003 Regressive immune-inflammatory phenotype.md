@@ -21,11 +21,6 @@ Children who develop typically until 18-36 months then regress. Elevated inflamm
 **Diagnostic markers:** Loss of milestones at 18-36 months; elevated cytokines; family hx autoimmunity.
 
 
-## Summary
-
-This phenotype captures children who develop typically through 18–36 months and then lose milestones, against a backdrop of elevated inflammatory markers such as [[BIO-0054 IL-6 (interleukin-6)]] and [[BIO-0055 TNF-α (tumor necrosis factor alpha)]] and a frequent family history of autoimmunity. It is driven by [[MEC-0002 Neuroinflammation]] and [[MEC-0005 Microglial activation]], and the inflamed subset is where immune-modulating interventions like [[INT-0006 Low-dose naltrexone (LDN)]] and [[INT-0057 Anti-inflammatory combo (sulforaphane + omega-3 + vitamin D)]] concentrate their effect. Regression following a trigger in an immune-primed child is a [[Hannah Poling framework]] pattern, which is why the federal concession ([[SRC-001418 Bailey Hannah Poling v. Secretary of Health and Human Services — concession by H]]) is cited here as well as on the mitochondrial phenotype.
-
-
 ## Mechanisms
 
 - [[MEC-0002 Neuroinflammation]]

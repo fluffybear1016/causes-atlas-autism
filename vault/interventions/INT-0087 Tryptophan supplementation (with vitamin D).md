@@ -13,7 +13,7 @@ otc_or_rx: 'otc'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 25
 dose_range: '500-2000 mg tryptophan + 2000 IU vit D /day'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0087 Tryptophan supplementation (with vitamin D)

@@ -13,7 +13,7 @@ otc_or_rx: 'rx'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 5000
 dose_range: 'Single 300 mL infusion or multi-dose over 8 weeks'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0076 Fecal microbiota transplantation (FMT)

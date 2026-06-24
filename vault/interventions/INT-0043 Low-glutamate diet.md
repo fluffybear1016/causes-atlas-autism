@@ -5,15 +5,15 @@ name: 'Low-glutamate diet'
 category: 'food'
 modality: 'food'
 directionality: 'treatment'
-csrs_score: 30.89
-csrs_prevention_score: 49.05
-csrs_treatment_score: 34.59
+csrs_score: 31.14
+csrs_prevention_score: 49.21
+csrs_treatment_score: 34.91
 status: 'active'
 otc_or_rx: 'lifestyle'
 pediatric_safe: 'yes'
 cost_per_month_usd: 0
 dose_range: 'diet protocol'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0043 Low-glutamate diet

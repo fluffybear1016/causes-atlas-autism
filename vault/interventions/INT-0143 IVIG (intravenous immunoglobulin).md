@@ -5,15 +5,15 @@ name: 'IVIG (intravenous immunoglobulin)'
 category: 'drug'
 modality: 'drug'
 directionality: 'treatment'
-csrs_score: ""
-csrs_prevention_score: ""
-csrs_treatment_score: ""
+csrs_score: 13.46
+csrs_prevention_score: 21.77
+csrs_treatment_score: 9.81
 status: 'active'
 otc_or_rx: 'rx_specialist'
 pediatric_safe: 'monitored'
 cost_per_month_usd: 5000
 dose_range: '1.0-2.0 g/kg per infusion course; cycle schedule varies'
-last_updated: '2026-05-13T00:14:44.186956+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0143 IVIG (intravenous immunoglobulin)

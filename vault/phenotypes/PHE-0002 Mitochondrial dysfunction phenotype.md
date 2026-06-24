@@ -24,11 +24,6 @@ Subset with elevated mitochondrial biomarkers; responds to mitochondrial cocktai
 **Notes:** Frye + Rossignol consensus
 
 
-## Summary
-
-This is the Tier-1 subset showing measurable mitochondrial impairment — elevated [[BIO-0018 Lactate]], [[BIO-0019 Pyruvate]], and an abnormal [[BIO-0020 Lactate-to-pyruvate ratio (L_P)]] — that responds to mitochondrial support such as [[INT-0055 Mitochondrial cocktail (CoQ10+L-carnitine+B-complex)]] and [[INT-0012 Coenzyme Q10 (ubiquinol)]]. It centers on [[MEC-0010 Mitochondrial dysfunction]] coupled to [[MEC-0001 Oxidative stress]], and is the mechanistic core of the [[Hannah Poling framework]]: the federally-conceded case turned on a mitochondrial-vulnerable child whose energy metabolism could not absorb a trigger the population average tolerates. Because the signal is real in a susceptible minority but diluted in unstratified cohorts, this phenotype is the canonical example of why conditional risk `P(Φ|P,E)` diverges from population risk `P(Φ|E)`.
-
-
 ## Mechanisms
 
 - [[MEC-0001 Oxidative stress]]

@@ -2,12 +2,12 @@
 id: 'COM-0018'
 type: 'combination'
 name: 'Sleep-architecture stack: Melatonin (ext-release) + Magnesium glycinate + L-theanine'
-csrs_score: ""
+csrs_score: 47.94
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0015', 'INT-0046', 'INT-0145']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0018 Sleep-architecture stack Melatonin (ext-release) + Magnesium glycinate + L-thean

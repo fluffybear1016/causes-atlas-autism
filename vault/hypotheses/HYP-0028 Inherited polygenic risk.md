@@ -5,12 +5,12 @@ name: 'Inherited polygenic risk'
 category: 'genetic'
 status: 'active'
 contested: false
-confidence_score: 0.7815
+confidence_score: 0.7868
 evidence_count: 7
 evidence_quality_index: 0.6246
 consistency_index: 1.0000
 polarity: ""
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # HYP-0028 Inherited polygenic risk

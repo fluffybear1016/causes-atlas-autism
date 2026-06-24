@@ -1,0 +1,404 @@
+{
+  "run_at_utc": "2026-06-24T18:46:34.828219+00:00",
+  "n_matched": 55,
+  "n_missing": 13,
+  "matched": [
+    {
+      "gene": "SYNGAP1",
+      "tier": "1",
+      "size_bucket": "200-500",
+      "boost": 0.05
+    },
+    {
+      "gene": "SCN2A",
+      "tier": "1",
+      "size_bucket": "200-500",
+      "boost": 0.05
+    },
+    {
+      "gene": "STXBP1",
+      "tier": "1",
+      "size_bucket": "200-500",
+      "boost": 0.05
+    },
+    {
+      "gene": "GRIN2B",
+      "tier": "1",
+      "size_bucket": "100-200",
+      "boost": 0.05
+    },
+    {
+      "gene": "ADNP",
+      "tier": "1",
+      "size_bucket": "100-200",
+      "boost": 0.05
+    },
+    {
+      "gene": "ARID1B",
+      "tier": "1",
+      "size_bucket": "100-200",
+      "boost": 0.05
+    },
+    {
+      "gene": "DYRK1A",
+      "tier": "1",
+      "size_bucket": "100-200",
+      "boost": 0.05
+    },
+    {
+      "gene": "CHD8",
+      "tier": "1",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "CHD2",
+      "tier": "1",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "POGZ",
+      "tier": "1",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "FOXP1",
+      "tier": "1",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "SETD5",
+      "tier": "1",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "MED13L",
+      "tier": "1",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "TBR1",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "SCN8A",
+      "tier": "1",
+      "size_bucket": "100-200",
+      "boost": 0.05
+    },
+    {
+      "gene": "PPP2R5D",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "ASXL3",
+      "tier": "1",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "ANKRD11",
+      "tier": "1",
+      "size_bucket": "100-200",
+      "boost": 0.05
+    },
+    {
+      "gene": "KMT2C",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "KMT5B",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "WAC",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "PHF8",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "GABRB3",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "CACNA1C",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "RAI1",
+      "tier": "1",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "AUTS2",
+      "tier": "1",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "NF1",
+      "tier": "1",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "PTEN",
+      "tier": "1",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "TSC1",
+      "tier": "1",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "TSC2",
+      "tier": "1",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "MECP2",
+      "tier": "1",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "FMR1",
+      "tier": "1",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "SHANK3",
+      "tier": "1",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "UBE3A",
+      "tier": "1",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "NRXN1",
+      "tier": "2",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "NRXN2",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "NLGN3",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "NLGN4X",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "CNTNAP2",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "MEF2C",
+      "tier": "2",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "GNB1",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "EHMT1",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "ASH1L",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "TCF4",
+      "tier": "2",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "TCF20",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "TRIO",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "KMT2D",
+      "tier": "2",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "KDM6B",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "ZNF292",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "ANK2",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    },
+    {
+      "gene": "DEAF1",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "FOXP2",
+      "tier": "2",
+      "size_bucket": "external",
+      "boost": 0.04
+    },
+    {
+      "gene": "GRIN2A",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.05
+    },
+    {
+      "gene": "SLC6A1",
+      "tier": "2",
+      "size_bucket": "50-100",
+      "boost": 0.05
+    },
+    {
+      "gene": "HNRNPU",
+      "tier": "2",
+      "size_bucket": "<50",
+      "boost": 0.03
+    }
+  ],
+  "missing": [
+    {
+      "gene": "GNAO1",
+      "tier": "2",
+      "note": ""
+    },
+    {
+      "gene": "PURA",
+      "tier": "2",
+      "note": "PURA Syndrome Foundation"
+    },
+    {
+      "gene": "16p11.2",
+      "tier": "CNV",
+      "note": "original SVIP cohort"
+    },
+    {
+      "gene": "22q11.2",
+      "tier": "CNV",
+      "note": "handled by 22q11.2 Society"
+    },
+    {
+      "gene": "15q13.3",
+      "tier": "CNV",
+      "note": ""
+    },
+    {
+      "gene": "1q21.1",
+      "tier": "CNV",
+      "note": ""
+    },
+    {
+      "gene": "3q29",
+      "tier": "CNV",
+      "note": ""
+    },
+    {
+      "gene": "7q11.23",
+      "tier": "CNV",
+      "note": "Williams Syndrome \u2014 handled by WSA"
+    },
+    {
+      "gene": "17q11.2",
+      "tier": "CNV",
+      "note": "NF1 region \u2014 Children's Tumor Foundation"
+    },
+    {
+      "gene": "17q12",
+      "tier": "CNV",
+      "note": ""
+    },
+    {
+      "gene": "22q13",
+      "tier": "CNV",
+      "note": "Phelan-McDermid"
+    },
+    {
+      "gene": "8p23.1",
+      "tier": "CNV",
+      "note": ""
+    },
+    {
+      "gene": "2p16.3",
+      "tier": "CNV",
+      "note": "NRXN1 region"
+    }
+  ]
+}

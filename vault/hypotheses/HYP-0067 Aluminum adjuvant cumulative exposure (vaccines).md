@@ -10,7 +10,7 @@ evidence_count: 8
 evidence_quality_index: 0.7766
 consistency_index: 0.0456
 polarity: ""
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # HYP-0067 Aluminum adjuvant cumulative exposure (vaccines)

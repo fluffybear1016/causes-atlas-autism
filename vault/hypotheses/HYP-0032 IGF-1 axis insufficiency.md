@@ -5,12 +5,12 @@ name: 'IGF-1 axis insufficiency'
 category: 'metabolic'
 status: 'active'
 contested: false
-confidence_score: 0.6671
+confidence_score: 0.6689
 evidence_count: 3
 evidence_quality_index: 0.4889
 consistency_index: 1.0000
 polarity: ""
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # HYP-0032 IGF-1 axis insufficiency

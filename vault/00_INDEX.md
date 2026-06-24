@@ -31,19 +31,19 @@ Generated from `v2.0_scored/`. One markdown note per entity (except genes, which
 | 5 | INT-0076 | [[INT-0076 Fecal microbiota transplantation (FMT)]] | 69.67 | 64.65 | 71.79 | drug |
 | 6 | INT-0013 | [[INT-0013 Vitamin D3]] | 67.74 | 75.10 | 66.60 | supplement |
 | 7 | INT-0047 | [[INT-0047 Aerobic exercise (structured)]] | 67.27 | 75.50 | 67.53 | lifestyle |
-| 8 | INT-0036 | [[INT-0036 Rapamycin (sirolimus)]] | 67.02 | 65.29 | 68.85 | drug |
-| 9 | INT-0015 | [[INT-0015 Magnesium glycinate]] | 64.73 | 72.99 | 63.96 | supplement |
+| 8 | INT-0036 | [[INT-0036 Rapamycin (sirolimus)]] | 67.05 | 65.31 | 68.87 | drug |
+| 9 | INT-0015 | [[INT-0015 Magnesium glycinate]] | 65.01 | 73.17 | 64.31 | supplement |
 | 10 | INT-0030 | [[INT-0030 Choline (CDP-choline Alpha-GPC)]] | 63.90 | 73.03 | 63.20 | supplement |
 
 ## Top 5 combinations (by CSRS)
 
 | Rank | ID | Name | CSRS |
 |------|----|------|------|
-| 1 | COM-0003 | [[COM-0003 GFCF diet + L-glutamine + Probiotics (gut-axis combo)]] | 55.57 |
-| 2 | COM-0002 | [[COM-0002 Methylated folate + Choline + Omega-3 (preconception prenatal)]] | 55.03 |
-| 3 | COM-0001 | [[COM-0001 Leucovorin + Methyl-B12 + Sulforaphane]] | 53.96 |
-| 4 | COM-0005 | [[COM-0005 Preconception mitochondrial optimization combo (parental)]] | 51.00 |
-| 5 | COM-0004 | [[COM-0004 Reverse-osmosis water + Organic produce + Glass storage (environmental remediati]] | 33.37 |
+| 1 | COM-0014 | [[COM-0014 VSL 3 Visbiome + Bovine colostrum + L-glutamine (intensive gut-repair)]] | 56.89 |
+| 2 | COM-0013 | [[COM-0013 Gut-repair stack Bifidobacterium infantis EVC001 + L-glutamine + Zinc carnosine]] | 55.65 |
+| 3 | COM-0003 | [[COM-0003 GFCF diet + L-glutamine + Probiotics (gut-axis combo)]] | 55.57 |
+| 4 | COM-0006 | [[COM-0006 Leucovorin + Methyl-B12 + Vitamin D]] | 55.41 |
+| 5 | COM-0011 | [[COM-0011 Glutathione regeneration stack Sulforaphane + Liposomal glutathione + NAC]] | 55.09 |
 
 ## Contested hypotheses (6)
 
@@ -58,16 +58,16 @@ Generated from `v2.0_scored/`. One markdown note per entity (except genes, which
 
 | ID | Name | CSRS | Last updated |
 |----|------|------|--------------|
-| INT-0145 | [[INT-0145 L-theanine]] |  |  |
-| INT-0143 | [[INT-0143 IVIG (intravenous immunoglobulin)]] |  |  |
-| INT-0142 | [[INT-0142 Vitamin mineral multinutrient supplement (Adams 2011 formulation)]] |  |  |
-| INT-0141 | [[INT-0141 Aripiprazole]] |  |  |
-| INT-0140 | [[INT-0140 L-carnosine (oral dipeptide)]] |  |  |
-| INT-0128 | [[INT-0128 Trehalose (autophagy promoter)]] |  |  |
-| INT-0120 | [[INT-0120 MitoQ (mito-targeted CoQ10)]] |  |  |
-| INT-0119 | [[INT-0119 PQQ (pyrroloquinoline quinone)]] |  |  |
-| INT-0129 | [[INT-0129 Lovastatin (low-dose)]] |  |  |
-| INT-0121 | [[INT-0121 NAD+ precursors (NMN NR)]] |  |  |
+| INT-0145 | [[INT-0145 L-theanine]] | 20.24 | 2026-06-24T18:46:42+00:00 |
+| INT-0143 | [[INT-0143 IVIG (intravenous immunoglobulin)]] | 13.46 | 2026-06-24T18:46:42+00:00 |
+| INT-0142 | [[INT-0142 Vitamin mineral multinutrient supplement (Adams 2011 formulation)]] | 18.22 | 2026-06-24T18:46:42+00:00 |
+| INT-0141 | [[INT-0141 Aripiprazole]] | 15.67 | 2026-06-24T18:46:42+00:00 |
+| INT-0140 | [[INT-0140 L-carnosine (oral dipeptide)]] | 20.24 | 2026-06-24T18:46:42+00:00 |
+| INT-0137 | [[INT-0137 Vitamin D high-dose (deficiency-correction)]] | 15.66 | 2026-06-24T18:46:42+00:00 |
+| INT-0136 | [[INT-0136 Pregnenolone (low-dose)]] | 15.66 | 2026-06-24T18:46:42+00:00 |
+| INT-0135 | [[INT-0135 MOTS-c (mito-derived peptide)]] | 14.76 | 2026-06-24T18:46:42+00:00 |
+| INT-0134 | [[INT-0134 Humanin (mito-derived peptide)]] | 14.76 | 2026-06-24T18:46:42+00:00 |
+| INT-0133 | [[INT-0133 Antimicrobial peptides (cathelicidin LL-37)]] | 14.76 | 2026-06-24T18:46:42+00:00 |
 
 ## Calibration status
 

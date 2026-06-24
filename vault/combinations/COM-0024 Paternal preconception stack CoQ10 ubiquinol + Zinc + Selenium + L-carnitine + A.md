@@ -2,12 +2,12 @@
 id: 'COM-0024'
 type: 'combination'
 name: 'Paternal preconception stack: CoQ10 ubiquinol + Zinc + Selenium + L-carnitine + Antioxidants'
-csrs_score: ""
+csrs_score: 53.33
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0011', 'INT-0012', 'INT-0016', 'INT-0067']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0024 Paternal preconception stack CoQ10 ubiquinol + Zinc + Selenium + L-carnitine + A

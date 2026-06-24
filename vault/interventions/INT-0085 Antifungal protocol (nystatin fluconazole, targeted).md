@@ -13,7 +13,7 @@ otc_or_rx: 'rx'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 80
 dose_range: 'Per pediatric dosing'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0085 Antifungal protocol (nystatin fluconazole, targeted)

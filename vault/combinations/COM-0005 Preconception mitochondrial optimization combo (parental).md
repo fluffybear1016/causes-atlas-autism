@@ -2,12 +2,12 @@
 id: 'COM-0005'
 type: 'combination'
 name: 'Preconception mitochondrial optimization combo (parental)'
-csrs_score: 51.00
+csrs_score: 51.09
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'active'
 member_intervention_ids: ['INT-0003', 'INT-0008', 'INT-0011', 'INT-0012', 'INT-0013', 'INT-0015', 'INT-0016', 'INT-0030', 'INT-0066', 'INT-0067', 'INT-0086', 'INT-0093']
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0005 Preconception mitochondrial optimization combo (parental)

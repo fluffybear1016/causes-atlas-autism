@@ -5,15 +5,15 @@ name: 'Ashwagandha'
 category: 'herb'
 modality: 'herb'
 directionality: 'treatment'
-csrs_score: 27.52
-csrs_prevention_score: 42.92
-csrs_treatment_score: 32.34
+csrs_score: 27.76
+csrs_prevention_score: 43.08
+csrs_treatment_score: 32.67
 status: 'active'
 otc_or_rx: 'otc'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 18
 dose_range: '300-600 mg/day'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0032 Ashwagandha

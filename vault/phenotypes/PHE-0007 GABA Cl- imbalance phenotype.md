@@ -24,11 +24,6 @@ Phenotype defined by responsiveness to bumetanide; may reflect persistence of im
 **Notes:** Lemonnier 2017+
 
 
-## Summary
-
-This phenotype is defined functionally — by responsiveness to [[INT-0005 Bumetanide]] — and is thought to reflect persistence of immature, depolarizing GABA polarity from elevated intracellular chloride. It is driven by [[MEC-0007 GABA glutamate imbalance]] with [[MEC-0020 Calcium glutamate-NMDA homeostasis]], and identification remains challenging because there is no simple blood marker, only EEG signatures and a therapeutic-response read-out. It is one of the atlas's three sub-3%-error mechanism axes (GABA-Cl⁻) and a textbook §9 case: bumetanide's mixed phase-3 record resolves as high-intracellular-chloride neonates responding while the rest do not.
-
-
 ## Mechanisms
 
 - [[MEC-0007 GABA glutamate imbalance]]

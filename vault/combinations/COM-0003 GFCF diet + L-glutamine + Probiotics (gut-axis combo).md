@@ -7,7 +7,7 @@ csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'active'
 member_intervention_ids: ['INT-0025', 'INT-0041', 'INT-0101']
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0003 GFCF diet + L-glutamine + Probiotics (gut-axis combo)

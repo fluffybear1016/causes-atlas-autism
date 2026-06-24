@@ -5,15 +5,15 @@ name: 'Aripiprazole'
 category: 'drug'
 modality: 'drug'
 directionality: 'treatment'
-csrs_score: ""
-csrs_prevention_score: ""
-csrs_treatment_score: ""
+csrs_score: 15.67
+csrs_prevention_score: 29.44
+csrs_treatment_score: 11.28
 status: 'active'
 otc_or_rx: 'rx'
 pediatric_safe: 'monitored'
 cost_per_month_usd: 60
 dose_range: '5-15 mg/day (Owen 2009 RCT range)'
-last_updated: '2026-05-13T00:14:44.186956+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0141 Aripiprazole

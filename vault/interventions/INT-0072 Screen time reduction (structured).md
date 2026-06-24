@@ -5,15 +5,15 @@ name: 'Screen time reduction (structured)'
 category: 'lifestyle'
 modality: 'lifestyle'
 directionality: 'prevention'
-csrs_score: 42.64
-csrs_prevention_score: 56.17
-csrs_treatment_score: 45.34
+csrs_score: 43.09
+csrs_prevention_score: 56.47
+csrs_treatment_score: 45.93
 status: 'active'
 otc_or_rx: 'lifestyle'
 pediatric_safe: 'yes'
 cost_per_month_usd: 0
 dose_range: '<1h/day age 2-5; none under 2 (AAP)'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0072 Screen time reduction (structured)

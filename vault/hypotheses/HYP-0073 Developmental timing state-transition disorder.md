@@ -5,12 +5,12 @@ name: 'Developmental timing / state-transition disorder'
 category: 'neurodevelopmental'
 status: 'active'
 contested: false
-confidence_score: 0.5223
+confidence_score: 0.5240
 evidence_count: 3
 evidence_quality_index: 0.4066
 consistency_index: 1.0000
 polarity: ""
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # HYP-0073 Developmental timing state-transition disorder

@@ -13,7 +13,7 @@ otc_or_rx: 'rx'
 pediatric_safe: 'no'
 cost_per_month_usd: 400
 dose_range: 'DMSA 10 mg/kg/dose protocols studied; NOT recommended'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0099 Chelation therapy (DMSA EDTA)

@@ -13,7 +13,7 @@ otc_or_rx: ""
 pediatric_safe: ""
 cost_per_month_usd: ""
 dose_range: ""
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0102 Stem cell therapy (UC-MSC cord blood cord tissue MSC, IV infusion)

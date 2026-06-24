@@ -5,9 +5,9 @@ name: 'Calcium / glutamate-NMDA homeostasis'
 category: 'neural'
 kegg_ids: ['hsa04020']
 reactome_ids: ['R-HSA-112315']
-evidence_strength: 0.6934
+evidence_strength: 0.7234
 status: 'active'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # MEC-0020 Calcium glutamate-NMDA homeostasis

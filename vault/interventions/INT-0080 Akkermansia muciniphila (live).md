@@ -13,7 +13,7 @@ otc_or_rx: 'otc'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 60
 dose_range: '10^9 CFU/day'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0080 Akkermansia muciniphila (live)

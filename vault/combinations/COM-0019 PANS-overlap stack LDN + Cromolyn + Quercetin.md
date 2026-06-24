@@ -2,12 +2,12 @@
 id: 'COM-0019'
 type: 'combination'
 name: 'PANS-overlap stack: LDN + Cromolyn + Quercetin'
-csrs_score: ""
+csrs_score: 46.04
 csrs_prevention_score: ""
 csrs_treatment_score: ""
 status: 'candidate'
 member_intervention_ids: ['INT-0006', 'INT-0029', 'INT-0103']
-last_updated: '2026-05-12T23:53:55.993028+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # COM-0019 PANS-overlap stack LDN + Cromolyn + Quercetin

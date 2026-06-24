@@ -5,15 +5,15 @@ name: 'Cerebrolysin'
 category: 'drug'
 modality: 'drug'
 directionality: 'treatment'
-csrs_score: 60.80
-csrs_prevention_score: 55.69
-csrs_treatment_score: 63.52
+csrs_score: 61.26
+csrs_prevention_score: 55.99
+csrs_treatment_score: 64.11
 status: 'active'
 otc_or_rx: 'rx'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 300
 dose_range: '1-5 mL IM, courses of 10-20 doses'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0065 Cerebrolysin

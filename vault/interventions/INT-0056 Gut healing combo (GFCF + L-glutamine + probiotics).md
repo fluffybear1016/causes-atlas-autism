@@ -13,7 +13,7 @@ otc_or_rx: 'lifestyle'
 pediatric_safe: 'yes'
 cost_per_month_usd: 100
 dose_range: 'per components'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0056 Gut healing combo (GFCF + L-glutamine + probiotics)

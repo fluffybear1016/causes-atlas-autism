@@ -5,15 +5,15 @@ name: 'D-cycloserine'
 category: 'drug'
 modality: 'drug'
 directionality: 'treatment'
-csrs_score: 27.37
-csrs_prevention_score: 37.97
-csrs_treatment_score: 33.38
+csrs_score: 27.82
+csrs_prevention_score: 38.27
+csrs_treatment_score: 33.98
 status: 'active'
 otc_or_rx: 'rx'
 pediatric_safe: 'uncertain'
 cost_per_month_usd: 80
 dose_range: '50 mg weekly'
-last_updated: '2026-04-29T22:13:43+00:00'
+last_updated: '2026-06-24T18:46:42+00:00'
 ---
 
 # INT-0040 D-cycloserine

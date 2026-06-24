@@ -5,7 +5,7 @@ title: "v2.0.1 mapping proposal — graph completion (verified)"
 
 # v2.0.1 Mapping Proposal — VERIFIED
 
-**Status:** all citations verified live against PubMed (NCBI eutils) on 2026-06-24T02:33:16+00:00. The original memory-based citations were rejected wholesale; this revision uses only PMIDs that came back from real esearch queries and were confirmed by esummary.
+**Status:** all citations verified live against PubMed (NCBI eutils) on 2026-06-24T18:46:40+00:00. The original memory-based citations were rejected wholesale; this revision uses only PMIDs that came back from real esearch queries and were confirmed by esummary.
 
 **Nothing has been written to `v2.0_scored/`.** All proposal output is in `v2.0.1_proposed/` for review.
 
@@ -147,4 +147,4 @@ Every PMID below has been confirmed live via `esummary.fcgi` in this build. Clic
 3. Run `python3 run_scoring_v20.py` against `v2.0.1_expanded/`. Confirm `INT-0001` calibration ≥ 80.
 4. If pass: replace `v2.0_scored/` with the new run output, rebuild vault: `python3 build_vault.py`.
 
-_Regenerated with verified citations: 2026-06-24T02:33:16+00:00_
+_Regenerated with verified citations: 2026-06-24T18:46:40+00:00_
