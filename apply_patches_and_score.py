@@ -304,9 +304,25 @@ backup = ROOT / "v2.0_scored.before_v201"
 if backup.exists(): shutil.rmtree(backup)
 shutil.copytree(SRC, backup)
 print(f"  backup: v2.0_scored/ -> {backup.name}/")
-# Replace SRC contents with SCORED contents (don't move, copy so v2.0.1_scored stays)
-shutil.rmtree(SRC); shutil.copytree(SCORED, SRC)
-print(f"  v2.0.1_scored/ -> v2.0_scored/ (canonical updated)")
+# Promote scored tables into v2.0_scored/ WITHOUT wholesale-replacing the directory.
+# The scoring engine writes a subset of tables (hypotheses, mechanisms, interventions,
+# combinations, phenotypes, sources, evidence_*, edges, genes, etc.). Side tables that
+# the engine doesn't score — biomarkers.csv, tests_catalog.csv, billing_codes.csv,
+# field_outcomes.csv (CLAUDE.md firewalled), intervention_formulations*.csv,
+# iatrogenic_exposure_priors.csv, baseline_phenotype_prevalence.csv,
+# pgx_drug_gene_table.csv, physiological_state_normalization_table.csv,
+# protocols.csv, rare_syndrome_screening_gate.csv, genes_phase0_additions.csv,
+# genetic_id_aliases.csv, calibration.txt — must be preserved across the promotion.
+# Prior implementation was `rmtree(SRC); copytree(SCORED, SRC)` which destroyed ~20
+# canonical tables every promotion.
+for child in SCORED.iterdir():
+    dst = SRC / child.name
+    if child.is_dir():
+        if dst.exists(): shutil.rmtree(dst)
+        shutil.copytree(child, dst)
+    else:
+        shutil.copy2(child, dst)
+print(f"  v2.0.1_scored/ -> v2.0_scored/ (scored tables promoted; side tables preserved)")
 
 proc = subprocess.run([sys.executable, str(ROOT / "build_vault.py")],
                       cwd=str(ROOT), capture_output=True, text=True, timeout=120)
