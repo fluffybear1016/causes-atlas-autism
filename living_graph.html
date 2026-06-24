@@ -1563,6 +1563,31 @@ const VAULT_PATHS = {"PHE-0001":"PHE-0001 Cerebral folate deficiency phenotype",
 // ── canvas + DPR ───────────────────────────────────────────────────
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
+
+// Guard createRadialGradient against non-finite values. d3-force can
+// transiently emit NaN positions while the simulation is settling, and
+// 1/scale can blow up if scale ever reaches 0 during a pinch-zoom. Any
+// of those propagating to a gradient throws a hard browser error and
+// kills the render loop. Replace bad inputs with a no-op gradient.
+(function () {
+  const _orig = ctx.createRadialGradient.bind(ctx);
+  ctx.createRadialGradient = function (x0, y0, r0, x1, y1, r1) {
+    if (!Number.isFinite(x0) || !Number.isFinite(y0) || !Number.isFinite(r0) ||
+        !Number.isFinite(x1) || !Number.isFinite(y1) || !Number.isFinite(r1) ||
+        r0 < 0 || r1 < 0) {
+      return _orig(0, 0, 0, 0, 0, 1);
+    }
+    return _orig(x0, y0, r0, x1, y1, r1);
+  };
+  const _origLin = ctx.createLinearGradient.bind(ctx);
+  ctx.createLinearGradient = function (x0, y0, x1, y1) {
+    if (!Number.isFinite(x0) || !Number.isFinite(y0) ||
+        !Number.isFinite(x1) || !Number.isFinite(y1)) {
+      return _origLin(0, 0, 1, 0);
+    }
+    return _origLin(x0, y0, x1, y1);
+  };
+})();
 let W = 0, H = 0, DPR = 1;
 function resize() {
   DPR = window.devicePixelRatio || 1;
