@@ -24,6 +24,11 @@ Single-gene cause. Multiple failed phase 3 trials; mechanism continues to refine
 **Notes:** Single-gene phenotype
 
 
+## Summary
+
+This Tier-1 phenotype is the single-gene Fragile X cause, defined by a confirmed FMR1 expansion of ≥200 CGG repeats; roughly half of Fragile X individuals meet autism criteria. It is driven by [[MEC-0006 Synaptic pruning abnormalities]], [[MEC-0028 BDNF neurotrophin signaling]], and [[MEC-0012 IGF-1 insulin signaling]], with management still largely supportive after multiple failed phase-3 trials. Per epistemic principle §9, those phase-3 failures are read here as candidates for responder-subgroup re-analysis rather than as proof of no effect — a genetically homogeneous phenotype that still showed mixed trial results points to unmodeled within-FMR1 heterogeneity.
+
+
 ## Mechanisms
 
 - [[MEC-0006 Synaptic pruning abnormalities]]

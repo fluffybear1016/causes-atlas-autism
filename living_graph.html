@@ -13,9 +13,9 @@
     --cool:    #b4c8e8;
     --warm:    #d8b894;
     --gene:    #7a7770;
-    --text:    #d8d2c4;
-    --text-mute:#5a574e;
-    --text-vmute:#33312c;
+    --text:    #e3ddcd;
+    --text-mute:#9c968a;
+    --text-vmute:#6b6760;
     --line:    #1a1d24;
     --line-hi: #2e3540;
   }
@@ -28,6 +28,39 @@
                -webkit-font-smoothing: antialiased; }
   canvas { display: block; position: absolute; inset: 0;
            width: 100%; height: 100%; cursor: crosshair; }
+
+  /* Map caption — single sentence explaining what the dots are,
+     placed at bottom-center so the parent sees it after looking up
+     from the gold UPDATE MY DATA button. Fades to near-invisible
+     after first meaningful interaction. */
+  .map-caption {
+    position: fixed; left: 50%; bottom: 84px;
+    transform: translateX(-50%);
+    z-index: 7; pointer-events: none;
+    max-width: 640px; padding: 0 24px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1400ms ease 1800ms;
+  }
+  .map-caption.ready { opacity: 1; }
+  .map-caption.dim   { opacity: 0.20; transition-delay: 0ms; }
+  .map-caption.hidden{ opacity: 0;    transition-delay: 0ms; pointer-events: none; }
+  .map-caption-text {
+    font-family: ui-serif, "Iowan Old Style", Garamond, serif;
+    font-size: 13px; line-height: 1.55;
+    color: var(--text-mute); font-style: italic;
+    letter-spacing: 0.01em;
+  }
+  .map-caption-action {
+    color: var(--gold); font-style: normal;
+    margin-left: 6px;
+  }
+  body.welcome-active .map-caption { display: none !important; }
+  @media (max-width: 768px) {
+    .map-caption { bottom: 70px; max-width: 100%; padding: 0 18px; }
+    .map-caption-text { font-size: 12px; }
+    .map-caption-action { display: block; margin-left: 0; margin-top: 4px; }
+  }
 
   /* ── WELCOME STATE — one sentence, one button, nothing else ──── */
   .welcome {
@@ -1175,9 +1208,17 @@
 
 <canvas id="c"></canvas>
 
+<!-- Map caption — explains what the graph is, fades on engagement -->
+<div class="map-caption" id="map-caption">
+  <div class="map-caption-text">
+    Every dot is a piece of autism research — a cause, a mechanism, a treatment, a gene.
+    <span class="map-caption-action">Upload your child's data to find their map within it.</span>
+  </div>
+</div>
+
 <div class="overlay tl">
   <div class="title">Causes Atlas</div>
-  <div class="vmute" style="margin-top:5px;">Autism · v2.0 · reproducible</div>
+  <div class="vmute" style="margin-top:5px;">Autism</div>
   <div style="margin-top:14px;">
     <span class="ingest-dot"></span>
     <span class="vmute" style="letter-spacing:0.26em;">ingesting</span>
@@ -1192,10 +1233,6 @@
 
 <div class="overlay tr">
   <div class="num">686 nodes · 1187 edges</div>
-  <div class="vmute" style="margin-top:5px;">
-    76 hyp · 34 mec · 90 int · 11 phe ·
-    80 bio · 25 com · 50 test · 320 gen
-  </div>
   <div class="vmute" style="margin-top:8px;">n=7 mae 0.049 · 4 sub-3% errors</div>
   <div class="vmute" style="margin-top:8px;">
     intake feed · <span id="intake-ticker">32 candidates last scan · 15 e · 6 m · 4 synthesis</span>
@@ -1211,7 +1248,7 @@
   <div class="presets" id="presets"></div>
   <input class="input" id="search" type="text" autocomplete="off"
          spellcheck="false" placeholder="describe your child · a gene · a symptom" />
-  <button class="toggle" id="toggle">load susceptibility profile</button>
+  <button class="toggle" id="toggle">see an example</button>
 </div>
 
 <div class="hover-label" id="hover"></div>
@@ -1382,8 +1419,8 @@
      plus a "Go deeper" card that hands off to Claude/Perplexity. -->
 <div class="start-dock" id="sd">
   <div class="sd-intro-block">
-    <div class="sd-welcome">Start here</div>
-    <div class="sd-tag">A second opinion for your child, drawn from the evidence — not from population averages.</div>
+    <div class="sd-welcome">Your child's map.</div>
+    <div class="sd-tag">An evidence-based second opinion — built one child at a time, not from population averages.</div>
   </div>
 
   <div class="sd-section">
@@ -1491,6 +1528,36 @@
       dismiss(false);
     }
   });
+})();
+
+// ── MAP CAPTION — fades in after welcome dismissed; dims on engagement ──
+(function () {
+  const cap = document.getElementById('map-caption');
+  if (!cap) return;
+  // Show after welcome state dismisses (delayed via CSS transition)
+  const showCaption = () => {
+    if (!document.body.classList.contains('welcome-active')) {
+      cap.classList.add('ready');
+    } else {
+      setTimeout(showCaption, 400);
+    }
+  };
+  setTimeout(showCaption, 200);
+  // Hide on meaningful user interaction
+  const dim = () => {
+    cap.classList.add('dim');
+    setTimeout(() => cap.classList.add('hidden'), 3000);
+  };
+  ['click', 'wheel', 'touchstart', 'keydown'].forEach(ev => {
+    document.addEventListener(ev, function dimOnce() {
+      // Don't dim if the welcome state is still active
+      if (document.body.classList.contains('welcome-active')) return;
+      dim();
+      document.removeEventListener(ev, dimOnce);
+    }, { once: false, passive: true });
+  });
+  // Auto-dim after 12 seconds even without interaction
+  setTimeout(() => { if (!cap.classList.contains('hidden')) dim(); }, 12000);
 })();
 
 window.addEventListener('error', (e) => {
@@ -2325,7 +2392,7 @@ function selectProfile(bit) {
   } else {
     autoFitDone = false;        // re-run autoFit on reset
     toggle.classList.remove('on');
-    toggle.textContent = 'load susceptibility profile';
+    toggle.textContent = 'see an example';
   }
   // close menu
   dock.classList.remove('open');
@@ -2343,7 +2410,7 @@ search.addEventListener('input', () => {
     toggle.textContent = 'searching · ' + searchTerm;
     presetsEl.querySelectorAll('.preset').forEach(el => el.classList.remove('on'));
   } else {
-    toggle.textContent = 'load susceptibility profile';
+    toggle.textContent = 'see an example';
   }
   recomputeFilter();
   // soft recenter on search centroid
@@ -2362,7 +2429,7 @@ search.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     search.value = ''; searchTerm = ''; searchHits.clear();
     recomputeFilter();
-    toggle.textContent = 'load susceptibility profile';
+    toggle.textContent = 'see an example';
     targetOx = 0; targetOy = 0; targetScale = 1.0;
   }
 });

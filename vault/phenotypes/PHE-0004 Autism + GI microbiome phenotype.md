@@ -21,6 +21,11 @@ Subset with chronic GI symptoms and altered gut microbiome. FMT trials show sust
 **Diagnostic markers:** Chronic GI symptoms; altered microbiome; food sensitivities.
 
 
+## Summary
+
+This phenotype identifies the large subset (30–70% report GI symptoms) with chronic gastrointestinal dysfunction and an altered gut microbiome, often marked by aromatic-metabolite signals such as [[BIO-0038 4-cresol (p-cresol)]] and [[BIO-0037 HPHPA (3-(3-hydroxyphenyl)-3-hydroxypropionic acid)]]. It runs on [[MEC-0008 Gut-brain axis disruption]] and [[MEC-0022 Lipopolysaccharide (LPS) endotoxemia leaky gut]], and the GI-symptomatic responder subset is where microbiome interventions like [[INT-0076 Fecal microbiota transplantation (FMT)]] and the [[INT-0056 Gut healing combo (GFCF + L-glutamine + probiotics)]] show sustained effect (Kang 2019). Consistent with epistemic principle §9, the GFCF and FMT "mixed results" in the literature resolve as effect heterogeneity: the GI-phenotype subset responds where unselected cohorts dilute the signal.
+
+
 ## Mechanisms
 
 - [[MEC-0008 Gut-brain axis disruption]]

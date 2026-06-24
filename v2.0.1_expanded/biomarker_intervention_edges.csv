@@ -42,3 +42,13 @@ BIE-00040,BIO-0161,INT-0008,predicts_response,normalize,0.50,2026-04-30T02:06:58
 BIE-00041,BIO-0170,INT-0036,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,CYP3A4 / CYP3A5 genotype predicts response to INT-0036
 BIE-00042,BIO-0178,INT-0076,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) predicts response to INT-0076
 BIE-00043,BIO-0178,INT-0025,predicts_response,normalize,0.50,2026-04-30T02:06:58+00:00,Comprehensive Stool Analysis (GI-MAP / CDSA composite) predicts response to INT-0025
+BIE-00044,BIO-0054,INT-0106,predicts_response,decrease,0.65,2026-04-30T15:35:10.577783+00:00,IL-6 elevation predicts luteolin response (Tsilioni 2015 cytokine signature)
+BIE-00045,BIO-0055,INT-0106,predicts_response,decrease,0.65,2026-04-30T15:35:10.577783+00:00,TNF-α elevation predicts luteolin response (Tsilioni 2015)
+BIE-00046,BIO-0056,INT-0106,predicts_response,decrease,0.50,2026-04-30T15:35:10.577783+00:00,IL-1β elevation suggests inflammatory phenotype responsive to luteolin
+BIE-00047,BIO-0062,INT-0106,predicts_response,decrease,0.55,2026-04-30T15:35:10.577783+00:00,Tryptase elevation (mast cell activation) predicts luteolin response
+BIE-00048,BIO-0063,INT-0106,predicts_response,decrease,0.55,2026-04-30T15:35:10.577783+00:00,Urinary methylhistamine elevation predicts luteolin response
+BIE-00049,BIO-0052,INT-0106,supports,decrease,0.45,2026-04-30T15:35:10.577783+00:00,hs-CRP global inflammation marker; supports luteolin candidacy
+BIE-00050,BIO-0142,INT-0106,predicts_response,decrease,0.45,2026-04-30T15:35:10.577783+00:00,PET-TSPO microglial activation — research biomarker for luteolin response
+BIE-00051,BIO-0030,INT-0106,supports,normalize,0.40,2026-04-30T15:35:10.577783+00:00,GSH/GSSG ratio — luteolin Nrf2 induction supports redox normalization
+BIE-00052,BIO-0062,INT-0029,predicts_response,decrease,0.55,2026-04-30T15:35:10.577783+00:00,Tryptase elevation predicts quercetin response
+BIE-00053,BIO-0063,INT-0029,predicts_response,decrease,0.55,2026-04-30T15:35:10.577783+00:00,Methylhistamine elevation predicts quercetin response

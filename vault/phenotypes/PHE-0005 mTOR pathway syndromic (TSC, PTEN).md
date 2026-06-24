@@ -24,6 +24,11 @@ Single-gene variants in mTOR pathway. Rapamycin/sirolimus FDA-approved for TSC; 
 **Notes:** Strong genetic basis
 
 
+## Summary
+
+This is a Tier-1, strongly genetic phenotype defined by single-gene variants in the mTOR pathway — TSC1, TSC2, or PTEN — typically presenting with tubers on imaging and macrocephaly. It is driven by [[MEC-0009 mTOR pathway dysregulation]] with [[MEC-0006 Synaptic pruning abnormalities]], and is the clearest case where the susceptibility marker dictates the intervention: [[INT-0036 Rapamycin (sirolimus)]] is FDA-approved for TSC and used off-label when an mTOR variant is confirmed. It is the gene-first end of the [[Hannah Poling framework]] — here the susceptibility `P` is a known pathogenic variant rather than a metabolic vulnerability.
+
+
 ## Mechanisms
 
 - [[MEC-0006 Synaptic pruning abnormalities]]
