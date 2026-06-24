@@ -1859,18 +1859,18 @@ HTML = r"""<!doctype html>
     z-index: 50;
   }
   .map-caption.ready { opacity: 1; }
-  .map-caption.dim   { opacity: 0.20; transition: opacity 700ms ease; }
-  .map-caption.hidden { opacity: 0; transition: opacity 700ms ease; }
   .map-caption .map-caption-text {
     font-family: ui-serif, "Iowan Old Style", "Apple Garamond", Georgia, serif;
-    font-size: 13px;
+    font-size: 15px;
     font-style: italic;
-    line-height: 1.5;
-    color: var(--text-mute);
+    line-height: 1.55;
+    color: var(--text);
+    letter-spacing: 0.005em;
+    text-shadow: 0 0 14px rgba(5,8,16,0.85);
   }
   @media (max-width: 720px) {
     .map-caption { bottom: 96px; }
-    .map-caption .map-caption-text { font-size: 12px; }
+    .map-caption .map-caption-text { font-size: 13px; }
   }
 </style>
 </head>
@@ -6081,19 +6081,9 @@ if (tickerEl && INTAKE && INTAKE.candidates && INTAKE.candidates.length) {
   function startMapCaption(delay) {
     const cap = document.getElementById('map-caption');
     if (!cap) return;
+    // Fade in and stay — no auto-dim, no auto-hide. The caption holds
+    // for the entire session.
     setTimeout(() => cap.classList.add('ready'), delay || 200);
-
-    let dimmed = false;
-    function dim() {
-      if (dimmed) return;
-      dimmed = true;
-      cap.classList.add('dim');
-      setTimeout(() => cap.classList.add('hidden'), 3000);
-    }
-    ['click', 'wheel', 'touchstart', 'keydown'].forEach(ev =>
-      window.addEventListener(ev, dim, { once: true, passive: true })
-    );
-    setTimeout(dim, 12000);
   }
 
   function dismissWelcome(setDismissedFlag) {
