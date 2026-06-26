@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Wells L; Hinchey M; Frye RE; Morgan A",
+  "doi": "doi: 10.3390/diseases14060202",
+  "first_author": "Wells L",
+  "journal": "Diseases",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42346294",
+  "pubdate": "2026 Jun 5",
+  "title": "Folate Receptor Alpha Autoantibodies in Vector-Borne Disease Populations.",
+  "verified_at": "2026-06-26T08:49:23+00:00"
+}

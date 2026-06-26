@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-25T08:46:24+00:00",
+  "generated_at_utc": "2026-06-26T08:49:23+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-05-27T09:00:51+00:00",
-      "since": "2026-05-26T09:35:32+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 2,
@@ -295,6 +286,18 @@
       "since": "2026-06-24T18:46:34+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-26T08:49:23+00:00",
+      "since": "2026-06-25T08:46:24+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "42346294",
+        "42347032"
+      ]
     }
   ],
   "queue_preview": [
@@ -305,6 +308,14 @@
       "pmid": "42280338",
       "pubdate": "2026 May 26",
       "title": "Development of a Metagenomics-Guided Personalized Synbiotic Protocol for Children with Autism Spectrum Disorder: An Exploratory Case Series."
+    },
+    {
+      "first_author": "Giorlandino C",
+      "journal": "Methods Protoc",
+      "matched_queries_count": 2,
+      "pmid": "42347032",
+      "pubdate": "2026 May 25",
+      "title": "Folate Receptor Alpha Autoantibodies in Early Pregnancy: First-Trimester Reference Intervals and Proposed Clinical Thresholds."
     },
     {
       "first_author": "McNamara O",
@@ -481,6 +492,14 @@
       "pmid": "42220936",
       "pubdate": "2026 Jun 9",
       "title": "Medical treatment of autism spectrum disorder in children: Current evidence, controversies, and clinical challenges."
+    },
+    {
+      "first_author": "Wells L",
+      "journal": "Diseases",
+      "matched_queries_count": 2,
+      "pmid": "42346294",
+      "pubdate": "2026 Jun 5",
+      "title": "Folate Receptor Alpha Autoantibodies in Vector-Borne Disease Populations."
     },
     {
       "first_author": "Adak P",
@@ -681,23 +700,7 @@
       "pmid": "42176766",
       "pubdate": "2026 Aug",
       "title": "Neuronutrition in ASD: Involvement of gut microbiota, oxidative stress and inflammatory markers."
-    },
-    {
-      "first_author": "Al-Salihy AAS",
-      "journal": "J Neuroimmunol",
-      "matched_queries_count": 1,
-      "pmid": "42102652",
-      "pubdate": "2026 Aug",
-      "title": "Toward an immunological classification of autism spectrum disorder: A PRISMA-ScR-compliant scoping review."
-    },
-    {
-      "first_author": "Chatzinikolaou R",
-      "journal": "Nutrition",
-      "matched_queries_count": 1,
-      "pmid": "42034943",
-      "pubdate": "2026 Aug",
-      "title": "Exploring the links between nutrition, gut microbiome, and neurodevelopmental disorders."
     }
   ],
-  "queue_size": 207
+  "queue_size": 209
 }

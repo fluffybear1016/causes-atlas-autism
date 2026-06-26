@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Giorlandino C; Cupellaro M; Margiotti K; Giorlandino F; Pignataro F; Mastrandrea ML; Raffio R; D'Emidio L",
+  "doi": "pii: 79. doi: 10.3390/mps9030079",
+  "first_author": "Giorlandino C",
+  "journal": "Methods Protoc",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42347032",
+  "pubdate": "2026 May 25",
+  "title": "Folate Receptor Alpha Autoantibodies in Early Pregnancy: First-Trimester Reference Intervals and Proposed Clinical Thresholds.",
+  "verified_at": "2026-06-26T08:49:23+00:00"
+}
