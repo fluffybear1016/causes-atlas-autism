@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-26T08:49:23+00:00",
+  "generated_at_utc": "2026-06-27T08:25:31+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-05-28T09:44:34+00:00",
-      "since": "2026-05-27T09:00:51+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42196321"
-      ]
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 1,
@@ -298,6 +287,19 @@
         "42346294",
         "42347032"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 4,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-27T08:25:31+00:00",
+      "since": "2026-06-26T08:49:23+00:00",
+      "verified_added_to_queue": 3,
+      "verified_pmids": [
+        "42353350",
+        "42356264",
+        "42356344"
+      ]
     }
   ],
   "queue_preview": [
@@ -510,12 +512,36 @@
       "title": "Role of GABA(A) receptors and chloride transporters in autism - An explorative analysis using peripheral blood as a model."
     },
     {
+      "first_author": "Trifonova EA",
+      "journal": "Int J Mol Sci",
+      "matched_queries_count": 1,
+      "pmid": "42353350",
+      "pubdate": "2026 Jun 22",
+      "title": "The Microbiota in the Diagnosis and Treatment of Autism Spectrum Disorder."
+    },
+    {
+      "first_author": "Ciurea NA",
+      "journal": "Nutrients",
+      "matched_queries_count": 1,
+      "pmid": "42356344",
+      "pubdate": "2026 Jun 17",
+      "title": "Targeting the Human Gut Microbiota-Between Conventional Therapy and Precision Genetic Engineering."
+    },
+    {
       "first_author": "Ma C",
       "journal": "Child Psychiatry Hum Dev",
       "matched_queries_count": 1,
       "pmid": "42277537",
       "pubdate": "2026 Jun 12",
       "title": "Comparative Efficacy and Acceptability of Non-pharmacological Therapies and Novel Pharmacotherapies for Autism: A Systematic Review and Network Meta-Analysis."
+    },
+    {
+      "first_author": "Ducki C",
+      "journal": "Nutrients",
+      "matched_queries_count": 1,
+      "pmid": "42356264",
+      "pubdate": "2026 Jun 10",
+      "title": "Vitamin D as a Lifespan Neuroimmune Signal in Psychiatry: From Developmental Risk to Precision Nutrition."
     },
     {
       "first_author": "Patel NG",
@@ -676,31 +702,7 @@
       "pmid": "41751904",
       "pubdate": "2026 Feb 12",
       "title": "Gut-Brain Inflammation and Disrupted Homeostasis Due to Activation of Mast Cells and Microglia."
-    },
-    {
-      "first_author": "Long J",
-      "journal": "Food Chem Toxicol",
-      "matched_queries_count": 1,
-      "pmid": "41349941",
-      "pubdate": "2026 Feb",
-      "title": "New insights into mechanisms of valproic acid-induced neurodevelopmental toxicity in autism spectrum disorder: An integrative network toxicology approach combin"
-    },
-    {
-      "first_author": "Aijaz M",
-      "journal": "Naunyn Schmiedebergs Arch Pharmacol",
-      "matched_queries_count": 1,
-      "pmid": "41186720",
-      "pubdate": "2026 Feb",
-      "title": "The gut-brain axis: role of gut microbiota in neurological disease pathogenesis and pharmacotherapeutics."
-    },
-    {
-      "first_author": "Avolio E",
-      "journal": "Neurosci Biobehav Rev",
-      "matched_queries_count": 1,
-      "pmid": "42176766",
-      "pubdate": "2026 Aug",
-      "title": "Neuronutrition in ASD: Involvement of gut microbiota, oxidative stress and inflammatory markers."
     }
   ],
-  "queue_size": 209
+  "queue_size": 212
 }
