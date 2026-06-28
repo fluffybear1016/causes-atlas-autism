@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Yu S; Ye Z; Zhao W; Yu X; Qiu Y; Lin K; Lu T; Ge L",
+  "doi": "doi: 10.1007/s00406-025-02147-0",
+  "first_author": "Yu S",
+  "journal": "Eur Arch Psychiatry Clin Neurosci",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "41575555",
+  "pubdate": "2026 Jun",
+  "title": "Genetic evidence on chemical communication between gut microbiota and neurological and psychiatric disorders: a Mendelian randomization study.",
+  "verified_at": "2026-06-28T08:39:43+00:00"
+}

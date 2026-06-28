@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-06-27T08:25:31+00:00",
+  "generated_at_utc": "2026-06-28T08:39:44+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-05-29T09:34:58+00:00",
-      "since": "2026-05-28T09:44:34+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 2,
@@ -300,6 +291,17 @@
         "42356264",
         "42356344"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-06-28T08:39:44+00:00",
+      "since": "2026-06-27T08:25:31+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "41575555"
+      ]
     }
   ],
   "queue_preview": [
@@ -552,6 +554,14 @@
       "title": "Internet Searches for Leucovorin, Folate, and Acetaminophen After a White House Autism Announcement."
     },
     {
+      "first_author": "Yu S",
+      "journal": "Eur Arch Psychiatry Clin Neurosci",
+      "matched_queries_count": 1,
+      "pmid": "41575555",
+      "pubdate": "2026 Jun",
+      "title": "Genetic evidence on chemical communication between gut microbiota and neurological and psychiatric disorders: a Mendelian randomization study."
+    },
+    {
       "first_author": "Lee J",
       "journal": "J Hazard Mater",
       "matched_queries_count": 1,
@@ -694,15 +704,7 @@
       "pmid": "41539110",
       "pubdate": "2026 Feb 15",
       "title": "Gut virome plays an extended role with bacteriome in neurological health and disease."
-    },
-    {
-      "first_author": "Katiraei P",
-      "journal": "Int J Mol Sci",
-      "matched_queries_count": 2,
-      "pmid": "41751904",
-      "pubdate": "2026 Feb 12",
-      "title": "Gut-Brain Inflammation and Disrupted Homeostasis Due to Activation of Mast Cells and Microglia."
     }
   ],
-  "queue_size": 212
+  "queue_size": 213
 }
