@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-07-01T09:28:35+00:00",
+  "generated_at_utc": "2026-07-02T08:41:15+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-06-02T10:03:23+00:00",
-      "since": "2026-06-01T11:08:23+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42220936"
-      ]
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 1,
@@ -300,6 +289,17 @@
       "since": "2026-06-30T08:55:40+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-07-02T08:41:15+00:00",
+      "since": "2026-07-01T09:28:35+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42387222"
+      ]
     }
   ],
   "queue_preview": [
@@ -560,6 +560,14 @@
       "title": "Genetic evidence on chemical communication between gut microbiota and neurological and psychiatric disorders: a Mendelian randomization study."
     },
     {
+      "first_author": "Li Z",
+      "journal": "J Med Syst",
+      "matched_queries_count": 1,
+      "pmid": "42387222",
+      "pubdate": "2026 Jul 2",
+      "title": "Starmate: A Lightweight AI Assistant for Autism Caregivers Developed and Evaluated Through a User-Centered Mixed-Methods Framework."
+    },
+    {
       "first_author": "Lee J",
       "journal": "J Hazard Mater",
       "matched_queries_count": 1,
@@ -694,15 +702,7 @@
       "pmid": "41755580",
       "pubdate": "2026 Feb 15",
       "title": "Dysbiosis in the Family nucleus of Children Diagnosed With Autism Spectrumin Mexico City."
-    },
-    {
-      "first_author": "Shrivastav K",
-      "journal": "J Neurol Sci",
-      "matched_queries_count": 1,
-      "pmid": "41539110",
-      "pubdate": "2026 Feb 15",
-      "title": "Gut virome plays an extended role with bacteriome in neurological health and disease."
     }
   ],
-  "queue_size": 213
+  "queue_size": 214
 }
