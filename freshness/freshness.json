@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-07-07T09:22:39+00:00",
+  "generated_at_utc": "2026-07-08T08:07:15+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-06-08T10:16:42+00:00",
-      "since": "2026-06-07T08:44:01+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 2,
@@ -300,6 +291,17 @@
       "verified_pmids": [
         "42404763"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-07-08T08:07:15+00:00",
+      "since": "2026-07-07T09:22:39+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "41285678"
+      ]
     }
   ],
   "queue_preview": [
@@ -560,6 +562,14 @@
       "title": "Genetic evidence on chemical communication between gut microbiota and neurological and psychiatric disorders: a Mendelian randomization study."
     },
     {
+      "first_author": "Andonotopo W",
+      "journal": "J Perinat Med",
+      "matched_queries_count": 1,
+      "pmid": "41285678",
+      "pubdate": "2026 Jul 24",
+      "title": "The intrauterine microbiome-neurodevelopment axis: decoding the prenatal microbial imprint on lifelong mental health."
+    },
+    {
       "first_author": "Li Z",
       "journal": "J Med Syst",
       "matched_queries_count": 1,
@@ -694,15 +704,7 @@
       "pmid": "41752141",
       "pubdate": "2026 Feb 20",
       "title": "Gut Microbiome Mediates the Causal Link Between Autism Spectrum Disorder and Dietary Preferences: A Mendelian Randomization Study."
-    },
-    {
-      "first_author": "Mendoza ADG",
-      "journal": "Actas Esp Psiquiatr",
-      "matched_queries_count": 1,
-      "pmid": "41755580",
-      "pubdate": "2026 Feb 15",
-      "title": "Dysbiosis in the Family nucleus of Children Diagnosed With Autism Spectrumin Mexico City."
     }
   ],
-  "queue_size": 215
+  "queue_size": 216
 }
