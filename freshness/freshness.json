@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-07-08T08:07:15+00:00",
+  "generated_at_utc": "2026-07-09T09:20:32+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-06-09T08:59:53+00:00",
-      "since": "2026-06-08T10:16:42+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "41670197"
-      ]
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 2,
@@ -302,6 +291,18 @@
       "verified_pmids": [
         "41285678"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-07-09T09:20:31+00:00",
+      "since": "2026-07-08T08:07:15+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "42240365",
+        "42418309"
+      ]
     }
   ],
   "queue_preview": [
@@ -562,6 +563,14 @@
       "title": "Genetic evidence on chemical communication between gut microbiota and neurological and psychiatric disorders: a Mendelian randomization study."
     },
     {
+      "first_author": "Chen B",
+      "journal": "Microbiol Spectr",
+      "matched_queries_count": 1,
+      "pmid": "42240365",
+      "pubdate": "2026 Jul 7",
+      "title": "Gut microbial culturomics identifies autism-associated Shigella and reveals species-level remodeling during fecal microbiota transplantation."
+    },
+    {
       "first_author": "Andonotopo W",
       "journal": "J Perinat Med",
       "matched_queries_count": 1,
@@ -592,6 +601,14 @@
       "pmid": "42172709",
       "pubdate": "2026 Jul 1",
       "title": "Micro- and nanoplastics in the central nervous system: Transport pathways, neurotoxicity, and implications for brain disorders."
+    },
+    {
+      "first_author": "Nogay NH",
+      "journal": "Brain Behav",
+      "matched_queries_count": 1,
+      "pmid": "42418309",
+      "pubdate": "2026 Jul",
+      "title": "Effect of Nutritional Factors on Mental Health Problems in Autism Spectrum Disorder: A Narrative Synthesis of Current Evidence."
     },
     {
       "first_author": "Yin D",
@@ -688,23 +705,7 @@
       "pmid": "41897070",
       "pubdate": "2026 Feb 28",
       "title": "Biological Risk Factors for Suicidal Behavior in Children and Adolescents: A Narrative Review."
-    },
-    {
-      "first_author": "Lu W",
-      "journal": "Nat Commun",
-      "matched_queries_count": 1,
-      "pmid": "41748585",
-      "pubdate": "2026 Feb 26",
-      "title": "Gut microbiome composition and strain-sharing in multiplex autism spectrum disorder families."
-    },
-    {
-      "first_author": "Wu Y",
-      "journal": "Int J Mol Sci",
-      "matched_queries_count": 1,
-      "pmid": "41752141",
-      "pubdate": "2026 Feb 20",
-      "title": "Gut Microbiome Mediates the Causal Link Between Autism Spectrum Disorder and Dietary Preferences: A Mendelian Randomization Study."
     }
   ],
-  "queue_size": 216
+  "queue_size": 218
 }

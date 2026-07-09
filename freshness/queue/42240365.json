@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Chen B; Su Z; Sun Y; Shao Z; Yu X; Jiang X; Xue X; Yu L",
+  "doi": "doi: 10.1128/spectrum.00797-26",
+  "first_author": "Chen B",
+  "journal": "Microbiol Spectr",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "42240365",
+  "pubdate": "2026 Jul 7",
+  "title": "Gut microbial culturomics identifies autism-associated Shigella and reveals species-level remodeling during fecal microbiota transplantation.",
+  "verified_at": "2026-07-09T09:20:31+00:00"
+}
