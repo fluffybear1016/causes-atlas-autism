@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-07-10T09:17:56+00:00",
+  "generated_at_utc": "2026-07-11T07:39:21+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-06-11T10:05:09+00:00",
-      "since": "2026-06-10T09:39:52+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 4,
@@ -301,6 +292,17 @@
       "since": "2026-07-09T09:20:31+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-07-11T07:39:21+00:00",
+      "since": "2026-07-10T09:17:56+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "41941984"
+      ]
     }
   ],
   "queue_preview": [
@@ -705,5 +707,5 @@
       "title": "Biological Risk Factors for Suicidal Behavior in Children and Adolescents: A Narrative Review."
     }
   ],
-  "queue_size": 218
+  "queue_size": 219
 }
