@@ -1,20 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-07-12T07:58:43+00:00",
+  "generated_at_utc": "2026-07-13T08:47:15+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 4,
-      "queries_run": 9,
-      "run_at_utc": "2026-06-13T08:46:22+00:00",
-      "since": "2026-06-12T09:56:15+00:00",
-      "verified_added_to_queue": 3,
-      "verified_pmids": [
-        "42176766",
-        "42280338",
-        "42281150"
-      ]
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 1,
@@ -299,6 +286,17 @@
       "since": "2026-07-11T07:39:21+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-07-13T08:47:15+00:00",
+      "since": "2026-07-12T07:58:43+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "41504861"
+      ]
     }
   ],
   "queue_preview": [
@@ -559,6 +557,14 @@
       "title": "Genetic evidence on chemical communication between gut microbiota and neurological and psychiatric disorders: a Mendelian randomization study."
     },
     {
+      "first_author": "Tingler AM",
+      "journal": "Dig Dis Sci",
+      "matched_queries_count": 1,
+      "pmid": "41504861",
+      "pubdate": "2026 Jun",
+      "title": "Children with Autism Spectrum Disorder and Chronic Gastrointestinal Symptoms Have Alterations in Intestinal Neurotransmitter Pathways."
+    },
+    {
       "first_author": "Chen B",
       "journal": "Microbiol Spectr",
       "matched_queries_count": 1,
@@ -693,15 +699,7 @@
       "pmid": "41633963",
       "pubdate": "2026 Feb 3",
       "title": "Treating autism with Bumetanide: Identification of responders using Q-Finder machine learning algorithm."
-    },
-    {
-      "first_author": "Vatr\u00e1l M",
-      "journal": "Children (Basel)",
-      "matched_queries_count": 1,
-      "pmid": "41897070",
-      "pubdate": "2026 Feb 28",
-      "title": "Biological Risk Factors for Suicidal Behavior in Children and Adolescents: A Narrative Review."
     }
   ],
-  "queue_size": 219
+  "queue_size": 220
 }
