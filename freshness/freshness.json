@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-07-15T07:49:32+00:00",
+  "generated_at_utc": "2026-07-16T07:54:54+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1091,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-06-16T10:53:21+00:00",
-      "since": "2026-06-15T11:44:58+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42292036"
-      ]
-    },
     {
       "atlas_pmid_count": 1091,
       "candidates_found": 1,
@@ -297,6 +286,17 @@
       "since": "2026-07-14T07:46:12+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-07-16T07:54:54+00:00",
+      "since": "2026-07-15T07:49:32+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42455433"
+      ]
     }
   ],
   "queue_preview": [
@@ -589,6 +589,14 @@
       "title": "Starmate: A Lightweight AI Assistant for Autism Caregivers Developed and Evaluated Through a User-Centered Mixed-Methods Framework."
     },
     {
+      "first_author": "Shokr MM",
+      "journal": "Mol Neurobiol",
+      "matched_queries_count": 1,
+      "pmid": "42455433",
+      "pubdate": "2026 Jul 15",
+      "title": "Plant-derived Natural Products in Neurological and Psychiatric Disorders: Mechanisms of Action and Synergistic Roles with Probiotics."
+    },
+    {
       "first_author": "Lee J",
       "journal": "J Hazard Mater",
       "matched_queries_count": 1,
@@ -691,15 +699,7 @@
       "pmid": "41599414",
       "pubdate": "2026 Jan 20",
       "title": "Computational Identification of Blood-Brain Barrier-Permeant Microbiome Metabolites with Binding Affinity to Neurotransmitter Receptors in Neurodevelopmental Di"
-    },
-    {
-      "first_author": "Rabiei H",
-      "journal": "Transl Psychiatry",
-      "matched_queries_count": 1,
-      "pmid": "41633963",
-      "pubdate": "2026 Feb 3",
-      "title": "Treating autism with Bumetanide: Identification of responders using Q-Finder machine learning algorithm."
     }
   ],
-  "queue_size": 220
+  "queue_size": 221
 }
