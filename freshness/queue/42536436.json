@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Holle LM; Kratz J; Dow-Hillgartner EN; Patel MA; Deming D; Uboha N; Lubner S; LoConte NK",
+  "doi": "pii: oyag304. doi: 10.1093/oncolo/oyag304",
+  "first_author": "Holle LM",
+  "journal": "Oncologist",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42536436",
+  "pubdate": "2026 Jul 31",
+  "title": "HopeFOL, or FOL of Problems? Leucovorin For Autistic Symptoms.",
+  "verified_at": "2026-08-01T08:02:41+00:00"
+}
