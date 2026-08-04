@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "K SR; Y LA",
+  "doi": "doi: 10.3791/71972",
+  "first_author": "K SR",
+  "journal": "J Vis Exp",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "42545901",
+  "pubdate": "2026 Jul 17",
+  "title": "A Scoping Review of Machine Learning and Deep Learning Methods for Autism Spectrum Disorder Diagnosis and Analysis.",
+  "verified_at": "2026-08-04T08:19:17+00:00"
+}

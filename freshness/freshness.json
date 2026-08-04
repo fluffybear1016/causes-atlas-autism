@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-03T09:21:03+00:00",
+  "generated_at_utc": "2026-08-04T08:19:18+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-05T08:39:44+00:00",
-      "since": "2026-07-04T08:23:13+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -295,6 +286,19 @@
       "since": "2026-08-02T08:04:28+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 4,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-04T08:19:18+00:00",
+      "since": "2026-08-03T09:21:03+00:00",
+      "verified_added_to_queue": 3,
+      "verified_pmids": [
+        "42300458",
+        "42545901",
+        "42547712"
+      ]
     }
   ],
   "queue_preview": [
@@ -611,6 +615,14 @@
       "title": "Starmate: A Lightweight AI Assistant for Autism Caregivers Developed and Evaluated Through a User-Centered Mixed-Methods Framework."
     },
     {
+      "first_author": "K SR",
+      "journal": "J Vis Exp",
+      "matched_queries_count": 1,
+      "pmid": "42545901",
+      "pubdate": "2026 Jul 17",
+      "title": "A Scoping Review of Machine Learning and Deep Learning Methods for Autism Spectrum Disorder Diagnosis and Analysis."
+    },
+    {
       "first_author": "Shokr MM",
       "journal": "Mol Neurobiol",
       "matched_queries_count": 1,
@@ -689,15 +701,7 @@
       "pmid": "41646353",
       "pubdate": "2026 Jan 30",
       "title": "Sex differences in self-reported symptoms and comorbidities associated with hypermobile Ehlers-Danlos syndrome and hypermobility spectrum disorders: A retrospec"
-    },
-    {
-      "first_author": "Long J",
-      "journal": "Cell Mol Life Sci",
-      "matched_queries_count": 1,
-      "pmid": "41615476",
-      "pubdate": "2026 Jan 30",
-      "title": "Microbiota-gut-brain axis\u00a0and neuroendocrine pathways underlie divergent mechanisms of intermittent and continuous theta-burst stimulation in autism spectrum di"
     }
   ],
-  "queue_size": 227
+  "queue_size": 230
 }
