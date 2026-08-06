@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "G\u00fcnay \u00c7; Gazeteci Tekin HG",
+  "doi": "doi: 10.1159/000553193",
+  "first_author": "G\u00fcnay \u00c7",
+  "journal": "Mol Syndromol",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42553823",
+  "pubdate": "2026 Jun 18",
+  "title": "Remarkable Clinical Improvement after Folinic Acid Supplementation in Cerebral Folate Transport Deficiency and Epileptic Encephalopathy: A Case Report.",
+  "verified_at": "2026-08-06T08:14:07+00:00"
+}

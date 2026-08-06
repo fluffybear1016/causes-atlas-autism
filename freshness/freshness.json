@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-05T08:15:36+00:00",
+  "generated_at_utc": "2026-08-06T08:14:07+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-07T09:22:39+00:00",
-      "since": "2026-07-06T09:54:51+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42404763"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -299,6 +288,18 @@
       "since": "2026-08-04T08:19:18+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-06T08:14:07+00:00",
+      "since": "2026-08-05T08:15:36+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "42553255",
+        "42553823"
+      ]
     }
   ],
   "queue_preview": [
@@ -527,6 +528,14 @@
       "title": "The Microbiota in the Diagnosis and Treatment of Autism Spectrum Disorder."
     },
     {
+      "first_author": "G\u00fcnay \u00c7",
+      "journal": "Mol Syndromol",
+      "matched_queries_count": 2,
+      "pmid": "42553823",
+      "pubdate": "2026 Jun 18",
+      "title": "Remarkable Clinical Improvement after Folinic Acid Supplementation in Cerebral Folate Transport Deficiency and Epileptic Encephalopathy: A Case Report."
+    },
+    {
       "first_author": "Ciurea NA",
       "journal": "Nutrients",
       "matched_queries_count": 1,
@@ -693,15 +702,7 @@
       "pmid": "41833597",
       "pubdate": "2026 Jul",
       "title": "Mitochondrial dysfunction and mitochondrial unfolded protein response (UPR(mt)): unravelling their roles in autism spectrum disorder pathogenesis."
-    },
-    {
-      "first_author": "Wilson FC",
-      "journal": "Res Sq",
-      "matched_queries_count": 1,
-      "pmid": "41646353",
-      "pubdate": "2026 Jan 30",
-      "title": "Sex differences in self-reported symptoms and comorbidities associated with hypermobile Ehlers-Danlos syndrome and hypermobility spectrum disorders: A retrospec"
     }
   ],
-  "queue_size": 230
+  "queue_size": 232
 }
