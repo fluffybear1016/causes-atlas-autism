@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Flynn CK; Carr K; Whiteley P; Nirmalkar K; Bellinghiere A; Hahn J; Liu H; Arici H",
+  "doi": "doi: 10.1038/s41380-026-03620-5",
+  "first_author": "Flynn CK",
+  "journal": "Mol Psychiatry",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "42192173",
+  "pubdate": "2026 Sep",
+  "title": "Elevated microbially-derived metabolites in autism: a possible diagnostic screening test for a distinct ASD phenotype.",
+  "verified_at": "2026-08-07T06:59:18+00:00"
+}

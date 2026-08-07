@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-06T08:14:07+00:00",
+  "generated_at_utc": "2026-08-07T06:59:19+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-08T08:07:15+00:00",
-      "since": "2026-07-07T09:22:39+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "41285678"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 3,
@@ -300,9 +289,37 @@
         "42553255",
         "42553823"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-07T06:59:19+00:00",
+      "since": "2026-08-06T08:14:07+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "42087326",
+        "42192173"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "Flynn CK",
+      "journal": "Mol Psychiatry",
+      "matched_queries_count": 1,
+      "pmid": "42192173",
+      "pubdate": "2026 Sep",
+      "title": "Elevated microbially-derived metabolites in autism: a possible diagnostic screening test for a distinct ASD phenotype."
+    },
+    {
+      "first_author": "Iida A",
+      "journal": "Int J Paediatr Dent",
+      "matched_queries_count": 1,
+      "pmid": "42087326",
+      "pubdate": "2026 Sep",
+      "title": "Oral and Gut Microbiota in Individuals With Autism Spectrum Disorder: A Pilot Case-Control Study."
+    },
     {
       "first_author": "Zhang S",
       "journal": "Nutrients",
@@ -686,23 +703,7 @@
       "pmid": "42019703",
       "pubdate": "2026 Jul",
       "title": "From mouth to mind: Investigating oral microbial contributions to autism spectrum disorder."
-    },
-    {
-      "first_author": "Bouelkhair M",
-      "journal": "J Neuroimmunol",
-      "matched_queries_count": 1,
-      "pmid": "41903401",
-      "pubdate": "2026 Jul",
-      "title": "Short-chain fatty acids, neuroinflammation, and autism spectrum disorders: A mechanistic systematic review."
-    },
-    {
-      "first_author": "Jeejo M",
-      "journal": "Mitochondrion",
-      "matched_queries_count": 1,
-      "pmid": "41833597",
-      "pubdate": "2026 Jul",
-      "title": "Mitochondrial dysfunction and mitochondrial unfolded protein response (UPR(mt)): unravelling their roles in autism spectrum disorder pathogenesis."
     }
   ],
-  "queue_size": 232
+  "queue_size": 234
 }
