@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Li HD; Wang C; Yan D; Huang W; Li Z; Wang S",
+  "doi": "pii: btag601. doi: 10.1093/bioinformatics/btag601",
+  "first_author": "Li HD",
+  "journal": "Bioinformatics",
+  "matched_queries": [
+    "\"knowledge graph\"[tiab] AND (autism[tiab] OR \"neurodevelopmental\"[tiab])"
+  ],
+  "pmid": "42574509",
+  "pubdate": "2026 Aug 10",
+  "title": "SIMLINK Enables Accurate Variant Pathogenicity Prediction through Modeling the Gene-Variant-Feature Association Structure.",
+  "verified_at": "2026-08-11T06:46:31+00:00"
+}
