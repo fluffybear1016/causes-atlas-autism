@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-12T07:07:01+00:00",
+  "generated_at_utc": "2026-08-13T07:11:07+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-14T07:46:12+00:00",
-      "since": "2026-07-13T08:47:15+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -298,6 +289,17 @@
       "since": "2026-08-11T06:46:31+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-13T07:11:07+00:00",
+      "since": "2026-08-12T07:07:01+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42508695"
+      ]
     }
   ],
   "queue_preview": [
@@ -324,6 +326,14 @@
       "pmid": "42087326",
       "pubdate": "2026 Sep",
       "title": "Oral and Gut Microbiota in Individuals With Autism Spectrum Disorder: A Pilot Case-Control Study."
+    },
+    {
+      "first_author": "Azimzadeh M",
+      "journal": "Behav Brain Res",
+      "matched_queries_count": 1,
+      "pmid": "42508695",
+      "pubdate": "2026 Oct 2",
+      "title": "From gut microbiota to synaptic plasticity: Mechanisms shaping cognitive function and brain disorders."
     },
     {
       "first_author": "Zhang S",
@@ -692,15 +702,7 @@
       "pmid": "42418309",
       "pubdate": "2026 Jul",
       "title": "Effect of Nutritional Factors on Mental Health Problems in Autism Spectrum Disorder: A Narrative Synthesis of Current Evidence."
-    },
-    {
-      "first_author": "Yin D",
-      "journal": "Dev Neurobiol",
-      "matched_queries_count": 1,
-      "pmid": "42281150",
-      "pubdate": "2026 Jul",
-      "title": "A Randomized Controlled Trial of Yizhi Kaiqiao Formula Combined With Repetitive Transcranial Magnetic Stimulation on Neurocognitive and Social Outcomes in Presc"
     }
   ],
-  "queue_size": 236
+  "queue_size": 237
 }
