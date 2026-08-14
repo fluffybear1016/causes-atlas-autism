@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-13T07:11:07+00:00",
+  "generated_at_utc": "2026-08-14T07:07:48+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-15T07:49:32+00:00",
-      "since": "2026-07-14T07:46:12+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -300,6 +291,19 @@
       "verified_pmids": [
         "42508695"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 4,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-14T07:07:48+00:00",
+      "since": "2026-08-13T07:11:07+00:00",
+      "verified_added_to_queue": 3,
+      "verified_pmids": [
+        "42260510",
+        "42503195",
+        "42588064"
+      ]
     }
   ],
   "queue_preview": [
@@ -528,6 +532,14 @@
       "title": "Medical treatment of autism spectrum disorder in children: Current evidence, controversies, and clinical challenges."
     },
     {
+      "first_author": "Babolin S",
+      "journal": "BMC Psychiatry",
+      "matched_queries_count": 1,
+      "pmid": "42260510",
+      "pubdate": "2026 Jun 8",
+      "title": "Machine learning model to identify gut microbiome-derived metabolites as potential biomarkers of autism spectrum disorder: a pilot study."
+    },
+    {
       "first_author": "Wells L",
       "journal": "Diseases",
       "matched_queries_count": 2,
@@ -632,6 +644,14 @@
       "title": "HopeFOL, or FOL of Problems? Leucovorin For Autistic Symptoms."
     },
     {
+      "first_author": "De Sales-Millan A",
+      "journal": "Nutrients",
+      "matched_queries_count": 1,
+      "pmid": "42588064",
+      "pubdate": "2026 Jul 26",
+      "title": "Clinical Improvement and Taxonomic-Functional Gut Microbiome Remodeling After Six Months of Multi-Strain Synbiotic Supplementation in Mexican Children with Auti"
+    },
+    {
       "first_author": "Andonotopo W",
       "journal": "J Perinat Med",
       "matched_queries_count": 1,
@@ -686,23 +706,7 @@
       "pmid": "42172709",
       "pubdate": "2026 Jul 1",
       "title": "Micro- and nanoplastics in the central nervous system: Transport pathways, neurotoxicity, and implications for brain disorders."
-    },
-    {
-      "first_author": "Mansour RM",
-      "journal": "Eur J Neurosci",
-      "matched_queries_count": 1,
-      "pmid": "42503576",
-      "pubdate": "2026 Jul",
-      "title": "Targeting the Microbiota-Gut-Brain Axis: Emerging Nanomedicine Approaches for Neurodegenerative Diseases."
-    },
-    {
-      "first_author": "Nogay NH",
-      "journal": "Brain Behav",
-      "matched_queries_count": 1,
-      "pmid": "42418309",
-      "pubdate": "2026 Jul",
-      "title": "Effect of Nutritional Factors on Mental Health Problems in Autism Spectrum Disorder: A Narrative Synthesis of Current Evidence."
     }
   ],
-  "queue_size": 237
+  "queue_size": 240
 }

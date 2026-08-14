@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Babolin S; Enea R; Cicala M; Di Giovanni D; Mazzone L; Emberti Gialloreti L",
+  "doi": "pii: 622. doi: 10.1186/s12888-026-08178-8",
+  "first_author": "Babolin S",
+  "journal": "BMC Psychiatry",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "42260510",
+  "pubdate": "2026 Jun 8",
+  "title": "Machine learning model to identify gut microbiome-derived metabolites as potential biomarkers of autism spectrum disorder: a pilot study.",
+  "verified_at": "2026-08-14T07:07:47+00:00"
+}
