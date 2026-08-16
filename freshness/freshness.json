@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-15T06:19:40+00:00",
+  "generated_at_utc": "2026-08-16T06:21:45+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-17T07:51:26+00:00",
-      "since": "2026-07-16T07:54:54+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -302,6 +293,17 @@
       "since": "2026-08-14T07:07:48+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-16T06:21:45+00:00",
+      "since": "2026-08-15T06:19:40+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42603313"
+      ]
     }
   ],
   "queue_preview": [
@@ -610,6 +612,14 @@
       "title": "Internet Searches for Leucovorin, Folate, and Acetaminophen After a White House Autism Announcement."
     },
     {
+      "first_author": "Maltsev D",
+      "journal": "Georgian Med News",
+      "matched_queries_count": 1,
+      "pmid": "42603313",
+      "pubdate": "2026 Jun",
+      "title": "BEYOND THE GENETIC CODE: SYSTEMIC REGULATORY MELTDOWN AS A FRAMEWORK FOR PRIMARY EPIGENETIC DISEASES."
+    },
+    {
       "first_author": "Yu S",
       "journal": "Eur Arch Psychiatry Clin Neurosci",
       "matched_queries_count": 1,
@@ -696,15 +706,7 @@
       "pmid": "42176627",
       "pubdate": "2026 Jul 15",
       "title": "Prenatal and early-life exposure to micro- and nanoplastics and autism-relevant neurodevelopment: An integrated review of human, experimental, and mechanistic e"
-    },
-    {
-      "first_author": "Jing W",
-      "journal": "Ecotoxicol Environ Saf",
-      "matched_queries_count": 1,
-      "pmid": "42172709",
-      "pubdate": "2026 Jul 1",
-      "title": "Micro- and nanoplastics in the central nervous system: Transport pathways, neurotoxicity, and implications for brain disorders."
     }
   ],
-  "queue_size": 240
+  "queue_size": 241
 }
