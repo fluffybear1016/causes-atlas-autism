@@ -1,0 +1,11 @@
+{
+  "atlas_pmid_count": 1094,
+  "candidates_found": 2,
+  "queries_run": 9,
+  "run_at_utc": "2026-08-19T06:25:11+00:00",
+  "since": "2026-08-18T06:24:12+00:00",
+  "verified_added_to_queue": 1,
+  "verified_pmids": [
+    "42532353"
+  ]
+}
