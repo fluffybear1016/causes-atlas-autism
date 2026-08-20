@@ -1,0 +1,17 @@
+{
+  "candidates": [
+    {
+      "category": "drug",
+      "csrs_score": 15.12,
+      "intervention_id": "INT-0129",
+      "intervention_name": "Lovastatin (low-dose)",
+      "investigation_priority": "low",
+      "mainstream_consensus_position": "Statins (HMG-CoA reductase inhibitors including lovastatin) are FDA-approved and well-established for cardiovascular indications (hyperlipidemia, atherosclerotic disease). Their use in autism specifically \u2014 investigated by Frye et al for FXR / Ras-pathway modulation in subset cohorts \u2014 is investigational with limited published clinical evidence and is not a mainstream pediatric-neurology recommendation. Off-label use should be discussed with clinician oversight; CSRS in this atlas reflects mechanistic rationale + small published series, not population-validated efficacy.",
+      "mechanism_summary": "Statin with FXR / cholesterol effects; preclinical Fragile X work",
+      "status": "contested"
+    }
+  ],
+  "interventions_with_mixed_evidence": 1,
+  "interventions_with_responder_notes_at_formulation_level": 19,
+  "total_interventions": 140
+}
