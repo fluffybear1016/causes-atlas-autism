@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-24T06:35:41+00:00",
+  "generated_at_utc": "2026-08-25T06:27:36+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-26T08:07:20+00:00",
-      "since": "2026-07-25T07:49:32+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 3,
@@ -302,6 +293,15 @@
       "queries_run": 9,
       "run_at_utc": "2026-08-24T06:35:40+00:00",
       "since": "2026-08-23T06:22:28+00:00",
+      "verified_added_to_queue": 0,
+      "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 1,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-25T06:27:36+00:00",
+      "since": "2026-08-24T06:35:40+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
     }
