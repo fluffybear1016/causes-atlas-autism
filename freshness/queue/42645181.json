@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Ayoub G; Brown C",
+  "doi": "doi: 10.3390/cells15161453",
+  "first_author": "Ayoub G",
+  "journal": "Cells",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42645181",
+  "pubdate": "2026 Aug 13",
+  "title": "Retinal Biomarkers of Folate and Vitamin B12 Metabolic Dysfunction: A Framework for Machine Learning-Assisted Detection of Cerebral Folate Deficiency.",
+  "verified_at": "2026-08-27T17:03:56+00:00"
+}
