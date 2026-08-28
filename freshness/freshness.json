@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-27T17:03:56+00:00",
+  "generated_at_utc": "2026-08-28T17:52:14+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-29T08:19:11+00:00",
-      "since": "2026-07-28T08:13:31+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42512540"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -303,6 +292,17 @@
       "verified_pmids": [
         "42645181",
         "42646477"
+      ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-28T17:52:14+00:00",
+      "since": "2026-08-27T17:03:56+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42662924"
       ]
     }
   ],
@@ -708,5 +708,5 @@
       "title": "Plant-derived Natural Products in Neurological and Psychiatric Disorders: Mechanisms of Action and Synergistic Roles with Probiotics."
     }
   ],
-  "queue_size": 244
+  "queue_size": 245
 }

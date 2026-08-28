@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Anuroj K",
+  "doi": "pii: 2026-5-7. doi: 10.7573/dic.2026-5-7",
+  "first_author": "Anuroj K",
+  "journal": "Drugs Context",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42662924",
+  "pubdate": "2026",
+  "title": "Cerebral folate deficiency, developmental difficulties in autism spectrum disorder and the role of leucovorin: a narrative review of mechanisms and clinical evidence.",
+  "verified_at": "2026-08-28T17:52:14+00:00"
+}
