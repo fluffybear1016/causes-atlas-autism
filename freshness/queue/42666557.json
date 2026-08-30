@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Bouchouras G; Doumanas D; Kotis K",
+  "doi": "doi: 10.1007/s41666-026-00243-x",
+  "first_author": "Bouchouras G",
+  "journal": "J Healthc Inform Res",
+  "matched_queries": [
+    "\"knowledge graph\"[tiab] AND (autism[tiab] OR \"neurodevelopmental\"[tiab])"
+  ],
+  "pmid": "42666557",
+  "pubdate": "2026 Sep",
+  "title": "NeuroCypher ASD: Machine Learning with Knowledge Graph-Based Representation for ASD Screening in Toddlers.",
+  "verified_at": "2026-08-30T10:53:46+00:00"
+}

@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-08-29T11:56:34+00:00",
+  "generated_at_utc": "2026-08-30T10:53:47+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-07-31T08:33:04+00:00",
-      "since": "2026-07-30T08:06:32+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -304,9 +295,28 @@
       "verified_pmids": [
         "42666234"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-08-30T10:53:47+00:00",
+      "since": "2026-08-29T11:56:34+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42666557"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "Bouchouras G",
+      "journal": "J Healthc Inform Res",
+      "matched_queries_count": 1,
+      "pmid": "42666557",
+      "pubdate": "2026 Sep",
+      "title": "NeuroCypher ASD: Machine Learning with Knowledge Graph-Based Representation for ASD Screening in Toddlers."
+    },
     {
       "first_author": "Oriquat G",
       "journal": "Mult Scler Relat Disord",
@@ -698,15 +708,7 @@
       "pmid": "42545901",
       "pubdate": "2026 Jul 17",
       "title": "A Scoping Review of Machine Learning and Deep Learning Methods for Autism Spectrum Disorder Diagnosis and Analysis."
-    },
-    {
-      "first_author": "Shokr MM",
-      "journal": "Mol Neurobiol",
-      "matched_queries_count": 1,
-      "pmid": "42455433",
-      "pubdate": "2026 Jul 15",
-      "title": "Plant-derived Natural Products in Neurological and Psychiatric Disorders: Mechanisms of Action and Synergistic Roles with Probiotics."
     }
   ],
-  "queue_size": 246
+  "queue_size": 247
 }
