@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-01T10:44:42+00:00",
+  "generated_at_utc": "2026-09-02T10:09:44+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-03T09:21:03+00:00",
-      "since": "2026-08-02T08:04:28+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 4,
@@ -304,9 +295,28 @@
       "since": "2026-08-31T12:07:15+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-02T10:09:44+00:00",
+      "since": "2026-09-01T10:44:42+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42678599"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "El-Ansary A",
+      "journal": "Metab Brain Dis",
+      "matched_queries_count": 1,
+      "pmid": "42678599",
+      "pubdate": "2026 Sep 1",
+      "title": "ADAM10's combined influence on the diagnostic usefulness of IL 22, IL 10, IL-17\u00a0A, and IL-17D in autism spectrum disorders: Predicted role on gut leakiness as c"
+    },
     {
       "first_author": "Bouchouras G",
       "journal": "J Healthc Inform Res",
@@ -698,15 +708,7 @@
       "pmid": "42387222",
       "pubdate": "2026 Jul 2",
       "title": "Starmate: A Lightweight AI Assistant for Autism Caregivers Developed and Evaluated Through a User-Centered Mixed-Methods Framework."
-    },
-    {
-      "first_author": "K SR",
-      "journal": "J Vis Exp",
-      "matched_queries_count": 1,
-      "pmid": "42545901",
-      "pubdate": "2026 Jul 17",
-      "title": "A Scoping Review of Machine Learning and Deep Learning Methods for Autism Spectrum Disorder Diagnosis and Analysis."
     }
   ],
-  "queue_size": 247
+  "queue_size": 248
 }
