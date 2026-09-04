@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-03T10:21:10+00:00",
+  "generated_at_utc": "2026-09-04T10:08:30+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-05T08:15:36+00:00",
-      "since": "2026-08-04T08:19:18+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 3,
@@ -302,6 +293,18 @@
       "since": "2026-09-02T10:09:44+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-04T10:08:30+00:00",
+      "since": "2026-09-03T10:21:10+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "42343222",
+        "42689097"
+      ]
     }
   ],
   "queue_preview": [
@@ -578,6 +581,14 @@
       "title": "Role of GABA(A) receptors and chloride transporters in autism - An explorative analysis using peripheral blood as a model."
     },
     {
+      "first_author": "Aili A",
+      "journal": "BMC Microbiol",
+      "matched_queries_count": 1,
+      "pmid": "42343222",
+      "pubdate": "2026 Jun 24",
+      "title": "Gut bacterial characteristics in children with autism spectrum disorder according to symptom severity: a cross-sectional study."
+    },
+    {
       "first_author": "Ziaka M",
       "journal": "Pathogens",
       "matched_queries_count": 1,
@@ -696,15 +707,7 @@
       "pmid": "42512540",
       "pubdate": "2026 Jul 21",
       "title": "Autism and Neurodegeneration: Distinct Disorders or a Shared Biological Continuum?"
-    },
-    {
-      "first_author": "Li Z",
-      "journal": "J Med Syst",
-      "matched_queries_count": 1,
-      "pmid": "42387222",
-      "pubdate": "2026 Jul 2",
-      "title": "Starmate: A Lightweight AI Assistant for Autism Caregivers Developed and Evaluated Through a User-Centered Mixed-Methods Framework."
     }
   ],
-  "queue_size": 248
+  "queue_size": 250
 }

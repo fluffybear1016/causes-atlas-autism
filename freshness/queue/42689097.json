@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Ayoub G",
+  "doi": "doi: 10.3389/fnut.2026.1927637",
+  "first_author": "Ayoub G",
+  "journal": "Front Nutr",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42689097",
+  "pubdate": "2026",
+  "title": "Folate in autism neurodevelopment.",
+  "verified_at": "2026-09-04T10:08:30+00:00"
+}
