@@ -1,19 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-04T10:08:30+00:00",
+  "generated_at_utc": "2026-09-05T09:37:55+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 3,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-06T08:14:07+00:00",
-      "since": "2026-08-05T08:15:36+00:00",
-      "verified_added_to_queue": 2,
-      "verified_pmids": [
-        "42553255",
-        "42553823"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 3,
@@ -304,6 +292,17 @@
       "verified_pmids": [
         "42343222",
         "42689097"
+      ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-05T09:37:55+00:00",
+      "since": "2026-09-04T10:08:30+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42696146"
       ]
     }
   ],
@@ -709,5 +708,5 @@
       "title": "Autism and Neurodegeneration: Distinct Disorders or a Shared Biological Continuum?"
     }
   ],
-  "queue_size": 250
+  "queue_size": 251
 }
