@@ -1,0 +1,822 @@
+{
+  "candidate_hypothesis_phenotype_chains": [
+    {
+      "hypothesis_id": "HYP-0001",
+      "hypothesis_name": "FOLR1 autoantibodies / cerebral folate deficiency",
+      "interventions_targeting_hypothesis": [
+        "INT-0001"
+      ],
+      "phenotype_id": "PHE-0001",
+      "phenotype_name": "Cerebral folate deficiency phenotype",
+      "via_mechanisms": [
+        "MEC-0003",
+        "MEC-0004"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0003",
+      "hypothesis_name": "Maternal folate deficiency during preconception/pregnancy",
+      "interventions_targeting_hypothesis": [
+        "INT-0008",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0001",
+      "phenotype_name": "Cerebral folate deficiency phenotype",
+      "via_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0005",
+      "hypothesis_name": "Glyphosate exposure (food + water)",
+      "interventions_targeting_hypothesis": [
+        "INT-0009"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0008",
+        "MEC-0023"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0006",
+      "hypothesis_name": "Mitochondrial dysfunction (acquired or inherited)",
+      "interventions_targeting_hypothesis": [
+        "INT-0088",
+        "INT-0089",
+        "INT-0092"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0001",
+        "MEC-0010",
+        "MEC-0011",
+        "MEC-0014",
+        "MEC-0030"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0006",
+      "hypothesis_name": "Mitochondrial dysfunction (acquired or inherited)",
+      "interventions_targeting_hypothesis": [
+        "INT-0088",
+        "INT-0089",
+        "INT-0092"
+      ],
+      "phenotype_id": "PHE-0005",
+      "phenotype_name": "mTOR pathway syndromic (TSC, PTEN)",
+      "via_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0007",
+      "hypothesis_name": "Gut microbiome dysbiosis / dysbiotic fermentation",
+      "interventions_targeting_hypothesis": [
+        "INT-0076",
+        "INT-0078",
+        "INT-0101"
+      ],
+      "phenotype_id": "PHE-0001",
+      "phenotype_name": "Cerebral folate deficiency phenotype",
+      "via_mechanisms": [
+        "MEC-0004"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0007",
+      "hypothesis_name": "Gut microbiome dysbiosis / dysbiotic fermentation",
+      "interventions_targeting_hypothesis": [
+        "INT-0076",
+        "INT-0078",
+        "INT-0101"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0008",
+        "MEC-0019",
+        "MEC-0021",
+        "MEC-0023",
+        "MEC-0025",
+        "MEC-0026"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0007",
+      "hypothesis_name": "Gut microbiome dysbiosis / dysbiotic fermentation",
+      "interventions_targeting_hypothesis": [
+        "INT-0076",
+        "INT-0078",
+        "INT-0101"
+      ],
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0026"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0011",
+      "hypothesis_name": "Phthalate exposure (prenatal+postnatal)",
+      "interventions_targeting_hypothesis": [
+        "INT-0052"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0016"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0012",
+      "hypothesis_name": "BPA / bisphenol exposure",
+      "interventions_targeting_hypothesis": [
+        "INT-0052"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0016"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0017",
+      "hypothesis_name": "EMF exposure (controversial)",
+      "interventions_targeting_hypothesis": [
+        "INT-0050"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0001"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0021",
+      "hypothesis_name": "Maternal omega-3 deficiency",
+      "interventions_targeting_hypothesis": [
+        "INT-0014",
+        "INT-0086",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0006",
+      "phenotype_name": "Fragile X (FMR1)",
+      "via_mechanisms": [
+        "MEC-0031"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0022",
+      "hypothesis_name": "Early-life antibiotics (especially first year)",
+      "interventions_targeting_hypothesis": [
+        "INT-0025"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0008",
+        "MEC-0021",
+        "MEC-0026"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0022",
+      "hypothesis_name": "Early-life antibiotics (especially first year)",
+      "interventions_targeting_hypothesis": [
+        "INT-0025"
+      ],
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0026"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0023",
+      "hypothesis_name": "Cesarean section delivery",
+      "interventions_targeting_hypothesis": [
+        "INT-0059"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0008",
+        "MEC-0026"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0023",
+      "hypothesis_name": "Cesarean section delivery",
+      "interventions_targeting_hypothesis": [
+        "INT-0059"
+      ],
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0026"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0029",
+      "hypothesis_name": "Tuberous sclerosis (TSC1/TSC2)",
+      "interventions_targeting_hypothesis": [
+        "INT-0036"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0029",
+      "hypothesis_name": "Tuberous sclerosis (TSC1/TSC2)",
+      "interventions_targeting_hypothesis": [
+        "INT-0036"
+      ],
+      "phenotype_id": "PHE-0005",
+      "phenotype_name": "mTOR pathway syndromic (TSC, PTEN)",
+      "via_mechanisms": [
+        "MEC-0009",
+        "MEC-0015",
+        "MEC-0030"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0030",
+      "hypothesis_name": "PTEN hamartoma syndrome",
+      "interventions_targeting_hypothesis": [
+        "INT-0036"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0030",
+      "hypothesis_name": "PTEN hamartoma syndrome",
+      "interventions_targeting_hypothesis": [
+        "INT-0036"
+      ],
+      "phenotype_id": "PHE-0005",
+      "phenotype_name": "mTOR pathway syndromic (TSC, PTEN)",
+      "via_mechanisms": [
+        "MEC-0009",
+        "MEC-0015",
+        "MEC-0030"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0031",
+      "hypothesis_name": "AMPK pathway dysregulation",
+      "interventions_targeting_hypothesis": [
+        "INT-0007",
+        "INT-0037",
+        "INT-0047"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0010",
+        "MEC-0011",
+        "MEC-0030"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0031",
+      "hypothesis_name": "AMPK pathway dysregulation",
+      "interventions_targeting_hypothesis": [
+        "INT-0007",
+        "INT-0037",
+        "INT-0047"
+      ],
+      "phenotype_id": "PHE-0005",
+      "phenotype_name": "mTOR pathway syndromic (TSC, PTEN)",
+      "via_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0032",
+      "hypothesis_name": "IGF-1 axis insufficiency",
+      "interventions_targeting_hypothesis": [
+        "INT-0065"
+      ],
+      "phenotype_id": "PHE-0005",
+      "phenotype_name": "mTOR pathway syndromic (TSC, PTEN)",
+      "via_mechanisms": [
+        "MEC-0006",
+        "MEC-0012"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0032",
+      "hypothesis_name": "IGF-1 axis insufficiency",
+      "interventions_targeting_hypothesis": [
+        "INT-0065"
+      ],
+      "phenotype_id": "PHE-0006",
+      "phenotype_name": "Fragile X (FMR1)",
+      "via_mechanisms": [
+        "MEC-0006",
+        "MEC-0012"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0033",
+      "hypothesis_name": "SIRTUIN / NAD+ depletion",
+      "interventions_targeting_hypothesis": [
+        "INT-0068",
+        "INT-0095",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0010",
+        "MEC-0014"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0034",
+      "hypothesis_name": "Oxytocin system dysregulation",
+      "interventions_targeting_hypothesis": [
+        "INT-0061",
+        "INT-0069"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0016"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0035",
+      "hypothesis_name": "Maternal/prenatal thyroid hypofunction",
+      "interventions_targeting_hypothesis": [
+        "INT-0066",
+        "INT-0070",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0016"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0036",
+      "hypothesis_name": "Maternal psychological stress (prenatal)",
+      "interventions_targeting_hypothesis": [
+        "INT-0075"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0002",
+        "MEC-0016"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0037",
+      "hypothesis_name": "Childhood/family emotional stress",
+      "interventions_targeting_hypothesis": [
+        "INT-0071",
+        "INT-0073",
+        "INT-0074"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0016"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0037",
+      "hypothesis_name": "Childhood/family emotional stress",
+      "interventions_targeting_hypothesis": [
+        "INT-0071",
+        "INT-0073",
+        "INT-0074"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0019"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0038",
+      "hypothesis_name": "Excessive screen / smartphone exposure (early life)",
+      "interventions_targeting_hypothesis": [
+        "INT-0072"
+      ],
+      "phenotype_id": "PHE-0005",
+      "phenotype_name": "mTOR pathway syndromic (TSC, PTEN)",
+      "via_mechanisms": [
+        "MEC-0006"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0038",
+      "hypothesis_name": "Excessive screen / smartphone exposure (early life)",
+      "interventions_targeting_hypothesis": [
+        "INT-0072"
+      ],
+      "phenotype_id": "PHE-0006",
+      "phenotype_name": "Fragile X (FMR1)",
+      "via_mechanisms": [
+        "MEC-0006"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0039",
+      "hypothesis_name": "Sleep disruption / circadian misalignment",
+      "interventions_targeting_hypothesis": [
+        "INT-0046"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0010"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0039",
+      "hypothesis_name": "Sleep disruption / circadian misalignment",
+      "interventions_targeting_hypothesis": [
+        "INT-0046"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0002"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0045",
+      "hypothesis_name": "Vitamin D deficiency (maternal + child)",
+      "interventions_targeting_hypothesis": [
+        "INT-0013",
+        "INT-0087",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0001",
+      "phenotype_name": "Cerebral folate deficiency phenotype",
+      "via_mechanisms": [
+        "MEC-0029"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0045",
+      "hypothesis_name": "Vitamin D deficiency (maternal + child)",
+      "interventions_targeting_hypothesis": [
+        "INT-0013",
+        "INT-0087",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0002"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0045",
+      "hypothesis_name": "Vitamin D deficiency (maternal + child)",
+      "interventions_targeting_hypothesis": [
+        "INT-0013",
+        "INT-0087",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0020",
+        "MEC-0029"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0046",
+      "hypothesis_name": "Zinc deficiency / copper:zinc imbalance",
+      "interventions_targeting_hypothesis": [
+        "INT-0016",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0001",
+      "phenotype_name": "Cerebral folate deficiency phenotype",
+      "via_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0046",
+      "hypothesis_name": "Zinc deficiency / copper:zinc imbalance",
+      "interventions_targeting_hypothesis": [
+        "INT-0016",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0001"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0047",
+      "hypothesis_name": "Magnesium deficiency",
+      "interventions_targeting_hypothesis": [
+        "INT-0015"
+      ],
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0007",
+        "MEC-0020"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0048",
+      "hypothesis_name": "Iodine deficiency / thyroid hypofunction",
+      "interventions_targeting_hypothesis": [
+        "INT-0066",
+        "INT-0070",
+        "INT-0096"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0016"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0049",
+      "hypothesis_name": "Selenium deficiency",
+      "interventions_targeting_hypothesis": [
+        "INT-0067"
+      ],
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0001"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0050",
+      "hypothesis_name": "Choline insufficiency (postnatal)",
+      "interventions_targeting_hypothesis": [
+        "INT-0030"
+      ],
+      "phenotype_id": "PHE-0001",
+      "phenotype_name": "Cerebral folate deficiency phenotype",
+      "via_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0056",
+      "hypothesis_name": "Bifidobacterium depletion (autism-specific)",
+      "interventions_targeting_hypothesis": [
+        "INT-0025",
+        "INT-0076",
+        "INT-0077"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0021",
+        "MEC-0026"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0056",
+      "hypothesis_name": "Bifidobacterium depletion (autism-specific)",
+      "interventions_targeting_hypothesis": [
+        "INT-0025",
+        "INT-0076",
+        "INT-0077"
+      ],
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0026"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0057",
+      "hypothesis_name": "Clostridia overgrowth / dysbiotic fermentation",
+      "interventions_targeting_hypothesis": [
+        "INT-0076",
+        "INT-0084"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0023",
+        "MEC-0024"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0058",
+      "hypothesis_name": "Akkermansia / Faecalibacterium depletion",
+      "interventions_targeting_hypothesis": [
+        "INT-0025",
+        "INT-0076",
+        "INT-0080"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0022"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0058",
+      "hypothesis_name": "Akkermansia / Faecalibacterium depletion",
+      "interventions_targeting_hypothesis": [
+        "INT-0025",
+        "INT-0076",
+        "INT-0080"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0021",
+        "MEC-0022"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0059",
+      "hypothesis_name": "Intestinal barrier permeability ('leaky gut')",
+      "interventions_targeting_hypothesis": [
+        "INT-0076",
+        "INT-0078",
+        "INT-0080"
+      ],
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0002",
+        "MEC-0022"
+      ]
+    },
+    {
+      "hypothesis_id": "HYP-0059",
+      "hypothesis_name": "Intestinal barrier permeability ('leaky gut')",
+      "interventions_targeting_hypothesis": [
+        "INT-0076",
+        "INT-0078",
+        "INT-0080"
+      ],
+      "phenotype_id": "PHE-0004",
+      "phenotype_name": "Autism + GI / microbiome phenotype",
+      "via_mechanisms": [
+        "MEC-0022"
+      ]
+    }
+  ],
+  "candidate_intervention_phenotype_chains": [
+    {
+      "intervention_id": "INT-0021",
+      "intervention_name": "Lithium orotate (low-dose)",
+      "mechanism_path_count": 2,
+      "phenotype_id": "PHE-0005",
+      "phenotype_name": "mTOR pathway syndromic (TSC, PTEN)",
+      "via_mechanisms": [
+        "MEC-0009",
+        "MEC-0028"
+      ]
+    },
+    {
+      "intervention_id": "INT-0021",
+      "intervention_name": "Lithium orotate (low-dose)",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0006",
+      "phenotype_name": "Fragile X (FMR1)",
+      "via_mechanisms": [
+        "MEC-0028"
+      ]
+    },
+    {
+      "intervention_id": "INT-0022",
+      "intervention_name": "Inositol (myo-inositol)",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0005",
+      "phenotype_name": "mTOR pathway syndromic (TSC, PTEN)",
+      "via_mechanisms": [
+        "MEC-0015"
+      ]
+    },
+    {
+      "intervention_id": "INT-0024",
+      "intervention_name": "Glycine",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0001"
+      ]
+    },
+    {
+      "intervention_id": "INT-0024",
+      "intervention_name": "Glycine",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0020"
+      ]
+    },
+    {
+      "intervention_id": "INT-0041",
+      "intervention_name": "GFCF diet",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0022"
+      ]
+    },
+    {
+      "intervention_id": "INT-0049",
+      "intervention_name": "Sunlight exposure",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0001",
+      "phenotype_name": "Cerebral folate deficiency phenotype",
+      "via_mechanisms": [
+        "MEC-0029"
+      ]
+    },
+    {
+      "intervention_id": "INT-0049",
+      "intervention_name": "Sunlight exposure",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0016"
+      ]
+    },
+    {
+      "intervention_id": "INT-0049",
+      "intervention_name": "Sunlight exposure",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0029"
+      ]
+    },
+    {
+      "intervention_id": "INT-0100",
+      "intervention_name": "Cod liver oil (fermented preferred)",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0006",
+      "phenotype_name": "Fragile X (FMR1)",
+      "via_mechanisms": [
+        "MEC-0031"
+      ]
+    },
+    {
+      "intervention_id": "INT-0100",
+      "intervention_name": "Cod liver oil (fermented preferred)",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0007",
+      "phenotype_name": "GABA/Cl- imbalance phenotype",
+      "via_mechanisms": [
+        "MEC-0029"
+      ]
+    },
+    {
+      "intervention_id": "INT-0101",
+      "intervention_name": "L-glutamine (free amino acid)",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0002",
+      "phenotype_name": "Mitochondrial dysfunction phenotype",
+      "via_mechanisms": [
+        "MEC-0001"
+      ]
+    },
+    {
+      "intervention_id": "INT-0101",
+      "intervention_name": "L-glutamine (free amino acid)",
+      "mechanism_path_count": 1,
+      "phenotype_id": "PHE-0003",
+      "phenotype_name": "Regressive immune-inflammatory phenotype",
+      "via_mechanisms": [
+        "MEC-0022"
+      ]
+    }
+  ],
+  "edges_walked": {
+    "hypothesis_mechanism_edges": 129,
+    "intervention_mechanism_edges": 184,
+    "intervention_phenotype_edges": 293,
+    "mechanism_phenotype_edges": 37
+  }
+}
