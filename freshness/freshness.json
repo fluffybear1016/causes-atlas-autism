@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-11T10:11:45+00:00",
+  "generated_at_utc": "2026-09-12T09:46:04+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-13T07:11:07+00:00",
-      "since": "2026-08-12T07:07:01+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42508695"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 4,
@@ -299,9 +288,29 @@
       "verified_pmids": [
         "42723086"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-12T09:46:04+00:00",
+      "since": "2026-09-11T10:11:45+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "42243298",
+        "42728317"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "Mendes M",
+      "journal": "Mol Psychiatry",
+      "matched_queries_count": 1,
+      "pmid": "42728317",
+      "pubdate": "2026 Sep 11",
+      "title": "Characterizing features of the genetic architecture underlying autism from a multi-ancestry perspective."
+    },
     {
       "first_author": "Afkhamian A",
       "journal": "Cell Commun Signal",
@@ -365,6 +374,14 @@
       "pmid": "42532353",
       "pubdate": "2026 Oct 1",
       "title": "The microbiota-gut-brain axis in neuropsychiatric disorders: Mechanisms, advances, and clinical applications."
+    },
+    {
+      "first_author": "Kunevi\u010dius A",
+      "journal": "Mol Psychiatry",
+      "matched_queries_count": 1,
+      "pmid": "42243298",
+      "pubdate": "2026 Oct",
+      "title": "Efficacy of pharmacological and microbiota-based therapies in preclinical models of autism spectrum disorder: a systematic review."
     },
     {
       "first_author": "Zhang S",
@@ -685,23 +702,7 @@
       "pmid": "42536436",
       "pubdate": "2026 Jul 31",
       "title": "HopeFOL, or FOL of Problems? Leucovorin For Autistic Symptoms."
-    },
-    {
-      "first_author": "De Sales-Millan A",
-      "journal": "Nutrients",
-      "matched_queries_count": 1,
-      "pmid": "42588064",
-      "pubdate": "2026 Jul 26",
-      "title": "Clinical Improvement and Taxonomic-Functional Gut Microbiome Remodeling After Six Months of Multi-Strain Synbiotic Supplementation in Mexican Children with Auti"
-    },
-    {
-      "first_author": "Andonotopo W",
-      "journal": "J Perinat Med",
-      "matched_queries_count": 1,
-      "pmid": "41285678",
-      "pubdate": "2026 Jul 24",
-      "title": "The intrauterine microbiome-neurodevelopment axis: decoding the prenatal microbial imprint on lifelong mental health."
     }
   ],
-  "queue_size": 252
+  "queue_size": 254
 }
