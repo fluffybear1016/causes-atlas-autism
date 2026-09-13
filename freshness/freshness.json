@@ -1,20 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-12T09:46:04+00:00",
+  "generated_at_utc": "2026-09-13T10:46:47+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 4,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-14T07:07:48+00:00",
-      "since": "2026-08-13T07:11:07+00:00",
-      "verified_added_to_queue": 3,
-      "verified_pmids": [
-        "42260510",
-        "42503195",
-        "42588064"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -299,6 +286,17 @@
       "verified_pmids": [
         "42243298",
         "42728317"
+      ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-13T10:46:47+00:00",
+      "since": "2026-09-12T09:46:04+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42729560"
       ]
     }
   ],
@@ -704,5 +702,5 @@
       "title": "HopeFOL, or FOL of Problems? Leucovorin For Autistic Symptoms."
     }
   ],
-  "queue_size": 254
+  "queue_size": 255
 }
