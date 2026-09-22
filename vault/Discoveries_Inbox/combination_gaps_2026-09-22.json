@@ -1,0 +1,1271 @@
+{
+  "candidate_pairs": [
+    {
+      "csrs_min": 62.41,
+      "csrs_sum": 129.68,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0047"
+      ],
+      "shared_count": 4,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0011",
+        "MEC-0028",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 60.44,
+      "csrs_sum": 134.95,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "Hyperbaric oxygen therapy (HBOT)"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0092"
+      ],
+      "shared_count": 3,
+      "shared_mechanisms": [
+        "MEC-0001",
+        "MEC-0010",
+        "MEC-0027"
+      ]
+    },
+    {
+      "csrs_min": 51.84,
+      "csrs_sum": 118.89,
+      "intervention_names": [
+        "Resveratrol",
+        "Rapamycin (sirolimus)"
+      ],
+      "interventions": [
+        "INT-0028",
+        "INT-0036"
+      ],
+      "shared_count": 3,
+      "shared_mechanisms": [
+        "MEC-0009",
+        "MEC-0013",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 51.84,
+      "csrs_sum": 105.76,
+      "intervention_names": [
+        "Resveratrol",
+        "Niacinamide / nicotinamide"
+      ],
+      "interventions": [
+        "INT-0028",
+        "INT-0095"
+      ],
+      "shared_count": 3,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0014",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 63.34,
+      "csrs_sum": 137.85000000000002,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "Alpha-lipoic acid (ALA)"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0093"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0001",
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 67.05,
+      "csrs_sum": 134.32,
+      "intervention_names": [
+        "Rapamycin (sirolimus)",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0036",
+        "INT-0047"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0013",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 62.4,
+      "csrs_sum": 129.67,
+      "intervention_names": [
+        "Metformin",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0037",
+        "INT-0047"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0011",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 53.92,
+      "csrs_sum": 128.43,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "Niacinamide / nicotinamide"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0095"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0014"
+      ]
+    },
+    {
+      "csrs_min": 63.34,
+      "csrs_sum": 127.06,
+      "intervention_names": [
+        "Alpha-lipoic acid (ALA)",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0093",
+        "INT-0096"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0003",
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 51.84,
+      "csrs_sum": 126.35000000000001,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "Resveratrol"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0028"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0014"
+      ]
+    },
+    {
+      "csrs_min": 62.41,
+      "csrs_sum": 126.13,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0096"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0011"
+      ]
+    },
+    {
+      "csrs_min": 62.4,
+      "csrs_sum": 124.81,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Metformin"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0037"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0011",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 60.44,
+      "csrs_sum": 123.78,
+      "intervention_names": [
+        "Hyperbaric oxygen therapy (HBOT)",
+        "Alpha-lipoic acid (ALA)"
+      ],
+      "interventions": [
+        "INT-0092",
+        "INT-0093"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0001",
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 59.44,
+      "csrs_sum": 123.16,
+      "intervention_names": [
+        "D-ribose",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0094",
+        "INT-0096"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0011"
+      ]
+    },
+    {
+      "csrs_min": 55.87,
+      "csrs_sum": 123.13999999999999,
+      "intervention_names": [
+        "Omega-3 (EPA + DHA)",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0014",
+        "INT-0047"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0028"
+      ]
+    },
+    {
+      "csrs_min": 60.44,
+      "csrs_sum": 122.85,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Hyperbaric oxygen therapy (HBOT)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0092"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 59.44,
+      "csrs_sum": 121.85,
+      "intervention_names": [
+        "Ketogenic diet",
+        "D-ribose"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0094"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0011"
+      ]
+    },
+    {
+      "csrs_min": 51.84,
+      "csrs_sum": 119.11,
+      "intervention_names": [
+        "Resveratrol",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0028",
+        "INT-0047"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0013",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 55.87,
+      "csrs_sum": 118.28,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Omega-3 (EPA + DHA)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0014"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0028"
+      ]
+    },
+    {
+      "csrs_min": 53.92,
+      "csrs_sum": 117.64,
+      "intervention_names": [
+        "Creatine monohydrate",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0088",
+        "INT-0096"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0003",
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 53.92,
+      "csrs_sum": 117.26,
+      "intervention_names": [
+        "Creatine monohydrate",
+        "Alpha-lipoic acid (ALA)"
+      ],
+      "interventions": [
+        "INT-0088",
+        "INT-0093"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0003",
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 53.43,
+      "csrs_sum": 117.15,
+      "intervention_names": [
+        "Preconception mitochondrial optimization combo (parental)",
+        "Cod liver oil (fermented preferred)"
+      ],
+      "interventions": [
+        "INT-0096",
+        "INT-0100"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0029",
+        "MEC-0031"
+      ]
+    },
+    {
+      "csrs_min": 53.92,
+      "csrs_sum": 116.33,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Niacinamide / nicotinamide"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0095"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 53.85,
+      "csrs_sum": 116.25999999999999,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Red light / photobiomodulation therapy (635 nm)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0097"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 51.84,
+      "csrs_sum": 115.18,
+      "intervention_names": [
+        "Resveratrol",
+        "Alpha-lipoic acid (ALA)"
+      ],
+      "interventions": [
+        "INT-0028",
+        "INT-0093"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0013"
+      ]
+    },
+    {
+      "csrs_min": 53.85,
+      "csrs_sum": 114.28999999999999,
+      "intervention_names": [
+        "Hyperbaric oxygen therapy (HBOT)",
+        "Red light / photobiomodulation therapy (635 nm)"
+      ],
+      "interventions": [
+        "INT-0092",
+        "INT-0097"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 51.84,
+      "csrs_sum": 114.25,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Resveratrol"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0028"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0010",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 50.65,
+      "csrs_sum": 111.09,
+      "intervention_names": [
+        "Whole-body hyperthermia (clinical)",
+        "Hyperbaric oxygen therapy (HBOT)"
+      ],
+      "interventions": [
+        "INT-0091",
+        "INT-0092"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0027"
+      ]
+    },
+    {
+      "csrs_min": 50.58,
+      "csrs_sum": 101.94,
+      "intervention_names": [
+        "Low-dose naltrexone (LDN)",
+        "Curcumin (high-bioavailability)"
+      ],
+      "interventions": [
+        "INT-0006",
+        "INT-0027"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0005"
+      ]
+    },
+    {
+      "csrs_min": 75.9,
+      "csrs_sum": 159.25,
+      "intervention_names": [
+        "Leucovorin (folinic acid)",
+        "Methylated folate (5-MTHF) \u2014 preconception/prenatal"
+      ],
+      "interventions": [
+        "INT-0001",
+        "INT-0008"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "csrs_min": 63.9,
+      "csrs_sum": 147.25,
+      "intervention_names": [
+        "Leucovorin (folinic acid)",
+        "Choline (CDP-choline / Alpha-GPC)"
+      ],
+      "interventions": [
+        "INT-0001",
+        "INT-0030"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "csrs_min": 63.72,
+      "csrs_sum": 147.07,
+      "intervention_names": [
+        "Leucovorin (folinic acid)",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0001",
+        "INT-0096"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "csrs_min": 63.34,
+      "csrs_sum": 146.69,
+      "intervention_names": [
+        "Leucovorin (folinic acid)",
+        "Alpha-lipoic acid (ALA)"
+      ],
+      "interventions": [
+        "INT-0001",
+        "INT-0093"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "csrs_min": 63.72,
+      "csrs_sum": 139.62,
+      "intervention_names": [
+        "Methylated folate (5-MTHF) \u2014 preconception/prenatal",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0008",
+        "INT-0096"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "csrs_min": 63.72,
+      "csrs_sum": 138.23000000000002,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0096"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 53.92,
+      "csrs_sum": 137.26999999999998,
+      "intervention_names": [
+        "Leucovorin (folinic acid)",
+        "Creatine monohydrate"
+      ],
+      "interventions": [
+        "INT-0001",
+        "INT-0088"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "csrs_min": 62.41,
+      "csrs_sum": 136.92000000000002,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "Ketogenic diet"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0007"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 51.36,
+      "csrs_sum": 134.70999999999998,
+      "intervention_names": [
+        "Leucovorin (folinic acid)",
+        "Curcumin (high-bioavailability)"
+      ],
+      "interventions": [
+        "INT-0001",
+        "INT-0027"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0004"
+      ]
+    },
+    {
+      "csrs_min": 62.4,
+      "csrs_sum": 134.44,
+      "intervention_names": [
+        "Probiotics (multi-strain)",
+        "Metformin"
+      ],
+      "interventions": [
+        "INT-0025",
+        "INT-0037"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0008"
+      ]
+    },
+    {
+      "csrs_min": 59.44,
+      "csrs_sum": 133.95,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "D-ribose"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0094"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_min": 63.65,
+      "csrs_sum": 133.32,
+      "intervention_names": [
+        "Fecal microbiota transplantation (FMT)",
+        "Lactobacillus rhamnosus GG"
+      ],
+      "interventions": [
+        "INT-0076",
+        "INT-0078"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0026"
+      ]
+    },
+    {
+      "csrs_min": 58.15,
+      "csrs_sum": 132.66,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "L-glutamine (free amino acid)"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0101"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0001"
+      ]
+    },
+    {
+      "csrs_min": 63.72,
+      "csrs_sum": 131.45999999999998,
+      "intervention_names": [
+        "Vitamin D3",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0013",
+        "INT-0096"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0029"
+      ]
+    },
+    {
+      "csrs_min": 63.72,
+      "csrs_sum": 130.99,
+      "intervention_names": [
+        "Aerobic exercise (structured)",
+        "Preconception mitochondrial optimization combo (parental)"
+      ],
+      "interventions": [
+        "INT-0047",
+        "INT-0096"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0011"
+      ]
+    },
+    {
+      "csrs_min": 63.34,
+      "csrs_sum": 130.61,
+      "intervention_names": [
+        "Aerobic exercise (structured)",
+        "Alpha-lipoic acid (ALA)"
+      ],
+      "interventions": [
+        "INT-0047",
+        "INT-0093"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0013"
+      ]
+    },
+    {
+      "csrs_min": 63.34,
+      "csrs_sum": 130.39,
+      "intervention_names": [
+        "Rapamycin (sirolimus)",
+        "Alpha-lipoic acid (ALA)"
+      ],
+      "interventions": [
+        "INT-0036",
+        "INT-0093"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0013"
+      ]
+    },
+    {
+      "csrs_min": 53.92,
+      "csrs_sum": 129.82,
+      "intervention_names": [
+        "Methylated folate (5-MTHF) \u2014 preconception/prenatal",
+        "Creatine monohydrate"
+      ],
+      "interventions": [
+        "INT-0008",
+        "INT-0088"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "csrs_min": 62.41,
+      "csrs_sum": 129.45999999999998,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Rapamycin (sirolimus)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0036"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 62.4,
+      "csrs_sum": 129.45,
+      "intervention_names": [
+        "Rapamycin (sirolimus)",
+        "Metformin"
+      ],
+      "interventions": [
+        "INT-0036",
+        "INT-0037"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_min": 61.26,
+      "csrs_sum": 128.53,
+      "intervention_names": [
+        "Aerobic exercise (structured)",
+        "Cerebrolysin"
+      ],
+      "interventions": [
+        "INT-0047",
+        "INT-0065"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0028"
+      ]
+    }
+  ],
+  "candidate_triples": [
+    {
+      "csrs_sum": 192.07999999999998,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Metformin",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0037",
+        "INT-0047"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0011",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 186.16,
+      "intervention_names": [
+        "Resveratrol",
+        "Rapamycin (sirolimus)",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0028",
+        "INT-0036",
+        "INT-0047"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0013",
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 185.55,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Omega-3 (EPA + DHA)",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0014",
+        "INT-0047"
+      ],
+      "shared_count": 2,
+      "shared_mechanisms": [
+        "MEC-0002",
+        "MEC-0028"
+      ]
+    },
+    {
+      "csrs_sum": 223.15,
+      "intervention_names": [
+        "Leucovorin (folinic acid)",
+        "Methylated folate (5-MTHF) \u2014 preconception/prenatal",
+        "Choline (CDP-choline / Alpha-GPC)"
+      ],
+      "interventions": [
+        "INT-0001",
+        "INT-0008",
+        "INT-0030"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0003"
+      ]
+    },
+    {
+      "csrs_sum": 196.72999999999996,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Rapamycin (sirolimus)",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0036",
+        "INT-0047"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 196.71999999999997,
+      "intervention_names": [
+        "Rapamycin (sirolimus)",
+        "Metformin",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0036",
+        "INT-0037",
+        "INT-0047"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 191.85999999999999,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Rapamycin (sirolimus)",
+        "Metformin"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0036",
+        "INT-0037"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 190.94,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Aerobic exercise (structured)",
+        "Cerebrolysin"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0047",
+        "INT-0065"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0028"
+      ]
+    },
+    {
+      "csrs_sum": 188.76000000000002,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "Ketogenic diet",
+        "Resveratrol"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0007",
+        "INT-0028"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_sum": 188.62,
+      "intervention_names": [
+        "Sulforaphane (broccoli sprout extract)",
+        "Ketogenic diet",
+        "L-carnitine"
+      ],
+      "interventions": [
+        "INT-0002",
+        "INT-0007",
+        "INT-0011"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0010"
+      ]
+    },
+    {
+      "csrs_sum": 186.29999999999998,
+      "intervention_names": [
+        "Rapamycin (sirolimus)",
+        "Aerobic exercise (structured)",
+        "Sauna / heat therapy"
+      ],
+      "interventions": [
+        "INT-0036",
+        "INT-0047",
+        "INT-0048"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 185.9,
+      "intervention_names": [
+        "Probiotics (multi-strain)",
+        "Metformin",
+        "GFCF diet"
+      ],
+      "interventions": [
+        "INT-0025",
+        "INT-0037",
+        "INT-0041"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0008"
+      ]
+    },
+    {
+      "csrs_sum": 184.39999999999998,
+      "intervention_names": [
+        "Omega-3 (EPA + DHA)",
+        "Aerobic exercise (structured)",
+        "Cerebrolysin"
+      ],
+      "interventions": [
+        "INT-0014",
+        "INT-0047",
+        "INT-0065"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0028"
+      ]
+    },
+    {
+      "csrs_sum": 181.88,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Aerobic exercise (structured)",
+        "Vagal nerve stimulation (transcutaneous)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0047",
+        "INT-0071"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0002"
+      ]
+    },
+    {
+      "csrs_sum": 181.66,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Aerobic exercise (structured)",
+        "Sauna / heat therapy"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0047",
+        "INT-0048"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 181.64999999999998,
+      "intervention_names": [
+        "Metformin",
+        "Aerobic exercise (structured)",
+        "Sauna / heat therapy"
+      ],
+      "interventions": [
+        "INT-0037",
+        "INT-0047",
+        "INT-0048"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 181.51999999999998,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Resveratrol",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0028",
+        "INT-0047"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 181.51,
+      "intervention_names": [
+        "Resveratrol",
+        "Metformin",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0028",
+        "INT-0037",
+        "INT-0047"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 181.43999999999997,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Rapamycin (sirolimus)",
+        "Sauna / heat therapy"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0036",
+        "INT-0048"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 181.42999999999998,
+      "intervention_names": [
+        "Rapamycin (sirolimus)",
+        "Metformin",
+        "Sauna / heat therapy"
+      ],
+      "interventions": [
+        "INT-0036",
+        "INT-0037",
+        "INT-0048"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 181.3,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Resveratrol",
+        "Rapamycin (sirolimus)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0028",
+        "INT-0036"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 181.29,
+      "intervention_names": [
+        "Resveratrol",
+        "Rapamycin (sirolimus)",
+        "Metformin"
+      ],
+      "interventions": [
+        "INT-0028",
+        "INT-0036",
+        "INT-0037"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0030"
+      ]
+    },
+    {
+      "csrs_sum": 181.04,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Curcumin (high-bioavailability)",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0027",
+        "INT-0047"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0002"
+      ]
+    },
+    {
+      "csrs_sum": 180.26,
+      "intervention_names": [
+        "Low-dose naltrexone (LDN)",
+        "Ketogenic diet",
+        "Aerobic exercise (structured)"
+      ],
+      "interventions": [
+        "INT-0006",
+        "INT-0007",
+        "INT-0047"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0002"
+      ]
+    },
+    {
+      "csrs_sum": 179.54,
+      "intervention_names": [
+        "Ketogenic diet",
+        "Omega-3 (EPA + DHA)",
+        "Cerebrolysin"
+      ],
+      "interventions": [
+        "INT-0007",
+        "INT-0014",
+        "INT-0065"
+      ],
+      "shared_count": 1,
+      "shared_mechanisms": [
+        "MEC-0028"
+      ]
+    }
+  ],
+  "eligible_interventions_count": 45,
+  "existing_combination_count": 24,
+  "min_csrs_threshold": 50.0
+}
