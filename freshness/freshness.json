@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-23T10:26:58+00:00",
+  "generated_at_utc": "2026-09-24T10:43:46+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-25T06:27:36+00:00",
-      "since": "2026-08-24T06:35:40+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -296,9 +287,28 @@
       "since": "2026-09-22T10:33:10+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-24T10:43:46+00:00",
+      "since": "2026-09-23T10:26:58+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42779394"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "Dang W",
+      "journal": "Zhen Ci Yan Jiu",
+      "matched_queries_count": 1,
+      "pmid": "42779394",
+      "pubdate": "2026 Sep 25",
+      "title": "[Effect of acupuncture at \"Neiguan\" (PC6) on behavioral deficits and neuroinflammation in rats with autism]."
+    },
     {
       "first_author": "Mendes M",
       "journal": "Mol Psychiatry",
@@ -690,15 +700,7 @@
       "pmid": "41504861",
       "pubdate": "2026 Jun",
       "title": "Children with Autism Spectrum Disorder and Chronic Gastrointestinal Symptoms Have Alterations in Intestinal Neurotransmitter Pathways."
-    },
-    {
-      "first_author": "Chen B",
-      "journal": "Microbiol Spectr",
-      "matched_queries_count": 1,
-      "pmid": "42240365",
-      "pubdate": "2026 Jul 7",
-      "title": "Gut microbial culturomics identifies autism-associated Shigella and reveals species-level remodeling during fecal microbiota transplantation."
     }
   ],
-  "queue_size": 256
+  "queue_size": 257
 }
