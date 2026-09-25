@@ -1,0 +1,13 @@
+{
+  "all_authors_joined": "Wang G; Liu W; Chen Y; Zhang S",
+  "doi": "pii: 486. doi: 10.1038/s41398-026-04158-4",
+  "first_author": "Wang G",
+  "journal": "Transl Psychiatry",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]"
+  ],
+  "pmid": "42402632",
+  "pubdate": "2026 Jul 5",
+  "title": "Microbiota-gut-brain axis in autism spectrum disorder: integrating brain structure, function, and transcriptomics.",
+  "verified_at": "2026-09-25T10:47:38+00:00"
+}
