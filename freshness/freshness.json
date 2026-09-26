@@ -1,19 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-25T10:47:38+00:00",
+  "generated_at_utc": "2026-09-26T10:29:27+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 3,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-27T17:03:56+00:00",
-      "since": "2026-08-26T06:29:13+00:00",
-      "verified_added_to_queue": 2,
-      "verified_pmids": [
-        "42645181",
-        "42646477"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -300,6 +288,20 @@
       "verified_pmids": [
         "42402632"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 5,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-26T10:29:27+00:00",
+      "since": "2026-09-25T10:47:38+00:00",
+      "verified_added_to_queue": 4,
+      "verified_pmids": [
+        "42788166",
+        "42793152",
+        "42793234",
+        "42796952"
+      ]
     }
   ],
   "queue_preview": [
@@ -312,12 +314,28 @@
       "title": "[Effect of acupuncture at \"Neiguan\" (PC6) on behavioral deficits and neuroinflammation in rats with autism]."
     },
     {
+      "first_author": "Kong W",
+      "journal": "Biomolecules",
+      "matched_queries_count": 1,
+      "pmid": "42793152",
+      "pubdate": "2026 Sep 11",
+      "title": "Research Progress on Bidirectional Regulation of the Microbiota-Gut-Brain Axis in Autism Spectrum Disorder Based on the Immune-Metabolic-Endocrine Interactive N"
+    },
+    {
       "first_author": "Mendes M",
       "journal": "Mol Psychiatry",
       "matched_queries_count": 1,
       "pmid": "42728317",
       "pubdate": "2026 Sep 11",
       "title": "Characterizing features of the genetic architecture underlying autism from a multi-ancestry perspective."
+    },
+    {
+      "first_author": "Giorlandino C",
+      "journal": "Nutrients",
+      "matched_queries_count": 2,
+      "pmid": "42796952",
+      "pubdate": "2026 Sep 10",
+      "title": "Prenatal Folinic Acid in FRAA-Positive Pregnancies: Preschool Neurodevelopmental Outcomes from a Pilot RCT Follow-Up."
     },
     {
       "first_author": "Afkhamian A",
@@ -686,23 +704,7 @@
       "pmid": "42603313",
       "pubdate": "2026 Jun",
       "title": "BEYOND THE GENETIC CODE: SYSTEMIC REGULATORY MELTDOWN AS A FRAMEWORK FOR PRIMARY EPIGENETIC DISEASES."
-    },
-    {
-      "first_author": "Yu S",
-      "journal": "Eur Arch Psychiatry Clin Neurosci",
-      "matched_queries_count": 1,
-      "pmid": "41575555",
-      "pubdate": "2026 Jun",
-      "title": "Genetic evidence on chemical communication between gut microbiota and neurological and psychiatric disorders: a Mendelian randomization study."
-    },
-    {
-      "first_author": "Tingler AM",
-      "journal": "Dig Dis Sci",
-      "matched_queries_count": 1,
-      "pmid": "41504861",
-      "pubdate": "2026 Jun",
-      "title": "Children with Autism Spectrum Disorder and Chronic Gastrointestinal Symptoms Have Alterations in Intestinal Neurotransmitter Pathways."
     }
   ],
-  "queue_size": 258
+  "queue_size": 262
 }

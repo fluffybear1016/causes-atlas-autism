@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Giorlandino C; Mesoraca A; Margiotti K; Fabiani M; Cupellaro M; Giorlandino F; Mastrandrea ML; Raffio R",
+  "doi": "pii: 2970. doi: 10.3390/nu18182970",
+  "first_author": "Giorlandino C",
+  "journal": "Nutrients",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42796952",
+  "pubdate": "2026 Sep 10",
+  "title": "Prenatal Folinic Acid in FRAA-Positive Pregnancies: Preschool Neurodevelopmental Outcomes from a Pilot RCT Follow-Up.",
+  "verified_at": "2026-09-26T10:29:26+00:00"
+}
