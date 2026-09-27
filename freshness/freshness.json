@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-26T10:29:27+00:00",
+  "generated_at_utc": "2026-09-27T11:00:38+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-28T17:52:14+00:00",
-      "since": "2026-08-27T17:03:56+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42662924"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -302,9 +291,28 @@
         "42793234",
         "42796952"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-27T11:00:38+00:00",
+      "since": "2026-09-26T10:29:27+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42799832"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "Hasan A",
+      "journal": "Mol Neurobiol",
+      "matched_queries_count": 2,
+      "pmid": "42799832",
+      "pubdate": "2026 Sep 26",
+      "title": "Mast Cells in Neuroimmune Interactions: Mechanisms, Pathophysiological Roles, and Therapeutic Implications."
+    },
     {
       "first_author": "Dang W",
       "journal": "Zhen Ci Yan Jiu",
@@ -696,15 +704,7 @@
       "pmid": "42275066",
       "pubdate": "2026 Jun 1",
       "title": "Internet Searches for Leucovorin, Folate, and Acetaminophen After a White House Autism Announcement."
-    },
-    {
-      "first_author": "Maltsev D",
-      "journal": "Georgian Med News",
-      "matched_queries_count": 1,
-      "pmid": "42603313",
-      "pubdate": "2026 Jun",
-      "title": "BEYOND THE GENETIC CODE: SYSTEMIC REGULATORY MELTDOWN AS A FRAMEWORK FOR PRIMARY EPIGENETIC DISEASES."
     }
   ],
-  "queue_size": 262
+  "queue_size": 263
 }

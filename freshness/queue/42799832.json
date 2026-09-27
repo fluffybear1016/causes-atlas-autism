@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Hasan A; Asfour AAR; Qaba H; Al-Sharabi AA; Asfoor A; Mohammed S; Al-Adhreai A; G\u00fcner S",
+  "doi": "pii: 925. doi: 10.1007/s12035-026-06173-4",
+  "first_author": "Hasan A",
+  "journal": "Mol Neurobiol",
+  "matched_queries": [
+    "autism[tiab] AND (\"microbiome\"[tiab] OR \"gut-brain axis\"[tiab]) AND human[mh]",
+    "autism[tiab] AND (\"mast cell\"[tiab] OR MCAS[tiab])"
+  ],
+  "pmid": "42799832",
+  "pubdate": "2026 Sep 26",
+  "title": "Mast Cells in Neuroimmune Interactions: Mechanisms, Pathophysiological Roles, and Therapeutic Implications.",
+  "verified_at": "2026-09-27T11:00:37+00:00"
+}
