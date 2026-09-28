@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-27T11:00:38+00:00",
+  "generated_at_utc": "2026-09-28T12:19:45+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-29T11:56:34+00:00",
-      "since": "2026-08-28T17:52:14+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42666234"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -301,6 +290,18 @@
       "verified_added_to_queue": 1,
       "verified_pmids": [
         "42799832"
+      ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-28T12:19:44+00:00",
+      "since": "2026-09-27T11:00:38+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "39721371",
+        "42016032"
       ]
     }
   ],
@@ -706,5 +707,5 @@
       "title": "Internet Searches for Leucovorin, Folate, and Acetaminophen After a White House Autism Announcement."
     }
   ],
-  "queue_size": 263
+  "queue_size": 265
 }
