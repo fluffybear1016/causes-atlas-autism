@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-29T11:47:01+00:00",
+  "generated_at_utc": "2026-09-30T11:33:32+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-08-31T12:07:15+00:00",
-      "since": "2026-08-30T10:53:47+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -301,6 +292,17 @@
       "since": "2026-09-28T12:19:44+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-09-30T11:33:32+00:00",
+      "since": "2026-09-29T11:47:01+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42809586"
+      ]
     }
   ],
   "queue_preview": [
@@ -407,6 +409,14 @@
       "pmid": "42508695",
       "pubdate": "2026 Oct 2",
       "title": "From gut microbiota to synaptic plasticity: Mechanisms shaping cognitive function and brain disorders."
+    },
+    {
+      "first_author": "De Chiara S",
+      "journal": "Chembiochem",
+      "matched_queries_count": 1,
+      "pmid": "42809586",
+      "pubdate": "2026 Oct 14",
+      "title": "Functional Heterogeneity of the Autism Spectrum Disorder-Associated Gut Microbial Ecosystem Revealed by Fecal Lipopolysaccharides and Bacterial Proteomic Profil"
     },
     {
       "first_author": "Li T",
@@ -695,15 +705,7 @@
       "pmid": "42356264",
       "pubdate": "2026 Jun 10",
       "title": "Vitamin D as a Lifespan Neuroimmune Signal in Psychiatry: From Developmental Risk to Precision Nutrition."
-    },
-    {
-      "first_author": "Patel NG",
-      "journal": "JAMA Netw Open",
-      "matched_queries_count": 1,
-      "pmid": "42275066",
-      "pubdate": "2026 Jun 1",
-      "title": "Internet Searches for Leucovorin, Folate, and Acetaminophen After a White House Autism Announcement."
     }
   ],
-  "queue_size": 265
+  "queue_size": 266
 }
