@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-09-30T11:33:32+00:00",
+  "generated_at_utc": "2026-10-01T12:02:10+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-09-01T10:44:42+00:00",
-      "since": "2026-08-31T12:07:15+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -302,6 +293,17 @@
       "verified_added_to_queue": 1,
       "verified_pmids": [
         "42809586"
+      ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-10-01T12:02:10+00:00",
+      "since": "2026-09-30T11:33:32+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42415063"
       ]
     }
   ],
@@ -707,5 +709,5 @@
       "title": "Vitamin D as a Lifespan Neuroimmune Signal in Psychiatry: From Developmental Risk to Precision Nutrition."
     }
   ],
-  "queue_size": 266
+  "queue_size": 267
 }
