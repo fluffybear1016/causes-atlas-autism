@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-10-07T12:16:57+00:00",
+  "generated_at_utc": "2026-10-08T12:26:51+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-09-08T10:15:46+00:00",
-      "since": "2026-09-07T11:00:43+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -298,6 +289,17 @@
       "since": "2026-10-06T12:24:06+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-10-08T12:26:51+00:00",
+      "since": "2026-10-07T12:16:57+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42844155"
+      ]
     }
   ],
   "queue_preview": [
@@ -420,6 +422,14 @@
       "pmid": "42532353",
       "pubdate": "2026 Oct 1",
       "title": "The microbiota-gut-brain axis in neuropsychiatric disorders: Mechanisms, advances, and clinical applications."
+    },
+    {
+      "first_author": "Khosrofar R",
+      "journal": "Int J Dev Neurosci",
+      "matched_queries_count": 1,
+      "pmid": "42844155",
+      "pubdate": "2026 Oct",
+      "title": "Recent Advances in Autism Spectrum Disorder Research on Epigenetics and Personalised Medicine."
     },
     {
       "first_author": "Kunevi\u010dius A",
@@ -692,15 +702,7 @@
       "pmid": "42277537",
       "pubdate": "2026 Jun 12",
       "title": "Comparative Efficacy and Acceptability of Non-pharmacological Therapies and Novel Pharmacotherapies for Autism: A Systematic Review and Network Meta-Analysis."
-    },
-    {
-      "first_author": "Ducki C",
-      "journal": "Nutrients",
-      "matched_queries_count": 1,
-      "pmid": "42356264",
-      "pubdate": "2026 Jun 10",
-      "title": "Vitamin D as a Lifespan Neuroimmune Signal in Psychiatry: From Developmental Risk to Precision Nutrition."
     }
   ],
-  "queue_size": 267
+  "queue_size": 268
 }
