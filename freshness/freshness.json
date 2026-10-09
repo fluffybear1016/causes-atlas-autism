@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-10-08T12:26:51+00:00",
+  "generated_at_utc": "2026-10-09T12:16:04+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-09-09T10:21:37+00:00",
-      "since": "2026-09-08T10:15:46+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -299,6 +290,17 @@
       "verified_added_to_queue": 1,
       "verified_pmids": [
         "42844155"
+      ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-10-09T12:16:04+00:00",
+      "since": "2026-10-08T12:26:51+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42846214"
       ]
     }
   ],
@@ -704,5 +706,5 @@
       "title": "Comparative Efficacy and Acceptability of Non-pharmacological Therapies and Novel Pharmacotherapies for Autism: A Systematic Review and Network Meta-Analysis."
     }
   ],
-  "queue_size": 268
+  "queue_size": 269
 }
