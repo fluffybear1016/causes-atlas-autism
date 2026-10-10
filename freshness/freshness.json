@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-10-09T12:16:04+00:00",
+  "generated_at_utc": "2026-10-10T11:33:34+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-09-10T10:14:06+00:00",
-      "since": "2026-09-09T10:21:37+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -302,6 +293,17 @@
       "verified_pmids": [
         "42846214"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-10-10T11:33:34+00:00",
+      "since": "2026-10-09T12:16:04+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42711824"
+      ]
     }
   ],
   "queue_preview": [
@@ -432,6 +434,14 @@
       "pmid": "42844155",
       "pubdate": "2026 Oct",
       "title": "Recent Advances in Autism Spectrum Disorder Research on Epigenetics and Personalised Medicine."
+    },
+    {
+      "first_author": "Du Y",
+      "journal": "Adv Healthc Mater",
+      "matched_queries_count": 1,
+      "pmid": "42711824",
+      "pubdate": "2026 Oct",
+      "title": "Fenton\u2011Engineered Sporopollenin With In Vivo Interfacial Targeting for Gut Microenvironment\u2011Synergized Clearance of 4\u2011Ethylphenol, an Autism\u2011Related Metabolite."
     },
     {
       "first_author": "Kunevi\u010dius A",
@@ -696,15 +706,7 @@
       "pmid": "42356344",
       "pubdate": "2026 Jun 17",
       "title": "Targeting the Human Gut Microbiota-Between Conventional Therapy and Precision Genetic Engineering."
-    },
-    {
-      "first_author": "Ma C",
-      "journal": "Child Psychiatry Hum Dev",
-      "matched_queries_count": 1,
-      "pmid": "42277537",
-      "pubdate": "2026 Jun 12",
-      "title": "Comparative Efficacy and Acceptability of Non-pharmacological Therapies and Novel Pharmacotherapies for Autism: A Systematic Review and Network Meta-Analysis."
     }
   ],
-  "queue_size": 269
+  "queue_size": 270
 }
