@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "Ramaekers VT; Quadros EV",
+  "doi": "pii: S0300-9084(26)00256-7. doi: 10.1016/j.biochi.2026.10.019",
+  "first_author": "Ramaekers VT",
+  "journal": "Biochimie",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42874702",
+  "pubdate": "2026 Oct 14",
+  "title": "The Evolving Paradigm of Autism: Folate Receptor Autoimmunity deranging Epigenetic Programming in fetal and postnatal Brain Development.",
+  "verified_at": "2026-10-15T10:32:18+00:00"
+}

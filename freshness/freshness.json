@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-10-14T10:49:56+00:00",
+  "generated_at_utc": "2026-10-15T10:32:19+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-09-15T10:40:00+00:00",
-      "since": "2026-09-14T11:12:49+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -297,6 +288,18 @@
       "since": "2026-10-13T13:09:15+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-10-15T10:32:19+00:00",
+      "since": "2026-10-14T10:49:55+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "42871661",
+        "42874702"
+      ]
     }
   ],
   "queue_preview": [
@@ -403,6 +406,14 @@
       "pmid": "42508695",
       "pubdate": "2026 Oct 2",
       "title": "From gut microbiota to synaptic plasticity: Mechanisms shaping cognitive function and brain disorders."
+    },
+    {
+      "first_author": "Ramaekers VT",
+      "journal": "Biochimie",
+      "matched_queries_count": 2,
+      "pmid": "42874702",
+      "pubdate": "2026 Oct 14",
+      "title": "The Evolving Paradigm of Autism: Folate Receptor Autoimmunity deranging Epigenetic Programming in fetal and postnatal Brain Development."
     },
     {
       "first_author": "De Chiara S",
@@ -691,15 +702,7 @@
       "pmid": "42553823",
       "pubdate": "2026 Jun 18",
       "title": "Remarkable Clinical Improvement after Folinic Acid Supplementation in Cerebral Folate Transport Deficiency and Epileptic Encephalopathy: A Case Report."
-    },
-    {
-      "first_author": "Ciurea NA",
-      "journal": "Nutrients",
-      "matched_queries_count": 1,
-      "pmid": "42356344",
-      "pubdate": "2026 Jun 17",
-      "title": "Targeting the Human Gut Microbiota-Between Conventional Therapy and Precision Genetic Engineering."
     }
   ],
-  "queue_size": 270
+  "queue_size": 272
 }
