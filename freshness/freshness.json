@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-10-24T09:58:14+00:00",
+  "generated_at_utc": "2026-10-25T10:22:15+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-09-25T10:47:38+00:00",
-      "since": "2026-09-24T10:43:46+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42402632"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 5,
@@ -296,6 +285,17 @@
       "since": "2026-10-23T10:41:30+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-10-25T10:22:15+00:00",
+      "since": "2026-10-24T09:58:14+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42920990"
+      ]
     }
   ],
   "queue_preview": [
@@ -700,5 +700,5 @@
       "title": "Remarkable Clinical Improvement after Folinic Acid Supplementation in Cerebral Folate Transport Deficiency and Epileptic Encephalopathy: A Case Report."
     }
   ],
-  "queue_size": 272
+  "queue_size": 273
 }
