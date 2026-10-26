@@ -1,21 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-10-25T10:22:15+00:00",
+  "generated_at_utc": "2026-10-26T11:50:36+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 5,
-      "queries_run": 9,
-      "run_at_utc": "2026-09-26T10:29:27+00:00",
-      "since": "2026-09-25T10:47:38+00:00",
-      "verified_added_to_queue": 4,
-      "verified_pmids": [
-        "42788166",
-        "42793152",
-        "42793234",
-        "42796952"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 2,
@@ -296,6 +282,17 @@
       "verified_pmids": [
         "42920990"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-10-26T11:50:36+00:00",
+      "since": "2026-10-25T10:22:15+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "42929002"
+      ]
     }
   ],
   "queue_preview": [
@@ -426,6 +423,14 @@
       "pmid": "42532353",
       "pubdate": "2026 Oct 1",
       "title": "The microbiota-gut-brain axis in neuropsychiatric disorders: Mechanisms, advances, and clinical applications."
+    },
+    {
+      "first_author": "Bagui S",
+      "journal": "Mol Nutr Food Res",
+      "matched_queries_count": 1,
+      "pmid": "42929002",
+      "pubdate": "2026 Oct",
+      "title": "Effect of Probiotics on GI Symptom Management in Autism Spectrum Disorder: A Systematic Review and Meta-Analysis of Clinical Trials."
     },
     {
       "first_author": "Khosrofar R",
@@ -690,15 +695,7 @@
       "pmid": "42353350",
       "pubdate": "2026 Jun 22",
       "title": "The Microbiota in the Diagnosis and Treatment of Autism Spectrum Disorder."
-    },
-    {
-      "first_author": "G\u00fcnay \u00c7",
-      "journal": "Mol Syndromol",
-      "matched_queries_count": 2,
-      "pmid": "42553823",
-      "pubdate": "2026 Jun 18",
-      "title": "Remarkable Clinical Improvement after Folinic Acid Supplementation in Cerebral Folate Transport Deficiency and Epileptic Encephalopathy: A Case Report."
     }
   ],
-  "queue_size": 273
+  "queue_size": 274
 }
