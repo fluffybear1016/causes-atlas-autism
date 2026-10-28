@@ -1,0 +1,15 @@
+{
+  "all_authors_joined": "Rose S; Melnyk S; James SJ; Frye RE",
+  "doi": "doi: 10.3390/ijms27209101",
+  "first_author": "Rose S",
+  "journal": "Int J Mol Sci",
+  "matched_queries": [
+    "autism[tiab] AND (mitochondrial[tiab] OR \"oxidative stress\"[tiab]) AND (\"clinical trial\"[pt] OR \"randomized\"[tiab])",
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42941870",
+  "pubdate": "2026 Oct 14",
+  "title": "Effect of Leucovorin on Mitochondrial Respiration and One-Carbon Metabolism in Autism Spectrum Disorder: A Double-Blind Placebo-Controlled Substudy.",
+  "verified_at": "2026-10-28T11:49:08+00:00"
+}

@@ -1,19 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-10-27T11:15:01+00:00",
+  "generated_at_utc": "2026-10-28T11:49:08+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 3,
-      "queries_run": 9,
-      "run_at_utc": "2026-09-28T12:19:44+00:00",
-      "since": "2026-09-27T11:00:38+00:00",
-      "verified_added_to_queue": 2,
-      "verified_pmids": [
-        "39721371",
-        "42016032"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -291,9 +279,30 @@
       "since": "2026-10-26T11:50:36+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 4,
+      "queries_run": 9,
+      "run_at_utc": "2026-10-28T11:49:08+00:00",
+      "since": "2026-10-27T11:15:01+00:00",
+      "verified_added_to_queue": 3,
+      "verified_pmids": [
+        "42937775",
+        "42939666",
+        "42941870"
+      ]
     }
   ],
   "queue_preview": [
+    {
+      "first_author": "P\u00e9rez N",
+      "journal": "Biomolecules",
+      "matched_queries_count": 2,
+      "pmid": "42939666",
+      "pubdate": "2026 Sep 28",
+      "title": "Epigenetic Hierarchies in Autism from Folate-SAM Metabolism to LSD1 and G9a."
+    },
     {
       "first_author": "Hasan A",
       "journal": "Mol Neurobiol",
@@ -391,12 +400,28 @@
       "title": "Oral and Gut Microbiota in Individuals With Autism Spectrum Disorder: A Pilot Case-Control Study."
     },
     {
+      "first_author": "He Y",
+      "journal": "Medicine (Baltimore)",
+      "matched_queries_count": 1,
+      "pmid": "42937775",
+      "pubdate": "2026 Oct 23",
+      "title": "Mapping and visualizing global research trends in gut microbiota and autism spectrum disorder: A bibliometric analysis (2015-2024)."
+    },
+    {
       "first_author": "Azimzadeh M",
       "journal": "Behav Brain Res",
       "matched_queries_count": 1,
       "pmid": "42508695",
       "pubdate": "2026 Oct 2",
       "title": "From gut microbiota to synaptic plasticity: Mechanisms shaping cognitive function and brain disorders."
+    },
+    {
+      "first_author": "Rose S",
+      "journal": "Int J Mol Sci",
+      "matched_queries_count": 3,
+      "pmid": "42941870",
+      "pubdate": "2026 Oct 14",
+      "title": "Effect of Leucovorin on Mitochondrial Respiration and One-Carbon Metabolism in Autism Spectrum Disorder: A Double-Blind Placebo-Controlled Substudy."
     },
     {
       "first_author": "Ramaekers VT",
@@ -669,31 +694,7 @@
       "pmid": "42240702",
       "pubdate": "2026 Jun 4",
       "title": "Role of GABA(A) receptors and chloride transporters in autism - An explorative analysis using peripheral blood as a model."
-    },
-    {
-      "first_author": "Aili A",
-      "journal": "BMC Microbiol",
-      "matched_queries_count": 1,
-      "pmid": "42343222",
-      "pubdate": "2026 Jun 24",
-      "title": "Gut bacterial characteristics in children with autism spectrum disorder according to symptom severity: a cross-sectional study."
-    },
-    {
-      "first_author": "Ziaka M",
-      "journal": "Pathogens",
-      "matched_queries_count": 1,
-      "pmid": "42514986",
-      "pubdate": "2026 Jun 23",
-      "title": "A Comprehensive Review of the Gut-Microbiota-Brain Axis in Alzheimer's Disease: From Pathophysiology to Potential Therapies."
-    },
-    {
-      "first_author": "Trifonova EA",
-      "journal": "Int J Mol Sci",
-      "matched_queries_count": 1,
-      "pmid": "42353350",
-      "pubdate": "2026 Jun 22",
-      "title": "The Microbiota in the Diagnosis and Treatment of Autism Spectrum Disorder."
     }
   ],
-  "queue_size": 274
+  "queue_size": 277
 }

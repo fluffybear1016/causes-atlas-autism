@@ -1,0 +1,14 @@
+{
+  "all_authors_joined": "P\u00e9rez N; Bellver A; Hussain F; Huerta-Ramos E; Tous N; Frye RE; Gri\u00f1\u00e1n-Ferr\u00e9 C",
+  "doi": "doi: 10.3390/biom16101411",
+  "first_author": "P\u00e9rez N",
+  "journal": "Biomolecules",
+  "matched_queries": [
+    "autism[tiab] AND (\"cerebral folate\"[tiab] OR \"folate receptor\"[tiab])",
+    "autism[tiab] AND (leucovorin[tiab] OR folinic[tiab])"
+  ],
+  "pmid": "42939666",
+  "pubdate": "2026 Sep 28",
+  "title": "Epigenetic Hierarchies in Autism from Folate-SAM Metabolism to LSD1 and G9a.",
+  "verified_at": "2026-10-28T11:49:08+00:00"
+}
