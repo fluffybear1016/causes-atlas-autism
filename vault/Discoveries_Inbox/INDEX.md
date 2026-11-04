@@ -4,6 +4,7 @@ Daily pattern-miner runs. Candidates require human curator review.
 
 | Date | Total candidates | Summary |
 | --- | --- | --- |
+| 2026-11-04 | 139 | [2026-11-04_summary.md](2026-11-04_summary.md) |
 | 2026-11-03 | 139 | [2026-11-03_summary.md](2026-11-03_summary.md) |
 | 2026-11-02 | 139 | [2026-11-02_summary.md](2026-11-02_summary.md) |
 | 2026-11-01 | 139 | [2026-11-01_summary.md](2026-11-01_summary.md) |
