@@ -1,19 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-11-13T13:37:02+00:00",
+  "generated_at_utc": "2026-11-14T12:41:38+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 3,
-      "queries_run": 9,
-      "run_at_utc": "2026-10-15T10:32:19+00:00",
-      "since": "2026-10-14T10:49:55+00:00",
-      "verified_added_to_queue": 2,
-      "verified_pmids": [
-        "42871661",
-        "42874702"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -286,6 +274,18 @@
       "verified_pmids": [
         "43021389"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-11-14T12:41:38+00:00",
+      "since": "2026-11-13T13:37:02+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "43027382",
+        "43030172"
+      ]
     }
   ],
   "queue_preview": [
@@ -394,6 +394,14 @@
       "title": "Oral and Gut Microbiota in Individuals With Autism Spectrum Disorder: A Pilot Case-Control Study."
     },
     {
+      "first_author": "Cernigliaro F",
+      "journal": "Nutrients",
+      "matched_queries_count": 1,
+      "pmid": "43030172",
+      "pubdate": "2026 Oct 27",
+      "title": "Nutraceutical, Nutritional and Phytotherapeutic Interventions for Neuropsychiatric Disorders Associated with Intellectual Disability: Mechanisms and Clinical Ev"
+    },
+    {
       "first_author": "He Y",
       "journal": "Medicine (Baltimore)",
       "matched_queries_count": 1,
@@ -472,6 +480,14 @@
       "pmid": "42243298",
       "pubdate": "2026 Oct",
       "title": "Efficacy of pharmacological and microbiota-based therapies in preclinical models of autism spectrum disorder: a systematic review."
+    },
+    {
+      "first_author": "Ayoub G",
+      "journal": "Cells",
+      "matched_queries_count": 1,
+      "pmid": "43027382",
+      "pubdate": "2026 Nov 6",
+      "title": "Is Oxidative Stress a Shared Mechanism Linking Autism Regression, Late Diagnosis, and Sex-Disparate Diagnostic Timing?"
     },
     {
       "first_author": "Aili A",
@@ -672,23 +688,7 @@
       "pmid": "42220936",
       "pubdate": "2026 Jun 9",
       "title": "Medical treatment of autism spectrum disorder in children: Current evidence, controversies, and clinical challenges."
-    },
-    {
-      "first_author": "Babolin S",
-      "journal": "BMC Psychiatry",
-      "matched_queries_count": 1,
-      "pmid": "42260510",
-      "pubdate": "2026 Jun 8",
-      "title": "Machine learning model to identify gut microbiome-derived metabolites as potential biomarkers of autism spectrum disorder: a pilot study."
-    },
-    {
-      "first_author": "Wells L",
-      "journal": "Diseases",
-      "matched_queries_count": 2,
-      "pmid": "42346294",
-      "pubdate": "2026 Jun 5",
-      "title": "Folate Receptor Alpha Autoantibodies in Vector-Borne Disease Populations."
     }
   ],
-  "queue_size": 279
+  "queue_size": 281
 }
