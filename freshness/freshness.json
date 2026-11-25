@@ -1,18 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-11-24T16:41:25+00:00",
+  "generated_at_utc": "2026-11-25T16:25:56+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 2,
-      "queries_run": 9,
-      "run_at_utc": "2026-10-26T11:50:36+00:00",
-      "since": "2026-10-25T10:22:15+00:00",
-      "verified_added_to_queue": 1,
-      "verified_pmids": [
-        "42929002"
-      ]
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -290,6 +279,17 @@
       "since": "2026-11-23T16:48:21+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 2,
+      "queries_run": 9,
+      "run_at_utc": "2026-11-25T16:25:56+00:00",
+      "since": "2026-11-24T16:41:25+00:00",
+      "verified_added_to_queue": 1,
+      "verified_pmids": [
+        "43080057"
+      ]
     }
   ],
   "queue_preview": [
@@ -494,6 +494,14 @@
       "title": "Is Oxidative Stress a Shared Mechanism Linking Autism Regression, Late Diagnosis, and Sex-Disparate Diagnostic Timing?"
     },
     {
+      "first_author": "\u00d6zt\u00fcrk Y",
+      "journal": "Nutr Health",
+      "matched_queries_count": 1,
+      "pmid": "43080057",
+      "pubdate": "2026 Nov 24",
+      "title": "From universal prescriptions to precision nutrition in autism spectrum disorder: A critical narrative review of metabolic targets and clinical evidence."
+    },
+    {
       "first_author": "Choudhary AK",
       "journal": "Pharmacology",
       "matched_queries_count": 1,
@@ -684,15 +692,7 @@
       "pmid": "39417900",
       "pubdate": "2026 Mar",
       "title": "Gastrointestinal, Behaviour and Anxiety Outcomes in Autistic Children Following an Open Label, Randomised Pilot Study of Synbiotics vs Synbiotics and Gut-Direct"
-    },
-    {
-      "first_author": "Rome BN",
-      "journal": "Pediatrics",
-      "matched_queries_count": 2,
-      "pmid": "42260633",
-      "pubdate": "2026 Jun 9",
-      "title": "Use of Leucovorin After the FDA Announcement of Its Use for Autism Spectrum Disorders."
     }
   ],
-  "queue_size": 284
+  "queue_size": 285
 }
