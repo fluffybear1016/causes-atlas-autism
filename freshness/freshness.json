@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-11-25T16:25:56+00:00",
+  "generated_at_utc": "2026-11-26T15:59:51+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-10-27T11:15:01+00:00",
-      "since": "2026-10-26T11:50:36+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 4,
@@ -290,6 +281,18 @@
       "verified_pmids": [
         "43080057"
       ]
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-11-26T15:59:50+00:00",
+      "since": "2026-11-25T16:25:56+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "43092034",
+        "43092845"
+      ]
     }
   ],
   "queue_preview": [
@@ -502,12 +505,28 @@
       "title": "From universal prescriptions to precision nutrition in autism spectrum disorder: A critical narrative review of metabolic targets and clinical evidence."
     },
     {
+      "first_author": "Mul\u00e8 S",
+      "journal": "Int J Mol Sci",
+      "matched_queries_count": 1,
+      "pmid": "43092034",
+      "pubdate": "2026 Nov 19",
+      "title": "Probiotic-Botanical Combination Modulates Neuroinflammatory and Neurochemical Pathways in an LPS-Induced In Vitro Gut-Brain Axis Model."
+    },
+    {
       "first_author": "Choudhary AK",
       "journal": "Pharmacology",
       "matched_queries_count": 1,
       "pmid": "43043338",
       "pubdate": "2026 Nov 17",
       "title": "Efficacy and Safety of Bumetanide (NKCC1 Inhibitor) for Core Symptoms in Childrenwith Autism Spectrum Disorder: An Updated Systematic Review and Meta-Analysis(2"
+    },
+    {
+      "first_author": "Oliveira MT",
+      "journal": "Nutrients",
+      "matched_queries_count": 1,
+      "pmid": "43092845",
+      "pubdate": "2026 Nov 10",
+      "title": "Cannabis sativa Extract Modulates Gut Microbial Metabolism in Autism Spectrum Disorder and Neurotypical Microbiota: An Exploratory In Vitro Study."
     },
     {
       "first_author": "Aili A",
@@ -676,23 +695,7 @@
       "pmid": "41475542",
       "pubdate": "2026 Mar 12",
       "title": "Gut microbiota mediated neuroinflammation in psychiatric disorders: Current perspectives and challenges."
-    },
-    {
-      "first_author": "Ibarra C",
-      "journal": "Am J Obstet Gynecol",
-      "matched_queries_count": 1,
-      "pmid": "41130438",
-      "pubdate": "2026 Mar",
-      "title": "Can maternal metformin protect the developing fetal brain?"
-    },
-    {
-      "first_author": "Mitchell LK",
-      "journal": "J Autism Dev Disord",
-      "matched_queries_count": 1,
-      "pmid": "39417900",
-      "pubdate": "2026 Mar",
-      "title": "Gastrointestinal, Behaviour and Anxiety Outcomes in Autistic Children Following an Open Label, Randomised Pilot Study of Synbiotics vs Synbiotics and Gut-Direct"
     }
   ],
-  "queue_size": 285
+  "queue_size": 287
 }
