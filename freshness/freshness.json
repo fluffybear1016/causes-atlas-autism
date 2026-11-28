@@ -1,16 +1,7 @@
 {
   "atlas_pmid_count": 905,
-  "generated_at_utc": "2026-11-27T15:48:39+00:00",
+  "generated_at_utc": "2026-11-28T14:44:07+00:00",
   "last_30_daily_logs": [
-    {
-      "atlas_pmid_count": 1094,
-      "candidates_found": 1,
-      "queries_run": 9,
-      "run_at_utc": "2026-10-29T11:56:54+00:00",
-      "since": "2026-10-28T11:49:08+00:00",
-      "verified_added_to_queue": 0,
-      "verified_pmids": []
-    },
     {
       "atlas_pmid_count": 1094,
       "candidates_found": 1,
@@ -289,6 +280,18 @@
       "since": "2026-11-26T15:59:50+00:00",
       "verified_added_to_queue": 0,
       "verified_pmids": []
+    },
+    {
+      "atlas_pmid_count": 1094,
+      "candidates_found": 3,
+      "queries_run": 9,
+      "run_at_utc": "2026-11-28T14:44:07+00:00",
+      "since": "2026-11-27T15:48:38+00:00",
+      "verified_added_to_queue": 2,
+      "verified_pmids": [
+        "42383392",
+        "43102633"
+      ]
     }
   ],
   "queue_preview": [
@@ -493,6 +496,14 @@
       "title": "Is Oxidative Stress a Shared Mechanism Linking Autism Regression, Late Diagnosis, and Sex-Disparate Diagnostic Timing?"
     },
     {
+      "first_author": "Halim V",
+      "journal": "Eur J Pediatr",
+      "matched_queries_count": 1,
+      "pmid": "43102633",
+      "pubdate": "2026 Nov 27",
+      "title": "Efficacy and safety of probiotics in children and adolescents with autism spectrum disorder: a systematic review and meta-analysis."
+    },
+    {
       "first_author": "\u00d6zt\u00fcrk Y",
       "journal": "Nutr Health",
       "matched_queries_count": 1,
@@ -683,15 +694,7 @@
       "pmid": "41806837",
       "pubdate": "2026 Mar 17",
       "title": "An integrative multi-omics approach identifies microbiome alterations linked to pathological and behavioral features in autism spectrum disorder."
-    },
-    {
-      "first_author": "Nayak A",
-      "journal": "Behav Brain Res",
-      "matched_queries_count": 1,
-      "pmid": "41475542",
-      "pubdate": "2026 Mar 12",
-      "title": "Gut microbiota mediated neuroinflammation in psychiatric disorders: Current perspectives and challenges."
     }
   ],
-  "queue_size": 287
+  "queue_size": 289
 }
